@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.euclid.test.DoubleTestBase;
+import static org.xmlcml.cml.base.CMLConstants.*;
 
 /**
  * tests for doubleAttribute.
@@ -11,17 +12,12 @@ import org.xmlcml.euclid.test.DoubleTestBase;
  * @author pmr
  * 
  */
-public class DoubleArrayAttributeTest extends AttributeBaseTest {
+public class DoubleArrayAttributeTest {
 
 	DoubleArraySTAttribute daa1;
 
 	DoubleArraySTAttribute daa2;
 
-	/**
-	 * main
-	 * 
-	 * @param args
-	 */
 	/**
 	 * setup.
 	 * 
@@ -29,7 +25,6 @@ public class DoubleArrayAttributeTest extends AttributeBaseTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		super.setUp();
 		daa1 = new DoubleArraySTAttribute(new CMLAttribute("foo"),
 				" 1.2   3.4  ");
 
@@ -59,8 +54,8 @@ public class DoubleArrayAttributeTest extends AttributeBaseTest {
 	}
 
 	/**
-	 * Test method for
-	 * 'org.xmlcml.cml.base.DoubleArraySTAttribute.DoubleArrayAttribute(DoubleArraySTAttribute)'
+	 * Test method for'org.xmlcml.cml.base.DoubleArraySTAttribute.DoubleArrayAttribute(DoubleArraySTAttribu
+	 * t e ) '
 	 */
 	@Test
 	public void testDoubleArrayAttributeDoubleArrayAttribute() {

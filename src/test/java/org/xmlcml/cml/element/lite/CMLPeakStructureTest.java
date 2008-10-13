@@ -16,28 +16,22 @@ import org.xmlcml.cml.base.CMLBuilder;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.element.main.CMLSpectrum;
 import org.xmlcml.euclid.Util;
+import static org.xmlcml.cml.base.CMLConstants.*;
+import static org.xmlcml.cml.base.BaseTest.*;
+import static org.xmlcml.euclid.EuclidConstants.*;
+import static org.xmlcml.cml.element.main.AbstractTest.*;
 
 /**
  * test CMLPeakStructure
- *
+ * 
  * @author pmr
- *
+ * 
  */
-public class CMLPeakStructureTest extends PeakSpectrumTest {
-
-	/**
-	 * setup.
-	 *
-	 * @throws Exception
-	 */
-	@Before
-	public void setUp() throws Exception {
-		super.setUp();
-	}
+public class CMLPeakStructureTest extends PeakSpectrumBase {
 
 	/**
 	 * tests access to peaks and peakStructure.
-	 *
+	 * 
 	 * <spectrum id="spectrum2" title="test peaks"> <peakList> <peak id="p1"
 	 * title="Ha" atomRefs="a1" peakShape="sharp" xUnits="unit:ppm"
 	 * xValue="6.0"> <peakStructure type="coupling" peakMultiplicity="doublet11"
@@ -50,18 +44,18 @@ public class CMLPeakStructureTest extends PeakSpectrumTest {
 	 * atomRefs="a3 a4" peakShape="sharp" xUnits="unit:ppm" xValue="8.0">
 	 * <peakStructure type="coupling" peakMultiplicity="doublet11" value="15"
 	 * units="unit:hertz" atomRefs="a2"/> </peak> </peakList> </spectrum>
-	 *
+	 * 
 	 * @throws IOException
 	 * @throws ParsingException
 	 * @throws ValidityException
-	 *
+	 * 
 	 */
 	@Test
 	public void testGetPeaks1() throws IOException, ValidityException,
 			ParsingException {
 		CMLCml cml = null;
-		InputStream in = Util.getInputStreamFromResource(SIMPLE_RESOURCE
-				+ U_S + peakStructureFile1);
+		InputStream in = Util.getInputStreamFromResource(SIMPLE_RESOURCE + U_S
+				+ peakStructureFile1);
 		cml = (CMLCml) new CMLBuilder().build(in).getRootElement();
 		in.close();
 		// cml = (CMLCml) new CMLBuilder().build(new
@@ -90,7 +84,7 @@ public class CMLPeakStructureTest extends PeakSpectrumTest {
 
 	/**
 	 * test
-	 *
+	 * 
 	 * @throws IOException
 	 * @throws ParsingException
 	 * @throws ValidityException
@@ -99,8 +93,8 @@ public class CMLPeakStructureTest extends PeakSpectrumTest {
 	public void testGetPeaks2() throws IOException, ValidityException,
 			ParsingException {
 		CMLCml cml = null;
-		InputStream in = Util.getInputStreamFromResource(SIMPLE_RESOURCE
-				+ U_S + peakStructureFile2);
+		InputStream in = Util.getInputStreamFromResource(SIMPLE_RESOURCE + U_S
+				+ peakStructureFile2);
 		cml = (CMLCml) new CMLBuilder().build(in).getRootElement();
 		Assert.assertNotNull("cml not null: ", cml);
 		Elements elements1 = cml.getChildElements();
@@ -149,7 +143,7 @@ public class CMLPeakStructureTest extends PeakSpectrumTest {
 
 	/**
 	 * test
-	 *
+	 * 
 	 * @throws IOException
 	 * @throws ParsingException
 	 * @throws ValidityException
@@ -160,8 +154,8 @@ public class CMLPeakStructureTest extends PeakSpectrumTest {
 		CMLCml cml = null;
 		CMLSpectrum spectrum = null;
 		CMLMolecule molecule = null;
-		InputStream in = Util.getInputStreamFromResource(SIMPLE_RESOURCE
-				+ U_S + peakStructureFile1);
+		InputStream in = Util.getInputStreamFromResource(SIMPLE_RESOURCE + U_S
+				+ peakStructureFile1);
 		cml = (CMLCml) new CMLBuilder().build(in).getRootElement();
 		spectrum = (CMLSpectrum) cml.getChildCMLElements(CMLSpectrum.TAG)
 				.get(0);
@@ -171,13 +165,12 @@ public class CMLPeakStructureTest extends PeakSpectrumTest {
 		CMLPeakList peakList = spectrum.getPeakListElements().get(0);
 		Assert.assertNotNull("peakList", peakList);
 		CMLElements<CMLPeak> peaks = peakList.getPeakElements();
-		/*--
-		 <peak id="p1" title="Ha" atomRefs="a1"
-		 peakShape="sharp" xUnits="unit:ppm" xValue="6.0">
-		 <peakStructure type="coupling" peakMultiplicity="doublet11"
-		 value="12" units="unit:hertz" atomRefs="a2"/>
-		 </peak>
-		 --*/
+		/*
+		 * -- <peak id="p1" title="Ha" atomRefs="a1" peakShape="sharp"
+		 * xUnits="unit:ppm" xValue="6.0"> <peakStructure type="coupling"
+		 * peakMultiplicity="doublet11" value="12" units="unit:hertz"
+		 * atomRefs="a2"/> </peak> --
+		 */
 		CMLPeak peak1 = peaks.get(0);
 		List<CMLAtom> atoms1 = molecule.getAtomListByIds(peak1.getAtomRefs());
 		Assert.assertEquals("atoms in peak 1", 1, atoms1.size());
@@ -284,7 +277,7 @@ public class CMLPeakStructureTest extends PeakSpectrumTest {
 
 	/**
 	 * tests public boolean hasValidNestedPeakStructure()
-	 *
+	 * 
 	 * @throws IOException
 	 * @throws ParsingException
 	 * @throws ValidityException
@@ -293,8 +286,8 @@ public class CMLPeakStructureTest extends PeakSpectrumTest {
 	public void testHasValidNestedPeakStructure() throws IOException,
 			ValidityException, ParsingException {
 		CMLCml cml = null;
-		InputStream in = Util.getInputStreamFromResource(SIMPLE_RESOURCE
-				+ U_S + peakStructureFile2);
+		InputStream in = Util.getInputStreamFromResource(SIMPLE_RESOURCE + U_S
+				+ peakStructureFile2);
 		cml = (CMLCml) new CMLBuilder().build(in).getRootElement();
 		in.close();
 		CMLPeak peak1 = CMLSpectrum.getDescendantPeaks(cml).get(0);
@@ -313,4 +306,4 @@ public class CMLPeakStructureTest extends PeakSpectrumTest {
 
 	}
 
- }
+}

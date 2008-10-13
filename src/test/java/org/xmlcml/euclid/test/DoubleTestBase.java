@@ -1,5 +1,8 @@
 package org.xmlcml.euclid.test;
 
+import static org.xmlcml.euclid.EuclidConstants.S_RBRAK;
+import static org.xmlcml.euclid.EuclidConstants.S_SLASH;
+
 import org.junit.Assert;
 import org.xmlcml.euclid.Real;
 
@@ -13,7 +16,7 @@ import org.xmlcml.euclid.Real;
  * @version 5.0
  * 
  */
-public class DoubleTestBase extends EuclidTestBase {
+public class DoubleTestBase {
 
 	/**
 	 * Assert.asserts equality of double arrays.
@@ -47,8 +50,8 @@ public class DoubleTestBase extends EuclidTestBase {
 			s = "unequal arrays: " + a.length + S_SLASH + b.length;
 		} else {
 			for (int i = 0; i < a.length; i++) {
-				if (!(((Double) a[i]).equals(b[i]) ||
-						!Real.isEqual(a[i], b[i], eps))) {
+				if (!(((Double) a[i]).equals(b[i]) || !Real.isEqual(a[i], b[i],
+						eps))) {
 					s = "unequal element at (" + i + "), " + a[i] + " != "
 							+ b[i];
 					break;

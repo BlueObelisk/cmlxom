@@ -1,5 +1,12 @@
 package org.xmlcml.cml.element.main;
 
+import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
+import static org.xmlcml.cml.base.CMLConstants.CML_XPATH;
+import static org.xmlcml.cml.element.main.AbstractTest.COMPLEX_RESOURCE;
+import static org.xmlcml.cml.element.main.AbstractTest.SIMPLE_RESOURCE;
+import static org.xmlcml.euclid.EuclidConstants.EPS;
+import static org.xmlcml.euclid.EuclidConstants.U_S;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
@@ -12,7 +19,6 @@ import nu.xom.ParsingException;
 import nu.xom.ValidityException;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLBuilder;
@@ -24,58 +30,30 @@ import org.xmlcml.cml.element.lite.CMLMolecule;
 import org.xmlcml.cml.element.lite.CMLPeak;
 import org.xmlcml.cml.element.lite.CMLPeakGroup;
 import org.xmlcml.cml.element.lite.CMLPeakList;
-import org.xmlcml.cml.element.lite.PeakSpectrumTest;
+import org.xmlcml.cml.element.lite.PeakSpectrumBase;
 import org.xmlcml.euclid.Util;
 
 /**
  * test Spectrum.
- *
+ * 
  * @author pmr
- *
+ * 
  */
-public class CMLSpectrumTest extends PeakSpectrumTest {
-
-	/**
-	 * setup.
-	 *
-	 * @throws Exception
-	 */
-	@Before
-	public void setUp() throws Exception {
-		super.setUp();
-	}
-
-	/**
-	 * Test method for 'org.xmlcml.cml.element.CMLSpectrum.CMLSpectrum()'
-	 */
-	@Test
-	public void testCMLSpectrum() {
-	}
-
-	/**
-	 * Test method for
-	 * 'org.xmlcml.cml.element.CMLSpectrum.CMLSpectrum(CMLSpectrum)'
-	 */
-	@Test
-	public void testCMLSpectrumCMLSpectrum() {
-	}
+public class CMLSpectrumTest extends PeakSpectrumBase {
 
 	/**
 	 * Test method for reading a CMLSpectrum from file. uses first example
+	 * 
 	 * @throws Exception
 	 */
 	@Test
 	public void testReadCMLSpectrum1() throws Exception {
 		CMLSpectrum spectrum = readSpectrum(1);
 		Assert.assertNotNull("spectrum1: ", spectrum);
-		/*--
-		 <sample>
-		 <molecule>
-		 <formula concise="C 4 H 10 O 1"/>
-		 <name convention="cas:regno">78-92-2</name>
-		 </molecule>
-		 </sample>
-		 -*/
+		/*
+		 * -- <sample> <molecule> <formula concise="C 4 H 10 O 1"/> <name
+		 * convention="cas:regno">78-92-2</name> </molecule> </sample> -
+		 */
 		CMLElements<CMLSample> samples = spectrum.getSampleElements();
 		Assert.assertEquals("sample children", 1, samples.size());
 		CMLElements<CMLMolecule> molecules = samples.get(0)
@@ -86,24 +64,17 @@ public class CMLSpectrumTest extends PeakSpectrumTest {
 		Assert.assertEquals("formula children", 1, formulas.size());
 		Assert.assertEquals("concise formula", "C 4 H 10 O 1", formulas.get(0)
 				.getConcise());
-		/*--
-		 <spectrumData>
-		 <xaxis>
-		 <array units="cmlsp:cm-1" dataType="xsd:double">
-		 450  454  458  462  466  470  474  478  482  486  490  494  498  502  506  510
-		 ...
-		 1282 1286 1290 1294 1298 1302 1306 1310 1314 1318 1322 1326 1330 1334 1338 1342
-		 </array>
-		 </xaxis>
-		 <yaxis multiplierToData="0.000109021">
-		 <array units="cmlsp:absorbance" dataType="xsd:double">
-		 331 179 99 148 146 150 187 165 249 206 189 224 253 230 267 236 167 137 96 109
-		 ...
-		 1758 1867 1968 2018 2005 1960 1969 2010 2063 2100 2175 2254 2344 2467 2557
-		 3 1 15 1 1 17 10 9 1 7 35 2 19</array>
-		 </yaxis>
-		 </spectrumData>
-		 --*/
+		/*
+		 * -- <spectrumData> <xaxis> <array units="cmlsp:cm-1"
+		 * dataType="xsd:double"> 450 454 458 462 466 470 474 478 482 486 490
+		 * 494 498 502 506 510 ... 1282 1286 1290 1294 1298 1302 1306 1310 1314
+		 * 1318 1322 1326 1330 1334 1338 1342 </array> </xaxis> <yaxis
+		 * multiplierToData="0.000109021"> <array units="cmlsp:absorbance"
+		 * dataType="xsd:double"> 331 179 99 148 146 150 187 165 249 206 189 224
+		 * 253 230 267 236 167 137 96 109 ... 1758 1867 1968 2018 2005 1960 1969
+		 * 2010 2063 2100 2175 2254 2344 2467 2557 3 1 15 1 1 17 10 9 1 7 35 2
+		 * 19</array> </yaxis> </spectrumData> --
+		 */
 		CMLElements<CMLSpectrumData> spectrumDatas = spectrum
 				.getSpectrumDataElements();
 		Assert.assertEquals("spectrumData children", 1, spectrumDatas.size());
@@ -131,22 +102,19 @@ public class CMLSpectrumTest extends PeakSpectrumTest {
 		Assert.assertEquals("yvalues", 224, yarrayValues.length);
 		Assert.assertEquals("yvalue 0", 331, yarrayValues[0], EPS);
 		Assert.assertEquals("yvalue 223", 0, yarrayValues[223], EPS);
-		/*--
-		 <peakList>
-		 <peakGroup id="pg1" xMax="3040" xMin="2800">
-		 <peak id="ch1" title="CH-stretch-1" peakMultiplicity="singlet"
-		 peakShape="sharp" xUnits="cmlsp:cm-1" xValue="2974"
-		 yUnits="cmlsp:absorbance" yValue="1.0921"/>
-		 <peak id="ch2" title="CH-stretch-2"
-		 peakShape="shoulder" xUnits="cmlsp:cm-1" xValue="2938" yUnits="cmlsp:absorbance"
-		 yValue="0.653"/>
-		 <peak id="ch3" title="CH-stretch-3" xUnits="cmlsp:cm-1" xValue="2890"
-		 yUnits="cmlsp:absorbance" yValue="0.470"/>
-		 </peakGroup>
-		 <peak id="oh1" title="CH-stretch???" peakShape="broad"
-		 xUnits="cmlsp:cm-1" xValue="3657" yUnits="cmlsp:absorbance" yValue="0.1092"/>
-		 </peakList>
-		 --*/
+		/*
+		 * -- <peakList> <peakGroup id="pg1" xMax="3040" xMin="2800"> <peak
+		 * id="ch1" title="CH-stretch-1" peakMultiplicity="singlet"
+		 * peakShape="sharp" xUnits="cmlsp:cm-1" xValue="2974"
+		 * yUnits="cmlsp:absorbance" yValue="1.0921"/> <peak id="ch2"
+		 * title="CH-stretch-2" peakShape="shoulder" xUnits="cmlsp:cm-1"
+		 * xValue="2938" yUnits="cmlsp:absorbance" yValue="0.653"/> <peak
+		 * id="ch3" title="CH-stretch-3" xUnits="cmlsp:cm-1" xValue="2890"
+		 * yUnits="cmlsp:absorbance" yValue="0.470"/> </peakGroup> <peak
+		 * id="oh1" title="CH-stretch???" peakShape="broad" xUnits="cmlsp:cm-1"
+		 * xValue="3657" yUnits="cmlsp:absorbance" yValue="0.1092"/> </peakList>
+		 * --
+		 */
 		CMLElements<CMLPeakList> peakLists = spectrum.getPeakListElements();
 		Assert.assertEquals("peakList children", 1, peakLists.size());
 		CMLElements<CMLPeakGroup> peakGroups = peakLists.get(0)
@@ -199,6 +167,7 @@ public class CMLSpectrumTest extends PeakSpectrumTest {
 
 	/**
 	 * Test method for reading a CMLSpectrum from file.
+	 * 
 	 * @throws Exception
 	 */
 	@Test
@@ -206,28 +175,21 @@ public class CMLSpectrumTest extends PeakSpectrumTest {
 		CMLSpectrum spectrum = readSpectrum(3);
 		Assert.assertNotNull("spectrum3: ", spectrum);
 
-		/*--
-		 <spectrum id="sp03" type="massSpectrum">
-		 <metadataList>
-		 <metadata name="dc:origin">D.HENNEBERG, MAX-PLANCK INSTITUTE, MULHEIM, WEST GERMANY</metadata>
-		 <metadata name="dc:owner">NIST Mass Spectrometry Data Center</metadata>
-		 </metadataList>
-		 <sample>
-		 <molecule>
-		 <name convention="cas:regno">109-99-9</name>
-		 <formula concise="C 4 H 8 O 1"/>
-		 </molecule>
-		 </sample>
-		 <spectrumData>
-		 <xaxis>
-		 <array dataType="xsd:double" units="unit:mz">24 25 26 27 29 30 31 33 34 35 37 38 39 40 41 42 43 44 45 46 49 50 51 53 54 55 68 69 70 71 72 73 </array>
-		 </xaxis>
-		 <yaxis multiplierToData="1.0">
-		 <array dataType="xsd:double" units="cmls:relativeAbundance">4 30 171 1545 792 21 258 5 26 10 105 165 1182 906 4060 9999 1586 325 100 3 7 11 19 27 10 6 7 20 107 2557 2868 147 </array>
-		 </yaxis>
-		 </spectrumData>
-		 </spectrum>
-		 --*/
+		/*
+		 * -- <spectrum id="sp03" type="massSpectrum"> <metadataList> <metadata
+		 * name="dc:origin">D.HENNEBERG, MAX-PLANCK INSTITUTE, MULHEIM, WEST
+		 * GERMANY</metadata> <metadata name="dc:owner">NIST Mass Spectrometry
+		 * Data Center</metadata> </metadataList> <sample> <molecule> <name
+		 * convention="cas:regno">109-99-9</name> <formula
+		 * concise="C 4 H 8 O 1"/> </molecule> </sample> <spectrumData> <xaxis>
+		 * <array dataType="xsd:double" units="unit:mz">24 25 26 27 29 30 31 33
+		 * 34 35 37 38 39 40 41 42 43 44 45 46 49 50 51 53 54 55 68 69 70 71 72
+		 * 73 </array> </xaxis> <yaxis multiplierToData="1.0"> <array
+		 * dataType="xsd:double" units="cmls:relativeAbundance">4 30 171 1545
+		 * 792 21 258 5 26 10 105 165 1182 906 4060 9999 1586 325 100 3 7 11 19
+		 * 27 10 6 7 20 107 2557 2868 147 </array> </yaxis> </spectrumData>
+		 * </spectrum> --
+		 */
 		List<CMLMetadata> metadatas = CMLMetadataList
 				.getMetadataDescendants(spectrum);
 		Assert.assertEquals("metadataLists", 2, metadatas.size());
@@ -274,7 +236,7 @@ public class CMLSpectrumTest extends PeakSpectrumTest {
 	/**
 	 * Test method for reading a CMLSpectrum from file. uses Tobias Helmus
 	 * example from NMRShiftDB
-	 *
+	 * 
 	 * @throws IOException
 	 * @throws ParsingException
 	 * @throws ValidityException
@@ -283,8 +245,8 @@ public class CMLSpectrumTest extends PeakSpectrumTest {
 	public void testReadCMLSpectrum5() throws IOException, ValidityException,
 			ParsingException {
 		CMLCml cml = null;
-		InputStream in = Util.getInputStreamFromResource(SIMPLE_RESOURCE
-				+ U_S + testfile5);
+		InputStream in = Util.getInputStreamFromResource(SIMPLE_RESOURCE + U_S
+				+ testfile5);
 		cml = (CMLCml) new CMLBuilder().build(in).getRootElement();
 		in.close();
 		Assert.assertNotNull("read cml file ", cml);
@@ -296,22 +258,15 @@ public class CMLSpectrumTest extends PeakSpectrumTest {
 		CMLElements<CMLSpectrum> spectrums = spectrumList.getSpectrumElements();
 		Assert.assertEquals("spectrumList children", 1, spectrumLists.size());
 		CMLSpectrum spectrum = spectrums.get(0);
-		/*--
-		 <spectrumData>
-		 <xaxis>
-		 <array dataType="xsd:double" delimiter="|" size="4096" units="ppm">9.983196146941719|9.980751037924213|
-		 ...
-		 -0.027080170724973485|-0.02952527974247765|
-		 </array>
-		 </xaxis>
-		 <yaxis>
-		 <array dataType="xsd:double" delimiter="|" size="4096" units="%">-0.004036283417140468|-0.004343061239674385|
-		 ...
-		 -0.003940121065448903|-0.004554220000639289|
-		 </array>
-		 </yaxis>
-		 </spectrumData>
-		 --*/
+		/*
+		 * -- <spectrumData> <xaxis> <array dataType="xsd:double" delimiter="|"
+		 * size="4096" units="ppm">9.983196146941719|9.980751037924213| ...
+		 * -0.027080170724973485|-0.02952527974247765| </array> </xaxis> <yaxis>
+		 * <array dataType="xsd:double" delimiter="|" size="4096"
+		 * units="%">-0.004036283417140468|-0.004343061239674385| ...
+		 * -0.003940121065448903|-0.004554220000639289| </array> </yaxis>
+		 * </spectrumData> --
+		 */
 		CMLElements<CMLSpectrumData> spectrumDatas = spectrum
 				.getSpectrumDataElements();
 		Assert.assertEquals("spectrumData children", 1, spectrumDatas.size());
@@ -341,18 +296,15 @@ public class CMLSpectrumTest extends PeakSpectrumTest {
 				EPS);
 		Assert.assertEquals("yvalue last", -0.004554220000639289,
 				yarrayValues[4095], EPS);
-		/*--
-		 <peakList>
-		 <peak id="p0" xUnits="ppm" xValue="1.6111428710035778" yUnits="%" yValue="11.475286136623545">
-		 </peak>
-		 <peak id="p1" xUnits="ppm" xValue="3.8753138212134832" yUnits="%" yValue="79.04079021244083">
-		 </peak>
-		 <peak id="p2" xUnits="ppm" xValue="4.897369390530698" yUnits="%" yValue="41.595181148451374">
-		 </peak>
-		 <peak id="p3" xUnits="ppm" xValue="7.256899592423311" yUnits="%" yValue="3.12841519811053">
-		 </peak>
-		 </peakList>
-		 --*/
+		/*
+		 * -- <peakList> <peak id="p0" xUnits="ppm" xValue="1.6111428710035778"
+		 * yUnits="%" yValue="11.475286136623545"> </peak> <peak id="p1"
+		 * xUnits="ppm" xValue="3.8753138212134832" yUnits="%"
+		 * yValue="79.04079021244083"> </peak> <peak id="p2" xUnits="ppm"
+		 * xValue="4.897369390530698" yUnits="%" yValue="41.595181148451374">
+		 * </peak> <peak id="p3" xUnits="ppm" xValue="7.256899592423311"
+		 * yUnits="%" yValue="3.12841519811053"> </peak> </peakList> --
+		 */
 		CMLElements<CMLPeakList> peakLists = spectrum.getPeakListElements();
 		Assert.assertEquals("peakList children", 1, peakLists.size());
 		CMLElements<CMLPeakGroup> peakGroups = peakLists.get(0)
@@ -460,7 +412,7 @@ public class CMLSpectrumTest extends PeakSpectrumTest {
 
 	/**
 	 * test compound document.
-	 *
+	 * 
 	 * @throws IOException
 	 * @throws ParsingException
 	 * @throws ValidityException
@@ -469,14 +421,14 @@ public class CMLSpectrumTest extends PeakSpectrumTest {
 	public void testFindSpectraInDocument() throws IOException,
 			ValidityException, ParsingException {
 		Document document = null;
-		InputStream in = Util.getInputStreamFromResource(COMPLEX_RESOURCE
-				+ U_S + testCompoundFile1);
+		InputStream in = Util.getInputStreamFromResource(COMPLEX_RESOURCE + U_S
+				+ testCompoundFile1);
 		document = new CMLBuilder().build(in);
 		in.close();
-		Nodes cmlNodes = document.query("//"+CMLCml.NS, CML_XPATH);
+		Nodes cmlNodes = document.query("//" + CMLCml.NS, CML_XPATH);
 		Assert.assertEquals("spectra count", cmlNodes.size(), 1);
 		CMLCml cml = (CMLCml) cmlNodes.get(0);
-		Nodes spectrumNodes = cml.cmlQuery("//"+CMLSpectrum.NS);
+		Nodes spectrumNodes = cml.cmlQuery("//" + CMLSpectrum.NS);
 		Assert.assertEquals("spectra count", spectrumNodes.size(), 1);
 		CMLSpectrum spectrum = (CMLSpectrum) spectrumNodes.get(0);
 		Nodes spectrumDataNodes = spectrum.cmlQuery(CMLSpectrumData.NS);
@@ -491,4 +443,4 @@ public class CMLSpectrumTest extends PeakSpectrumTest {
 		// parameterListNodes.get(0);
 	}
 
- }
+}
