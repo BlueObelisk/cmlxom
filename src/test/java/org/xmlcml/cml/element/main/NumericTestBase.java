@@ -4,15 +4,15 @@ import org.junit.Before;
 
 /**
  * tests CMLScalar.
- *
+ * 
  * @author pmr
- *
+ * 
  */
-public class NumericTest extends AbstractTest {
+public class NumericTestBase extends AbstractTest {
 
 	/**
 	 * setup.
-	 *
+	 * 
 	 * @throws Exception
 	 */
 	@Before
@@ -21,4 +21,4 @@ public class NumericTest extends AbstractTest {
 
 	}
 
- }
+}
