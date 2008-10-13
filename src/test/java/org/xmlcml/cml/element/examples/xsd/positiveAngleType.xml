@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="yes"?>
+<cml 
+title="positiveAngleType example"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+<list>
+    <scalar id="s1" title="alpha" units="units:deg">70.123</scalar>
+    <scalar id="s2" title="beta" units="units:deg">80.456</scalar>
+    <scalar id="s3" title="gamma" units="units:deg">90.789</scalar>
+  </list>
+</cml>
+   

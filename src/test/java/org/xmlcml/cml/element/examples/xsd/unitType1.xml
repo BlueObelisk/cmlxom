@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="yes"?>
+<unitType id="electricPotential" name="electric potential"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+<!--
+    <alternative id="a1" convention="nist:units">potential difference</alternative>
+    <alternative id="a2" convention="nist:units">electromotive force</alternative>
+-->    
+    <dimension id="d1" name="mass" power="1" preserve="false"/>
+    <dimension id="d2" name="length" power="2" preserve="false"/>
+    <dimension id="d3" name="time" power="-3" preserve="false"/>
+    <dimension id="d4" name="current" power="-1" preserve="false"/>
+</unitType>

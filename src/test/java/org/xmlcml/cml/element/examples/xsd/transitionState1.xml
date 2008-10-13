@@ -1,0 +1,20 @@
+<?xml version="1.0" standalone="yes"?>
+<cml title="transitionState1: example"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+    <transitionState>
+        <molecule title="Cl...CH3...F" formalCharge="-1">
+            <atomArray>
+                <atom id="a1" x2="-2" y2="0" elementType="Cl"/>
+                <atom id="a2" x2="0" y2="0" elementType="C" hydrogenCount="3"/>
+                <atom id="a3" x2="2" y2="0" elementType="F"/>
+            </atomArray>
+            <bondArray>
+                <bond atomRefs2="a1 a2" order="partial01"/>
+                <bond atomRefs2="a3 a2" order="partial01"/>
+            </bondArray>
+        </molecule>
+    </transitionState>
+</cml>

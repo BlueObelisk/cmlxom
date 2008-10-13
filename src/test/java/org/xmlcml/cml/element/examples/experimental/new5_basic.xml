@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule id="new5" convention="cml:PML-basic"
+	xmlns:g="http://www.xml-cml.org/mols/geom1"
+	xmlns="http://www.xml-cml.org/schema">
+	<!--  a star polymer -->
+	<fragment countExpression="*(3)">
+		<molecule ref="g:o"/>
+		<fragmentList>
+			<join order="1" moleculeRefs2="PARENT NEXT"
+				atomRefs2="r2 r1">
+				<length>1.35</length>
+ 				<torsion>180</torsion>
+			</join>
+			<fragment>
+				<molecule ref="g:carbonyl"/>				
+			</fragment>
+			<join atomRefs2="r2 r1" moleculeRefs2="PREVIOUS NEXT">
+ 				<length>1.50</length>  
+   				<torsion>140</torsion> 
+			</join>
+			<fragment>
+				<molecule ref="g:benzene"/>
+			</fragment>
+			<join atomRefs2="r4 r1" moleculeRefs2="PREVIOUS NEXT">
+				<length>1.50</length>
+ 				<torsion>140</torsion>
+			</join>
+			<fragment>
+				<molecule ref="g:carbonyl"/>				
+			</fragment>
+			<join atomRefs2="r2 r1" moleculeRefs2="PREVIOUS NEXT">
+				<length>1.35</length>
+ 				<torsion>180</torsion>
+			</join>
+			<fragment>
+				<molecule ref="g:o"/>
+		    </fragment>
+			<join atomRefs2="r2 r1" moleculeRefs2="PREVIOUS NEXT">
+				<length>1.40</length>
+ 				<torsion>180</torsion>
+			</join>
+			<fragment>
+				<molecule ref="g:ch2"/>
+		    </fragment>
+			<join atomRefs2="r2 r1" moleculeRefs2="PREVIOUS NEXT">
+				<length>1.54</length>
+ 				<torsion>180</torsion>
+			</join>
+			<fragment>
+				<molecule ref="g:ch2"/>
+		    </fragment>
+			<join order="1" moleculeRefs2="PREVIOUS NEXT"
+				atomRefs2="r2 r1">
+				<length>1.35</length>
+ 				<torsion>180</torsion>
+			</join>
+			<fragment>
+				<molecule ref="g:o"/>				
+			</fragment>
+			<join atomRefs2="r2 r1" moleculeRefs2="PREVIOUS NEXT">
+ 				<length>1.35</length>  
+   				<torsion>180</torsion> 
+			</join>
+			<fragment>
+				<molecule ref="g:carbonyl"/>				
+			</fragment>
+			<join atomRefs2="r2 r1" moleculeRefs2="PREVIOUS NEXT">
+ 				<length>1.50</length>  
+   				<torsion>140</torsion> 
+			</join>
+			<fragment>
+				<molecule ref="g:benzene"/>
+			</fragment>
+			<join atomRefs2="r4 r1" moleculeRefs2="PREVIOUS NEXT">
+				<length>1.50</length>
+ 				<torsion>140</torsion>
+			</join>
+			<fragment>
+				<molecule ref="g:carbonyl"/>				
+			</fragment>
+			<join atomRefs2="r2 r1" moleculeRefs2="PREVIOUS NEXT">
+				<length>1.35</length>
+ 				<torsion>180</torsion>
+			</join>
+			<fragment>
+				<molecule ref="g:o"/>
+		    </fragment>
+			<join atomRefs2="r2 r1" moleculeRefs2="PREVIOUS NEXT">
+				<length>1.40</length>
+ 				<torsion>180</torsion>
+			</join>
+			<fragment>
+				<molecule ref="g:ch2"/>
+		    </fragment>
+			<join atomRefs2="r2 r1" moleculeRefs2="PREVIOUS NEXT">
+				<length>1.54</length>
+ 				<torsion>180</torsion>
+			</join>
+			<fragment>
+				<molecule ref="g:ch2"/>
+		    </fragment>
+        </fragmentList>
+			<join atomRefs2="r2 r1" moleculeRefs2="PREVIOUS NEXT">
+				<length>1.35</length>
+ 				<torsion>180</torsion>
+			</join>
+	</fragment>
+</molecule>

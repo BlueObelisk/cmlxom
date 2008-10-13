@@ -1,0 +1,25 @@
+<?xml version="1.0" standalone="yes"?>
+<spectrum id="but2" 
+title="2-Butanol" 
+convention="jcamp:DX4.24" 
+type="infrared" state="gas"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+    <metadataList>
+        <metadata name="dc:origin" content="Sadtler Research Labs Under US-EPA Contract"/>
+        <metadata name="dc:owner" content="NIST Standard Reference Data Program"/>
+        <metadata name="dc:identifier" content="No.424 (EPA Vapor Library"/>
+        <metadata name="dc:source" content="I am guessing this means vapor phase"/>
+    </metadataList>
+    <peakList>
+        <peakGroup id="pg1" xMax="3040" xMin="2800">
+            <peak id="ch1" title="CH-stretch-1" peakMultiplicity="singlet" peakShape="sharp" xUnits="cmlsp:cm-1" xValue="2974" yUnits="cmlsp:absorbance" yValue="1.0921"/>
+            <peak id="ch2" title="CH-stretch-2" peakShape="shoulder" xUnits="cmlsp:cm-1" xValue="2938" yUnits="cmlsp:absorbance" yValue="0.653"/>
+            <peak id="ch3" title="CH-stretch-3" xUnits="cmlsp:cm-1" xValue="2890" yUnits="cmlsp:absorbance" yValue="0.470"/>
+        </peakGroup>
+        <peak id="oh1" title="CH-stretch???" peakShape="broad" xUnits="cmlsp:cm-1" xValue="3657" yUnits="cmlsp:absorbance" yValue="0.1092"/>
+    </peakList>
+</spectrum>
+

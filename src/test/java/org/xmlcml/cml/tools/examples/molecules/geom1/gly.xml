@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<molecule xmlns="http://www.xml-cml.org/schema" 
+id="gly">
+ <atomArray>
+  <atom id="a1" elementType="N" x3="1.931000" y3="0.100000" z3="-0.039000"/>
+  <atom id="a2" elementType="C" x3="0.765000" y3="-0.793000" z3="-0.012000"/>
+  <atom id="a3" elementType="C" x3="-0.498000" y3="0.030000" z3="-0.006000"/>
+  <atom id="a4" elementType="O" x3="-0.433000" y3="1.237000" z3="-0.022000"/>
+  <atom id="r2" elementType="R" x3="-1.695000" y3="-0.577000" z3="0.019000"/>
+  <atom id="a6" elementType="H" x3="1.936000" y3="1.1000" z3="0.000"/>
+  <atom id="r1" elementType="R" x3="2.9000" y3="-0.491000" z3="-0.042000"/>
+  <atom id="a8" elementType="H" x3="0.776000" y3="-1.433000" z3="-0.894000"/>
+  <atom id="a9" elementType="H" x3="0.800000" y3="-1.410000" z3="0.886000"/>
+ </atomArray>
+ <bondArray>
+  <bond atomRefs2="a1 a2" order="1"/>
+  <bond atomRefs2="a1 a6" order="1"/>
+  <bond atomRefs2="a1 r1" order="1"/>
+  <bond atomRefs2="a2 a3" order="1"/>
+  <bond atomRefs2="a2 a8" order="1"/>
+  <bond atomRefs2="a2 a9" order="1"/>
+  <bond atomRefs2="a3 a4" order="2"/>
+  <bond atomRefs2="a3 r2" order="1"/>
+ </bondArray>
+  <torsion atomRefs4="r1 a1 a2 a3" id="phi"/>
+  <torsion atomRefs4="a1 a2 a3 r2" id="psi"/>
+</molecule>

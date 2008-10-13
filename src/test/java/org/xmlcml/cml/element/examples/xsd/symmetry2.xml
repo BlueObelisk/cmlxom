@@ -1,0 +1,19 @@
+<?xml version="1.0" standalone="yes"?>
+<cml title="symmetry example" 
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+<symmetry spaceGroup="P21" id="s2">
+  <matrix id="o1" rows="3" columns="4" dataType="xsd:double" matrixType="rotationTranslation43">
+    1 0 0 0
+    0 1 0 0
+    0 0 1 0
+  </matrix>
+  <matrix id="o2" rows="3" columns="4" dataType="xsd:double" matrixType="rotationTranslation43">
+    -1 0 0 0
+    0 -1 0 0
+    0 0 1 0.5
+  </matrix>
+</symmetry>
+</cml>

@@ -1,0 +1,82 @@
+ <unitList
+      id="castepUnits"
+      namespace="http://www.xml-cml.org/units/castepUnits"
+      title="CASTEP units dictionary"
+      siNamespace="http://www.xml-cml.org/units/siUnits"
+      xmlns="http://www.xml-cml.org/schema"
+      xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema23/schema.xsd"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:h="http://www.w3.org/1999/xhtml"
+      xmlns:dc="http://www.xml-cml.org/dict/dcDict"
+      xmlns:siUnits="http://www.xml-cml.org/units/siUnits"
+      xmlns:unitType="http://www.xml-cml.org/units/unitTypes"
+    >
+    
+<!-- length -->
+ 
+<!-- mass -->
+
+<!-- time -->
+
+	
+<!-- charge -->
+ 
+<!-- energy -->
+
+    <unit
+    title="Hertz (energy)"
+    id="hertz_energy"
+    symbol="Hz"
+    parentSI="siUnits:joule"
+    multiplierToSI="6.626068E-34"
+    unitType="unitType:energy">
+	<metadata name="dc:source" content="Wikipedia" />
+	<metadata name="dc:creator" content="Andrew Walkingshaw" />
+	<definition>
+	The energy of a photon of frequency f.
+    </definition>
+    <description>
+    The energy of a photon is defined as hf, where h is Planck's constant; therefore, we can use frequency
+    as a measure of energy.
+    </description>
+    </unit> 
+    
+    <unit
+    title="Kelvin (energy)"
+    id="kelvin_energy"
+    symbol="K"
+    parentSI="siUnits:joule"
+    multiplierToSI="1.3806503E-23"
+    unitType="unitType:energy">
+	<metadata name="dc:source" content="Wikipedia" />
+	<metadata name="dc:creator" content="Andrew Walkingshaw" />
+    <definition>
+	One Kelvin of energy, in this context, is defined as 1K*k_B, the Boltzmann constant.
+    </definition>
+    <description>
+	The Kelvin is a reasonably commonly encountered unit for energy, but the definition can be somewhat
+	ambiguous. Here, the energy referred to is simply defined as the product of the magnitude and the 
+	Boltzmann constant, which gives the correct dimensionality. Note that this is unrelated to the
+	number of particles in the system (i.e., the resulting energy is not per-particle or per-mole);
+	thus, a mole of particles with a per-particle energy of 1K/particle (in this terminology) would
+	have an energy of 8.314 Jmol-1K-1 (the molar gas constant).
+    </description>
+    </unit>     
+
+<!-- force -->
+
+
+
+<!-- velocity -->
+
+
+<!-- pressure / stress -->
+
+
+<!-- reciprocal length -->
+
+<!-- force/length -->
+
+<!-- volume -->
+
+</unitList>

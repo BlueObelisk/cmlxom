@@ -1,0 +1,12 @@
+<?xml version="1.0" standalone="yes"?>
+<cml title="dimension example 2" 
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <unitType id="a1" preserve="true" name="velocity/length gradient">
+    <dimension name="length" power="1"/>
+    <dimension name="time" power="-1"/>
+    <dimension name="length" power="-1"/>
+  </unitType>
+</cml>

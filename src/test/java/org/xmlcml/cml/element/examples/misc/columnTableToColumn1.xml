@@ -1,0 +1,6 @@
+<table tableType="columnBased" id="ttt" xmlns="http://www.xml-cml.org/schema">
+  <arrayList>
+    <array title="d" dataType="xsd:double" size="3">1 2 3</array>
+    <array title="s" dataType="xsd:string" size="3">a b c</array>
+  </arrayList>
+</table>

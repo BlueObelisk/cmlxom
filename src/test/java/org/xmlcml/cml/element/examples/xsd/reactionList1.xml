@@ -1,0 +1,29 @@
+<?xml version="1.0" standalone="yes"?>
+    <reactionList title="reactionList1: old example - may need reworking"
+    name="H2 + Cl2 (concise)"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    >
+        <reaction role="crml:overall">
+            <reactantList>
+                <reactant count="1" ref="h2"/>
+                <reactant count="1" ref="cl2"/>
+            </reactantList>
+            <productList>
+                <product count="2" ref="hcl"/>
+            </productList>
+        </reaction>
+
+        <reaction dictRef="crml:radicalFormation" role="crml:step">
+            <reactantList>
+                <reactant count="1" ref="cl2"/>
+            </reactantList>
+            <productList>
+                <product count="2" ref="cl"/>
+            </productList>
+        </reaction>
+
+    </reactionList>
+
+

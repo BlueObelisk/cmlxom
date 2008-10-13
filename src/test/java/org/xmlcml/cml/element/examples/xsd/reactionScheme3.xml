@@ -1,0 +1,69 @@
+<?xml version="1.0" standalone="yes"?>
+<reactionScheme id="rs0"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+	<?cml example="compilable"?>
+	<reactionScheme id="rs1">
+		<reaction id="r1">
+			<reactantList>
+				<reactant ref="A"/>
+			</reactantList>
+			<productList>
+				<product ref="B"/>
+			</productList>
+		</reaction>
+		<reaction id="r2">
+			<reactantList>
+				<reactant ref="B"/>
+			</reactantList>
+			<productList>
+				<product ref="C"/>
+			</productList>
+		</reaction>
+		<reaction id="r3">
+			<reactantList>
+				<reactant ref="C"/>
+			</reactantList>
+			<productList>
+				<product ref="D"/>
+			</productList>
+		</reaction>
+		<reaction id="r4">
+			<reactantList>
+				<reactant ref="C"/>
+			</reactantList>
+			<productList>
+				<product ref="E"/>
+			</productList>
+		</reaction>
+	</reactionScheme>
+	<reactionScheme id="rs2">
+		<reaction id="r5">
+			<reactantList>
+				<reactant ref="A"/>
+			</reactantList>
+			<productList>
+				<product ref="F"/>
+			</productList>
+		</reaction>
+		<reaction id="r6">
+			<reactantList>
+				<reactant ref="F"/>
+			</reactantList>
+			<productList>
+				<product ref="G"/>
+			</productList>
+		</reaction>
+		<reaction id="r7">
+			<reactantList>
+				<reactant ref="G"/>
+			</reactantList>
+			<productList>
+				<product ref="H"/>
+			</productList>
+		</reaction>
+	</reactionScheme>
+</reactionScheme>
+

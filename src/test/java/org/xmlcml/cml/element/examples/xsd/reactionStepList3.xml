@@ -1,0 +1,34 @@
+<?xml version="1.0" standalone="yes"?>
+<reactionStepList id="rsl" type="consecutive"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+	<reactionStep>
+		<reaction id="r1a">
+			<reactantList>
+				<reactant ref="A"/>
+				<reactant>
+				  <molecule title="Hydrochloric acid" formula="H 1 Cl 1" id="hcl"/>
+				</reactant>
+			</reactantList>
+			<productList>
+				<product ref="X" role="anonymous"/>
+			</productList>
+		</reaction>
+	</reactionStep>
+	<reactionStep>
+		<reaction id="r2">
+			<reactantList>
+				<reactant ref="X" role="anonymous"/>
+				<reactant>
+				  <molecule title="Sodium Hydroxide" formula="Na 1 O 1 H 1" id="naoh"/>
+				</reactant>
+			</reactantList>
+			<productList>
+				<product ref="B"/>
+			</productList>
+		</reaction>
+	</reactionStep>
+</reactionStepList>
+

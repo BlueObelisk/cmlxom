@@ -1,0 +1,533 @@
+<unitList
+  id="simpleUnits"
+  namespace="http://www.xml-cml.org/units/units"
+  dictionaryPrefix="units"
+  title="Simple units dictionary"
+  xmlns:units="http://www.xml-cml.org/units/units"
+  siNamespace="http://www.xml-cml.org/units/siUnits"
+  xmlns:si="http://www.xml-cml.org/units/siUnits"
+  xmlns:unitType="http://www.xml-cml.org/units/unitTypes"
+  xmlns="http://www.xml-cml.org/schema"
+  xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema23/schema.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <unit
+      id="unknown"
+      title="Unknown"
+      parentSI="si:unknown"
+      symbol="unk"
+      unitType="unitType:unknown">
+    <description>unknown unit and unknown unitType
+    </description>
+  </unit>
+
+<!-- entries waiting for editing have dummy multipliers of -99 -->
+    <unit 
+    title="Angstrom"
+    id="ang"
+    symbol="[Aring]"
+    parentSI="si:m"
+    multiplierToSI="1E-10"
+    unitType="unitType:length">
+<!--    <unitType ref="unitType:length" /> -->
+    <metadata name="dc:source" content="Wikipedia" />
+    <metadata name="dc:creator" content="Andrew Walkingshaw" />
+	<definition>
+	1E-10 metres.
+	</definition>	
+    <description>
+    The angstrom is named after the Swedish physicist Anders Jonas Angstrom 
+    (1814-1874), one of the founders of spectroscopy, after his spectrum chart 
+    of solar radiation in the electromagnetic spectrum on the order 
+    of multiples of one ten-millionth of a millimetre, or 1E-10 metres. 
+    </description>
+    </unit>
+
+
+  <unit
+      id="ang-1"
+      title="Angstrom-1"
+      parentSI="si:m-1"
+      multiplierToSI="1.0E10"
+      symbol="A-1"
+      unitType="unitType:length-1">
+    <description>derived inverse length</description>
+  </unit>
+
+  <unit
+      id="deg"
+      title="degree"
+      parentSI="si:radian"
+      multiplierToSI="0.01745329"
+      symbol="[deg]"
+      unitType="unitType:angle">
+    <definition>a measurement of plane angle, representing 1/360 of a full rotation</definition>
+    <description>
+The degree and its subdivisions are the only units in use which are written 
+without a separating space between the number and unit symbol (e.g. 15[deg] 30', 
+not 15 [deg] 30 ').
+    </description>
+  </unit>
+
+<!-- WAITING ON FIXED VALIDATOR
+  atomic units in temporary storage -->
+
+    <unit
+    title="Unified Atomic Mass Unit"
+    id="atmass"
+    symbol="amu"
+    parentSI="si:kg"
+    multiplierToSI="1.66053886E-27">
+<!--    <unitType ref="unitType:mass" /> -->
+    <metadata name="dc:source" content="Wikipedia" />
+    <metadata name="dc:creator" content="Andrew Walkingshaw" />
+	<definition>
+	1/12 of the mass of one atom of carbon-12.
+	</definition>	
+    <description>
+    The unit is convenient because one hydrogen atom has a mass of 
+    approximately 1 amu, and more generally an atom or molecule that contains 
+    n protons and neutrons will have a mass approximately equal to n amu. 
+    (The reason is that a carbon-12 atom contains 6 protons, 6 neutrons and 
+    6 electrons, with the protons and neutrons having about the same mass 
+    and the electron mass being negligible in comparison.) This is only a 
+    rough approximation however, since it does not account for the mass 
+    contained in the binding energy of an atom's nucleus; this binding energy 
+    mass is not a fixed fraction of an atom's total mass.
+    </description>
+    </unit>
+
+  <unit
+      id="ang3"
+      title="Angstrom cubed"
+      parentSI="si:m3"
+      multiplierToSI="1.0E-30"
+      symbol="A3"
+      unitType="unitType:volume">
+    <description>
+    </description>
+  </unit>
+
+  <unit
+      id="arb"
+      title="Arbitrary"
+      parentSI="si:arb"
+      multiplierToSI="-99"
+      symbol="arb"
+      unitType="unitType:arbitrary">
+    <description>
+    </description>
+  </unit>
+
+<!--
+  <unit
+      id="c.dyne-1"
+      title="coulomb per dyne"
+      parentSI="si:c.newton-1"
+      multiplierToSI="1E+5"
+      symbol="c.dyn-1"
+      unitType="unitType:">
+    <description>
+    </description>
+  </unit>
+-->  
+
+  <unit
+      id="celsius"
+      title="Celsius"
+      parentSI="si:k"
+      multiplierToSI="1" 
+      constantToSI="273.15"
+      symbol="[deg]C"
+      unitType="unitType:temp">
+    <description>
+ The degree Celsius ([deg]C) is a unit of temperature named after the Swedish
+ astronomer Anders Celsius (1701-1744), who first proposed a similar system
+ in 1742. The Celsius scale sets 0.01 [deg]C to be at the triple point of water
+ and a degree Celsius to be 1/273.16 of the difference in temperature between
+ the triple point of water and absolute zero. Until 1954 the scale was defined 
+ with the freezing point of water at 0 [deg]C and the boiling point at 100 [deg]C at 
+ standard atmospheric pressure. This definition is still a close approximation 
+ to the actual definition and has lead many to wrongly refer to the scale as 
+ Centigrade.    
+ </description>
+  </unit>
+
+  <unit
+      id="cm"
+      title="centimeter"
+      parentSI="si:m"
+      multiplierToSI="1.0E-02"
+      symbol="cm"
+      unitType="unitType:length">
+    <description>
+    </description>
+  </unit>
+
+  <unit
+      id="cm2"
+      title="centimeter squared"
+      parentSI="si:m2"
+      multiplierToSI="1.0E-04"
+      symbol="cm2"
+      unitType="unitType:area">
+    <description>
+    </description>
+  </unit>
+
+  <unit
+      id="debye"
+      title="debye"
+      parentSI="si:c.m"
+      multiplierToSI="3.335641E-30"
+      symbol="D"
+      unitType="unitType:dipole">
+    <description>
+    CGS units for electric dipole
+    </description>
+  </unit>
+
+  <unit
+      id="electron"
+      title="electron charge"
+      parentSI="si:c"
+      multiplierToSI="1.60217733E-19"
+      symbol="e"
+      unitType="unitType:charge">
+    <description>
+    </description>
+  </unit>
+
+  <unit
+      id="ev"
+      title="electron volt"
+      parentSI="si:joule"
+      multiplierToSI="1.60217733E-19"
+      symbol="eV"
+      unitType="unitType:energy">
+    <description>
+    </description>
+  </unit>
+
+  <unit
+      id="hartree"
+      title="Hartree"
+      parentSI="si:joule"
+      multiplierToSI="4.3597482E-18"
+      symbol="hart"
+      unitType="unitType:energy">
+    <description>
+    </description>
+  </unit>
+
+  <unit
+      id="g"
+      title="gram"
+      parentSI="si:kg"
+      multiplierToSI="1.0E-03"
+      symbol="g"
+      unitType="unitType:mass">
+    <description>
+    </description>
+  </unit>
+
+  <unit
+      id="gpa"
+      title="gigaPascal"
+      parentSI="si:pa"
+      multiplierToSI="1.0E+09"
+      symbol="GPa"
+      unitType="unitType:pressure">
+    <description>
+    </description>
+  </unit>
+
+  <unit
+      id="gpa-1"
+      title="gigaPascal-1"
+      multiplierToSI="1.0E-09"
+      symbol="GPa-1"
+      unitType="unitType:inversePressure">
+    <description>
+    </description>
+  </unit>
+
+  <unit
+      id="h"
+      title="hour"
+      parentSI="si:s"
+      multiplierToSI="3600"
+      symbol="h"
+      unitType="unitType:time">
+    <description>
+    3600 seconds
+    </description>
+  </unit>
+  
+      <unit
+    title="Bar"
+	id = "bar"
+    symbol="bar"
+    parentSI="siUnits:pascal"
+    multiplierToSI="1E5"
+    unitType="unitType:pressure">
+	<metadata name="dc:creator" content="Andrew Walkingshaw" />
+    <definition>
+	One bar is 1 x 10^5 pascal.
+	</definition>
+    <description>
+	A common unit in meteorology for describing atmospheric pressures.
+    </description>
+    </unit> 
+
+    <unit
+    title="Atmosphere"
+	id = "atmosphere"
+    symbol="atm"
+    parentSI="siUnits:pascal"
+    multiplierToSI="1.01325027E5"
+    unitType="unitType:pressure">
+	<metadata name="dc:creator" content="Andrew Walkingshaw" />
+    <definition>
+	One atmospheric pressure is defined as 101325.027 Pa.
+	</definition>
+    <description>
+	Formerly common in meteorology (and diving), this is very close to equal to one bar - which,
+	due to the ease of interconversion with SI, has mostly supplanted it.
+    </description>
+    </unit> 
+  
+  <unit
+      id="kbar"
+      title="kbar"
+      parentSI="si:pascal"
+      multiplierToSI="1E8" 
+      symbol="kbar"
+      unitType="unitType:pressure">
+      <definition>One thousand bar, and therefore 1E8 pascals.</definition>
+    <description>
+ </description>
+  </unit>
+
+  <unit
+      id="kcal"
+      title="kilocalorie"
+      parentSI="si:joule"
+      multiplierToSI="4184"
+      symbol="kcal"
+      unitType="unitType:energy">
+    <description>
+    There are 3 main definitons of calorie which differ by ca 0.05% so
+    cal and kcal should be deprecated.
+    </description>
+  </unit>
+
+  <unit
+      id="kcal.mol-1.ang-1"
+      title="kcal per mole per Angstrom"
+      parentSI="si:xx"
+      multiplierToSI="-99"
+      symbol="kcal mol-1 ang-1"
+      unitType="unitType:xx">
+    <description>
+    </description>
+  </unit>
+
+  <unit
+      id="kj.mol-1"
+      title="kj per mole"
+      parentSI="si:j.mol-1"
+      multiplierToSI="1000"
+      symbol="kj mol-1"
+      unitType="unitType:molar_energy">
+    <description>
+    </description>
+  </unit>
+
+  <unit
+      id="l"
+      title="litre"
+      parentSI="si:m3"
+      multiplierToSI="1.0E-03"
+      symbol="L"
+      unitType="unitType:volume">
+    <description>
+    </description>
+  </unit>
+
+    <unit
+    title="Wavenumber (energy)"
+    id="wavenumber_energy"
+    symbol="cm-1"
+    parentSI="si:joule"
+    multiplierToSI="1.9864475E-25">
+<!--    <unitType dictRef="unitType:energy" /> -->
+	<metadata name="dc:source" content="Wikipedia" />
+	<metadata name="dc:creator" content="Andrew Walkingshaw" />
+    <definition>
+	The energy of a single photon of light, possessing a reciprocal wavelength as given
+	(in inverse centimetres) in vacuum.
+    </definition>
+    <description>
+    The historical reason for using this quantity is that it is proportional 
+    to energy, but not dependent on the speed of light or Planck's constant, 
+    which were not known with sufficient accuracy (or rather not at all known).
+    As a unit of energy, the speed of light is implicit.
+    </description>
+    </unit> 
+
+    <unit
+    title="Wavenumber (frequency)"
+    id="cm-1"
+    symbol="cm-1"
+    parentSI="si:hertz"
+    multiplierToSI="-99">
+<!--    <unitType dictRef="unitType:energy" /> -->
+	<metadata name="dc:source" content="Wikipedia" />
+	<metadata name="dc:creator" content="Andrew Walkingshaw" />
+    <definition>
+	A measure of the frequency of a radiation, possessing a reciprocal wavelength as given,
+	in vacuum.
+    </definition>
+    <description>
+	The speed of light is a constant, so frequency and reciprocal wavelength are inversely
+	proportional and hence equivalently valid as units.
+    </description>
+    </unit> 
+    
+
+  <unit
+      id="kcal.ang-1"
+      title="kilocalorie per angstrom"
+      parentSI="si:newton"
+      multiplierToSI="-99"
+      symbol="kcal.ang-1"
+      unitType="unitType:force">
+    <description>
+    </description>
+  </unit>
+
+  <unit
+      id="kcal.rad-1"
+      title="kilocalorie per radian"
+      parentSI="si:j"
+      multiplierToSI="-99"
+      symbol="kcal.ang-1"
+      unitType="unitType:energy">
+    <description>
+    </description>
+  </unit>
+
+  <unit
+      id="ml"
+      title="millilitre"
+      parentSI="si:m3"
+      multiplierToSI="1.0E-06"
+      symbol="mL"
+      unitType="unitType:volume">
+    <description>
+    </description>
+  </unit>
+
+  <unit
+      id="nm"
+      title="nanometer"
+      parentSI="si:meter"
+      multiplierToSI="1.0E-09"
+      symbol="nm"
+      unitType="unitType:length">
+    <description>
+    </description>
+  </unit>
+
+  <unit
+      id="ph"
+      title="pH units"
+      parentSI="si:dimensionless"
+      multiplierToSI="1"
+      symbol="pH"
+      unitType="unitType:dimensionless">
+    <description>
+    pH is measured in log units so has no dimensions; this entry allows the 
+    quantityType to be captured
+    </description>
+  </unit>
+
+  <unit
+      id="protonCharge"
+      title="charge on proton"
+      parentSI="si:coulomb"
+      multiplierToSI="-99"
+      symbol="??"
+      unitType="unitType:charge">
+    <description>
+    Andrew to fill in
+    </description>
+  </unit>
+
+  <unit
+      id="ps"
+      title="picosecond"
+      parentSI="si:s"
+      multiplierToSI="1.0E-9"
+      symbol="ps"
+      unitType="unitType:time">
+    <description>
+    Andrew to fill in
+    </description>
+  </unit>
+
+  <unit
+      id="centipoise"
+      title="Centipoise"
+      parentSI="si:unknown"
+      symbol="cp"
+      unitType="unitType:dynamicVicosity">
+    <description>
+    The commonest unit of dynamic viscosity.
+ </description>
+  </unit>
+
+  <unit
+      id="km.s-1"
+      title="kilometers per second"
+      parentSI="si:m.s-1"
+      multiplierToSI="1000"
+      symbol="km/s"
+      unitType="unitType:velcity">
+    <description>see parents</description>
+  </unit>
+
+  <unit id="C.m-2"
+        parentSI="si:unknown">
+    <description>???</description>
+  </unit>
+
+  <unit id="centipicoC.n-1"
+        parentSI="si:unknown">
+    <description>10-11 C/n (whatever that is!)</description>
+  </unit>
+  
+
+  <unit
+      id="ppm"
+      title="parts per million"
+      parentSI="si:dimensionless"
+      multiplierToSI="1.0E-6"
+      symbol="ppm"
+      unitType="unitType:dimensionless">
+    <description>perts per million can apply to many ratios</description>
+  </unit>
+
+  <unit
+      id="arbitrary"
+      title="Arbitrary"
+      parentSI="si:arbitrary"
+      symbol="arb"
+      unitType="unitType:unknowns">
+    <description>arbitrary unit and unknown unitType
+    </description>
+  </unit>
+
+
+</unitList>

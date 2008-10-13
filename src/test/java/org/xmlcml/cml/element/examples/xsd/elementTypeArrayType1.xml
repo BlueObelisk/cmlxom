@@ -1,0 +1,10 @@
+<?xml version="1.0" standalone="yes"?>
+<cml title="atomArray with elementTypes" 
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+ <molecule>
+  <atomArray atomID="a1 a2 a3 a4" elementType="O N S Pb"/>
+ </molecule>
+</cml>

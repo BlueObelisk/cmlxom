@@ -1,0 +1,8 @@
+<?xml version="1.0" standalone="yes"?>
+<cml title="maxType example" 
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+<scalar dataType="xsd:double" max="20" min="12">15</scalar>
+</cml>

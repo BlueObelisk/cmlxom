@@ -1,0 +1,9 @@
+<?xml version="1.0" standalone="yes"?>
+<gradient 
+   dictRef="ccml:gradient"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+    <scalar units="units:kcal.mol-1.a-1">1.3</scalar>
+</gradient>

@@ -1,0 +1,20 @@
+<?xml version="1.0" standalone="yes"?>
+<cml title="dictRef example 2" 
+  xmlns="http://www.xml-cml.org/schema" 
+  xmlns:foo="http://foo.org/schema"
+  xmlns:h="http://www.w3c.org/XHTML"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  >
+<list>
+  <observation>
+    <h:p xmlns:h="http://www.w3c.org/XHTML">We observed  
+      constructing dwellings of different material</h:p>
+  </observation>
+  <entry id="p1" term="pig">
+    <definition>A domesticated animal.</definition>
+    <description>Predators include wolves</description>
+    <description convention="scientificName">Sus scrofa</description>
+  </entry>
+</list>
+</cml>

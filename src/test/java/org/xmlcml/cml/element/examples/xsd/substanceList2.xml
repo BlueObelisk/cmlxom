@@ -1,0 +1,21 @@
+<?xml version="1.0" standalone="yes"?>
+<cml title="substanceList example"
+xmlns:mols="http://foo.org/mols"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+<?cml example="compilable"?>
+  <substanceList id="sl1">
+    <amount id="a1" units="units:ml">100</amount>
+    <substance id="s1">
+      <amount id="a2" units="units:l">1</amount>
+      <molecule id="h2o" ref="mols:water"/>
+    </substance>
+    <substance id="s2">
+      <amount id="a3" units="units:mole">0.1</amount>
+      <molecule id="nacl" formula="Na 1 O 1 H 1"/>
+    </substance>
+  </substanceList>
+</cml>
+

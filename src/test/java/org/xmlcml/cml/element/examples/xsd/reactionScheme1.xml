@@ -1,0 +1,74 @@
+<?xml version="1.0" standalone="yes"?>
+<reactionScheme title="Total synthesis of X" id="ex2.1"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+    <metadataList>
+        <metadata name="dc:creator" content="Gemma L. Holliday"/>
+        <metadata name="dc:creator" content="Peter Murray-Rust"/>
+        <metadata name="dc:date" content="2003/12/08"/>
+        <metadata name="dc:description" content="A hypothetical multi-stage organic synthesis">
+Assume the following synthesis. The three branches are independent and the three numbered products are then combined to create X.
+        A..>B..>1
+                 \\
+            C..>2...> X
+                 /
+        D + E..>3                   
+        </metadata>
+    </metadataList>
+
+        <!-- the overall reaction is of little interest here -->
+        <metadataList>
+            <metadata name="dc:description" content="Overall synthesis">
+            </metadata>
+        </metadataList>
+        <reactionScheme id="ex2.1.1" title="systhesis of three precursors (1,2,3)">
+                <reactionScheme title="two-step sythesis of 1">
+                        <reaction title="first step">
+                            <reactantList>
+                                <reactant title="A"/>
+                            </reactantList>
+                            <productList>
+                                <product title="B"/>
+                            </productList>
+                        </reaction>
+                        <reaction title="second step">
+                            <reactantList>
+                                <reactant title="B"/>
+                            </reactantList>
+                            <productList>
+                                <product title="1"/>
+                            </productList>
+                        </reaction>
+                </reactionScheme>
+                <reaction title="one-step sythesis of 2">
+                    <reactantList>
+                        <reactant title="C"/>
+                    </reactantList>
+                    <productList>
+                        <product title="2"/>
+                    </productList>
+                </reaction>
+                <reaction title="one-step sythesis of 3">
+                    <reactantList>
+                        <reactant title="D"/>
+                        <reactant title="E"/>
+                    </reactantList>
+                    <productList>
+                        <product title="3"/>
+                    </productList>
+                </reaction>
+        </reactionScheme>
+        <reaction title="final convergence">
+            <reactantList>
+                <reactant title="1"/>
+                <reactant title="2"/>
+                <reactant title="3"/>
+            </reactantList>
+            <productList>
+                <product title="X"/>
+            </productList>
+        </reaction>
+</reactionScheme>
+

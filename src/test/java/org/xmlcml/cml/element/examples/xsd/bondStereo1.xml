@@ -1,0 +1,21 @@
+<?xml version="1.0" standalone="yes"?>
+<molecule title="bondStereo example"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+    <atomArray>
+        <atom id="a1" elementType="C" hydrogenCount="3"/>
+        <atom id="a2" elementType="N"/>
+        <atom id="a3" elementType="C" hydrogenCount="1"/>
+        <atom id="a4" elementType="C"/>
+    </atomArray>
+    <bondArray>
+        <bond id="b1" atomRefs2="a3 a2" order="D">
+            <bondStereo id="bs1">C</bondStereo>
+        </bond>
+        <bond id="b2" atomRefs2="a1 a2" order="1"></bond>
+        <bond id="b3" atomRefs2="a3 a4" order="1"></bond>
+    </bondArray>
+</molecule>
+

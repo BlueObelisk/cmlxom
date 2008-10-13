@@ -1,0 +1,36 @@
+<?xml version="1.0" standalone="yes"?>
+<!-- table-based molecule from CML Wiki -->
+<c:table rows="3" columns="8"
+   xmlns:units="http://www.xml-cml.org/units/units"
+   xmlns:c="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <c:tableHeader>
+    <c:tableHeaderCell dictRef="cml:elementType" title="element" dataType="cml:elementTypeType"/>
+    <c:tableHeaderCell dictRef="foo:serial" title="serial" dataType="xsd:integer"/>
+    <c:tableHeaderCell dictRef="cml:x3" units="units:ang" title="x coordinate"
+      dataType="xsd:double"/>
+    <c:tableHeaderCell dictRef="cml:y3" units="units:ang" title="y coordinate"
+      dataType="xsd:double"/>
+    <c:tableHeaderCell dictRef="cml:z3" units="units:ang" title="z coordinate"
+      dataType="xsd:double"/>
+    <c:tableHeaderCell dictRef="foo:vx3" units="units:ang.s-1" title="x velocity"
+      dataType="xsd:double"/>
+    <c:tableHeaderCell dictRef="foo:vy3" units="units:ang.s-1" title="y velocity"
+      dataType="xsd:double"/>
+    <c:tableHeaderCell dictRef="foo:vz3" units="units:ang.s-1" title="z velocity"
+      dataType="xsd:double"/>
+</c:tableHeader>
+<c:tableContent>
+O    1
+    8.002485575        -3.823362985        -2.138277620
+    6.333476866         1.408404093        -3.760703825
+H    2
+    7.196819640        -3.407152949        -1.716753294
+    6.604013418         15.57210052        -17.28030869
+H    3
+    8.825722038        -3.351466988        -1.822671748
+    7.290961006         4.999519121        -11.69655263
+ </c:tableContent>
+</c:table>

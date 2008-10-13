@@ -1,0 +1,52 @@
+<?xml version="1.0" standalone="yes"?>
+<reaction id="r1" atomMap="USE_IDS" electronMap="USE_IDS"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+<reactantList>
+  <reactant>
+    <molecule id="ebib">
+      <atomArray>
+	<atom elementType="Br" id="a1" hydrogenCount="0" x2="1" y2="0"/>
+	<atom elementType="C" id="a2" hydrogenCount="0" x2="0" y2="0"/>
+	<atom elementType="C" id="a3" hydrogenCount="3" x2="0" y2="1"/>
+	<atom elementType="C" id="a4" hydrogenCount="3" x2="-1" y2="0"/>
+	<atom elementType="C" id="a5" hydrogenCount="0" x2="0" y2="-1"/>
+	<atom elementType="C" id="a6" hydrogenCount="0" x2="0.7" y2="-1.7"/>
+	<atom elementType="C" id="a7" hydrogenCount="0" x2="-0.7" y2="-1.7"/>
+	<atom elementType="C" id="a8" hydrogenCount="2" x2="-0.7" y2="-2.7"/>
+	<atom elementType="C" id="a9" hydrogenCount="3" x2="-1.4" y2="-3.4"/>
+      </atomArray>
+      <bondArray>
+        <bond id="a1_a2" atomRefs2="a1 a2" order="S"/>
+        <bond id="a2_a3" atomRefs2="a2 a3" order="S"/>
+        <bond id="a2_a4" atomRefs2="a2 a4" order="S"/>
+        <bond id="a2_a5" atomRefs2="a2 a5" order="S"/>
+        <bond id="a5_a6" atomRefs2="a5 a6" order="D"/>
+        <bond id="a5_a7" atomRefs2="a5 a7" order="S"/>
+        <bond id="a7_a8" atomRefs2="a7 a8" order="S"/>
+        <bond id="a8_a9" atomRefs2="a8 a9" order="S"/>
+      </bondArray>
+     </molecule>
+   </reactant>
+   <reactant>
+    <molecule id="ebib">
+      <atomArray>
+	<atom elementType="C" id="a10" hydrogenCount="2" x2="3" y2="0"/>
+	<atom elementType="C" id="a11" hydrogenCount="1" x2="3.7" y2="-0.7"/>
+	<atom elementType="C" id="a12" hydrogenCount="3" x2="3.7" y2="-1.7"/>
+      </atomArray>
+      <bondArray>
+        <bond id="a10_a11" atomRefs2="a10 a11" order="D"/>
+        <bond id="a11_a12" atomRefs2="a11 a12" order="S"/>
+      </bondArray>
+     </molecule>
+   </reactant>
+  </reactantList>
+  <productList>
+    <product>
+    </product>     
+  </productList>
+</reaction>
+

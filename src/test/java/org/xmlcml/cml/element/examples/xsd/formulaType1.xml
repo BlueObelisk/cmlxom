@@ -1,0 +1,16 @@
+<?xml version="1.0" standalone="yes"?>
+<cml title="formulaType example (concise)" 
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <list>
+    <formula id="methane" concise="C 1 H 4"/>
+    <formula id="chloroacetate" concise="Cl 1 H 2 C 2 O 2" formalCharge="-1"/>
+    <formula id="sodiumSulfate">
+      <formula id="f3a" concise="H 2 O 1" count="10"/>
+      <formula id="f3b" concise="Na 1" count="2" formalCharge="1"/>
+      <formula id="f3c" concise="S 1 O 4" formalCharge="-2"/>
+    </formula>
+  </list>
+</cml>

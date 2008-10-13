@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone="yes"?>
+<cml title="atomRef example" 
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <molecule id="m1">
+    <atomArray>
+      <atom id="a1"/>
+    </atomArray>
+    <electron id="e1" atomRef="a1"/>
+  </molecule>
+</cml>

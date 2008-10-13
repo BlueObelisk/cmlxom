@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule id='branch0'
+xmlns='http://www.xml-cml.org/schema'
+xmlns:g='http://www.xml-cml.org/mols/geom1'
+convention='cml:PML-concise'
+formula='(g:oh}r1)-[l(1.40)]
+  (r1{g:acryl
+    [r3-[l(1.5)t(120)](r1{g:po}r2-[l(1.4)t(150)])*(2)-[l(1.39)t(60)](r1{g:me)]
+      }r2-[l(1.2)t(110)])*(3)
+  -[l(1.54)](r1{g:cl)'
+/>

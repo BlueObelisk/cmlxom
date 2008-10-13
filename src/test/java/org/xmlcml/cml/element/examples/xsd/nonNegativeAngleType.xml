@@ -1,0 +1,9 @@
+<?xml version="1.0" standalone="yes"?>
+ <angle 
+   xmlns="http://www.xml-cml.org/schema"
+   xmlns:units="http://www.xml-cml.org/units/units"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   units="units:degrees" atomRefs3="a1 a2 a3" 
+>123.4</angle>
+

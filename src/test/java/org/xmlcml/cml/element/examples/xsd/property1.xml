@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="yes"?>
+<molecule title="property1: example"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+    <name>buckminsteremptierene</name>
+    <propertyList>
+        <property title="critical temperature" dictRef="foo:crittemp">
+            <scalar units="unit:celsius"
+            xmlns:unit="http://www.xml-cml.org/dict/units">123</scalar>
+        </property>
+    </propertyList>
+</molecule>
+

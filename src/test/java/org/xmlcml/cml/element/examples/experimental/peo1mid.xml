@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule id="polypropylene_oxide" process="expand" xmlns="http://www.xml-cml.org/schema">
+ <!-- capping OH at LHS -->
+ <molecule id="oh1"> 
+  <atomArray>
+   <atom id="oh1_a1" elementType="O" hydrogenCount="1"/>
+   <atom id="oh1_r1" elementType="R"/>
+  </atomArray>
+  <bondArray>
+   <bond id="oh1_a1_oh1_r1" atomRefs2="oh1_a1 oh1_r1" order="1"/>
+  </bondArray>
+ </molecule>
+ 
+ <molecule id="prop1">
+  <atomArray>
+   <atom elementType="C" hydrogenCount="2" id="prop1_a1"/>
+   <atom elementType="C" hydrogenCount="1" id="prop1_a2"/>
+   <atom elementType="C" hydrogenCount="3" id="prop1_a3"/>
+   <atom elementType="O" hydrogenCount="0" id="prop1_a4"/>
+   <atom elementType="R" id="prop1_r1"/>
+   <atom elementType="R" id="prop1_r2"/>
+  </atomArray>
+  <bondArray>
+   <bond order="1" id="prop1_a1_prop1_a2" atomRefs2="prop1_a1 prop1_a2"/>
+   <bond order="1" id="prop1_a2_prop1_a3" atomRefs2="prop1_a2 prop1_a3"/>
+   <bond order="1" id="prop1_a2_prop1_a4" atomRefs2="prop1_a2 prop1_a4"/>
+   <bond order="1" id="prop1_a1_prop1_r1" atomRefs2="prop1_a1 prop1_r1"/>
+   <bond order="1" id="prop1_a4_prop1_r2" atomRefs2="prop1_a4 prop1_r2"/>
+  </bondArray>
+  <length atomRefs2="prop1_a1 prop1_a2">1.54</length>
+  <length atomRefs2="prop1_a2 prop1_a3">1.54</length>
+  <angle atomRefs3="prop1_a1 prop1_a2 prop1_a3">111</angle>
+  <length atomRefs2="prop1_a2 prop1_a4">1.40</length>
+  <angle atomRefs3="prop1_a1 prop1_a2 prop1_a4">111</angle>
+  <torsion atomRefs4="prop1_a1 prop1_a4 prop1_a2 prop1_a3">180</torsion>
+ </molecule>
+ 
+ <molecule id="prop2">
+  <atomArray>
+   <atom elementType="C" hydrogenCount="2" id="prop2_a1"/>
+   <atom elementType="C" hydrogenCount="1" id="prop2_a2"/>
+   <atom elementType="C" hydrogenCount="3" id="prop2_a3"/>
+   <atom elementType="O" hydrogenCount="0" id="prop2_a4"/>
+   <atom elementType="R" id="prop2_r1"/>
+   <atom elementType="R" id="prop2_r2"/>
+  </atomArray>
+  <bondArray>
+   <bond order="1" id="prop2_a1_prop2_a2" atomRefs2="prop2_a1 prop2_a2"/>
+   <bond order="1" id="prop2_a2_prop2_a3" atomRefs2="prop2_a2 prop2_a3"/>
+   <bond order="1" id="prop2_a2_prop2_a4" atomRefs2="prop2_a2 prop2_a4"/>
+   <bond order="1" id="prop2_a1_prop2_r1" atomRefs2="prop2_a1 prop2_r1"/>
+   <bond order="1" id="prop2_a4_prop2_r2" atomRefs2="prop2_a4 prop2_r2"/>
+  </bondArray>
+  <length atomRefs2="prop2_a1 prop2_a2">1.54</length>
+  <length atomRefs2="prop2_a2 prop2_a3">1.54</length>
+  <angle atomRefs3="prop2_a1 prop2_a2 prop2_a3">111</angle>
+  <length atomRefs2="prop2_a2 prop2_a4">1.40</length>
+  <angle atomRefs3="prop2_a1 prop2_a2 prop2_a4">111</angle>
+  <torsion atomRefs4="prop2_a1 prop2_a4 prop2_a2 prop2_a3">180</torsion>
+ </molecule>
+ <molecule id="prop3">
+  <atomArray>
+   <atom elementType="C" hydrogenCount="2" id="prop3_a1"/>
+   <atom elementType="C" hydrogenCount="1" id="prop3_a2"/>
+   <atom elementType="C" hydrogenCount="3" id="prop3_a3"/>
+   <atom elementType="O" hydrogenCount="0" id="prop3_a4"/>
+   <atom elementType="R" id="prop3_r1"/>
+   <atom elementType="R" id="prop3_r2"/>
+  </atomArray>
+  <bondArray>
+   <bond order="1" id="prop3_a1_prop3_a2" atomRefs2="prop3_a1 prop3_a2"/>
+   <bond order="1" id="prop3_a2_prop3_a3" atomRefs2="prop3_a2 prop3_a3"/>
+   <bond order="1" id="prop3_a2_prop3_a4" atomRefs2="prop3_a2 prop3_a4"/>
+   <bond order="1" id="prop3_a1_prop3_r1" atomRefs2="prop3_a1 prop3_r1"/>
+   <bond order="1" id="prop3_a4_prop3_r2" atomRefs2="prop3_a4 prop3_r2"/>
+  </bondArray>
+  <length atomRefs2="prop3_a1 prop3_a2">1.54</length>
+  <length atomRefs2="prop3_a2 prop3_a3">1.54</length>
+  <angle atomRefs3="prop3_a1 prop3_a2 prop3_a3">111</angle>
+  <length atomRefs2="prop3_a2 prop3_a4">1.40</length>
+  <angle atomRefs3="prop3_a1 prop3_a2 prop3_a4">111</angle>
+  <torsion atomRefs4="prop3_a1 prop3_a4 prop3_a2 prop3_a3">180</torsion>
+ </molecule>
+ <join id="prop1_r2_prop2_r1" atomRefs2="prop1_r2 prop2_r1" order="1"> 
+   <angle atomRefs3="prop1_a2 prop1_a4 prop1_a1">105</angle>
+   <length atomRefs2="prop1_a4 prop2_a1">1.40</length>
+   <angle atomRefs3="prop1_a4 prop2_a1 prop2_a2">105</angle>
+   <torsion atomRefs4="prop1_a1 prop1_a2 prop1_a4 prop2_a1">180</torsion>
+   <torsion atomRefs4="prop1_a2 prop1_a4 prop2_a1 prop2_a2">180</torsion>
+   <torsion atomRefs4="prop1_a4 prop2_a1 prop2_a2 prop2_a4">180</torsion>
+ </join>
+ <join id="prop2_r2_prop3_r1" atomRefs2="prop2_r2 prop3_r1" order="1"> 
+   <angle atomRefs3="prop2_a2 prop2_a4 prop2_a1">105</angle>
+   <length atomRefs2="prop2_a4 prop3_a1">1.40</length>
+   <angle atomRefs3="prop2_a4 prop3_a1 prop3_a2">105</angle>
+   <torsion atomRefs4="prop2_a1 prop2_a2 prop2_a4 prop3_a1">180</torsion>
+   <torsion atomRefs4="prop2_a2 prop2_a4 prop3_a1 prop3_a2">180</torsion>
+   <torsion atomRefs4="prop2_a4 prop3_a1 prop3_a2 prop3_a4">180</torsion>
+ </join>
+ <join id="oh1_r1_prop1_r1" atomRefs2="oh1_r1 prop1_r1" order="1">
+   <length atomRefs2="oh1_a1 prop1_a1">1.40</length>
+   <angle atomRefs3="oh1_a1 prop1_a1 prop1_a2">105</angle>
+   <torsion atomRefs4="oh1_a1 prop1_a1 prop1_a2 prop1_a4">180</torsion>
+ </join>
+ <molecule id="h1"> 
+  <atomArray>
+   <atom id="h1_a1" elementType="H"/>
+   <atom id="h1_r2" elementType="R"/>
+  </atomArray>
+  <bondArray>
+   <bond order="1" id="h1_a1_h1_r2" atomRefs2="h1_a1 h1_r2"/>
+  </bondArray>
+ </molecule>
+ <join id="prop3_r2_h1_r1" atomRefs2="prop3_r2 h1_r2" order="1">
+   <length atomRefs2="prop3_a4 h1_a1">1.10</length>
+   <angle atomRefs3="prop3_a2 prop3_a4 h1_a1">105</angle>
+   <torsion atomRefs4="prop3_a1 prop3_a2 prop3_a4 h1_a1">180</torsion>
+ </join>
+</molecule>

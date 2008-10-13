@@ -1,0 +1,6 @@
+<map xmlns="http://www.xml-cml.org/schema">
+  <link from="http://www.xml-cml.org/dict/cml"               to="./cmlDict.xml"/>
+  <link from="http://www.xml-cml.org/dict/cmlDict"           to="./cmlDictCopy.xml"/>
+  <link from="http://www.materialsgrid.org/castep/namespace" to="./castepDict.xml"/>
+  <link from="http://www.uam.es/siesta/namespace"            to="./siesta.xml"/>
+</map>

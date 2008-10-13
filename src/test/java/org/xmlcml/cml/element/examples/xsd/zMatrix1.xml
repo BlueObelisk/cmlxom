@@ -1,0 +1,22 @@
+<?xml version="1.0" standalone="yes"?>
+<molecule id="mol1"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+    <atomArray>
+        <atom id="a1" elementType="C"/>
+        <atom id="a2" elementType="C"/>
+        <atom id="a3" elementType="C"/>
+        <atom id="a4" elementType="C"/>
+    </atomArray>
+    <zMatrix>
+        <length id="len1" atomRefs2="a2 a1">1.42450</length>
+        <length id="len2" atomRefs2="a3 a2">1.42450</length>
+        <angle id="ang2" atomRefs3="a3 a2 a1">120.00000</angle>
+        <length id="len3" atomRefs2="a4 a3">1.42450</length>
+        <angle id="ang3" atomRefs3="a4 a3 a2">120.00000</angle>
+        <torsion id="tor3" atomRefs4="a4 a3 a2 a1">0.00000</torsion>
+    </zMatrix>
+</molecule>
+

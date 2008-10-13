@@ -1,0 +1,44 @@
+<?xml version="1.0" standalone="yes"?>
+<reaction title="reaction6: simple esterification"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+    <reactantList>
+        <reactant id="r1" count="1">
+            <molecule id="m1" title="acetic acid">
+                <formula id="f1" concise="C 2 H 4 O 2"/>
+            </molecule>
+        </reactant>
+        <reactant id="r2" count="1">
+            <molecule id="m2" title="ethanol">
+                <formula id="f2" concise="C 2 H 6 O 1"/>
+            </molecule>
+        </reactant>
+    </reactantList>
+    <substanceList>
+        <substance id="s1" role="subst:catalyst">
+            <amount id="a1" units="units:ml">1</amount>
+            <name>0.1M HCl</name>
+        </substance>
+        <substance id="s2" role="subst:solvent">
+            <amount id="a2" units="units:l">0.25</amount>
+            <molecule id="m3" ref="dichloromethane"/>
+        </substance>
+    </substanceList>
+    <conditionList>
+        <scalar id="sc1" dictRef="cml:temp" units="units:celsius">65</scalar>
+        <scalar id="sc2" dictRef="cml:vol" units="units:l">0.25</scalar>
+    </conditionList>
+    <productList>
+        <product id="p1" count="1">
+            <molecule id="m1" title="ethyl acetate">
+                <formula id="f3" concise="C 4 H 8 O 2"/>
+            </molecule>
+            <amount id="a3" units="units:g">1.2</amount>
+            <amount id="a4" units="units:percent">75.3</amount>
+        </product>
+      <!-- note: water is product of reaction but omitted -->
+    </productList>
+</reaction>
+

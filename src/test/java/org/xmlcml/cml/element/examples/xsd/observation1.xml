@@ -1,0 +1,8 @@
+<?xml version="1.0" standalone="yes"?>
+<observation 
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+type="ornithology" title="observation example">
+    <object title="sparrow" count="3"/>
+</observation>

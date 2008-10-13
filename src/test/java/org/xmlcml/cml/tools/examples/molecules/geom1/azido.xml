@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule id="azido" xmlns="http://www.xml-cml.org/schema">
+  <atomArray>
+    <atom x3="0.0021" y3="-0.0041" z3="0.0020" id="r1" elementType="R"/>
+    <atom x3="-0.025" y3="1.9957" z3="0.013" id="a1" elementType="N"/>
+    <atom x3="0.9406" y3="2.5709" z3="0.0069" id="a2" elementType="N">
+      <label dictRef="cml:torsionEnd">r1</label>
+    </atom>
+    <atom x3="1.9063" y3="3.1461" z3="8.0E-4" id="a3" elementType="N"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="r1 a1" id="b1" order="1"/>
+    <bond atomRefs2="a1 a2" id="b2" order="2"/>
+    <bond atomRefs2="a2 a3" id="b3" order="2"/>
+  </bondArray>
+</molecule>

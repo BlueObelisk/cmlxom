@@ -1,0 +1,40 @@
+<?xml version="1.0" standalone="yes"?>
+<cml
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+<reactionScheme id="rs0" >
+<reactionScheme title="ABC cycle">
+<reaction ref="r1"/>
+<reaction ref="r2"/>
+<reaction ref="r5"/>
+  </reactionScheme>
+<reactionScheme title="CDEG cycle">
+<reaction ref="r2"/>
+<reaction ref="r3"/>
+<reaction ref="r4"/>
+<reaction ref="r5"/>
+  </reactionScheme>
+</reactionScheme>
+
+<list>
+<reaction id="r1" type="reversible">
+<reactantList>
+<reactant ref="A"/>
+</reactantList>
+<productList>
+<product ref="B"/>
+</productList>
+</reaction>
+<reaction id="r2">
+<reactantList>
+<reactant ref="C"/>
+</reactantList>
+<productList>
+<product ref="B"/>
+<product ref="D"/>
+</productList>
+</reaction>
+</list>
+</cml>

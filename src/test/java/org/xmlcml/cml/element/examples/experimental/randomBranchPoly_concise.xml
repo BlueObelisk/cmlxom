@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FAILS -->
+<molecule id='randomBranchPoly'
+  xmlns='http://www.xml-cml.org/schema'
+  xmlns:f='http://www.xml-cml.org/mols/geom1'
+  convention='cml:PML-concise'
+  formula='(f:h}r1)-[t(10)]
+  (r1{f:acryl
+  [r3-[t(20)](r1{f:eo}r2-[t(30)])range(2,5)-(r1{f:et)]
+  }r2-)range(6,10)
+  -(r1{f:me)
+  '/>

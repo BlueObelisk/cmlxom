@@ -1,0 +1,12 @@
+<?xml version="1.0" standalone="yes"?>
+<lattice 
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+spaceType="reciprocal" 
+latticeType="primitive">
+  <scalar id="s1" dictRef="cryst:a" units="units:ang-1">0.2</scalar>
+  <scalar id="s2" dictRef="cryst:b" units="units:ang-1">0.25</scalar>
+  <scalar id="s3" dictRef="cryst:gamma" units="units:radian">1.2</scalar>
+</lattice>
+

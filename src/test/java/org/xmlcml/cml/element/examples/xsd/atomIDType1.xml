@@ -1,0 +1,23 @@
+<?xml version="1.0" standalone="yes"?>
+<cml title="example of IDs on atoms" 
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <molecule id="m1">
+    <atomArray>
+<!-- this atom might be referenced as m1:a2. This is not formally
+     part of CML yet -->
+      <atom id="a2" elementType="O"/>
+    </atomArray>
+  </molecule>
+  <molecule id="m2">
+    <atomArray>
+<!-- this atom might be referenced as m2:a2. This is not formally
+     part of CML yet -->
+      <atom id="a2" elementType="O"/>
+    </atomArray>
+  </molecule>
+</cml>
+  
+    

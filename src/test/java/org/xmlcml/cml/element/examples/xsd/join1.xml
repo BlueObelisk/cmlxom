@@ -1,0 +1,42 @@
+<?xml version="1.0" standalone="yes"?>
+<cml title="join1: example"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <molecule id="methyl">
+    <atomArray>
+      <atom id="methyl_a1" elementType="C" hydrogenCount="3"/>
+      <atom id="methyl_r1" elementType="R"/>
+    </atomArray>
+    <bondArray>
+      <bond atomRefs2="methyl_a1 methyl_r1" order="1"/>
+    </bondArray>
+  </molecule>
+
+   <molecule id="acetate">
+    <atomArray>
+      <atom id="acetate_a1" elementType="C" hydrogenCount="3"/>
+      <atom id="acetate_a2" elementType="C" hydrogenCount="0"/>
+      <atom id="acetate_a3" elementType="O" hydrogenCount="0"/>
+      <atom id="acetate_a4" elementType="O" hydrogenCount="0"/>
+      <atom id="acetate_r1" elementType="R"/>
+    </atomArray>
+    <bondArray>
+      <bond atomRefs2="acetate_a1 acetate_a2" order="1"/>
+      <bond atomRefs2="acetate_a2 acetate_a3" order="2"/>
+      <bond atomRefs2="acetate_a2 acetate_a4" order="1"/>
+      <bond atomRefs2="acetate_a4 acetate_r1" order="1"/>
+    </bondArray>
+  </molecule>
+
+  <molecule title="methyl acetate" id="methyl_acetate">
+  <!--
+    <molecule ref="methyl"  copy="1"/>
+    <molecule ref="acetate" copy="1"/>
+    -->
+    <join id="acetate_r1_methyl_r1" atomRefs2="acetate_r1 methyl_r1" order="1"/> 
+  </molecule>
+  
+</cml>
+

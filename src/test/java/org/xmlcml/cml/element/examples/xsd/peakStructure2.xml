@@ -1,0 +1,53 @@
+<?xml version="1.0" standalone="yes"?>
+<cml 
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+<!-- AA'BB' where there are 2 Ha and 2 Hb with two couplings
+    J1 Ha ... Hb and Ha' ... Hb'
+    J2 Ha ... Hb' and Ha' ... Hb
+    -->
+    <molecule id="m1">
+      <atomArray>
+        <atom id="a1" elementType="H">
+          <label value="Ha"/>
+        </atom>
+        <atom id="a2" elementType="H">
+          <label value="Ha'"/>
+        </atom>
+        <atom id="a3" elementType="H">
+          <label value="Hb"/>
+        </atom>
+        <atom id="a4" elementType="H">
+          <label value="Hb'"/>
+        </atom>
+      </atomArray>
+    </molecule>
+	<spectrum id="spectrum2" title="test peaks">
+	    <peakList>
+	        <!-- the ORDER of a1 and a2 is linked to the ORDER of the
+	        grandchildren elements, i.e. a1 couples to atoms in ps11 and ps21 
+	        while a2 relates to atoms is ps21 and ps22
+	        --> 
+	        <!-- only one peak in the AA'BB' system is shown -->
+		    <peak id="p1" title="Ha" atomRefs="a1 a2"
+		        peakShape="sharp" xUnits="unit:ppm" xValue="6.0">
+		        <peakStructure id="ps1" type="coupling" peakMultiplicity="doublet" 
+		           value="10" units="unit:hertz">
+		           <!-- this relates to a1 -->
+		           <peakStructure id="ps11" atomRefs="a3"/> 
+		           <!-- this relates to a2 -->
+		           <peakStructure id="ps12" atomRefs="a4"/> 
+		        </peakStructure>		        
+		        <peakStructure id="ps2" type="coupling" peakMultiplicity="doublet" 
+		           value="2" units="unit:hertz">
+		           <!-- this relates to a1 -->
+		           <peakStructure id="ps21" atomRefs="a4"/> 
+		           <!-- this relates to a2 -->
+		           <peakStructure id="ps22" atomRefs="a3"/> 
+		        </peakStructure>		        
+			</peak>            
+	    </peakList>
+	</spectrum>
+</cml>

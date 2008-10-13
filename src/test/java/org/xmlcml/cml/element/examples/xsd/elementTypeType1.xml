@@ -1,0 +1,16 @@
+<?xml version="1.0" standalone="yes"?>
+<cml title="elementType example" 
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+ <molecule>
+  <atomArray>
+    <atom id="a1" elementType="C"/>
+    <atom id="a2" elementType="N"/>
+    <atom id="a3" elementType="Pb"/>
+    <atom id="a4" elementType="Dummy"/>
+  </atomArray>
+ </molecule>
+</cml>
+

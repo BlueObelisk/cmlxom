@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone="yes"?>
+<cml title="formalCharge example" 
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+ <molecule>
+  <atomArray>
+    <atom id="a1" elementType="N" formalCharge="1"/>
+    <atom id="a2" elementType="O" formalCharge="-1"/>
+  </atomArray>
+ </molecule>
+</cml>

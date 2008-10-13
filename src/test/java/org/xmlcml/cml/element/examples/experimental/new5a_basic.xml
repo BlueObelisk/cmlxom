@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule id="new5a" convention="cml:PML-basic"
+	xmlns:g="http://www.xml-cml.org/mols/geom1"
+	xmlns="http://www.xml-cml.org/schema">
+	<!--  a star polymer -->
+	<fragment>
+		<molecule ref="g:o"/>
+		<fragmentList>
+			<join order="1" moleculeRefs2="PARENT NEXT"
+				atomRefs2="r2 r1">
+			</join>
+			<fragment>
+				<molecule ref="g:carbonyl"/>				
+			</fragment>
+			<join atomRefs2="r2 r1" moleculeRefs2="PREVIOUS NEXT">
+			</join>
+			<fragment>
+				<molecule ref="g:benzene"/>
+			</fragment>
+			<join atomRefs2="r4 r1" moleculeRefs2="PREVIOUS NEXT">
+			</join>
+			<fragment>
+				<molecule ref="g:carbonyl"/>				
+			</fragment>
+			<join atomRefs2="r2 r1" moleculeRefs2="PREVIOUS NEXT">
+			</join>
+			<fragment>
+				<molecule ref="g:o"/>
+		    </fragment>
+			<join atomRefs2="r2 r1" moleculeRefs2="PREVIOUS NEXT">
+			</join>
+			<fragment>
+				<molecule ref="g:ch2"/>
+		    </fragment>
+			<join atomRefs2="r2 r1" moleculeRefs2="PREVIOUS NEXT">
+			</join>
+			<fragment>
+				<molecule ref="g:ch2"/>
+		    </fragment>
+			<join order="1" moleculeRefs2="PREVIOUS NEXT"
+				atomRefs2="r2 r1">
+			</join>
+			<fragment>
+				<molecule ref="g:o"/>				
+			</fragment>
+			<join atomRefs2="r2 r1" moleculeRefs2="PREVIOUS NEXT">
+			</join>
+			<fragment>
+				<molecule ref="g:carbonyl"/>				
+			</fragment>
+			<join atomRefs2="r2 r1" moleculeRefs2="PREVIOUS NEXT">
+			</join>
+			<fragment>
+				<molecule ref="g:benzene"/>
+			</fragment>
+			<join atomRefs2="r4 r1" moleculeRefs2="PREVIOUS NEXT">
+			</join>
+			<fragment>
+				<molecule ref="g:carbonyl"/>				
+			</fragment>
+			<join atomRefs2="r2 r1" moleculeRefs2="PREVIOUS NEXT">
+			</join>
+			<fragment>
+				<molecule ref="g:o"/>
+		    </fragment>
+			<join atomRefs2="r2 r1" moleculeRefs2="PREVIOUS NEXT">
+			</join>
+			<fragment>
+				<molecule ref="g:ch2"/>
+		    </fragment>
+			<join atomRefs2="r2 r1" moleculeRefs2="PREVIOUS NEXT">
+			</join>
+			<fragment>
+				<molecule ref="g:ch2"/>
+		    </fragment>
+        </fragmentList>
+	</fragment>
+</molecule>

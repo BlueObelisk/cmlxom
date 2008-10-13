@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="yes"?>
+<cml title="ref example" 
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:h="http://www.w3.org/1999/xhtml">
+  <molecule id="m1">
+    <atomArray>
+      <atom elementType="N" id="a1"/>
+      <atom elementType="O" id="a2"/>
+    </atomArray>
+  </molecule>
+  <h:p>The action of <molecule ref="m1"/> on cardiac muscle ...</h:p>
+</cml>

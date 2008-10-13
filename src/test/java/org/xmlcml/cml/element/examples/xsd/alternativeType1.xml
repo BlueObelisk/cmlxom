@@ -1,0 +1,11 @@
+<?xml version="1.0" standalone="yes"?>
+<entry term="1,2-dichloroethane" id="dce"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+    <alternative id="a1" type="synonym">ethylene dichloride</alternative>
+    <alternative id="a2" type="abbreviation">DCE</alternative>
+    <alternative id="a3" type="quasi-synonym">dichloroethane</alternative>
+</entry>
+   

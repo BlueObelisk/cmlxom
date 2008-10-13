@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule id="star1" convention="cml:PML-basic"
+	xmlns:g="http://www.xml-cml.org/mols/geom1"
+	xmlns="http://www.xml-cml.org/schema">
+	<!--  a star polymer -->
+	<fragment>
+		<molecule ref="g:benzene"/>
+	    <fragmentList>
+			<join order="1" moleculeRefs2="PARENT NEXT" atomRefs2="r2 r2">
+				<length id="l2.1">1.5</length>
+				<torsion id="t2.1">120.0</torsion>
+			</join>
+			<fragment>
+				<molecule ref="g:po"/>
+			</fragment>
+			<join order="1" moleculeRefs2="PREVIOUS NEXT" 
+			    atomRefs2="r1 r1">
+				<length id="l2.1.1">1.39</length>
+			</join>
+			<fragment countExpression="*(3)">
+				<molecule ref="g:benzene"/>
+				<fragmentList id="ml3">
+					<join order="1" moleculeRefs2="PARENT NEXT" atomRefs2="r3 r1">
+						<length id="t2.1.2">1.4</length>
+						<torsion>124.0</torsion>
+					</join>
+					<fragment>
+						<molecule ref="g:cl"/>
+					</fragment>
+				</fragmentList>
+				<join order="1" moleculeRefs2="PREVIOUS NEXT" atomRefs2="r2 r5">
+					<length id="l2.1.1">1.39</length>
+				</join>
+			</fragment>
+		</fragmentList>
+	    <fragmentList>
+			<join order="1" moleculeRefs2="PARENT NEXT" atomRefs2="r4 r2">
+				<length id="l2.1">1.5</length>
+				<torsion id="t2.1">120.0</torsion>
+			</join>
+			<fragment>
+				<molecule ref="g:po"/>
+			</fragment>
+			<join order="1" moleculeRefs2="PREVIOUS NEXT" 
+			    atomRefs2="r1 r1">
+				<length id="l2.1.1">1.39</length>
+			</join>
+			<fragment countExpression="*(3)">
+				<molecule ref="g:benzene"/>
+				<fragmentList id="ml3">
+					<join order="1" moleculeRefs2="PARENT NEXT" atomRefs2="r3 r1">
+						<length id="t2.1.2">1.4</length>
+						<torsion>124.0</torsion>
+					</join>
+					<fragment>
+						<molecule ref="g:cl"/>
+					</fragment>
+				</fragmentList>
+				<join order="1" moleculeRefs2="PREVIOUS NEXT" atomRefs2="r2 r5">
+					<length id="l2.1.1">1.39</length>
+				</join>
+			</fragment>
+		</fragmentList>
+	    <fragmentList>
+			<join order="1" moleculeRefs2="PARENT NEXT" atomRefs2="r6 r2">
+				<length id="l2.1">1.5</length>
+				<torsion id="t2.1">120.0</torsion>
+			</join>
+			<fragment>
+				<molecule ref="g:po"/>
+			</fragment>
+			<join order="1" moleculeRefs2="PREVIOUS NEXT" 
+			    atomRefs2="r1 r1">
+				<length id="l2.1.1">1.39</length>
+			</join>
+			<fragment countExpression="*(3)">
+				<molecule ref="g:benzene"/>
+				<fragmentList id="ml3">
+					<join order="1" moleculeRefs2="PARENT NEXT" atomRefs2="r3 r1">
+						<length id="t2.1.2">1.4</length>
+						<torsion>124.0</torsion>
+					</join>
+					<fragment>
+						<molecule ref="g:cl"/>
+					</fragment>
+				</fragmentList>
+				<join order="1" moleculeRefs2="PREVIOUS NEXT" atomRefs2="r2 r5">
+					<length id="l2.1.1">1.39</length>
+				</join>
+			</fragment>
+		</fragmentList>
+	</fragment>
+</molecule>

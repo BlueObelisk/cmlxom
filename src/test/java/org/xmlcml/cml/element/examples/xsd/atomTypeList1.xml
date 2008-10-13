@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone="yes"?>
+<atomTypeList
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+    <atomType name="o" id="aa1">
+        <atom elementType="O" id="a1"/>
+    </atomType>
+    <atomType name="n" id="aa2">
+        <atom elementType="N" id="a2"/>
+    </atomType>
+</atomTypeList>

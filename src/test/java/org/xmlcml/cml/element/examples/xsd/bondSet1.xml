@@ -1,0 +1,24 @@
+<?xml version="1.0" standalone="yes"?>
+<cml 
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+<bondSet id="bs1" title="rotatable bonds">b4</bondSet>
+<bondSet id="bs2" title="carbon-halogen bonds">b1 b2 b3</bondSet>
+<molecule>
+  <atomArray>
+    <atom id="a1" elementType="C"/>
+    <atom id="a2" elementType="Br"/>
+    <atom id="a3" elementType="Cl"/>
+    <atom id="a4" elementType="F"/>
+    <atom id="a5" elementType="C" hydrogenCount="3"/>
+  </atomArray>
+  <bondArray>
+    <bond id="b1" atomRefs2="a1 a2"/>
+    <bond id="b2" atomRefs2="a1 a3"/>
+    <bond id="b3" atomRefs2="a1 a4"/>
+    <bond id="b4" atomRefs2="a1 a5"/>
+  </bondArray>
+</molecule>
+</cml>

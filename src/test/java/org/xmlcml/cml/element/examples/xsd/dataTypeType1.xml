@@ -1,0 +1,29 @@
+<?xml version="1.0" standalone="yes"?>
+<stmml title="dataType example" 
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+<list >
+<!-- under development
+  <scalar id="a1" dataType="xsd:boolean" title="she loves me">true</scalar>
+  -->
+<!-- not supported at present
+  <scalar id="a3" dataType="xsd:duration" title="egg timer">PM4</scalar>
+  <scalar id="a4" dataType="xsd:dateTime" title="current data and time">2001-02-01:00:30</scalar>
+  <scalar id="a5" dataType="xsd:time" title="wake up">06:00</scalar>
+  <scalar id="a6" dataType="xsd:date" title="where is it">1752-09-10</scalar>
+  <scalar id="a7" dataType="xsd:anyURI" title="CML site">http://www.xml-cml.org/</scalar>
+  <scalar id="a8" dataType="xsd:QName" title="CML atom">cml:atom</scalar>
+  <scalar id="a9" dataType="xsd:normalizedString" title="song">the mouse ran up the clock</scalar>
+  <scalar id="a10" dataType="xsd:language" title="UK English">en-GB</scalar>
+  <scalar id="a11" dataType="xsd:Name" title="atom">atom</scalar>
+  <scalar id="a12" dataType="xsd:ID" title="XML ID">_123</scalar>
+  <scalar id="a14" dataType="xsd:nonPositiveInteger" title="zero">0</scalar>
+-->  
+  <scalar id="a2" dataType="xsd:double" title="x">23.2</scalar>
+  <scalar id="a13" dataType="xsd:integer" title="the answer">42</scalar>
+  <scalar id="a9" dataType="xsd:string" title="song">the   mouse      ran up the clock</scalar>
+  <scalar id="a9" title="song"> defaults to string </scalar>
+</list>
+</stmml>

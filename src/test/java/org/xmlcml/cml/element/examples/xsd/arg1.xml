@@ -1,0 +1,21 @@
+<?xml version="1.0" standalone="yes"?>
+<cml 
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ >
+
+ <molecule id="oh_i_" role="fragment">
+   <arg name="i" substitute=".//@*" delete="yes">
+     <scalar dataType="xsd:integer">42</scalar>
+   </arg>
+   <atomArray>
+     <atom id="oh_i__a1" elementType="O" hydrogenCount="1"/>
+     <atom id="oh_i__r1" elementType="R"/>
+   </atomArray>
+   <bondArray>
+     <bond id="b_oh_i__a1_oh_i__r1" atomRefs2="oh_i__a1 oh_i__r1" order="1"/>
+   </bondArray>
+ </molecule>
+ 
+</cml>

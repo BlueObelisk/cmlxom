@@ -1,0 +1,12 @@
+<cml title="spectrumList1 spectrum list example" 
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+<spectrumList title="spectrumList 1">
+<spectrum id="sp1">
+</spectrum>
+<spectrum id="sp2">
+</spectrum>
+</spectrumList>
+</cml>

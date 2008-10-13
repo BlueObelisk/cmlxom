@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<moleculeList id="polystyrene" convention="cml:PML-basic"
+	xmlns:g="http://www.xml-cml.org/mols/geom1"
+	xmlns="http://www.xml-cml.org/schema">
+	<molecule id="polystyrene" convention="cml:PML-basic" 
+	    countExpression="*(3)">
+	    <transform3>
+	    1 0 0 4
+	    0 1 0 8
+	    0 0 1 12
+	    0 0 0 1
+	    </transform3>
+		<!--  polystyrene -->
+		<fragment>
+			<molecule ref="g:dummy"/>
+<!--  		<fragmentList countExpression="range(3,6)">-->
+			<fragmentList countExpression="*(3)">
+				<join order="1" moleculeRefs2="PARENT NEXT"
+					atomRefs2="r1 r1">
+					<torsion>180</torsion>
+				</join>
+				<fragment>
+					<molecule ref="g:ch"/>				
+					<fragmentList>
+						<join order="1" moleculeRefs2="PARENT NEXT"
+							atomRefs2="r3 r1">
+	 				<torsion>90</torsion>
+						</join>
+						<fragment>
+							<molecule ref="g:benzene"/>				
+						</fragment>
+					</fragmentList>
+	  		    </fragment>
+				<join atomRefs2="r2 r2" moleculeRefs2="PREVIOUS NEXT">
+					<torsion>60</torsion>
+				</join>
+				<fragment>
+					<molecule ref="g:ch2"/>
+				</fragment>				
+			</fragmentList>
+		</fragment>
+	</molecule>
+	<molecule id="new2" convention="cml:PML-basic"
+		xmlns:g="http://www.xml-cml.org/mols/geom1"
+		xmlns="http://www.xml-cml.org/schema">
+		<fragment>
+			<molecule ref="g:benzene"/>
+			<fragmentList>
+				<join order="1" moleculeRefs2="PARENT NEXT"
+					atomRefs2="r1 r1">
+					<length>1.51</length>
+	 				<torsion>95</torsion>
+				</join>
+				<fragment>
+					<molecule ref="g:po">				
+					<!--  angles do not work yet -->
+						<arg name="len23">
+							<scalar>1.53</scalar>
+						</arg>
+						<arg name="ang234">
+							<scalar>114</scalar>
+						</arg>
+						<arg name="ang123">
+							<scalar>113</scalar>
+						</arg>
+						<arg name="tor1">
+							<scalar>105</scalar>
+						</arg>
+						<arg name="tor2">
+							<scalar>115</scalar>
+						</arg>
+						<arg name="ang352">
+							<scalar>112</scalar>
+						</arg>
+						</molecule>
+				</fragment>
+				<join atomRefs2="r2 r1" moleculeRefs2="PREVIOUS NEXT">
+				  <torsion>125</torsion>
+				</join>
+				<fragment>
+					<molecule ref="g:phenylethane">
+						<arg name="main">
+							<scalar>-35</scalar>
+						</arg>
+						<arg name="side">
+							<scalar>-45</scalar>
+						</arg>
+					</molecule>
+				</fragment>
+			</fragmentList>
+		</fragment>
+	</molecule>
+</moleculeList>

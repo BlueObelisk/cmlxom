@@ -1,0 +1,55 @@
+<?xml version="1.0" standalone="yes"?>
+<reaction id="r1" atomMap="USE_IDS" electronMap="USE_IDS"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+<reactantList>
+        <reactant>
+<molecule id="nh3">
+  <atomArray>
+	<atom elementType="N" id="n1" hydrogenCount="3"/>
+  </atomArray>
+</molecule>
+        </reactant>
+        <reactant>
+<molecule id="bf3">
+  <atomArray>
+	<atom elementType="B" id="b1" hydrogenCount="0">
+       <electron count="2" id="e1"/>
+     </atom>
+	<atom elementType="F" id="f1" hydrogenCount="0"/>
+	<atom elementType="F" id="f2" hydrogenCount="0"/>
+	<atom elementType="F" id="f3" hydrogenCount="0"/>
+  </atomArray>
+  <bondArray>
+    <bond id="b1f1" atomRefs2="b1 f1" order="S"/>
+    <bond id="b1f2" atomRefs2="b1 f2" order="S"/>
+    <bond id="b1f3" atomRefs2="b1 f3" order="S"/>
+  </bondArray>
+</molecule>
+        </reactant>
+</reactantList>
+<productList>
+   <product>
+     <molecule id="nh3bf3">
+  <atomArray>
+	<atom elementType="N" id="n1" hydrogenCount="3" formalCharge="1"/>
+	<atom elementType="B" id="b1" hydrogenCount="0" formalCharge="-1"/>
+	<atom elementType="F" id="f1" hydrogenCount="0"/>
+	<atom elementType="F" id="f2" hydrogenCount="0"/>
+	<atom elementType="F" id="f3" hydrogenCount="0"/>
+  </atomArray>
+  <bondArray>
+    <bond id="b1n1" atomRefs2="b1 n1" order="S">
+      <electron count="2" id="e1"/>
+    </bond>
+    <bond id="b1f1" atomRefs2="b1 f1" order="S"/>
+    <bond id="b1f2" atomRefs2="b1 f2" order="S"/>
+    <bond id="b1f3" atomRefs2="b1 f3" order="S"/>
+  </bondArray>
+</molecule>
+        </product>     
+</productList>
+  </reaction>
+
