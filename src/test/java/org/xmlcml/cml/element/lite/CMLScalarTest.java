@@ -14,7 +14,7 @@ import org.junit.Test;
 import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.base.CMLBuilder;
 import org.xmlcml.cml.base.CMLElement;
-import org.xmlcml.cml.element.main.NumericTest;
+import org.xmlcml.cml.element.main.NumericTestBase;
 
 /**
  * tests CMLScalar.
@@ -22,7 +22,7 @@ import org.xmlcml.cml.element.main.NumericTest;
  * @author pmr
  * 
  */
-public class CMLScalarTest extends NumericTest {
+public class CMLScalarTest extends NumericTestBase {
 
 	protected CMLScalar xomScalarD0 = new CMLScalar(2.1);
 

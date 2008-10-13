@@ -23,7 +23,7 @@ import org.xmlcml.euclid.test.RealMatrixTest;
  * @author pmr
  * 
  */
-public class CMLMatrixTest extends NumericTest {
+public class CMLMatrixTest extends NumericTestBase {
 
     String unitsS = "<c:cml " + "id='a234234' " + "xmlns:c='" + CML_NS + "' "
             + "xmlns:siUnits='"+SIUNIT_NS+"' "
