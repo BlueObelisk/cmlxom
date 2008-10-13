@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule id='gly0'
+xmlns='http://www.xml-cml.org/schema'
+xmlns:g='http://www.xml-cml.org/mols/geom1'
+convention='cml:PML-concise'
+formula='
+ (g:acetyl
+   }r1)-[t(120)]
+(r1
+  {g:gly
+    %phi=65,psi=55%
+  }r2
+  -[t(180)])
+    *(10)
+-[t(90)]
+(r1{g:oh)'
+/>

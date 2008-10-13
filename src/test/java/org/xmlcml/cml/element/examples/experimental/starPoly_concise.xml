@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FAILS -->
+<molecule id='starPoly'
+  xmlns='http://www.xml-cml.org/schema'
+  xmlns:f='http://www.xml-cml.org/mols/geom1'
+  convention='cml:PML-concise'
+  formula='(f:2pyr[r1-(r2{f:eo}r1))-(r1{f:cl)]}r1-(r1{f:me))'
+  />

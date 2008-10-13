@@ -1,0 +1,20 @@
+<?xml version="1.0" standalone="yes"?>
+<!-- row-based table from CML Wiki -->
+ <c:table
+   xmlns:c="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ >
+   <c:tableHeader>
+	    <c:tableHeaderCell dictRef="foo:batch" title="batch id"/>
+	    <c:tableHeaderCell dictRef="foo:mass" units="units:grampermole" title="mass"
+          dataType="xsd:double"/>
+   </c:tableHeader>
+   <c:tableContent>
+ C123   2.35    
+ C127  12.3     
+ D437   1.3E-03 
+ E999   2.7E+03 
+ P333   3.45    
+   </c:tableContent>
+ </c:table>

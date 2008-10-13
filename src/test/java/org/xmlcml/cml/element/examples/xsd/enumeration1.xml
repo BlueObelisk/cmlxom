@@ -1,0 +1,26 @@
+<?xml version="1.0" standalone="yes"?>
+<entry 
+  term="crystal system" id="cryst1" 
+  dataType="xsd:string" title="enumeration1 example"
+    xmlns:h="http://www.w3.org/1999/xhtml" 
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  >
+    <definition>A crystal system</definition>
+    <enumeration value="triclinic">
+        <annotation>
+            <documentation>
+                <h:div class="summary">No constraints on lengths and angles</h:div>-->
+            </documentation>
+        </annotation>
+    </enumeration>
+    <enumeration value="monoclinic">
+        <annotation>
+            <documentation>
+                <h:div class="summary">Two cell angles are right angles; no other constraints</h:div>
+            </documentation>
+        </annotation>
+    </enumeration>
+</entry>
+

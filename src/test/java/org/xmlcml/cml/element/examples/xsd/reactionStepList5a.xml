@@ -1,0 +1,35 @@
+<?xml version="1.0" standalone="yes"?>
+<reactionStepList id="r1" type="consecutive"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+		  <reactionStep>
+   <reaction atomMap="USE_IDS">
+    <reactantList>
+     <reactant>
+         <molecule ref="A"/>
+     </reactant>
+    </reactantList>
+    <productList>
+     <product>
+<molecule ref="B"/>
+     </product>
+    </productList>
+  </reaction>
+ </reactionStep>
+  <reactionStep>
+   <reaction atomMap="USE_IDS">
+    <reactantList>
+     <reactant>
+         <molecule ref="B"/>
+     </reactant>
+    </reactantList>
+    <productList>
+     <product>
+<molecule ref="C"/>
+     </product>
+    </productList>
+  </reaction>
+ </reactionStep>
+  </reactionStepList>

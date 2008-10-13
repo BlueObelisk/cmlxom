@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<table xmlns="http://www.xml-cml.org/schema"
+ tableType="rowBased" id="ttt" rows="3" columns="2">
+ <tableHeader>
+   <tableHeaderCell title="d" dataType="xsd:double"/>
+   <tableHeaderCell title="s" dataType="xsd:string"/>
+ </tableHeader>
+ <tableRowList>
+   <tableRow>
+     <tableCell>1</tableCell>
+     <tableCell>a</tableCell>
+   </tableRow>
+   <tableRow>
+     <tableCell>2</tableCell>
+     <tableCell>b</tableCell>
+   </tableRow>
+   <tableRow>
+     <tableCell>3</tableCell>
+     <tableCell>c</tableCell>
+   </tableRow>
+ </tableRowList>
+</table>

@@ -1,0 +1,11 @@
+<?xml version="1.0" standalone="yes"?>
+<unitType id="energy" name="energy"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+    <dimension id="a1" name="length" power="1"/>
+    <dimension id="a2" name="mass" power="1"/>
+    <dimension id="a3" name="time" power="-1"/>
+</unitType>
+

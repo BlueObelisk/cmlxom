@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule id="new2" convention="cml:PML-basic"
+	xmlns:g="http://www.xml-cml.org/mols/geom1"
+	xmlns="http://www.xml-cml.org/schema">
+	<!--  a star polymer -->
+	<fragment>
+		<molecule ref="g:benzene"></molecule>
+		<fragmentList>
+			<join order="1" moleculeRefs2="PARENT NEXT"
+				atomRefs2="r1 r1">
+				<torsion>100</torsion>
+			</join>
+			<fragment>
+				<molecule ref="g:eo" />
+			</fragment>
+			<join atomRefs2="r2 r1" moleculeRefs2="PREVIOUS NEXT"
+				order="1">
+				<torsion>180</torsion>
+			</join>
+			<fragment countExpression="*(2)">
+				<molecule ref="g:po">
+					<arg name="tor1">
+						<scalar dataType="xsd:string">180</scalar>
+					</arg>
+					<arg name="tor2">
+						<scalar>180</scalar>
+					</arg>
+				</molecule>
+				<join atomRefs2="r2 r1" moleculeRefs2="PREVIOUS NEXT"
+					order="1">
+					<torsion>180</torsion>
+				</join>
+			</fragment>
+			<join order="1" moleculeRefs2="PREVIOUS NEXT"
+				atomRefs2="r2 r1">
+				<torsion>180</torsion>
+			</join>
+			<fragment>
+				<molecule ref="g:137naphthyl" />
+			</fragment>
+		</fragmentList>
+		<fragmentList>
+			<join order="1" moleculeRefs2="PARENT NEXT"
+				atomRefs2="r2 r1">
+				<torsion>100</torsion>
+			</join>
+			<fragment>
+				<molecule ref="g:eo" />
+			</fragment>
+			<join atomRefs2="r2 r1" moleculeRefs2="PREVIOUS NEXT"
+				order="1">
+				<torsion>180</torsion>
+			</join>
+			<fragment countExpression="*(2)">
+				<molecule ref="g:po">
+					<arg name="tor1">
+						<scalar dataType="xsd:string">180</scalar>
+					</arg>
+					<arg name="tor2">
+						<scalar>180</scalar>
+					</arg>
+				</molecule>
+				<join atomRefs2="r2 r1" moleculeRefs2="PREVIOUS NEXT"
+					order="1">
+					<torsion>180</torsion>
+				</join>
+			</fragment>
+			<join order="1" moleculeRefs2="PREVIOUS NEXT"
+				atomRefs2="r2 r1">
+				<torsion>180</torsion>
+			</join>
+			<fragment>
+				<molecule ref="g:137naphthyl" />
+			</fragment>
+		</fragmentList>
+		<fragmentList>
+			<join order="1" moleculeRefs2="PARENT NEXT"
+				atomRefs2="r3 r1">
+				<torsion>100</torsion>
+			</join>
+			<fragment>
+				<molecule ref="g:eo" />
+			</fragment>
+			<join atomRefs2="r2 r1" moleculeRefs2="PREVIOUS NEXT"
+				order="1">
+					<torsion>180</torsion>
+			</join>
+			<fragment countExpression="*(3)">
+				<molecule ref="g:po">
+					<arg name="tor1">
+						<scalar dataType="xsd:string">180</scalar>
+					</arg>
+					<arg name="tor2">
+						<scalar>180</scalar>
+					</arg>
+				</molecule>
+				<join atomRefs2="r2 r1" moleculeRefs2="PREVIOUS NEXT"
+					order="1">
+					<torsion>180</torsion>
+				</join>
+			</fragment>
+
+			<join order="1" moleculeRefs2="PREVIOUS NEXT"
+				atomRefs2="r2 r1">
+				<torsion>180</torsion>
+			</join>
+			<fragment>
+				<molecule ref="g:137naphthyl" />
+			</fragment>
+		</fragmentList>
+		<fragmentList>
+			<join order="1" moleculeRefs2="PARENT NEXT"
+				atomRefs2="r4 r1">
+				<torsion>100</torsion>
+			</join>
+			<fragment>
+				<molecule ref="g:eo" />
+			</fragment>
+			<join atomRefs2="r2 r1" moleculeRefs2="PREVIOUS NEXT"
+				order="1">
+				<torsion>180</torsion>
+			</join>
+			<fragment countExpression="*(2)">
+				<molecule ref="g:po">
+					<arg name="tor1">
+						<scalar dataType="xsd:string">180</scalar>
+					</arg>
+					<arg name="tor2">
+						<scalar>180</scalar>
+					</arg>
+				</molecule>
+				<join atomRefs2="r2 r1" moleculeRefs2="PREVIOUS NEXT"
+					order="1">
+					<torsion>180</torsion>
+				</join>
+			</fragment>
+			<join order="1" moleculeRefs2="PREVIOUS NEXT"
+				atomRefs2="r2 r1">
+				<torsion>180</torsion>
+			</join>
+			<fragment>
+				<molecule ref="g:137naphthyl" />
+			</fragment>
+		</fragmentList>
+		<fragmentList>
+			<join order="1" moleculeRefs2="PARENT NEXT"
+				atomRefs2="r5 r1">
+				<torsion>100</torsion>
+			</join>
+			<fragment>
+				<molecule ref="g:eo" />
+			</fragment>
+			<join atomRefs2="r2 r1" moleculeRefs2="PREVIOUS NEXT"
+				order="1">
+					<torsion>180</torsion>
+			</join>
+			<fragment countExpression="*(3)">
+				<molecule ref="g:po">
+					<arg name="tor1">
+						<scalar dataType="xsd:string">180</scalar>
+					</arg>
+					<arg name="tor2">
+						<scalar>180</scalar>
+					</arg>
+				</molecule>
+				<join atomRefs2="r2 r1" moleculeRefs2="PREVIOUS NEXT"
+					order="1">
+					<torsion>180</torsion>
+				</join>
+			</fragment>
+
+			<join order="1" moleculeRefs2="PREVIOUS NEXT"
+				atomRefs2="r2 r1">
+				<torsion>180</torsion>
+			</join>
+			<fragment>
+				<molecule ref="g:137naphthyl" />
+			</fragment>
+		</fragmentList>
+		<fragmentList>
+			<join order="1" moleculeRefs2="PARENT NEXT"
+				atomRefs2="r6 r1">
+				<torsion>100</torsion>
+			</join>
+			<fragment>
+				<molecule ref="g:eo" />
+			</fragment>
+			<join atomRefs2="r2 r1" moleculeRefs2="PREVIOUS NEXT"
+				order="1">
+				<torsion>180</torsion>
+			</join>
+			<fragment countExpression="*(2)">
+				<molecule ref="g:po">
+					<arg name="tor1">
+						<scalar dataType="xsd:string">180</scalar>
+					</arg>
+					<arg name="tor2">
+						<scalar>180</scalar>
+					</arg>
+				</molecule>
+				<join atomRefs2="r2 r1" moleculeRefs2="PREVIOUS NEXT"
+					order="1">
+					<torsion>180</torsion>
+				</join>
+			</fragment>
+			<join order="1" moleculeRefs2="PREVIOUS NEXT"
+				atomRefs2="r2 r1">
+				<torsion>180</torsion>
+			</join>
+			<fragment>
+				<molecule ref="g:137naphthyl" />
+			</fragment>
+		</fragmentList>
+	</fragment>
+</molecule>

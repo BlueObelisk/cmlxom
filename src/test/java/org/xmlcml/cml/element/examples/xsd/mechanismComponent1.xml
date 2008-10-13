@@ -1,0 +1,12 @@
+<?xml version="1.0" standalone="yes"?>
+<mechanism title="mechanismComponent1: example"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+    <mechanismComponent>
+      <description>
+        The precise order of the formation of the C-X bond and the rupture of C-Y is not known experimentally.
+      </description>
+    </mechanismComponent>
+</mechanism>

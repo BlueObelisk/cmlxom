@@ -1,0 +1,944 @@
+<dictionary 
+  namespace="http://www.uam.es/siesta/namespace"
+  dictionaryPrefix="siesta"
+  title="SIESTA dictionary"
+  xmlns="http://www.xml-cml.org/schema"
+  xmlns:siesta="http://www.uam.es/siesta/namespace"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  >
+  
+  <entry id="fullvol" term="Full cell volume">
+     <annotation>
+       <appinfo>
+         <scalar dataType="xsd:double" unitType="unitType:volume">1</scalar>
+        </appinfo>
+      </annotation>
+    <definition>The full cell volume.</definition>
+    <description>Contrast primitive cell volume which may not reflect the full symmetry.</description>
+  </entry>
+
+ <entry id="Arch" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="broyden_maxit" term="DM.NumberBroyden">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="cellvol" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="cfmax" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="DaC" term="Diag.DivideAndConquer">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="dDtol" term="DM.Tolerance">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="DEna" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="dipol" term="Electric dipole">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="DUext" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="DUext" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="DUscf" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="E_Fermi" term="Fermi Energy">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="E_KS" term="Final KS Energy">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="E_KS_egg" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="Ecorrec" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="Ef" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="Eharrs" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="Eharrs" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="EharrsK" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="Eions" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="Ekin" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="Ekin" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="Ekinion" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="Ekinion" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="Emad" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="Ena" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="EndTime" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="Enl" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="etemp" term="ElectronicTemperature">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="Etot" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="EtotK" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="Exc" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="Exc" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="fixspin" term="FixSpin">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="Flags" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="fmax" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="forces" term="Forces">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="FreeE" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="FreeEK" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="fres" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="ftot" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="g2max" term="MeshCutOff">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="g2mesh" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="I-e" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="I-I" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="maxsav" term="DM.NumberPulay">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="maxscf" term="MaxSCFIterations">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="MD.BulkModulus" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="MD.MaxCGDispl" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="MD.MaxForceTol" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="MD.NumCGSteps" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="MD.TypeOfRun" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="MD.UseSaveCG" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="MemoryFactor" term="Diag.Memory">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="mix" term="DM.MixSCF1">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="Mode" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="negl" term="NeglNonOverlapInt">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="NetCharge" term="NetCharge">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="nkick" term="DM.NumberKick">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="nkpoints" term="Number of k-points">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="Nodes" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="ns" term="NumberOfSpecies">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="ntm" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="occtol" term="DM.OccupancyTolerance">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="pressMol" term="Pressure of Molecule">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="pressSol" term="Pressure of Solid">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="Program" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="pulfile" term="DM.PulayOnFile">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="SCF" term="SCF Cycle">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="SCFmethod" term="SolutionMethod">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="shape" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="slabel" term="SystemLabel">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="sname" term="SystemName">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="StartTime" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="stress" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="ts" term="TotalSpin">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="Uscf" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="usesavedm" term="DM.UseSaveDM">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="verbosity" term="LongOutput">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="Version" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="wmix" term="DM.MixingWeight">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="wmixkick" term="DM.KickMixingWeight">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="WriteDenChar" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+
+ <entry id="WriteMullikenPop" term="...">
+  <annotation>
+   <appinfo>
+  ...
+   </appinfo>
+  </annotation>
+  <definition>...</definition>
+  <description>...</description>
+ </entry>
+ 
+</dictionary>
+

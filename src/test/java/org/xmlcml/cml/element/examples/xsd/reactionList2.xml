@@ -1,0 +1,69 @@
+<?xml version="1.0" standalone="yes"?>
+<cml
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+    <reactionList title="reactionList1: old example - may need reworking" name="H2 + Cl2 (concise)">
+
+        <reaction role="crml:overall">
+            <reactantList>
+                <reactant count="1" ref="h2"/>
+                <reactant count="1" ref="cl2"/>
+            </reactantList>
+            <productList>
+                <product count="2" ref="hcl"/>
+            </productList>
+        </reaction>
+
+        <reaction dictRef="crml:radicalFormation" role="crml:step">
+            <reactantList>
+                <reactant count="1" ref="cl2"/>
+            </reactantList>
+            <productList>
+                <product count="2" ref="cl"/>
+            </productList>
+        </reaction>
+
+        <reaction dictRef="crml:chainPropagation" role="crml:step">
+            <reactantList>
+                <reactant count="1" ref="cl"/>
+                <reactant count="1" ref="h2"/>
+            </reactantList>
+            <productList>
+                <product count="1" ref="h"/>
+                <product count="1" ref="hcl"/>
+            </productList>
+        </reaction>
+
+        <reaction dictRef="crml:chainPropagation" role="crml:step">
+            <reactantList>
+                <reactant count="1" ref="cl2"/>
+                <reactant count="1" ref="h"/>
+            </reactantList>
+            <productList>
+                <product count="1" ref="cl"/>
+                <product count="1" ref="hcl"/>
+            </productList>
+        </reaction>
+    </reactionList>
+
+    <list>
+	    <molecule title="H2" id="h2">
+	        <formula concise="H 2"/>
+	    </molecule>
+	    <molecule id="cl2">
+	        <formula concise="Cl 2"/>
+	    </molecule>
+	    <molecule id="hcl">
+	        <formula concise="H 1 Cl 1"/>
+	    </molecule>
+	    <molecule id="Cl">
+	        <formula concise="Cl 1"/>
+	    </molecule>
+	    <molecule id="H">
+	        <formula concise="H 1"/>
+	    </molecule>
+    </list>
+</cml>
+

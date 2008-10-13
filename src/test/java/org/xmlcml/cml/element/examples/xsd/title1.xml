@@ -1,0 +1,8 @@
+<?xml version="1.0" standalone="yes"?>
+<stmml title="title example" 
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <action title="turn on heat" start="T09:00:00" convention="xsd:date"/>
+</stmml>

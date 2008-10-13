@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule id="branch0" convention="cml:PML-basic"
+	xmlns:g="http://www.xml-cml.org/mols/geom"
+	xmlns="http://www.xml-cml.org/schema">
+	<moleculeList convention="fragmentContainer">
+		<molecule ref="g:oh">
+			<label dictRef="cml:RIGHT">r1</label>
+		</molecule>
+		<join order="1">
+			<length>1.4</length>
+		</join>
+		<molecule ref="g:acryl" countExpression="*(10)">
+			<join order="1">
+				<torsion>150.0</torsion>
+				<length>1.2</length>
+			</join>
+			<moleculeList convention="branch">
+			    <label dictRef="cml:PARENT">r3</label> 
+				<join order="1">
+					<length>1.5</length>
+					<torsion>120.0</torsion>
+				</join>
+				<molecule ref="g:po" countExpression="*(2)">
+					<join order="1">
+						<torsion>150.0</torsion>
+						<length>1.4</length>
+					</join>
+					<label dictRef="cml:LEFT">r1</label>
+					<label dictRef="cml:RIGHT">r2</label>
+				</molecule>
+				<join order="1">
+					<length>1.39</length>
+				</join>
+				<molecule ref="g:me">
+					<label dictRef="cml:LEFT">r1</label>
+				</molecule>
+			</moleculeList>
+			<label dictRef="cml:LEFT">r1</label>
+			<label dictRef="cml:RIGHT">r2</label>
+		</molecule>
+		<join order="1">
+			<length>1.54</length>
+		</join>
+		<molecule ref="g:cl">
+			<label dictRef="cml:LEFT">r1</label>
+		</molecule>
+	</moleculeList>
+</molecule>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<molecule id="dummy2" xmlns="http://www.xml-cml.org/schema"
+  title="dummy atom with two links">
+  <atomArray>
+    <atom id="r1" elementType="R" x3="1.0" y3="0.0" z3="0.0" formalCharge="0" hydrogenCount="0"/>
+    <atom id="r2" elementType="R" x3="0.0" y3="0.0" z3="0.0" formalCharge="0" hydrogenCount="0"/>
+  </atomArray>
+  <bondArray>
+    <bond id="b1" atomRefs2="r1 r2" order="S"/>
+  </bondArray>
+</molecule>

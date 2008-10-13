@@ -1,0 +1,12 @@
+<?xml version="1.0" standalone="yes"?>
+<!-- note that the xsi:Type allows validation by the schema. This works in
+    the STM examples but throws errors when these are included in other schemas.
+    In this case the prefix should be reset to map to the current schema (or STMML
+    types should be specifically included in the schema - I don't yet know how.) 
+-->    
+<region title="continuum" box3="1.0 1.0 1.0 2.0 3.0 4.0"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+/>
+

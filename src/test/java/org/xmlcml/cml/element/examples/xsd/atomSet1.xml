@@ -1,0 +1,24 @@
+<?xml version="1.0" standalone="yes"?>
+<cml
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+<atomSet id="as1" title="Group 7 elements">a2 a3 a4</atomSet>
+<atomSet id="as2" 
+  title="first row elements">a2 a4 a5</atomSet>
+<molecule>
+  <atomArray>
+    <atom id="a1" elementType="C">
+    </atom>
+    <atom id="a2" elementType="Br">
+    </atom>
+    <atom id="a3" elementType="Cl">
+    </atom>
+    <atom id="a4" elementType="F">
+    </atom>
+    <atom id="a5" elementType="C" hydrogenCount="3">
+    </atom>
+  </atomArray>
+</molecule>
+</cml>

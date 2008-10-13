@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<cml 
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:siUnits="http://www.xml-cml.org/units/siUnits"
+   xmlns:units="http://www.xml-cml.org/units/units"
+   xmlns:castep="http://www.materialsgrid.org/castep/namespace"
+   xmlns:cml="http://www.xml-cml.org/dict/cml"
+ >
+ <parameterList id="input" title="Input Parameters">
+  <parameter name="Release" dictRef="castep:release" value="Academic Release" />
+  <parameter name="Version" dictRef="castep:version" value="3.2" />
+  <parameter name="Task" dictRef="castep:task" value="GEOMETRYOPTIMIZATION" />
+  <parameter dictRef="castep:xcFunctional" value="PBE" />
+  <parameter dictRef="castep:cutoff">
+   <scalar units="units:ev">330.000000000
+   </scalar>
+  </parameter>
+  <parameter name="Number of Electrons" dictRef="castep:nElectrons" value="9" />
+  <parameter name="Net Charge" dictRef="castep:netCharge" value=" 0" />
+  <parameter name="Net Spin" dictRef="castep:netSpin" value="1" />
+  <parameter name="Fix Spin" dictRef="castep:fixSpin" value="false" />
+  <parameter name="Fix Occupancy" dictRef="castep:fixOcc" value="false" />
+  <parameter name="MetalsMethod" dictRef="castep:metalsMethod" value="DM" />
+  <parameter name="Geom Method" dictRef="castep:geomMethod" value="BFGS" />
+  <parameterList id="pspots" title="Pseudopotential Files">
+   <parameter name="PSPFile" dictRef="castep:pspFile" value="C_00PBE.usp" />
+   <parameter name="PSPFile" dictRef="castep:pspFile" value="Ta_00PBE.usp" />
+  </parameterList>
+ </parameterList>
+ <module title="Initial System">
+  <molecule>
+   <atomArray>
+    <atom elementType="C" id="a1" xFract="   0.000" yFract="0.000" zFract=" 0.000" />
+    <atom elementType="Ta" id="a2" xFract="   0.500" yFract=" 0.500" zFract=" 0.500" />
+   </atomArray>
+  </molecule>
+  <crystal id="initStruct" dictRef="castep:ucell">
+   <scalar title="a" dictRef="cml:a" units="units:ang"
+    >
+   3.230                                                                                               
+   </scalar>
+   <scalar title="b" dictRef="cml:b" units="units:ang">
+   3.230                                                                                               
+   </scalar>
+   <scalar title="c" dictRef="cml:c" units="units:ang">
+   3.230                                                                                               
+   </scalar>
+   <scalar title="alpha" dictRef="cml:alpha" dataType="xsd:double"
+    units="units:deg">60.000                                                                                              
+   </scalar>
+   <scalar title="beta" dictRef="cml:beta"
+    units="units:deg">60.000                                                                                              
+   </scalar>
+   <scalar title="gamma" dictRef="cml:gamma"
+    units="units:deg">60.000                                                                                              
+   </scalar>
+  </crystal>
+ </module>
+ <module title="Final System">
+  <molecule>
+   <atomArray>
+    <atom elementType="C" id="a1" xFract="   0.000" yFract="0.000" zFract=" 0.000" />
+    <atom elementType="Ta" id="a2" xFract="   0.500" yFract=" 0.500" zFract=" 0.500" />
+   </atomArray>
+  </molecule>
+  <crystal id="initStruct" dictRef="castep:ucell">
+   <scalar title="a" dictRef="cml:a" units="units:ang">
+   3.230                                                                                               
+   </scalar>
+   <scalar title="b" dictRef="cml:b" units="units:ang">
+   3.230                                                                                               
+   </scalar>
+   <scalar title="c" dictRef="cml:c" units="units:ang">
+   3.230                                                                                               
+   </scalar>
+   <scalar title="alpha" dictRef="cml:alpha"
+    units="units:deg">60.000                                                                                              
+   </scalar>
+   <scalar title="beta" dictRef="cml:beta"
+    units="units:deg">60.000                                                                                              
+   </scalar>
+   <scalar title="gamma" dictRef="cml:gamma"
+    units="units:deg">60.000                                                                                              
+   </scalar>
+  </crystal>
+  <property title="Total Energy" dictRef="castep:Etot">
+   <scalar units="units:ev">-2.92669908E+002                                                                                    
+   </scalar>
+  </property>
+ </module>
+ <metadata name="castep:totalTime"
+  content="12.2900000792"
+  convention="siUnits:s" />
+</cml>

@@ -1,0 +1,41 @@
+<?xml version="1.0" standalone="yes"?>
+<cml 
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	id="c1" title="demo of cml subelements"  
+	>
+    <dictionary dictRef="y:d1" href="http://../dict1.xml"/>
+    <unitList dictRef="foo:bar" href="http://../units1.xml"/>
+    <cml>
+        <molecule id="m1"/>
+    </cml>
+    <molecule id="m2" title="dummy"/>
+    <metadata/>
+    <reaction>
+        <reactantList>
+            <reactant>
+                <molecule id="r1"/>
+            </reactant>
+        </reactantList>
+        <productList>
+            <product>
+                <molecule id="p1"/>
+            </product>
+        </productList>
+    </reaction>
+    <spectrum>
+        <spectrumData>
+            <xaxis>
+            <array dataType="xsd:double"/>
+            </xaxis>
+            <yaxis>
+            <array dataType="xsd:double"/>
+            </yaxis>
+        </spectrumData>
+    </spectrum>
+    <substanceList id="subList1"/>
+    <list>
+        <scalar title="some scalar"/>
+    </list>
+</cml>  

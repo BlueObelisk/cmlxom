@@ -1,0 +1,21 @@
+<?xml version="1.0" standalone="yes"?>
+<reactiveCentre title="reactiveCentre1: example"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+ <!-- this example allows the *type* of the atoms and bonds -->
+    <atomTypeList>
+        <atomType dictRef="macie:involvedAtomType" name="C"/>
+        <atomType dictRef="macie:involvedAtomType" name="O"/>
+        <atomType dictRef="macie:involvedAtomType" name="N"/>
+        <atomType dictRef="macie:involvedAtomType" name="H"/>
+    </atomTypeList>
+    <bondTypeList>
+        <bondType dictRef="macie:cleavedBondType" name="C-N"/>
+        <bondType dictRef="macie:cleavedBondType" name="O-H"/>
+        <bondType dictRef="macie:formedBondType" name="C-O"/>
+        <bondType dictRef="macie:formedBondType" name="N-H"/>
+    </bondTypeList>
+</reactiveCentre>
+

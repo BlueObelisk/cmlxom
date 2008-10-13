@@ -1,0 +1,12 @@
+<?xml version="1.0" standalone="yes"?>
+<entry id="a7" 
+term="Allosteric enzyme" 
+title="definition example"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+    <definition>An enzyme that contains a region to which small, regulatory molecules ('effectors') may bind in addition to and separate from the substrate binding site and thereby affect the catalytic activity.</definition>
+    <description>On binding the effector, the catalytic activity of the enzyme towards the substrate may be enhanced, in which case the effector is an activator, or reduced, in which case it is a de-activator or inhibitor.</description>
+</entry>
+

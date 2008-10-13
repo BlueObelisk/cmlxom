@@ -1,0 +1,12 @@
+<?xml version="1.0" standalone="yes"?>
+<cml title="dictionary example 2" 
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+
+<list>
+  <dictionary
+     dictRef="core:dict" href="http://www.foo/dictionary/coreDict.xml"/>
+</list>
+</cml>

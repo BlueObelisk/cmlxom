@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="yes"?>
+<bandList
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <band id="b1" kpoint="0.0 0.5 0.0">
+    <array id="a1" units="units:ev" dictRef="cmlsolid:bandenergy" size="4" dataType="xsd:double">0.45456 1.3455 3.5653 6.3454</array>
+  </band>
+  <band id="b1" kpoint="0.0 1.5 0.0">
+    <array id="a2" units="units:ev" dataType="xsd:double" dictRef="cmlsolid:bandenergy">0.47567 1.2456 3.4365 6.1434</array>
+  </band>
+</bandList>
+

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule id='starPoly1'
+  xmlns='http://www.xml-cml.org/schema'
+  xmlns:f='http://www.xml-cml.org/mols/geom1'
+  convention='cml:PML-concise'
+  formula='(f:benzene
+  [r1-[t(110)]
+     (r2{f:eo}r1-[t(120)])-[t(130)](r1{f:cl)]
+  -[t(140)]{r1{f:et)
+  '
+  />

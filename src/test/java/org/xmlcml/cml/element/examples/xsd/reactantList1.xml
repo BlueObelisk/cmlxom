@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="yes"?>
+<reactantList title="reactantList1: example"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+    <reactant id="r1" count="1" title="HCl">
+        <molecule id="m1" ref="hcl"/>
+    </reactant>
+    <reactant id="r2" count="1" title="NaOH">
+        <molecule id="m2" ref="naoh"/>
+    </reactant>
+</reactantList>
+

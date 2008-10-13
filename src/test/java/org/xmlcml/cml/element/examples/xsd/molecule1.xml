@@ -1,0 +1,22 @@
+<?xml version="1.0" standalone="yes"?>
+<cml title="schematic molecule example" 
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <molecule id="dummyId">
+    <atomArray id="aa1">
+      <atom id="a1" elementType="C" 
+        hydrogenCount="0" x2="6.1964" y2="8.988"/>
+      <atom id="a2" elementType="C" 
+        hydrogenCount="0" x2="6.1964" y2="7.587"/>
+      <atom id="a3" elementType="C" 
+        hydrogenCount="2" x2="4.983" y2="6.887"/>
+    </atomArray>
+    <bondArray id="ba">
+      <bond id="b1" atomRefs2="a1 a2" order="1"/>
+      <bond id="b2" atomRefs2="a2 a3" order="1"/>
+    </bondArray>
+  </molecule>
+</cml>
+

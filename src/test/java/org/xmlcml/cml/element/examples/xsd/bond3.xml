@@ -1,0 +1,35 @@
+<?xml version="1.0" standalone="yes"?>
+<cml title="bondArray example" 
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <molecule>
+  <atomArray>
+    <atom id="a1" elementType="C" hydrogenCount="3"/>
+    <atom id="a2" elementType="N"/>
+    <atom id="a3" elementType="C" hydrogenCount="1"/>
+    <atom id="a4" elementType="C"/>
+    <atom id="a5" elementType="C" hydrogenCount="3"/>
+    <atom id="a6" elementType="Br"/>
+    <atom id="a7" elementType="Cl"/>
+  </atomArray>
+  <bondArray>
+    <bond id="b1" atomRefs2="a3 a2" order="D">
+      <electron bondRef="b1"/>
+      <bondStereo id="bs1">C</bondStereo>
+    </bond>
+    <bond id="b2" atomRefs2="a1 a2" order="1">
+    </bond>
+    <bond id="b3" atomRefs2="a3 a4" order="1">
+    </bond>
+    <bond id="b4" atomRefs2="a4 a5" order="S">
+      <bondStereo id="bs2" convention="MDL:ctfile" conventionValue="6"/>
+    </bond>
+    <bond id="b5" atomRefs2="a4 a6" order="1">
+    </bond>
+    <bond id="b6" atomRefs2="a4 a7" order="1">
+    </bond>
+  </bondArray>
+  </molecule>
+</cml>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<cml 
+ xmlns="http://www.xml-cml.org/schema"
+ xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:siUnits="http://www.xml-cml.org/units/siUnits"
+ xmlns:units="http://www.xml-cml.org/units/units"
+ xmlns:castep="http://www.materialsgrid.org/castep/namespace"
+ xmlns:cml="http://www.xml-cml.org/dict/cmlDict">
+ 
+ <metadata name="castep:filename" content="TaC.xml" />
+ <metadata name="castep:user" content="dan" />
+ <metadata name="castep:date" content="20060120" />
+ <metadata name="castep:host" content="iolith" />
+ <metadata name="castep:version" content=" 4.000" />
+ <metadata name="castep:release" content="Academic" />
+ <metadata name="castep:title" content="CASTEP calculation from Materials Studio" />
+<!--             I N P U T    P A R A M E T E R S           -->
+ <parameterList id="input" title="Input Parameters">
+  <parameter name="Task" dictRef="castep:task" value="GEOMETRYOPTIMIZATION" />
+  <parameter dictRef="castep:xcFunctional" value="PBE" />
+  <parameter dictRef="castep:cutoff">
+   <scalar units="units:ev">330.000000000</scalar>
+  </parameter>
+  <parameter name="Number of Electrons" dictRef="castep:nElectrons" value="9" />
+  <parameter name="Net Charge" dictRef="castep:netCharge" value=" 0" />
+  <parameter name="Net Spin" dictRef="castep:netSpin" value="1" />
+  <parameter name="Spin Polarized" dictRef="castep:spinPolarized" value="false" />
+  <parameter name="Number of Bands" dictRef="castep:nBands" value="9" />
+  <parameter name="Fix Occupancy" dictRef="castep:fixOcc" value="false" />
+  <parameter name="MetalsMethod" dictRef="castep:metalsMethod" value="DM" />
+  <parameter name="Geom Method" dictRef="castep:geomMethod" value="BFGS" />
+ </parameterList>
+ <parameterList id="pspots" title="Pseudopotential Files">
+  <parameter name="PSPFile" dictRef="castep:pspFile" value="C_00PBE.usp" />
+  <parameter name="PSPFile" dictRef="castep:pspFile" value="Ta_00PBE.usp" />
+ </parameterList>
+ <kpointList title="KPoint List" dictRef="castep:kpoint">
+  <kpoint id="kpt1" weight="0.937500000000E-01">-0.125 -0.125 0.125</kpoint>
+  <kpoint id="kpt2" weight="0.312500000000E-01">0.125 0.125 0.125</kpoint>  
+  <kpoint id="kpt3" weight="0.937500000000E-01">-0.375 0.125 0.125</kpoint>
+  <kpoint id="kpt4" weight="0.187500000000">-0.375 -0.125 0.375</kpoint>
+  <kpoint id="kpt5" weight="0.187500000000">-0.375 -0.125 0.125</kpoint>
+  <kpoint id="kpt6" weight="0.937500000000E-01">0.375 0.125 0.125</kpoint>
+  <kpoint id="kpt7" weight="0.937500000000E-01">-0.375 -0.375 0.375</kpoint>
+  <kpoint id="kpt8" weight="0.937500000000E-01">-0.375 -0.375 0.125</kpoint>
+  <kpoint id="kpt9" weight="0.937500000000E-01">0.375 0.375 0.125</kpoint>
+  <kpoint id="kpt10" weight="0.312500000000E-01">0.375 0.375 0.375</kpoint>
+ </kpointList>
+ <module title="Initial System">
+  <molecule>
+   <atomArray>
+    <atom elementType="C" id="a1"
+     xFract="0.000"
+     yFract="0.000"
+     zFract="0.000" />
+    <atom elementType="Ta" id="a2"
+     xFract="0.500"
+     yFract="0.500"
+     zFract="0.500" />
+   </atomArray>
+  </molecule>
+  <crystal id="struct" dictRef="castep:ucell">
+   <scalar title="a" dictRef="cml:a" units="units:ang">
+   3.230
+   </scalar>
+   <scalar title="b" dictRef="cml:b" units="units:ang">
+   3.230
+   </scalar>
+   <scalar title="c" dictRef="cml:c" units="units:ang">
+   3.230
+   </scalar>
+   <scalar title="alpha" dictRef="cml:alpha"
+    units="units:deg">60.000
+   </scalar>
+   <scalar title="beta" dictRef="cml:beta"
+    units="units:deg">60.000
+   </scalar>
+   <scalar title="gamma" dictRef="cml:gamma"
+    units="units:deg">60.000
+   </scalar>
+  </crystal>
+ </module>
+<!--       G E O M E T R Y    O P T I M I Z A T I O N      -->
+ <metadata name="castep:geomConv" content="true" />
+ <module title="Final System">
+  <molecule>
+   <atomArray>
+    <atom elementType="C" id="a1"
+     xFract="0.000"
+     yFract="0.000"
+     zFract="0.000" />
+    <atom elementType="Ta" id="a2"
+     xFract="0.500"
+     yFract="0.500"
+     zFract="0.500" />
+   </atomArray>
+  </molecule>
+  <crystal id="struct" dictRef="castep:ucell">
+   <scalar title="a" dictRef="cml:a" units="units:ang">
+   3.230
+   </scalar>
+   <scalar title="b" dictRef="cml:b" units="units:ang">
+   3.230
+   </scalar>
+   <scalar title="c" dictRef="cml:c" units="units:ang">
+   3.230
+   </scalar>
+   <scalar title="alpha" dictRef="cml:alpha"
+    units="units:deg">60.000
+   </scalar>
+   <scalar title="beta" dictRef="cml:beta"
+    units="units:deg">60.000
+   </scalar>
+   <scalar title="gamma" dictRef="cml:gamma"
+    units="units:deg">60.000
+   </scalar>
+  </crystal>
+ </module>
+<!--              P R O P E R T I E S                      -->
+ <propertyList id="finalProperties" title="Final Properties">
+  <property title="Total Energy" dictRef="castep:Etot">
+   <scalar units="units:ev">-2.92669907E+002
+   </scalar>
+  </property>
+  <property id="finalStress" title="Final Stress Tensor" dictRef="castep:stress">
+   <matrix units="units:gpa" columns="3" rows="3" dataType="xsd:double">
+   -0.011403  0.000000  0.000000
+    0.000000 -0.011403  0.000000
+    0.000000  0.000000 -0.011403
+   </matrix>
+  </property>
+ </propertyList>
+ <metadata name="castep:totalTime" content="     15.13"
+  convention="siUnits:s" />
+</cml>

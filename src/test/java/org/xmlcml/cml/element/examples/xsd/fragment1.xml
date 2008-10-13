@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule id="star1" convention="cml:PML-basic"
+	xmlns:g="http://www.xml-cml.org/mols/geom1"
+	xmlns="http://www.xml-cml.org/schema">
+	<!--  a star polymer -->
+	<fragment>
+		<molecule ref="g:benzene" id="m1" />
+	</fragment>
+	<fragmentList>
+		<join id="j1" order="1" moleculeRefs2="benzene m3" atomRefs2="r1 r1">
+			<length>1.4</length>
+			<angle id="l2.1.1" atomRefs3="a2 r1 r1">115</angle>
+		</join>
+		<fragment>
+			<molecule ref="g:po" id="m3" />
+		</fragment>
+		<join id="j2.1.1" order="1" moleculeRefs2="m3 m4"
+			atomRefs2="r2 r1">
+			<length id="l2.1.1">1.39</length>
+			<torsion id="l2.1.1" atomRefs4="a2 r2 r1 a2">120</torsion>
+		</join>
+	</fragmentList>
+</molecule>

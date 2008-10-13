@@ -1,0 +1,19 @@
+<?xml version="1.0" standalone="yes"?>
+<cml 
+	title="peakList 1 example" 
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+<peakList title="mixed peaks and peakGroups">
+        <peakGroup id="pg1">
+            <peak id="p11"></peak>
+            <peak id="p12"></peak>
+        </peakGroup>
+        <peak id="p21"></peak>
+        <peakGroup id="pg2">
+            <peak id="p22"></peak>
+            <peak id="p23"></peak>
+        </peakGroup>
+    </peakList>
+</cml>

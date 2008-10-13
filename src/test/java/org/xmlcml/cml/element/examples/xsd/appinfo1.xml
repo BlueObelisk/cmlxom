@@ -1,0 +1,12 @@
+<?xml version="1.0" standalone="yes"?>
+<appinfo
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+<!-- contents commented as they have non-CML elements
+  <template match="foo">
+    <callTemplate name="processFoo"/>
+  </template>
+-->  
+</appinfo>

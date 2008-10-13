@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--this is MOPAC-->
+<module id="job" dictRef="mopac:job" title="MOPAC JOB"
+	xmlns="http://www.xml-cml.org/schema"
+	 xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+<!--geout-->
+	<molecule>
+		<atomArray>
+			<atom elementType="H" id="a1" x3="1.0000" y3=".0000" z3=".0000"></atom>
+			<atom elementType="C" id="a2" x3="2.1061" y3=".0000" z3=".0000"></atom>
+			<atom elementType="H" id="a3" x3="2.5373" y3="1.0185" z3=".0000"></atom>
+			<atom elementType="O" id="a4" x3="2.7781" y3="-1.0141" z3=".0000"></atom>
+		</atomArray>
+	</molecule>
+    <basisSet>
+	   <atomicBasisFunction id="a1" n="1" l="0" lm="s" symbol="S" atomRef="a1"/>
+	   <atomicBasisFunction id="a2" n="2" l="0" lm="s" symbol="S" atomRef="a2"/>
+	   <atomicBasisFunction id="a3" n="2" l="1" lm="px" symbol="PX" atomRef="a2"/>
+	   <atomicBasisFunction id="a4" n="2" l="1" lm="py" symbol="PY" atomRef="a2"/>
+	   <atomicBasisFunction id="a5" n="2" l="1" lm="pz" symbol="PZ" atomRef="a2"/>
+	   <atomicBasisFunction id="a6" n="1" l="0" lm="s" symbol="S" atomRef="a3"/>
+	   <atomicBasisFunction id="a7" n="2" l="0" lm="s" symbol="S" atomRef="a4"/>
+	   <atomicBasisFunction id="a8" n="2" l="1" lm="px" symbol="PX" atomRef="a4"/>
+	   <atomicBasisFunction id="a9" n="2" l="1" lm="py" symbol="PY" atomRef="a4"/>
+	   <atomicBasisFunction id="a10" n="2" l="1" lm="pz" symbol="PZ" atomRef="a4"/>
+   </basisSet>
+   <scalar dictRef="cml:pointgroup" title="MOLECULAR POINT GROUP">C2V</scalar>
+
+<!--
+                EIGENVECTORS AND EIGENVALUES ON ITERATION  1
+
+
+
+
+    ROOT NO.    1           2           3           4           5           6
+
+           -37.90004   -20.34372   -13.10423   -12.71709   -12.07969    -7.47084
+  
+  
+  S  H   1   -.08645     -.30627      .28127      .21650      .00000      .51104
+  
+  S  C   2   -.38651     -.67196      .19755      .00002      .00000      .00000
+ PX  C   2   -.12937      .05529     -.29019     -.38339      .00000     -.38138
+ PY  C   2    .19522     -.08345      .43789     -.25407      .00000     -.25274
+ PZ  C   2    .00000      .00000      .00000      .00000      .37511      .00000
+  
+  S  H   3   -.08646     -.30626      .28121     -.21652      .00000     -.51109
+  
+  S  O   4   -.86876      .41200      .13042      .00000      .00000      .00001
+ PX  O   4    .08917      .23508      .39444     -.69478      .00000      .43176
+ PY  O   4   -.13456     -.35475     -.59518     -.46042      .00000      .28617
+ PZ  O   4    .00000      .00000      .00000      .00000      .92698      .00000
+
+
+
+
+    ROOT NO.    7           8           9          10
+
+            -3.44820    -1.14406     -.70572      .56580
+  
+  
+  S  H   1    .00000      .54076      .43797      .16535
+  
+  S  C   2    .00000     -.58544      .00009      .13159
+ PX  C   2    .00000      .02479      .63431      .44787
+ PY  C   2    .00000     -.03716      .42046     -.67572
+ PZ  C   2    .92698      .00000      .00000      .00000
+  
+  S  H   3    .00000      .54056     -.43824      .16523
+  
+  S  O   4    .00000      .09466      .00001     -.22256
+ PX  O   4    .00000     -.13723     -.16033      .25987
+ PY  O   4    .00000      .20700     -.10623     -.39217
+ PZ  O   4   -.37511      .00000      .00000      .00000
+ -->
+	<eigen dictRef="mopac:eig" title="EIGENVECTORS AND EIGENVALUES" orientation="columnVectors">
+		<array title="eigenvalues" size="10" dataType="xsd:double">
+-37.90004 -20.34372 -13.10423 -12.71709 -12.07969 -7.47084 -3.44820 -1.14406 -.70572 .56580
+		</array>
+		<matrix title="eigenvectors" columns="10" rows="10" dataType="xsd:double">
+ -.08645 -.30627  .28127  .21650  .00000  .51104  .00000  .54076  .43797  .16535
+ -.38651 -.67196  .19755  .00002  .00000  .00000  .00000 -.58544  .00009  .13159
+ -.12937  .05529 -.29019 -.38339  .00000 -.38138  .00000  .02479  .63431  .44787
+  .19522 -.08345  .43789 -.25407  .00000 -.25274  .00000 -.03716  .42046 -.67572
+  .00000  .00000  .00000  .00000  .37511  .00000  .92698  .00000  .00000  .00000
+ -.08646 -.30626  .28121 -.21652  .00000 -.51109  .00000  .54056 -.43824  .16523
+ -.86876  .41200  .13042  .00000  .00000  .00001  .00000  .09466  .00001 -.22256
+  .08917  .23508  .39444 -.69478  .00000  .43176  .00000 -.13723 -.16033  .25987
+ -.13456 -.35475 -.59518 -.46042  .00000  .28617  .00000  .20700 -.10623 -.39217
+  .00000  .00000  .00000  .00000  .92698  .00000 -.37511  .00000  .00000  .00000
+		</matrix>
+	</eigen>
+</module>
+

@@ -1,0 +1,19 @@
+<?xml version="1.0" standalone="yes"?>
+<module role="job"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+    <module role="initial">
+  <!-- initial values listed here --></module>
+    <module role="geometryOptimisation">
+        <module title="1"></module>
+        <module title="2"></module>        
+  <!-- ... -->
+        <module title="20"></module>
+        <module role="final">
+    <!-- values on last cycle/module listed here --></module>
+    </module>
+    <module role="final">
+  <!-- final values listed here --></module>
+</module>

@@ -1,0 +1,8 @@
+<?xml version="1.0" standalone="yes"?>
+  <molecule id="sulfuricAcid" title="formula1 example" 
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  >
+    <formula id="f1" concise="H 2 S 1 O 4"/>
+  </molecule>

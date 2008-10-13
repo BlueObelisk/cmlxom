@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule id="naphthyl" convention="cml:PML-basic"
+	xmlns:g="http://www.xml-cml.org/mols/geom1"
+	xmlns="http://www.xml-cml.org/schema">
+	<fragment convention="fragmentContainer">
+		<molecule ref="g:acetoxy"/>
+		<fragmentList>
+  		    <join order="1" moleculeRefs2="PARENT NEXT" atomRefs2="r1 r1"/>
+  		    <fragment>
+				<molecule ref="g:137naphthyl"/>
+				<fragmentList>
+					<join order="1" moleculeRefs2="PARENT NEXT" atomRefs2="r1 r1"/>
+					<fragmentList>
+						<join order="1" moleculeRefs2="PREVIOUS NEXT" atomRefs2="r1 r1"/>
+						<fragment>
+							<molecule ref="g:coxy"/>
+						</fragment>
+					</fragmentList>
+					<join moleculeRefs2="PREVIOUS NEXT" atomRefs2="r1 r1"/>
+				</fragmentList>
+			</fragment>
+			<join order="1" atomRefs2="r1 r1" moleculeRefs2="PARENT NEXT"/>
+			<fragment>
+				<molecule ref="g:et"/>
+			</fragment>
+		</fragmentList>
+	</fragment>
+</molecule>

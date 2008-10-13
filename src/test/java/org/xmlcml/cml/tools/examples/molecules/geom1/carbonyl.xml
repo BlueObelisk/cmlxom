@@ -1,0 +1,18 @@
+<molecule id="carbonyl" xmlns="http://www.xml-cml.org/schema">
+  <atomArray>
+    <atom id="r1"  elementType="R" x3="6.393952073348176" y3="7.481432789999999"  z3="1.3355287286108608" formalCharge="0" hydrogenCount="0">
+        <label dictRef="cml:torsionEnd">r2</label>
+    </atom>
+    <atom id="c1" elementType="C" x3="7.470354790502688" y3="7.21912165"         z3="2.1153032017509776" formalCharge="0" hydrogenCount="0"/>
+    <atom id="o2" elementType="O" x3="7.621770771606594" y3="6.2131009200000005" z3="2.7265105769419966" formalCharge="0" hydrogenCount="0">
+    </atom>
+    <atom id="r2" elementType="R" x3="8.407334871591223" y3="8.375034459999998"  z3="2.09259931555679" formalCharge="0" hydrogenCount="0">
+        <label dictRef="cml:torsionEnd">r1</label>
+    </atom>
+  </atomArray>
+  <bondArray>
+    <bond id="r1-c1"  atomRefs2="r1 c1" order="S"/>
+    <bond id="c1-o2" atomRefs2="c1 o2" order="D"/>
+    <bond id="c1-r2" atomRefs2="c1 r2" order="S"/>
+  </bondArray>
+</molecule>

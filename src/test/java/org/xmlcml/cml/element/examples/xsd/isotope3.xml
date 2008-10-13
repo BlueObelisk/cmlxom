@@ -1,0 +1,21 @@
+<?xml version="1.0" standalone="yes"?>
+<list
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+    <isotopeList id="isoList1">
+        <isotope id="iso1" number="35" elementType="Cl">
+            <abundance id="ab1" min="75.64" max="75.86">75.75</abundance>
+        </isotope>
+        <isotope id="iso2" number="37" elementType="Cl">
+            <abundance id="ab2" min="24.36" max="24.14">24.25</abundance>
+        </isotope>
+    </isotopeList>
+    <molecule>
+        <atomArray>
+            <atom id="a1" elementType="Cl" isotopeListRef="isoList1"/>
+            <atom id="a2" elementType="H"/>
+        </atomArray>
+    </molecule>
+</list>

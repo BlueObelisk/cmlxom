@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<moleculeList
+    xmlns='http://www.xml-cml.org/schema'
+    xmlns:g='http://www.xml-cml.org/mols/geom1'
+>
+  <molecule id='gly1'
+    countExpression="*(3)"
+    convention='cml:PML-concise'
+    formula='(g:oh}r1)-[l(1.40)](r1{g:gly%phi=65,psi=55%}r2-[l(1.40)t(180)])*(4)-[l(1.54)](r1{g:cl)'
+  >
+  <arg name="idx"/>
+  <!--
+  <transform3 substitute=".">
+  1 0 0 {$idx}0
+  0 1 0 20
+  0 0 1 30
+  0 0 0 1
+  </transform3>
+  -->
+  <transform3>
+  1 0 0 10
+  0 1 0 20
+  0 0 1 30
+  0 0 0 1
+  </transform3>
+  </molecule>
+</moleculeList>

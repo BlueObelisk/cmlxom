@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone="yes"?>
+<!-- array-based table from CML Wiki -->
+<cml:table
+   xmlns:cml="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+   <cml:array title="batch number" dictRef="foo:batch" 
+     dataType="xsd:string" delimiter="|"
+     >|C 123|C 127|D 437|E 999|P 333|</cml:array>
+   <cml:array title="mass" dictRef="cml:mass" units="units:gram" 
+     dataType="xsd:double">2.35 12.3 1.3E-03 2.7E+03 3.45</cml:array>
+ </cml:table>

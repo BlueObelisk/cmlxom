@@ -1,0 +1,25 @@
+<?xml version="1.0" standalone="yes"?>
+<cml title="symmetry example 1" 
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+<symmetry pointGroup="C2v" id="s1">
+  <matrix id="e" rows="3" columns="3" dataType="xsd:double" matrixType="rotation33">
+    1 0 0
+    0 1 0
+    0 0 1</matrix>
+  <matrix id="c2" rows="3" columns="3" dataType="xsd:double" matrixType="rotation33">
+    -1 0 0
+    0 -1 0
+    0 0 1</matrix>
+  <matrix id="sx" rows="3" columns="3" dataType="xsd:double" matrixType="rotation33">
+    -1 0 0
+    0 1 0
+    0 0 1</matrix>
+  <matrix id="sy" rows="3" columns="3" dataType="xsd:double" matrixType="rotation33">
+    1 0 0
+    0 -1 0
+    0 0 1</matrix>
+</symmetry>
+</cml>

@@ -1,0 +1,12 @@
+<?xml version="1.0" standalone="yes"?>
+<scalar 
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    dataType="xsd:double" 
+    errorValue="1.0" 
+    errorBasis="observedStandardDeviation" 
+    title="body weight"
+    dictRef="foo:bodywt"
+    units="units:g">34.3</scalar>
+

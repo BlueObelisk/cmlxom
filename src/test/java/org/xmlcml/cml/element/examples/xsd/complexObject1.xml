@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="yes"?>
+<complexObject id="co1"
+	xmlns="http://www.xml-cml.org/schema"
+	 xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+<!-- complexObject can hold any combination of element children,
+  here it has an eigen and a molecule; (it doesn't make chemical sense) -->
+  <eigen xmlns="http://www.xml-cml.org/schema" orientation="rowVectors">
+    <array dataType="xsd:double">1 2 3</array>
+    <matrix dataType="xsd:double" rows="3" columns="3">1 2 3 4 5 6 7 8 9</matrix>
+  </eigen>
+  <molecule title="benzene"/>
+</complexObject>

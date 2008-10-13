@@ -1,0 +1,66 @@
+<?xml version="1.0" standalone="yes"?>
+<reaction id="r1"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+	<reactantList>
+		<reactant>
+			<molecule id="formic">
+				<atomArray>
+					<atom elementType="C" id="c1" hydrogenCount="1"/>
+					<atom elementType="O" id="o1" hydrogenCount="1"/>
+					<atom elementType="O" id="o2" hydrogenCount="0"/>
+				</atomArray>
+				<bondArray>
+					<bond id="b1" atomRefs2="c1 o1" order="S"/>
+					<bond id="b2" atomRefs2="c1 o2" order="D"/>
+				</bondArray>
+			</molecule>
+		</reactant>
+		<reactant>
+			<molecule id="methanol">
+				<atomArray>
+					<atom elementType="C" id="c1" hydrogenCount="3"/>
+					<atom elementType="O" id="o1" hydrogenCount="1"/>
+				</atomArray>
+				<bondArray>
+					<bond id="b1" atomRefs2="c1 o1" order="S"/>
+				</bondArray>
+			</molecule>
+		</reactant>
+	</reactantList>
+	<productList>
+			<product>
+				<molecule id="meformate">
+					<atomArray>
+						<atom elementType="C" id="c1" hydrogenCount="3"/>
+						<atom elementType="C" id="c2" hydrogenCount="1"/>
+						<atom elementType="O" id="o1" hydrogenCount="1"/>
+						<atom elementType="O" id="o2" hydrogenCount="0"/>
+					</atomArray>
+					<bondArray>
+						<bond id="b1" atomRefs2="c1 o1" order="S"/>
+						<bond id="b2" atomRefs2="c2 o1" order="S"/>
+						<bond id="b3" atomRefs2="c2 o2" order="D"/>
+					</bondArray>
+				</molecule>
+			</product>
+			<product>
+				<molecule id="water" formula="H 2 O 1"/>
+			</product>
+		</productList>
+		<conditionList>
+				<scalar dictRef="cml:temp" units="cml:Celsius">70</scalar>
+				<scalar dictRef="cml:timeDuration" units="xsd:date">04:00</scalar>
+		</conditionList>
+		<substanceList>
+			<substance role="solvent" dictRef="cmlSolvent:water">
+				<name>water</name>
+				</substance>
+			<substance role="catalyst" dictRef="cmlSubstance:acid">
+			<name>H+</name>
+			</substance>
+		</substanceList>
+	</reaction>
+

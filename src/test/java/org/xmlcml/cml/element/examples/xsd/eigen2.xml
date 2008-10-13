@@ -1,0 +1,41 @@
+<?xml version="1.0" standalone="yes"?>
+<list
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <!-- I'll get some meaningful values some time -->
+<eigen id="eig1" title="vibration" dictRef="cml:normalModes" 
+  type="molecularVibration" orientation="rowVectors">
+  <array id="eigval" dataType="xsd:double">0. 0. 0. 0. 0. 0. 1. 2. 3.</array>
+  <matrix id="eigvec" dataType="xsd:double" rows="3" columns="3">
+   0  0  0  0  0  0  0  0  0
+   0  0  0  0  0  0  0  0  0
+   0  0  0  0  0  0  0  0  0
+   0  0  0  0  0  0  0  0  0
+   0  0  0  0  0  0  0  0  0
+   0  0  0  0  0  0  0  0  0
+  01 02 03 04 05 06 07 08 09
+  11 12 13 14 15 16 17 18 19
+  21 22 23 24 25 26 27 28 29
+  </matrix>
+</eigen>
+<molecule id="HOCl" title="hypochlorous acid">
+<atomArray>
+  <atom id="a1" elementType="H" x3="0.1" y3="0.2" z3="0.3"/>
+  <atom id="a2" elementType="O" x3="0.4" y3="0.5" z3="0.6"/>
+  <atom id="a3" elementType="Cl" x3="0.7" y3="0.8" z3="0.3"/>
+</atomArray>
+</molecule>
+<map title="phil's assignment" id="phil">
+  <link from="HOCl" fromType="molecule" to="eig1" toType="eigen"/>
+  <link from="a1" fromType="atom" to="eigval.8" toType="array"/>
+  <link from="a2" fromType="atom" to="eigval.7" toType="array"/>
+  <link from="a3" fromType="atom" to="eigval.9" toType="array"/>
+</map>
+<map title="peter's assignment" id="pet">
+  <link from="HOCl" fromType="molecule" to="eig1" toType="eigen"/>
+  <link from="a1" fromType="atom" to="eigval.7" toType="array"/>
+</map>
+</list>
+

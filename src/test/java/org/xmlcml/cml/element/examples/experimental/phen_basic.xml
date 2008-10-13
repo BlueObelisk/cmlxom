@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule id="star" convention="cml:PML-basic"
+	xmlns:g="http://www.xml-cml.org/mols/geom1"
+	xmlns="http://www.xml-cml.org/schema">
+	<fragment convention="branch" id="fl2">
+		<molecule ref="g:benzene" id="m3">
+		  <label dictRef="cml:LEFT">r1</label>
+		  <label dictRef="cml:RIGHT">r4</label>
+		</molecule>
+		<join id="j2.1.1" order="1">
+			<length id="l2.1.1">1.39</length>
+		</join>
+		<molecule ref="g:me" id="m4">
+		  <label dictRef="cml:LEFT">r1</label>
+			    </molecule>
+	</fragment>
+	
+	<moleculeList convention="fragmentContainer">
+		<molecule ref="g:benzene" id="m2">
+			<fragment ref="f12" convention="branch" id="fl2a">
+			    <label dictRef="cml:PARENT">r1</label> 
+				<join id="j2.1" order="1">
+					<length id="l2.1">1.5</length>
+					<torsion id="t2.1">120.0</torsion>
+				</join>
+			</fragment>
+			<fragment convention="branch" id="m42" ref="f12">
+			    <label dictRef="cml:PARENT">r3</label> 
+				<join id="j2.1" order="1">
+					<length id="l2.1">1.5</length>
+					<torsion id="t2.1">120.0</torsion>
+				</join>
+			</fragment>
+			<fragment convention="branch" id="m62" ref="f12">
+			    <join>
+				    <label dictRef="cml:MOL">m2</label> 
+				    <label dictRef="cml:ATOM">r5</label> 
+			    </join>
+			</fragment>
+		</molecule>
+	</moleculeList>
+</molecule>

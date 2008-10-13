@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone="yes"?>
+<spectatorList title="spectatorList1: example"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+    <spectator role="organic phase">
+        <molecule title="benzene"/>
+    </spectator>
+    <spectator role="aqueous phase">
+        <molecule title="water"/>
+    </spectator>
+</spectatorList>

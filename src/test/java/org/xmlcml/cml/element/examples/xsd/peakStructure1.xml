@@ -1,0 +1,46 @@
+<?xml version="1.0" standalone="yes"?>
+<cml
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+
+    <!-- Ha ... Hb ... Hc1, Hc2 -->
+    <molecule id="m1">
+      <atomArray>
+        <atom id="a1" elementType="H">
+          <label value="Ha"/>
+        </atom>
+        <atom id="a2" elementType="H">
+          <label value="Hb"/>
+        </atom>
+        <atom id="a3" elementType="H">
+          <label value="Hc1"/>
+        </atom>
+        <atom id="a4" elementType="H">
+          <label value="Hc2"/>
+        </atom>
+      </atomArray>
+    </molecule>
+	<spectrum id="spectrum2" title="test peaks">
+	    <peakList>
+		    <peak id="p1" title="Ha" atomRefs="a1"
+		        peakShape="sharp" xUnits="unit:ppm" xValue="6.0">
+		        <peakStructure type="coupling" peakMultiplicity="nmr:doublet11" 
+		           value="12" units="unit:hertz" atomRefs="a2"/> 
+			</peak>            
+		    <peak id="p2" title="Hb" atomRefs="a2" 
+		        peakShape="sharp" xUnits="unit:ppm" xValue="7.0">
+		        <peakStructure type="coupling" peakMultiplicity="nmr:doublet11" 
+		           value="12" units="unit:hertz" atomRefs="a1"/> 
+		        <peakStructure type="coupling" peakMultiplicity="nmr:triplet121" 
+		           value="15" units="unit:hertz" atomRefs="a3 a4"/> 
+			</peak>            
+		    <peak id="p3" title="Hc" atomRefs="a3 a4"
+		        peakShape="sharp" xUnits="unit:ppm" xValue="8.0">
+		        <peakStructure type="coupling" peakMultiplicity="nmr:doublet11" 
+		           value="15" units="unit:hertz" atomRefs="a2"/> 
+			</peak>            
+	    </peakList>
+	</spectrum>
+</cml>

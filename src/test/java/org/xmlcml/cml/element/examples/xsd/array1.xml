@@ -1,0 +1,7 @@
+<?xml version="1.0" standalone="yes"?>
+<array size="5" title="array1 example" dataType="xsd:double"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>1.23 2.34 3.45 4.56 5.67</array>
+

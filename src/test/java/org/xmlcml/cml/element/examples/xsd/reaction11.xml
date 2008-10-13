@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="yes"?>
+<reaction id="r1"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+	<reactantList>
+		<reactant ref="A"/>
+		<reactant ref="C" role="reagent"/>
+	</reactantList>
+	<productList>
+		<product ref="B"/>
+	</productList>
+</reaction>
+

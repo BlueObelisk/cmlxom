@@ -1,0 +1,11 @@
+<?xml version="1.0" standalone="yes"?>
+<cml 
+  title="BING-2: a layered tin--oxalate potassium fluoride, Sn(C~2~O~4~)KF"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:iucr="http://www.iucr.org">
+	<formula convention="iucr:_chemical_formula_sum" inline="C2 F K O4 Sn"/>
+	<formula convention="iucr:_chemical_formula_structural" inline="Sn (C2 O4) K F"/>
+	<formula convention="iucr:_chemical_formula_iupac" inline="[Sn (C2 O4)] K F"/>
+</cml>
