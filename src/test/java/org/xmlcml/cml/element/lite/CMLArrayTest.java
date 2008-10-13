@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.xmlcml.cml.attribute.DelimiterAttribute;
 import org.xmlcml.cml.attribute.DelimiterAttribute.Action;
 import org.xmlcml.cml.base.CMLBuilder;
-import org.xmlcml.cml.element.main.NumericTest;
+import org.xmlcml.cml.element.main.NumericTestBase;
 import org.xmlcml.euclid.test.DoubleTestBase;
 import org.xmlcml.euclid.test.IntTest;
 import org.xmlcml.euclid.test.StringTestBase;
@@ -19,7 +19,7 @@ import org.xmlcml.euclid.test.StringTestBase;
  * @author pmr
  *
  */
-public class CMLArrayTest extends NumericTest {
+public class CMLArrayTest extends NumericTestBase {
 
     final static double EPS = 0.0000000001;
 
