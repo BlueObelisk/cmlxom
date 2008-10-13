@@ -1,0 +1,24 @@
+<?xml version="1.0" standalone="yes"?>
+<!--
+<actionList title="actionLIst1: boiling two eggs for breakfast"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+-->
+<actionList title="actionLIst1: boiling two eggs for breakfast"
+   xmlns="http://www.xml-cml.org/schema"
+>
+  <!-- start cooking at 9am -->
+  <action id="a1" title="turn on heat" start="T09:00:00" convention="xsd:date"/>
+  <!-- human readable description of time to start action -->
+  <action id="a2" title="put egg into pan" startCondition="water is boiling" count="2"/>
+  <!-- the duration is expressed in ISO8601 format -->
+  <action id="a3" title="boil eggs for 4 minutes" duration="04:00"/>
+  <!-- action immediately follows last action -->
+  <action id="a4" title="remove egg from pan" count="1"/>
+  <action id="a5" title="boil second egg for a bit longer" duration="about half a minute"/>
+  <!-- action immediately follows last action -->
+  <action id="a6" title="remove egg from pan" count="1"/>
+</actionList>
+

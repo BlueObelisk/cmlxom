@@ -1,0 +1,20 @@
+<table id="ttt" columns="2" rows="3" tableType="rowBased" xmlns="http://www.xml-cml.org/schema">
+  <tableHeader>
+    <tableHeaderCell title="d" dataType="xsd:double"/>
+    <tableHeaderCell title="s" dataType="xsd:string"/>
+  </tableHeader>
+  <tableRowList>
+    <tableRow>
+      <tableCell>1.0</tableCell>
+      <tableCell>a</tableCell>
+    </tableRow>
+    <tableRow>
+      <tableCell>2.0</tableCell>
+      <tableCell>b</tableCell>
+    </tableRow>
+   <tableRow>
+     <tableCell>3.0</tableCell>
+     <tableCell>c</tableCell>
+   </tableRow>
+  </tableRowList>
+</table>

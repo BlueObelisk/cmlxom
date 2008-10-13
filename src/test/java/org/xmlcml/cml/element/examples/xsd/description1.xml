@@ -1,0 +1,16 @@
+<?xml version="1.0" standalone="yes"?>
+  <description  
+  title="description1 example" 
+  objectClass="example"
+     xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>In general, an enzyme catalyzes only one
+reaction type (reaction selectivity) and operates on only one type
+of substrate (substrate selectivity). Substrate molecules are
+transformed at the same site (regioselectivity) and only one or
+preferentially one of chiral a substrate or of a racemate is
+transformed (enantioselectivity[special form of
+stereoselectivity]).
+  </description>
+

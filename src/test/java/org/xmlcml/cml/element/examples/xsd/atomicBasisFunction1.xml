@@ -1,0 +1,26 @@
+<?xml version="1.0" standalone="yes"?>
+<basisSet title="6-311(d) with 18 components including unsplit d"
+   xmlns="http://www.xml-cml.org/schema"
+	 xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    >
+    <atomicBasisFunction id="orb1" n="1" lm="s" symbol="s" atomRef="a1"/>
+    <atomicBasisFunction id="orb2" n="2" lm="s" symbol="s" atomRef="a1"/>
+    <atomicBasisFunction id="orb3" n="2" lm="s" symbol="s'" atomRef="a1"/>
+    <atomicBasisFunction id="orb4" n="2" lm="s" symbol="s''" atomRef="a1"/>
+    <atomicBasisFunction id="orb5" n="2" symbol="px" atomRef="a1"/>
+    <atomicBasisFunction id="orb6" n="2" symbol="px'" atomRef="a1"/>
+    <atomicBasisFunction id="orb7" n="2" symbol="px''" atomRef="a1"/>
+    <atomicBasisFunction id="orb8" n="2" symbol="py" atomRef="a1"/>
+    <atomicBasisFunction id="orb9" n="2" symbol="py'" atomRef="a1"/>
+    <atomicBasisFunction id="orb10" n="2" symbol="py''" atomRef="a1"/>
+    <atomicBasisFunction id="orb11" n="2" symbol="pz" atomRef="a1"/>
+    <atomicBasisFunction id="orb12" n="2" symbol="pz'" atomRef="a1"/>
+    <atomicBasisFunction id="orb13" n="2" symbol="pz''" atomRef="a1"/>
+    <atomicBasisFunction id="orb14" n="3" symbol="dxy" atomRef="a1"/>
+    <atomicBasisFunction id="orb15" n="3" symbol="dxz" atomRef="a1"/>
+    <atomicBasisFunction id="orb16" n="3" symbol="dyz" atomRef="a1"/>
+    <atomicBasisFunction id="orb17" n="3" symbol="dx2y2" atomRef="a1"/>
+    <atomicBasisFunction id="orb18" n="3" symbol="dz2" atomRef="a1"/>
+</basisSet>
+

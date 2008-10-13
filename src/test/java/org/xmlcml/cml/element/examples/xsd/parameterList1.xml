@@ -1,0 +1,22 @@
+<?xml version="1.0" standalone="yes"?>
+<parameterList
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:gulp="http://foo.gulp">
+    <parameter id="p1" role="ccml:keyword" dictRef="gulp:optimize"
+xmlns:gulp="http://foo.gulp"/>
+    <parameter id="p2" role="ccml:keyword" dictRef="gulp:conp"
+xmlns:gulp="http://foo.gulp"/>
+    <parameter id="p3" role="ccml:keyword" dictRef="gulp:property"
+xmlns:gulp="http://foo.gulp"/>
+    <parameter id="p4" role="ccml:keyword" dictRef="gulp:phonon"
+xmlns:gulp="http://foo.gulp"/>
+    <parameter id="p5" role="ccml:keyword" dictRef="gulp:bond"
+xmlns:gulp="http://foo.gulp"/>
+    <parameter id="p6" role="ccml:keyword" dictRef="gulp:angle"
+xmlns:gulp="http://foo.gulp"/>
+    <parameter id="p7" role="ccml:keyword" dictRef="gulp:compare"
+xmlns:gulp="http://foo.gulp"/>
+</parameterList>
+

@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<molecule xmlns="http://www.xml-cml.org/schema" id="phenylethane">
+ <atomArray>
+  <atom id="a1" elementType="C" x3="2.740000" y3="0.001000" z3="0.725000">
+       <label dictRef="cml:torsionEnd">r2</label>
+  </atom>
+  <atom id="a2" elementType="C" x3="1.962000" y3="-0.001000" z3="-0.592000">
+       <label dictRef="cml:torsionEnd">r1</label>
+  </atom>
+  <atom id="a3" elementType="C" x3="0.483000" y3="-0.001000" z3="-0.302000"/>
+  <atom id="a4" elementType="C" x3="-0.195000" y3="1.197000" z3="-0.171000"/>
+  <atom id="a5" elementType="C" x3="-1.551000" y3="1.197000" z3="0.095000"/>
+  <atom id="a6" elementType="C" x3="-2.230000" y3="0.001000" z3="0.230000"/>
+  <atom id="a7" elementType="C" x3="-1.552000" y3="-1.197000" z3="0.098000"/>
+  <atom id="a8" elementType="C" x3="-0.196000" y3="-1.197000" z3="-0.173000"/>
+  <atom id="a9" elementType="H" x3="2.483000" y3="0.892000" z3="1.298000"/>
+  <atom id="a10" elementType="H" x3="2.482000" y3="-0.888000" z3="1.301000"/>
+  <atom id="r1" elementType="R" x3="3.810000" y3="0.000000" z3="0.515000"/>
+  <atom id="r2" elementType="R" x3="2.220000" y3="0.888000" z3="-1.168000"/>
+  <atom id="a13" elementType="H" x3="2.219000" y3="-0.892000" z3="-1.165000"/>
+  <atom id="a14" elementType="H" x3="0.335000" y3="2.132000" z3="-0.276000"/>
+  <atom id="a15" elementType="H" x3="-2.081000" y3="2.133000" z3="0.198000"/>
+  <atom id="a16" elementType="H" x3="-3.290000" y3="0.001000" z3="0.438000"/>
+  <atom id="a17" elementType="H" x3="-2.082000" y3="-2.132000" z3="0.203000"/>
+  <atom id="a18" elementType="H" x3="0.333000" y3="-2.133000" z3="-0.276000"/>
+ </atomArray>
+ <bondArray>
+  <bond atomRefs2="a1 a2" order="1"/>
+  <bond atomRefs2="a1 a9" order="1"/>
+  <bond atomRefs2="a1 a10" order="1"/>
+  <bond atomRefs2="a1 r1" order="1"/>
+  <bond atomRefs2="a2 a3" order="1"/>
+  <bond atomRefs2="a2 r2" order="1"/>
+  <bond atomRefs2="a2 a13" order="1"/>
+  <bond atomRefs2="a3 a8" order="2"/>
+  <bond atomRefs2="a3 a4" order="1"/>
+  <bond atomRefs2="a4 a5" order="2"/>
+  <bond atomRefs2="a4 a14" order="1"/>
+  <bond atomRefs2="a5 a6" order="1"/>
+  <bond atomRefs2="a5 a15" order="1"/>
+  <bond atomRefs2="a6 a7" order="2"/>
+  <bond atomRefs2="a6 a16" order="1"/>
+  <bond atomRefs2="a7 a8" order="1"/>
+  <bond atomRefs2="a7 a17" order="1"/>
+  <bond atomRefs2="a8 a18" order="1"/>
+ </bondArray>
+ <torsion atomRefs4="r1 a1 a2 r2" id="main"></torsion>
+ <torsion atomRefs4="a1 a2 a3 a4" id="side"></torsion>
+</molecule>

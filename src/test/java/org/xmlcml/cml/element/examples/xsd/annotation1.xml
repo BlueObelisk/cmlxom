@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="yes"?>
+<list 
+title="actionList example 2" 
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+    <entry term="matrix" >
+        <annotation>
+            <documentation><!--This refers to mathematical matrices--></documentation>
+            <appinfo><!-- ...some code to describe and support matrices ... --></appinfo>
+        </annotation>
+    </entry>
+</list>

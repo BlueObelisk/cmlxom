@@ -1,0 +1,27 @@
+<?xml version="1.0" standalone="yes"?>
+<reaction title="reaction7: permanganate half-reaction"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+    <reactantList>
+        <reactant id="r1" count="1">
+            <formula id="f1" formalCharge="-1" concise="Mn 1 O 4"/>
+        </reactant>
+        <reactant id="r2" count="8">
+            <formula id="f2" formalCharge="1" concise="H 1"/>
+        </reactant>
+        <reactant id="r3" count="5">
+            <electron/>
+        </reactant>
+    </reactantList>
+    <productList>
+        <product id="p1" count="4">
+            <formula id="f3" concise="H 2 O 1"/>
+        </product>
+        <product id="p2" count="1">
+            <formula id="f4" formalCharge="2" concise="Mn 1"/>
+        </product>
+    </productList>
+</reaction>
+

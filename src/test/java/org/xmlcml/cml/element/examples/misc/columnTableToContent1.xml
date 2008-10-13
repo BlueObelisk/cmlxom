@@ -1,0 +1,7 @@
+<table id="ttt" columns="2" rows="3" tableType="contentBased" xmlns="http://www.xml-cml.org/schema"> 
+  <tableHeader>
+    <tableHeaderCell title="d" dataType="xsd:double"/>
+    <tableHeaderCell title="s" dataType="xsd:string"/>
+  </tableHeader>
+  <tableContent>1.0 a 2.0 b 3.0 c</tableContent>
+</table>

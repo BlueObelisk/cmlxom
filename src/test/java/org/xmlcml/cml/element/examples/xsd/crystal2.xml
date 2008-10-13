@@ -1,0 +1,25 @@
+<?xml version="1.0" standalone="yes"?>
+<molecule
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <crystal>
+    <scalar id="s1" dictRef="cml:cryst.a">9.4620</scalar>
+    <scalar id="s2" dictRef="cml:cryst.b">8.3920</scalar>
+    <scalar id="s3" dictRef="cml:cryst.c">5.2210</scalar>
+    <scalar id="s4" dictRef="cml:cryst.alpha">90.0000</scalar>
+    <scalar id="s5" dictRef="cml:cryst.beta">110.1800</scalar>
+    <scalar id="s6" dictRef="cml:cryst.gamma">90.0000</scalar>
+    <symmetry spaceGroup="C 2/C" convention="gulp:gulp"/>
+  </crystal>
+  <atomArray>
+    <atom id="a1" elementType="Li" xFract="0.0000" yFract="0.2747" zFract="0.2500"/>
+    <atom id="a2" elementType="Al" xFract="0.0000" yFract="0.9067" zFract="0.2500"/>
+    <atom id="a3" elementType="Si" xFract="0.2941" yFract="0.0935" zFract="0.2560"/>
+    <atom id="a4" elementType="O" xFract="0.1097" yFract="0.0823" zFract="0.1406"/>
+    <atom id="a5" elementType="O" xFract="0.3647" yFract="0.2671" zFract="0.3005"/>
+    <atom id="a6" elementType="O" xFract="0.3566" yFract="0.9867" zFract="0.0583"/>
+  </atomArray>
+</molecule>
+

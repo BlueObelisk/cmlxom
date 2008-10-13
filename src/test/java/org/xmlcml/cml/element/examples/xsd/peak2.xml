@@ -1,0 +1,31 @@
+<?xml version="1.0" standalone="yes"?>
+<cml 
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+    <!-- a simple NMR spectrum with 2 peaks with 2 couplings but no assignments;
+    we might presume that ps11 and ps21 are the same coupling -->
+	<spectrum id="spectrum2" title="test peaks">
+	    <peakList>
+		    <peak id="p1" title="unassigned" 
+		        peakShape="sharp" xUnits="unit:ppm" xValue="6.0">
+		        <peakStructure id="ps11" type="coupling" peakMultiplicity="nmr:doublet11" 
+		           value="10" units="unit:hertz">
+		        </peakStructure>		        
+		        <peakStructure id="ps12" type="coupling" peakMultiplicity="nmr:doublet11" 
+		           value="2" units="unit:hertz">
+		        </peakStructure>		        
+			</peak>            
+		    <peak id="p2" title="unassigned" 
+		        peakShape="sharp" xUnits="unit:ppm" xValue="7.0">
+		        <peakStructure id="ps21" type="coupling" peakMultiplicity="nmr:doublet11" 
+		           value="10" units="unit:hertz">
+		        </peakStructure>		        
+		        <peakStructure id="ps22" type="coupling" peakMultiplicity="nmr:doublet11" 
+		           value="2" units="unit:hertz">
+		        </peakStructure>		        
+			</peak>            
+	    </peakList>
+	</spectrum>
+</cml>

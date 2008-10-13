@@ -1,0 +1,10 @@
+<?xml version="1.0" standalone="yes"?>
+<molecule id="m1" 
+   xmlns="http://www.xml-cml.org/schema"
+   xmlns:units="http://www.xml-cml.org/units/units"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <atomArray atomID="a1 a2 a3 a4"/>
+  <torsion atomRefs4="a4 a2 a3 a1" units="units:degrees">123</torsion>
+</molecule>

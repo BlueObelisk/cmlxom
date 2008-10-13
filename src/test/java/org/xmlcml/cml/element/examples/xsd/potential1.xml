@@ -1,0 +1,31 @@
+<?xml version="1.0" standalone="yes"?>
+<!--  Li c O  c Buckingham 0.115E+04 0.280     .000E+00 .000E+00   0.000 10.000-->
+<potential 
+form="gulp:buckingham" 
+   xmlns:units="http://www.xml-cml.org/dict/units"
+   xmlns:gulp="http://foo.gulp"  
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   >
+    <arg id="a1" name="atom1">
+        <atom id="at1">
+          <atomType dictRef="gulp:at" ref="li" xmlns:gulp="http://foo.gulp"/>
+        </atom>
+    </arg>
+    <arg id="a2" name="atom2">
+        <atom id="at2">
+          <atomType dictRef="gulp:at" ref="o" xmlns:gulp="http://foo.gulp"/>
+        </atom>
+    </arg>
+    <arg id="a3" dictRef="gulp:buckingham" ref="a" xmlns:gulp="http://foo.gulp">
+        <scalar id="sc1" units="units:ev">0.115E+04</scalar>
+    </arg>
+    <arg id="a4" dictRef="gulp:buckingham" ref="b" xmlns:gulp="http://foo.gulp">
+        <scalar id="sc2" units="units:ang">0.280</scalar>
+    </arg>
+    <arg id="a5" dictRef="gulp:buckingham" ref="c" xmlns:gulp="http://foo.gulp">
+        <scalar id="sc3" units="units:ev">.000E+00</scalar>
+    </arg>
+</potential>
+

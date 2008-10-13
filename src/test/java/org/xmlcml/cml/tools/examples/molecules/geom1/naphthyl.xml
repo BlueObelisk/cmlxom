@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule 
+   id="naphthyl" 
+   xmlns="http://www.xml-cml.org/schema">
+   
+<atomArray>
+<atom id="a5" elementType="C" x3="9.526706134000763" y3="3.869733600000001" z3="5.213518402229052"/>
+<atom id="a15" elementType="C" x3="9.658377850315036" y3="4.890678600000001" z3="4.2618586198839825"/>
+<atom id="a16" elementType="R" x3="9.18146632660692" y3="4.837167000000002" z3="3.465738512269756"/>
+<atom id="a17" elementType="C" x3="10.243299413197152" y3="3.932398500000001" z3="6.439022942911609"/>
+<atom id="a19" elementType="C" x3="8.713504556428543" y3="2.7185301000000006" z3="5.01720505576243"/>
+<atom id="r2" elementType="R" x3="8.116568255931158" y3="2.6034801600000006" z3="3.7527655209748545"/>
+<atom id="a10" elementType="C" x3="10.491072726671215" y3="5.986258200000001" z3="4.489040494103986"/>
+<atom id="r1" elementType="R" x3="10.624951231527067" y3="6.993121200000001" z3="3.577990939429112"/>
+<atom id="a24" elementType="C" x3="11.208156403321286" y3="6.033432900000001" z3="5.720399246491032"/>
+<atom id="a25" elementType="R" x3="11.776894850231816" y3="6.748798500000001" z3="5.891032333270568"/>
+<atom id="a11" elementType="C" x3="10.119474056141831" y3="2.9008920000000007" z3="7.3834992125284815"/>
+<atom id="a12" elementType="R" x3="10.590133012315471" y3="2.957220000000001" z3="8.182994008410487"/>
+<atom id="a18" elementType="C" x3="9.320371405363035" y3="1.8151698000000005" z3="7.151684115065878"/>
+<atom id="r3" elementType="R" x3="9.24448239940537" y3="0.7583157000000007" z3="8.186451741296416"/>
+<atom id="a13" elementType="C" x3="8.610030693701125" y3="1.7243409000000007" z3="5.934289686115539"/>
+<atom id="a14" elementType="R" x3="8.073168081280086" y3="0.9857400000000007" z3="5.761234060127699"/>
+<atom id="a20" elementType="C" x3="11.076362087643593" y3="5.054733900000001" z3="6.646952938409981"/>
+<atom id="a21" elementType="R" x3="11.54886003426855" y3="5.123735700000001" z3="7.446014640683818"/>
+</atomArray>
+<bondArray>
+<bond atomRefs2="a5 a15" id="a5_a15" order="1"/>
+<bond atomRefs2="a5 a17" id="a5_a17" order="2"/>
+<bond atomRefs2="a5 a19" id="a5_a19" order="1"/>
+<bond atomRefs2="a10 a15" id="a10_a15" order="2"/>
+<bond atomRefs2="a15 a16" id="a15_a16" order="1"/>
+<bond atomRefs2="a11 a17" id="a11_a17" order="1"/>
+<bond atomRefs2="a17 a20" id="a17_a20" order="1"/>
+<bond atomRefs2="r2 a19" id="r2_a19" order="1"/>
+<bond atomRefs2="a13 a19" id="a13_a19" order="2"/>
+<bond atomRefs2="r1 a10" id="r1_a10" order="1"/>
+<bond atomRefs2="a10 a24" id="a10_a24" order="1"/>
+<bond atomRefs2="a20 a24" id="a20_a24" order="2"/>
+<bond atomRefs2="a24 a25" id="a24_a25" order="1"/>
+<bond atomRefs2="a11 a12" id="a11_a12" order="1"/>
+<bond atomRefs2="a11 a18" id="a11_a18" order="2"/>
+<bond atomRefs2="a13 a18" id="a13_a18" order="1"/>
+<bond atomRefs2="a18 r3" id="a18_r3" order="1"/>
+<bond atomRefs2="a13 a14" id="a13_a14" order="1"/>
+<bond atomRefs2="a20 a21" id="a20_a21" order="1"/>
+</bondArray>
+<scalar dictRef="idf:doi" dataType="xsd:string">10.1107/S1600536806023397</scalar>
+<identifier convention="iupac:inchi">InChI=1/C11H5NO/c1-7-4-8-2-3-9(12)6-10(8)11(13)5-7/h2-6H</identifier>
+<identifier convention="daylight:smiles">[H]c1c([H])c2c([H])c(C)c([H])c(O)c2(c([H])c1(N))</identifier>
+</molecule>

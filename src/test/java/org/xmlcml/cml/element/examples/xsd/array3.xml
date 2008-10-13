@@ -1,0 +1,24 @@
+<?xml version="1.0" standalone="yes"?>
+<!-- FIXME errorValueArray is not generated properly
+<array title="mass" size="4"
+  units="units:g"
+  errorBasis="observedStandardDeviation"
+  minValueArray="10 11 10 9"
+  maxValueArray="12 14 12 11"
+  errorValueArray="1 2 1 1"
+  dataType="xsd:double">11 12.5 10.9 10.2</array>
+  -->
+
+<array title="mass" size="4"
+  units="units:g"
+  errorBasis="observedStandardDeviation"
+  minValueArray="10 11 10 9"
+  maxValueArray="12 14 12 11"
+  dataType="xsd:double"
+     xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>11 12.5 10.9 10.2</array>
+
+
+

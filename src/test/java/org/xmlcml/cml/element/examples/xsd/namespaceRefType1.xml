@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone="yes"?>
+<stmml title="namespace example" 
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+<list>
+<!-- dictRef is of namespaceRefType -->
+  <scalar id="a1" dictRef="foo:mpt">123</scalar>  
+<!-- error -->
+  <scalar id="a2" dictRef="foo:mpt23">123</scalar>  
+</list>
+</stmml>

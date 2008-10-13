@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<moleculeList id="polystyrene" convention="cml:PML-basic"
+	xmlns:g="http://www.xml-cml.org/mols/geom1"
+	xmlns="http://www.xml-cml.org/schema">
+	<molecule id="polystyrene" convention="cml:PML-basic" 
+	    countExpression="*(3)">
+		<!--  polystyrene -->
+		<transform3>
+		1 0 0 10
+		0 1 0 0
+		0 0 1 0
+		0 0 0 1
+		</transform3>  
+		<fragment>
+			<molecule ref="g:dummy"/>
+			<fragmentList countExpression="*(10)">
+				<join order="1" moleculeRefs2="PARENT NEXT"
+					atomRefs2="r1 r1">
+					<torsion>180</torsion>
+				</join>
+				<fragment>
+					<molecule ref="g:ch"/>				
+					<fragmentList>
+						<join order="1" moleculeRefs2="PARENT NEXT"
+							atomRefs2="r3 r1">
+			 				<torsion min="60" max="120"></torsion>
+						</join>
+						<fragment>
+							<molecule ref="g:benzene"/>				
+						</fragment>
+					</fragmentList>
+	  		    </fragment>
+				<join atomRefs2="r2 r2" moleculeRefs2="PREVIOUS NEXT">
+					<torsion min="20" max="100">60</torsion>
+				</join>
+				<fragment>
+					<molecule ref="g:ch2"/>
+				</fragment>				
+			</fragmentList>
+		</fragment>
+	</molecule>
+</moleculeList>

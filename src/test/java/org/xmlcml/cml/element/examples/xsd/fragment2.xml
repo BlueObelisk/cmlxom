@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule id="star1" convention="cml:PML-basic"
+	xmlns:g="http://www.xml-cml.org/mols/geom1"
+	xmlns="http://www.xml-cml.org/schema">
+	<!--  a star polymer -->
+	<fragment>
+		<molecule ref="g:benzene" id="m1" />
+	</fragment>
+	<fragmentList>
+		<join id="j1" order="1" moleculeRefs2="g:benzene g:2pyr" atomRefs2="r1 r1">
+			<length>1.4</length>
+		</join>
+		<fragment>
+			<molecule ref="g:2pyr" id="m2">
+			    <fragmentList>
+					<join id="j2.1" order="1" moleculeRefs2="g:2pyr g:po"
+					    atomRefs2="r1 r2">
+						<length id="l2.1">1.5</length>
+						<torsion id="t2.1">120.0</torsion>
+					</join>
+					<fragment>
+						<molecule ref="g:po" id="m3"/>
+					</fragment>
+					<join id="j2.1.1" order="1" moleculeRefs2="m3 m4" 
+					    atomRefs2="">
+						<length id="l2.1.1">1.39</length>
+					</join>
+					<fragment countExpression="3">
+						<molecule ref="g:me" id="m4">
+							<fragmentList id="ml3">
+								<join id="j2.1.2" order="1" moleculeRefs2="g:me g:cl" atomRefs2="">
+									<length id="t2.1.2">1.4</length>
+									<torsion>124.0</torsion>
+								</join>
+								<molecule ref="g:cl" id="m5"/>
+							</fragmentList>
+						</molecule>
+						<join id="j2.1.1" order="1" atomRefs2="r1 r2">
+							<length id="l2.1.1">1.39</length>
+						</join>
+					</fragment>
+				</fragmentList>
+			</molecule>
+		</fragment>
+	</fragmentList>
+</molecule>

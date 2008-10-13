@@ -1,0 +1,21 @@
+<molecule id="ethoxycarb" xmlns="http://www.xml-cml.org/schema">
+  <atomArray>
+    <atom id="a3" elementType="O" x3="2.6183928411622692" y3="7.317444812596295" z3="2.605691436474179" xFract="0.3295" yFract="0.7223" zFract="0.1327" formalCharge="0" hydrogenCount="0"/>
+    <atom id="a4" elementType="O" x3="2.1686173182190687" y3="7.57613728637854" z3="4.774471956914279" xFract="0.2729" yFract="0.7593" zFract="0.3316" formalCharge="0" hydrogenCount="0"/>
+    <atom id="r1" elementType="R" x3="3.7197866128924377" y3="5.919941765286677" z3="4.196493343584951" xFract="0.4681" yFract="0.5505" zFract="0.2988" formalCharge="0" hydrogenCount="0"/>
+    <atom id="a22" elementType="C" x3="2.7487164909196626" y3="6.992386567476396" z3="3.73593804601656" xFract="0.3459" yFract="0.685" zFract="0.2423" formalCharge="0" hydrogenCount="0"/>
+    <atom id="a23" elementType="C" x3="1.2627090211249912" y3="8.68412680984038" z3="4.460372627088262" xFract="0.1589" yFract="0.8962" zFract="0.2881" formalCharge="0" hydrogenCount="0"/>
+    <atom id="a24" elementType="H" x3="1.7728784305411296" y3="9.436755834003446" z3="4.151104684579083" xFract="0.2231" yFract="0.9654" zFract="0.2476" formalCharge="0" hydrogenCount="0"/>
+    <atom id="a25" elementType="H" x3="0.7747899909357245" y3="8.931468202201161" z3="5.249972906402083" xFract="0.0975" yFract="0.9328" zFract="0.3589" formalCharge="0" hydrogenCount="0"/>
+    <atom id="a26" elementType="H" x3="0.6476449667821698" y3="8.410287173321656" z3="3.776446139958044" xFract="0.0815" yFract="0.8801" zFract="0.2295" formalCharge="0" hydrogenCount="0"/>
+  </atomArray>
+  <bondArray>
+    <bond id="a3-a22" atomRefs2="a3 a22" order="D"/>
+    <bond id="a4-a22" atomRefs2="a4 a22" order="S"/>
+    <bond id="a4-a23" atomRefs2="a4 a23" order="S"/>
+    <bond id="r1-a22" atomRefs2="r1 a22" order="S"/>
+    <bond id="a23-a24" atomRefs2="a23 a24" order="S"/>
+    <bond id="a23-a25" atomRefs2="a23 a25" order="S"/>
+    <bond id="a23-a26" atomRefs2="a23 a26" order="S"/>
+  </bondArray>
+</molecule>

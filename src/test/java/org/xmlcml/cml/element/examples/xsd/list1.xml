@@ -1,0 +1,11 @@
+<?xml version="1.0" standalone="yes"?>
+<list id="id1" title="list1"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+    <list id="id2" title="list2">
+    </list>
+    <list id="id3" title="list3">
+    </list>
+</list>

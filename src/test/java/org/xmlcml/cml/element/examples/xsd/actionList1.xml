@@ -1,0 +1,24 @@
+<?xml version="1.0" standalone="yes"?>
+<actionList 
+    title="actionList1 example parallel and sequential" 
+    id="al1" 
+    order="parallel" 
+    endCondition="all food cooked"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <!-- meat and potatoes are cooked in parallel -->
+    <actionList id="al2" title="meat">
+        <action id="al1" title="cook" endCondition="cooked">Roast meat</action>
+        <action>Keep warm in oven</action>
+    </actionList>
+    <actionList id="al3" title="vegetables">
+        <actionList id="al4" title="cookVeg" endCondition="cooked">
+            <action id="al2" title="boil water" endCondition="water boiling">Heat water</action>
+            <action id="a3" title="cook" endCondition="potatoes cooked">Cook potatoes</action>
+        </actionList>
+        <action>Keep warm in oven</action>
+    </actionList>
+</actionList>
+

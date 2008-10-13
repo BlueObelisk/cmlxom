@@ -1,0 +1,29 @@
+<?xml version="1.0" standalone="yes"?>
+
+<reactionStepList id="rsl" type="simultaneous"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+	<reactionStep ratio="0.80" yield="0.60">
+		<reaction id="r1a">
+			<reactantList>
+				<reactant ref="A"/>
+			</reactantList>
+			<productList>
+				<product ref="B"/>
+			</productList>
+		</reaction>
+	</reactionStep>
+	<reactionStep ratio="0.20">
+		<reaction id="r1b">
+			<reactantList>
+				<reactant ref="A"/>
+			</reactantList>
+			<productList>
+				<product ref="C"/>
+			</productList>
+		</reaction>
+	</reactionStep>
+</reactionStepList>
+

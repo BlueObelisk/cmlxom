@@ -1,0 +1,19 @@
+<?xml version="1.0" standalone="yes"?>
+<dictionary 
+   title="dictionary1 example"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+    <entry id="a001" term="Amplitude for charge density mixing" >
+        <annotation>
+            <documentation>
+            <!--
+                <div class="summary">Amplitude for charge density mixing</div>
+                <div class="description">Not yet filled in...</div>
+                -->
+            </documentation>
+        </annotation>
+        <alternative type="abbreviation">CDMixAmp</alternative>
+    </entry>
+</dictionary>

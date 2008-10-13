@@ -1,0 +1,17 @@
+<?xml version="1.0" standalone="yes"?>
+<cml title="atomRefs2 example" 
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <molecule id="m1">
+    <atomArray>
+      <atom id="a1"/>  
+      <atom id="a2"/>
+    </atomArray>
+    <bondArray>
+      <bond atomRefs2="a1 a2"/>
+    </bondArray>
+  </molecule>
+</cml>
+

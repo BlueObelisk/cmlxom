@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule id='etoac1'
+  xmlns='http://www.xml-cml.org/schema'
+  xmlns:g='http://www.xml-cml.org/mols/geom1'
+  convention='cml:PML-concise'
+  formula='(g:acetoxy}r1)-[t(180)](r1{g:et)'
+  />

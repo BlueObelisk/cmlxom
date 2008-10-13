@@ -1,0 +1,18 @@
+<?xml version="1.0" standalone="yes"?>
+<cml title="atomRefs4 example"   
+   xmlns="http://www.xml-cml.org/schema"
+   xmlns:units="http://www.xml-cml.org/units/units"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <molecule id="m1">
+    <atomArray>
+      <atom id="a1"/>  
+      <atom id="a2"/>
+      <atom id="a3"/>
+     <atom id="a4"/>
+    </atomArray>
+    <torsion atomRefs4="a1 a2 a3 a4" units="units:degrees">123.4</torsion>
+  </molecule>
+</cml>
+

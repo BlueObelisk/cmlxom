@@ -1,0 +1,44 @@
+<?xml version="1.0" standalone="yes"?>
+<potentialForm name="gulp:buckingham" 
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:cml="http://www.xml-cml.org/schema"
+xmlns:stmml="http://www.xml-cml.org/schema"
+xmlns:gulp="http://www.gulp.org/schema"
+>
+<?cml example="compilable"?>
+<!--
+ <annotation>
+   <documentation>A exp(-r/rho) - Cr-6 == ? A exp(-r/B) - Cr-6 ?</documentation> 
+ </annotation>
+ -->
+ <arg id="a1" name="atom1" dataType="cml:atom"/>
+ <arg id="a2" name="atom2" dataType="cml:atom"/>
+ <arg id="a3" name="a"     dataType="xsd:double"/>
+ <arg id="a4" name="b"     dataType="xsd:double"/>
+ <arg id="a5" name="c"     dataType="xsd:double"/>
+ 
+ <parameter name="r">
+   <expression dataType="xsd:double">
+     <parameter ref="atom1"/>
+     <parameter ref="atom2"/>
+     <operator type="distance"/>
+   </expression>
+ </parameter>
+ <expression dataType="xsd:double">
+   <parameter ref="a"/>
+   <parameter ref="r"/>
+   <parameter ref="b"/>
+   <operator type="div"/>
+   <operator type="exp"/>
+   <operator type="mult"/>
+   <parameter ref="c"/>
+   <parameter ref="r"/>
+   <parameter value="-6"/>
+   <operator type="power"/>
+   <operator type="mult"/>
+   <operator type="minus"/>
+ </expression>
+</potentialForm>
+

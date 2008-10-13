@@ -1,0 +1,30 @@
+<?xml version="1.0" standalone="yes"?>
+  <metadataList title="metadataList1 example"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  >
+    <metadata id="m1" name="dc:coverage" content="Europe"/>
+    <metadata id="m2" name="dc:description" content="Ornithological chemistry"/>
+    <metadata id="m3" name="dc:identifier"  content="ISBN:1234-5678"/>
+    <metadata id="m4" name="dc:format" content="printed"/>
+    <metadata id="m5" name="dc:relation" content="abc:def123"/>
+    <metadata id="m6" name="dc:rights" content="licence:GPL"/>
+    <metadata id="m7" name="dc:subject" content="Informatics"/>
+    <metadata id="m8" name="dc:title" content="birds"/>
+    <metadata id="m9" name="dc:type" content="bird books on chemistry"/>
+    <metadata id="m10" name="dc:contributor" content="Tux Penguin"/>
+    <metadata id="m11" name="dc:creator" content="author"/>
+    <metadata id="m12" name="dc:publisher" content="Penguinone publishing"/>
+    <metadata id="m13" name="dc:source" content="penguinPub"/>
+    <metadata id="m14" name="dc:language" content="en-GB"/>
+    <metadata id="m15" name="dc:date" content="1752-09-10"/>
+    <metadata id="m16" name="cmlm:safety" content="mostly harmless"/>
+    <metadata id="m17" name="cmlm:insilico" content="electronically produced"/>
+    <metadata id="m18" name="cmlm:structure" content="penguinone"/>
+    <metadata id="m19" name="cmlm:reaction" content="synthesis of penguinone"/>
+    <metadata id="m20" name="cmlm:identifier" content="smiles:O=C1C=C(C)C(C)(C)C(C)=C1"/>
+    <metadata id="m21" name="foo:institution" content="abc.org"/>
+    <metadata id="m22" name="foo:bar" content="xyzzy"/>
+  </metadataList>
+

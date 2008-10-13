@@ -1,0 +1,21 @@
+<molecule id="acetyl" xmlns="http://www.xml-cml.org/schema">
+  <atomArray>
+    <atom id="r1"  elementType="R" x3="6.393952073348176" y3="7.481432789999999"  z3="1.3355287286108608" xFract="0.853" yFract="0.40329" zFract="0.08749" formalCharge="0" hydrogenCount="0"/>
+    <atom id="a71" elementType="C" x3="7.470354790502688" y3="7.21912165"         z3="2.1153032017509776" xFract="0.9966" yFract="0.38915" zFract="0.12895" formalCharge="0" hydrogenCount="0"/>
+    <atom id="a72" elementType="O" x3="7.621770771606594" y3="6.2131009200000005" z3="2.7265105769419966" xFract="1.0168" yFract="0.33492" zFract="0.15894" formalCharge="0" hydrogenCount="0">
+      <label dictRef="cml:torsionEnd">r1</label>
+    </atom>
+    <atom id="a73" elementType="C" x3="8.407334871591223" y3="8.375034459999998"  z3="2.09259931555679" xFract="1.1216" yFract="0.45146" zFract="0.13125" formalCharge="0" hydrogenCount="0"/>
+    <atom id="a74" elementType="H" x3="9.290344900009062" y3="8.0103218"          z3="1.9961034580073869" xFract="1.2394" yFract="0.4318" zFract="0.1298" formalCharge="0" hydrogenCount="0"/>
+    <atom id="a75" elementType="H" x3="8.339122721687978" y3="8.830276"           z3="2.9353942128717265" xFract="1.1125" yFract="0.476" zFract="0.1716" formalCharge="0" hydrogenCount="0"/>
+    <atom id="a76" elementType="H" x3="8.236429704800676" y3="8.9953799"          z3="1.3798877395986096" xFract="1.0988" yFract="0.4849" zFract="0.0963" formalCharge="0" hydrogenCount="0"/>
+  </atomArray>
+  <bondArray>
+    <bond id="r1-a71"  atomRefs2="r1  a71" order="S"/>
+    <bond id="a71-a72" atomRefs2="a71 a72" order="D"/>
+    <bond id="a71-a73" atomRefs2="a71 a73" order="S"/>
+    <bond id="a73-a74" atomRefs2="a73 a74" order="S"/>
+    <bond id="a73-a75" atomRefs2="a73 a75" order="S"/>
+    <bond id="a73-a76" atomRefs2="a73 a76" order="S"/>
+  </bondArray>
+</molecule>

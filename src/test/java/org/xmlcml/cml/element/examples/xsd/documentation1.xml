@@ -1,0 +1,8 @@
+<?xml version="1.0" standalone="yes"?>
+<documentation id="source" 
+title="documentation example"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>Transcribed from IUPAC website</documentation>
+

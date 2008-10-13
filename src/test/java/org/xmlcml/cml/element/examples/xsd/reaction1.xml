@@ -1,0 +1,43 @@
+<?xml version="1.0" standalone="yes"?>
+<reaction title="reaction1: simple acid-base reaction"
+   xmlns:siUnits="http://www.xml-cml.org/units/siUnits"
+   xmlns:units="http://www.xml-cml.org/units/units"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+    <reactantList>
+        <reactant id="r1" count="1" title="HCl">
+            <molecule id="m1" ref="hcl"/>
+        </reactant>
+        <reactant id="r2" count="1" title="NaOH">
+            <molecule id="m2" ref="naoh"/>
+        </reactant>
+    </reactantList>
+    <substanceList>
+        <substance id="ss1" role="subst:indicator">
+            <molecule id="m3" ref="phenolphthalein"/>
+        </substance>
+    </substanceList>
+    <conditionList>
+        <scalar id="sc1" dictRef="cml:temp" units="units:celsius">25</scalar>
+        <scalar id="sc2" dictRef="cml:vol" units="units:l">0.25</scalar>
+    </conditionList>
+    <productList>
+        <product id="p1" count="1" title="NaCl">
+            <molecule id="m4" ref="nacl"/>
+        </product>
+        <product id="p2" count="1" title="H2O">
+            <molecule id="m5" ref="h2o"/>
+        </product>
+    </productList>
+    <propertyList>
+        <property id="pr1" title="heat of reaction" dictRef="cml:hreact">
+            <scalar id="ss3" units="siUnits:kj.mol-1">12.345</scalar>
+        </property>
+        <property id="pr2" title="pH" dictRef="cml:ph">
+            <scalar id="ss4" units="units:ph">7.23</scalar>
+        </property>
+    </propertyList>
+</reaction>
+

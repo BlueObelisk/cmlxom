@@ -1,0 +1,70 @@
+<?xml version="1.0" standalone="yes"?>
+<cml
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+	<reaction id="r1">
+		<reactantList>
+			<reactant>
+				<molecule ref="formic"/>
+			</reactant>
+			<reactant>
+				<molecule ref="methanol"/>
+			</reactant>
+		</reactantList>
+		<productList>
+			<product>
+				<molecule ref="meformate"/>
+			</product>
+			<product>
+				<molecule ref="water" />
+			</product>
+		</productList>
+		<conditionList>
+			<scalar ref="temp70"/>
+			<scalar ref="time4h"/>
+		</conditionList>
+		<substanceList>
+			<substance role="solvent" ref="water"/>
+			<substance role="catalyst" ref="acid"/>
+		</substanceList>
+	
+	</reaction>
+	
+	<list>
+		<molecule id="formic">
+			<atomArray>
+				<atom elementType="C" id="c1" hydrogenCount="1"/>
+				<atom elementType="O" id="o1" hydrogenCount="1"/>
+				<atom elementType="O" id="o2" hydrogenCount="0"/>
+			</atomArray>
+			<bondArray>
+				<bond id="b1" atomRefs2="c1 o1" order="S"/>
+				<bond id="b2" atomRefs2="c1 o2" order="D"/>
+			</bondArray>
+		</molecule>
+		<molecule id="methanol">
+			<atomArray>
+				<atom elementType="C" id="c1" hydrogenCount="3"/>
+				<atom elementType="O" id="o1" hydrogenCount="1"/>
+			</atomArray>
+			<bondArray>
+				<bond id="b1" atomRefs2="c1 o1" order="S"/>
+			</bondArray>
+		</molecule>
+	</list>
+	
+	<conditionList id="condition1">
+			<scalar id="temp70" dictRef="cml:temp" units="cml:Celsius">70</scalar>
+			<scalar id="time4h" dictRef="cml:timeDuration" units="xsd:date">04:00</scalar>
+	</conditionList>
+	<substanceList id="substance1">
+		<substance id="water" dictRef="cmlSolvent:water">
+		<name>water</name>
+		</substance>
+		<substance id="acid" dictRef="cmlSubstance:acid">
+		<name>H+</name>
+		</substance>
+	</substanceList>
+</cml>

@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="yes"?>
+<cml title="countType example" 
+   xmlns="http://www.xml-cml.org/schema"
+   xmlns:h="http://www.w3c.org/XHTML"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+
+<list>
+<object title="frog" count="10"/>
+<action title="step3" count="3">
+  <h:p>Add 10 ml reagent</h:p>
+</action>
+</list>
+</cml>

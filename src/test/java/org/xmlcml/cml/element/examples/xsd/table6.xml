@@ -1,0 +1,20 @@
+<?xml version="1.0" standalone="yes"?>
+<!-- row-based table from CML Wiki -->
+<c:table
+   xmlns:c="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <c:tableHeader>
+    <c:tableHeaderCell dictRef="foo:id" title="id"/>
+    <c:tableHeaderCell dictRef="cml:formula" title="concise formula"/>
+    <c:tableHeaderCell dictRef="foo:mass" units="units:grampermole" title="mass"
+     dataType="xsd:double"/>
+  </c:tableHeader>
+  <c:tableRow><c:tableCell>C123</c:tableCell><c:tableCell><formula concise="C 2 H 2"/></c:tableCell>
+    <c:tableCell>26</c:tableCell></c:tableRow>
+  <c:tableRow><c:tableCell>C124</c:tableCell><c:tableCell><formula concise="C 2 H 4"/></c:tableCell>
+    <c:tableCell>28</c:tableCell></c:tableRow>
+  <c:tableRow><c:tableCell>C125</c:tableCell><c:tableCell><formula concise="C 2 H 6 O 1"/></c:tableCell>
+    <c:tableCell>46</c:tableCell></c:tableRow>
+</c:table>

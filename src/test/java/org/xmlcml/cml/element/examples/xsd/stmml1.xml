@@ -1,0 +1,38 @@
+<?xml version="1.0" standalone="yes"?>
+<cml title="cml examples"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+    <actionList>
+        <action></action>
+    </actionList>
+    <object></object>
+    <observation></observation>
+
+<!-- ==================== DICTIONARY =========== -->
+
+    <dictionary>
+        <annotation>
+            <documentation></documentation>
+            <appinfo></appinfo>
+        </annotation>
+        <entry term="foo">
+            <definition></definition>
+            <alternative></alternative>
+            <description></description>
+            <enumeration></enumeration>
+            <relatedEntry></relatedEntry>
+        </entry>
+    </dictionary>
+
+<!-- =================  METADATA ================== -->
+
+    <metadataList>
+        <metadata></metadata>
+    </metadataList>
+
+
+</cml>
+
+

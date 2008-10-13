@@ -1,0 +1,57 @@
+<?xml version="1.0" standalone="yes"?>
+<actionList title="preparation of silanols"
+   xmlns="http://www.xml-cml.org/schema"
+   xmlns:h="http://www.w3c.org/XHTML"
+>
+  <h:p>This is a conversion of a chemical synthesis to STMML. We
+  have deliberately not marked up the chemistry in this example!</h:p>
+  <action title="step2">
+    <h:p>Take 1 mmol of the diol and dissolve in dioxan in 
+      <object title="flask">
+        <scalar title="volume" units="units:ml">25</scalar>
+      </object>
+    </h:p>
+  </action>
+  <action title="step2">
+    <h:p>Place flask in water bath with magnetic stirrer</h:p>
+  </action>
+  <!-- wait until certain condition -->
+  <actionList endCondition="bath temperature stabilised"/>
+  <action title="step3">
+    <h:p>Add 0.5 ml 1 M H2SO4</h:p>
+  </action>
+
+  <!-- carry out reaction -->
+  <actionList endCondition="reaction complete; no diol spot remains on TLC">
+    <actionList title="check tlc">
+      <!-- wait for half an hour -->
+      <action duration="half an hour"/>
+      <action title="tlc">
+        <h:p>extract solution and check diol spot on TLC</h:p>
+      </action>
+    </actionList>
+  </actionList>
+  
+  <!-- work up reaction -->
+  <action title="step5">
+    <h:p>Add 10 ml water to flask</h:p>
+  </action>
+  <action title="step6">
+    <h:p>Neutralize acid with 10% NaHCO3</h:p>
+  </action>
+  <action title="step7" count="3">
+    <h:p>Extract with 10ml ether</h:p>
+  </action>
+  <action title="step8">
+    <h:p>Combine ether layers</h:p>
+  </action>
+  <action title="step9" count="2">
+    <h:p>Wash ether with 10 ml water</h:p>
+  </action>
+  <action title="step10">
+    <h:p>Wash ether with 10 ml saturated NaCl</h:p>
+  </action>
+  <action title="step11">
+    <h:p>Dry over anhydrous Na2SO4 and remove solvent on rotary evaporator</h:p>
+  </action>
+</actionList>

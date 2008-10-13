@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="yes"?>
+<unitType id="magneticFluxDensity" name="magnetic flux density"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+<!--
+    <alternative id="a1" type="synonym">magnetic induction</alternative>
+    <alternative id="a2" type="synonym">magnetic polarisation</alternative>
+-->    
+    <dimension id="d1" name="mass" power="1" preserve="false"/>
+    <dimension id="d2" name="time" power="-2" preserve="false"/>
+    <dimension id="d3" name="current" power="-1" preserve="false"/>
+</unitType>

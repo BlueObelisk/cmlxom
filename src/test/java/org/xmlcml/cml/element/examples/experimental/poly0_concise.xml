@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule id='poly'
+  xmlns='http://www.xml-cml.org/schema'
+  xmlns:g='http://www.xml-cml.org/mols/geom1'
+  convention='cml:PML-concise'
+  formula='(g:oh}r1)-[t(-150.0)l(1.39)](r1{g:po}r2-[t(-110.0)l(1.4)])*(5)-[t(180.0)l(1.41)](r1{g:et)'
+  />

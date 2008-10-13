@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule id="star" convention="cml:PML-basic"
+	xmlns:g="http://www.xml-cml.org/mols/geom1"
+	xmlns="http://www.xml-cml.org/schema">
+	<moleculeList convention="fragmentContainer">
+		<molecule ref="g:oh" id="m1">
+			<label dictRef="cml:RIGHT">r1</label>
+		</molecule>
+		<join id="j1" order="1">
+			<length>1.4</length>
+		</join>
+		<molecule ref="g:2pyr" id="m2">
+  		    <label dictRef="cml:LEFT">r5</label>
+			<moleculeList convention="branch" id="ml2">
+			    <label dictRef="cml:PARENT">r4</label> 
+				<join id="j2.1" order="1">
+					<length id="l2.1">1.5</length>
+					<torsion id="t2.1">120.0</torsion>
+				</join>
+				<molecule ref="g:po" id="m3">
+				  <label dictRef="cml:LEFT">r1</label>
+				  <label dictRef="cml:RIGHT">r2</label>
+				</molecule>
+				<join id="j2.1.1" order="1">
+					<length id="l2.1.1">1.39</length>
+				</join>
+				<molecule ref="g:me" id="m4">
+				  <label dictRef="cml:LEFT">r1</label>
+  			    </molecule>
+			</moleculeList>
+			<moleculeList id="ml3">
+			    <label dictRef="cml:PARENT">r6</label> 
+				<join id="j2.1.2" order="1">
+					<length id="t2.1.2">1.4</length>
+					<torsion>124.0</torsion>
+				</join>
+				<molecule ref="g:cl" id="m5">
+				  <label dictRef="cml:LEFT">r1</label>
+				</molecule>
+			</moleculeList>
+		</molecule>
+	</moleculeList>
+</molecule>

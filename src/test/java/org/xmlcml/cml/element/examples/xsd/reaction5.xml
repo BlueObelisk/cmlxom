@@ -1,0 +1,29 @@
+<?xml version="1.0" standalone="yes"?>
+<reaction title="reaction5: photolysis"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+    <reactantList>
+        <reactant id="r1" count="1" title="butadiene">
+            <molecule id="m1">
+                <formula concise="C 4 H 6"/>
+            </molecule>
+        </reactant>
+    </reactantList>
+    <substanceList>
+        <substance role="subst:photons">
+            <property>
+                <scalar dictRef="cml:wave" units="units:nm">220</scalar>
+            </property>
+        </substance>
+    </substanceList>
+    <productList>
+        <product count="1" title="cyclobutene">
+            <molecule id="m2">
+                <formula id="f2" concise="C 4 H 6"/>
+            </molecule>
+        </product>
+    </productList>
+</reaction>
+

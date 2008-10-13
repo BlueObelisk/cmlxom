@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<map xmlns="http://www.xml-cml.org/schema">
+  <link convention="cml:relativeUrl" from="http://www.xml-cml.org/mols/geom" 
+  role="cml:moleculeList" to="./geom.xml"/>
+  <link convention="cml:relativeUrl" from="http://www.xml-cml.org/mols/frags" 
+  role="cml:fragmentList" to="./fragments/frags.xml"/>
+  <!-- DIRECTORY -->
+  <link convention="cml:relativeUrl" from="http://www.xml-cml.org/mols/fragments" 
+  role="cml:fragmentList" to="./fragments"/>
+  <link convention="cml:relativeUrl" from="http://www.xml-cml.org/mols/geom1" 
+  role="cml:moleculeList" to="./geom1"/>
+  <link convention="cml:relativeUrl" from="http://www.xml-cml.org/mols/polyinfo" 
+  role="cml:moleculeList" to= "./polyinfo"/>
+</map>

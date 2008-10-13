@@ -1,0 +1,8 @@
+<?xml version="1.0" standalone="yes"?>
+<cml title="peak1 example"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+    <peak id="a1" title="peak 1" xMin="0.3" xMax="0.8" xValue="0.4" xWidth="0.3" xUnits="units:ppm" yMin="0.3" yMax="0.8" yValue="0.4" yWidth="0.3" yUnits="units:ppm" integral="3" peakHeight="123456.7"></peak>
+</cml>

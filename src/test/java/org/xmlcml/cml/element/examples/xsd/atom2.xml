@@ -1,0 +1,18 @@
+<?xml version="1.0" standalone="yes"?>
+<!-- example of atom carrying a vector3 dipole -->
+<atom id="a1" title="O3'" elementType="O" 
+  formalCharge="1" hydrogenCount="1"
+  isotopeNumber="17" occupancy="0.7" 
+  x2="1.2" y2="2.3" 
+  x3="3.4" y3="4.5" z3="5.6"
+  convention="abc:chem" dictRef="chem:atom"
+   xmlns="http://www.xml-cml.org/schema"
+	 xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   
+    >
+  <vector3 title="dipole" dictRef="ccml:dipole" 
+    units="units:debye">0.2 0.3 0.4</vector3>
+  <atomParity atomRefs4="a3 a7 a2 a4">1</atomParity>
+  <electron id="e1" atomRef="a1" count="2"/>
+</atom>

@@ -1,0 +1,20 @@
+<?xml version="1.0" standalone="yes"?>
+ <expression dataType="xsd:double" 
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ >
+   <parameter id="p1" ref="a"/>
+   <parameter id="p2" ref="r"/>
+   <parameter id="p3" ref="b"/>
+   <operator id="o1" type="div"/>
+   <operator id="o2" type="exp"/>
+   <operator id="o3" type="mult"/>
+   <parameter id="p4" ref="c"/>
+   <parameter id="p5" ref="r"/>
+   <parameter id="p6" value="-6"/>
+   <operator id="o4" type="power"/>
+   <operator id="o5" type="mult"/>
+   <operator id="o6" type="minus"/>
+ </expression>
+

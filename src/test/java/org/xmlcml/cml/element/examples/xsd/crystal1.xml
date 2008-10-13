@@ -1,0 +1,23 @@
+<?xml version="1.0" standalone="yes"?>
+<cml title="crystal1 example"
+   xmlns:units="http://www.xml-cml.org/units/units"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+    <molecule id="m1">
+        <crystal z="4">
+            <scalar id="sc1" title="a" errorValue="0.001" units="units:ang">4.500</scalar>
+            <scalar id="sc2" title="b" errorValue="0.001" units="units:ang">4.500</scalar>
+            <scalar id="sc3" title="c" errorValue="0.001" units="units:ang">4.500</scalar>
+            <scalar id="sc4" title="alpha" units="units:deg">90</scalar>
+            <scalar id="sc5" title="beta" units="units:deg">90</scalar>
+            <scalar id="sc6" title="gamma" units="units:deg">90</scalar>
+            <symmetry id="s1" spaceGroup="Fm3m"/>
+        </crystal>
+        <atomArray>
+            <atom id="a1" elementType="Na" formalCharge="1" xFract="0.0" yFract="0.0" zFract="0.0" x2="+23.2" y2="-21.0"/>
+            <atom id="a2" elementType="Cl" formalCharge="-1" xFract="0.5" yFract="0.0" zFract="0.0"/>
+        </atomArray>
+    </molecule>
+</cml>

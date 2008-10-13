@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<molecule id="piperazine" xmlns="http://www.xml-cml.org/schema">
+  <atomArray>
+    <atom x3="0.0021" y3="-0.0041" z3="0.0020" id="r1" elementType="R"/>
+    <atom x3="-0.025" y3="1.9957" z3="0.013" id="a1" elementType="N">
+      <label dictRef="cml:torsionEnd">r2</label>
+      <label dictRef="cml:torsionEnd">r3</label>
+      <label dictRef="cml:torsionEnd">r9</label>
+      <label dictRef="cml:torsionEnd">r10</label>
+    </atom>
+    <atom x3="-0.7856" y3="2.5057" z3="1.1621" id="a2" elementType="C">
+      <label dictRef="cml:torsionEnd">r4</label>
+      <label dictRef="cml:torsionEnd">r5</label>
+    </atom>
+    <atom x3="-2.6404" y3="1.7588" z3="1.1189" id="r2" elementType="R"/>
+    <atom x3="0.1173" y3="1.9516" z3="2.8585" id="r3" elementType="R"/>
+    <atom x3="-0.8488" y3="4.0331" z3="1.0927" id="a3" elementType="C">
+      <label dictRef="cml:torsionEnd">r6</label>
+    </atom>
+    <atom x3="-2.7586" y3="4.6177" z3="0.989" id="r4" elementType="R"/>
+    <atom x3="-0.0011" y3="4.8108" z3="2.7287" id="r5" elementType="R"/>
+    <atom x3="-0.1285" y3="4.4978" z3="-0.1007" id="a4" elementType="N">
+      <label dictRef="cml:torsionEnd">r7</label>
+      <label dictRef="cml:torsionEnd">r8</label>
+    </atom>
+    <atom x3="-0.2663" y3="6.4838" z3="-0.2929" id="r6" elementType="R"/>
+    <atom x3="1.2762" y3="4.0683" z3="-0.0665" id="a5" elementType="C"/>
+    <atom x3="2.2073" y3="4.6999" z3="-1.72" id="r7" elementType="R"/>
+    <atom x3="2.1728" y3="4.8472" z3="1.5426" id="r8" elementType="R"/>
+    <atom x3="1.3394" y3="2.5409" z3="0.0029" id="a6" elementType="C">
+      <label dictRef="cml:torsionEnd">r1</label>
+    </atom>
+    <atom x3="2.291" y3="1.9879" z3="1.6728" id="r9" elementType="R"/>
+    <atom x3="2.3259" y3="1.841" z3="-1.5899" id="r10" elementType="R"/>
+  </atomArray>
+  <bondArray>
+    <bond atomRefs2="r1 a1" id="b1" order="1"/>
+    <bond atomRefs2="a1 a6" id="b2" order="1"/>
+    <bond atomRefs2="a1 a2" id="b3" order="1"/>
+    <bond atomRefs2="a2 r2" id="b4" order="1"/>
+    <bond atomRefs2="a2 r3" id="b5" order="1"/>
+    <bond atomRefs2="a2 a3" id="b6" order="1"/>
+    <bond atomRefs2="a3 r4" id="b7" order="1"/>
+    <bond atomRefs2="a3 r5" id="b8" order="1"/>
+    <bond atomRefs2="a3 a4" id="b9" order="1"/>
+    <bond atomRefs2="a4 r6" id="b10" order="1"/>
+    <bond atomRefs2="a4 a5" id="b11" order="1"/>
+    <bond atomRefs2="a5 r7" id="b12" order="1"/>
+    <bond atomRefs2="a5 r8" id="b13" order="1"/>
+    <bond atomRefs2="a5 a6" id="b14" order="1"/>
+    <bond atomRefs2="a6 r9" id="b15" order="1"/>
+    <bond atomRefs2="a6 r10" id="b16" order="1"/>
+  </bondArray>
+</molecule>

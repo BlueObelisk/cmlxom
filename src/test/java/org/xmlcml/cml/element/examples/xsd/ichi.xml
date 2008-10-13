@@ -1,0 +1,12 @@
+<?xml version="1.0" standalone="yes"?>
+  <identifier version="0.93Beta" tautomeric="0" 
+   xmlns:inchi="http://www.iupac.org/inchi"
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  >
+   <inchi:basic>C6H3ClN2O5,7-4-1H-3(8(10)11)2H-5(6(4)14H)9(12)13</inchi:basic>
+   <inchi:charge></inchi:charge>
+  </identifier>
+
+

@@ -1,0 +1,18 @@
+<?xml version="1.0" standalone="yes"?>
+<kpointList
+   xmlns="http://www.xml-cml.org/schema"
+   xsi:schemaLocation="http://www.xml-cml.org/schema ../../schema.xsd" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <kpoint id="kpt1" weight="0.937500000000E-01">-0.125 -0.125 0.125</kpoint>
+  <kpoint id="kpt2" weight="0.312500000000E-01">0.125 0.125 0.125</kpoint>
+  <kpoint id="kpt3" weight="0.937500000000E-01">-0.375 0.125 0.125</kpoint>
+  <kpoint id="kpt4" weight="0.187500000000">-0.375 -0.125 0.375</kpoint>
+  <kpoint id="kpt5" weight="0.187500000000">-0.375 -0.125 0.125</kpoint>
+  <kpoint id="kpt6" weight="0.937500000000E-01">0.375 0.125 0.125</kpoint>
+  <kpoint id="kpt7" weight="0.937500000000E-01">-0.375 -0.375 0.375</kpoint>
+  <kpoint id="kpt8" weight="0.937500000000E-01">-0.375 -0.375 0.125</kpoint>
+  <kpoint id="kpt9" weight="0.937500000000E-01">0.375 0.375 0.125</kpoint>
+  <kpoint id="kpt10" weight="0.312500000000E-01">0.375 0.375 0.375</kpoint>
+ </kpointList>
+
