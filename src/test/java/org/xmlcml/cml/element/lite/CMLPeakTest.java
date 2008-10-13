@@ -16,28 +16,22 @@ import org.xmlcml.cml.base.CMLBuilder;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.element.main.CMLSpectrum;
 import org.xmlcml.euclid.Util;
+import static org.xmlcml.cml.base.CMLConstants.*;
+import static org.xmlcml.cml.base.BaseTest.*;
+import static org.xmlcml.euclid.EuclidConstants.*;
+import static org.xmlcml.cml.element.main.AbstractTest.*;
 
 /**
  * test CMLPeak
- *
+ * 
  * @author pmr
- *
+ * 
  */
-public class CMLPeakTest extends PeakSpectrumTest {
-
-	/**
-	 * setup.
-	 *
-	 * @throws Exception
-	 */
-	@Before
-	public void setUp() throws Exception {
-		super.setUp();
-	}
+public class CMLPeakTest extends PeakSpectrumBase {
 
 	/**
 	 * get peaks.
-	 *
+	 * 
 	 * @throws IOException
 	 * @throws ParsingException
 	 * @throws ValidityException
@@ -46,8 +40,8 @@ public class CMLPeakTest extends PeakSpectrumTest {
 	public void testGetPeaks() throws IOException, ValidityException,
 			ParsingException {
 		CMLCml cml = null;
-		InputStream in = Util.getInputStreamFromResource(SIMPLE_RESOURCE
-				+ U_S + testfile2);
+		InputStream in = Util.getInputStreamFromResource(SIMPLE_RESOURCE + U_S
+				+ testfile2);
 		cml = (CMLCml) new CMLBuilder().build(in).getRootElement();
 		in.close();
 		Assert.assertNotNull("cml should not be null " + testfile2, cml);
@@ -72,9 +66,9 @@ public class CMLPeakTest extends PeakSpectrumTest {
 
 	/**
 	 * tests
-	 *
+	 * 
 	 * getDescendantPeaks(CMLElement element)
-	 *
+	 * 
 	 * @throws IOException
 	 * @throws ParsingException
 	 * @throws ValidityException
@@ -83,8 +77,8 @@ public class CMLPeakTest extends PeakSpectrumTest {
 	public void testGetDescendantPeaks() throws IOException, ValidityException,
 			ParsingException {
 		CMLCml cml = null;
-		InputStream in = Util.getInputStreamFromResource(SIMPLE_RESOURCE
-				+ U_S + testfile2);
+		InputStream in = Util.getInputStreamFromResource(SIMPLE_RESOURCE + U_S
+				+ testfile2);
 		cml = (CMLCml) new CMLBuilder().build(in).getRootElement();
 		in.close();
 		List<CMLPeak> peaks = CMLSpectrum.getDescendantPeaks(cml);
@@ -113,4 +107,4 @@ public class CMLPeakTest extends PeakSpectrumTest {
 
 	}
 
- }
+}

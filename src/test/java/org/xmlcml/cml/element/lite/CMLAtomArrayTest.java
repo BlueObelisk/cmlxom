@@ -12,13 +12,13 @@ import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.xmlcml.cml.element.main.MoleculeAtomBondTest;
+import org.xmlcml.cml.element.main.MoleculeAtomBondBase;
 
 /**
  * @author pm286
  *
  */
-public class CMLAtomArrayTest extends MoleculeAtomBondTest {
+public class CMLAtomArrayTest extends MoleculeAtomBondBase {
 
     /**
      * @throws java.lang.Exception

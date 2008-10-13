@@ -1,14 +1,16 @@
 package org.xmlcml.cml.element.lite;
 
+import static org.xmlcml.cml.base.CMLConstants.XML_SUFF;
+import static org.xmlcml.cml.element.main.AbstractTest.SIMPLE_RESOURCE;
+import static org.xmlcml.euclid.EuclidConstants.U_S;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLBuilder;
 import org.xmlcml.cml.base.CMLElements;
-import org.xmlcml.cml.element.main.AbstractTest;
 import org.xmlcml.cml.element.main.CMLSpectrum;
 import org.xmlcml.euclid.Util;
 
@@ -18,7 +20,7 @@ import org.xmlcml.euclid.Util;
  * @author pmr
  * 
  */
-public abstract class PeakSpectrumTest extends AbstractTest {
+public abstract class PeakSpectrumBase {
 
 	protected String peakStructureFile1 = "peakStructure1" + XML_SUFF;
 
@@ -27,7 +29,8 @@ public abstract class PeakSpectrumTest extends AbstractTest {
 
 	protected String peakStructureFile2 = "peakStructure2" + XML_SUFF;
 
-	protected String peakStructureFile2Schema = "peakStructure2Schema" + XML_SUFF;
+	protected String peakStructureFile2Schema = "peakStructure2Schema"
+			+ XML_SUFF;
 
 	protected String testfile = "spectrum";
 
@@ -42,16 +45,6 @@ public abstract class PeakSpectrumTest extends AbstractTest {
 	protected String testfile5 = "spectrum5.xml";
 
 	protected String testCompoundFile1 = "spectrum_and_structure1.xml";
-
-	/**
-	 * setup.
-	 * 
-	 * @throws Exception
-	 */
-	@Before
-	public void setUp() throws Exception {
-		super.setUp();
-	}
 
 	private URL makeSpectrumInputStreamContainer(int num) throws IOException {
 		return Util.getResource(SIMPLE_RESOURCE + U_S + "spectrum" + num
@@ -80,8 +73,8 @@ public abstract class PeakSpectrumTest extends AbstractTest {
 	 */
 	protected CMLSpectrum getSpectrum() throws Exception {
 		CMLSpectrum spectrum = null;
-		InputStream in = Util.getInputStreamFromResource(SIMPLE_RESOURCE
-				+ U_S + peakStructureFile1);
+		InputStream in = Util.getInputStreamFromResource(SIMPLE_RESOURCE + U_S
+				+ peakStructureFile1);
 		CMLCml cml = (CMLCml) new CMLBuilder().build(in).getRootElement();
 		spectrum = (CMLSpectrum) cml.getChildCMLElements(CMLSpectrum.TAG)
 				.get(0);
@@ -110,7 +103,8 @@ public abstract class PeakSpectrumTest extends AbstractTest {
 	 * @return the peakStructures
 	 * @throws Exception
 	 */
-	protected CMLElements<CMLPeakStructure> getPeakStructures(int num) throws Exception {
+	protected CMLElements<CMLPeakStructure> getPeakStructures(int num)
+			throws Exception {
 		CMLPeak peak = getPeaks().get(num);
 		return peak.getPeakStructureElements();
 	}
@@ -122,8 +116,8 @@ public abstract class PeakSpectrumTest extends AbstractTest {
 	 */
 	protected CMLMolecule getMolecule() throws Exception {
 		CMLMolecule molecule = null;
-		InputStream in = Util.getInputStreamFromResource(SIMPLE_RESOURCE
-				+ U_S + peakStructureFile1);
+		InputStream in = Util.getInputStreamFromResource(SIMPLE_RESOURCE + U_S
+				+ peakStructureFile1);
 		CMLCml cml = (CMLCml) new CMLBuilder().build(in).getRootElement();
 		in.close();
 		molecule = (CMLMolecule) cml.getChildCMLElements(CMLMolecule.TAG)

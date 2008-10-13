@@ -1,5 +1,16 @@
 package org.xmlcml.cml.element.lite;
 
+import static org.xmlcml.cml.base.CMLConstants.CML_NS;
+import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
+import static org.xmlcml.cml.base.CMLConstants.SIUNIT_NS;
+import static org.xmlcml.cml.base.CMLConstants.UNIT_NS;
+import static org.xmlcml.cml.base.CMLConstants.U_CELSIUS;
+import static org.xmlcml.cml.base.CMLConstants.U_DEGREE;
+import static org.xmlcml.cml.base.CMLConstants.U_KCAL;
+import static org.xmlcml.euclid.EuclidConstants.EPS;
+import static org.xmlcml.euclid.EuclidConstants.S_EMPTY;
+import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
+
 import java.io.IOException;
 import java.io.StringReader;
 
@@ -14,7 +25,6 @@ import org.junit.Test;
 import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.base.CMLBuilder;
 import org.xmlcml.cml.base.CMLElement;
-import org.xmlcml.cml.element.main.NumericTestBase;
 
 /**
  * tests CMLScalar.
@@ -22,7 +32,7 @@ import org.xmlcml.cml.element.main.NumericTestBase;
  * @author pmr
  * 
  */
-public class CMLScalarTest extends NumericTestBase {
+public class CMLScalarTest {
 
 	protected CMLScalar xomScalarD0 = new CMLScalar(2.1);
 
@@ -98,7 +108,6 @@ public class CMLScalarTest extends NumericTestBase {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		super.setUp();
 		xmlScalar = (CMLScalar) builder.build(new StringReader(xmlS))
 				.getRootElement();
 
@@ -148,7 +157,8 @@ public class CMLScalarTest extends NumericTestBase {
 	}
 
 	@Test
-	public void testNaNParse() throws ValidityException, ParsingException, IOException {
+	public void testNaNParse() throws ValidityException, ParsingException,
+			IOException {
 		CMLScalar cs = (CMLScalar) builder.build(new StringReader(xmlDNaNOK))
 				.getRootElement();
 		Assert.assertEquals(Double.NaN, cs.getDouble());
@@ -650,7 +660,8 @@ public class CMLScalarTest extends NumericTestBase {
 			s3 = s1.subtract(s4);
 			Assert.fail("should throw CMLexception ");
 		} catch (Exception e) {
-			Assert.assertEquals(
+			Assert
+					.assertEquals(
 							"throws CMLException ",
 							"Unsuitable dataTypes for numeric operations / xsd:integer/xsd:double",
 							e.getMessage());
@@ -744,68 +755,68 @@ public class CMLScalarTest extends NumericTestBase {
 
 	}
 
-//	/**
-//	 * test units.
-//	 * 
-//	 */
-//	@Test
-//	public void testGetUnits() {
-//		CMLCml cml = (CMLCml) parseValidString(unitsS);
-//
-//		// scalars
-//		List<CMLElement> scalars = cml.getElements(".//" + CMLScalar.NS);
-//		Assert.assertEquals("scalar count", 3, scalars.size());
-//		CMLScalar scalar = (CMLScalar) scalars.get(0);
-//		UnitsAttribute unitsAttribute = (UnitsAttribute) scalar
-//				.getUnitsAttribute();
-//		Assert.assertNotNull("units attribute not null", unitsAttribute);
-//		CMLUnit unit = unitsUnitListMap.getUnit(unitsAttribute);
-//		Assert.assertNotNull("unit not null", unit);
-//		Assert.assertEquals("unit ", "deg", unit.getId());
-//	}
+	// /**
+	// * test units.
+	// *
+	// */
+	// @Test
+	// public void testGetUnits() {
+	// CMLCml cml = (CMLCml) parseValidString(unitsS);
+	//
+	// // scalars
+	// List<CMLElement> scalars = cml.getElements(".//" + CMLScalar.NS);
+	// Assert.assertEquals("scalar count", 3, scalars.size());
+	// CMLScalar scalar = (CMLScalar) scalars.get(0);
+	// UnitsAttribute unitsAttribute = (UnitsAttribute) scalar
+	// .getUnitsAttribute();
+	// Assert.assertNotNull("units attribute not null", unitsAttribute);
+	// CMLUnit unit = unitsUnitListMap.getUnit(unitsAttribute);
+	// Assert.assertNotNull("unit not null", unit);
+	// Assert.assertEquals("unit ", "deg", unit.getId());
+	// }
 
-//	/**
-//	 * test conversion to SI.
-//	 * 
-//	 */
-//	@Test
-//	public void testConvertToSI() {
-//		CMLCml cml = null;
-//		try {
-//			cml = (CMLCml) new CMLBuilder().build(new StringReader(unitsS))
-//					.getRootElement();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			Assert.fail("should not throw " + e);
-//		}
-//
-//		// scalars
-//		List<CMLElement> scalars = cml.getElements(".//" + CMLScalar.NS);
-//		Assert.assertEquals("scalar count", 3, scalars.size());
-//		CMLScalar scalar0 = (CMLScalar) scalars.get(0);
-//		Assert.assertEquals("scalar0", 180., scalar0.getDouble(), EPS);
-//		Assert.assertEquals("scalar0", U_DEGREE, scalar0.getUnits());
-//		scalar0.convertToSI(unitsUnitListMap);
-//		Assert.assertEquals("scalar0", Math.PI, scalar0.getDouble(), .000001);
-//		Assert.assertEquals("scalar0", CML_SIUNITS + S_COLON + "radian",
-//				scalar0.getUnits());
-//
-//		CMLScalar scalar1 = (CMLScalar) scalars.get(1);
-//		Assert.assertEquals("scalar1", 100, scalar1.getDouble(), EPS);
-//		Assert.assertEquals("scalar1", U_KCAL, scalar1.getUnits());
-//		scalar1.convertToSI(unitsUnitListMap);
-//		Assert.assertEquals("scalar1", 4.184E+05, scalar1.getDouble(), 1);
-//		Assert.assertEquals("scalar1", CML_SIUNITS + S_COLON + "joule", scalar1
-//				.getUnits());
-//
-//		CMLScalar scalar2 = (CMLScalar) scalars.get(2);
-//		Assert.assertEquals("scalar2", 100, scalar2.getDouble(), EPS);
-//		Assert.assertEquals("scalar2", U_CELSIUS, scalar2.getUnits());
-//		scalar2.convertToSI(unitsUnitListMap);
-//		Assert.assertEquals("scalar2", 373.15, scalar2.getDouble(), EPS);
-//		Assert.assertEquals("scalar2", CML_SIUNITS + S_COLON + "k", scalar2
-//				.getUnits());
-//	}
+	// /**
+	// * test conversion to SI.
+	// *
+	// */
+	// @Test
+	// public void testConvertToSI() {
+	// CMLCml cml = null;
+	// try {
+	// cml = (CMLCml) new CMLBuilder().build(new StringReader(unitsS))
+	// .getRootElement();
+	// } catch (Exception e) {
+	// e.printStackTrace();
+	// Assert.fail("should not throw " + e);
+	// }
+	//
+	// // scalars
+	// List<CMLElement> scalars = cml.getElements(".//" + CMLScalar.NS);
+	// Assert.assertEquals("scalar count", 3, scalars.size());
+	// CMLScalar scalar0 = (CMLScalar) scalars.get(0);
+	// Assert.assertEquals("scalar0", 180., scalar0.getDouble(), EPS);
+	// Assert.assertEquals("scalar0", U_DEGREE, scalar0.getUnits());
+	// scalar0.convertToSI(unitsUnitListMap);
+	// Assert.assertEquals("scalar0", Math.PI, scalar0.getDouble(), .000001);
+	// Assert.assertEquals("scalar0", CML_SIUNITS + S_COLON + "radian",
+	// scalar0.getUnits());
+	//
+	// CMLScalar scalar1 = (CMLScalar) scalars.get(1);
+	// Assert.assertEquals("scalar1", 100, scalar1.getDouble(), EPS);
+	// Assert.assertEquals("scalar1", U_KCAL, scalar1.getUnits());
+	// scalar1.convertToSI(unitsUnitListMap);
+	// Assert.assertEquals("scalar1", 4.184E+05, scalar1.getDouble(), 1);
+	// Assert.assertEquals("scalar1", CML_SIUNITS + S_COLON + "joule", scalar1
+	// .getUnits());
+	//
+	// CMLScalar scalar2 = (CMLScalar) scalars.get(2);
+	// Assert.assertEquals("scalar2", 100, scalar2.getDouble(), EPS);
+	// Assert.assertEquals("scalar2", U_CELSIUS, scalar2.getUnits());
+	// scalar2.convertToSI(unitsUnitListMap);
+	// Assert.assertEquals("scalar2", 373.15, scalar2.getDouble(), EPS);
+	// Assert.assertEquals("scalar2", CML_SIUNITS + S_COLON + "k", scalar2
+	// .getUnits());
+	// }
 
 	/**
 	 * Test method for 'org.xmlcml.cml.element.CMLScalar.copy()'
@@ -835,22 +846,22 @@ public class CMLScalarTest extends NumericTestBase {
 		Assert.assertEquals("dictRef", "cmlDict:angle", dictRef.getCMLValue());
 	}
 
-//	/**
-//	 * Test method for
-//	 * 'org.xmlcml.cml.element.CMLScalar.getUnit(NamespaceToUnitListMap)'
-//	 */
-//	@Test
-//	public void testGetUnit() {
-//		CMLCml cml = null;
-//		try {
-//			cml = (CMLCml) new CMLBuilder().parseString(unitsS);
-//		} catch (Exception e) {
-//			neverThrow(e);
-//		}
-//		CMLScalar scalar = (CMLScalar) cml.getChildCMLElements("scalar").get(0);
-//		CMLUnit unit = scalar.getUnit(unitsUnitListMap);
-//		Assert.assertNotNull("unit not null", unit);
-//	}
+	// /**
+	// * Test method for
+	// * 'org.xmlcml.cml.element.CMLScalar.getUnit(NamespaceToUnitListMap)'
+	// */
+	// @Test
+	// public void testGetUnit() {
+	// CMLCml cml = null;
+	// try {
+	// cml = (CMLCml) new CMLBuilder().parseString(unitsS);
+	// } catch (Exception e) {
+	// neverThrow(e);
+	// }
+	// CMLScalar scalar = (CMLScalar) cml.getChildCMLElements("scalar").get(0);
+	// CMLUnit unit = scalar.getUnit(unitsUnitListMap);
+	// Assert.assertNotNull("unit not null", unit);
+	// }
 
 	/**
 	 * Test method for 'org.xmlcml.cml.element.CMLScalar.setUnits(String,
