@@ -1,12 +1,11 @@
 package org.xmlcml.cml.element.main;
 
+import static org.xmlcml.euclid.EuclidConstants.S_SLASH;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import org.xmlcml.cml.base.BaseTest;
-import org.xmlcml.cml.base.CMLBuilder;
-import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 
 /**
@@ -17,7 +16,7 @@ import org.xmlcml.cml.base.CMLElement;
  * 
  */
 
-public abstract class AbstractTest extends BaseTest implements CMLConstants {
+public final class AbstractTest {
 
 	/** root of tests. */
 	public final static String TEST_RESOURCE = "org/xmlcml/cml/element";
@@ -71,13 +70,7 @@ public abstract class AbstractTest extends BaseTest implements CMLConstants {
 	/** cml comp dictionary */
 	public final static String CML_COMP_DICT = "cmlComp";
 
-	/** construct.
-	 */
-	public AbstractTest() {
-		builder = new CMLBuilder();
-	}
-
-    /**
+	/**
 	 * error.
 	 * 
 	 * @param s
@@ -91,19 +84,19 @@ public abstract class AbstractTest extends BaseTest implements CMLConstants {
 	 * 
 	 * @param element
 	 * @param htmlFile
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	void writeHTML(CMLElement element, String htmlFile) throws IOException {
 		File f = new File(htmlFile);
-		if(!f.exists()) {
+		if (!f.exists()) {
 			File dir = f.getParentFile();
-			if(!dir.exists()) {
-				if(!dir.mkdirs()) { 
-					throw new RuntimeException("Problem: cannot create "+ dir);
+			if (!dir.exists()) {
+				if (!dir.mkdirs()) {
+					throw new RuntimeException("Problem: cannot create " + dir);
 				}
 			}
-			if(!f.createNewFile()) {
-				throw new RuntimeException("Problem: cannot create "+ f);
+			if (!f.createNewFile()) {
+				throw new RuntimeException("Problem: cannot create " + f);
 			}
 		}
 		FileWriter fw = new FileWriter(f);

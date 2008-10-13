@@ -1,5 +1,12 @@
 package org.xmlcml.cml.element.main;
 
+import static org.xmlcml.cml.base.BaseTest.parseValidString;
+import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
+import static org.xmlcml.cml.element.main.AbstractTest.EXPERIMENTAL_RESOURCE;
+import static org.xmlcml.euclid.EuclidConstants.S_EMPTY;
+import static org.xmlcml.euclid.EuclidConstants.U_S;
+import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -12,7 +19,6 @@ import nu.xom.ParsingException;
 import nu.xom.Serializer;
 import nu.xom.ValidityException;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLBuilder;
 import org.xmlcml.cml.element.lite.CMLCml;
@@ -21,26 +27,16 @@ import org.xmlcml.euclid.Util;
 
 /**
  * test ZMatrix.
- *
+ * 
  * @author pm286
- *
+ * 
  */
-public class CMLZMatrixTest extends AbstractTest {
-
-	/**
-	 * setUp.
-	 *
-	 * @exception Exception
-	 */
-	@Before
-	public void setUp() throws Exception {
-		super.setUp();
-	}
+public class CMLZMatrixTest {
 
 	/**
 	 * Test method for
 	 * 'org.xmlcml.cml.element.CMLZMatrix.CMLZMatrix(CMLElement)'
-	 *
+	 * 
 	 * @exception Exception
 	 */
 	@Test
@@ -169,7 +165,7 @@ public class CMLZMatrixTest extends AbstractTest {
 
 	/**
 	 * another test for the constructor.
-	 *
+	 * 
 	 */
 	@Test
 	public void testZMatrixElement2() {
@@ -220,22 +216,19 @@ public class CMLZMatrixTest extends AbstractTest {
 			throws IOException, ValidityException, ParsingException {
 		Document doc = null;
 		CMLMolecule mol = null;
-		InputStream in = Util
-				.getInputStreamFromResource(EXPERIMENTAL_RESOURCE + U_S
-						+ infileS);
+		InputStream in = Util.getInputStreamFromResource(EXPERIMENTAL_RESOURCE
+				+ U_S + infileS);
 		doc = new CMLBuilder().build(in);
 		in.close();
 		mol = (CMLMolecule) doc.getRootElement();
 		CMLZMatrix zmat = new CMLZMatrix(mol);
-		/*-- add random torsions for fun
-		 Elements torsionList = zmat.getChildCMLElements(CMLTorsion.TAG);
-		 for (int i = 0; i < torsionList.size(); i++) {
-		 CMLTorsion torsion = (CMLTorsion) torsionList.get(i);
-		 double tangle = torsion.getXMLContent();
-		 tangle += 30 * Math.random();
-		 torsion.setXMLContent(tangle);
-		 }
-		 --*/
+		/*
+		 * -- add random torsions for fun Elements torsionList =
+		 * zmat.getChildCMLElements(CMLTorsion.TAG); for (int i = 0; i <
+		 * torsionList.size(); i++) { CMLTorsion torsion = (CMLTorsion)
+		 * torsionList.get(i); double tangle = torsion.getXMLContent(); tangle
+		 * += 30 Math.random(); torsion.setXMLContent(tangle); } --
+		 */
 		zmat.addCartesiansTo(mol);
 
 		File outfile = new File(outfileS);
@@ -251,6 +244,5 @@ public class CMLZMatrixTest extends AbstractTest {
 			neverThrow(e);
 		}
 	}
-
 
 }

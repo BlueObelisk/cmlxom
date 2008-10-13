@@ -3,6 +3,7 @@ package org.xmlcml.cml.base;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import static org.xmlcml.cml.base.CMLConstants.*;
 
 /**
  * tests for doubleAttribute.
@@ -10,7 +11,7 @@ import org.junit.Test;
  * @author pmr
  * 
  */
-public class DoubleAttributeTest extends AttributeBaseTest {
+public class DoubleAttributeTest {
 
 	DoubleSTAttribute daa1;
 
@@ -23,7 +24,6 @@ public class DoubleAttributeTest extends AttributeBaseTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		super.setUp();
 		daa1 = new DoubleSTAttribute(new CMLAttribute("foo"), " 1.2   ");
 
 	}
@@ -51,7 +51,8 @@ public class DoubleAttributeTest extends AttributeBaseTest {
 
 	/**
 	 * Test method for
-	 * 'org.xmlcml.cml.base.DoubleSTAttribute.DoubleAttribute(DoubleSTAttribute)'
+	 * 'org.xmlcml.cml.base.DoubleSTAttribute.DoubleAttribute(DoubleSTAttribute)
+	 * '
 	 */
 	@Test
 	public void testDoubleAttributeDoubleAttribute() {

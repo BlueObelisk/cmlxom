@@ -6,6 +6,16 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+import static org.xmlcml.cml.base.BaseTest.assertEqualsCanonically;
+import static org.xmlcml.cml.base.BaseTest.parseValidString;
+import static org.xmlcml.cml.base.CMLConstants.CML_NS;
+import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
+import static org.xmlcml.euclid.EuclidConstants.EPS;
+import static org.xmlcml.euclid.EuclidConstants.S_EMPTY;
+import static org.xmlcml.euclid.EuclidConstants.S_QUOT;
+import static org.xmlcml.euclid.EuclidConstants.S_SPACE;
+import static org.xmlcml.euclid.test.EuclidTestBase.getAssertFormat;
+import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -20,12 +30,13 @@ import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLBuilder;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.CMLSerializer;
 import org.xmlcml.cml.base.DoubleSTAttribute;
 import org.xmlcml.cml.element.lite.CMLFormula.Sort;
 import org.xmlcml.cml.element.lite.CMLFormula.Type;
-import org.xmlcml.cml.element.main.MoleculeAtomBondTest;
+import org.xmlcml.cml.element.main.MoleculeAtomBondBase;
 import org.xmlcml.euclid.test.DoubleTestBase;
 import org.xmlcml.euclid.test.StringTestBase;
 import org.xmlcml.molutil.ChemicalElement.AS;
@@ -36,7 +47,7 @@ import org.xmlcml.molutil.ChemicalElement.AS;
  * @author pmr
  * 
  */
-public class CMLFormulaTest extends MoleculeAtomBondTest {
+public class CMLFormulaTest extends MoleculeAtomBondBase {
 	private static Logger LOG = Logger.getLogger(CMLFormulaTest.class);
 	// built in xom;
 	CMLFormula xomForm1 = null;
@@ -84,7 +95,7 @@ public class CMLFormulaTest extends MoleculeAtomBondTest {
 		// read reference moelcule
 
 		try {
-			xmlForm1Doc = builder.build(new StringReader(xmlForm1S));
+			xmlForm1Doc = new CMLBuilder().build(new StringReader(xmlForm1S));
 		} catch (IOException e) {
 			fail("Should not throw IOException");
 		} catch (ParsingException e) {
@@ -186,7 +197,7 @@ public class CMLFormulaTest extends MoleculeAtomBondTest {
 				+ "  </atomArray>" + "</atom>" + S_EMPTY;
 
 		try {
-			builder.build(new StringReader(xmlForm1S));
+			new CMLBuilder().build(new StringReader(xmlForm1S));
 			fail("Should throw ParsingException due to forbidden atomArray child");
 		} catch (IOException e) {
 			fail("Should not throw IOException");
@@ -196,59 +207,46 @@ public class CMLFormulaTest extends MoleculeAtomBondTest {
 	}
 
 	/* public */void /* test */Serialize() {
-		/*-- cannot really test this as order of output may vary
-		 CMLSerializer serializer;
-		 String s;
-		 String expect;
-
-		 serializer = new CMLSerializer();
-		 s = serializer.getXML(xomForm1).trim();
-		 expect =
-		 "<?xml version='1.0' encoding='UTF-8'?>"+(char)13+(char)10+
-		 "<formula concise='H 1 N 1 O 3' count='2.0' xmlns=\S_EMPTY+CML_NS+"'>" +
-		 "<atomArray elementType='H O N' count='1.0 3.0 1.0'/>" +
-		 "</formula>";
-		 assertEquals("xom1 serializer2", expect, s);
-		 xomForm1.add(AS.H.value, 7.0);
-
-		 serializer = new CMLSerializer();
-		 s = serializer.getXML(xomForm1).trim();
-		 expect =
-		 "<?xml version='1.0' encoding='UTF-8'?>"+(char)13+(char)10+
-		 "<formula concise='H 8 O 3 N 1' count='2.0' xmlns=\S_EMPTY+CML_NS+"'>" +
-		 "<atomArray elementType='H O N' count='8.0 3.0 1.0'/>" +
-		 "</formula>";
-		 expect =
-		 "<?xml version='1.0' encoding='UTF-8'?>"+(char)13+(char)10+
-		 "<formula concise='H 8 N 1 O 3' count='2.0' xmlns=\S_EMPTY+CML_NS+"'>" +
-		 "<atomArray elementType='H N O' count='8.0 1.0 3.0'/>" +
-		 "<atomArray elementType='H O N' count='8.0 3.0 1.0'/>" +
-		 "</formula>";
-		 assertEquals("xom1 serializer2", expect, s);
-
-		 serializer = new CMLSerializer();
-		 s = serializer.getXML(xomForm3).trim();
-		 expect =
-		 "<?xml version='1.0' encoding='UTF-8'?>"+(char)13+(char)10+
-		 "<formula xmlns=\S_EMPTY+CML_NS+"'>" +
-		 "<formula concise='H 2 O 4 S 1'>" +
-		 "<atomArray elementType='H O S' count='2.0 4.0 1.0'/>" +
-		 "</formula>" +
-		 "</formula>";
-		 expect =
-		 "<?xml version='1.0' encoding='UTF-8'?>"+(char)13+(char)10+
-		 "<formula xmlns=\S_EMPTY+CML_NS+"'>" +
-		 "<formula concise='H 2 O 4 S 1'>" +
-		 "<atomArray elementType='H O S' count='2.0 4.0 1.0'/>" +
-		 "<atomArray elementType='H O S' count='2.0 4.0 1.0'/>" +
-		 "</formula>" +
-		 "<formula concise='C 1 H 1 Na 1 O 3'>" +
-		 "<atomArray elementType='C H Na O' count='1.0 1.0 1.0 3.0'/>" +
-		 "<atomArray elementType='C H Na O' count='1.0 1.0 1.0 3.0'/>" +
-		 "</formula>" +
-		 "</formula>";
-		 assertEquals("xom1 serializer2", expect, s);
-		 --*/
+		/*
+		 * -- cannot really test this as order of output may vary CMLSerializer
+		 * serializer; String s; String expect;
+		 * 
+		 * serializer = new CMLSerializer(); s =
+		 * serializer.getXML(xomForm1).trim(); expect =
+		 * "<?xml version='1.0' encoding='UTF-8'?>"+(char)13+(char)10+ "<formula
+		 * concise='H 1 N 1 O 3' count='2.0' xmlns=\S_EMPTY+CML_NS+"'>" +
+		 * "<atomArray elementType='H O N' count='1.0 3.0 1.0'/>" +
+		 * "</formula>"; assertEquals("xom1 serializer2", expect, s);
+		 * xomForm1.add(AS.H.value, 7.0);
+		 * 
+		 * serializer = new CMLSerializer(); s =
+		 * serializer.getXML(xomForm1).trim(); expect =
+		 * "<?xml version='1.0' encoding='UTF-8'?>"+(char)13+(char)10+ "<formula
+		 * concise='H 8 O 3 N 1' count='2.0' xmlns=\S_EMPTY+CML_NS+"'>" +
+		 * "<atomArray elementType='H O N' count='8.0 3.0 1.0'/>" +
+		 * "</formula>"; expect =
+		 * "<?xml version='1.0' encoding='UTF-8'?>"+(char)13+(char)10+ "<formula
+		 * concise='H 8 N 1 O 3' count='2.0' xmlns=\S_EMPTY+CML_NS+"'>" +
+		 * "<atomArray elementType='H N O' count='8.0 1.0 3.0'/>" +
+		 * "<atomArray elementType='H O N' count='8.0 3.0 1.0'/>" +
+		 * "</formula>"; assertEquals("xom1 serializer2", expect, s);
+		 * 
+		 * serializer = new CMLSerializer(); s =
+		 * serializer.getXML(xomForm3).trim(); expect =
+		 * "<?xml version='1.0' encoding='UTF-8'?>"+(char)13+(char)10+ "<formula
+		 * xmlns=\S_EMPTY+CML_NS+"'>" + "<formula concise='H 2 O 4 S 1'>" +
+		 * "<atomArray elementType='H O S' count='2.0 4.0 1.0'/>" + "</formula>"
+		 * + "</formula>"; expect =
+		 * "<?xml version='1.0' encoding='UTF-8'?>"+(char)13+(char)10+ "<formula
+		 * xmlns=\S_EMPTY+CML_NS+"'>" + "<formula concise='H 2 O 4 S 1'>" +
+		 * "<atomArray elementType='H O S' count='2.0 4.0 1.0'/>" +
+		 * "<atomArray elementType='H O S' count='2.0 4.0 1.0'/>" + "</formula>"
+		 * + "<formula concise='C 1 H 1 Na 1 O 3'>" +
+		 * "<atomArray elementType='C H Na O' count='1.0 1.0 1.0 3.0'/>" +
+		 * "<atomArray elementType='C H Na O' count='1.0 1.0 1.0 3.0'/>" +
+		 * "</formula>" + "</formula>"; assertEquals("xom1 serializer2", expect,
+		 * s); --
+		 */
 	}
 
 	/**
@@ -399,7 +397,7 @@ public class CMLFormulaTest extends MoleculeAtomBondTest {
 			molecule.addBond(bond);
 		}
 		formula = new CMLFormula(molecule);
-//		formula.debug("BAD");
+		// formula.debug("BAD");
 		assertEquals("methane - all H explicit but count = 2", "C 1 H 2",
 				formula.getConcise());
 
@@ -604,17 +602,13 @@ public class CMLFormulaTest extends MoleculeAtomBondTest {
 		}
 		assertEquals("createFormula", "C 2 H 4", form.getConcise());
 		assertEquals("createFormula", 2.0, form.getCount(), EPS);
-		/*--
-		 try {
-		 form = CMLFormula.createFormula("3(C 2 H 4) 2(H 2 O 1)", CMLFormula.Type.NESTEDBRACKETS);
-		 } catch (CMLRuntime e) {
-		 neverThrow(e);
-		 } catch (RuntimeException e) {
-		 neverThrow(e);
-		 }
-		 assertEquals("createFormula", "C 2 H 4", form.getConcise());
-		 assertEquals("createFormula", 2.0, form.getCount(), EPS);
-		 --*/
+		/*
+		 * -- try { form = CMLFormula.createFormula("3(C 2 H 4) 2(H 2 O 1)",
+		 * CMLFormula.Type.NESTEDBRACKETS); } catch (CMLRuntime e) {
+		 * neverThrow(e); } catch (RuntimeException e) { neverThrow(e); }
+		 * assertEquals("createFormula", "C 2 H 4", form.getConcise());
+		 * assertEquals("createFormula", 2.0, form.getCount(), EPS); --
+		 */
 	}
 
 	/**
@@ -903,13 +897,17 @@ public class CMLFormulaTest extends MoleculeAtomBondTest {
 	 *      ELEMENT_COUNT_WHITESPACE	&quot;C2 H4 Cl2&quot;
 	 *      ELEMENT_WHITESPACE_COUNT	&quot;C 2 H 4 Cl 2&quot;
 	 *      NESTEDBRACKETS			&quot;(Na2)(SO4).10(H2O)&quot;
-	 * </pre> @ param sort
+	 * </pre>
+	 * 
+	 * @ param sort
 	 * 
 	 * <pre>
 	 *      ALPHABETIC_ELEMENTS		&quot;Br C Cl H&quot;
 	 *      CHFIRST			=	&quot;C H Br Cl&quot;; (default)
-	 * </pre> @ param omitCount1 omit elements count if 1 (default false) @ return
-	 *        String the formatted formula
+	 * </pre>
+	 * 
+	 * @ param omitCount1 omit elements count if 1 (default false) @ return
+	 * String the formatted formula
 	 */
 	/**
 	 * Test method for

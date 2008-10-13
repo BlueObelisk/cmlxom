@@ -3,6 +3,15 @@
  */
 package org.xmlcml.euclid.test;
 
+import static org.xmlcml.euclid.EuclidConstants.EPS;
+import static org.xmlcml.euclid.EuclidConstants.F_S;
+import static org.xmlcml.euclid.EuclidConstants.S_COMMA;
+import static org.xmlcml.euclid.EuclidConstants.S_PERIOD;
+import static org.xmlcml.euclid.EuclidConstants.S_SPACE;
+import static org.xmlcml.euclid.EuclidConstants.U_S;
+import static org.xmlcml.euclid.test.EuclidTestBase.neverFail;
+import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -17,14 +26,13 @@ import nu.xom.Document;
 import org.junit.Assert;
 import org.junit.Test;
 import org.xmlcml.cml.base.BaseTest;
-import org.xmlcml.euclid.EuclidConstants;
 import org.xmlcml.euclid.Util;
 
 /**
  * @author pm286
  * 
  */
-public class UtilTest extends EuclidTestBase implements EuclidConstants {
+public class UtilTest {
 
 	/**
 	 * Test method for 'org.xmlcml.cml.base.Util.getTEMP_DIRECTORY()'
@@ -178,7 +186,8 @@ public class UtilTest extends EuclidTestBase implements EuclidConstants {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.euclid.Util#getInputStreamFromResource(java.lang.String)}.
+	 * {@link org.xmlcml.euclid.Util#getInputStreamFromResource(java.lang.String)}
+	 * .
 	 */
 	@Test
 	public final void testGetInputStreamFromResource() {
@@ -323,7 +332,8 @@ public class UtilTest extends EuclidTestBase implements EuclidConstants {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.euclid.Util#truncateAndAddEllipsis(java.lang.String, int)}.
+	 * {@link org.xmlcml.euclid.Util#truncateAndAddEllipsis(java.lang.String, int)}
+	 * .
 	 */
 	@Test
 	public final void testTruncateAndAddEllipsis() {
@@ -353,7 +363,8 @@ public class UtilTest extends EuclidTestBase implements EuclidConstants {
 	}
 
 	/**
-	 * Test method for {@link org.xmlcml.euclid.Util#leftTrim(java.lang.String)}.
+	 * Test method for {@link org.xmlcml.euclid.Util#leftTrim(java.lang.String)}
+	 * .
 	 */
 	@Test
 	public final void testLeftTrim() {
@@ -363,7 +374,8 @@ public class UtilTest extends EuclidTestBase implements EuclidConstants {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.euclid.Util#indexOfBalancedBracket(char, java.lang.String)}.
+	 * {@link org.xmlcml.euclid.Util#indexOfBalancedBracket(char, java.lang.String)}
+	 * .
 	 */
 	@Test
 	public final void testIndexOfBalancedBracket() {
@@ -375,7 +387,8 @@ public class UtilTest extends EuclidTestBase implements EuclidConstants {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.euclid.Util#getCommaSeparatedStrings(java.lang.String)}.
+	 * {@link org.xmlcml.euclid.Util#getCommaSeparatedStrings(java.lang.String)}
+	 * .
 	 */
 	@Test
 	public final void testGetCommaSeparatedStrings() {
@@ -390,7 +403,8 @@ public class UtilTest extends EuclidTestBase implements EuclidConstants {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.euclid.Util#createCommaSeparatedStrings(java.util.List)}.
+	 * {@link org.xmlcml.euclid.Util#createCommaSeparatedStrings(java.util.List)}
+	 * .
 	 */
 	@Test
 	public final void testCreateCommaSeparatedStrings() {
@@ -420,7 +434,8 @@ public class UtilTest extends EuclidTestBase implements EuclidConstants {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.euclid.Util#indexOf(java.lang.String, java.lang.String[], boolean)}.
+	 * {@link org.xmlcml.euclid.Util#indexOf(java.lang.String, java.lang.String[], boolean)}
+	 * .
 	 */
 	@Test
 	public final void testIndexOf() {
@@ -474,7 +489,8 @@ public class UtilTest extends EuclidTestBase implements EuclidConstants {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.euclid.Util#BUG(java.lang.String, java.lang.Throwable)}.
+	 * {@link org.xmlcml.euclid.Util#BUG(java.lang.String, java.lang.Throwable)}
+	 * .
 	 */
 	@Test
 	public final void testBUGStringThrowable() {
@@ -499,7 +515,8 @@ public class UtilTest extends EuclidTestBase implements EuclidConstants {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.euclid.Util#substituteString(java.lang.String, java.lang.String, java.lang.String, int)}.
+	 * {@link org.xmlcml.euclid.Util#substituteString(java.lang.String, java.lang.String, java.lang.String, int)}
+	 * .
 	 */
 	@Test
 	public final void testSubstituteString() {
@@ -512,7 +529,8 @@ public class UtilTest extends EuclidTestBase implements EuclidConstants {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.euclid.Util#substituteStrings(java.lang.String, java.lang.String[], java.lang.String[])}.
+	 * {@link org.xmlcml.euclid.Util#substituteStrings(java.lang.String, java.lang.String[], java.lang.String[])}
+	 * .
 	 */
 	@Test
 	public final void testSubstituteStrings() {
@@ -692,7 +710,8 @@ public class UtilTest extends EuclidTestBase implements EuclidConstants {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.euclid.Util#splitToIntArray(java.lang.String, java.lang.String)}.
+	 * {@link org.xmlcml.euclid.Util#splitToIntArray(java.lang.String, java.lang.String)}
+	 * .
 	 */
 	@Test
 	public final void testSplitToIntArray() {
@@ -704,7 +723,8 @@ public class UtilTest extends EuclidTestBase implements EuclidConstants {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.euclid.Util#splitToDoubleArray(java.lang.String, java.lang.String)}.
+	 * {@link org.xmlcml.euclid.Util#splitToDoubleArray(java.lang.String, java.lang.String)}
+	 * .
 	 */
 	@Test
 	public final void testSplitToDoubleArray() {
@@ -732,7 +752,8 @@ public class UtilTest extends EuclidTestBase implements EuclidConstants {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.euclid.Util#concatenate(java.lang.String[], java.lang.String)}.
+	 * {@link org.xmlcml.euclid.Util#concatenate(java.lang.String[], java.lang.String)}
+	 * .
 	 */
 	@Test
 	public final void testConcatenateStringArrayString() {
@@ -746,7 +767,8 @@ public class UtilTest extends EuclidTestBase implements EuclidConstants {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.euclid.Util#containsString(java.lang.String[], java.lang.String)}.
+	 * {@link org.xmlcml.euclid.Util#containsString(java.lang.String[], java.lang.String)}
+	 * .
 	 */
 	@Test
 	public final void testContainsString() {

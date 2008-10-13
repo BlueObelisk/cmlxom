@@ -6,6 +6,11 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+import static org.xmlcml.cml.base.CMLConstants.CML_NS;
+import static org.xmlcml.euclid.EuclidConstants.S_EMPTY;
+import static org.xmlcml.euclid.EuclidConstants.U_S;
+import static org.xmlcml.euclid.test.EuclidTestBase.alwaysFail;
+import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
 import java.text.ParseException;
 import java.util.List;
@@ -26,7 +31,7 @@ import org.junit.Test;
  * @author pm286
  * 
  */
-public class CMLUtilTest extends BaseTest {
+public class CMLUtilTest {
 
 	/**
 	 * Test method for 'org.xmlcml.cml.base.CMLUtil.checkPrefixedName(String)'
@@ -105,7 +110,8 @@ public class CMLUtilTest extends BaseTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.base.CMLUtil#getQueryNodes(nu.xom.Node, java.lang.String, nu.xom.XPathContext)}.
+	 * {@link org.xmlcml.cml.base.CMLUtil#getQueryNodes(nu.xom.Node, java.lang.String, nu.xom.XPathContext)}
+	 * .
 	 */
 	@Test
 	public final void testGetQueryNodesNodeStringXPathContext() {
@@ -124,7 +130,8 @@ public class CMLUtilTest extends BaseTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.base.CMLUtil#getQueryNodes(nu.xom.Node, java.lang.String)}.
+	 * {@link org.xmlcml.cml.base.CMLUtil#getQueryNodes(nu.xom.Node, java.lang.String)}
+	 * .
 	 */
 	@Test
 	public final void testGetQueryNodesNodeString() {
@@ -220,7 +227,8 @@ public class CMLUtilTest extends BaseTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.base.CMLUtil#transferChildren(nu.xom.Element, nu.xom.Element)}.
+	 * {@link org.xmlcml.cml.base.CMLUtil#transferChildren(nu.xom.Element, nu.xom.Element)}
+	 * .
 	 */
 	@Test
 	public final void testTransferChildren() {
@@ -316,8 +324,8 @@ public class CMLUtilTest extends BaseTest {
 			fail("Parsing 1.0e3foobar should have resulted in a ParseException being raised");
 		} catch (ParseException e) {
 			// OK
-//			e.printStackTrace();
-//			assertTrue(true);
+			// e.printStackTrace();
+			// assertTrue(true);
 		}
 	}
 }
