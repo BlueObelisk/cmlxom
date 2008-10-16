@@ -21,7 +21,7 @@ import static org.xmlcml.cml.element.main.AbstractTest.*;
  * @author pmr
  * 
  */
-public class AbstractTableTest {
+public class AbstractTableBase {
 
 	String tableRowListS = S_EMPTY + "<tableRowList " + CML_XMLNS + ">"
 			+ "  <tableRow>" + "    <tableCell>1</tableCell>"

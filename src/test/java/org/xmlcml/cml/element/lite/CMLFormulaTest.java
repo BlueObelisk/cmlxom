@@ -36,7 +36,7 @@ import org.xmlcml.cml.base.CMLSerializer;
 import org.xmlcml.cml.base.DoubleSTAttribute;
 import org.xmlcml.cml.element.lite.CMLFormula.Sort;
 import org.xmlcml.cml.element.lite.CMLFormula.Type;
-import org.xmlcml.cml.element.main.MoleculeAtomBondBase;
+import org.xmlcml.cml.element.main.MoleculeAtomBondFixture;
 import org.xmlcml.euclid.test.DoubleTestBase;
 import org.xmlcml.euclid.test.StringTestBase;
 import org.xmlcml.molutil.ChemicalElement.AS;
@@ -47,7 +47,9 @@ import org.xmlcml.molutil.ChemicalElement.AS;
  * @author pmr
  * 
  */
-public class CMLFormulaTest extends MoleculeAtomBondBase {
+public class CMLFormulaTest {
+	MoleculeAtomBondFixture fixture = new MoleculeAtomBondFixture();
+
 	private static Logger LOG = Logger.getLogger(CMLFormulaTest.class);
 	// built in xom;
 	CMLFormula xomForm1 = null;
@@ -75,7 +77,6 @@ public class CMLFormulaTest extends MoleculeAtomBondBase {
 		if (count++ > 0) {
 			// throw new RuntimeException("SKIP");
 		}
-		super.setUp();
 
 		// build from scratch
 		xomForm1 = new CMLFormula();
@@ -1152,7 +1153,7 @@ public class CMLFormulaTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testCMLFormulaCMLMolecule() {
-		CMLFormula form = new CMLFormula(xmlMolecule);
+		CMLFormula form = new CMLFormula(fixture.xmlMolecule);
 		assertEquals("concise", "C 1 H 3 F 1 N 1 O 1 S 1", form.getConcise());
 	}
 

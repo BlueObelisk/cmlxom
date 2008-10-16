@@ -25,7 +25,7 @@ import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.CMLUtil;
 import org.xmlcml.cml.base.CMLElement.CoordinateType;
 import org.xmlcml.cml.base.CMLElement.FormalChargeControl;
-import org.xmlcml.cml.element.main.MoleculeAtomBondBase;
+import org.xmlcml.cml.element.main.MoleculeAtomBondFixture;
 import org.xmlcml.euclid.Real2;
 import org.xmlcml.euclid.Real2Vector;
 
@@ -35,17 +35,8 @@ import org.xmlcml.euclid.Real2Vector;
  * @author pmr
  * 
  */
-public class CMLMoleculeTest extends MoleculeAtomBondBase {
-
-	/**
-	 * setup.
-	 * 
-	 * @throws Exception
-	 */
-	@Before
-	public void setUp() throws Exception {
-		super.setUp();
-	}
+public class CMLMoleculeTest {
+	MoleculeAtomBondFixture fixture = new MoleculeAtomBondFixture();
 
 	/**
 	 * compare two molecules. ignore whitespace nodes in either.
@@ -71,8 +62,8 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 * 
 	 * @param mol
 	 *            to compare
-	 * @param mol1
-	 *            other molecule
+	 * @param fixture
+	 *            .mol1 other molecule
 	 */
 	public static void assertEqualsCanonically(CMLMolecule mol, CMLMolecule mol1) {
 		mol = new CMLMolecule(mol);
@@ -90,12 +81,12 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testAddAtom() {
-		makeMol1();
-		Assert.assertEquals("addAtom", 3, mol1.getAtomCount());
+		fixture.makeMol1();
+		Assert.assertEquals("addAtom", 3, fixture.mol1.getAtomCount());
 		CMLAtom atom = new CMLAtom("a99");
-		mol1.addAtom(atom);
-		Assert.assertEquals("addAtom", 4, mol1.getAtomCount());
-		Assert.assertEquals("addAtom", "a99", mol1.getAtom(3).getId());
+		fixture.mol1.addAtom(atom);
+		Assert.assertEquals("addAtom", 4, fixture.mol1.getAtomCount());
+		Assert.assertEquals("addAtom", "a99", fixture.mol1.getAtom(3).getId());
 	}
 
 	/**
@@ -104,16 +95,16 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testAppendMolecule() {
-		makeMol1();
-		makeMol2();
+		fixture.makeMol1();
+		fixture.makeMol2();
 
 		CMLMolecule emptyMolecule = new CMLMolecule();
 		Assert.assertNotNull("empty molecule", emptyMolecule);
 		emptyMolecule.setId("m0");
-		emptyMolecule.appendMolecule(mol1);
+		emptyMolecule.appendMolecule(fixture.mol1);
 		Assert.assertEquals("molecule children", 2, emptyMolecule
 				.getMoleculeCount());
-		emptyMolecule.appendMolecule(mol2);
+		emptyMolecule.appendMolecule(fixture.mol2);
 		Assert.assertEquals("molecule children", 3, emptyMolecule
 				.getMoleculeCount());
 		Assert.assertEquals("top id", "m0", emptyMolecule.getId());
@@ -137,9 +128,11 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 
 		// ---
 
-		Assert.assertEquals("molecule children", 0, mol1.getMoleculeCount());
-		mol1.appendMolecule(mol2);
-		Assert.assertEquals("molecule children", 2, mol1.getMoleculeCount());
+		Assert.assertEquals("molecule children", 0, fixture.mol1
+				.getMoleculeCount());
+		fixture.mol1.appendMolecule(fixture.mol2);
+		Assert.assertEquals("molecule children", 2, fixture.mol1
+				.getMoleculeCount());
 	}
 
 	/**
@@ -160,7 +153,7 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	@Test
 	public void testCMLMoleculeCMLMolecule() {
 		// copy constructor
-		CMLMolecule molecule = new CMLMolecule(xmlMolecule);
+		CMLMolecule molecule = new CMLMolecule(fixture.xmlMolecule);
 		Assert.assertNotNull("constructor ", molecule);
 
 		CMLAttribute idAtt = molecule.getIdAttribute();
@@ -168,10 +161,11 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 				CMLAttribute.class.isAssignableFrom(idAtt.getClass()));
 		Assert.assertEquals("id class is StringSTAttribute", IdAttribute.class,
 				idAtt.getClass());
-		Assert.assertEquals("id value", molecule.getId(), xmlMolecule.getId());
+		Assert.assertEquals("id value", molecule.getId(), fixture.xmlMolecule
+				.getId());
 
 		Assert.assertEquals("Molecule is identical", molecule
-				.compareTo(xmlMolecule), 0);
+				.compareTo(fixture.xmlMolecule), 0);
 	}
 
 	/**
@@ -179,12 +173,12 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testCopy() {
-		Node copy = xmlMolecule.copy();
+		Node copy = fixture.xmlMolecule.copy();
 		Assert.assertEquals("class should be CMLMolecule: ", copy.getClass(),
 				CMLMolecule.class);
 		CMLMolecule copyMolecule = (CMLMolecule) copy;
 		Assert.assertEquals("Molecule is identical", copyMolecule
-				.compareTo(xmlMolecule), 0);
+				.compareTo(fixture.xmlMolecule), 0);
 	}
 
 	/**
@@ -214,8 +208,8 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 		Assert.assertNotNull("atom should not be null", atom);
 		atom = new CMLAtom();
 		atom.setId("z1");
-		xomMolecule.getOrCreateAtomArray().appendChild(atom);
-		List<CMLAtom> atoms = xomMolecule.getAtoms();
+		fixture.xomMolecule.getOrCreateAtomArray().appendChild(atom);
+		List<CMLAtom> atoms = fixture.xomMolecule.getAtoms();
 		Assert.assertEquals("atom count", 6, atoms.size());
 		Assert.assertEquals("atom id", "a1", ((CMLAtom) atoms.get(0)).getId());
 		Assert.assertEquals("atom id", "z1", ((CMLAtom) atoms.get(5)).getId());
@@ -228,7 +222,8 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGetBondCMLAtomCMLAtom() {
-		makeMol5a();
+		fixture.makeMol5a();
+		CMLMolecule mol5a = fixture.mol5a;
 		Assert.assertEquals("get bond", 4, mol5a.getBondCount());
 		CMLAtom atom1 = mol5a.getAtomById("a1");
 		Assert.assertNotNull("get bond", atom1);
@@ -249,8 +244,8 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGetBondCount() {
-		makeMol5a();
-		Assert.assertEquals("get bond count", 4, mol5a.getBondCount());
+		fixture.makeMol5a();
+		Assert.assertEquals("get bond count", 4, fixture.mol5a.getBondCount());
 	}
 
 	/**
@@ -258,9 +253,9 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGetBonds() {
-		List<CMLBond> bonds = xmlMolecule.getBonds();
+		List<CMLBond> bonds = fixture.xmlMolecule.getBonds();
 		Assert.assertNotNull("bonds not null", bonds);
-		Assert.assertEquals("number of bonds", xmlNbonds, bonds.size());
+		Assert.assertEquals("number of bonds", fixture.xmlNbonds, bonds.size());
 	}
 
 	/**
@@ -269,10 +264,11 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGetCalculatedFormalCharge() {
-		makeMol1();
+		fixture.makeMol1();
 		int fc = Integer.MIN_VALUE;
 		try {
-			fc = mol1.getCalculatedFormalCharge(FormalChargeControl.NO_DEFAULT);
+			fc = fixture.mol1
+					.getCalculatedFormalCharge(FormalChargeControl.NO_DEFAULT);
 		} catch (RuntimeException e) {
 			Assert.assertEquals("formal charge ",
 					"BUG: (unset attribute: formalCharge)should never throw", e
@@ -280,9 +276,10 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 		}
 		fc = Integer.MIN_VALUE;
 		Assert.assertEquals("formal charge", Integer.MIN_VALUE, fc);
-		makeMol5();
+		fixture.makeMol5();
 		try {
-			fc = mol5.getCalculatedFormalCharge(FormalChargeControl.DEFAULT);
+			fc = fixture.mol5
+					.getCalculatedFormalCharge(FormalChargeControl.DEFAULT);
 		} catch (RuntimeException e) {
 			Assert.fail("formal charge should not throw " + e);
 		}
@@ -294,11 +291,11 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGetCentroid2D() {
-		makeMol1();
-		Real2 centroid = mol1.calculateCentroid2D();
+		fixture.makeMol1();
+		Real2 centroid = fixture.mol1.calculateCentroid2D();
 		Assert.assertNull("centroid 1", centroid);
-		makeMol7();
-		centroid = mol7.calculateCentroid2D();
+		fixture.makeMol7();
+		centroid = fixture.mol7.calculateCentroid2D();
 		Assert.assertNotNull("centroid 7", centroid);
 		Assert.assertEquals("centroid x", 0.4, centroid.getX(), .0001);
 		Assert.assertEquals("centroid y", 1.1666, centroid.getY(), .0001);
@@ -309,10 +306,12 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGetMoleculeCount() {
-		makeMol1();
-		Assert.assertEquals("molecule count", 0, mol1.getMoleculeCount());
-		makeMol8();
-		Assert.assertEquals("molecule count", 2, mol8.getMoleculeCount());
+		fixture.makeMol1();
+		Assert.assertEquals("molecule count", 0, fixture.mol1
+				.getMoleculeCount());
+		fixture.makeMol8();
+		Assert.assertEquals("molecule count", 2, fixture.mol8
+				.getMoleculeCount());
 	}
 
 	/**
@@ -320,7 +319,8 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGetMolecules() {
-		CMLElements<CMLMolecule> molecules = xmlMolecule.getMoleculeElements();
+		CMLElements<CMLMolecule> molecules = fixture.xmlMolecule
+				.getMoleculeElements();
 		Assert.assertNotNull("empty child molecules not null", molecules);
 		Assert.assertEquals("child molecule count", 0, molecules.size());
 	}
@@ -330,12 +330,12 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGetVector2D() {
-		makeMol1();
-		Real2Vector vector = mol1.getCoordinates2D();
+		fixture.makeMol1();
+		Real2Vector vector = fixture.mol1.getCoordinates2D();
 		Assert.assertNotNull("get vector2d", vector);
 		Assert.assertEquals("get vector2d", 0, vector.size());
-		makeMol7();
-		vector = mol7.getCoordinates2D();
+		fixture.makeMol7();
+		vector = fixture.mol7.getCoordinates2D();
 		Assert.assertNotNull("get vector2d", vector);
 		Assert.assertEquals("get vector2d", 3, vector.size());
 		Real2 p = vector.getReal2(2);
@@ -348,15 +348,15 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testHasCoords() {
-		makeMol1();
-		Assert.assertTrue("has 3d coords", mol1
+		fixture.makeMol1();
+		Assert.assertTrue("has 3d coords", fixture.mol1
 				.hasCoordinates(CoordinateType.CARTESIAN));
-		Assert.assertFalse("has 2d coords", mol1
+		Assert.assertFalse("has 2d coords", fixture.mol1
 				.hasCoordinates(CoordinateType.TWOD));
-		makeMol7();
-		Assert.assertTrue("has 3d coords", mol1
+		fixture.makeMol7();
+		Assert.assertTrue("has 3d coords", fixture.mol1
 				.hasCoordinates(CoordinateType.CARTESIAN));
-		Assert.assertFalse("has 2d coords", mol1
+		Assert.assertFalse("has 2d coords", fixture.mol1
 				.hasCoordinates(CoordinateType.TWOD));
 	}
 
@@ -366,7 +366,8 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testMultiply2DCoordsBy() {
-		makeMol7();
+		fixture.makeMol7();
+		CMLMolecule mol7 = fixture.mol7;
 		mol7.multiply2DCoordsBy(10.);
 		Assert.assertEquals("scaled atom x", 0.0, mol7.getAtom(0).getX2(), EPS);
 		Assert.assertEquals("scaled atom x", 0.0, mol7.getAtom(0).getY2(), EPS);
@@ -395,20 +396,29 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 		List<String> badList = new ArrayList<String>();
 		badList.add("a01");
 		badList.add("a02");
-		makeMol1();
+		fixture.makeMol1();
 
-		mol1.renameAtomIDs(oldList, newList);
-		Assert.assertEquals("renamed id", "a01", mol1.getAtom(0).getId());
-		Assert.assertEquals("renamed id", "a02", mol1.getAtom(1).getId());
-		Assert.assertEquals("renamed id", "a03", mol1.getAtom(2).getId());
+		fixture.mol1.renameAtomIDs(oldList, newList);
+		Assert.assertEquals("renamed id", "a01", fixture.mol1.getAtom(0)
+				.getId());
+		Assert.assertEquals("renamed id", "a02", fixture.mol1.getAtom(1)
+				.getId());
+		Assert.assertEquals("renamed id", "a03", fixture.mol1.getAtom(2)
+				.getId());
 
-		mol1.renameAtomIDs(newList, oldList);
-		Assert.assertEquals("renamed id", "a1", mol1.getAtom(0).getId());
-		Assert.assertEquals("renamed id", "a2", mol1.getAtom(1).getId());
-		Assert.assertEquals("renamed id", "a3", mol1.getAtom(2).getId());
+		fixture.mol1.renameAtomIDs(newList, oldList);
+		Assert
+				.assertEquals("renamed id", "a1", fixture.mol1.getAtom(0)
+						.getId());
+		Assert
+				.assertEquals("renamed id", "a2", fixture.mol1.getAtom(1)
+						.getId());
+		Assert
+				.assertEquals("renamed id", "a3", fixture.mol1.getAtom(2)
+						.getId());
 
 		try {
-			mol1.renameAtomIDs(oldList, badList);
+			fixture.mol1.renameAtomIDs(oldList, badList);
 			Assert.fail("rename should throw exeception");
 		} catch (Exception e) {
 			Assert.assertEquals("rename IDs should throw",
@@ -422,7 +432,8 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testTranslate2D() {
-		makeMol7();
+		fixture.makeMol7();
+		CMLMolecule mol7 = fixture.mol7;
 		Real2 p = mol7.getAtom(0).getXY2();
 		Assert.assertEquals("original point", 0.0, p.getX(), EPS);
 		Assert.assertEquals("original point", 0.0, p.getY(), EPS);
@@ -443,7 +454,8 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testUnlabelAllAtoms() {
-		makeMol5();
+		fixture.makeMol5();
+		CMLMolecule mol5 = fixture.mol5;
 		Assert.assertNotNull("label C1", mol5.getAtomByLabel("C1"));
 		Assert.assertNull("label C2", mol5.getAtomByLabel("C2"));
 		Assert.assertNotNull("label H1a", mol5.getAtomByLabel("H1a"));
@@ -517,35 +529,35 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testAppendToIds() {
-		makeMol1();
-		CMLAtom atom = mol1.getAtom(0);
+		fixture.makeMol1();
+		CMLAtom atom = fixture.mol1.getAtom(0);
 		String id = atom.getId();
 		Assert.assertEquals("resetId", "a1", id);
-		atom = mol1.getAtomById("a1");
+		atom = fixture.mol1.getAtomById("a1");
 		Assert.assertNotNull("atom 0 not null", atom);
-		mol1.appendToIds("X");
-		id = mol1.getAtom(0).getId();
+		fixture.mol1.appendToIds("X");
+		id = fixture.mol1.getAtom(0).getId();
 		Assert.assertEquals("resetId", "a1X", id);
-		atom = mol1.getAtomById("a1X");
+		atom = fixture.mol1.getAtomById("a1X");
 		Assert.assertNotNull("atom 0 not null", atom);
 
-		makeMol8();
-		atom = mol8.getAtom(0);
+		fixture.makeMol8();
+		atom = fixture.mol8.getAtom(0);
 		id = atom.getId();
 		Assert.assertEquals("resetId", "a1", id);
-		mol8.appendToIds("X");
+		fixture.mol8.appendToIds("X");
 		id = atom.getId();
 		Assert.assertEquals("resetId", "a1X", id);
 	}
 
 	/**
 	 * Test method for
-	 * 'org.xmlcml.cml.element.CMLMolecule.createCartesiansFromFractionals(CMLCrystal
-	 * ) '
+	 * 'org.xmlcml.cml.element.CMLMolecule.createCartesiansFromFractionals(CMLCr
+	 * y s t a l ) '
 	 */
 	@Test
 	public void testCreateCartesiansFromFractionalsCMLCrystal() {
-		makeMolCryst();
+		fixture.makeMolCryst();
 	}
 
 	/**
@@ -553,17 +565,17 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGetAtom() {
-		makeMol1();
-		CMLAtom atom = mol1.getAtom(0);
+		fixture.makeMol1();
+		CMLAtom atom = fixture.mol1.getAtom(0);
 		Assert.assertNotNull("atom 0", atom);
 		Assert.assertEquals("atom 0", "a1", atom.getId());
-		atom = mol1.getAtom(3);
+		atom = fixture.mol1.getAtom(3);
 		Assert.assertNull("atom 3", atom);
-		makeMol8();
-		atom = mol8.getAtom(0);
+		fixture.makeMol8();
+		atom = fixture.mol8.getAtom(0);
 		Assert.assertNotNull("atom 0 not null", atom);
 		Assert.assertEquals("atom 0", "a1", atom.getId());
-		atom = mol8.getAtom(4);
+		atom = fixture.mol8.getAtom(4);
 		Assert.assertNotNull("atom 4 not null", atom);
 		Assert.assertEquals("atom 4", "a2", atom.getId());
 	}
@@ -573,14 +585,14 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGetAtomById() {
-		makeMol1();
-		CMLAtom atom = mol1.getAtomById("a1");
+		fixture.makeMol1();
+		CMLAtom atom = fixture.mol1.getAtomById("a1");
 		Assert.assertNotNull("atom 0", atom);
 		Assert.assertEquals("atom 0", "a1", atom.getId());
-		atom = mol1.getAtomById("a4");
+		atom = fixture.mol1.getAtomById("a4");
 		Assert.assertNull("atom 4", atom);
-		makeMol8();
-		atom = mol8.getAtomById("a1");
+		fixture.makeMol8();
+		atom = fixture.mol8.getAtomById("a1");
 		Assert.assertNull("atom 0 null", atom);
 	}
 
@@ -589,8 +601,8 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGetBondById() {
-		makeMol5a();
-		CMLBond bond = mol5a.getBondById("a1_a2");
+		fixture.makeMol5a();
+		CMLBond bond = fixture.mol5a.getBondById("a1_a2");
 		Assert.assertNotNull("not null bond", bond);
 		String id = bond.getId();
 		Assert.assertEquals("bond", "a1_a2", id);
@@ -602,17 +614,17 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGetAtomListByIds() {
-		makeMol1();
-		List<CMLAtom> atomList = mol1.getAtomListByIds(new String[] { "a1",
-				"a3" });
+		fixture.makeMol1();
+		List<CMLAtom> atomList = fixture.mol1.getAtomListByIds(new String[] {
+				"a1", "a3" });
 		Assert.assertNotNull("atomList", atomList);
 		Assert.assertEquals("atomList", 2, atomList.size());
 		Assert.assertEquals("atom", "a1", atomList.get(0).getId());
-		atomList = mol1.getAtomsById("a4");
+		atomList = fixture.mol1.getAtomsById("a4");
 		Assert.assertNull("atom 4", atomList);
 
-		makeMol8();
-		atomList = mol8.getAtomListByIds(new String[] { "a1", "a3" });
+		fixture.makeMol8();
+		atomList = fixture.mol8.getAtomListByIds(new String[] { "a1", "a3" });
 		Assert.assertNotNull("atomList", atomList);
 		Assert.assertEquals("atomList", 0, atomList.size());
 	}
@@ -623,8 +635,8 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGetAtomByLabel() {
-		makeMol5();
-		CMLAtom atom = mol5.getAtomByLabel("C1");
+		fixture.makeMol5();
+		CMLAtom atom = fixture.mol5.getAtomByLabel("C1");
 		Assert.assertNotNull("atom not null", atom);
 		Assert.assertEquals("atom id", "a1", atom.getId());
 	}
@@ -635,7 +647,8 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGetBond() {
-		makeMol5a();
+		fixture.makeMol5a();
+		CMLMolecule mol5a = fixture.mol5a;
 		CMLAtom a1 = mol5a.getAtomById("a1");
 		CMLAtom a2 = mol5a.getAtomById("a2");
 		CMLBond b = mol5a.getBond(a1, a2);
@@ -648,12 +661,12 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testCalculateCentroid2D() {
-		makeMol7();
-		Real2 r2 = mol7.calculateCentroid2D();
+		fixture.makeMol7();
+		Real2 r2 = fixture.mol7.calculateCentroid2D();
 		Assert.assertEquals("r2", 0.4, r2.getX(), 0.00001);
 		Assert.assertEquals("r2", 3.5 / 3., r2.getY(), 0.00001);
-		makeMol1();
-		r2 = mol1.calculateCentroid2D();
+		fixture.makeMol1();
+		r2 = fixture.mol1.calculateCentroid2D();
 		Assert.assertNull("centroid null", r2);
 	}
 
@@ -662,8 +675,8 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGetDoubleBonds() {
-		makeMol5a();
-		List<CMLBond> bonds = mol5a.getBonds();
+		fixture.makeMol5a();
+		List<CMLBond> bonds = fixture.mol5a.getBonds();
 		Assert.assertNull("bond 1", bonds.get(0).getOrder());
 		bonds.get(0).setOrder(CMLBond.SINGLE);
 		bonds.get(1).setOrder(CMLBond.DOUBLE);
@@ -671,28 +684,17 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 		Assert.assertEquals("bond 0", CMLBond.SINGLE, bonds.get(0).getOrder());
 		Assert.assertEquals("bond 1", CMLBond.DOUBLE, bonds.get(1).getOrder());
 		Assert.assertNull("bond 2", bonds.get(2).getOrder());
-		List<CMLBond> bondList = mol5a.getDoubleBonds();
+		List<CMLBond> bondList = fixture.mol5a.getDoubleBonds();
 		Assert.assertEquals("bonds", 2, bondList.size());
 	}
 
 	protected CMLMolecule makeMol1a() {
-		CMLMolecule mol1a = new CMLMolecule(mol1);
+		CMLMolecule mol1a = new CMLMolecule(fixture.mol1);
 		mol1a.getAtom(0).resetId("a11");
 		mol1a.getAtom(1).resetId("a12");
 		mol1a.getAtom(2).resetId("a13");
 		return mol1a;
 	}
-
-	// /**
-	// * Test method for
-	// * 'org.xmlcml.cml.element.CMLMolecule.getMolecule(CMLElement)'
-	// */
-	// @Test
-	// public void testGetMolecule() {
-	// makeMol1();
-	// CMLElement element = (CMLElement) mol1.getChild(0);
-	// mol1.getMolecule(element);
-	// }
 
 	/**
 	 * Test method for
@@ -700,14 +702,14 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGetDescendantsOrMolecule() {
-		makeMol1();
+		fixture.makeMol1();
 		// get single molecule
-		List<CMLMolecule> molList = mol1.getDescendantsOrMolecule();
+		List<CMLMolecule> molList = fixture.mol1.getDescendantsOrMolecule();
 		Assert.assertNotNull("mol not null", molList);
 		Assert.assertEquals("mols", 1, molList.size());
-		makeMol8();
+		fixture.makeMol8();
 		// gets the 2 children
-		molList = mol8.getDescendantsOrMolecule();
+		molList = fixture.mol8.getDescendantsOrMolecule();
 		Assert.assertNotNull("mol not null", molList);
 		Assert.assertEquals("mols", 2, molList.size());
 	}
@@ -717,8 +719,8 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGetCoordinates2D() {
-		makeMol7();
-		Real2Vector r2v = mol7.getCoordinates2D();
+		fixture.makeMol7();
+		Real2Vector r2v = fixture.mol7.getCoordinates2D();
 		Assert.assertEquals("coord2", 3, r2v.size());
 		Real2 r2 = r2v.get(2);
 		Assert.assertEquals("r2", 1.2, r2.getX(), 0.00001);
@@ -731,11 +733,11 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testHasCoordinates() {
-		makeMol5a();
-		Assert.assertTrue("coords", mol5a
+		fixture.makeMol5a();
+		Assert.assertTrue("coords", fixture.mol5a
 				.hasCoordinates(CoordinateType.CARTESIAN));
-		makeMol7();
-		Assert.assertFalse("coords", mol7
+		fixture.makeMol7();
+		Assert.assertFalse("coords", fixture.mol7
 				.hasCoordinates(CoordinateType.CARTESIAN));
 	}
 
@@ -745,10 +747,10 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testIsMoleculeContainer() {
-		makeMol1();
-		Assert.assertFalse("container", mol1.isMoleculeContainer());
-		makeMol8();
-		Assert.assertTrue("container", mol8.isMoleculeContainer());
+		fixture.makeMol1();
+		Assert.assertFalse("container", fixture.mol1.isMoleculeContainer());
+		fixture.makeMol8();
+		Assert.assertTrue("container", fixture.mol8.isMoleculeContainer());
 	}
 
 	// /**
@@ -757,7 +759,7 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	// */
 	// @Test
 	// public void testMustEqual() {
-	// mol1.mustEqual(mol1);
+	// fixture.mol1.mustEqual(fixture.mol1);
 	// }
 
 	/**
@@ -766,8 +768,8 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testSetBondOrders() {
-		makeMol5a();
-		List<CMLBond> bonds = mol5a.getBonds();
+		fixture.makeMol5a();
+		List<CMLBond> bonds = fixture.mol5a.getBonds();
 		Assert.assertNull("bond 1", bonds.get(0).getOrder());
 		bonds.get(0).setOrder(CMLBond.SINGLE);
 		bonds.get(1).setOrder(CMLBond.DOUBLE);
@@ -841,7 +843,7 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	// */
 	// @Test
 	// public void testTransformCMLSymmetry() {
-	// mol1.transform(new CMLSymmetry());
+	// fixture.mol1.transform(new CMLSymmetry());
 	// fail("Not yet implemented"); // TODO
 	// }
 	//
@@ -949,16 +951,17 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public final void testDeleteAtom() {
-		makeMol1();
-		Assert.assertEquals("orig", 3, mol1.getAtomCount());
-		Assert.assertEquals("orig", 0, mol1.getBondCount());
-		CMLAtom a1 = mol1.getAtomById("a1");
-		mol1.deleteAtom(a1);
-		Assert.assertEquals("orig", 2, mol1.getAtomCount());
-		a1 = mol1.getAtomById("a1");
+		fixture.makeMol1();
+		Assert.assertEquals("orig", 3, fixture.mol1.getAtomCount());
+		Assert.assertEquals("orig", 0, fixture.mol1.getBondCount());
+		CMLAtom a1 = fixture.mol1.getAtomById("a1");
+		fixture.mol1.deleteAtom(a1);
+		Assert.assertEquals("orig", 2, fixture.mol1.getAtomCount());
+		a1 = fixture.mol1.getAtomById("a1");
 		Assert.assertNull("deleted should be null", a1);
 
-		makeMol5a();
+		fixture.makeMol5a();
+		CMLMolecule mol5a = fixture.mol5a;
 		Assert.assertEquals("orig", 5, mol5a.getAtomCount());
 		Assert.assertEquals("orig", 4, mol5a.getBondCount());
 		a1 = mol5a.getAtomById("a1");
@@ -983,11 +986,12 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public final void testRemoveAtomArray() {
-		makeMol1();
-		Assert.assertEquals("orig", 3, mol1.getAtomCount());
-		mol1.removeAtomArray();
-		Assert.assertEquals("orig", 0, mol1.getAtomCount());
-		makeMol5a();
+		fixture.makeMol1();
+		Assert.assertEquals("orig", 3, fixture.mol1.getAtomCount());
+		fixture.mol1.removeAtomArray();
+		Assert.assertEquals("orig", 0, fixture.mol1.getAtomCount());
+		fixture.makeMol5a();
+		CMLMolecule mol5a = fixture.mol5a;
 		Assert.assertEquals("orig", 5, mol5a.getAtomCount());
 		Assert.assertEquals("orig", 4, mol5a.getBondCount());
 		mol5a.removeAtomArray();
@@ -1001,11 +1005,12 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public final void testRemoveBondArray() {
-		makeMol1();
-		Assert.assertEquals("orig", 0, mol1.getBondCount());
-		mol1.removeBondArray();
-		Assert.assertEquals("orig", 0, mol1.getBondCount());
-		makeMol5a();
+		fixture.makeMol1();
+		Assert.assertEquals("orig", 0, fixture.mol1.getBondCount());
+		fixture.mol1.removeBondArray();
+		Assert.assertEquals("orig", 0, fixture.mol1.getBondCount());
+		fixture.makeMol5a();
+		CMLMolecule mol5a = fixture.mol5a;
 		Assert.assertEquals("orig", 5, mol5a.getAtomCount());
 		Assert.assertEquals("orig", 4, mol5a.getBondCount());
 		mol5a.removeBondArray();
@@ -1020,7 +1025,8 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public final void testDeleteBond() {
-		makeMol5a();
+		fixture.makeMol5a();
+		CMLMolecule mol5a = fixture.mol5a;
 		Assert.assertEquals("orig", 5, mol5a.getAtomCount());
 		Assert.assertEquals("orig", 4, mol5a.getBondCount());
 		CMLAtom a1 = mol5a.getAtomById("a1");
@@ -1040,7 +1046,8 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public final void testDeleteMolecule() {
-		makeMol8();
+		fixture.makeMol8();
+		CMLMolecule mol8 = fixture.mol8;
 		Assert.assertEquals("orig", 2, mol8.getMoleculeCount());
 		CMLMolecule mol81 = mol8.getMoleculeElements().get(0);
 		// CMLMolecule mol82 = mol8.getMoleculeElements().get(1);
@@ -1057,12 +1064,12 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public final void testNormalizeSingleMoleculeChild() {
-		makeMol1();
-		Assert.assertEquals("orig", 3, mol1.getAtomCount());
-		Assert.assertEquals("orig", 0, mol1.getMoleculeCount());
-		Assert.assertEquals("orig", "m1", mol1.getId());
+		fixture.makeMol1();
+		Assert.assertEquals("orig", 3, fixture.mol1.getAtomCount());
+		Assert.assertEquals("orig", 0, fixture.mol1.getMoleculeCount());
+		Assert.assertEquals("orig", "m1", fixture.mol1.getId());
 		CMLMolecule top = CMLMolecule.createMoleculeWithId("top");
-		top.appendChild(mol1);
+		top.appendChild(fixture.mol1);
 		Assert.assertEquals("after", 3, top.getAtomCount());
 		Assert.assertEquals("after", 1, top.getMoleculeCount());
 		Assert.assertEquals("after", "top", top.getId());
@@ -1138,15 +1145,15 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public final void testGetAtomArray() {
-		makeMol1();
-		CMLAtomArray atomArray = mol1.getAtomArray();
+		fixture.makeMol1();
+		CMLAtomArray atomArray = fixture.mol1.getAtomArray();
 		Assert.assertNotNull("atomArray", atomArray);
-		mol1 = CMLMolecule.createMoleculeWithId("m1");
-		atomArray = mol1.getAtomArray();
+		fixture.mol1 = CMLMolecule.createMoleculeWithId("m1");
+		atomArray = fixture.mol1.getAtomArray();
 		Assert.assertNull("atomArray", atomArray);
 		CMLAtom atom = new CMLAtom("a1");
-		mol1.addAtom(atom);
-		atomArray = mol1.getAtomArray();
+		fixture.mol1.addAtom(atom);
+		atomArray = fixture.mol1.getAtomArray();
 		Assert.assertNotNull("atomArray", atomArray);
 	}
 
@@ -1156,8 +1163,8 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public final void testGetAtomMap() {
-		makeMol5a();
-		Map<String, CMLAtom> map = mol5a.getAtomMap();
+		fixture.makeMol5a();
+		Map<String, CMLAtom> map = fixture.mol5a.getAtomMap();
 		Assert.assertEquals("map", 5, map.size());
 		CMLAtom atom = map.get("a2");
 		Assert.assertNotNull("atom not null", atom);
@@ -1169,8 +1176,8 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public final void testGetBondMap() {
-		makeMol5a();
-		Map<String, CMLBond> map = mol5a.getBondMap();
+		fixture.makeMol5a();
+		Map<String, CMLBond> map = fixture.mol5a.getBondMap();
 		Assert.assertEquals("map", 4, map.size());
 		// hash is ordered this way
 		CMLBond bond = map.get("a2__a1");
@@ -1185,8 +1192,8 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public final void testGetBondIdMap() {
-		makeMol5a();
-		Map<String, CMLBond> bondMap = mol5a.getBondIdMap();
+		fixture.makeMol5a();
+		Map<String, CMLBond> bondMap = fixture.mol5a.getBondIdMap();
 		Assert.assertEquals("map", 4, bondMap.size());
 		CMLBond bond = bondMap.get("a1_a4");
 		Assert.assertNotNull("bond not null", bond);
@@ -1199,15 +1206,16 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public final void testGetAtomsById() {
-		makeMol1();
-		List<CMLAtom> atomList = mol1.getAtomsById("a1");
+		fixture.makeMol1();
+		List<CMLAtom> atomList = fixture.mol1.getAtomsById("a1");
 		Assert.assertNotNull("atomList", atomList);
 		Assert.assertEquals("atomList", 1, atomList.size());
 		Assert.assertEquals("atom", "a1", atomList.get(0).getId());
-		atomList = mol1.getAtomsById("a4");
+		atomList = fixture.mol1.getAtomsById("a4");
 		Assert.assertNull("atom 4", atomList);
 
-		makeMol8();
+		fixture.makeMol8();
+		CMLMolecule mol8 = fixture.mol8;
 		atomList = mol8.getAtomsById("a1");
 		Assert.assertNotNull("atomList", atomList);
 		Assert.assertEquals("atomList", 2, atomList.size());
@@ -1224,10 +1232,10 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public final void testGetAtomCount() {
-		makeMol1();
-		Assert.assertEquals("atom count", 3, mol1.getAtomCount());
-		makeMol8();
-		Assert.assertEquals("atom count", 6, mol8.getAtomCount());
+		fixture.makeMol1();
+		Assert.assertEquals("atom count", 3, fixture.mol1.getAtomCount());
+		fixture.makeMol8();
+		Assert.assertEquals("atom count", 6, fixture.mol8.getAtomCount());
 	}
 
 	/**
@@ -1236,8 +1244,8 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public final void testGetAtoms() {
-		makeMol1();
-		List<CMLAtom> atomList = mol1.getAtoms();
+		fixture.makeMol1();
+		List<CMLAtom> atomList = fixture.mol1.getAtoms();
 		Assert.assertEquals("atoms", 3, atomList.size());
 	}
 
@@ -1247,17 +1255,17 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public final void testGetBondArray() {
-		makeMol5a();
-		CMLBondArray bondArray = mol5a.getBondArray();
+		fixture.makeMol5a();
+		CMLBondArray bondArray = fixture.mol5a.getBondArray();
 		Assert.assertNotNull("bondArray", bondArray);
-		makeMol1();
-		bondArray = mol1.getBondArray();
+		fixture.makeMol1();
+		bondArray = fixture.mol1.getBondArray();
 		Assert.assertNull("bondArray", bondArray);
-		CMLAtom a1 = mol1.getAtomById("a1");
-		CMLAtom a2 = mol1.getAtomById("a2");
+		CMLAtom a1 = fixture.mol1.getAtomById("a1");
+		CMLAtom a2 = fixture.mol1.getAtomById("a2");
 		CMLBond bond = new CMLBond(a1, a2);
-		mol1.addBond(bond);
-		bondArray = mol1.getBondArray();
+		fixture.mol1.addBond(bond);
+		bondArray = fixture.mol1.getBondArray();
 		Assert.assertNotNull("bondArray", bondArray);
 	}
 
@@ -1267,15 +1275,16 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public final void testGetOrCreateAtomArray() {
-		makeMol1();
-		CMLAtomArray atomArray = mol1.getOrCreateAtomArray();
+		fixture.makeMol1();
+		CMLAtomArray atomArray = fixture.mol1.getOrCreateAtomArray();
 		Assert.assertNotNull("create atomArray", atomArray);
 		Assert.assertEquals("atomArray", 3, atomArray.getChildCMLElements(
 				CMLAtom.TAG).size());
-		mol1 = CMLMolecule.createMoleculeWithId("m1");
-		Elements atomArrayList = mol1.getChildCMLElements(CMLAtomArray.TAG);
+		fixture.mol1 = CMLMolecule.createMoleculeWithId("m1");
+		Elements atomArrayList = fixture.mol1
+				.getChildCMLElements(CMLAtomArray.TAG);
 		Assert.assertEquals("missing atomArray", 0, atomArrayList.size());
-		atomArray = mol1.getOrCreateAtomArray();
+		atomArray = fixture.mol1.getOrCreateAtomArray();
 		Assert.assertNotNull("create atomArray", atomArray);
 		Assert.assertEquals("atomArray", 0, atomArray.getChildCMLElements(
 				CMLAtom.TAG).size());
@@ -1287,44 +1296,19 @@ public class CMLMoleculeTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public final void testGetOrCreateBondArray() {
-		makeMol1();
-		Elements bondArrayList = mol1.getChildCMLElements(CMLBondArray.TAG);
+		fixture.makeMol1();
+		Elements bondArrayList = fixture.mol1
+				.getChildCMLElements(CMLBondArray.TAG);
 		Assert.assertEquals("missing bondArray", 0, bondArrayList.size());
-		CMLBondArray bondArray = mol1.getOrCreateBondArray();
+		CMLBondArray bondArray = fixture.mol1.getOrCreateBondArray();
 		Assert.assertNotNull("create bondArray", bondArray);
 		Assert.assertEquals("bondArray", 0, bondArray.getChildCMLElements(
 				CMLBond.TAG).size());
-		mol1 = CMLMolecule.createMoleculeWithId("m1");
-		bondArray = mol1.getOrCreateBondArray();
+		fixture.mol1 = CMLMolecule.createMoleculeWithId("m1");
+		bondArray = fixture.mol1.getOrCreateBondArray();
 		Assert.assertNotNull("create bondArray", bondArray);
 		Assert.assertEquals("bondArray", 0, bondArray.getChildCMLElements(
 				CMLBond.TAG).size());
 	}
 
-	// /**
-	// * Test method for {@link
-	// org.xmlcml.cml.element.CMLMolecule#expandCountExpression()}.
-	// */
-	// @Test
-	// public final void testExpandCountExpression() {
-	// makeMol1();
-	// mol1.setCountExpression("*(3)");
-	// try {
-	// mol1.expandCountExpression();
-	// } catch (RuntimeException e) {
-	// Assert.assertEquals(
-	// "cannot clone", "Cannot clone under Document parent",
-	// e.getMessage());
-	// }
-	// CMLMolecule top = CMLMolecule.createMoleculeWithId("top");
-	// top.appendChild(mol1);
-	// mol1.expandCountExpression();
-	// Assert.assertEquals("after clone", 3, top.getMoleculeCount());
-	// CMLMolecule mola = top.getMoleculeElements().get(0);
-	// CMLMolecule molb = top.getMoleculeElements().get(1);
-	// // reset ids just for comparison
-	// mola.resetId("XX");
-	// molb.resetId("XX");
-	// CMLMoleculeTest.assertEqualsCanonically("cloned mols", mola, molb);
-	// }
 }

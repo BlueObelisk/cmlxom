@@ -25,24 +25,24 @@ import static org.xmlcml.cml.base.BaseTest.*;
 /**
  * provides communal resources for testing. e.g. files and moelcules subclassed
  * by atom- molecule and bond-aware
+ * 
  */
+public final class MoleculeAtomBondFixture {
 
-public class MoleculeAtomBondBase {
-
-	final static Logger logger = Logger.getLogger(MoleculeAtomBondBase.class
+	final static Logger logger = Logger.getLogger(MoleculeAtomBondFixture.class
 			.getName());
 
 	Document xmlDocument = null;
 
 	// build xom
-	protected final int NATOM = 5;
+	public final int NATOM = 5;
 	protected final int NBOND = 5;
 	protected String[] elementTypes = { AS.C.value, AS.N.value, AS.O.value,
 			AS.S.value, AS.B.value };
 	protected int[] hCounts = { 2, 1, 0, 0, 1 };
-	protected CMLMolecule xomMolecule;
-	protected CMLAtom[] xomAtom;
-	protected CMLBond[] xomBond;
+	public CMLMolecule xomMolecule;
+	public CMLAtom[] xomAtom;
+	public CMLBond[] xomBond;
 
 	//
 	// read into xom; not a stable molecule... (CH3)[N+](S-)(O)(F)
@@ -71,22 +71,22 @@ public class MoleculeAtomBondBase {
 			+ "      <bond id='b4' atomRefs2='a1 a5' order='1'/>"
 			+ "    </bondArray>" + "  </molecule>" + "  ";
 
-	protected CMLMolecule xmlMolecule;
-	protected List<CMLAtom> xmlAtoms;
-	protected CMLAtom[] xmlAtom;
-	protected List<CMLBond> xmlBonds;
+	public CMLMolecule xmlMolecule;
+	public List<CMLAtom> xmlAtoms;
+	public CMLAtom[] xmlAtom;
+	public List<CMLBond> xmlBonds;
 	protected int xmlNatoms;
-	protected int xmlNbonds;
+	public int xmlNbonds;
 
-	protected CMLMolecule mol1 = null;
-	protected CMLMolecule mol2 = null;
+	public CMLMolecule mol1 = null;
+	public CMLMolecule mol2 = null;
 	protected CMLMolecule mol3 = null;
 	protected CMLMolecule mol4 = null;
-	protected CMLMolecule mol5 = null;
-	protected CMLMolecule mol5a = null;
+	public CMLMolecule mol5 = null;
+	public CMLMolecule mol5a = null;
 	protected CMLMolecule mol6 = null;
-	protected CMLMolecule mol7 = null;
-	protected CMLMolecule mol8 = null;
+	public CMLMolecule mol7 = null;
+	public CMLMolecule mol8 = null;
 	protected CMLMolecule mol9 = null;
 	protected CMLMolecule mol10 = null;
 	protected CMLMolecule mol11 = null;
@@ -211,7 +211,7 @@ public class MoleculeAtomBondBase {
 		}
 	}
 
-	protected void makeMol1() {
+	public void makeMol1() {
 		String s = "  <molecule id='m1' " + CML_XMLNS + ">" + "    <atomArray>"
 				+ "      <atom id='a1' x3='1.0' y3='2.0' z3='0.0'/>"
 				+ "      <atom id='a2' x3='3.0' y3='4.0' z3='0.0'/>"
@@ -220,7 +220,7 @@ public class MoleculeAtomBondBase {
 		mol1 = (CMLMolecule) parseValidString(s);
 	}
 
-	protected void makeMol2() {
+	public void makeMol2() {
 		mol2 = (CMLMolecule) parseValidString("  <molecule id='m2' "
 				+ CML_XMLNS + ">" + "    <atomArray>"
 				+ "      <atom id='a11' x3='1.0' y3='2.0' z3='0.0'/>"
@@ -261,7 +261,7 @@ public class MoleculeAtomBondBase {
 				+ "  </crystal>" + "  ");
 	}
 
-	protected void makeMol5() {
+	public void makeMol5() {
 		mol5 = (CMLMolecule) parseValidString("  <molecule id='m5' "
 				+ CML_XMLNS
 				+ ">"
@@ -279,7 +279,7 @@ public class MoleculeAtomBondBase {
 				+ "    </atomArray>" + "  </molecule>");
 	}
 
-	protected void makeMol5a() {
+	public void makeMol5a() {
 		mol5a = (CMLMolecule) parseValidString("  <molecule id='m5' "
 				+ CML_XMLNS
 				+ ">"
@@ -297,7 +297,7 @@ public class MoleculeAtomBondBase {
 				+ "    </bondArray>" + "  </molecule>");
 	}
 
-	protected void makeMolCryst() {
+	public void makeMolCryst() {
 		cmlCryst = (CMLCml) parseValidString("<cml id='cml1' "
 				+ CML_XMLNS
 				+ ">"
@@ -340,7 +340,7 @@ public class MoleculeAtomBondBase {
 				+ "    </atomArray>" + "  </molecule>");
 	}
 
-	protected void makeMol7() {
+	public void makeMol7() {
 		mol7 = (CMLMolecule) parseValidString("  <molecule id='m7' "
 				+ CML_XMLNS + ">" + "    <atomArray>"
 				+ "      <atom id='a1' elementType='C' x2='0.0' y2='0.0'/>"
@@ -349,7 +349,7 @@ public class MoleculeAtomBondBase {
 				+ "    </atomArray>" + "  </molecule>");
 	}
 
-	protected void makeMol8() {
+	public void makeMol8() {
 		mol8 = (CMLMolecule) parseValidString("<molecule id='m8' "
 				+ CML_XMLNS
 				+ ">"

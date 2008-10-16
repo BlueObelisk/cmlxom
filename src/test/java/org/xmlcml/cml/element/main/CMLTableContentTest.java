@@ -11,7 +11,7 @@ import org.xmlcml.euclid.test.StringTestBase;
  * @author pm286
  *
  */
-public class CMLTableContentTest extends AbstractTableTest {
+public class CMLTableContentTest extends AbstractTableBase {
 
     /** set up.
      */

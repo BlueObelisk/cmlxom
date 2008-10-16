@@ -23,8 +23,8 @@ import org.xmlcml.euclid.test.StringTestBase;
  * @author pmr
  * 
  */
-public class CMLBondSetTest extends MoleculeAtomBondBase {
-
+public class CMLBondSetTest {
+	MoleculeAtomBondFixture fixture = new MoleculeAtomBondFixture();
 	CMLBondSet bondSet = null;
 	CMLBondSet bondSet1 = null;
 	CMLBondSet bondSet2 = null;
@@ -40,15 +40,13 @@ public class CMLBondSetTest extends MoleculeAtomBondBase {
 	 */
 	@Before
 	public void setUp() throws Exception {
-
-		super.setUp();
-		bondSet = new CMLBondSet(xmlMolecule);
-		bonds = xmlMolecule.getBonds();
+		bondSet = new CMLBondSet(fixture.xmlMolecule);
+		bonds = fixture.xmlMolecule.getBonds();
 	}
 
 	private void makeBondSet12() {
-		List<CMLBond> bonds1 = xmlMolecule.getBonds();
-		List<CMLBond> bonds2 = xmlMolecule.getBonds();
+		List<CMLBond> bonds1 = fixture.xmlMolecule.getBonds();
+		List<CMLBond> bonds2 = fixture.xmlMolecule.getBonds();
 		bonds1.remove(1);
 		bonds2.remove(2);
 		bondSet1 = new CMLBondSet(bonds1);
@@ -56,8 +54,8 @@ public class CMLBondSetTest extends MoleculeAtomBondBase {
 	}
 
 	private void makeBondSet34() {
-		List<CMLBond> bonds3 = xmlMolecule.getBonds();
-		List<CMLBond> bonds4 = xmlMolecule.getBonds();
+		List<CMLBond> bonds3 = fixture.xmlMolecule.getBonds();
+		List<CMLBond> bonds4 = fixture.xmlMolecule.getBonds();
 		bonds3.remove(0);
 		bonds3.remove(1);
 		bonds4.remove(3);
@@ -307,8 +305,8 @@ public class CMLBondSetTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public final void testCMLBondSetListOfCMLBond() {
-		makeMol5a();
-		List<CMLBond> bondList = mol5a.getBonds();
+		fixture.makeMol5a();
+		List<CMLBond> bondList = fixture.mol5a.getBonds();
 		Assert.assertEquals("mol5a bonds", 4, bondList.size());
 		CMLBondSet bondSet = null;
 		bondSet = new CMLBondSet(bondList);
@@ -330,8 +328,8 @@ public class CMLBondSetTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public final void testCMLBondSetCMLMoleculeStringArray() {
-		CMLBondSet bondSetx = new CMLBondSet(xomMolecule, new String[] { "b1",
-				"b3" });
+		CMLBondSet bondSetx = new CMLBondSet(fixture.xomMolecule, new String[] {
+				"b1", "b3" });
 		Assert.assertEquals("bond set b1 b3", 2, bondSetx.size());
 	}
 
@@ -435,7 +433,7 @@ public class CMLBondSetTest extends MoleculeAtomBondBase {
 	public final void testGetMolecule() {
 		CMLMolecule molecule = bondSet.getMolecule();
 		Assert.assertNotNull("get molecule", molecule);
-		Assert.assertEquals("get molecule", xmlMolecule, molecule);
+		Assert.assertEquals("get molecule", fixture.xmlMolecule, molecule);
 	}
 
 	/**

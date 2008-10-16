@@ -37,8 +37,8 @@ import org.xmlcml.molutil.ChemicalElement.AS;
  * @author pmr
  * 
  */
-public class CMLAtomSetTest extends MoleculeAtomBondBase {
-
+public class CMLAtomSetTest {
+	MoleculeAtomBondFixture fixture = new MoleculeAtomBondFixture();
 	CMLAtomSet atomSet1 = null;
 
 	CMLAtomSet atomSet2 = null;
@@ -57,11 +57,10 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		super.setUp();
-		atomSet1 = new CMLAtomSet(xmlMolecule,
-				new String[] { "a1", "a2", "a3" });
-		atomSet2 = new CMLAtomSet(xmlMolecule, new String[] { "a2", "a3", "a4",
-				"a5" });
+		atomSet1 = new CMLAtomSet(fixture.xmlMolecule, new String[] { "a1",
+				"a2", "a3" });
+		atomSet2 = new CMLAtomSet(fixture.xmlMolecule, new String[] { "a2",
+				"a3", "a4", "a5" });
 	}
 
 	/**
@@ -83,8 +82,8 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testCMLAtomSetCMLAtomSet() {
-		CMLAtomSet xomAtomSet0 = new CMLAtomSet(xomMolecule, new String[] {
-				"a1", "a3" });
+		CMLAtomSet xomAtomSet0 = new CMLAtomSet(fixture.xomMolecule,
+				new String[] { "a1", "a3" });
 		CMLAtomSet xomAtomSet = new CMLAtomSet(xomAtomSet0);
 		Assert.assertNotNull("atom set creation", xomAtomSet);
 		Assert.assertEquals("atom set size", 2, xomAtomSet.size());
@@ -101,8 +100,8 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testCMLAtomSetCMLMoleculeStringArray() {
-		final CMLAtomSet xomAtomSet = new CMLAtomSet(xomMolecule, new String[] {
-				"a1", "a3" });
+		final CMLAtomSet xomAtomSet = new CMLAtomSet(fixture.xomMolecule,
+				new String[] { "a1", "a3" });
 		Assert.assertNotNull("atom set creation", xomAtomSet);
 		Assert.assertEquals("atom set size", 2, xomAtomSet.size());
 		Assert.assertEquals("atom set ", new String[] { "a1", "a3" },
@@ -115,7 +114,7 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testCMLAtomSetCMLMolecule() {
-		final CMLAtomSet xomAtomSet = new CMLAtomSet(xomMolecule);
+		final CMLAtomSet xomAtomSet = new CMLAtomSet(fixture.xomMolecule);
 		Assert.assertNotNull("atom set creation", xomAtomSet);
 		Assert.assertEquals("atom set size", 5, xomAtomSet.size());
 		Assert.assertEquals("atom set ", new String[] { "a1", "a2", "a3", "a4",
@@ -127,7 +126,7 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testCMLAtomSetCMLAtomArray() {
-		final CMLAtomSet atomSet = new CMLAtomSet(xomAtom);
+		final CMLAtomSet atomSet = new CMLAtomSet(fixture.xomAtom);
 		Assert.assertEquals("atom set size", 5, atomSet.size());
 		Assert.assertEquals("atom set value", new String[] { "a1", "a2", "a3",
 				"a4", "a5" }, atomSet.getXMLContent());
@@ -139,17 +138,19 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	@Test
 	@Deprecated
 	public void testAddAtoms() {
-		CMLAtomSet atomSet1 = new CMLAtomSet(new CMLAtom[] { xomAtom[0],
-				xomAtom[2] });
+		CMLAtomSet atomSet1 = new CMLAtomSet(new CMLAtom[] {
+				fixture.xomAtom[0], fixture.xomAtom[2] });
 		Assert.assertEquals("atom set size", 2, atomSet1.size());
 		Assert.assertEquals("atom set value", new String[] { "a1", "a3" },
 				atomSet1.getXMLContent());
-		atomSet1.addAtoms(new CMLAtom[] { xomAtom[1], xomAtom[3] });
+		atomSet1.addAtoms(new CMLAtom[] { fixture.xomAtom[1],
+				fixture.xomAtom[3] });
 		Assert.assertEquals("atom set size", 4, atomSet1.size());
 		Assert.assertEquals("atom set value", new String[] { "a1", "a3", "a2",
 				"a4" }, atomSet1.getXMLContent());
 		// includes duplicate atom
-		atomSet1.addAtoms(new CMLAtom[] { xomAtom[3], xomAtom[4] });
+		atomSet1.addAtoms(new CMLAtom[] { fixture.xomAtom[3],
+				fixture.xomAtom[4] });
 		Assert.assertEquals("atom set size", 5, atomSet1.size());
 		Assert.assertEquals("atom set value", new String[] { "a1", "a3", "a2",
 				"a4", "a5" }, atomSet1.getXMLContent());
@@ -160,24 +161,24 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testAddAtom() {
-		CMLAtomSet atomSet1 = new CMLAtomSet(new CMLAtom[] { xomAtom[0],
-				xomAtom[2] });
+		CMLAtomSet atomSet1 = new CMLAtomSet(new CMLAtom[] {
+				fixture.xomAtom[0], fixture.xomAtom[2] });
 		Assert.assertEquals("atom set size", 2, atomSet1.size());
 		Assert.assertEquals("atom set value", new String[] { "a1", "a3" },
 				atomSet1.getXMLContent());
-		atomSet1.addAtom(xomAtom[1]);
+		atomSet1.addAtom(fixture.xomAtom[1]);
 		Assert.assertNotNull("atom set molecule", atomSet1.getMolecule());
-		Assert.assertEquals("atom set molecule", xomAtom[0].getMolecule(),
-				atomSet1.getMolecule());
+		Assert.assertEquals("atom set molecule", fixture.xomAtom[0]
+				.getMolecule(), atomSet1.getMolecule());
 		Assert.assertEquals("atom set size", 3, atomSet1.size());
 		Assert.assertEquals("atom set value",
 				new String[] { "a1", "a3", "a2" }, atomSet1.getXMLContent());
 		// includes duplicate atom
-		atomSet1.addAtom(xomAtom[1]);
+		atomSet1.addAtom(fixture.xomAtom[1]);
 		Assert.assertEquals("atom set size", 3, atomSet1.size());
 		Assert.assertEquals("atom set value",
 				new String[] { "a1", "a3", "a2" }, atomSet1.getXMLContent());
-		atomSet1.addAtom(xomAtom[4]);
+		atomSet1.addAtom(fixture.xomAtom[4]);
 		Assert.assertEquals("atom set size", 4, atomSet1.size());
 		Assert.assertEquals("atom set value", new String[] { "a1", "a3", "a2",
 				"a5" }, atomSet1.getXMLContent());
@@ -191,13 +192,13 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 
 	@Test
 	public void testAddAtomSet() {
-		final CMLAtomSet atomSet1 = new CMLAtomSet(new CMLAtom[] { xomAtom[0],
-				xomAtom[2] });
+		final CMLAtomSet atomSet1 = new CMLAtomSet(new CMLAtom[] {
+				fixture.xomAtom[0], fixture.xomAtom[2] });
 		Assert.assertEquals("atom set size", 2, atomSet1.size());
 		Assert.assertEquals("atom set value", new String[] { "a1", "a3" },
 				atomSet1.getXMLContent());
-		CMLAtomSet atomSet2 = new CMLAtomSet(new CMLAtom[] { xomAtom[1],
-				xomAtom[3] });
+		CMLAtomSet atomSet2 = new CMLAtomSet(new CMLAtom[] {
+				fixture.xomAtom[1], fixture.xomAtom[3] });
 		Assert.assertEquals("atom set size", 2, atomSet1.size());
 		Assert.assertEquals("atom set value", new String[] { "a1", "a3" },
 				atomSet1.getXMLContent());
@@ -218,14 +219,14 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGetAtoms() {
-		CMLAtomSet atomSet1 = new CMLAtomSet(new CMLAtom[] { xomAtom[0],
-				xomAtom[2] });
+		CMLAtomSet atomSet1 = new CMLAtomSet(new CMLAtom[] {
+				fixture.xomAtom[0], fixture.xomAtom[2] });
 		Assert.assertEquals("atom set size", 2, atomSet1.size());
 		Assert.assertEquals("atom set value", new String[] { "a1", "a3" },
 				atomSet1.getXMLContent());
 		List<CMLAtom> atoms = atomSet1.getAtoms();
 		Assert.assertEquals("atoms size", 2, atoms.size());
-		Assert.assertEquals("atom", xomAtom[0], (CMLAtom) atoms.get(0));
+		Assert.assertEquals("atom", fixture.xomAtom[0], (CMLAtom) atoms.get(0));
 	}
 
 	/**
@@ -233,8 +234,8 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testSize() {
-		CMLAtomSet atomSet1 = new CMLAtomSet(new CMLAtom[] { xomAtom[0],
-				xomAtom[2] });
+		CMLAtomSet atomSet1 = new CMLAtomSet(new CMLAtom[] {
+				fixture.xomAtom[0], fixture.xomAtom[2] });
 		Assert.assertEquals("atom set size", 2, atomSet1.size());
 	}
 
@@ -243,8 +244,8 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGetAtomIDs() {
-		CMLAtomSet atomSet1 = new CMLAtomSet(new CMLAtom[] { xomAtom[0],
-				xomAtom[2] });
+		CMLAtomSet atomSet1 = new CMLAtomSet(new CMLAtom[] {
+				fixture.xomAtom[0], fixture.xomAtom[2] });
 		Assert.assertEquals("atom ids", new String[] { "a1", "a3" }, atomSet1
 				.getAtomIDs());
 	}
@@ -255,16 +256,16 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGetAtomSetById() {
-		CMLAtomSet atomSet1 = new CMLAtomSet(xomAtom);
+		CMLAtomSet atomSet1 = new CMLAtomSet(fixture.xomAtom);
 		List<String> atoms = new ArrayList<String>();
 		atoms.add("a2");
 		atoms.add("a4");
 		CMLAtomSet atomSet2 = atomSet1.getAtomSetById(atoms);
 		Assert.assertEquals("atom set by id", 2, atomSet2.size());
-		Assert.assertEquals("atom set by id", xomAtom[3].getId(),
+		Assert.assertEquals("atom set by id", fixture.xomAtom[3].getId(),
 				((CMLAtom) atomSet2.getAtoms().get(1)).getId());
-		Assert.assertEquals("atom set by id", xomAtom[3], (CMLAtom) atomSet2
-				.getAtoms().get(1));
+		Assert.assertEquals("atom set by id", fixture.xomAtom[3],
+				(CMLAtom) atomSet2.getAtoms().get(1));
 	}
 
 	/**
@@ -273,7 +274,7 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGetAtomSetByElementType() {
-		CMLAtomSet atomSet1 = new CMLAtomSet(xomAtom);
+		CMLAtomSet atomSet1 = new CMLAtomSet(fixture.xomAtom);
 		CMLAtomSet atomSet2 = atomSet1.getAtomSetByElementType(AS.N.value);
 		Assert.assertEquals("atom set by element", 1, atomSet2.size());
 		Assert.assertEquals("atom set by element", "a2", ((CMLAtom) atomSet2
@@ -290,11 +291,11 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGetAtomById() {
-		CMLAtomSet atomSet1 = new CMLAtomSet(xomAtom);
+		CMLAtomSet atomSet1 = new CMLAtomSet(fixture.xomAtom);
 		CMLAtom atom = atomSet1.getAtomById("a2");
-		Assert.assertEquals("atom by id", xomAtom[1], atom);
+		Assert.assertEquals("atom by id", fixture.xomAtom[1], atom);
 		atom = atomSet1.getAtomById("a5");
-		Assert.assertEquals("atom by id", xomAtom[4], atom);
+		Assert.assertEquals("atom by id", fixture.xomAtom[4], atom);
 		atom = atomSet1.getAtomById("a99");
 		Assert.assertNull("atom by id", atom);
 	}
@@ -304,10 +305,10 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testContains() {
-		CMLAtomSet atomSet = new CMLAtomSet(xomAtom);
-		boolean contains = atomSet.contains(xomAtom[1]);
+		CMLAtomSet atomSet = new CMLAtomSet(fixture.xomAtom);
+		boolean contains = atomSet.contains(fixture.xomAtom[1]);
 		Assert.assertTrue("atom contains", contains);
-		contains = atomSet.contains(xmlAtom[1]);
+		contains = atomSet.contains(fixture.xmlAtom[1]);
 		Assert.assertFalse("atom contains", contains);
 
 	}
@@ -317,20 +318,20 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testRemoveAtom() {
-		CMLAtomSet atomSet = new CMLAtomSet(xomAtom);
-		atomSet.removeAtom(xomAtom[1]);
+		CMLAtomSet atomSet = new CMLAtomSet(fixture.xomAtom);
+		atomSet.removeAtom(fixture.xomAtom[1]);
 		Assert.assertEquals("atom contains", 4, atomSet.size());
 		Assert.assertEquals("atom contains", new String[] { "a1", "a3", "a4",
 				"a5" }, atomSet.getAtomIDs());
 		// delete non-existent
 		try {
-			atomSet.removeAtom(xomAtom[1]);
+			atomSet.removeAtom(fixture.xomAtom[1]);
 			Assert.fail("Should throw CMLRuntime");
 		} catch (RuntimeException e) {
 			Assert.assertEquals("atom contains",
 					"atom not in set:a2:a1/a3/a4/a5", e.getMessage());
 		}
-		atomSet.removeAtom(xomAtom[3]);
+		atomSet.removeAtom(fixture.xomAtom[3]);
 		Assert.assertEquals("atom contains", 3, atomSet.size());
 		Assert.assertEquals("atom contains", new String[] { "a1", "a3", "a5" },
 				atomSet.getAtomIDs());
@@ -342,7 +343,7 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testRemoveAtomById() {
-		CMLAtomSet atomSet = new CMLAtomSet(xomAtom);
+		CMLAtomSet atomSet = new CMLAtomSet(fixture.xomAtom);
 		atomSet.removeAtomById("a2");
 		Assert.assertEquals("atom contains", 4, atomSet.size());
 		Assert.assertEquals("atom contains", new String[] { "a1", "a3", "a4",
@@ -365,13 +366,13 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testRemoveAtomSet() {
-		CMLAtomSet atomSet1 = new CMLAtomSet(new CMLAtom[] { xomAtom[0],
-				xomAtom[2] });
+		CMLAtomSet atomSet1 = new CMLAtomSet(new CMLAtom[] {
+				fixture.xomAtom[0], fixture.xomAtom[2] });
 		Assert.assertEquals("atom set size", 2, atomSet1.size());
 		Assert.assertEquals("atom set value", new String[] { "a1", "a3" },
 				atomSet1.getXMLContent());
-		CMLAtomSet atomSet2 = new CMLAtomSet(new CMLAtom[] { xomAtom[0],
-				xomAtom[3] });
+		CMLAtomSet atomSet2 = new CMLAtomSet(new CMLAtom[] {
+				fixture.xomAtom[0], fixture.xomAtom[3] });
 		Assert.assertEquals("atom set size", 2, atomSet2.size());
 		Assert.assertEquals("atom set value", new String[] { "a1", "a4" },
 				atomSet2.getXMLContent());
@@ -390,7 +391,7 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGetVector3D() {
-		CMLAtomSet atomSet = new CMLAtomSet(xomAtom);
+		CMLAtomSet atomSet = new CMLAtomSet(fixture.xomAtom);
 		Point3 point3 = ((CMLAtom) atomSet.getAtom(1)).getXYZ3();
 		Assert.assertNotNull("point 3d", point3);
 		double x = ((CMLAtom) atomSet.getAtom(1)).getX3();
@@ -416,7 +417,7 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testTranslate3D() {
-		CMLAtomSet atomSet = new CMLAtomSet(xomAtom);
+		CMLAtomSet atomSet = new CMLAtomSet(fixture.xomAtom);
 		Vector3 v3 = new Vector3(10., 20., 30.);
 		atomSet.translate3D(v3);
 		Point3 p = ((CMLAtom) atomSet.getAtom(1)).getXYZ3();
@@ -431,7 +432,7 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGetCentroid3D() {
-		CMLAtomSet atomSet = new CMLAtomSet(xomAtom);
+		CMLAtomSet atomSet = new CMLAtomSet(fixture.xomAtom);
 		Point3 p3 = atomSet.getCentroid3(CoordinateType.CARTESIAN);
 		Assert.assertNotNull("vector 3d", p3);
 		Assert.assertEquals("point 3d x", 2.0, p3.getArray()[0]);
@@ -445,10 +446,10 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGetMolecule() {
-		CMLAtomSet atomSet = new CMLAtomSet(xomAtom);
+		CMLAtomSet atomSet = new CMLAtomSet(fixture.xomAtom);
 		CMLMolecule molecule = atomSet.getMolecule();
 		Assert.assertNotNull("get molecule", molecule);
-		Assert.assertEquals("molecule ", xomMolecule, molecule);
+		Assert.assertEquals("molecule ", fixture.xomMolecule, molecule);
 
 	}
 
@@ -457,13 +458,13 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testTransform() {
-		List<Real2> coords = new CMLAtomSet(xmlMolecule).getVector2D();
+		List<Real2> coords = new CMLAtomSet(fixture.xmlMolecule).getVector2D();
 		Real2Vector r2v = new Real2Vector(coords);
 		Real2VectorTest.assertEquals("r2v", new double[] { 0.0, 0.0, 1.0, 1.0,
 				1.0, -1.0, -1.0, -1.0, -1.0, 1.0 }, r2v, EPS);
 		Transform2 t = new Transform2(new Angle(Math.PI / 2.));
 		atomSet1.transform(t);
-		coords = new CMLAtomSet(xmlMolecule).getVector2D();
+		coords = new CMLAtomSet(fixture.xmlMolecule).getVector2D();
 		r2v = new Real2Vector(coords);
 		Real2VectorTest.assertEquals("r2v", new double[] { 0.0, 0.0, 1.0, -1.0,
 				-1.0, -1.0,
@@ -477,11 +478,13 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testExcludeElementTypes() {
-		CMLAtomSet atomSet = new CMLAtomSet(xomAtom);
-		Assert.assertEquals("exclude", xomMolecule, atomSet.getMolecule());
+		CMLAtomSet atomSet = new CMLAtomSet(fixture.xomAtom);
+		Assert.assertEquals("exclude", fixture.xomMolecule, atomSet
+				.getMolecule());
 		CMLAtomSet atomSet1 = atomSet.excludeElementTypes(new String[] {
 				AS.N.value, AS.S.value });
-		Assert.assertEquals("exclude", xomMolecule, atomSet1.getMolecule());
+		Assert.assertEquals("exclude", fixture.xomMolecule, atomSet1
+				.getMolecule());
 		Assert.assertEquals("excludeElementTypes", 3, atomSet1.size());
 		Assert.assertEquals("excludeElementTypes", new String[] { "a1", "a3",
 				"a5" }, atomSet1.getAtomIDs());
@@ -503,11 +506,13 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testIncludeElementTypes() {
-		CMLAtomSet atomSet = new CMLAtomSet(xomAtom);
-		Assert.assertEquals("exclude", xomMolecule, atomSet.getMolecule());
+		CMLAtomSet atomSet = new CMLAtomSet(fixture.xomAtom);
+		Assert.assertEquals("exclude", fixture.xomMolecule, atomSet
+				.getMolecule());
 		CMLAtomSet atomSet1 = atomSet.includeElementTypes(new String[] {
 				AS.N.value, AS.S.value });
-		Assert.assertEquals("exclude", xomMolecule, atomSet1.getMolecule());
+		Assert.assertEquals("exclude", fixture.xomMolecule, atomSet1
+				.getMolecule());
 		Assert.assertEquals("excludeElementTypes", 2, atomSet1.size());
 		Assert.assertEquals("excludeElementTypes", new String[] { "a2", "a4" },
 				atomSet1.getAtomIDs());
@@ -519,7 +524,7 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGetCalculatedFormula() {
-		CMLAtomSet atomSet = new CMLAtomSet(xomAtom);
+		CMLAtomSet atomSet = new CMLAtomSet(fixture.xomAtom);
 		CMLFormula formula = null;
 		try {
 			formula = atomSet
@@ -537,7 +542,7 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGetCalculatedFormalCharge() {
-		CMLAtomSet atomSet = new CMLAtomSet(xomAtom);
+		CMLAtomSet atomSet = new CMLAtomSet(fixture.xomAtom);
 		int ch = atomSet.getCalculatedFormalCharge();
 		Assert.assertEquals("formula", 0, ch);
 	}
@@ -548,13 +553,13 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testIntersection() {
-		CMLAtomSet atomSet1 = new CMLAtomSet(new CMLAtom[] { xomAtom[0],
-				xomAtom[1], xomAtom[2] });
+		CMLAtomSet atomSet1 = new CMLAtomSet(new CMLAtom[] {
+				fixture.xomAtom[0], fixture.xomAtom[1], fixture.xomAtom[2] });
 		Assert.assertEquals("atom set size", 3, atomSet1.size());
 		Assert.assertEquals("atom set value",
 				new String[] { "a1", "a2", "a3" }, atomSet1.getXMLContent());
-		CMLAtomSet atomSet2 = new CMLAtomSet(new CMLAtom[] { xomAtom[1],
-				xomAtom[2], xomAtom[3] });
+		CMLAtomSet atomSet2 = new CMLAtomSet(new CMLAtom[] {
+				fixture.xomAtom[1], fixture.xomAtom[2], fixture.xomAtom[3] });
 		Assert.assertEquals("atom set size", 3, atomSet1.size());
 		Assert.assertEquals("atom set value",
 				new String[] { "a2", "a3", "a4" }, atomSet2.getXMLContent());
@@ -571,13 +576,13 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testComplement() {
-		CMLAtomSet atomSet1 = new CMLAtomSet(new CMLAtom[] { xomAtom[0],
-				xomAtom[1], xomAtom[2] });
+		CMLAtomSet atomSet1 = new CMLAtomSet(new CMLAtom[] {
+				fixture.xomAtom[0], fixture.xomAtom[1], fixture.xomAtom[2] });
 		Assert.assertEquals("atom set size", 3, atomSet1.size());
 		Assert.assertEquals("atom set value",
 				new String[] { "a1", "a2", "a3" }, atomSet1.getXMLContent());
-		CMLAtomSet atomSet2 = new CMLAtomSet(new CMLAtom[] { xomAtom[1],
-				xomAtom[2], xomAtom[3] });
+		CMLAtomSet atomSet2 = new CMLAtomSet(new CMLAtom[] {
+				fixture.xomAtom[1], fixture.xomAtom[2], fixture.xomAtom[3] });
 		Assert.assertEquals("atom set size", 3, atomSet1.size());
 		Assert.assertEquals("atom set value",
 				new String[] { "a2", "a3", "a4" }, atomSet2.getXMLContent());
@@ -594,13 +599,14 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testHasContentEqualTo() {
-		CMLAtomSet atomSet1 = new CMLAtomSet(new CMLAtom[] { xomAtom[0],
-				xomAtom[1], xomAtom[2] });
-		CMLAtomSet atomSet2 = new CMLAtomSet(new CMLAtom[] { xomAtom[1],
-				xomAtom[2], xomAtom[0] });
+		CMLAtomSet atomSet1 = new CMLAtomSet(new CMLAtom[] {
+				fixture.xomAtom[0], fixture.xomAtom[1], fixture.xomAtom[2] });
+		CMLAtomSet atomSet2 = new CMLAtomSet(new CMLAtom[] {
+				fixture.xomAtom[1], fixture.xomAtom[2], fixture.xomAtom[0] });
 		Assert.assertTrue("atom set equal", atomSet1
 				.hasContentEqualTo(atomSet2));
-		atomSet2 = new CMLAtomSet(new CMLAtom[] { xomAtom[1], xomAtom[1] });
+		atomSet2 = new CMLAtomSet(new CMLAtom[] { fixture.xomAtom[1],
+				fixture.xomAtom[1] });
 		Assert.assertFalse("atom set not equal", atomSet1
 				.hasContentEqualTo(atomSet2));
 		atomSet2 = null;
@@ -617,13 +623,13 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testUnion() {
-		CMLAtomSet atomSet1 = new CMLAtomSet(new CMLAtom[] { xomAtom[0],
-				xomAtom[1], xomAtom[2] });
+		CMLAtomSet atomSet1 = new CMLAtomSet(new CMLAtom[] {
+				fixture.xomAtom[0], fixture.xomAtom[1], fixture.xomAtom[2] });
 		Assert.assertEquals("atom set size", 3, atomSet1.size());
 		Assert.assertEquals("atom set value",
 				new String[] { "a1", "a2", "a3" }, atomSet1.getXMLContent());
-		CMLAtomSet atomSet2 = new CMLAtomSet(new CMLAtom[] { xomAtom[1],
-				xomAtom[2], xomAtom[3] });
+		CMLAtomSet atomSet2 = new CMLAtomSet(new CMLAtom[] {
+				fixture.xomAtom[1], fixture.xomAtom[2], fixture.xomAtom[3] });
 		Assert.assertEquals("atom set size", 3, atomSet1.size());
 		Assert.assertEquals("atom set value",
 				new String[] { "a2", "a3", "a4" }, atomSet2.getXMLContent());
@@ -709,7 +715,7 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testSetVector2D() {
-		Real2Vector v = new Real2Vector(new CMLAtomSet(xmlMolecule)
+		Real2Vector v = new Real2Vector(new CMLAtomSet(fixture.xmlMolecule)
 				.getVector2D());
 		Real2VectorTest.assertEquals("r2v", new double[] { 0.0, 0.0, 1.0, 1.0,
 				1.0, -1.0, -1.0, -1.0, -1.0, 1.0 }, v, EPS);
@@ -718,7 +724,7 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 		v1.add(new Real2(6., 7.));
 		v1.add(new Real2(8., 9.));
 		atomSet1.setVector2D(v1);
-		v = new Real2Vector(new CMLAtomSet(xmlMolecule).getVector2D());
+		v = new Real2Vector(new CMLAtomSet(fixture.xmlMolecule).getVector2D());
 		Real2VectorTest.assertEquals("r2v", new double[] { 4.0, 5.0, 6.0, 7.0,
 				8.0, 9.0, -1.0, -1.0, -1.0, 1.0 }, v, EPS);
 	}
@@ -729,7 +735,7 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	@Test
 	public void testTranslate2D() {
 		atomSet1.translate2D(new Real2(10., 20.));
-		CMLAtomSet atomSet = new CMLAtomSet(xmlMolecule);
+		CMLAtomSet atomSet = new CMLAtomSet(fixture.xmlMolecule);
 		List<Real2> coords = atomSet.getVector2D();
 		Assert.assertEquals("coords", 5, coords.size());
 		Assert.assertEquals("coords", 10.0, coords.get(0).getX(), EPS);
@@ -752,7 +758,7 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 		Real2 centroid = atomSet1.getCentroid2D();
 		Assert.assertEquals("centroid", 2. / 3., centroid.getX());
 		Assert.assertEquals("centroid", 0.0, centroid.getY());
-		CMLAtomSet atomSet = new CMLAtomSet(xmlMolecule);
+		CMLAtomSet atomSet = new CMLAtomSet(fixture.xmlMolecule);
 		centroid = atomSet.getCentroid2D();
 		Assert.assertEquals("centroid", 0.0, centroid.getX());
 		Assert.assertEquals("centroid", 0.0, centroid.getY());
@@ -797,8 +803,8 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 
 	/**
 	 * Test method for
-	 * 'org.xmlcml.cml.element.CMLAtomSet.transformFractionalCoordinates(Transform3
-	 * ) '
+	 * 'org.xmlcml.cml.element.CMLAtomSet.transformFractionalCoordinates(Transfo
+	 * r m 3 ) '
 	 */
 	@Test
 	public void testTransformFractionalCoordinatesTransform3() {
@@ -834,7 +840,7 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testOverlap2DCentroids() {
-		CMLMolecule mol1 = new CMLMolecule(xmlMolecule);
+		CMLMolecule mol1 = new CMLMolecule(fixture.xmlMolecule);
 		CMLAtomSet as1 = new CMLAtomSet(mol1);
 		Real2 delta = atomSet1.overlap2DCentroids(as1);
 		Real2Test.assertEquals("overlap centroid", new double[] { 2. / 3, 0 },
@@ -870,6 +876,7 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	public void testLabelAtoms() {
 		// this labels all atoms in atomSet1 in xmlMolecule with child label
 		atomSet1.labelAtoms("atomLabel");
+		CMLMolecule xmlMolecule = fixture.xmlMolecule;
 		Assert.assertEquals("label", 1, xmlMolecule.getAtomById("a1")
 				.getLabelElements().size());
 		Assert.assertEquals("label", 1, xmlMolecule.getAtomById("a2")
@@ -885,10 +892,10 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGetMap() {
-		CMLAtomSet as1 = new CMLAtomSet(xmlMolecule, new String[] { "a1", "a2",
-				"a3", "a4" });
-		CMLAtomSet as2 = new CMLAtomSet(xmlMolecule, new String[] { "a5", "a3",
-				"a2", "a1" });
+		CMLAtomSet as1 = new CMLAtomSet(fixture.xmlMolecule, new String[] {
+				"a1", "a2", "a3", "a4" });
+		CMLAtomSet as2 = new CMLAtomSet(fixture.xmlMolecule, new String[] {
+				"a5", "a3", "a2", "a1" });
 		CMLMap m = as1.getMap(as2);
 		Assert
 				.assertEquals("map", 4, m.getChildCMLElements(CMLLink.TAG)
@@ -923,8 +930,8 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	@Test
 	public final void testCMLAtomSetListOfCMLAtom() {
 		List<CMLAtom> atomList = new ArrayList<CMLAtom>();
-		atomList.add(xmlMolecule.getAtom(0));
-		atomList.add(xmlMolecule.getAtom(1));
+		atomList.add(fixture.xmlMolecule.getAtom(0));
+		atomList.add(fixture.xmlMolecule.getAtom(1));
 		CMLAtomSet atomSet = CMLAtomSet.createFromAtoms(atomList);
 		Assert.assertEquals("atom set constructor",
 				new String[] { "a1", "a2" }, atomSet.getXMLContent());
@@ -937,8 +944,8 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	@Test
 	public final void testCMLAtomSetSetOfCMLAtom() {
 		Set<CMLAtom> atomSet = new HashSet<CMLAtom>();
-		atomSet.add(xmlMolecule.getAtom(0));
-		atomSet.add(xmlMolecule.getAtom(1));
+		atomSet.add(fixture.xmlMolecule.getAtom(0));
+		atomSet.add(fixture.xmlMolecule.getAtom(1));
 		CMLAtomSet atomSet1 = new CMLAtomSet(atomSet);
 		Assert
 				.assertNotNull("atom set constructor", atomSet1
@@ -954,8 +961,8 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	public final void testAddAtomsCMLAtomArray() {
 		CMLAtomSet atomSet = new CMLAtomSet();
 		CMLAtom[] atoms = new CMLAtom[2];
-		atoms[0] = xmlMolecule.getAtom(0);
-		atoms[1] = xmlMolecule.getAtom(1);
+		atoms[0] = fixture.xmlMolecule.getAtom(0);
+		atoms[1] = fixture.xmlMolecule.getAtom(1);
 		atomSet.addAtoms(atoms);
 		Assert.assertNotNull("atom set constructor", atomSet.getAtomById("a1"));
 		Assert.assertNull("atom set constructor", atomSet.getAtomById("a3"));
@@ -969,8 +976,8 @@ public class CMLAtomSetTest extends MoleculeAtomBondBase {
 	public final void testAddAtomsListOfCMLAtom() {
 		CMLAtomSet atomSet = new CMLAtomSet();
 		List<CMLAtom> atomList = new ArrayList<CMLAtom>();
-		atomList.add(xmlMolecule.getAtom(0));
-		atomList.add(xmlMolecule.getAtom(1));
+		atomList.add(fixture.xmlMolecule.getAtom(0));
+		atomList.add(fixture.xmlMolecule.getAtom(1));
 		atomSet.addAtoms(atomList);
 		Assert.assertNotNull("atom set constructor", atomSet.getAtomById("a1"));
 		Assert.assertNull("atom set constructor", atomSet.getAtomById("a3"));
