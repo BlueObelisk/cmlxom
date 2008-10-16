@@ -17,9 +17,7 @@ import nu.xom.tests.XOMTestCase;
 
 import org.apache.log4j.Logger;
 import org.junit.Assert;
-import org.junit.Before;
 import org.xmlcml.euclid.Util;
-import org.xmlcml.euclid.test.EuclidTestBase;
 
 /**
  * 

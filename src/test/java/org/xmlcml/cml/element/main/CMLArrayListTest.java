@@ -20,7 +20,7 @@ import org.xmlcml.cml.interfacex.HasArraySize;
  * @author pm286
  * 
  */
-public class CMLArrayListTest extends AbstractTableTest {
+public class CMLArrayListTest extends AbstractTableBase {
 
 	/**
 	 * Test method for

@@ -15,7 +15,7 @@ import org.junit.Test;
  * @author pm286
  * 
  */
-public class CMLTableRowTest extends AbstractTableTest {
+public class CMLTableRowTest extends AbstractTableBase {
 
 	/**
 	 * Test method for

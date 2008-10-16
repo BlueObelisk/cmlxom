@@ -10,7 +10,7 @@ import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
 import org.xmlcml.cml.base.CMLElement.CoordinateType;
 import org.xmlcml.cml.base.CMLElement.FormalChargeControl;
-import org.xmlcml.cml.element.main.MoleculeAtomBondBase;
+import org.xmlcml.cml.element.main.MoleculeAtomBondFixture;
 import org.xmlcml.euclid.Angle;
 import org.xmlcml.euclid.Point3;
 import org.xmlcml.euclid.Real2;
@@ -28,7 +28,8 @@ import org.xmlcml.molutil.ChemicalElement.AS;
  * @author pmr
  * 
  */
-public class CMLAtomTest extends MoleculeAtomBondBase {
+public class CMLAtomTest {
+	MoleculeAtomBondFixture fixture;
 
 	/**
 	 * setup.
@@ -37,7 +38,7 @@ public class CMLAtomTest extends MoleculeAtomBondBase {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		super.setUp();
+		fixture = new MoleculeAtomBondFixture();
 
 		/*
 		 * -- String chiralMol = "<?xml version='1.0' encoding='UTF-8'?>\r\n"+
@@ -106,12 +107,12 @@ public class CMLAtomTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testCopy() {
-		Node copy = xmlAtom[0].copy();
+		Node copy = fixture.xmlAtom[0].copy();
 		Assert.assertEquals("class should be CMLAtom: ", copy.getClass(),
 				CMLAtom.class);
 		CMLAtom copyAtom = (CMLAtom) copy;
-		Assert.assertEquals("atom is identical",
-				copyAtom.compareTo(xmlAtom[0]), 0);
+		Assert.assertEquals("atom is identical", copyAtom
+				.compareTo(fixture.xmlAtom[0]), 0);
 	}
 
 	/**
@@ -131,7 +132,7 @@ public class CMLAtomTest extends MoleculeAtomBondBase {
 	@Test
 	public void testCMLAtomCMLAtom() {
 		// copy constructor
-		CMLAtom xatom = xomAtom[0];
+		CMLAtom xatom = fixture.xomAtom[0];
 		CMLAtom atom = new CMLAtom(xatom);
 		Assert.assertNotNull("constructor ", atom);
 
@@ -151,13 +152,13 @@ public class CMLAtomTest extends MoleculeAtomBondBase {
 	@Test
 	public void testGetMolecule() {
 		// xml
-		CMLMolecule molecule = xmlAtom[0].getMolecule();
+		CMLMolecule molecule = fixture.xmlAtom[0].getMolecule();
 		Assert.assertNotNull("molecule should not be null", molecule);
-		Assert.assertEquals("get molecule", xmlMolecule, molecule);
+		Assert.assertEquals("get molecule", fixture.xmlMolecule, molecule);
 		// dom
-		molecule = xomAtom[0].getMolecule();
+		molecule = fixture.xomAtom[0].getMolecule();
 		Assert.assertNotNull("molecule should not be null", molecule);
-		Assert.assertEquals("get molecule", xomMolecule, molecule);
+		Assert.assertEquals("get molecule", fixture.xomMolecule, molecule);
 	}
 
 	/**
@@ -165,17 +166,17 @@ public class CMLAtomTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGetValenceElectrons() {
-		String el = xmlAtom[0].getElementType();
+		String el = fixture.xmlAtom[0].getElementType();
 		Assert.assertEquals("element type", AS.N.value, el);
-		int ve = xmlAtom[0].getValenceElectrons();
+		int ve = fixture.xmlAtom[0].getValenceElectrons();
 		Assert.assertEquals("valence electrons", 5, ve);
-		el = xmlAtom[1].getElementType();
+		el = fixture.xmlAtom[1].getElementType();
 		Assert.assertEquals("element type", AS.C.value, el);
-		ve = xmlAtom[1].getValenceElectrons();
+		ve = fixture.xmlAtom[1].getValenceElectrons();
 		Assert.assertEquals("valence electrons", 4, ve);
-		el = xmlAtom[2].getElementType();
+		el = fixture.xmlAtom[2].getElementType();
 		Assert.assertEquals("element type", AS.S.value, el);
-		ve = xmlAtom[2].getValenceElectrons();
+		ve = fixture.xmlAtom[2].getValenceElectrons();
 		Assert.assertEquals("valence electrons", 6, ve);
 
 	}
@@ -186,12 +187,12 @@ public class CMLAtomTest extends MoleculeAtomBondBase {
 	@Test
 	public void testGetXY2() {
 		// xml
-		Real2 xy2 = xmlAtom[1].getXY2();
+		Real2 xy2 = fixture.xmlAtom[1].getXY2();
 		Assert.assertNotNull("xy2 is not null", xy2);
 		Assert.assertEquals("x coord", xy2.getX(), 1.0, EPS);
 		Assert.assertEquals("y coord", xy2.getY(), 1.0, EPS);
 		// xom
-		xy2 = xmlAtom[0].getXY2();
+		xy2 = fixture.xmlAtom[0].getXY2();
 		Assert.assertNotNull("xy2 is not null", xy2);
 		Assert.assertEquals("x coord", xy2.getX(), .0, EPS);
 		Assert.assertEquals("y coord", xy2.getY(), .0, EPS);
@@ -203,9 +204,9 @@ public class CMLAtomTest extends MoleculeAtomBondBase {
 	@Test
 	public void testSetXY2() {
 		Real2 r2 = new Real2(7., 3.);
-		xmlAtom[1].setXY2(r2);
-		Assert.assertEquals("x2 coord", 7., xmlAtom[1].getX2(), EPS);
-		Assert.assertEquals("y2 coord", 3., xmlAtom[1].getY2(), EPS);
+		fixture.xmlAtom[1].setXY2(r2);
+		Assert.assertEquals("x2 coord", 7., fixture.xmlAtom[1].getX2(), EPS);
+		Assert.assertEquals("y2 coord", 3., fixture.xmlAtom[1].getY2(), EPS);
 
 	}
 
@@ -214,7 +215,7 @@ public class CMLAtomTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGetXYZ3() {
-		Point3 p3 = xmlAtom[1].getXYZ3();
+		Point3 p3 = fixture.xmlAtom[1].getXYZ3();
 		Point3Test.assertEquals("3D coord", new double[] { 1., 1., 1., }, p3,
 				EPS);
 
@@ -226,13 +227,13 @@ public class CMLAtomTest extends MoleculeAtomBondBase {
 	@Test
 	public void testSetXYZ3() {
 		Point3 p3 = new Point3(7., 3., 5.);
-		xmlAtom[1].setXYZ3(p3);
-		Point3 p3a = xmlAtom[1].getXYZ3();
+		fixture.xmlAtom[1].setXYZ3(p3);
+		Point3 p3a = fixture.xmlAtom[1].getXYZ3();
 		Point3Test.assertEquals("set 3D coord", new double[] { 7., 3., 5., },
 				p3a, EPS);
-		Assert.assertEquals("x3 coord", 7., xmlAtom[1].getX3(), EPS);
-		Assert.assertEquals("y3 coord", 3., xmlAtom[1].getY3(), EPS);
-		Assert.assertEquals("z3 coord", 5., xmlAtom[1].getZ3(), EPS);
+		Assert.assertEquals("x3 coord", 7., fixture.xmlAtom[1].getX3(), EPS);
+		Assert.assertEquals("y3 coord", 3., fixture.xmlAtom[1].getY3(), EPS);
+		Assert.assertEquals("z3 coord", 5., fixture.xmlAtom[1].getZ3(), EPS);
 
 	}
 
@@ -294,11 +295,11 @@ public class CMLAtomTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGetFractCoord() {
-		Point3 p3 = xmlAtom[0].getFractCoord();
+		Point3 p3 = fixture.xmlAtom[0].getFractCoord();
 		Assert.assertNotNull("non null fract coord", p3);
 		Point3Test.assertEquals("3D coord", new double[] { 0.1, 0.2, 0.3, },
 				p3, EPS);
-		p3 = xmlAtom[1].getFractCoord();
+		p3 = fixture.xmlAtom[1].getFractCoord();
 		Assert.assertNull("null fract coord", p3);
 	}
 
@@ -307,10 +308,10 @@ public class CMLAtomTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGetChemicalElement() {
-		ChemicalElement el = xmlAtom[0].getChemicalElement();
+		ChemicalElement el = fixture.xmlAtom[0].getChemicalElement();
 		Assert.assertEquals("element", el, ChemicalElement
 				.getChemicalElement(AS.N.value));
-		el = xmlAtom[1].getChemicalElement();
+		el = fixture.xmlAtom[1].getChemicalElement();
 		Assert.assertEquals("element", el, ChemicalElement
 				.getChemicalElement(AS.C.value));
 	}
@@ -320,9 +321,9 @@ public class CMLAtomTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGetAtomicNumber() {
-		int atNum = xmlAtom[0].getAtomicNumber();
+		int atNum = fixture.xmlAtom[0].getAtomicNumber();
 		Assert.assertEquals("atomic number", atNum, 7);
-		atNum = xmlAtom[1].getAtomicNumber();
+		atNum = fixture.xmlAtom[1].getAtomicNumber();
 		Assert.assertEquals("atomic number", atNum, 6);
 
 	}
@@ -332,9 +333,9 @@ public class CMLAtomTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testCompareToCMLAtom() {
-		int comp = xmlAtom[0].compareTo(xmlAtom[0]);
+		int comp = fixture.xmlAtom[0].compareTo(fixture.xmlAtom[0]);
 		Assert.assertEquals("same atom comparison", comp, 0);
-		comp = xmlAtom[0].compareTo(xmlAtom[1]);
+		comp = fixture.xmlAtom[0].compareTo(fixture.xmlAtom[1]);
 		Assert.assertFalse("different atom comparison", comp == 0);
 
 	}
@@ -345,7 +346,8 @@ public class CMLAtomTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGet3DCrossProduct() {
-		Vector3 cross3d = xmlAtom[0].get3DCrossProduct(xmlAtom[1], xmlAtom[2]);
+		Vector3 cross3d = fixture.xmlAtom[0].get3DCrossProduct(
+				fixture.xmlAtom[1], fixture.xmlAtom[2]);
 		Vector3Test.assertEquals("cross3d", new double[] { 0., 2., -2. },
 				cross3d, EPS);
 	}
@@ -356,7 +358,8 @@ public class CMLAtomTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGet2DCrossProduct() {
-		Vector3 cross2d = xmlAtom[0].get2DCrossProduct(xmlAtom[1], xmlAtom[2]);
+		Vector3 cross2d = fixture.xmlAtom[0].get2DCrossProduct(
+				fixture.xmlAtom[1], fixture.xmlAtom[2]);
 		Vector3Test.assertEquals("cross2d", new double[] { 0., 0., -2. },
 				cross2d, EPS);
 	}
@@ -366,7 +369,7 @@ public class CMLAtomTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGet2DPoint3() {
-		Point3 point3 = xmlAtom[1].get2DPoint3();
+		Point3 point3 = fixture.xmlAtom[1].get2DPoint3();
 		Point3Test.assertEquals("point23", new double[] { 1., 1., 0. }, point3,
 				EPS);
 	}
@@ -376,7 +379,7 @@ public class CMLAtomTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGetVector3() {
-		Vector3 v3 = xmlAtom[0].getVector3(xmlAtom[1]);
+		Vector3 v3 = fixture.xmlAtom[0].getVector3(fixture.xmlAtom[1]);
 		Vector3Test.assertEquals("atom0 atom1", new double[] { 1., 1., 1. },
 				v3, EPS);
 	}
@@ -386,8 +389,9 @@ public class CMLAtomTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testGetMoleculeAncestor() {
-		CMLMolecule molecule = CMLMolecule.getMoleculeAncestor(xmlAtom[0]);
-		Assert.assertSame("molecule ancestor", xmlMolecule, molecule);
+		CMLMolecule molecule = CMLMolecule
+				.getMoleculeAncestor(fixture.xmlAtom[0]);
+		Assert.assertSame("molecule ancestor", fixture.xmlMolecule, molecule);
 
 	}
 
@@ -396,7 +400,7 @@ public class CMLAtomTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testResetAtomId() {
-		CMLAtom atom = xmlAtom[0];
+		CMLAtom atom = fixture.xmlAtom[0];
 		String id = atom.getId();
 		Assert.assertEquals("atom id ", "a1", id);
 		atom.resetId("newId");
@@ -411,7 +415,7 @@ public class CMLAtomTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testIncreaseXY2() {
-		CMLAtom atom = xmlAtom[2];
+		CMLAtom atom = fixture.xmlAtom[2];
 		Real2 xy2 = atom.getXY2();
 		Assert.assertNotNull("xy2 ", xy2);
 		Assert.assertEquals("xy2.x before ", 1.0, xy2.getX(), EPS);
@@ -433,7 +437,7 @@ public class CMLAtomTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testTransformTransform2() {
-		CMLAtom atom = xmlAtom[2];
+		CMLAtom atom = fixture.xmlAtom[2];
 		atom.setXY2(new Real2(1., 2.));
 		Transform2 t2 = new Transform2(new Angle(Math.PI / 2.));
 		atom.transform(t2);
@@ -449,7 +453,7 @@ public class CMLAtomTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testIncreaseXYZ3() {
-		CMLAtom atom = xmlAtom[2];
+		CMLAtom atom = fixture.xmlAtom[2];
 		Point3 p3 = atom.getXYZ3();
 		Assert.assertNotNull("p3 ", p3);
 		Point3Test.assertEquals("p3 before ", new double[] { 1.0, -1., -1. },
@@ -472,7 +476,7 @@ public class CMLAtomTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public void testIncreaseXYZFract() {
-		CMLAtom atom = xmlAtom[2];
+		CMLAtom atom = fixture.xmlAtom[2];
 		Point3 p3 = atom.getXYZFract();
 		Assert.assertNull("p3 ", p3);
 		atom.setXYZFract(new Point3(.12, .34, .56));
@@ -522,25 +526,25 @@ public class CMLAtomTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public final void testGetPoint3() {
-		Point3 p = xomAtom[0].getPoint3(CoordinateType.CARTESIAN);
+		Point3 p = fixture.xomAtom[0].getPoint3(CoordinateType.CARTESIAN);
 		Point3Test.assertEquals("getPoint3", new double[] { 0.0, 1.0, 2.0 }, p,
 				EPS);
 
 		// test set
-		xomAtom[0].setPoint3(new Point3(1.1, 1.2, 1.3),
+		fixture.xomAtom[0].setPoint3(new Point3(1.1, 1.2, 1.3),
 				CoordinateType.CARTESIAN);
-		p = xomAtom[0].getPoint3(CoordinateType.CARTESIAN);
+		p = fixture.xomAtom[0].getPoint3(CoordinateType.CARTESIAN);
 		Point3Test.assertEquals("getPoint3", new double[] { 1.1, 1.2, 1.3 }, p,
 				EPS);
 
 		// fractional originally missing
-		p = xomAtom[0].getPoint3(CoordinateType.FRACTIONAL);
+		p = fixture.xomAtom[0].getPoint3(CoordinateType.FRACTIONAL);
 		Assert.assertNull("get fract", p);
 
 		// set it
-		xomAtom[0].setPoint3(new Point3(0.1, 0.2, 0.3),
+		fixture.xomAtom[0].setPoint3(new Point3(0.1, 0.2, 0.3),
 				CoordinateType.FRACTIONAL);
-		p = xomAtom[0].getPoint3(CoordinateType.FRACTIONAL);
+		p = fixture.xomAtom[0].getPoint3(CoordinateType.FRACTIONAL);
 		Assert.assertNotNull("get fract", p);
 		Point3Test.assertEquals("getPoint3", new double[] { 0.1, 0.2, 0.3 }, p,
 				EPS);
@@ -552,13 +556,13 @@ public class CMLAtomTest extends MoleculeAtomBondBase {
 	@Test
 	public final void testTransformXYZTransform3() {
 		Transform3 t = new Transform3("y, -x, y+z");
-		xomAtom[0].setPoint3(new Point3(1.1, 1.2, 1.3),
+		fixture.xomAtom[0].setPoint3(new Point3(1.1, 1.2, 1.3),
 				CoordinateType.CARTESIAN);
-		Point3 p = xomAtom[0].getPoint3(CoordinateType.CARTESIAN);
+		Point3 p = fixture.xomAtom[0].getPoint3(CoordinateType.CARTESIAN);
 		Point3Test.assertEquals("getPoint3", new double[] { 1.1, 1.2, 1.3 }, p,
 				EPS);
-		xomAtom[0].transformCartesians(t);
-		p = xomAtom[0].getPoint3(CoordinateType.CARTESIAN);
+		fixture.xomAtom[0].transformCartesians(t);
+		p = fixture.xomAtom[0].getPoint3(CoordinateType.CARTESIAN);
 		Point3Test.assertEquals("getPoint3", new double[] { 1.2, -1.1, 2.5 },
 				p, EPS);
 
@@ -570,12 +574,12 @@ public class CMLAtomTest extends MoleculeAtomBondBase {
 	@Test
 	public final void testGetSetXYZFract() {
 		// fractional originally missing
-		Point3 p = xomAtom[0].getPoint3(CoordinateType.FRACTIONAL);
+		Point3 p = fixture.xomAtom[0].getPoint3(CoordinateType.FRACTIONAL);
 		Assert.assertNull("get fract", p);
 
 		// set it
-		xomAtom[0].setXYZFract(new Point3(0.1, 0.2, 0.3));
-		p = xomAtom[0].getXYZFract();
+		fixture.xomAtom[0].setXYZFract(new Point3(0.1, 0.2, 0.3));
+		p = fixture.xomAtom[0].getXYZFract();
 		Assert.assertNotNull("get fract", p);
 		Point3Test.assertEquals("getPoint3", new double[] { 0.1, 0.2, 0.3 }, p,
 				EPS);
@@ -583,19 +587,19 @@ public class CMLAtomTest extends MoleculeAtomBondBase {
 
 	/**
 	 * Test method for
-	 * 'org.xmlcml.cml.element.CMLAtom.transformFractionalCoordinates(Transform3)
-	 * '
+	 * 'org.xmlcml.cml.element.CMLAtom.transformFractionalCoordinates(Transform3
+	 * ) '
 	 */
 	@Test
 	public final void testTransformFractionalCoordinatesTransform3() {
 		Transform3 t = new Transform3("y, 1/2-x, y+z");
-		xomAtom[0].setPoint3(new Point3(0.1, 0.2, 0.3),
+		fixture.xomAtom[0].setPoint3(new Point3(0.1, 0.2, 0.3),
 				CoordinateType.FRACTIONAL);
-		Point3 p = xomAtom[0].getPoint3(CoordinateType.FRACTIONAL);
+		Point3 p = fixture.xomAtom[0].getPoint3(CoordinateType.FRACTIONAL);
 		Point3Test.assertEquals("getPoint3", new double[] { 0.1, 0.2, 0.3 }, p,
 				EPS);
-		xomAtom[0].transformFractionals(t);
-		p = xomAtom[0].getPoint3(CoordinateType.FRACTIONAL);
+		fixture.xomAtom[0].transformFractionals(t);
+		p = fixture.xomAtom[0].getPoint3(CoordinateType.FRACTIONAL);
 		Point3Test.assertEquals("getPoint3", new double[] { 0.2, 0.4, 0.5 }, p,
 				EPS);
 	}
@@ -607,20 +611,22 @@ public class CMLAtomTest extends MoleculeAtomBondBase {
 	@Test
 	public final void testGetFormalChargeFormalChargeControl() {
 		// charge is not set on this atom, so NO_DEFAULT throws error
-		int fc = xomAtom[0].getFormalCharge(FormalChargeControl.DEFAULT);
+		int fc = fixture.xomAtom[0]
+				.getFormalCharge(FormalChargeControl.DEFAULT);
 		Assert.assertEquals("formal charge", 0, fc);
 		String err = "BUG: (unset attribute: formalCharge)should never throw";
 		try {
-			fc = xomAtom[0].getFormalCharge(FormalChargeControl.NO_DEFAULT);
+			fc = fixture.xomAtom[0]
+					.getFormalCharge(FormalChargeControl.NO_DEFAULT);
 		} catch (RuntimeException e) {
 			Assert.assertEquals("no default", err, e.getMessage());
 		}
 
 		// charge is set on this atom, so no default
-		fc = xmlAtom[0].getFormalCharge(FormalChargeControl.DEFAULT);
+		fc = fixture.xmlAtom[0].getFormalCharge(FormalChargeControl.DEFAULT);
 		Assert.assertEquals("formal charge", 1, fc);
 		err = "org.xmlcml.cml.base.CMLRuntime: unset attribute: formalCharge";
-		fc = xmlAtom[0].getFormalCharge(FormalChargeControl.NO_DEFAULT);
+		fc = fixture.xmlAtom[0].getFormalCharge(FormalChargeControl.NO_DEFAULT);
 	}
 
 	/**
@@ -639,9 +645,9 @@ public class CMLAtomTest extends MoleculeAtomBondBase {
 	 */
 	@Test
 	public final void testGetDistanceTo() {
-		double d = xomAtom[0].getDistanceTo(xomAtom[1]);
+		double d = fixture.xomAtom[0].getDistanceTo(fixture.xomAtom[1]);
 		Assert.assertEquals("distance", Math.sqrt(3.), d, EPS);
-		d = xomAtom[0].getDistanceTo(xomAtom[0]);
+		d = fixture.xomAtom[0].getDistanceTo(fixture.xomAtom[0]);
 		Assert.assertEquals("distance", 0.0, d, EPS);
 	}
 
