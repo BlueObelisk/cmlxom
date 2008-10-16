@@ -14,7 +14,7 @@ import org.xmlcml.cml.element.main.CMLTable.TableType;
  * @author pmr
  *
  */
-public class CMLTableTest extends AbstractTableTest {
+public class CMLTableTest extends AbstractTableBase {
 
     
     /**

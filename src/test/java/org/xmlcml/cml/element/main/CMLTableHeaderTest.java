@@ -13,7 +13,7 @@ import org.junit.Test;
  * @author pm286
  * 
  */
-public class CMLTableHeaderTest extends AbstractTableTest {
+public class CMLTableHeaderTest extends AbstractTableBase {
 
 	/**
 	 * Test method for

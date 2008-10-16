@@ -17,7 +17,7 @@ import org.xmlcml.cml.base.CMLElement;
  * @author pm286
  * 
  */
-public class CMLTableCellTest extends AbstractTableTest {
+public class CMLTableCellTest extends AbstractTableBase {
 
 	CMLTableCell cell = null;
 
