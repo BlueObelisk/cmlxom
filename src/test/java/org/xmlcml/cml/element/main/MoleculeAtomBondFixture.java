@@ -87,6 +87,7 @@ public final class MoleculeAtomBondFixture {
 	protected CMLMolecule mol6 = null;
 	public CMLMolecule mol7 = null;
 	public CMLMolecule mol8 = null;
+
 	protected CMLMolecule mol9 = null;
 	protected CMLMolecule mol10 = null;
 	protected CMLMolecule mol11 = null;
