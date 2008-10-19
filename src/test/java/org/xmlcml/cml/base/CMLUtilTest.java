@@ -12,10 +12,12 @@ import static org.xmlcml.euclid.EuclidConstants.U_S;
 import static org.xmlcml.euclid.test.EuclidTestBase.alwaysFail;
 import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
+import java.io.StringReader;
 import java.text.ParseException;
 import java.util.List;
 
 import nu.xom.Attribute;
+import nu.xom.Builder;
 import nu.xom.Document;
 import nu.xom.Element;
 import nu.xom.Elements;
@@ -23,6 +25,8 @@ import nu.xom.Node;
 import nu.xom.Text;
 import nu.xom.XPathContext;
 
+import org.apache.log4j.Logger;
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
@@ -32,6 +36,7 @@ import org.junit.Test;
  * 
  */
 public class CMLUtilTest {
+	private static Logger LOG = Logger.getLogger(CMLUtilTest.class);
 
 	/**
 	 * Test method for 'org.xmlcml.cml.base.CMLUtil.checkPrefixedName(String)'
@@ -327,5 +332,122 @@ public class CMLUtilTest {
 			// e.printStackTrace();
 			// assertTrue(true);
 		}
+	}
+	
+	@Test
+	public void testEqualsCanonicallyStringElementBoolean() {
+		String xml1S = "<atom id='a1'/>";
+		Element xml1 = null;
+		try {
+			xml1 = new Builder().build(new StringReader(xml1S)).getRootElement();
+		} catch (Exception e) {
+			throw new RuntimeException("parse fail", e);
+		}
+		String message = null;
+		String refString = xml1S;
+		// equality
+		message = CMLUtil.equalsCanonically(refString, xml1, true);
+		
+		// element name different
+		refString = "<Atom id='a1'/>";
+		message = CMLUtil.equalsCanonically(refString, xml1, true);
+		Assert.assertNotNull("message should be thrown", message);
+		Assert.assertEquals("element name", 
+				"element names differ at /*[local-name()='Atom']/: Atom != atom", message);
+		
+		// element namespaces are the same
+		refString = "<atom id='a1' xmlns=''/>";
+		message = CMLUtil.equalsCanonically(refString, xml1, true);
+		Assert.assertNull("message should not be thrown", message);
+		
+		// element namespaces differ
+		refString = "<atom id='a1' xmlns='http://foo/'/>";
+		message = CMLUtil.equalsCanonically(refString, xml1, true);
+		Assert.assertNotNull("message should be thrown", message);
+		Assert.assertEquals("element namespace", 
+				"element namespaces differ at /*[local-name()='atom']/: http://foo/ != ", message);
+		
+		// attribute value different
+		refString = "<atom id='a2'/>";
+		message = CMLUtil.equalsCanonically(refString, xml1, true);
+		Assert.assertNotNull("message should be thrown", message);
+		Assert.assertEquals("attribute value", 
+				"normalized attribute values for (/*[local-name()='atom']/@id) a2 != a1", message);
+
+		// attribute name different
+		refString = "<atom idx='a1'/>";
+		message = CMLUtil.equalsCanonically(refString, xml1, true);
+		Assert.assertNotNull("message should be thrown", message);
+		Assert.assertEquals("attribute value", 
+				"no attribute in test (/*[local-name()='atom']/) for idx", message);
+
+		// attribute namespace different
+		refString = "<atom foo:id='a1' xmlns:foo='http://www.foo.com/'/>";
+		message = CMLUtil.equalsCanonically(refString, xml1, true);
+		Assert.assertNotNull("message should be thrown", message);
+		Assert.assertEquals("attribute value", 
+				"no attribute in test (/*[local-name()='atom']/) for id[http://www.foo.com/]", message);
+
+		// attribute count different
+		refString = "<atom id='a1' idx='a1'/>";
+		message = CMLUtil.equalsCanonically(refString, xml1, true);
+		Assert.assertNotNull("message should be thrown", message);
+		Assert.assertEquals("attribute value", 
+				"unequal attribute count at /*[local-name()='atom']/ (2 != 1)", message);
+		
+		// content differs
+		refString = "<atom id='a1'> </atom>";
+		message = CMLUtil.equalsCanonically(refString, xml1, false);
+		Assert.assertNotNull("message should be thrown", message);
+		Assert.assertEquals("element content", 
+				"unequal child node count at /*[local-name()='atom']/ (1 != 0)", message);
+		
+		// content differs only in whitespace
+		refString = "<atom id='a1'> </atom>";
+		message = CMLUtil.equalsCanonically(refString, xml1, true);
+		Assert.assertNull("message should not be thrown", message);
+		
+		// content differs
+		refString = "<atom id='a1'><!-- comment --></atom>";
+		message = CMLUtil.equalsCanonically(refString, xml1, false);
+		Assert.assertNotNull("message should be thrown", message);
+		Assert.assertEquals("element content", 
+				"unequal child node count at /*[local-name()='atom']/ (1 != 0)", message);
+		
+		// equal child content
+		xml1S = "<atom id='a1'><atomParity id='ap1'/></atom>";
+		try {
+			xml1 = new Builder().build(new StringReader(xml1S)).getRootElement();
+		} catch (Exception e) {
+			throw new RuntimeException("parse fail", e);
+		}
+		refString = xml1S;
+		message = CMLUtil.equalsCanonically(refString, xml1, false);
+		Assert.assertNull("message should not be thrown", message);
+		
+		// equal child content but whitespace
+		refString = "<atom id='a1'>\n" +
+				"  <atomParity id='ap1'/>\n" +
+				"</atom>";
+		message = CMLUtil.equalsCanonically(refString, xml1, false);
+		Assert.assertNotNull("message should be thrown", message);
+		Assert.assertEquals("element content", 
+				"unequal child node count at /*[local-name()='atom']/ (3 != 1)", message);
+		
+		// equal child content and ignore whitespace
+		refString = "<atom id='a1'>\n" +
+				"  <atomParity id='ap1'/>\n" +
+				"</atom>";
+		message = CMLUtil.equalsCanonically(refString, xml1, true);
+		Assert.assertNull("message should not be thrown", message);
+		
+		// check child attributes
+		refString = "<atom id='a1'>\n" +
+				"  <atomParity idap='ap1'/>\n" +
+				"</atom>";
+		message = CMLUtil.equalsCanonically(refString, xml1, true);
+		Assert.assertNotNull("message should be thrown", message);
+		Assert.assertEquals("element content", 
+				"no attribute in test (/*[local-name()='atom']/node()[position()=1]) for idap", message);
 	}
 }

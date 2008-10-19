@@ -44,61 +44,7 @@ public class CMLNodeFactory extends NodeFactory implements CMLConstants {
 //    	System.out.println("NODE FACTORY INIT");
     }
 
-    /** callback from element start tag.
-    *
-    * @param name element name
-    * @param namespace namespace of element
-    * @return Element
-    */
-    public Element startMakingElement(String name, String namespace) {
-// fields;
-        /** new element*/
-        Element newElement;
-        int idx = name.indexOf(CMLUtil.S_COLON);
-        if (idx != -1) {
-        	name = name.substring(idx+1);
-        }
-        // convert old namespaces
-        namespace = CMLNamespace.guessNamespace(namespace);
-        
-        if (namespace.equals(null)) {
-            newElement = new Element(name);
-        } else if (namespace.trim().length() == 0) {
-            // this seems to be what is passed if there is no namespace
-            newElement = new Element(name);
-        } else if (!namespace.equals(CMLUtil.CML_NS)) {
-            newElement = new Element(name, namespace);
-            
-// end of part 1
-        } else {
-            CMLElement factoryElement = factoryElementMap.get(name);
-            if (factoryElement == null) {
-            	// tacky until we get a list of CML-lite classes
-	            Class<?> newClass = makeClass(ELEMENT_CLASS_BASE+S_PERIOD+LITE, name);
-	        	if (newClass == null) {
-		        	newClass = makeClass(ELEMENT_CLASS_BASE+S_PERIOD+MAIN, name);
-	        	}
-	        	if (newClass == null) {
-	        		throw new RuntimeException("Cannot make class for: "+name);
-	        	}
-	            try {
-    	            factoryElement = (CMLElement) newClass.newInstance();
-    	        } catch (Exception e) {
-    	        	System.out.println("CLASS "+newClass);
-    	        	System.out.println(newClass.getName());
-    	        	e.printStackTrace();
-    	            throw new RuntimeException("Cannot instantiate because: "+name+"["+e+"]");
-    	        }
-    	        factoryElementMap.put(name, factoryElement);
-    	    }
-            newElement = factoryElement.makeElementInContext((Element)current);
-        }
-        stack.push(current);
-        current = newElement;
-        return newElement;
-    }
-
-	private Class<?> makeClass(String base, String name) {
+    public static Class<?> makeClass(String base, String name) {
 		Class<?> newClass = null;
 		try {
 			String className = base+S_PERIOD+CMLUtil.makeCMLName(name);
@@ -176,5 +122,59 @@ public class CMLNodeFactory extends NodeFactory implements CMLConstants {
     */
     public static void main(String text) {
     }
+
+	/** callback from element start tag.
+	    *
+	    * @param name element name
+	    * @param namespace namespace of element
+	    * @return Element
+	    */
+	    public Element startMakingElement(String name, String namespace) {
+	// fields;
+	        /** new element*/
+	        Element newElement;
+	        int idx = name.indexOf(CMLUtil.S_COLON);
+	        if (idx != -1) {
+	        	name = name.substring(idx+1);
+	        }
+	        // convert old namespaces
+	        namespace = CMLNamespace.guessNamespace(namespace);
+	        
+	        if (namespace.equals(null)) {
+	            newElement = new Element(name);
+	        } else if (namespace.trim().length() == 0) {
+	            // this seems to be what is passed if there is no namespace
+	            newElement = new Element(name);
+	        } else if (!namespace.equals(CMLUtil.CML_NS)) {
+	            newElement = new Element(name, namespace);
+	            
+	// end of part 1
+	        } else {
+	            CMLElement factoryElement = factoryElementMap.get(name);
+	            if (factoryElement == null) {
+	            	// tacky until we get a list of CML-lite classes
+		            Class<?> newClass = CMLNodeFactory.makeClass(ELEMENT_CLASS_BASE+S_PERIOD+LITE, name);
+		        	if (newClass == null) {
+			        	newClass = makeClass(ELEMENT_CLASS_BASE+S_PERIOD+MAIN, name);
+		        	}
+		        	if (newClass == null) {
+		        		throw new RuntimeException("Cannot make class for: "+name);
+		        	}
+		            try {
+	    	            factoryElement = (CMLElement) newClass.newInstance();
+	    	        } catch (Exception e) {
+	    	        	System.out.println("CLASS "+newClass);
+	    	        	System.out.println(newClass.getName());
+	    	        	e.printStackTrace();
+	    	            throw new RuntimeException("Cannot instantiate because: "+name+"["+e+"]");
+	    	        }
+	    	        factoryElementMap.put(name, factoryElement);
+	    	    }
+	            newElement = factoryElement.makeElementInContext((Element)current);
+	        }
+	        stack.push(current);
+	        current = newElement;
+	        return newElement;
+	    }
 }
 // end of part 3
