@@ -11,17 +11,20 @@ import java.util.List;
 
 import nu.xom.Attribute;
 import nu.xom.Builder;
+import nu.xom.Comment;
 import nu.xom.Document;
 import nu.xom.Element;
 import nu.xom.Elements;
 import nu.xom.Node;
 import nu.xom.Nodes;
 import nu.xom.ParentNode;
+import nu.xom.ProcessingInstruction;
 import nu.xom.Serializer;
 import nu.xom.Text;
 import nu.xom.XPathContext;
 import nu.xom.canonical.Canonicalizer;
 
+import org.apache.log4j.Logger;
 import org.xmlcml.euclid.Util;
 
 /**
@@ -35,6 +38,7 @@ import org.xmlcml.euclid.Util;
  * 
  */
 public abstract class CMLUtil implements CMLConstants {
+	private static Logger LOG = Logger.getLogger(CMLUtil.class);
 
 	// ========================== utilities ====================== //
 
@@ -654,37 +658,221 @@ public abstract class CMLUtil implements CMLConstants {
 			throw new IllegalArgumentException("Null double string not allowed");
 		}
 	}
-	// /**
-	// * tests 2 XML objects for equality using canonical XML.
-	// *
-	// * @param refNode
-	// * first node
-	// * @param testNode
-	// * second node
-	// * @param stripWhite
-	// * if tru remove w/s nodes
-	// * @return is equal
-	// */
-	// public static boolean equalsCanonically(Element refNode, Element
-	// testNode,
-	// boolean stripWhite) {
-	// boolean equals = true;
-	// // check if they are different objects
-	// if (refNode != testNode) {
-	// if (stripWhite) {
-	// refNode = new Element(refNode);
-	// removeWhitespaceNodes(refNode);
-	// testNode = new Element(testNode);
-	// removeWhitespaceNodes(testNode);
-	// }
-	// try {
-	// XOMTestCase.assertEquals("foo", refNode, testNode);
-	// } catch (ComparisonFailure e) {
-	// equals = false;
-	// } catch (AssertionFailedError e) {
-	// equals = false;
-	// }
-	// }
-	// return equals;
-	// }
+	
+	/**
+	 * tests 2 XML objects for equality using recursive descent.
+	 * includes namespace testing
+	 * 
+	 * @param refString xml serialization of first Element
+	 * @param testNode second Element
+	 * @param stripWhite if true remove w/s nodes
+	 * @return message of where elements differ (null if identical)
+	 */
+	public static String equalsCanonically(String refNodeXML, Element testElement,
+			boolean stripWhite) {
+		Element refElement = null;
+		try {
+			refElement = new Builder().build(new StringReader(refNodeXML)).getRootElement();
+		} catch (Exception e) {
+			throw new RuntimeException("Parsing failed: "+refNodeXML);
+		}
+		String message = equalsCanonically(refElement, testElement, stripWhite, "/");
+		LOG.trace("EQCAN "+message);
+		return message;
+	}
+	
+	/**
+	 * tests 2 XML objects for equality using recursive descent.
+	 * includes namespace testing
+	 * 
+	 * @param refNode first node
+	 * @param testNode second node
+	 * @param stripWhite if true remove w/s nodes
+	 * @return message of where elements differ (null if identical)
+	 */
+	public static String equalsCanonically(Element refElement, Element testElement,
+			boolean stripWhite) {
+		return equalsCanonically(refElement, testElement, stripWhite, "./");
+	}
+	/**
+	 * tests 2 XML objects for equality using recursive descent.
+	 * includes namespace testing
+	 * 
+	 * @param refElement first node
+	 * @param testElement second node
+	 * @param stripWhite if true remove w/s nodes
+	 * @return message of where elements differ (null if identical)
+	 */
+	public static String equalsCanonically(Element refElement, Element testElement,
+			boolean stripWhite, String xpath) {
+		String message = null;
+		// check if they are different objects
+		if (refElement != testElement) {
+			if (stripWhite) {
+				refElement = new Element(refElement);
+				removeWhitespaceNodes(refElement);
+				testElement = new Element(testElement);
+				removeWhitespaceNodes(testElement);
+			}
+			xpath = xpath+"*[local-name()='"+refElement.getLocalName()+"']/";
+			message = equalsCanonically(refElement, testElement, xpath);
+		}
+		return message;
+	}
+
+	private static String equalsCanonically(Element refElement, Element testElement, String xpath) {
+		String message;
+		message = CMLUtil.compareNamespacesCanonically(refElement, testElement, xpath);
+		String refName = refElement.getLocalName();
+		String testName = testElement.getLocalName();
+		if (message == null && !refName.equals(testName)) {
+			message = "element names differ at "+xpath+": "+refName+" != "+testName;
+		}
+		String refNamespace = refElement.getNamespaceURI();
+		String testNamespace = testElement.getNamespaceURI();
+		if (message == null && !refNamespace.equals(testNamespace)) {
+			message = "element namespaces differ at "+xpath+": "+refNamespace+" != "+testNamespace;
+		}
+		if (message == null) {
+			message = CMLUtil.compareAttributesCanonically(refElement, testElement, xpath);
+		}
+		if (message == null) {
+			message = CMLUtil.compareChildNodesCanonically(refElement, testElement, xpath);
+		}
+		return message;
+	}
+	
+	/** compare namespaces on two elements
+	 * 
+	 * @param refNode
+	 * @param testNode
+	 * @param xpath current ancestry of refNode
+	 * @return
+	 */
+	public static String compareNamespacesCanonically(Element refNode, Element testNode, String xpath) {
+		int refCount = refNode.getNamespaceDeclarationCount();
+		int testCount = testNode.getNamespaceDeclarationCount();
+		
+		String message = null;
+		return message;
+	}
+	
+	/** compare attributes on two elements.
+	 * includes normalizing attribute values
+	 * 
+	 * @param refNode
+	 * @param testNode
+	 * @param xpath current ancestry of refNode
+	 * @return
+	 */
+	public static String compareAttributesCanonically(Element refNode, Element testNode, String xpath) {
+		String message = null;
+		int refCount = refNode.getAttributeCount();
+		int testCount = testNode.getAttributeCount();
+		if (refCount != testCount) {
+			message = "unequal attribute count at "+xpath+" ("+refCount+" != "+testCount+")";
+		}
+		if (message == null) {
+			for (int i = 0; i < refCount; i++) {
+				Attribute attribute = refNode.getAttribute(i);
+				String name = attribute.getLocalName();
+				String namespace = attribute.getNamespaceURI();
+				String value = attribute.getValue();
+				Attribute testAttribute = (namespace == null) ?
+					testNode.getAttribute(name) :
+					testNode.getAttribute(name, namespace);
+				if (testAttribute == null) {
+					message = "no attribute in test ("+xpath+") for "+CMLUtil.printName(name, namespace);
+					break;
+				}
+				String refValue = CMLUtil.normalizeSpace(value);
+				String testValue = CMLUtil.normalizeSpace(testAttribute.getValue());
+				if (!refValue.equals(testValue)) {
+					message = "normalized attribute values for ("+xpath+"@"+CMLUtil.printName(name, namespace)+") "+refValue+" != "+testValue;
+					break;
+				}
+			}
+		}
+		LOG.trace("ATT MS "+message);
+		return message;
+	}
+	
+	private static String printName(String name, String namespace) {
+		return name+((namespace == null || namespace.equals(S_EMPTY)) ? "" : "["+namespace+"]");
+	}
+	
+	private static String normalizeSpace(String value) {
+		return value.replaceAll(S_WHITEREGEX, S_SPACE).trim();
+	}
+	
+	/** compare child nodes recursively
+	 * 
+	 * @param refNode
+	 * @param testNode
+	 * @param xpath current ancestry of refNode
+	 * @return
+	 */
+	public static String compareChildNodesCanonically(Element refNode, Element testNode, String xpath) {
+		String message = null;
+		int refCount = refNode.getChildCount();
+		int testCount = testNode.getChildCount();
+		if (refCount != testCount) {
+			message = "unequal child node count at "+xpath+" ("+refCount+" != "+testCount+")";
+		}
+		if (message == null) {
+			for (int i = 0; i < refCount; i++) {
+				String xpathChild = xpath+"node()[position()="+(i+1)+"]";
+				Node refChildNode = refNode.getChild(i);
+				Node testChildNode = testNode.getChild(i);
+				Class<?> refClass = refChildNode.getClass();
+				Class<?> testClass = testChildNode.getClass();
+				if (!refClass.equals(testClass)) {
+					message = "child node classes differ at "+xpathChild+" "+refClass+"/"+testClass;
+					break;
+				} else if (refChildNode instanceof Element) {
+					message = CMLUtil.equalsCanonically((Element) refChildNode, (Element) testChildNode,
+						xpathChild);
+				} else {
+					message = CMLUtil.compareNonElementNodesCanonically(refNode, testNode, xpath);
+					if (message != null) {
+						break;
+					}
+				}
+			}
+		}
+		return message;
+	}
+	
+	
+	/** compare non-element nodes.
+	 * not yet tuned for normalizing adjacent CDATA and other horrors
+	 * @param refNode
+	 * @param testNode
+	 * @param xpath current ancestry of refNode
+	 * @return
+	 */
+	public static String compareNonElementNodesCanonically(Node refNode, Node testNode, String xpath) {
+		String message = null;
+		String refValue = refNode.getValue();
+		String testValue = testNode.getValue();
+		if (refNode instanceof Comment) {
+			if (!refValue.equals(testValue)) {
+				message = "comments at ("+xpath+") differ: "+refValue+" != "+testValue;
+			}
+		} else if (refNode instanceof Text) {
+			if (!refValue.equals(testValue)) {
+				message = "text contents at ("+xpath+") differ: ["+refValue+"] != ["+testValue+"]";
+			}
+		} else if (refNode instanceof ProcessingInstruction) {
+			String refTarget = ((ProcessingInstruction) refNode).getTarget();
+			String testTarget = ((ProcessingInstruction) testNode).getTarget();
+			if (!refTarget.equals(testTarget)) {
+				message = "PI targets at ("+xpath+") differ: "+refTarget+" != "+testTarget;
+			}
+		} else {
+			LOG.warn("Unknown XML element in comparison");
+		}
+		return message;
+	}
+	
 }
