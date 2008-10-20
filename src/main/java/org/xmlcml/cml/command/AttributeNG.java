@@ -142,5 +142,4 @@ actualDataType = attribute dataType { "xsd:string" |  "xsd:float" |
 			typeNG.validate(value);
 		}
 	}
-
 }

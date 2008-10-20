@@ -159,91 +159,98 @@ public class ElementCommandTest {
 	}
 	
 	@Test
-	public void testTypes() {
-		TypeNG.CHIRALITY_TYPE.validate("enantiomer");
-		try {
-			TypeNG.CHIRALITY_TYPE.validate("chiral");
-			Assert.fail("should throw invalid argument");
-		} catch (RuntimeException e) {
-		}
-		
-		TypeNG.DATATYPE_TYPE.validate("xsd:double");
-		try {
-			TypeNG.DATATYPE_TYPE.validate("xsd:float");
-			Assert.fail("should throw invalid argument");
-		} catch (RuntimeException e) {
-		}
-		
-		TypeNG.ELEMENTTYPE_TYPE.validate("Na");
-		try {
-			TypeNG.ELEMENTTYPE_TYPE.validate("Nu");
-			Assert.fail("should throw invalid argument");
-		} catch (RuntimeException e) {
-		}
-		
-		TypeNG.FORMULA_TYPE.validate("C 1 H 1 O 2 -1");
-		try {
-			TypeNG.FORMULA_TYPE.validate("C2H4");
-			Assert.fail("should throw invalid argument");
-		} catch (RuntimeException e) {
-		}
-		
-		TypeNG.INTEGER_TYPE.validate("12");
-		try {
-			TypeNG.INTEGER_TYPE.validate("12+");
-			Assert.fail("should throw invalid argument");
-		} catch (RuntimeException e) {
-		}
-		
-		TypeNG.NAMESPACE_TYPE.validate("http://foo.com/");
-		try {
-			TypeNG.NAMESPACE_TYPE.validate("ftp://foo.com/");
-			Assert.fail("should throw invalid argument");
-		} catch (RuntimeException e) {
-		}
-		
-		TypeNG.NONNEGATIVEREAL_TYPE.validate("0.123");
-		try {
-			TypeNG.NONNEGATIVEREAL_TYPE.validate("0.123(3)");
-			Assert.fail("should throw invalid argument");
-		} catch (RuntimeException e) {
-		}
-		
-		TypeNG.ORDER_TYPE.validate("D");
-		try {
-			TypeNG.ORDER_TYPE.validate("2");
-			Assert.fail("should throw invalid argument");
-		} catch (RuntimeException e) {
-		}
-		
-		TypeNG.POSITIVEINTEGER_TYPE.validate("2");
-		try {
-			TypeNG.POSITIVEINTEGER_TYPE.validate("0");
-			Assert.fail("should throw invalid argument");
-		} catch (RuntimeException e) {
-		}
-		
-		TypeNG.REALNUMBER_TYPE.validate("1.0E-23");
-		try {
-			TypeNG.REALNUMBER_TYPE.validate("1.0H-23");
-			Assert.fail("should throw invalid argument");
-		} catch (RuntimeException e) {
-		}
-		
-		TypeNG.QNAME_TYPE.validate("a:b");
-		try {
-			TypeNG.QNAME_TYPE.validate("ab");
-			Assert.fail("should throw invalid argument");
-		} catch (RuntimeException e) {
-		}
-		
-		TypeNG.REF_TYPE.validate("a12");
-		try {
-			TypeNG.REF_TYPE.validate("12a");
-			Assert.fail("should throw invalid argument");
-		} catch (RuntimeException e) {
-		}
-		
-		TypeNG.STRING_TYPE.validate("XX");
+	public void testAtomRefsInSchema() {
+//		ATOMREFS = new AttributeNG("atomRefs", TypeNG.REF_TYPE, -1);
 	}
+	
+	@Test
+	public void testAtomRefs2InSchema() {
+//		ATOMREFS2 = new AttributeNG("atomRefs2", TypeNG.REF_TYPE, 2);
+		String xmlString = "<bond id='b1'/>";
+		Handle handle = new ElementCommand().readXML(xmlString);
+		handle.setAttribute("atomRefs2", "a1 a2");
+		String message = CMLUtil.equalsCanonically(
+			"<bond id='b1' atomRefs2='a1 a2'/>", handle.getElement(), true);
+		Assert.assertNull("atomRefs2", message);
+		try {
+			handle.setAttribute("atomRefs2", "a1 a2 a2");
+			Assert.fail("should throw invalid attribute");
+		} catch (RuntimeException e) {
+		}
+	}
+
+	@Test
+	public void testAtomRefs4InSchema() {
+//		ATOMREFS4 = new AttributeNG("atomRefs4", TypeNG.REF_TYPE, 4);
+		String xmlString = "<bondStereo id='b1'/>";
+		Handle handle = new ElementCommand().readXML(xmlString);
+		handle.setAttribute("atomRefs4", "a1 a2 a3 a4");
+		String message = CMLUtil.equalsCanonically(
+			"<bondStereo id='b1' atomRefs4='a1 a2 a3 a4'/>", handle.getElement(), true);
+		Assert.assertNull("atomRefs4", message);
+		try {
+			handle.setAttribute("atomRefs24", "a1 a2 a3");
+			Assert.fail("should throw invalid attribute");
+		} catch (RuntimeException e) {
+		}
+		try {
+			handle.setAttribute("atomRefs24", "a1 a2 a3 a4 a5");
+			Assert.fail("should throw invalid attribute");
+		} catch (RuntimeException e) {
+		}
+		xmlString = "<atomParity id='b1'/>";
+		handle = new ElementCommand().readXML(xmlString);
+		handle.setAttribute("atomRefs4", "a1 a2 a3 a4");
+		message = CMLUtil.equalsCanonically(
+			"<atomParity id='b1' atomRefs4='a1 a2 a3 a4'/>", handle.getElement(), true);
+		Assert.assertNull("atomRefs4", message);
+		try {
+			handle.setAttribute("atomRefs24", "a1 a2 a3");
+			Assert.fail("should throw invalid attribute");
+		} catch (RuntimeException e) {
+		}
+		try {
+			handle.setAttribute("atomRefs24", "a1 a2 a3 a4 a5");
+			Assert.fail("should throw invalid attribute");
+		} catch (RuntimeException e) {
+		}
+	}
+//		BONDREFS = new AttributeNG("bondRefs", TypeNG.REF_TYPE, -1);
+//		CHIRALITY = new AttributeNG("chirality", TypeNG.CHIRALITY_TYPE);
+//		CONCISE = new AttributeNG("concise", TypeNG.FORMULA_TYPE);
+//		CONVENTION = new AttributeNG("convention", TypeNG.REF_TYPE);
+//		COUNT = new AttributeNG("count", TypeNG.NONNEGATIVEREAL_TYPE);
+//		DATATYPE = new AttributeNG("dataType", TypeNG.DATATYPE_TYPE);
+//		DICTREF = new AttributeNG("dictRef", TypeNG.REF_TYPE);
+//		ELEMENTTYPE = new AttributeNG("elementType", TypeNG.ELEMENTTYPE_TYPE);
+//		FORMALCHARGE = new AttributeNG("formalCharge", TypeNG.INTEGER_TYPE);
+//		ID = new AttributeNG("id", TypeNG.REF_TYPE);
+//		INLINE = new AttributeNG("inline", TypeNG.STRING_TYPE);
+//		ISOTOPENUMBER = new AttributeNG("isotopeNumber", TypeNG.POSITIVEINTEGER_TYPE);
+//		MAX = new AttributeNG("max", TypeNG.STRING_TYPE);
+//		MIN = new AttributeNG("min", TypeNG.STRING_TYPE);
+//		NAMESPACE = new AttributeNG("namespace", TypeNG.NAMESPACE_TYPE);
+//		ORDER = new AttributeNG("order", TypeNG.ORDER_TYPE);
+//		PEAKMULTIPLICITY = new AttributeNG("peakMultiplicity", TypeNG.STRING_TYPE);
+//		PEAKSHAPE = new AttributeNG("peakShape", TypeNG.STRING_TYPE);
+//		REF = new AttributeNG("ref", TypeNG.REF_TYPE);
+//		SPINMULTIPLICITY = new AttributeNG("spinMultiplicity", TypeNG.POSITIVEINTEGER_TYPE);
+//		TERM = new AttributeNG("term", TypeNG.STRING_TYPE);
+//		TITLE = new AttributeNG("title", TypeNG.STRING_TYPE);
+//		UNITS = new AttributeNG("units", TypeNG.REF_TYPE);
+//		VERSION = new AttributeNG("version", TypeNG.STRING_TYPE);
+//		X2 = new AttributeNG("x2", TypeNG.REALNUMBER_TYPE);
+//		X3 = new AttributeNG("x3", TypeNG.REALNUMBER_TYPE);
+//		XMAX = new AttributeNG("xMax", TypeNG.REALNUMBER_TYPE);
+//		XMIN = new AttributeNG("xMin", TypeNG.REALNUMBER_TYPE);
+//		XUNITS = new AttributeNG("xUnits", TypeNG.QNAME_TYPE);
+//		XVALUE = new AttributeNG("xValue", TypeNG.REALNUMBER_TYPE);
+//		Y2 = new AttributeNG("y2", TypeNG.REALNUMBER_TYPE);
+//		Y3 = new AttributeNG("y3", TypeNG.REALNUMBER_TYPE);
+//		YUNITS = new AttributeNG("yUnits", TypeNG.QNAME_TYPE);
+//		YVALUE = new AttributeNG("yValue", TypeNG.REALNUMBER_TYPE);
+//		Z3 = new AttributeNG("z3", TypeNG.REALNUMBER_TYPE);
+	
+
 }
+	

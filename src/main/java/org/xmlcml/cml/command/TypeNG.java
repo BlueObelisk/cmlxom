@@ -32,7 +32,7 @@ public class TypeNG {
 		FORMULA_TYPE.setPattern("\\s*([A-Z][a-z]?\\s+(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]*))?\\s*)+(\\s+[\\-|+]?[0-9]+)?\\s*");
 		INTEGER_TYPE = new TypeNG(Integer.class);
 		NAMESPACE_TYPE = new TypeNG(String.class);
-		NAMESPACE_TYPE.setPattern("http://[^ ]+");
+		NAMESPACE_TYPE.setPattern("http\\://[A-Za-z][A-Za-z0-9_\\.\\-]*(/[A-Za-z0-9_\\.\\-]+)+");
 		NONNEGATIVEREAL_TYPE = new TypeNG(Double.class);
 		NONNEGATIVEREAL_TYPE.setMinInclusive(new Double(0.0));
 		ORDER_TYPE = new TypeNG(String.class);
