@@ -5,8 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import nu.xom.Element;
+import nu.xom.Nodes;
+
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+
+import static org.xmlcml.cml.base.CMLConstants.*;
 
 public class ElementNG {
 	private static Logger LOG = Logger.getLogger(ElementNG.class);
@@ -136,6 +141,13 @@ public class ElementNG {
 		    "formalCharge",
 		    "concise",
 		    "inline",
+		});
+		FORMULA.addAssertions(new String[] {
+			"@count or not(ancestor::cml:formula)",
+			"not(@count) or (floor(@count) = number(@count))",
+		});
+		FORMULA.addReports(new String[] {
+			"not(@concise)",
 		});
 		//
 		LABEL = new ElementNG("label");
@@ -315,6 +327,10 @@ public class ElementNG {
 		new ArrayList<AttributeNG>();
 	private List<ElementNG> allowedElementList = 
 		new ArrayList<ElementNG>();
+	private List<String> assertionList = 
+		new ArrayList<String>();
+	private List<String> reportList = 
+		new ArrayList<String>();
 	
 	private String localName;
 	private TypeNG contentType = null;
@@ -351,6 +367,18 @@ public class ElementNG {
 		}
 	}
 
+	public void addAssertions(String[] stringList) {
+		for (String s : stringList) {
+			assertionList.add(s);
+		}
+	}
+
+	public void addReports(String[] stringList) {
+		for (String s : stringList) {
+			reportList.add(s);
+		}
+	}
+
 	public List<AttributeNG> getAllowedAttributeList() {
 		return allowedAttributeList;
 	}
@@ -367,4 +395,33 @@ public class ElementNG {
 		return contentType;
 	}
 	
+	public void validateAssertions(Element element) {
+		for (String assertion : assertionList) {
+			String query = ".["+assertion+"]";
+			LOG.debug("Q "+query);
+			Nodes nodes = element.query(query, CML_XPATH);
+			LOG.debug("N "+nodes.size());
+			if (nodes.size() == 1) {
+				LOG.debug("did not fail: "+assertion);
+			} else {
+				LOG.debug("fails (nodes="+nodes.size()+"): "+assertion);
+				throw new RuntimeException("fails assertion: "+assertion);
+			}
+		}
+	}
+	
+	public void validateReports(Element element) {
+		for (String report : reportList) {
+			String query = ".[not("+report+")]";
+			LOG.debug("QR "+query);
+			Nodes nodes = element.query(query, CML_XPATH);
+			LOG.debug("NR "+nodes.size());
+			if (nodes.size() == 1) {
+				LOG.debug("did not fail: "+report);
+			} else {
+				LOG.debug("fails (nodes="+nodes.size()+"): "+report);
+				throw new RuntimeException("fails assertion: "+report);
+			}
+		}
+	}
 }
