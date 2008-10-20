@@ -7,6 +7,8 @@ import nu.xom.Element;
 import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLNodeFactory;
 
+import static org.xmlcml.cml.base.CMLConstants.*;
+
 public class ElementCommand extends JumboCommand {
 	
 	ElementCommand() {
@@ -22,7 +24,7 @@ public class ElementCommand extends JumboCommand {
 		try {
 			xomElement = CML_BUILDER.build(new StringReader(s)).getRootElement();
 			if (xpath != null) {
-				xomElement = (Element) xomElement.query(xpath).get(0);
+				xomElement = (Element) xomElement.query(xpath, CML_XPATH).get(0);
 			}
 		} catch (Exception e) {
 			throw new RuntimeException("Cannot parse xml", e);
