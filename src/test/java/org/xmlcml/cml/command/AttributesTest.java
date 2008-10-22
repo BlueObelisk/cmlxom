@@ -15,124 +15,66 @@ public class AttributesTest {
 	@Test
 	public void testAtomRefsInSchema() {
 //		ATOMREFS = new AttributeNG("atomRefs", TypeNG.REF_TYPE, -1);
+		TestUtils.createElementAndTestValidAttribute("peak", "atomRefs", "a1 a2");
+		TestUtils.createElementAndTestValidAttribute("peak", "atomRefs", "a1 a2 a3");
 	}
 
-	// cannot test this easily as JUMBO has many checks on bonds
-//	@Test
-//	public void testAtomRefs2InSchema() {
-////		ATOMREFS2 = new AttributeNG("atomRefs2", TypeNG.REF_TYPE, 2);
-//		String xmlString = "<molecule xmlns='http://www.xml-cml.org/schema'><bondArray><bond atomRefs2='a1 a2' id='b1'/></bondArray></molecule>";
-//		Handle handle = new ElementCommand().readXML(xmlString);
-//		try {
-//			handle.setAttribute("atomRefs2", "a1 a2 a3");
-//			Assert.fail("should throw invalid attribute");
-//		} catch (RuntimeException e) {
-//		}
-//	}
+	//
+	@Test
+	public void testAtomRefs2InSchema() {
+//		ATOMREFS2 = new AttributeNG("atomRefs2", TypeNG.REF_TYPE, 2);
+		TestUtils.createElementAndTestValidAttribute("bond", "atomRefs2", "a1 a2");
+		TestUtils.createElementAndTestInvalidAttribute("bond", "atomRefs2", "a1 a2 a3", "inconsistent attribute list: (3 != 2)");
+	}
 
 	@Test
 	public void testAtomRefs4InSchema() {
-//		ATOMREFS4 = new AttributeNG("atomRefs4", TypeNG.REF_TYPE, 4);
-		String xmlString = "<bondStereo id='b1' xmlns='http://www.xml-cml.org/schema'/>";
-		Handle handle = new ElementCommand().readXML(xmlString);
-		handle.setAttribute("atomRefs4", "a1 a2 a3 a4");
-		String message = CMLUtil.equalsCanonically(
-			"<bondStereo id='b1' atomRefs4='a1 a2 a3 a4' xmlns='http://www.xml-cml.org/schema'/>", handle.getElement(), true);
-		Assert.assertNull("atomRefs4", message);
-		try {
-			handle.setAttribute("atomRefs24", "a1 a2 a3");
-			Assert.fail("should throw invalid attribute");
-		} catch (RuntimeException e) {
-		}
-		try {
-			handle.setAttribute("atomRefs24", "a1 a2 a3 a4 a5");
-			Assert.fail("should throw invalid attribute");
-		} catch (RuntimeException e) {
-		}
-		xmlString = "<atomParity id='b1' xmlns='http://www.xml-cml.org/schema'/>";
-		handle = new ElementCommand().readXML(xmlString);
-		handle.setAttribute("atomRefs4", "a1 a2 a3 a4");
-		message = CMLUtil.equalsCanonically(
-			"<atomParity id='b1' atomRefs4='a1 a2 a3 a4' xmlns='http://www.xml-cml.org/schema'/>", handle.getElement(), true);
-		Assert.assertNull("atomRefs4", message);
-		try {
-			handle.setAttribute("atomRefs24", "a1 a2 a3");
-			Assert.fail("should throw invalid attribute");
-		} catch (RuntimeException e) {
-		}
-		try {
-			handle.setAttribute("atomRefs24", "a1 a2 a3 a4 a5");
-			Assert.fail("should throw invalid attribute");
-		} catch (RuntimeException e) {
-		}
 	}
 	@Test
 	public void testBondRefsInSchema() {
 //		BONDREFS = new AttributeNG("bondRefs", TypeNG.REF_TYPE, -1);
-		String xmlString = "<peak id='p1' xmlns='http://www.xml-cml.org/schema'/>";
-		Handle handle = new ElementCommand().readXML(xmlString);
-		handle.setAttribute("bondRefs", "b1 b2");
-		String message = CMLUtil.equalsCanonically(
-			"<peak id='p1' bondRefs='b1 b2' xmlns='http://www.xml-cml.org/schema'/>", handle.getElement(), true);
-		Assert.assertNull("bondRefs", message);
+		Handle handle = new ElementCommand().readCML(
+				"<peak id='p1' xmlns='http://www.xml-cml.org/schema'/>");
+		TestUtils.testValidAttribute(handle, "test bondRefs", "bondRefs", "b1 b2", 
+				"<peak id='p1' bondRefs='b1 b2' xmlns='http://www.xml-cml.org/schema'/>");
 	}
 	
 	@Test
 	public void testChiralityInSchema() {
 //		CHIRALITY = new AttributeNG("chirality", TypeNG.CHIRALITY_TYPE);
-		String xmlString = "<molecule xmlns='http://www.xml-cml.org/schema'/>";
-		Handle handle = new ElementCommand().readXML(xmlString);
-		handle.setAttribute("chirality", "enantiomer");
-		String message = CMLUtil.equalsCanonically(
-			"<molecule chirality='enantiomer' xmlns='http://www.xml-cml.org/schema'/>", handle.getElement(), true);
-		Assert.assertNull("chirality", message);
-		try {
-			handle.setAttribute("chirality", "JUNK");
-			Assert.fail("should throw invalid attribute");
-		} catch (RuntimeException e) {
-		}
+		Handle handle = new ElementCommand().readCML(
+				"<molecule xmlns='http://www.xml-cml.org/schema'/>");
+		TestUtils.testValidAttribute(handle, "test chirality", "chirality", "enantiomer", 
+			"<molecule chirality='enantiomer' xmlns='http://www.xml-cml.org/schema'/>");
+		TestUtils.testInvalidAttribute(handle, "chirality", "JUNK", "value (JUNK) does not match pattern enantiomer|racemate|unknown|other");
 	}
 	
 	@Test
 	public void testConciseInSchema() {
 //		CONCISE = new AttributeNG("concise", TypeNG.FORMULA_TYPE);
-		String xmlString = "<formula xmlns='http://www.xml-cml.org/schema'/>";
-		Handle handle = new ElementCommand().readXML(xmlString);
-		handle.setAttribute("concise", "C 1 H 1 O 2 -1");
+		Handle handle = new ElementCommand().readCML("<formula xmlns='http://www.xml-cml.org/schema'/>");
 		// concise adds formalCharge and children 
-		String message = CMLUtil.equalsCanonically(
-			"<formula concise='C 1 H 1 O 2' formalCharge='-1' xmlns='http://www.xml-cml.org/schema'><atomArray elementType='C H O' count='1.0 1.0 2.0'/></formula>", handle.getElement(), true);
-		System.out.println("M "+message);
-		Assert.assertNull("concise", message);
-		xmlString = "<formula xmlns='http://www.xml-cml.org/schema'/>";
-		handle = new ElementCommand().readXML(xmlString);
-		handle.setAttribute("concise", "C 1 H 1 O 2");
+		TestUtils.testValidAttribute(handle, "test formula concise", "concise", "C 1 H 1 O 2 -1",
+			"<formula concise='C 1 H 1 O 2' formalCharge='-1' xmlns='http://www.xml-cml.org/schema'><atomArray elementType='C H O' count='1.0 1.0 2.0'/></formula>");
+		handle = new ElementCommand().readCML(
+				"<formula xmlns='http://www.xml-cml.org/schema'/>");
 		// concise adds formalCharge
-		message = CMLUtil.equalsCanonically(
-			"<formula concise='C 1 H 1 O 2' xmlns='http://www.xml-cml.org/schema'><atomArray elementType='C H O' count='1.0 1.0 2.0'/></formula>", handle.getElement(), true);
-		Assert.assertNull("concise", message);
-		try {
-			handle.setAttribute("concise", "C 1 H 1 O 2 1-");
-			Assert.fail("should throw invalid attribute");
-		} catch (RuntimeException e) {
-		}
+		TestUtils.testValidAttribute(handle, "test formula concise", "concise", "C 1 H 1 O 2",
+			"<formula concise='C 1 H 1 O 2' xmlns='http://www.xml-cml.org/schema'><atomArray elementType='C H O' count='1.0 1.0 2.0'/></formula>");
+		TestUtils.testInvalidAttribute(handle, "concise", "C 1 H 1 O 2 1-", 
+				"value (C 1 H 1 O 2 1-) does not match pattern \\s*([A-Z][a-z]?\\s+(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]*))?\\s*)+(\\s+[\\-|+]?[0-9]+)?\\s*");
 	}
 	
 	@Test
 	public void testConventionInSchema() {
 //		CONVENTION = new AttributeNG("convention", TypeNG.REF_TYPE);
-		String xmlString = "<cml xmlns='http://www.xml-cml.org/schema'/>";
-		Handle handle = new ElementCommand().readXML(xmlString);
-		handle.setAttribute("convention", "CMLLite");
-		String message = CMLUtil.equalsCanonically(
-			"<cml convention='CMLLite' xmlns='http://www.xml-cml.org/schema'/>", handle.getElement(), true);
-		Assert.assertNull("convention", message);
-		xmlString = "<cml xmlns='http://www.xml-cml.org/schema'/>";
-		handle = new ElementCommand().readXML(xmlString);
-		handle.setAttribute("convention", "iucr:cif");
-		message = CMLUtil.equalsCanonically(
-			"<cml convention='iucr:cif' xmlns='http://www.xml-cml.org/schema'/>", handle.getElement(), true);
-		Assert.assertNull("convention", message);
+		Handle handle = new ElementCommand().readCML(
+				"<cml xmlns='http://www.xml-cml.org/schema'/>");
+		TestUtils.testValidAttribute(handle, "test convention", "convention", "CMLLite",
+			"<cml convention='CMLLite' xmlns='http://www.xml-cml.org/schema'/>");
+		handle = new ElementCommand().readCML("<cml xmlns='http://www.xml-cml.org/schema'/>");
+		TestUtils.testValidAttribute(handle, "test convention", "convention", "iucr:cif",
+			"<cml convention='iucr:cif' xmlns='http://www.xml-cml.org/schema'/>");
 	}
 //		COUNT = new AttributeNG("count", TypeNG.NONNEGATIVEREAL_TYPE);
 //		DATATYPE = new AttributeNG("dataType", TypeNG.DATATYPE_TYPE);
@@ -166,4 +108,6 @@ public class AttributesTest {
 //		YVALUE = new AttributeNG("yValue", TypeNG.REALNUMBER_TYPE);
 //		Z3 = new AttributeNG("z3", TypeNG.REALNUMBER_TYPE);
 	
+
+
 }
