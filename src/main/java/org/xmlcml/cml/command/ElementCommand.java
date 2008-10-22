@@ -1,13 +1,15 @@
 package org.xmlcml.cml.command;
 
+import static org.xmlcml.cml.base.CMLConstants.CML_NS;
+import static org.xmlcml.cml.base.CMLConstants.CML_XPATH;
+
 import java.io.StringReader;
 
 import nu.xom.Element;
+import nu.xom.Nodes;
 
 import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLNodeFactory;
-
-import static org.xmlcml.cml.base.CMLConstants.*;
 
 public class ElementCommand extends JumboCommand {
 	
@@ -15,7 +17,7 @@ public class ElementCommand extends JumboCommand {
 		
 	}
 	
-	public Handle readXML(String s) {
+	public Handle readCML(String s) {
 		return readXML(s, null);
 	}
 	
@@ -24,7 +26,12 @@ public class ElementCommand extends JumboCommand {
 		try {
 			xomElement = CML_BUILDER.build(new StringReader(s)).getRootElement();
 			if (xpath != null) {
-				xomElement = (Element) xomElement.query(xpath, CML_XPATH).get(0);
+				Nodes nodes = xomElement.query(xpath, CML_XPATH);
+				if (nodes.size() == 0) {
+					throw new RuntimeException("expected at least one node from xpath");
+				} else {
+					xomElement = (Element) xomElement.query(xpath, CML_XPATH).get(0);
+				}
 			}
 		} catch (Exception e) {
 			throw new RuntimeException("Cannot parse xml", e);
@@ -36,6 +43,11 @@ public class ElementCommand extends JumboCommand {
 	
 	private void checkElementName(Element xomElement) {
 		String name = xomElement.getLocalName();
+		String namespace = xomElement.getNamespaceURI();
+		if (CML_NS.equals(namespace)) {
+		} else if (ElementNG.ELEMENTMAP.containsKey(name)) {
+			throw new RuntimeException("element should have CML namespace: "+name);
+		}
 		checkElementName(name);
 	}
 	
