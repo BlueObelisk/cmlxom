@@ -2,6 +2,7 @@ package org.xmlcml.cml.command;
 
 import nu.xom.Element;
 
+import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
@@ -9,11 +10,15 @@ import org.xmlcml.cml.base.CMLUtil;
 
 public class ElementCommandTest {
 	private static Logger LOG = Logger.getLogger(ElementCommandTest.class);
+	static {
+		LOG.setLevel(Level.DEBUG);
+		
+	}
 	@Test
 	public void testReadXMLString() {
 		// parse XML for root element
-		String xmlString = "<atom id='a1'/>";
-		Handle atomHandle = new ElementCommand().readXML(xmlString);
+		String xmlString = "<atom id='a1' xmlns='http://www.xml-cml.org/schema'/>";
+		Handle atomHandle = new ElementCommand().readCML(xmlString);
 		Assert.assertNotNull("handle", atomHandle);
 		Element element = atomHandle.getElement();
 		Assert.assertNotNull("element", element);
@@ -21,18 +26,18 @@ public class ElementCommandTest {
 		Assert.assertNull("parse", message);
 		
 		// parse larger tree 
-		xmlString = "<cml><atom id='a1'/></cml>";
-		Handle cmlHandle = new ElementCommand().readXML(xmlString);
+		xmlString = "<cml xmlns='http://www.xml-cml.org/schema'><atom id='a1'/></cml>";
+		Handle cmlHandle = new ElementCommand().readCML(xmlString);
 		Assert.assertNotNull("handle", cmlHandle);
 		element = cmlHandle.getElement();
 		Assert.assertNotNull("element", element);
-		String cmlString = "<cml><atom id='a1'/></cml>";
+		String cmlString = "<cml xmlns='http://www.xml-cml.org/schema'><atom id='a1'/></cml>";
 		message = CMLUtil.equalsCanonically(cmlString, element, true);
 		Assert.assertNull("parse", message);
 
 		// use CML namespace explicitly
 		xmlString = "<cml:atom id='a1' xmlns:cml='http://www.xml-cml.org/schema'/>";
-		atomHandle = new ElementCommand().readXML(xmlString);
+		atomHandle = new ElementCommand().readCML(xmlString);
 		Assert.assertNotNull("handle", atomHandle);
 		element = atomHandle.getElement();
 		Assert.assertNotNull("element", element);
@@ -41,7 +46,7 @@ public class ElementCommandTest {
 		
 		// use CML namespace implicitly
 		xmlString = "<atom id='a1' xmlns='http://www.xml-cml.org/schema'/>";
-		atomHandle = new ElementCommand().readXML(xmlString);
+		atomHandle = new ElementCommand().readCML(xmlString);
 		Assert.assertNotNull("handle", atomHandle);
 		element = atomHandle.getElement();
 		Assert.assertNotNull("element", element);
@@ -53,13 +58,13 @@ public class ElementCommandTest {
 	@Test
 	public void testReadXMLStringString() {
 		// parse XML and extract first node satisfying xpath
-		String xmlString = "<foo><atom id='a1'/></foo>";
-		Handle atomHandle = new ElementCommand().readXML(xmlString, "./atom");
+		Handle atomHandle = new ElementCommand().readXML(
+				"<foo><atom id='a1' xmlns='http://www.xml-cml.org/schema'/></foo>", "./cml:atom");
 		Assert.assertNotNull("handle", atomHandle);
 		Element element = atomHandle.getElement();
 		Assert.assertNotNull("element", element);
-		String atomString = "<atom id='a1'/>";
-		String message = CMLUtil.equalsCanonically(atomString, element, true);
+		String message = CMLUtil.equalsCanonically(
+				"<atom id='a1' xmlns='http://www.xml-cml.org/schema'/>", element, true);
 		Assert.assertNull("parse", message);
 	}
 
