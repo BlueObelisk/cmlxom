@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import nu.xom.Element;
-import nu.xom.Nodes;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -14,7 +13,7 @@ import org.apache.log4j.Logger;
 import static org.xmlcml.cml.base.CMLConstants.*;
 
 public class ElementNG {
-	private static Logger LOG = Logger.getLogger(ElementNG.class);
+	public static Logger LOG = Logger.getLogger(ElementNG.class);
 	static {
 		LOG.setLevel(Level.DEBUG);
 	}
@@ -801,46 +800,20 @@ public class ElementNG {
 	
 	public void validateAssertions(Element element) {
 		for (String assertion : assertionList) {
-			String query = ".["+assertion+"]";
-			LOG.debug("Q "+query);
-			Nodes nodes = element.query(query, CML_XPATH);
-			LOG.debug("N "+nodes.size());
-			if (nodes.size() == 1) {
-				LOG.debug("did not fail: "+assertion);
-			} else {
-				LOG.debug("fails (nodes="+nodes.size()+"): "+assertion);
-				throw new RuntimeException("fails assertion: "+assertion);
-			}
+			LOG.debug("ASS "+assertion);
+			TestUtils.validateAssertion(element, assertion);
 		}
 	}
-	
+
 	public void validateReports(Element element) {
 		for (String report : reportList) {
-			String query = ".[not("+report+")]";
-			LOG.debug("QR "+query);
-			Nodes nodes = element.query(query, CML_XPATH);
-			LOG.debug("NR "+nodes.size());
-			if (nodes.size() == 1) {
-				LOG.debug("did not fail: "+report);
-			} else {
-				LOG.debug("fails (nodes="+nodes.size()+"): "+report);
-				throw new RuntimeException("fails assertion: "+report);
-			}
+			TestUtils.validateReport(element, report);
 		}
 	}
-	
+
 	public void validateContentModel(Element element) {
 		for (String model : contentModelList) {
-			String query = ".["+model+"]";
-			LOG.debug("Q "+query);
-			Nodes nodes = element.query(query, CML_XPATH);
-			LOG.debug("N "+nodes.size());
-			if (nodes.size() == 1) {
-				LOG.debug("did not fail: "+model);
-			} else {
-				LOG.debug("fails (nodes="+nodes.size()+"): "+model);
-				throw new RuntimeException("fails assertion: "+model);
-			}
+			TestUtils.validateAssertion(element, model);
 		}
 	}
 	

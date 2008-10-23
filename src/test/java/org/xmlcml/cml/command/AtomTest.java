@@ -67,6 +67,25 @@ public class AtomTest {
 		// now valid - has id and ancestor molecule
 		handle = new ElementCommand().readCML("<molecule xmlns='http://www.xml-cml.org/schema'><atomArray><atom id='a1'/></atomArray></molecule> ");
 		TestUtils.testValidAssertions(handle); 
+	}
+	
+	@Test
+	public void testCoordinates() {
+//	      <assert test="not(@x2) or (@x2 and @y2)">if atom has @x2 then it must have @y2</assert>
+		Handle handle = new ElementCommand().readCML(
+				"<molecule xmlns='http://www.xml-cml.org/schema'>" +
+				"  <atomArray><atom x2='1.0' y2='1.0' id='a1'/></atomArray></molecule> ");
+		TestUtils.testValidAssertions(handle); 
+		handle = new ElementCommand().readCML(
+				"<molecule xmlns='http://www.xml-cml.org/schema'>" +
+				"  <atomArray><atom y2='1.0' id='a1'/></atomArray></molecule> ");
+		TestUtils.testValidAssertions(atom); 
+	}
+	
+	@Test
+	public void testDupicateId() {
+		Handle handle = new ElementCommand().readCML("<molecule xmlns='http://www.xml-cml.org/schema'><atomArray><atom id='a1'/></atomArray></molecule> ");
+		TestUtils.testValidAssertions(handle); 
 		// invalid - has duplicate id (picked up by JUMBO)
 		try {
 			handle = new ElementCommand().readCML(
