@@ -17,7 +17,7 @@ public class FormulaTest {
 		// ok
 		Handle handle = new ElementCommand().readCML(
 				"<formula count='2' xmlns='http://www.xml-cml.org/schema'/>");
-		handle.elementNG.validateAssertions(handle.getElement());
+		TestUtils.validateAssertions(handle.getElement());
 		// non-integer count
 		// "not(@count) or (floor(@count) = number(@count))",
 		handle = new ElementCommand().readCML(
@@ -28,13 +28,13 @@ public class FormulaTest {
 		//		"@count or not(ancestor::cml:formula)",
 		handle = new ElementCommand().readCML(
 			"<formula xmlns='http://www.xml-cml.org/schema'/>");
-		handle.elementNG.validateAssertions(handle.getElement());
+		TestUtils.validateAssertions(handle.getElement());
 		
 		// valid for ancestor formula 
 		// "@count or not(ancestor::cml:formula)",
 		handle = new ElementCommand().readCML(
 			"<formula xmlns='http://www.xml-cml.org/schema'><formula/></formula>");
-		handle.elementNG.validateAssertions(handle.getElement());
+		TestUtils.validateAssertions(handle.getElement());
 		// invalid for child formula without count
 		// "@count or not(ancestor::cml:formula)",
 		handle = new ElementCommand().readXML(
@@ -45,7 +45,7 @@ public class FormulaTest {
 		// "@count or not(ancestor::cml:formula)",
 		handle = new ElementCommand().readXML(
 			"<formula id='f1' xmlns='http://www.xml-cml.org/schema'><formula count='2' id='f2'/></formula>", "./cml:formula");
-		handle.elementNG.validateAssertions(handle.getElement());
+		TestUtils.validateAssertions(handle.getElement());
 	}
 
 	@Test
@@ -54,13 +54,13 @@ public class FormulaTest {
 		// ok
 		String xml = "<formula concise='C 1 H 2 Cl 2' xmlns='http://www.xml-cml.org/schema'/>";
 		Handle handle = new ElementCommand().readCML(xml);
-		handle.elementNG.validateReports(handle.getElement());
+		TestUtils.validateReports(handle.getElement());
 		// concise missing
 		// "not(@concise)",
 		xml = "<formula xmlns='http://www.xml-cml.org/schema'/>";
 		handle = new ElementCommand().readCML(xml);
 		try {
-			handle.elementNG.validateReports(handle.getElement());
+			TestUtils.validateReports(handle.getElement());
 			Assert.fail("should fail assertion");
 		} catch (RuntimeException e) {
 		}
