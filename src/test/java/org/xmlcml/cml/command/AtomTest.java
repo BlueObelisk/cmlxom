@@ -63,7 +63,7 @@ public class AtomTest {
 		Handle handle = new ElementCommand().createElement("atom");
 		// invalid at level of assertions
 		TestUtils.testInvalidAssertions(handle, 
-			"fails assertion: count(ancestor::cml:molecule[1]//cml:atom[@id = current()/@id]) = 1");
+			"fails assertion: count(ancestor::cml:molecule[1]//cml:atom[@id = ./@id]) = 1");
 		// now valid - has id and ancestor molecule
 		handle = new ElementCommand().readCML(
 				"<molecule xmlns='http://www.xml-cml.org/schema'><atomArray><atom id='a1'/></atomArray></molecule> ");
@@ -76,24 +76,42 @@ public class AtomTest {
 		Handle handle = new ElementCommand().readCML(
 				"<molecule xmlns='http://www.xml-cml.org/schema'>" +
 				"<atomArray><atom x2='1.0' y2='1.0' id='a1'/></atomArray></molecule> ");
-		Element atom = getGrandchild(handle);
+		Element atom = TestUtils.getGrandchild(handle);
 		System.out.println("AT "+atom.getAttributeValue("id"));
-// FIXME		TestUtils.testValidAssertions(atom); 
+		TestUtils.testValidAssertions(atom); 
 		handle = new ElementCommand().readCML(
 				"<molecule xmlns='http://www.xml-cml.org/schema'>" +
 				"<atomArray><atom y2='1.0' id='a1'/></atomArray></molecule> ");
-// FIXME		TestUtils.testValidAssertions(atom); 
+		atom = TestUtils.getGrandchild(handle);
+		TestUtils.testInvalidAssertions(atom, "fails assertion: not(@y2) or (@x2 and @y2)"); 
+		// 3d
+		handle = new ElementCommand().readCML(
+				"<molecule xmlns='http://www.xml-cml.org/schema'>" +
+				"<atomArray><atom x3='1.0' y3='1.0' z3='1.0' id='a1'/></atomArray></molecule> ");
+		atom = TestUtils.getGrandchild(handle);
+		TestUtils.testValidAssertions(atom); 
+		handle = new ElementCommand().readCML(
+				"<molecule xmlns='http://www.xml-cml.org/schema'>" +
+				"<atomArray><atom x3='1.0' y3='1.0' id='a1'/></atomArray></molecule> ");
+		atom = TestUtils.getGrandchild(handle);
+		TestUtils.testInvalidAssertions(atom, "fails assertion: not(@x3) or (@x3 and @y3 and @z3)"); 
+		handle = new ElementCommand().readCML(
+				"<molecule xmlns='http://www.xml-cml.org/schema'>" +
+				"<atomArray><atom x3='1.0' z3='1.0' id='a1'/></atomArray></molecule> ");
+		atom = TestUtils.getGrandchild(handle);
+		TestUtils.testInvalidAssertions(atom, "fails assertion: not(@x3) or (@x3 and @y3 and @z3)"); 
+		handle = new ElementCommand().readCML(
+				"<molecule xmlns='http://www.xml-cml.org/schema'>" +
+				"<atomArray><atom y3='1.0' z3='1.0' id='a1'/></atomArray></molecule> ");
+		atom = TestUtils.getGrandchild(handle);
+		TestUtils.testInvalidAssertions(atom, "fails assertion: not(@y3) or (@x3 and @y3 and @z3)"); 
+		handle = new ElementCommand().readCML(
+				"<molecule xmlns='http://www.xml-cml.org/schema'>" +
+				"<atomArray><atom y3='1.0' id='a1'/></atomArray></molecule> ");
+		atom = TestUtils.getGrandchild(handle);
+		TestUtils.testInvalidAssertions(atom, "fails assertion: not(@y3) or (@x3 and @y3 and @z3)"); 
 	}
 
-	/**
-	 * @param handle
-	 * @return
-	 */
-	private Element getGrandchild(Handle handle) {
-		Element atom = (Element) ((Element)handle.getElement().getChild(0)).getChild(0);
-		return atom;
-	}
-	
 	@Test
 	public void testDupicateId() {
 		Handle handle = new ElementCommand().readCML("<molecule xmlns='http://www.xml-cml.org/schema'><atomArray><atom id='a1'/></atomArray></molecule> ");
