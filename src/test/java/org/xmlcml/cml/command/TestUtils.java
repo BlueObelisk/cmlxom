@@ -71,8 +71,12 @@ public abstract class TestUtils {
 	static void testValidAssertions(Element element) {
 		try {
 			TestUtils.validateAssertions(element);
+		} catch (NullPointerException npe) {
+			Assert.fail("should not fail npe assertion "+npe.getMessage().toString()+" / "+npe.getCause().toString());
 		} catch (RuntimeException e) {
-			Assert.fail("should not fail assertion "+e.getMessage().toString()+" / "+e.getCause().toString());
+			String mess = (e.getMessage() == null) ? null : e.getMessage().toString();
+			String cause = (e.getCause() == null) ? null : e.getCause().toString();
+			Assert.fail("should not fail assertion "+mess+" / "+cause);
 		}
 	}
 	/**
@@ -198,5 +202,14 @@ public abstract class TestUtils {
 		for (String model : contentModelList) {
 			TestUtils.validateAssertion(element, model);
 		}
+	}
+
+	/**
+	 * @param handle
+	 * @return
+	 */
+	static Element getGrandchild(Handle handle) {
+		Element atom = (Element) ((Element)handle.getElement().getChild(0)).getChild(0);
+		return atom;
 	}
 }
