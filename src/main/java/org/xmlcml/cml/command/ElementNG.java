@@ -97,7 +97,7 @@ public class ElementNG {
   </pattern>
  */		
 		ATOM.addAssertions(new String[] {
-	      "count(ancestor::cml:molecule[1]//cml:atom[@id = current()/@id]) = 1",
+	      "count(ancestor::cml:molecule[1]//cml:atom[@id = ./@id]) = 1",
 	      "not(@x2) or (@x2 and @y2)",
 	      "not(@y2) or (@x2 and @y2)",
 	      "not(@x3) or (@x3 and @y3 and @z3)",
