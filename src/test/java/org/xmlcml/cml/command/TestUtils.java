@@ -1,6 +1,9 @@
 package org.xmlcml.cml.command;
 
 import static org.xmlcml.cml.base.CMLConstants.CML_XPATH;
+
+import java.util.List;
+
 import nu.xom.Element;
 import nu.xom.Nodes;
 
@@ -67,28 +70,25 @@ public abstract class TestUtils {
 	 */
 	static void testValidAssertions(Element element) {
 		try {
-			getElementNG(element).validateAssertions(element());
+			TestUtils.validateAssertions(element);
 		} catch (RuntimeException e) {
-			Assert.fail("should not fail assertion "+e.getMessage().toString());
+			Assert.fail("should not fail assertion "+e.getMessage().toString()+" / "+e.getCause().toString());
 		}
 	}
 	/**
 	 * @param handle
 	 */
 	static void testValidAssertions(Handle handle) {
-		try {
-			handle.elementNG.validateAssertions(handle.getElement());
-		} catch (RuntimeException e) {
-			Assert.fail("should not fail assertion "+e.getMessage().toString());
-		}
+		testValidAssertions(handle.getElement());
 	}
 
 	/**
-	 * @param handle
+	 * @param element
+	 * @param message
 	 */
-	static void testInvalidAssertions(Handle handle, String message) {
+	static void testInvalidAssertions(Element element, String message) {
 		try {
-			handle.elementNG.validateAssertions(handle.getElement());
+			TestUtils.validateAssertions(element);
 			Assert.fail("should fail assertion");
 		} catch (RuntimeException e) {
 			Assert.assertEquals("failed assertion", message, e.getMessage().toString());
@@ -96,11 +96,18 @@ public abstract class TestUtils {
 	}
 
 	/**
-	 * @param atomHandle
+	 * @param handle
 	 */
-	public static void testInvalidContent(Handle atomHandle) {
+	static void testInvalidAssertions(Handle handle, String message) {
+		testInvalidAssertions(handle.getElement(), message);
+	}
+
+	/**
+	 * @param element
+	 */
+	public static void testInvalidContent(Element element) {
 		try {
-			atomHandle.elementNG.validateContentModel(atomHandle.getElement());
+			TestUtils.validateContentModel(element);
 			Assert.fail("should fail on invalid content");
 		} catch (RuntimeException e) {
 			
@@ -110,8 +117,21 @@ public abstract class TestUtils {
 	/**
 	 * @param atomHandle
 	 */
-	public static void testValidContent(Handle atomHandle) {
-		atomHandle.elementNG.validateContentModel(atomHandle.getElement());
+	public static void testInvalidContent(Handle handle) {
+		TestUtils.testInvalidContent(handle.getElement());
+	}
+	/**
+	 * @param element
+	 */
+	public static void testValidContent(Element element) {
+		TestUtils.validateContentModel(element);
+	}
+
+	/**
+	 * @param handle
+	 */
+	public static void testValidContent(Handle handle) {
+		TestUtils.testValidContent(handle.getElement());
 	}
 
 	/**
@@ -122,7 +142,12 @@ public abstract class TestUtils {
 	public static void validateAssertion(Element element, String assertion)
 			throws RuntimeException {
 		String query = ".["+assertion+"]";
-		Nodes nodes = element.query(query, CML_XPATH);
+		Nodes nodes = null;
+		try {
+			nodes = element.query(query, CML_XPATH);
+		} catch (Exception e) {
+			throw new RuntimeException("cannot execute xpath: ", e);
+		}
 		if (nodes.size() == 1) {
 			LOG.debug("did not fail: "+assertion);
 		} else {
@@ -150,5 +175,28 @@ public abstract class TestUtils {
 	
 	public static ElementNG getElementNG(Element element) {
 		return ElementNG.ELEMENTMAP.get(element.getLocalName());
+	}
+	
+	
+	public static void validateAssertions(Element element) {
+		List<String> assertionList = getElementNG(element).getAssertionList();
+		for (String assertion : assertionList) {
+			LOG.debug("ASS "+assertion);
+			TestUtils.validateAssertion(element, assertion);
+		}
+	}
+
+	public static void validateReports(Element element) {
+		List<String> reportList = getElementNG(element).getReportList();
+		for (String report : reportList) {
+			TestUtils.validateReport(element, report);
+		}
+	}
+
+	public static void validateContentModel(Element element) {
+		List<String> contentModelList = getElementNG(element).getContentModelList();
+		for (String model : contentModelList) {
+			TestUtils.validateAssertion(element, model);
+		}
 	}
 }
