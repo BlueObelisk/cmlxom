@@ -798,23 +798,17 @@ public class ElementNG {
 		return contentType;
 	}
 	
-	public void validateAssertions(Element element) {
-		for (String assertion : assertionList) {
-			LOG.debug("ASS "+assertion);
-			TestUtils.validateAssertion(element, assertion);
-		}
+
+	public List<String> getAssertionList() {
+		return assertionList;
 	}
 
-	public void validateReports(Element element) {
-		for (String report : reportList) {
-			TestUtils.validateReport(element, report);
-		}
+	public List<String> getContentModelList() {
+		return contentModelList;
 	}
 
-	public void validateContentModel(Element element) {
-		for (String model : contentModelList) {
-			TestUtils.validateAssertion(element, model);
-		}
+	public List<String> getReportList() {
+		return reportList;
 	}
 	
 }
