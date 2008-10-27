@@ -5,12 +5,12 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.xmlcml.cml.element.main.AbstractTest;
+import org.xmlcml.cml.element.main.AbstractTestBase;
 import org.xmlcml.cml.interfacex.HasDataType;
 import static org.xmlcml.cml.base.CMLConstants.*;
 import static org.xmlcml.cml.base.BaseTest.*;
 import static org.xmlcml.euclid.EuclidConstants.*;
-import static org.xmlcml.cml.element.main.AbstractTest.*;
+import static org.xmlcml.cml.element.main.AbstractTestBase.*;
 
 /**
  * tests property

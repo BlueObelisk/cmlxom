@@ -3,7 +3,7 @@ package org.xmlcml.cml.element.main;
 import static org.xmlcml.cml.base.BaseTest.assertEqualsCanonically;
 import static org.xmlcml.cml.base.BaseTest.parseValidString;
 import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
-import static org.xmlcml.cml.element.main.AbstractTest.SIMPLE_RESOURCE;
+import static org.xmlcml.cml.element.main.AbstractTestBase.SIMPLE_RESOURCE;
 
 import java.io.File;
 import java.io.InputStream;

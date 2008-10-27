@@ -4,7 +4,7 @@
 	<groupId>cml</groupId>
 	<artifactId>cmlxom</artifactId>
 	<name>CMLXOM</name>
-	<version>2.5-SNAPSHOT</version>
+	<version>2.5.1-SNAPSHOT</version>
 	<description>A Java library for processing CML</description>
 	<url>http://sourceforge.net/projects/cml/</url>
 	<inceptionYear>1994</inceptionYear>

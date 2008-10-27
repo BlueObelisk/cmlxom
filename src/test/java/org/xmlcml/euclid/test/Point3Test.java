@@ -14,7 +14,7 @@ import org.xmlcml.euclid.Vector3;
 import static org.xmlcml.cml.base.CMLConstants.*;
 import static org.xmlcml.cml.base.BaseTest.*;
 import static org.xmlcml.euclid.EuclidConstants.*;
-import static org.xmlcml.cml.element.main.AbstractTest.*;
+import static org.xmlcml.cml.element.main.AbstractTestBase.*;
 import static org.xmlcml.euclid.test.EuclidTestBase.*;
 
 /**

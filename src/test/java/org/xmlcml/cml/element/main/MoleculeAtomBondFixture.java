@@ -29,6 +29,14 @@ import static org.xmlcml.cml.base.BaseTest.*;
  */
 public final class MoleculeAtomBondFixture {
 
+	public MoleculeAtomBondFixture() {
+		try {
+			setUp();
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
 	final static Logger logger = Logger.getLogger(MoleculeAtomBondFixture.class
 			.getName());
 

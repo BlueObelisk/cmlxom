@@ -1,7 +1,7 @@
 package org.xmlcml.cml.element.lite;
 
 import static org.xmlcml.cml.base.CMLConstants.XML_SUFF;
-import static org.xmlcml.cml.element.main.AbstractTest.SIMPLE_RESOURCE;
+import static org.xmlcml.cml.element.main.AbstractTestBase.SIMPLE_RESOURCE;
 import static org.xmlcml.euclid.EuclidConstants.U_S;
 
 import java.io.IOException;
