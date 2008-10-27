@@ -2,11 +2,13 @@ package org.xmlcml.cml.command;
 
 import java.util.Map;
 
+import org.xmlcml.cml.schema.ElementSpecification;
+
 public class CommandSystem {
 
-	private Map<String, ElementNG> elementMap;
+	private Map<String, ElementSpecification> elementMap;
 	
-	public CommandSystem(Map<String, ElementNG> elementMap) {
+	public CommandSystem(Map<String, ElementSpecification> elementMap) {
 		this.elementMap = elementMap;
 	}
 	
@@ -15,7 +17,7 @@ public class CommandSystem {
 	}
 	
 	public static void test1() {
-		CommandSystem commandSystem = new CommandSystem(ElementNG.ELEMENTMAP);
+		CommandSystem commandSystem = new CommandSystem(ElementSpecification.ELEMENTMAP);
 
 //		String xml1 = "<atom id='a1' formalCharge='1'/>"; 
 //		atomHandle = getHandleFromXML(xml1, "/"); // second arg is xpath

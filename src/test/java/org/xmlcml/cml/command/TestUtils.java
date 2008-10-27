@@ -11,6 +11,7 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.xmlcml.cml.base.CMLUtil;
+import org.xmlcml.cml.schema.ElementSpecification;
 
 public abstract class TestUtils {
 	private static Logger LOG = Logger.getLogger(TestUtils.class);
@@ -177,8 +178,8 @@ public abstract class TestUtils {
 		}
 	}
 	
-	public static ElementNG getElementNG(Element element) {
-		return ElementNG.ELEMENTMAP.get(element.getLocalName());
+	public static ElementSpecification getElementNG(Element element) {
+		return ElementSpecification.ELEMENTMAP.get(element.getLocalName());
 	}
 	
 	

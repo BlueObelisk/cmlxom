@@ -10,6 +10,7 @@ import nu.xom.Nodes;
 
 import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLNodeFactory;
+import org.xmlcml.cml.schema.ElementSpecification;
 
 public class ElementCommand extends JumboCommand {
 	
@@ -45,7 +46,7 @@ public class ElementCommand extends JumboCommand {
 		String name = xomElement.getLocalName();
 		String namespace = xomElement.getNamespaceURI();
 		if (CML_NS.equals(namespace)) {
-		} else if (ElementNG.ELEMENTMAP.containsKey(name)) {
+		} else if (ElementSpecification.ELEMENTMAP.containsKey(name)) {
 			throw new RuntimeException("element should have CML namespace: "+name);
 		}
 		checkElementName(name);
@@ -66,8 +67,8 @@ public class ElementCommand extends JumboCommand {
 	}
 	
 	private void checkElementName(String elementName) {
-		handle.elementNG = ElementNG.ELEMENTMAP.get(elementName);
-		if (handle.elementNG == null) {
+		handle.elementSpecification = ElementSpecification.ELEMENTMAP.get(elementName);
+		if (handle.elementSpecification == null) {
 			throw new RuntimeException("unknown element: "+elementName);
 		}
 	}
