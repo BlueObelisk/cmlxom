@@ -6,6 +6,7 @@ import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
 import java.util.List;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -40,7 +41,7 @@ public class CMLAtomParityTest {
 	 * 
 	 * @throws Exception
 	 */
-	@Test
+	@Before
 	public void setUp() throws Exception {
 		molecule = (CMLMolecule) parseValidString(s);
 		List<CMLAtom> atoms = molecule.getAtoms();

@@ -16,7 +16,7 @@ import org.xmlcml.cml.base.CMLElement;
  * 
  */
 
-public final class AbstractTest {
+public final class AbstractTestBase {
 
 	/** root of tests. */
 	public final static String TEST_RESOURCE = "org/xmlcml/cml/element";

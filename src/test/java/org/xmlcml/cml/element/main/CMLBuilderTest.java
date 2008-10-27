@@ -1,7 +1,7 @@
 package org.xmlcml.cml.element.main;
 
 import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
-import static org.xmlcml.cml.element.main.AbstractTest.COMPLEX_RESOURCE;
+import static org.xmlcml.cml.element.main.AbstractTestBase.COMPLEX_RESOURCE;
 import static org.xmlcml.euclid.EuclidConstants.S_EMPTY;
 import static org.xmlcml.euclid.EuclidConstants.U_S;
 import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
