@@ -2,12 +2,24 @@ package org.xmlcml.cml.command;
 
 import static org.xmlcml.cml.base.CMLConstants.CML_NS;
 import static org.xmlcml.euclid.EuclidConstants.S_EMPTY;
+
+import org.xmlcml.cml.schema.AttributeSpecification;
+import org.xmlcml.cml.schema.ElementSpecification;
+import org.xmlcml.cml.schema.cml.lite.AnySpecification;
+
 import nu.xom.Attribute;
 import nu.xom.Element;
 
+/**
+ * Handle behaves like a CMLElement but is not subclassed
+ * This is an experiment to allow description of a command languge
+ * without JUMBO/CML/subclassing
+ * @author pm286
+ *
+ */
 public class Handle {
 	protected Element element;
-	protected ElementNG elementNG;
+	protected ElementSpecification elementSpecification;
 	
 	Handle() {
 	}
@@ -22,8 +34,8 @@ public class Handle {
 	}
 	
 	void ensureElementNG() {
-		if (elementNG == null) {
-			elementNG = ElementNG.ELEMENTMAP.get(element.getLocalName());
+		if (elementSpecification == null) {
+			elementSpecification = ElementSpecification.ELEMENTMAP.get(element.getLocalName());
 		}
 	}
 	
@@ -66,12 +78,12 @@ public class Handle {
 	}
 	
 	public void setAttribute(String name, String value) {
-		AttributeNG attribute = AttributeNG.ATTRIBUTEMAP.get(name);
+		AttributeSpecification attribute = AttributeSpecification.ATTRIBUTEMAP.get(name);
 		if (attribute == null) {
 			throw new RuntimeException("Unknown attribute name: "+name);
 		}
-		if (!elementNG.getAllowedAttributeList().contains(attribute)) {
-			throw new RuntimeException(attribute.getName()+" attribute not allowed on: "+elementNG.getLocalName());
+		if (!elementSpecification.getAllowedAttributeList().contains(attribute)) {
+			throw new RuntimeException(attribute.getName()+" attribute not allowed on: "+elementSpecification.getLocalName());
 		}
 		attribute.validate(value);
 		this.element.addAttribute(new Attribute(name, value));
@@ -79,7 +91,7 @@ public class Handle {
 		
 	public void setAttribute(String name, String namespace, String value) {
 		if (CML_NS.equals(namespace) || namespace.equals(S_EMPTY)) {
-			AttributeNG attribute = AttributeNG.ATTRIBUTEMAP.get(name);
+			AttributeSpecification attribute = AttributeSpecification.ATTRIBUTEMAP.get(name);
 			if (attribute == null) {
 				throw new RuntimeException("Unknown attribute name: "+name);
 			}
@@ -92,16 +104,25 @@ public class Handle {
 	
 	public void appendChild(Handle childHandle) {
 		Element childElement = childHandle.element;
-		ElementNG childElementNG = ElementNG.ELEMENTMAP.get(childElement.getLocalName());
+		ElementSpecification childElementNG = ElementSpecification.ELEMENTMAP.get(childElement.getLocalName());
 		String childName = childElement.getLocalName();
-		ElementNG elementNG = ElementNG.ELEMENTMAP.get(this.element.getLocalName());
-		if (elementNG != null && 
-			(elementNG.getAllowedElementList().contains(childElementNG) ||
-			elementNG.getAllowedElementList().contains(ElementNG.ANY))) {
-			this.element.appendChild(childElement);
-		} else {
-			throw new RuntimeException("Cannot add element "+childName+" to "+elementNG.getLocalName());
+		ElementSpecification elementNG = ElementSpecification.ELEMENTMAP.get(this.element.getLocalName());
+		if (!elementNG.getAllowedElementList().contains(childName) &&
+			!elementNG.getAllowedElementList().contains(AnySpecification.LOCAL_NAME)) {
+				throw new RuntimeException("Cannot add element "+childName+" to "+elementNG.getLocalName());
 		}
+// FIXME
+//		if (elementNG != null && 
+//			(elementNG.getAllowedElementList().contains(childElementNG) ||
+//			elementNG.getAllowedElementList().contains(ElementSpecification.ANY))) {
+			this.element.appendChild(childElement);
+//		} else {
+//			System.out.println("ALLOWED"+elementNG.getAllowedElementList().size());
+//			for (ElementSpecification spec : elementNG.getAllowedElementList()) {
+//				System.out.println(spec);
+//			}
+//			throw new RuntimeException("Cannot add element "+childName+" to "+elementNG.getLocalName());
+//		}
 	}
 	
 	
