@@ -1373,4 +1373,8 @@ public class CMLAtomSet extends AbstractAtomSet {
         }
     }
 
+	public void setMolecule(CMLMolecule molecule) {
+		this.molecule = molecule;
+	}
+
 }

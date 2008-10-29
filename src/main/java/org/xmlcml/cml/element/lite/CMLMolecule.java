@@ -8,11 +8,13 @@ import java.util.Map;
 import nu.xom.Attribute;
 import nu.xom.Document;
 import nu.xom.Element;
+import nu.xom.Elements;
 import nu.xom.Node;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.xmlcml.cml.attribute.IdAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.CMLUtil;
@@ -787,6 +789,20 @@ public class CMLMolecule
 	public List<CMLAtom> getAtomsById(String id) {
 		getChildMoleculeAtomMap();
 		return childMoleculeAtomMap.get(id);
+	}
+	
+	/** get list of child molecules.
+	 * 
+	 * @param mol
+	 * @return list (empty if none)
+	 */
+	public static List<CMLMolecule> getChildMoleculeList(CMLMolecule mol) {
+		List<CMLMolecule> moleculeList = new ArrayList<CMLMolecule>();
+		Elements mols = mol.getChildElements("molecule", CMLConstants.CML_NS);
+		for (int i = 0; i < mols.size(); i++) {
+			moleculeList.add((CMLMolecule) mols.get(i));
+		}
+		return moleculeList;
 	}
 
 	private Map<String, List<CMLAtom>> getChildMoleculeAtomMap() {

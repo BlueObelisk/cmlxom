@@ -137,9 +137,19 @@ public class Real2 implements EuclidConstants {
      * is the point the origin.
      * 
      * @return true if origin
+     * @deprecated USE epsilon method
      */
     public boolean isOrigin() {
     	return Real.isZero(x, Real.getEpsilon()) && Real.isZero(y, Real.getEpsilon());
+    }
+
+    /**
+     * is the point the origin.
+     * @param epsilon
+     * @return true if origin
+     */
+    public boolean isOrigin(double epsilon) {
+    	return Real.isZero(x, epsilon) && Real.isZero(y, epsilon);
     }
 
     /**

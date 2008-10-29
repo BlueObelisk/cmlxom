@@ -245,6 +245,67 @@ public class Transform2 extends RealSquareMatrix {
         temp.trnsfrm = m.trnsfrm;
         return temp;
     }
+    
+    /**
+     * Carries out graphics transform
+     *
+     * transforms between rectangular coordinates.
+     *  Example:
+     * <pre>
+     * Real2 inputDim = new Real2(2.7, 20000);
+     * Real2 outputDim = new Real2(-300, 300);
+     * </pre>
+     *
+     *@param  in                       Description of the Parameter
+     *@param  out                      Description of the Parameter
+     *@param  keepAspectRatio          Description of the Parameter
+     *@exception  ArithmeticException  Description of the Exception
+     *@throws  zero-sized              dimensions
+     */
+    public Transform2(Window2 in, Window2 out, boolean keepAspectRatio)
+             throws ArithmeticException {
+        this(in.origin, in.dim, out.origin, out.dim, keepAspectRatio);
+    }
+
+
+    /**
+     *  graphics transform (transforms between rectangular coordinates
+     *  ("windows") originIn maps onto originOut and dimensionIn (width, height)
+     *  onto dimensionOut. If keepAspectRatio id true, scales will be isotropic.
+     *  Note that ranges can be inverted by using negative coordinates in
+     *  dimensions. Example:<pre>
+     *Real2 inputDim = new Real2(2.7, 20000);
+     *Real2 outputDim = new Real2(-300, 300);
+     *</pre>
+     *
+     *@param  originIn                 Description of the Parameter
+     *@param  dimensionIn              Description of the Parameter
+     *@param  originOut                Description of the Parameter
+     *@param  dimensionOut             Description of the Parameter
+     *@param  keepAspectRatio          Description of the Parameter
+     *@exception  ArithmeticException  Description of the Exception
+     *@throws  zero-sized              dimensions
+     */
+    public Transform2(Real2 originIn, Real2 dimensionIn,
+            Real2 originOut, Real2 dimensionOut, boolean keepAspectRatio) throws ArithmeticException {
+        this();
+        double scaleX;
+        double scaleY;
+        scaleX = dimensionOut.getX() / dimensionIn.getX();
+        scaleY = dimensionOut.getY() / dimensionIn.getY();
+        if (keepAspectRatio) {
+            if (Math.abs(scaleX) < Math.abs(scaleY)) {
+                scaleY = scaleX * (scaleY / Math.abs(scaleY));
+            }
+            if (Math.abs(scaleY) < Math.abs(scaleX)) {
+                scaleX = scaleY * (scaleX / Math.abs(scaleX));
+            }
+        }
+        flmat[0][0] = scaleX;
+        flmat[1][1] = scaleY;
+        flmat[0][2] = originOut.getX() - scaleX * originIn.getX();
+        flmat[1][2] = originOut.getY() - scaleY * originIn.getY();
+    }
     /**
      * seem to require this one
      * 
@@ -266,6 +327,19 @@ public class Transform2 extends RealSquareMatrix {
      */
     public boolean isEqualTo(Transform2 m) {
         return super.isEqualTo((RealSquareMatrix) m) && trnsfrm == m.trnsfrm;
+    }
+    
+    /** rotate about a point.
+     * 
+     * @param angle
+     * @param point
+     * @return tramsformation
+     */
+    public static Transform2 getRotationAboutPoint(Angle angle, Real2 point) {
+    	Transform2 t3 = new Transform2(new Vector2(point));
+    	Transform2 t2 = new Transform2(angle);
+    	Transform2 t1 = new Transform2(new Vector2(point.multiplyBy(-1.0)));
+    	return t3.concatenate(t2).concatenate(t1);
     }
     
     /**
