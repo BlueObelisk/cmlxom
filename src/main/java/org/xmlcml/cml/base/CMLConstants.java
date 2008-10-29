@@ -16,6 +16,14 @@ import org.xmlcml.euclid.EuclidConstants;
  */
 public interface CMLConstants extends EuclidConstants {
 
+	public enum Role {
+		GROUP
+		;
+		private Role() {
+			;
+		}
+	}
+	
 	/** list of identifiers.
 	 * not exhaustive - string values can be used)
 	 * @author pm286
