@@ -340,6 +340,19 @@ public interface CMLConstants extends EuclidConstants {
     /** constant */
     String CML_NS = CML_NS_BASE+U_S+"schema";
 
+    /** cmlx namespace */
+    String CMLX_NS = CML_NS_BASE+U_S+"schema"+S_SLASH+"cmlx";
+
+    /** CMLX prefix (cmlx) for experimentation and development
+     */
+    String CMLX_PREFIX = "cmlx";
+
+    /**
+     * namespace declaration for CMLx with prefix
+     */
+    String CMLX_XMLNS_PREFIX = XMLNS + S_COLON + CMLX_PREFIX + S_EQUALS + S_APOS
+            + CMLX_NS + S_APOS;
+
     /** constant */
 //    String CML = CML_NS;
 
@@ -405,6 +418,18 @@ public interface CMLConstants extends EuclidConstants {
     /** XPathContext for CML.
      */
     XPathContext CML_XPATH = new XPathContext("cml", CML_NS);
+    
+    /** namespace for SVG.
+     * 
+     */
+    /** root of all SVG URIs */
+    String SVG_NS_BASE = "http://www.w3.org/2000/svg";
+
+    String SVG_NS = SVG_NS_BASE;
+    
+    /** XPathContext for SVG.
+     */
+    XPathContext SVG_XPATH = new XPathContext("svg", SVG_NS);
     
     /**
      * @deprecated

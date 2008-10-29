@@ -1581,6 +1581,118 @@ public class Util implements EuclidConstants {
 	};
 
 	/**
+	 * remove all control (non-printing) characters
+	 * 
+	 * @param s Description of the Parameter
+	 * @return Description of the Return Value
+	 */
+	public static String replaceISOControlsByMnemonic(String s) {
+		if (s == null) {
+			return null;
+		}
+		StringBuffer sb = new StringBuffer();
+		int l = s.length();
+		for (int i = 0; i < l; i++) {
+			char ch = s.charAt(i);
+			if (Character.isISOControl(ch)) {
+				sb.append(translateToMnemonic(ch));
+			} else {
+				sb.append(ch);
+			}
+		}
+		return sb.toString();
+	}
+	
+	/** translate non-printing character to ISO mnemonic.
+	 * e.g. 1 => SOH
+	 * @param ch [0 - 31] or 127
+	 * @return translation or empty string if out of range
+	 */
+	public static String translateToMnemonic(char ch) {
+		switch (ch) {
+		
+			case 0: return "NUL"; 
+			case 1: return "SOH"; 
+			case 2: return "STX"; 
+			case 3: return "ETX"; 
+			case 4: return "EOT"; 
+			case 5: return "ENQ"; 
+			case 6: return "ACK"; 
+			case 7: return "BEL"; 
+			case 8: return "BS"; 
+			case 9: return "HT"; 
+			case 10: return "LF"; 
+			case 11: return "VT"; 
+			case 12: return "FF"; 
+			case 13: return "CR"; 
+			case 14: return "SO"; 
+			case 15: return "SI"; 
+			case 16: return "DLE"; 
+			case 17: return "DC1"; 
+			case 18: return "DC2"; 
+			case 19: return "DC3"; 
+			case 20: return "DC4"; 
+			case 21: return "NAK"; 
+			case 22: return "SYN"; 
+			case 23: return "ETB"; 
+			case 24: return "CAN"; 
+			case 25: return "EM"; 
+			case 26: return "SUB"; 
+			case 27: return "ESC"; 
+			case 28: return "FS"; 
+			case 29: return "GS"; 
+			case 30: return "RS"; 
+			case 31: return "US"; 
+			case 127: return "DEL"; 
+			default: return ""; 
+			
+		}
+		
+	}
+	
+	/** convert 2 UTF8 characters to single IsoLatin1 character.
+	 * quick and dirty
+	 * UTF8 C2 80 => 80 (etc)
+	 * UTF8 C3 80 => C0 (i.e. add x40)
+	 * user has responsibility for selecting characters
+	 * @param a leading character (ignored if not C2 and not C3)
+	 * @param b  range 80-bf 
+	 * @return Isolatin equiv or 0 if a,b ignored or bad range
+	 */
+	public static char convertUTF8ToLatin1(char a, char b) {
+		char c = 0;
+		if (b >= 128 && b < 192) {
+			if (a == (char)194) {
+				c = b;
+			} else if (a == (char)195) {
+				c = (char)((int)b + 64);
+			}
+		}
+		return c;
+	}
+	
+	/** convert single IsoLatin1 character to 2 UTF8 characters .
+	 * quick and dirty
+	 * user has responsibility for selecting characters
+	 * a >= x80 && a <= xBF ==> xC2 a
+	 * a >= xC0 && a <= xFF ==> xC3 a - x40
+	 * @param a char to be converted (a >= x80 && a <xff)
+	 * @return 2 characters or null
+	 */
+	public static char[] convertLatin1ToUTF8(char a) {
+		char[] c = null;
+		if (a >= 128 && a < 192) {
+			c = new char[2];
+			c[0] = (char)194;
+			c[1] = a;
+		} else if (a >= 192 && a < 256) {
+			c = new char[2];
+			c[0] = (char)195;
+			c[1] = (char) (a - 64);
+		}
+		return c;
+	}
+	/**
 	 * @param s
 	 *            string to be edited
 	 * @param ent
@@ -2522,6 +2634,15 @@ public class Util implements EuclidConstants {
 		return dateS;
 	}
 
+	public static double getDouble(String s) {
+		double d = Double.NaN;
+		try {
+			d = new Double(s).doubleValue();
+		} catch (NumberFormatException nfe) {
+			throw new RuntimeException("Bad double: "+s);
+		}
+		return d;
+	}
 	/**
 	 * rounds to decimal place.
 	 * 

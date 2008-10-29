@@ -1386,6 +1386,62 @@ public class RealArray extends ArrayBase {
     	}
     	return index;
     }
+    
+
+    /** find baseline.
+     * experimental approach to finding baseline and adjusting to it.
+     * Finds peak of distribution
+     * read source code if you need to use this
+     * @throws JumboException (many)
+     * @return base offset
+     */
+ 	public double getBaseLine() {
+ 		double baseOffset;
+ 		Univariate univariate = new Univariate(this);
+ 		int binCount = 100;
+ 		univariate.setBinCount(binCount);
+ 		double step = this.getRange().getRange()/(double)binCount;
+ 		double min = this.getMin();
+ 		int[] bins = univariate.getHistogramCounts();
+ 		int ibMax = -1;
+ 		int binMax = -1;
+ 		for (int i = 0; i < bins.length; i++) {
+ 			if (bins[i] > binMax) {
+ 				binMax = bins[i];
+ 				ibMax = i;
+ 			}
+ 		}
+ 		int iMin = -1;
+ 		for (int i = ibMax; i >= 0; i--) {
+ 			if (bins[i] < binMax/2) {
+ 				iMin = i;
+ 				break;
+ 			}
+ 		}
+ 		iMin = (iMin > 0) ? iMin : 0;
+ 		int iMax = -1;
+ 		for (int i = ibMax; i < binCount; i++) {
+ 			if (bins[i] < binMax/2) {
+ 				iMax = i;
+ 				break;
+ 			}
+ 		}
+ 		iMax = (iMax > 0) ? iMax : binCount-1;
+ 		if (iMin == ibMax || ibMax == binCount-1) {
+ 			baseOffset = 0.0;
+ 		} else {
+ 			double weight = 0.0;
+ 			double sum = 0.0;
+ 			for (int i = iMin; i <= iMax; i++) {
+ 				double w = (double) bins[i];
+ 				weight += w;
+ 				sum += w*i;
+ 			}
+ 			double deltaB = sum/weight;
+ 			baseOffset = step*(deltaB)+min;
+ 		}
+ 		return baseOffset;
+ 	}
     /**
      * copy a double[] into a new one
      */

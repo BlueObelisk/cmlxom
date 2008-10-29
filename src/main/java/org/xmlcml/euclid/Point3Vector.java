@@ -318,6 +318,30 @@ public class Point3Vector implements EuclidConstants {
         }
         return sub;
     }
+    
+    /**
+     * multiply all coords. does not alter this.
+     * 
+     * @param scale
+     * @return the scaled vector
+     */
+    public Point3Vector multiplyBy(double scale) {
+    	Point3Vector p3v = new Point3Vector(this);
+    	p3v.multiplyByEquals(scale);
+        return p3v;
+    }
+    
+    /**
+     * multiply all coords - alters this.
+     * 
+     * @param scale
+     * @return the scaled vector
+     */
+    public void multiplyByEquals(double scale) {
+    	for (int i = 0; i < this.size(); i++) {
+    		this.getPoint3(i).multiplyEquals(scale);
+    	}
+    }
     /**
      * form the point+point sum for two vectors of points
      * 

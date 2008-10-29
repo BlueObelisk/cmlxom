@@ -72,6 +72,12 @@ public class CMLBond extends AbstractBond {
 	/** hatch bond */
 	public final static String HATCH = "H";
 
+	/** bold bond */
+	public final static String QUERY_BOLD = "BOLD?";
+
+	/** parallel hash bond */
+	public final static String QUERY_HASH = "HASH?";
+
 	/** cis bond */
 	public final static String CIS = "C";
 

@@ -127,6 +127,26 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
     private void init() {
     }
 
+    /** parses a non-subclassed element into CML.
+     * Topically used when other software such as 
+     * XOM or XSLT create elements through the normal
+     * builder.
+     * Serializes the element and re-parses with CMLBuilder()
+     * @param element
+     * @return CMLElement (null if root element is not CML)
+     */
+    public static CMLElement createCMLElement(Element element) {
+    	Element newElement = null;
+    	try {
+    		newElement = new CMLBuilder().parseString(CMLUtil.toXMLString(element));
+    	} catch (Exception e) {
+    		throw new RuntimeException("BUG", e);
+    	}
+    	if (!(newElement instanceof CMLElement)) {
+    		newElement = null;
+    	}
+    	return (CMLElement) newElement;
+    }
     /**
      * normally overridden
      * @param id
@@ -1118,6 +1138,33 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
         }
     }
     
+    /** convenience method to add cmlx:foo attributes.
+     * 
+     * @param attName WITHOUT prefix
+     * @param attValue if null removes any old attributes
+     */
+    public void setCMLXAttribute(String attName, String attValue) {
+    	if (attValue == null) {
+    		Attribute attribute = this.getAttribute(attName, CMLX_NS);
+    		if (attribute != null) {
+    			this.removeAttribute(attribute);
+    		}
+    	} else {
+    		Attribute attribute = makeCMLXAttribute(attName, attValue);
+    		this.addAttribute(attribute);
+    	}
+    }
+    
+    /** convenience method to create new cmlx:foo attribute.
+     * 
+     * @param attName WITHOUT prefix and colon
+     * @param value if null undefined
+     * @return
+     */
+	public static Attribute makeCMLXAttribute(String attName, String value) {
+		return new Attribute(CMLX_PREFIX+S_COLON+attName, CMLX_NS, value);
+	}
+
     /**
      * <p>
      * Appends a node to the children of this node.
