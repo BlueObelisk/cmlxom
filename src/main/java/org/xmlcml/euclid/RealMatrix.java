@@ -959,6 +959,25 @@ public class RealMatrix implements EuclidConstants {
     public boolean isSquare() {
         return (cols == rows && cols > 0);
     }
+    
+    /** are all elements of matrix zero?
+     * 
+     * @param eps tolerance
+     * @return true if all elements zero
+     */
+    public boolean isZero(double eps) {
+    	boolean zero = true;
+    	for (int irow = 0; irow < rows; irow++) {
+    	   	for (int icol = 0; icol < cols; icol++) {
+    	   		if (!Real.isZero(flmat[irow][icol], eps)) {
+    	   			zero = false;
+    	   			break;
+    	   		}
+   	    	}
+    	}
+    	return zero;
+    }
+    
     /**
      * delete column from matrix and close up. no-op if impermissible value of
      * col

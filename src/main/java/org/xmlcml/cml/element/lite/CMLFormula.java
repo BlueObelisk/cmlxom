@@ -524,28 +524,6 @@ public class CMLFormula extends AbstractFormula {
 //    	return concise;
 //    }
 //    
-    /**
-     * strips spaces and redundant 1's from concise
-     * @param concise
-     * @return stripped concise or empty if null
-     */
-    public static String getCompactedConcise(String concise) {
-    	String s = S_EMPTY;
-    	if (concise != null) {
-	    	String[] split = concise.split(S_SPACE);
-	    	int n = split.length/2;
-	    	for (int j = 0; j < 2*n; j+=2) {
-	    		s += split[j];
-	    		if (!split[j+1].equals("1")) {
-	    			s += split[j+1];
-	    		}
-	    		if (n % 2 != 0) {
-	    			s += split[split.length-1];
-	    		}
-	    	}
-    	}
-    	return s;
-    }
 	
     /**
      * strips spaces and redundant 1's from concise
@@ -707,6 +685,60 @@ public class CMLFormula extends AbstractFormula {
 	public String getConciseNoCharge() {
 		String concise = this.getConcise();
 		return (concise == null) ? null : removeChargeFromConcise(concise);
+	}
+
+	/**
+	 * strips spaces and redundant 1's from concise
+	 * @param concise
+	 * @return stripped concise or empty if null
+	 */
+	public static String getCompactedConcise(String concise) {
+		return getCompactedConcise(concise, false);
+	}
+
+	/**
+	 * strips spaces and redundant 1's from concise
+	 * @param concise
+	 * @return stripped concise or empty if null
+	 */
+	public static String getCompactedConcise(String concise, boolean html) {
+		String s = S_EMPTY;
+		if (concise != null) {
+			String[] split = concise.split(S_SPACE);
+			int n = split.length/2;
+			for (int j = 0; j < 2*n; j+=2) {
+				s += split[j];
+				if (!split[j+1].equals("1")) {
+					if (html) {
+						s += "<sub>";
+					}
+					s += split[j+1];
+					if (html) {
+						s += "</sub>";
+					}
+				}
+			}
+			if (split.length % 2 != 0) {
+				if (html) {
+					s += "<sup>";
+				}
+				s += makeCharge(split[split.length-1]);
+				if (html) {
+					s += "</sup>";
+				}
+			}
+		}
+		return s;
+	}
+	
+	private static String makeCharge(String ss) {
+		int i = Integer.parseInt(ss);
+		String s = (i < 0) ? S_MINUS : S_PLUS;
+		i = Math.abs(i);
+		if (i > 1) {
+			s += i;
+		}
+		return s;
 	}
 
 	/**

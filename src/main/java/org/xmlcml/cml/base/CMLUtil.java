@@ -83,6 +83,30 @@ public abstract class CMLUtil implements CMLConstants {
 	}
 
 	/**
+	 * convenience routine to get query CMLelements (iterating thorugh get(i) is
+	 * fragile if nodes are removed)
+	 * if query result is not a CMLElement it is omitted form list, so be careful
+	 * 
+	 * @param element
+	 * @param xpath xpath relative to node
+	 * @param context
+	 * @return list of CMLelements - empty if none
+	 */
+	public static List<CMLElement> getCMLElements(Element node, String xpath,
+			XPathContext context) {
+		List<CMLElement> nodeList = new ArrayList<CMLElement>();
+		if (node != null) {
+			Nodes nodes = node.query(xpath, context);
+			for (int i = 0; i < nodes.size(); i++) {
+				if (nodes.get(i) instanceof CMLElement) {
+					nodeList.add((CMLElement)nodes.get(i));
+				}
+			}
+		}
+		return nodeList;
+	}
+
+	/**
 	 * converts an Elements to a java array. we might convert code to use
 	 * Elements through later so this would be unneeded
 	 * 
@@ -474,6 +498,15 @@ public abstract class CMLUtil implements CMLConstants {
 		return element.getValue();
 	}
 
+	public static String toXMLString(Element element) {
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		try {
+			CMLUtil.debug(element, baos, 0);
+		} catch (IOException e) {
+		}
+		return new String(baos.toByteArray());
+	}
+	
 	/**
 	 * read CML element. convenience method
 	 * 
