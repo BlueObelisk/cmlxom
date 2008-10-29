@@ -341,7 +341,7 @@ public class CMLMolecule
 		String id = bond.getId();
 		if (id == null) {
 			String[] atomRefs2 = bond.getAtomRefs2();
-//			throw new CMLRuntime("Null bond ID");
+//			throw new Runtime("Null bond ID");
 			id = atomRefs2[0]+S_UNDER+atomRefs2[1];
 			bond.setId(id);
 		} else {

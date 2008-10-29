@@ -666,6 +666,15 @@ public class ChemicalElement {
         return pTable.get(symbol);
     }
 
+    /** get the element corresponding to a Type.
+     * not all elements are present
+     * @param symbol
+     * @return element or null if not found
+     */
+    public static ChemicalElement getChemicalElement(AS as) {
+        return pTable.get(as.value);
+    }
+
     
     /** gets chemical element corresponding to first 2 or 1 chars.
      * looks at first two character to see if they are a double-char

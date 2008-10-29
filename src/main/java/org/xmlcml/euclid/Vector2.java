@@ -76,4 +76,20 @@ public class Vector2 extends Real2 {
     public double getPerpProduct(Vector2 v) {
     	return this.getX() * v.getY() - this.getY() * v.getX();
     }
+    
+    /**
+     * projection of this onto vector. does not alter this. result = vector.norm() *
+     * (this.norm() dot vector.norm())
+     *
+     * @param v vector to project onto
+     * @return projected vector
+     */
+    public Vector2 projectOnto(Vector2 v2) {
+        Real2 unit2 = v2.getUnitVector();
+        Real2 unit = this.getUnitVector();
+        double dot = unit2.dotProduct(unit);
+        Vector2 projection = new Vector2(unit2.multiplyBy(this.getLength() * dot));
+        return projection;
+    }
+
 }

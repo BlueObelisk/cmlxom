@@ -429,6 +429,30 @@ public class Transform2 extends RealSquareMatrix {
         s = s3;
         return s;
     }
+    
+	/**
+	 * transform describing the rotation and stretching of a line.
+	 * used in bondTool.getTranformToRotateAndStretchBond(movingAtom, targetPoint);
+	 * 
+		Transform2 t = this.getTranformToRotateAndStretchLine(movingAtom, targetPoint) {
+	 * @param pivotPoint
+	 * @param movingPoint
+	 * @param targetPoint point to translate movingAtom to
+	 * @return
+	 */
+	public static Transform2 getTransformToRotateAndStretchLine(Real2 pivotPoint, Real2 movingPoint, Real2 targetPoint) {
+		Vector2 pivotVector = new Vector2(movingPoint.subtract(pivotPoint));
+		Vector2 targetVector = new Vector2(targetPoint.subtract(pivotPoint));
+		Angle angle = pivotVector.getAngleMadeWith(targetVector);
+		Transform2 rotate = new Transform2(angle);
+		Transform2 rotateAboutOtherPoint = new Transform2(rotate, pivotPoint);
+		Vector2 deltaVector = new Vector2(targetVector.subtract(pivotVector));
+		Vector2 stretchVector = deltaVector.projectOnto(pivotVector);
+		Transform2 stretch = new Transform2(stretchVector);
+		Transform2 finalTransform = rotateAboutOtherPoint.concatenate(stretch);
+		return finalTransform;
+	}
+	
     /**
      * Description of the Method
      * 
