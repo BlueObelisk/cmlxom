@@ -73,6 +73,15 @@ public class CMLAtom extends AbstractAtom {
     }
 
     /**
+     * Create new CMLAtom with specified id and ChemicalElement.AS
+     * @param id
+     * @param chem
+     */
+    public CMLAtom(String id, AS as) {
+        this(id, ChemicalElement.getChemicalElement(as));
+    }
+
+    /**
      * Create new CMLAtom with specified id and ChemicalElement.
      * @param id
      * @param chem
