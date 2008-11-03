@@ -3,10 +3,6 @@ package org.xmlcml.cml.element;
 import java.util.List;
 
 import org.xmlcml.cml.base.CMLConstants;
-import org.xmlcml.cml.element.lite.CMLAtom;
-import org.xmlcml.cml.element.lite.CMLBond;
-import org.xmlcml.cml.element.lite.CMLFormula;
-import org.xmlcml.cml.element.lite.CMLMolecule;
 
 /**
  * tags CMLReactant, CMLProduct, CMLReactantList, CMLProductList CMLSpectator as

@@ -25,6 +25,8 @@ import org.junit.Test;
 import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.base.CMLBuilder;
 import org.xmlcml.cml.base.CMLElement;
+import org.xmlcml.cml.element.CMLCml;
+import org.xmlcml.cml.element.CMLScalar;
 
 /**
  * tests CMLScalar.

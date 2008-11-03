@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.base.BaseTest;
 import org.xmlcml.cml.base.CMLElement;
+import org.xmlcml.cml.element.CMLTableCell;
 
 /**
  * @author pm286

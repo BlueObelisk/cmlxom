@@ -25,6 +25,13 @@ import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.CMLUtil;
 import org.xmlcml.cml.base.CMLElement.CoordinateType;
 import org.xmlcml.cml.base.CMLElement.FormalChargeControl;
+import org.xmlcml.cml.element.CMLAtom;
+import org.xmlcml.cml.element.CMLAtomArray;
+import org.xmlcml.cml.element.CMLBond;
+import org.xmlcml.cml.element.CMLBondArray;
+import org.xmlcml.cml.element.CMLCml;
+import org.xmlcml.cml.element.CMLMolecule;
+import org.xmlcml.cml.element.CMLName;
 import org.xmlcml.cml.element.main.MoleculeAtomBondFixture;
 import org.xmlcml.euclid.Real2;
 import org.xmlcml.euclid.Real2Vector;
@@ -933,7 +940,7 @@ public class CMLMoleculeTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLMolecule#createMoleculeWithId(java.lang.String)}
+	 * {@link org.xmlcml.cml.element.CMLMolecule#createMoleculeWithId(java.lang.String)}
 	 * .
 	 */
 	@Test
@@ -946,7 +953,7 @@ public class CMLMoleculeTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLMolecule#deleteAtom(org.xmlcml.cml.element.lite.CMLAtom)}
+	 * {@link org.xmlcml.cml.element.CMLMolecule#deleteAtom(org.xmlcml.cml.element.CMLAtom)}
 	 * .
 	 */
 	@Test
@@ -982,7 +989,7 @@ public class CMLMoleculeTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLMolecule#removeAtomArray()}.
+	 * {@link org.xmlcml.cml.element.CMLMolecule#removeAtomArray()}.
 	 */
 	@Test
 	public final void testRemoveAtomArray() {
@@ -1001,7 +1008,7 @@ public class CMLMoleculeTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLMolecule#removeBondArray()}.
+	 * {@link org.xmlcml.cml.element.CMLMolecule#removeBondArray()}.
 	 */
 	@Test
 	public final void testRemoveBondArray() {
@@ -1020,7 +1027,7 @@ public class CMLMoleculeTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLMolecule#deleteBond(org.xmlcml.cml.element.lite.CMLBond)}
+	 * {@link org.xmlcml.cml.element.CMLMolecule#deleteBond(org.xmlcml.cml.element.CMLBond)}
 	 * .
 	 */
 	@Test
@@ -1041,7 +1048,7 @@ public class CMLMoleculeTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLMolecule#deleteMolecule(org.xmlcml.cml.element.lite.CMLMolecule)}
+	 * {@link org.xmlcml.cml.element.CMLMolecule#deleteMolecule(org.xmlcml.cml.element.CMLMolecule)}
 	 * .
 	 */
 	@Test
@@ -1059,7 +1066,7 @@ public class CMLMoleculeTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLMolecule#normalizeSingleMoleculeChild()}
+	 * {@link org.xmlcml.cml.element.CMLMolecule#normalizeSingleMoleculeChild()}
 	 * .
 	 */
 	@Test
@@ -1081,7 +1088,7 @@ public class CMLMoleculeTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLMolecule#appendChild(org.xmlcml.cml.element.lite.CMLMolecule)}
+	 * {@link org.xmlcml.cml.element.CMLMolecule#appendChild(org.xmlcml.cml.element.CMLMolecule)}
 	 * .
 	 */
 	@Test
@@ -1091,7 +1098,7 @@ public class CMLMoleculeTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLMolecule#removeChild(org.xmlcml.cml.element.lite.CMLMolecule)}
+	 * {@link org.xmlcml.cml.element.CMLMolecule#removeChild(org.xmlcml.cml.element.CMLMolecule)}
 	 * .
 	 */
 	@Test
@@ -1101,7 +1108,7 @@ public class CMLMoleculeTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLMolecule#appendChild(org.xmlcml.cml.element.lite.CMLAtom)}
+	 * {@link org.xmlcml.cml.element.CMLMolecule#appendChild(org.xmlcml.cml.element.CMLAtom)}
 	 * .
 	 */
 	@Test
@@ -1111,7 +1118,7 @@ public class CMLMoleculeTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLMolecule#removeChild(org.xmlcml.cml.element.lite.CMLAtom)}
+	 * {@link org.xmlcml.cml.element.CMLMolecule#removeChild(org.xmlcml.cml.element.CMLAtom)}
 	 * .
 	 */
 	@Test
@@ -1121,7 +1128,7 @@ public class CMLMoleculeTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLMolecule#appendChild(org.xmlcml.cml.element.lite.CMLBond)}
+	 * {@link org.xmlcml.cml.element.CMLMolecule#appendChild(org.xmlcml.cml.element.CMLBond)}
 	 * .
 	 */
 	@Test
@@ -1131,7 +1138,7 @@ public class CMLMoleculeTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLMolecule#removeChild(org.xmlcml.cml.element.lite.CMLBond)}
+	 * {@link org.xmlcml.cml.element.CMLMolecule#removeChild(org.xmlcml.cml.element.CMLBond)}
 	 * .
 	 */
 	@Test
@@ -1141,7 +1148,7 @@ public class CMLMoleculeTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLMolecule#getAtomArray()}.
+	 * {@link org.xmlcml.cml.element.CMLMolecule#getAtomArray()}.
 	 */
 	@Test
 	public final void testGetAtomArray() {
@@ -1159,7 +1166,7 @@ public class CMLMoleculeTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLMolecule#getAtomMap()}.
+	 * {@link org.xmlcml.cml.element.CMLMolecule#getAtomMap()}.
 	 */
 	@Test
 	public final void testGetAtomMap() {
@@ -1172,7 +1179,7 @@ public class CMLMoleculeTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLMolecule#getBondMap()}.
+	 * {@link org.xmlcml.cml.element.CMLMolecule#getBondMap()}.
 	 */
 	@Test
 	public final void testGetBondMap() {
@@ -1188,7 +1195,7 @@ public class CMLMoleculeTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLMolecule#getBondIdMap()}.
+	 * {@link org.xmlcml.cml.element.CMLMolecule#getBondIdMap()}.
 	 */
 	@Test
 	public final void testGetBondIdMap() {
@@ -1201,7 +1208,7 @@ public class CMLMoleculeTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLMolecule#getAtomsById(java.lang.String)}
+	 * {@link org.xmlcml.cml.element.CMLMolecule#getAtomsById(java.lang.String)}
 	 * .
 	 */
 	@Test
@@ -1228,7 +1235,7 @@ public class CMLMoleculeTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLMolecule#getAtomCount()}.
+	 * {@link org.xmlcml.cml.element.CMLMolecule#getAtomCount()}.
 	 */
 	@Test
 	public final void testGetAtomCount() {
@@ -1240,7 +1247,7 @@ public class CMLMoleculeTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLMolecule#getAtoms()}.
+	 * {@link org.xmlcml.cml.element.CMLMolecule#getAtoms()}.
 	 */
 	@Test
 	public final void testGetAtoms() {
@@ -1251,7 +1258,7 @@ public class CMLMoleculeTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLMolecule#getBondArray()}.
+	 * {@link org.xmlcml.cml.element.CMLMolecule#getBondArray()}.
 	 */
 	@Test
 	public final void testGetBondArray() {
@@ -1271,7 +1278,7 @@ public class CMLMoleculeTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLMolecule#getOrCreateAtomArray()}.
+	 * {@link org.xmlcml.cml.element.CMLMolecule#getOrCreateAtomArray()}.
 	 */
 	@Test
 	public final void testGetOrCreateAtomArray() {
@@ -1292,7 +1299,7 @@ public class CMLMoleculeTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLMolecule#getOrCreateBondArray()}.
+	 * {@link org.xmlcml.cml.element.CMLMolecule#getOrCreateBondArray()}.
 	 */
 	@Test
 	public final void testGetOrCreateBondArray() {

@@ -14,10 +14,12 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLElements;
-import org.xmlcml.cml.element.lite.CMLAtom;
-import org.xmlcml.cml.element.lite.CMLBond;
-import org.xmlcml.cml.element.lite.CMLPeak;
-import org.xmlcml.cml.element.main.CMLMap.Direction;
+import org.xmlcml.cml.element.CMLAtom;
+import org.xmlcml.cml.element.CMLBond;
+import org.xmlcml.cml.element.CMLLink;
+import org.xmlcml.cml.element.CMLMap;
+import org.xmlcml.cml.element.CMLPeak;
+import org.xmlcml.cml.element.CMLMap.Direction;
 import org.xmlcml.euclid.Util;
 import org.xmlcml.euclid.test.StringTestBase;
 

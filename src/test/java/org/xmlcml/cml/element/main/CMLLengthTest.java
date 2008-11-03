@@ -13,10 +13,11 @@ import java.util.Map;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.xmlcml.cml.element.lite.CMLAtom;
-import org.xmlcml.cml.element.lite.CMLBond;
-import org.xmlcml.cml.element.lite.CMLCml;
-import org.xmlcml.cml.element.lite.CMLMolecule;
+import org.xmlcml.cml.element.CMLAtom;
+import org.xmlcml.cml.element.CMLBond;
+import org.xmlcml.cml.element.CMLCml;
+import org.xmlcml.cml.element.CMLLength;
+import org.xmlcml.cml.element.CMLMolecule;
 import org.xmlcml.euclid.test.StringTestBase;
 
 /**

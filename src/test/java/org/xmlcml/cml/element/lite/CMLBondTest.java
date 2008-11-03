@@ -15,6 +15,10 @@ import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
 import org.xmlcml.cml.base.StringSTAttribute;
 import org.xmlcml.cml.base.CMLElement.CoordinateType;
+import org.xmlcml.cml.element.CMLAtom;
+import org.xmlcml.cml.element.CMLBond;
+import org.xmlcml.cml.element.CMLBondStereo;
+import org.xmlcml.cml.element.CMLMolecule;
 import org.xmlcml.cml.element.main.MoleculeAtomBondFixture;
 import org.xmlcml.euclid.Point3;
 import org.xmlcml.molutil.ChemicalElement.AS;
@@ -330,7 +334,7 @@ public class CMLBondTest {
 	}
 
 	/**
-	 * Test method for {@link org.xmlcml.cml.element.lite.CMLBond#detach()}.
+	 * Test method for {@link org.xmlcml.cml.element.CMLBond#detach()}.
 	 */
 	@Test
 	public final void testDetach() {
@@ -342,7 +346,7 @@ public class CMLBondTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLBond#setId(java.lang.String)}.
+	 * {@link org.xmlcml.cml.element.CMLBond#setId(java.lang.String)}.
 	 */
 	@Test
 	public final void testSetId() {
@@ -364,7 +368,7 @@ public class CMLBondTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLBond#CMLBond(java.lang.String, org.xmlcml.cml.element.lite.CMLAtom, org.xmlcml.cml.element.lite.CMLAtom)}
+	 * {@link org.xmlcml.cml.element.CMLBond#CMLBond(java.lang.String, org.xmlcml.cml.element.CMLAtom, org.xmlcml.cml.element.CMLAtom)}
 	 * .
 	 */
 	@Test
@@ -382,7 +386,7 @@ public class CMLBondTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLBond#getAtomId(int)}.
+	 * {@link org.xmlcml.cml.element.CMLBond#getAtomId(int)}.
 	 */
 	@Test
 	public final void testGetAtomId() {
@@ -392,7 +396,7 @@ public class CMLBondTest {
 	}
 
 	/**
-	 * Test method for {@link org.xmlcml.cml.element.lite.CMLBond#getAtom(int)}.
+	 * Test method for {@link org.xmlcml.cml.element.CMLBond#getAtom(int)}.
 	 */
 	@Test
 	public final void testGetAtom() {
@@ -403,7 +407,7 @@ public class CMLBondTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLBond#getOtherAtomId(java.lang.String)}
+	 * {@link org.xmlcml.cml.element.CMLBond#getOtherAtomId(java.lang.String)}
 	 * .
 	 */
 	@Test
@@ -415,7 +419,7 @@ public class CMLBondTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLBond#getOtherAtom(org.xmlcml.cml.element.lite.CMLAtom)}
+	 * {@link org.xmlcml.cml.element.CMLBond#getOtherAtom(org.xmlcml.cml.element.CMLAtom)}
 	 * .
 	 */
 	@Test
@@ -427,7 +431,7 @@ public class CMLBondTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLBond#atomHash(java.lang.String[])}.
+	 * {@link org.xmlcml.cml.element.CMLBond#atomHash(java.lang.String[])}.
 	 */
 	@Test
 	public final void testAtomHashStringArray() {
@@ -439,7 +443,7 @@ public class CMLBondTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLBond#setCyclic(java.lang.String)}.
+	 * {@link org.xmlcml.cml.element.CMLBond#setCyclic(java.lang.String)}.
 	 */
 	@Test
 	public final void testSetCyclic() {
@@ -453,7 +457,7 @@ public class CMLBondTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLBond#getBondStereo()}.
+	 * {@link org.xmlcml.cml.element.CMLBond#getBondStereo()}.
 	 */
 	@Test
 	public final void testGetBondStereo() {
@@ -490,7 +494,7 @@ public class CMLBondTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLBond#setBondStereo(org.xmlcml.cml.element.lite.CMLBondStereo)}
+	 * {@link org.xmlcml.cml.element.CMLBond#setBondStereo(org.xmlcml.cml.element.CMLBondStereo)}
 	 * .
 	 */
 	@Test
@@ -531,7 +535,7 @@ public class CMLBondTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLBond#createId(org.xmlcml.cml.element.lite.CMLAtom, org.xmlcml.cml.element.lite.CMLAtom)}
+	 * {@link org.xmlcml.cml.element.CMLBond#createId(org.xmlcml.cml.element.CMLAtom, org.xmlcml.cml.element.CMLAtom)}
 	 * .
 	 */
 	@Test
@@ -543,7 +547,7 @@ public class CMLBondTest {
 	}
 
 	/**
-	 * Test method for {@link org.xmlcml.cml.element.lite.CMLBond#createId()}.
+	 * Test method for {@link org.xmlcml.cml.element.CMLBond#createId()}.
 	 */
 	@Test
 	public final void testCreateId() {
@@ -553,7 +557,7 @@ public class CMLBondTest {
 	}
 
 	/**
-	 * Test method for {@link org.xmlcml.cml.element.lite.CMLBond#getString()}.
+	 * Test method for {@link org.xmlcml.cml.element.CMLBond#getString()}.
 	 */
 	@Test
 	public final void testGetString() {
@@ -564,7 +568,7 @@ public class CMLBondTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLBond#generateAndSetId()}.
+	 * {@link org.xmlcml.cml.element.CMLBond#generateAndSetId()}.
 	 */
 	@Test
 	public final void testGenerateAndSetId() {
