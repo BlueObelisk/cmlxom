@@ -16,10 +16,11 @@ import nu.xom.Element;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.xmlcml.cml.element.lite.CMLAtom;
-import org.xmlcml.cml.element.lite.CMLBond;
-import org.xmlcml.cml.element.lite.CMLCml;
-import org.xmlcml.cml.element.lite.CMLMolecule;
+import org.xmlcml.cml.element.CMLAngle;
+import org.xmlcml.cml.element.CMLAtom;
+import org.xmlcml.cml.element.CMLBond;
+import org.xmlcml.cml.element.CMLCml;
+import org.xmlcml.cml.element.CMLMolecule;
 import org.xmlcml.euclid.test.StringTestBase;
 
 /**
@@ -200,7 +201,7 @@ public class CMLAngleTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.CMLAngle#getAtoms(org.xmlcml.cml.element.lite.CMLMolecule)}
+	 * {@link org.xmlcml.cml.element.CMLAngle#getAtoms(org.xmlcml.cml.element.CMLMolecule)}
 	 * .
 	 */
 	@Test
@@ -228,7 +229,7 @@ public class CMLAngleTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.CMLAngle#getCalculatedAngle(org.xmlcml.cml.element.lite.CMLMolecule)}
+	 * {@link org.xmlcml.cml.element.CMLAngle#getCalculatedAngle(org.xmlcml.cml.element.CMLMolecule)}
 	 * .
 	 */
 	@Test
@@ -279,7 +280,7 @@ public class CMLAngleTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.CMLAngle#setAtomRefs3(org.xmlcml.cml.element.lite.CMLAtom, org.xmlcml.cml.element.lite.CMLAtom, org.xmlcml.cml.element.lite.CMLAtom)}
+	 * {@link org.xmlcml.cml.element.CMLAngle#setAtomRefs3(org.xmlcml.cml.element.CMLAtom, org.xmlcml.cml.element.CMLAtom, org.xmlcml.cml.element.CMLAtom)}
 	 * .
 	 */
 	@Test

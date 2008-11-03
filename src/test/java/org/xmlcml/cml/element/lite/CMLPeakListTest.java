@@ -7,7 +7,10 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.xmlcml.cml.element.main.CMLMap;
+import org.xmlcml.cml.element.CMLMap;
+import org.xmlcml.cml.element.CMLMolecule;
+import org.xmlcml.cml.element.CMLPeak;
+import org.xmlcml.cml.element.CMLPeakList;
 
 /**
  * @author pm286

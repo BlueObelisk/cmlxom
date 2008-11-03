@@ -12,8 +12,13 @@ import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.xmlcml.cml.element.lite.CMLArray;
-import org.xmlcml.cml.element.lite.CMLScalar;
+import org.xmlcml.cml.element.CMLArray;
+import org.xmlcml.cml.element.CMLArrayList;
+import org.xmlcml.cml.element.CMLList;
+import org.xmlcml.cml.element.CMLScalar;
+import org.xmlcml.cml.element.CMLTableContent;
+import org.xmlcml.cml.element.CMLTableHeader;
+import org.xmlcml.cml.element.CMLTableHeaderCell;
 import org.xmlcml.cml.interfacex.HasArraySize;
 
 /**
@@ -57,7 +62,7 @@ public class CMLArrayListTest extends AbstractTableBase {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.CMLArrayList#createTableHeaderCell(org.xmlcml.cml.element.lite.CMLArray)}
+	 * {@link org.xmlcml.cml.element.CMLArrayList#createTableHeaderCell(org.xmlcml.cml.element.CMLArray)}
 	 * .
 	 */
 	@Test

@@ -5,6 +5,9 @@ import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.xmlcml.cml.element.CMLBond;
+import org.xmlcml.cml.element.CMLBondStereo;
+import org.xmlcml.cml.element.CMLMolecule;
 
 /**
  * test bondStereo.

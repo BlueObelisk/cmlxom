@@ -8,6 +8,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLBuilder;
+import org.xmlcml.cml.element.CMLLatticeVector;
+import org.xmlcml.cml.element.CMLVector3;
 import org.xmlcml.euclid.test.DoubleTestBase;
 
 /**

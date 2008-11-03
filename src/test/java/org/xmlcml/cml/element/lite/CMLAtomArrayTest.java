@@ -12,6 +12,9 @@ import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.xmlcml.cml.element.CMLAtom;
+import org.xmlcml.cml.element.CMLAtomArray;
+import org.xmlcml.cml.element.CMLMolecule;
 import org.xmlcml.cml.element.main.MoleculeAtomBondFixture;
 
 /**
@@ -31,7 +34,7 @@ public class CMLAtomArrayTest {
 	}
 
 	/**
-	 * Test method for {@link org.xmlcml.cml.element.lite.CMLAtomArray#detach()}
+	 * Test method for {@link org.xmlcml.cml.element.CMLAtomArray#detach()}
 	 * .
 	 */
 	@Test
@@ -58,7 +61,7 @@ public class CMLAtomArrayTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLAtomArray#CMLAtomArray()}.
+	 * {@link org.xmlcml.cml.element.CMLAtomArray#CMLAtomArray()}.
 	 */
 	@Test
 	public final void testCMLAtomArray() {
@@ -121,7 +124,7 @@ public class CMLAtomArrayTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLAtomArray#appendChild(org.xmlcml.cml.element.lite.CMLAtom)}
+	 * {@link org.xmlcml.cml.element.CMLAtomArray#appendChild(org.xmlcml.cml.element.CMLAtom)}
 	 * .
 	 */
 	@Test
@@ -134,7 +137,7 @@ public class CMLAtomArrayTest {
 	}
 
 	/**
-	 * Test method for {@link org.xmlcml.cml.element.lite.CMLAtomArray#size()}.
+	 * Test method for {@link org.xmlcml.cml.element.CMLAtomArray#size()}.
 	 */
 	@Test
 	public final void testSize() {
@@ -150,7 +153,7 @@ public class CMLAtomArrayTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLAtomArray#addAtom(org.xmlcml.cml.element.lite.CMLAtom)}
+	 * {@link org.xmlcml.cml.element.CMLAtomArray#addAtom(org.xmlcml.cml.element.CMLAtom)}
 	 * .
 	 */
 	@Test
@@ -164,7 +167,7 @@ public class CMLAtomArrayTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLAtomArray#insertAtom(org.xmlcml.cml.element.lite.CMLAtom, int)}
+	 * {@link org.xmlcml.cml.element.CMLAtomArray#insertAtom(org.xmlcml.cml.element.CMLAtom, int)}
 	 * .
 	 */
 	@Test
@@ -193,7 +196,7 @@ public class CMLAtomArrayTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLAtomArray#removeChild(org.xmlcml.cml.element.lite.CMLAtom)}
+	 * {@link org.xmlcml.cml.element.CMLAtomArray#removeChild(org.xmlcml.cml.element.CMLAtom)}
 	 * .
 	 */
 	@Test
@@ -217,7 +220,7 @@ public class CMLAtomArrayTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLAtomArray#removeAtom(org.xmlcml.cml.element.lite.CMLAtom)}
+	 * {@link org.xmlcml.cml.element.CMLAtomArray#removeAtom(org.xmlcml.cml.element.CMLAtom)}
 	 * .
 	 */
 	@Test
@@ -241,7 +244,7 @@ public class CMLAtomArrayTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLAtomArray#getMolecule()}.
+	 * {@link org.xmlcml.cml.element.CMLAtomArray#getMolecule()}.
 	 */
 	@Test
 	public final void testGetMolecule() {
@@ -259,7 +262,7 @@ public class CMLAtomArrayTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLAtomArray#getAtomMap()}.
+	 * {@link org.xmlcml.cml.element.CMLAtomArray#getAtomMap()}.
 	 */
 	@Test
 	public final void testGetAtomMap() {
@@ -286,7 +289,7 @@ public class CMLAtomArrayTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLAtomArray#getAtoms()}.
+	 * {@link org.xmlcml.cml.element.CMLAtomArray#getAtoms()}.
 	 */
 	@Test
 	public final void testGetAtoms() {
@@ -305,7 +308,7 @@ public class CMLAtomArrayTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLAtomArray#getAtomById(java.lang.String)}
+	 * {@link org.xmlcml.cml.element.CMLAtomArray#getAtomById(java.lang.String)}
 	 * .
 	 */
 	@Test

@@ -6,6 +6,8 @@ import static org.xmlcml.euclid.EuclidConstants.S_RBRAK;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.xmlcml.cml.element.CMLTransform3;
+import org.xmlcml.cml.element.CMLVector3;
 import org.xmlcml.euclid.Angle;
 import org.xmlcml.euclid.EuclidRuntimeException;
 import org.xmlcml.euclid.Vector3;

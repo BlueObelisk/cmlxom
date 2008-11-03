@@ -25,6 +25,7 @@ import org.junit.Test;
 import org.xmlcml.cml.attribute.DelimiterAttribute;
 import org.xmlcml.cml.attribute.DelimiterAttribute.Action;
 import org.xmlcml.cml.base.CMLBuilder;
+import org.xmlcml.cml.element.CMLArray;
 import org.xmlcml.euclid.test.DoubleTestBase;
 import org.xmlcml.euclid.test.IntTest;
 import org.xmlcml.euclid.test.StringTestBase;

@@ -16,7 +16,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.base.CMLElements;
-import org.xmlcml.cml.element.lite.CMLScalar;
+import org.xmlcml.cml.element.CMLCellParameter;
+import org.xmlcml.cml.element.CMLCrystal;
+import org.xmlcml.cml.element.CMLScalar;
 import org.xmlcml.euclid.test.DoubleTestBase;
 
 /**
