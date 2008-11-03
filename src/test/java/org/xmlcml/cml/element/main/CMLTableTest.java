@@ -6,7 +6,8 @@ import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.xmlcml.cml.element.main.CMLTable.TableType;
+import org.xmlcml.cml.element.CMLTable;
+import org.xmlcml.cml.element.CMLTable.TableType;
 
 /**
  * test CMLTable.

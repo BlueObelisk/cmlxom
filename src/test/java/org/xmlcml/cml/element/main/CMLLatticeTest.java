@@ -7,6 +7,9 @@ import static org.xmlcml.euclid.EuclidConstants.EPS;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.xmlcml.cml.element.CMLLattice;
+import org.xmlcml.cml.element.CMLLatticeVector;
+import org.xmlcml.cml.element.CMLVector3;
 import org.xmlcml.euclid.test.DoubleTestBase;
 
 /**

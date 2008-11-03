@@ -13,6 +13,10 @@ import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.xmlcml.cml.element.CMLAtom;
+import org.xmlcml.cml.element.CMLBond;
+import org.xmlcml.cml.element.CMLBondArray;
+import org.xmlcml.cml.element.CMLMolecule;
 import org.xmlcml.cml.element.main.MoleculeAtomBondFixture;
 
 /**
@@ -53,7 +57,7 @@ public class CMLBondArrayTest {
 	}
 
 	/**
-	 * Test method for {@link org.xmlcml.cml.element.lite.CMLBondArray#detach()}
+	 * Test method for {@link org.xmlcml.cml.element.CMLBondArray#detach()}
 	 * .
 	 */
 	@Test
@@ -80,7 +84,7 @@ public class CMLBondArrayTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLBondArray#CMLBondArray()}.
+	 * {@link org.xmlcml.cml.element.CMLBondArray#CMLBondArray()}.
 	 */
 	@Test
 	public final void testCMLBondArray() {
@@ -125,7 +129,7 @@ public class CMLBondArrayTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLBondArray#appendChild(org.xmlcml.cml.element.lite.CMLBond)}
+	 * {@link org.xmlcml.cml.element.CMLBondArray#appendChild(org.xmlcml.cml.element.CMLBond)}
 	 * .
 	 */
 	@Test
@@ -170,7 +174,7 @@ public class CMLBondArrayTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLBondArray#indexBonds()}.
+	 * {@link org.xmlcml.cml.element.CMLBondArray#indexBonds()}.
 	 */
 	@Test
 	public final void testIndexBonds() {
@@ -182,7 +186,7 @@ public class CMLBondArrayTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLBondArray#removeChild(CMLBond)}.
+	 * {@link org.xmlcml.cml.element.CMLBondArray#removeChild(CMLBond)}.
 	 */
 	@Test
 	public final void testRemoveChild() {
@@ -196,7 +200,7 @@ public class CMLBondArrayTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLBondArray#removeBond(CMLBond)}.
+	 * {@link org.xmlcml.cml.element.CMLBondArray#removeBond(CMLBond)}.
 	 */
 	@Test
 	public final void testRemoveBond() {
@@ -208,7 +212,7 @@ public class CMLBondArrayTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLBondArray#getBondMap()}.
+	 * {@link org.xmlcml.cml.element.CMLBondArray#getBondMap()}.
 	 */
 	@Test
 	public final void testGetBondMap() {
@@ -222,7 +226,7 @@ public class CMLBondArrayTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLBondArray#getBondIdMap()}.
+	 * {@link org.xmlcml.cml.element.CMLBondArray#getBondIdMap()}.
 	 */
 	@Test
 	public final void testGetBondIdMap() {
@@ -235,7 +239,7 @@ public class CMLBondArrayTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLBondArray#getBonds()}.
+	 * {@link org.xmlcml.cml.element.CMLBondArray#getBonds()}.
 	 */
 	@Test
 	public final void testGetBonds() {
@@ -248,7 +252,7 @@ public class CMLBondArrayTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLBondArray#getBondByHash(java.lang.String)}
+	 * {@link org.xmlcml.cml.element.CMLBondArray#getBondByHash(java.lang.String)}
 	 * .
 	 */
 	@Test
@@ -264,7 +268,7 @@ public class CMLBondArrayTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLBondArray#getBondByAtomRefs2(java.lang.String[])}
+	 * {@link org.xmlcml.cml.element.CMLBondArray#getBondByAtomRefs2(java.lang.String[])}
 	 * .
 	 */
 	@Test
@@ -281,7 +285,7 @@ public class CMLBondArrayTest {
 
 	/**
 	 * Test method for
-	 * {@link org.xmlcml.cml.element.lite.CMLBondArray#getBondById(java.lang.String)}
+	 * {@link org.xmlcml.cml.element.CMLBondArray#getBondById(java.lang.String)}
 	 * .
 	 */
 	@Test

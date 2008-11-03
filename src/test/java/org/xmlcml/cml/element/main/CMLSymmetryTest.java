@@ -11,6 +11,10 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElements;
+import org.xmlcml.cml.element.CMLCrystal;
+import org.xmlcml.cml.element.CMLMatrix;
+import org.xmlcml.cml.element.CMLSymmetry;
+import org.xmlcml.cml.element.CMLTransform3;
 import org.xmlcml.euclid.Point3;
 
 /**

@@ -10,6 +10,7 @@ import static org.xmlcml.euclid.EuclidConstants.S_SPACE;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.xmlcml.cml.element.CMLTableRow;
 
 /**
  * @author pm286

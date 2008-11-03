@@ -153,10 +153,11 @@ public class CMLNodeFactory extends NodeFactory implements CMLConstants {
 	            CMLElement factoryElement = factoryElementMap.get(name);
 	            if (factoryElement == null) {
 	            	// tacky until we get a list of CML-lite classes
-		            Class<?> newClass = CMLNodeFactory.makeClass(ELEMENT_CLASS_BASE+S_PERIOD+LITE, name);
-		        	if (newClass == null) {
-			        	newClass = makeClass(ELEMENT_CLASS_BASE+S_PERIOD+MAIN, name);
-		        	}
+		            Class<?> newClass = CMLNodeFactory.makeClass(ELEMENT_CLASS_BASE, name);
+//		            Class<?> newClass = CMLNodeFactory.makeClass(ELEMENT_CLASS_BASE+S_PERIOD+LITE, name);
+//		        	if (newClass == null) {
+//			        	newClass = makeClass(ELEMENT_CLASS_BASE+S_PERIOD+MAIN, name);
+//		        	}
 		        	if (newClass == null) {
 		        		throw new RuntimeException("Cannot make class for: "+name);
 		        	}

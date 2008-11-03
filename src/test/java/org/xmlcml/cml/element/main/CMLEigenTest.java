@@ -5,8 +5,10 @@ import junit.framework.Assert;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.xmlcml.cml.element.lite.CMLArray;
-import org.xmlcml.cml.element.main.CMLEigen.Orientation;
+import org.xmlcml.cml.element.CMLArray;
+import org.xmlcml.cml.element.CMLEigen;
+import org.xmlcml.cml.element.CMLMatrix;
+import org.xmlcml.cml.element.CMLEigen.Orientation;
 import org.xmlcml.euclid.RealArray;
 import org.xmlcml.euclid.test.RealArrayTest;
 

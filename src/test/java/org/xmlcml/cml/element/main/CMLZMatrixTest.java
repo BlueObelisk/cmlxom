@@ -21,8 +21,9 @@ import nu.xom.ValidityException;
 
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLBuilder;
-import org.xmlcml.cml.element.lite.CMLCml;
-import org.xmlcml.cml.element.lite.CMLMolecule;
+import org.xmlcml.cml.element.CMLCml;
+import org.xmlcml.cml.element.CMLMolecule;
+import org.xmlcml.cml.element.CMLZMatrix;
 import org.xmlcml.euclid.Util;
 
 /**

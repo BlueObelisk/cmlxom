@@ -11,8 +11,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
-import org.xmlcml.cml.element.lite.CMLAtom;
-import org.xmlcml.cml.element.lite.CMLAtomArray;
+import org.xmlcml.cml.element.CMLAtom;
+import org.xmlcml.cml.element.CMLAtomArray;
 
 /**
  * test CMLElements
@@ -112,11 +112,11 @@ public class ElementsTest {
 		Class<?> classx = cmlElems.getType();
 		Assert.assertEquals("type", org.xmlcml.cml.base.CMLElement.class,
 				classx);
-		Assert.assertEquals("class", org.xmlcml.cml.element.lite.CMLAtom.class,
+		Assert.assertEquals("class", org.xmlcml.cml.element.CMLAtom.class,
 				atoms.get(0).getClass());
 		Assert.assertEquals("size", 2, atoms.size());
 		classx = atoms.getType();
-		Assert.assertEquals("type", org.xmlcml.cml.element.lite.CMLAtom.class,
+		Assert.assertEquals("type", org.xmlcml.cml.element.CMLAtom.class,
 				classx);
 	}
 

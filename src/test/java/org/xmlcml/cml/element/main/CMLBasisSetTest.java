@@ -12,9 +12,13 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLBuilder;
-import org.xmlcml.cml.element.lite.CMLArray;
-import org.xmlcml.cml.element.lite.CMLMolecule;
-import org.xmlcml.cml.element.main.CMLBasisSet.Basis;
+import org.xmlcml.cml.element.CMLArray;
+import org.xmlcml.cml.element.CMLAtomicBasisFunction;
+import org.xmlcml.cml.element.CMLBasisSet;
+import org.xmlcml.cml.element.CMLEigen;
+import org.xmlcml.cml.element.CMLMatrix;
+import org.xmlcml.cml.element.CMLMolecule;
+import org.xmlcml.cml.element.CMLBasisSet.Basis;
 import org.xmlcml.euclid.RealArray;
 import org.xmlcml.euclid.test.RealArrayTest;
 
