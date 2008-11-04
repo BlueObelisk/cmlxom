@@ -11,7 +11,7 @@ import org.xmlcml.cml.element.CMLPropertyList;
 import org.xmlcml.cml.element.main.AbstractTestBase;
 import org.xmlcml.cml.interfacex.HasDataType;
 import static org.xmlcml.cml.base.CMLConstants.*;
-import static org.xmlcml.cml.base.BaseTest.*;
+import static org.xmlcml.cml.base.TstBase.*;
 import static org.xmlcml.euclid.EuclidConstants.*;
 import static org.xmlcml.cml.element.main.AbstractTestBase.*;
 

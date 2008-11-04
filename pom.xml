@@ -4,7 +4,7 @@
 	<groupId>cml</groupId>
 	<artifactId>cmlxom</artifactId>
 	<name>CMLXOM</name>
-	<version>2.6-SNAPSHOT</version>
+	<version>2.5.1-SNAPSHOT</version>
 	<description>A Java library for processing CML</description>
 	<url>http://sourceforge.net/projects/cml/
 	</url>
@@ -161,17 +161,6 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<configuration>
-					<excludes>
-						<exclude> org/xmlcml/cml/tools/FragmentListToolTest.java</exclude>
-						<exclude> org/xmlcml/cml/base/BaseTest.java</exclude>
-						<exclude> org/xmlcml/cml/element/NumericTest.java</exclude>
-						<exclude> org/xmlcml/cml/tools/MoleculeListToolTest.java</exclude>
-					</excludes>
-				</configuration>
-			</plugin>
-			<plugin>
 				<artifactId>maven-source-plugin</artifactId>
 				<executions>
 					<execution>
@@ -182,13 +171,6 @@
 				</executions>
 			</plugin>
 		</plugins>
-		<extensions>
-			<extension>
-				<groupId>org.apache.maven.wagon</groupId>
-				<artifactId>wagon-webdav</artifactId>
-				<version>1.0-beta-2</version>
-			</extension>
-		</extensions>
 	</build>
 	<repositories>
 		<repository>
@@ -228,4 +210,21 @@
 			</url>
 		</repository>
 	</distributionManagement>
-</project>
+	<profiles>
+	  <profile>
+	    <id>release</id>
+	    <build>
+	      <plugins>
+		<plugin>
+		  <artifactId>maven-assembly-plugin</artifactId>
+		  <configuration>
+		    <descriptorRefs>
+		      <descriptorRef>src</descriptorRef>
+		    </descriptorRefs>
+		  </configuration>
+		</plugin>
+	      </plugins>
+	    </build>
+	  </profile>
+	</profiles>
+      </project>

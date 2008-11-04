@@ -57,7 +57,7 @@ public class CMLUtilTest {
 	 */
 	@Test
 	public final void testGetXMLResource() {
-		String filename = BaseTest.BASE_RESOURCE + U_S + "cml0.xml";
+		String filename = TstBase.BASE_RESOURCE + U_S + "cml0.xml";
 		Document doc = null;
 		try {
 			doc = CMLUtil.getXMLResource(filename);
@@ -109,7 +109,7 @@ public class CMLUtilTest {
 		bar1.appendChild(new Text("ghi"));
 		root1.appendChild(bar1);
 		root1.appendChild(new Text("jkl"));
-		BaseTest.assertEqualsCanonically("parseXML", root1, root);
+		TstBase.assertEqualsCanonically("parseXML", root1, root);
 
 	}
 
@@ -246,7 +246,7 @@ public class CMLUtilTest {
 		Element newRoot = CMLUtil.parseXML("<root>"
 				+ "<foo>abc<bar/>def<bar1>ghi</bar1>jkl<qqq/>zzz</foo>"
 				+ "and<plugh/></root>");
-		BaseTest.assertEqualsCanonically("new root", root, newRoot);
+		TstBase.assertEqualsCanonically("new root", root, newRoot);
 	}
 
 	/**

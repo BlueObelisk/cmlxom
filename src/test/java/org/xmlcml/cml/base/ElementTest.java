@@ -1,6 +1,6 @@
 package org.xmlcml.cml.base;
 
-import static org.xmlcml.cml.base.BaseTest.BASE_RESOURCE;
+import static org.xmlcml.cml.base.TstBase.BASE_RESOURCE;
 import static org.xmlcml.euclid.EuclidConstants.U_S;
 import static org.xmlcml.euclid.test.EuclidTestBase.neverFail;
 import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
@@ -196,10 +196,10 @@ public class ElementTest {
 		} catch (Exception e) {
 			neverThrow(e);
 		}
-		BaseTest.assertNotEqualsCanonically("before whitespace", element0,
+		TstBase.assertNotEqualsCanonically("before whitespace", element0,
 				element1);
 		CMLUtil.removeWhitespaceNodes(element0);
-		BaseTest.assertEqualsCanonically("before whitespace ", element0,
+		TstBase.assertEqualsCanonically("before whitespace ", element0,
 				element1);
 	}
 

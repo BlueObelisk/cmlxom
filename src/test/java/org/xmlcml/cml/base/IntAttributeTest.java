@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLConstants.*;
-import org.xmlcml.cml.base.BaseTest.*;
+import org.xmlcml.cml.base.TstBase.*;
 import static org.xmlcml.euclid.EuclidConstants.*;
 
 /**

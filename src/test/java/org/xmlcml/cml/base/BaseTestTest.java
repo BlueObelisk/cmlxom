@@ -1,8 +1,8 @@
 package org.xmlcml.cml.base;
 
-import static org.xmlcml.cml.base.BaseTest.assertEqualsIncludingFloat;
-import static org.xmlcml.cml.base.BaseTest.assertNotEqualsCanonically;
-import static org.xmlcml.cml.base.BaseTest.parseValidString;
+import static org.xmlcml.cml.base.TstBase.assertEqualsIncludingFloat;
+import static org.xmlcml.cml.base.TstBase.assertNotEqualsCanonically;
+import static org.xmlcml.cml.base.TstBase.parseValidString;
 import nu.xom.Element;
 
 import org.junit.Assert;

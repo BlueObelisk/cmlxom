@@ -3,8 +3,8 @@
  */
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.cml.base.BaseTest.assertEqualsCanonically;
-import static org.xmlcml.cml.base.BaseTest.parseValidString;
+import static org.xmlcml.cml.base.TstBase.assertEqualsCanonically;
+import static org.xmlcml.cml.base.TstBase.parseValidString;
 import static org.xmlcml.cml.base.CMLConstants.XSD_DOUBLE;
 import static org.xmlcml.euclid.EuclidConstants.S_EMPTY;
 
