@@ -29,10 +29,10 @@ import org.xmlcml.euclid.Util;
  * @version 5.0
  * 
  */
-public final class BaseTest {
+public final class TstBase {
 
 	/** logger */
-	public final static Logger logger = Logger.getLogger(BaseTest.class
+	public final static Logger logger = Logger.getLogger(TstBase.class
 			.getName());
 
 	/** root of tests. */

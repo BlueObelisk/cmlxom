@@ -1,7 +1,7 @@
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.cml.base.BaseTest.assertEqualsCanonically;
-import static org.xmlcml.cml.base.BaseTest.assertNotEqualsCanonically;
+import static org.xmlcml.cml.base.TstBase.assertEqualsCanonically;
+import static org.xmlcml.cml.base.TstBase.assertNotEqualsCanonically;
 import static org.xmlcml.cml.base.CMLConstants.CML_NS;
 import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
 import static org.xmlcml.cml.base.CMLConstants.C_E;
