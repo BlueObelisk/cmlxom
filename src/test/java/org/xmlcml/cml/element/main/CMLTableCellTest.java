@@ -3,14 +3,14 @@
  */
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.cml.base.BaseTest.assertEqualsCanonically;
-import static org.xmlcml.cml.base.BaseTest.assertWriteHTML;
-import static org.xmlcml.cml.base.BaseTest.parseValidString;
+import static org.xmlcml.cml.base.TstBase.assertEqualsCanonically;
+import static org.xmlcml.cml.base.TstBase.assertWriteHTML;
+import static org.xmlcml.cml.base.TstBase.parseValidString;
 import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.xmlcml.cml.base.BaseTest;
+import org.xmlcml.cml.base.TstBase;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.element.CMLTableCell;
 
@@ -38,7 +38,7 @@ public class CMLTableCellTest extends AbstractTableBase {
 	public final void testWriteHTML() {
 		cell = new CMLTableCell("foo");
 		String ss = "<td>foo</td>";
-		BaseTest.assertWriteHTML(cell, ss);
+		TstBase.assertWriteHTML(cell, ss);
 		cell = new CMLTableCell(1.2);
 		ss = "<td>1.2</td>";
 		assertWriteHTML(cell, ss);

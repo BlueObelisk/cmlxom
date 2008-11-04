@@ -21,7 +21,7 @@ import org.xmlcml.cml.element.CMLCrystal;
 import org.xmlcml.cml.element.CMLMolecule;
 import org.xmlcml.molutil.ChemicalElement.AS;
 import static org.xmlcml.cml.base.CMLConstants.*;
-import static org.xmlcml.cml.base.BaseTest.*;
+import static org.xmlcml.cml.base.TstBase.*;
 
 /**
  * provides communal resources for testing. e.g. files and moelcules subclassed

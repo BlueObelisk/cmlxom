@@ -1,6 +1,6 @@
 package org.xmlcml.cml.element.lite;
 
-import static org.xmlcml.cml.base.BaseTest.parseValidString;
+import static org.xmlcml.cml.base.TstBase.parseValidString;
 import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
 import static org.xmlcml.euclid.EuclidConstants.EPS;
 import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
@@ -18,7 +18,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.attribute.IdAttribute;
-import org.xmlcml.cml.base.BaseTest;
+import org.xmlcml.cml.base.TstBase;
 import org.xmlcml.cml.base.CMLAttribute;
 import org.xmlcml.cml.base.CMLBuilder;
 import org.xmlcml.cml.base.CMLElements;
@@ -80,7 +80,7 @@ public class CMLMoleculeTest {
 		String molS = mol.getCanonicalString();
 		String mol1S = mol1.getCanonicalString();
 		Assert.assertEquals("MOLECUL equality: ", molS, mol1S);
-		BaseTest.assertEqualsCanonically("molecule equality", mol, mol1);
+		TstBase.assertEqualsCanonically("molecule equality", mol, mol1);
 	}
 
 	/**

@@ -1,6 +1,6 @@
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.cml.base.BaseTest.parseValidString;
+import static org.xmlcml.cml.base.TstBase.parseValidString;
 import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
 import static org.xmlcml.cml.element.main.AbstractTestBase.EXPERIMENTAL_RESOURCE;
 import static org.xmlcml.euclid.EuclidConstants.S_EMPTY;

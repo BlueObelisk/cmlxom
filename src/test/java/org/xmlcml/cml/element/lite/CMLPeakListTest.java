@@ -1,6 +1,6 @@
 package org.xmlcml.cml.element.lite;
 
-import static org.xmlcml.cml.base.BaseTest.parseValidString;
+import static org.xmlcml.cml.base.TstBase.parseValidString;
 
 import java.util.List;
 
