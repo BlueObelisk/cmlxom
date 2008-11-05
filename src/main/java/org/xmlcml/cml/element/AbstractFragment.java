@@ -271,7 +271,7 @@ public abstract class AbstractFragment extends CMLElement {
 // attribute:   countExpression
 
     /** cache */
-    CountExpressionAttribute _att_countexpression = null;
+    StringSTAttribute _att_countexpression = null;
     /** null
     * @return CMLAttribute
     */
@@ -295,7 +295,7 @@ public abstract class AbstractFragment extends CMLElement {
     public void setCountExpression(String value) throws RuntimeException {
         CountExpressionAttribute att = null;
         if (_att_countexpression == null) {
-            _att_countexpression = (CountExpressionAttribute) attributeFactory.getAttribute("countExpression", "fragment");
+            _att_countexpression = (StringSTAttribute) attributeFactory.getAttribute("countExpression", "fragment");
             if (_att_countexpression == null) {
                 throw new RuntimeException("BUG: cannot process attributeGroupName : countExpression probably incompatible attributeGroupName and attributeName");
             }
