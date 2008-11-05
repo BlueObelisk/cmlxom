@@ -8,29 +8,32 @@ import org.xmlcml.cml.base.StringSTAttribute;
 
 /**
  * user-modifiable class supporting "countExpression". 
+ * wraps a countExpression attribute and provides the same
+ * functionality as CountExpressionAttribute used to do
  */
-public class CountExpressionAttribute extends StringSTAttribute {
+//TODO still under development
+public class CountExpressionAttributeAdapter extends StringSTAttribute {
 
-	/** count expression */
-    public final static String NAME = "countExpression";
-    String argName = "null";
-    int start = 0;
-    int end = 0;
-    /**
-     * constructor.
-     * 
-     */
-    public CountExpressionAttribute() {
-        super(NAME);
-    }
-
-    /** constructor.
-     * @param value
-     */
-    public CountExpressionAttribute(String value) {
-        super(NAME);
-        this.setCMLValue(value);
-    }
+//	/** count expression */
+//    public final static String NAME = "countExpression";
+//    String argName = "null";
+//    int start = 0;
+//    int end = 0;
+//    /**
+//     * constructor.
+//     * 
+//     */
+//    public CountExpressionAttribute() {
+//        super(NAME);
+//    }
+//
+//    /** constructor.
+//     * @param value
+//     */
+//    public CountExpressionAttribute(String value) {
+//        super(NAME);
+//        this.setCMLValue(value);
+//    }
 
     /**
      * constructor from element with CountExpressionAttribute
@@ -38,7 +41,7 @@ public class CountExpressionAttribute extends StringSTAttribute {
      * @param att
      * @exception RuntimeException
      */
-    public CountExpressionAttribute(Attribute att) throws RuntimeException {
+    public CountExpressionAttributeAdapter(Attribute att) throws RuntimeException {
         super(att);
     }
     
@@ -58,53 +61,6 @@ public class CountExpressionAttribute extends StringSTAttribute {
         }
     }
     
-    /** clone element with a repeat attribute.
-     * clones the element and appends to original element
-     * @param element to process
-     * @throws RuntimeException null element or bad attribute
-     */
-    public static void generateAndInsertClones(CMLElement element) throws RuntimeException {
-        if (element == null) {
-            throw new RuntimeException("Cannot process null element");
-        }
-        Element parent = (Element) element.getParent();
-        if (parent == null) {
-            throw new RuntimeException("Cannot process CountExpressionAttribute without parent");
-        }
-        CountExpressionAttribute cea = (CountExpressionAttribute) 
-            element.getAttribute(CountExpressionAttribute.NAME);
-        int idx = parent.indexOf(element); 
-        int count = cea.calculateCountExpression();
-        for (int i = 1; i < count; i++) {
-            Element newElement = (Element) element.copy();
-            parent.insertChild(newElement, idx+1);
-        }
-    }
-
-//    /** clone content of element with CountExpression and append.
-//     * clones the element content and appends to original element content
-//     * @param element to process
-//     * @throws RuntimeException null element or bad attribute
-//     */
-//    private static void cloneContentAndAppend(CMLElement element) throws RuntimeException {
-//        if (element == null) {
-//            throw new RuntimeException("Cannot process null element");
-//        }
-//        Element parent = (Element) element.getParent();
-//        if (parent == null) {
-//            throw new RuntimeException("Cannot process CountExpressionAttribute without parent");
-//        }
-//        CountExpressionAttribute cea = (CountExpressionAttribute) 
-//            element.getAttribute(CountExpressionAttribute.NAME);
-//        int count = cea.calculateCountExpression();
-//        int nChild = element.getChildCount();
-//        for (int i = 1; i < count; i++) {
-//            for (int j = 0; j < nChild; j++) {
-//                Node newChild = element.getChild(j).copy();
-//                element.appendChild(newChild);
-//            }
-//        }
-//    }
 
     /** expands countExpression into an integer.
      * if simple integer *(5) return that
@@ -156,7 +112,7 @@ public class CountExpressionAttribute extends StringSTAttribute {
     private int[] parseCount(String countEx) {
         if (!countEx.startsWith(S_LBRAK) ||
                 !countEx.endsWith(S_RBRAK)) {
-                throw new RuntimeException("Bad range: requires (...): "+countEx);
+                throw new RuntimeException("Bad range: requires (d,d): "+countEx);
         }
         countEx = countEx.substring(1, countEx.length()-1).trim();
         String[] countStrings = countEx.split(S_COMMA);
