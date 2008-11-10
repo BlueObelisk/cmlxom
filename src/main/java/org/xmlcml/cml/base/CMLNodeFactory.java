@@ -67,12 +67,13 @@ public class CMLNodeFactory extends NodeFactory implements CMLConstants {
         Element parent = stack.pop();
         if (current instanceof CMLElement) {
         	// trap exceptions, mainly due to semantics
-        	try {
+        	// still trying to work this out
+//        	try {
         		((CMLElement) current).finishMakingElement(parent);
-        	} catch (RuntimeException e) {
-        		LOG.warn("element throws semantic validation problem. " +
-        				"Should be relocated to different places "+e.getMessage());
-        	}
+//        	} catch (RuntimeException e) {
+//        		LOG.warn("element throws semantic validation problem. " +
+//        				"Should be relocated to different places "+e.getMessage());
+//        	}
         }
         current = parent;
         Nodes nodes = new Nodes();
