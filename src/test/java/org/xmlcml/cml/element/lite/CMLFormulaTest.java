@@ -6,10 +6,10 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-import static org.xmlcml.cml.base.TstBase.assertEqualsCanonically;
-import static org.xmlcml.cml.base.TstBase.parseValidString;
 import static org.xmlcml.cml.base.CMLConstants.CML_NS;
 import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
+import static org.xmlcml.cml.base.TstBase.assertEqualsCanonically;
+import static org.xmlcml.cml.base.TstBase.parseValidString;
 import static org.xmlcml.euclid.EuclidConstants.EPS;
 import static org.xmlcml.euclid.EuclidConstants.S_EMPTY;
 import static org.xmlcml.euclid.EuclidConstants.S_QUOT;
@@ -27,6 +27,7 @@ import nu.xom.Node;
 import nu.xom.ParsingException;
 
 import org.apache.log4j.Logger;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLAttribute;
@@ -1341,5 +1342,24 @@ public class CMLFormulaTest {
 				+ CML_XMLNS + " concise='C 1.001 H 3.99 O 2 Br 1 -2'/>");
 		assertTrue("equals", form1.equals(form1));
 		assertFalse("equals", form1.equals(form2));
+	}
+
+	/**
+	 * checks that finishMakingElement does not throw exception
+	 */
+	@Test
+	public void testReadFormula() {
+		String s = ""+
+		"<?xml version='1.0' encoding='ISO-8859-1'?>"+
+		"<cml:molecule convention='PoLyInfo' id='M2333382' xmlns:cml='http://www.xml-cml.org/schema'>"+
+		"    <cml:formula inline='C34H34N2O2'/>"+
+		"    <cml:formula inline='C1(C2)C(c4ccc(Oc6ccc(N)cc6)cc4)(c5ccc(Oc7ccc(N)cc7)cc5)C(C3)CC2CC3C1' convention='SMILES'/>"+
+		"</cml:molecule>";
+		try {
+			new CMLBuilder().build(new StringReader(s));
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail("Should not fail parse"+e.getMessage());
+		}
 	}
 }
