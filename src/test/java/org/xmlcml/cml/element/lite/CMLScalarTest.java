@@ -143,6 +143,8 @@ public class CMLScalarTest {
 			Assert.assertTrue(true);
 		} catch (IOException e) {
 			Assert.fail("should not throw IO");
+		} catch (RuntimeException e) {
+			// this catches the bad values
 		}
 		try {
 			builder.build(new StringReader(xmlBad2));
@@ -154,6 +156,8 @@ public class CMLScalarTest {
 					"bad integer content: 2.1", e.getMessage());
 		} catch (IOException e) {
 			Assert.fail("should not throw IO");
+		} catch (RuntimeException e) {
+			// this catches the bad values
 		}
 
 	}
