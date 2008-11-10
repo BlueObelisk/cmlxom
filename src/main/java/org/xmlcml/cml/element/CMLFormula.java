@@ -50,6 +50,8 @@ import org.xmlcml.molutil.ChemicalElement.AS;
  */
 public class CMLFormula extends AbstractFormula {
 
+	private static Logger LOG = Logger.getLogger(CMLFormula.class);
+	
 	public final static String SMILES = "SMILES";
 	public final static String SMILES1 = "cml:smiles";
 	
@@ -359,7 +361,11 @@ public class CMLFormula extends AbstractFormula {
 	 */
 	public void finishMakingElement(Element parent) {
 		super.finishMakingElement(parent);
-		normalize();
+		try {
+			normalize();
+		} catch (RuntimeException e) {
+			LOG.info("skipped normalize() in finishMakingElement: "+e.getMessage());
+		}
 	}
 
 	// FIXME move to tools	
@@ -464,7 +470,8 @@ public class CMLFormula extends AbstractFormula {
 		// concise from inline
 		String inline2Concise = null;
     	if (inline != null) {
-    		if (SMILES.equals(convention) || SMILES1.equals(convention)) {
+    		if (SMILES.equals(convention) ||
+    			SMILES1.equals(convention)) {
     			throw new RuntimeException("Move to SMILESTool");
 //    			inline2Concise = getConciseFromSMILES(inline);
     		} else {
