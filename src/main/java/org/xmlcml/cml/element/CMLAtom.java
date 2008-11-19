@@ -24,16 +24,16 @@ import org.xmlcml.molutil.ChemicalElement.Type;
 /**
  * Class representing the CML atom element
  *
- * @author Peter Murry-Rust, Ramin Ghorashi (2005)
+ * @author Peter Murray-Rust, Ramin Ghorashi (2005)
  *
  */
 public class CMLAtom extends AbstractAtom {
 
-    final static Logger logger = Logger.getLogger(CMLAtom.class);
+    final static Logger LOG = Logger.getLogger(CMLAtom.class);
 	/** namespaced element name.*/
 	public final static String NS = C_E+TAG;
     static {
-        logger.setLevel(Level.WARN);
+        LOG.setLevel(Level.WARN);
     };
 
     List<CMLAtom> ligandAtoms = null;
@@ -145,7 +145,11 @@ public class CMLAtom extends AbstractAtom {
      *            element
      */
     public void finishMakingElement(Element parent) {
-        check();
+    	try {
+    		check();
+    	} catch (RuntimeException e) {
+    		LOG.warn(e.getMessage());
+    	}
     }
 
     /**

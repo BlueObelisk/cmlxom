@@ -83,6 +83,33 @@ public abstract class CMLUtil implements CMLConstants {
 	}
 
 	/**
+	 * convenience method to extract value of exactly one node.
+	 * uses element.query(xpath, xPathContext);
+	 * @param element
+	 * @param xpath 
+	 * @param xPathContext defines prefix/namespace used in query
+	 * @return value if exactly 1 node (0 or many returns null)
+	 */
+	public static String getSingleValue(Element element, String xpath, XPathContext xPathContext) {
+		Nodes nodes = element.query(xpath, xPathContext);
+		return (nodes.size() == 1) ? nodes.get(0).getValue() : null;
+	}
+	
+	/**
+	 * convenience method to get exactly one element.
+	 * uses element.query(xpath, xPathContext);
+	 * @param element
+	 * @param xpath 
+	 * @param xPathContext defines prefix/namespace used in query
+	 * @return value if exactly 1 element (0 or many returns null)
+	 */
+	public static Element getSingleElement(Element element, String xpath, XPathContext xPathContext) {
+		Nodes nodes = element.query(xpath, xPathContext);
+		return (nodes.size() == 1) ? (Element) nodes.get(0) : null;
+	}
+	
+	
+	/**
 	 * convenience routine to get query CMLelements (iterating thorugh get(i) is
 	 * fragile if nodes are removed)
 	 * if query result is not a CMLElement it is omitted form list, so be careful

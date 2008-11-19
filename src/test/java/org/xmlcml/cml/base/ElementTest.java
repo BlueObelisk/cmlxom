@@ -58,31 +58,31 @@ public class ElementTest {
 		Assert.assertNotNull("document ", doc);
 	}
 
-	/**
-	 * test using xerces on XOM.
-	 * 
-	 * @exception Exception
-	 */
-	@Test
-	public void testParseXomXercesValidate() throws Exception {
-		xomXercesValidate(cml0);
-		// xomXercesValidate(noSchema);
-	}
+//	/**
+//	 * test using xerces on XOM.
+//	 * 
+//	 * @exception Exception
+//	 */
+//	@Test
+//	public void testParseXomXercesValidate() throws Exception {
+//		xomXercesValidate(cml0);
+//		// xomXercesValidate(noSchema);
+//	}
 
-	private void xomXercesValidate(String file) throws SAXException,
-			IOException, ValidityException, ParsingException {
-		Util.output("  === xom+Xerces validation: " + file + " ====");
-		Document doc = null;
-		InputStream in = null;
-		XMLReader xerces = XMLReaderFactory
-				.createXMLReader("org.apache.xerces.parsers.SAXParser");
-		xerces.setFeature("http://apache.org/xml/features/validation/schema",
-				true);
-		Builder builder = new Builder(xerces, /* true */false);
-		in = Util.getInputStreamFromResource(BASE_RESOURCE + U_S + file);
-		doc = builder.build(in);
-		Assert.assertNotNull("document ", doc);
-	}
+//	private void xomXercesValidate(String file) throws SAXException,
+//			IOException, ValidityException, ParsingException {
+//		Util.output("  === xom+Xerces validation: " + file + " ====");
+//		Document doc = null;
+//		InputStream in = null;
+//		XMLReader xerces = XMLReaderFactory
+//				.createXMLReader("org.apache.xerces.parsers.SAXParser");
+//		xerces.setFeature("http://apache.org/xml/features/validation/schema",
+//				true);
+//		Builder builder = new Builder(xerces, /* true */false);
+//		in = Util.getInputStreamFromResource(BASE_RESOURCE + U_S + file);
+//		doc = builder.build(in);
+//		Assert.assertNotNull("document ", doc);
+//	}
 
 	/*
 	 * -- A sample DOM counter. This sample program illustrates how to traverse
@@ -135,8 +135,7 @@ public class ElementTest {
 		InputStream in = null;
 		Document doc = null;
 		try {
-			in = Util
-					.getInputStreamFromResource(BASE_RESOURCE + U_S + noSchema);
+			in = Util.getInputStreamFromResource(BASE_RESOURCE + U_S + noSchema);
 			doc = new Builder().build(in);
 			Assert.assertNotNull("document", doc);
 		} catch (ValidityException e) {

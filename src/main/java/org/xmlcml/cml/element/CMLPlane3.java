@@ -24,7 +24,7 @@ public class CMLPlane3 extends AbstractPlane3 {
 	/** namespaced element name.*/
 	public final static String NS = C_E+TAG;
 
-    final static Logger logger = Logger.getLogger(CMLPlane3.class.getName());
+    private final static Logger LOG = Logger.getLogger(CMLPlane3.class.getName());
 
     /**
      * default. do not use.
@@ -76,9 +76,9 @@ public class CMLPlane3 extends AbstractPlane3 {
     public void finishMakingElement(Element parent) throws RuntimeException {
         double[] array = this.getXMLContent();
         if (array == null) {
-            throw new RuntimeException("plane must not be empty");
+            LOG.warn("plane must not be empty");
         } else if (array.length != 4) {
-            throw new RuntimeException("plane must have 4 double components");
+        	LOG.warn("plane must have 4 double components");
         }
     }
 
