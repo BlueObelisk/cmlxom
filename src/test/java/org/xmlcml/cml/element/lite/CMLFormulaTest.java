@@ -1349,7 +1349,6 @@ public class CMLFormulaTest {
 	 */
 	@Test
 	public void testReadFormula() {
-		System.out.println("===============");
 		String s = ""+
 		"<?xml version='1.0' encoding='ISO-8859-1'?>"+
 		"<cml:molecule convention='PoLyInfo' id='M2333382' xmlns:cml='http://www.xml-cml.org/schema'>"+

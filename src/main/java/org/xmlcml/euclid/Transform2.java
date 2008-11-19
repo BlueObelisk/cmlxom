@@ -341,6 +341,30 @@ public class Transform2 extends RealSquareMatrix {
     	Transform2 t1 = new Transform2(new Vector2(point.multiplyBy(-1.0)));
     	return t3.concatenate(t2).concatenate(t1);
     }
+
+    /**
+     * apply scales to each axis
+     * @param scaleX
+     * @param scaleY
+     * @return transform
+     */
+    public static Transform2 applyScales(double scaleX, double scaleY) {
+    	return new Transform2(
+    		new double[] {
+				scaleX, 0.0, 0.0,
+				0.0, scaleY, 0.0,
+				0.0, 0.0, 1.0
+		});
+    }
+    
+    /**
+     * apply scale to each axis
+     * @param scale
+     * @return transform
+     */
+    public static Transform2 applyScale(double scale) {
+    	return Transform2.applyScales(scale, scale);
+    }
     
     /**
      * concatenate

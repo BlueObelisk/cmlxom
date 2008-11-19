@@ -344,6 +344,33 @@ public class Transform3 extends RealSquareMatrix {
         flmat[3][3] = 1.0;
         trnsfrm = Type.ROT_ORIG;
     }
+    
+    /**
+     * apply scales to each axis
+     * @param scaleX
+     * @param scaleY
+     * @param scaleZ
+     * @return transform
+     */
+    public static Transform3 applyScales(double scaleX, double scaleY, double scaleZ) {
+    	return new Transform3(
+    		new double[] {
+				scaleX, 0.0, 0.0, 0.0,
+				0.0, scaleY, 0.0, 0.0,
+				0.0, 0.0, scaleZ, 0.0,
+				0.0, 0.0, 0.0, 1.0
+		});
+    }
+    
+    /**
+     * apply scale to each axis
+     * @param scale
+     * @return transform
+     */
+    public static Transform3 applyScale(double scale) {
+    	return Transform3.applyScales(scale, scale, scale);
+    }
+    
     /**
      * From array.
      * 

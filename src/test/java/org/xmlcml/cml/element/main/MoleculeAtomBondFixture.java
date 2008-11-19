@@ -205,20 +205,20 @@ public final class MoleculeAtomBondFixture {
 					"Index atom: duplicate atom: a1", e.getMessage());
 		}
 
-		// missing id
-		xmlMolS = "  <molecule id='m1' " + CML_XMLNS + ">" + "    <atomArray>"
-				+ "      <atom/>" + "    </atomArray>" + "    <bondArray>"
-				+ "      <bond atomRefs2='a1 a2'/>" + "    </bondArray>"
-				+ "  </molecule>" + "  ";
-		try {
-			xmlDocument = new CMLBuilder().build(new StringReader(xmlMolS));
-			Assert.fail("should trap missing atom id");
-		} catch (IOException e) {
-			Assert.fail("Should not throw IOException");
-		} catch (ParsingException e) {
-			Assert.assertEquals("unset id", "Atom id must not be null", e
-					.getMessage());
-		}
+		// missing id - no longer checked here
+//		xmlMolS = "  <molecule id='m1' " + CML_XMLNS + ">" + "    <atomArray>"
+//				+ "      <atom/>" + "    </atomArray>" + "    <bondArray>"
+//				+ "      <bond atomRefs2='a1 a2'/>" + "    </bondArray>"
+//				+ "  </molecule>" + "  ";
+//		try {
+//			xmlDocument = new CMLBuilder().build(new StringReader(xmlMolS));
+//			Assert.fail("should trap missing atom id");
+//		} catch (IOException e) {
+//			Assert.fail("Should not throw IOException");
+//		} catch (ParsingException e) {
+//			Assert.assertEquals("unset id", "Atom id must not be null", e
+//					.getMessage());
+//		}
 	}
 
 	public void makeMol1() {
