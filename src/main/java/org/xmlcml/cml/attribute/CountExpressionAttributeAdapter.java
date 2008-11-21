@@ -1,9 +1,10 @@
 package org.xmlcml.cml.attribute;
 
-import nu.xom.Attribute;
-import nu.xom.Element;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-import org.xmlcml.cml.base.CMLElement;
+import nu.xom.Attribute;
+
 import org.xmlcml.cml.base.StringSTAttribute;
 
 /**
@@ -127,4 +128,28 @@ public class CountExpressionAttributeAdapter extends StringSTAttribute {
         return counts;
     }
 
+    
+    /**
+     * 
+     * @return a two-dimensional array containing the lower and upper values specified (in that order)
+     * or null if there is no range
+     */
+    public int [] getRange() {
+    
+    	String countExpression = getValue();
+    	String regex = "(?<=range\\()\\d+,\\d+(?=\\))";
+    	Pattern pattern = Pattern.compile(regex);
+    	Matcher matcher = pattern.matcher(countExpression);
+    	if (matcher.find()) {
+    		String match = matcher.group();
+    		String [] values = match.split(",");
+    		if (!(values.length == 2)) throw new RuntimeException();
+    		int [] range = new int[2];
+    		range [0] = Integer.parseInt(values[0]);
+    		range [1] = Integer.parseInt(values[1]);
+    		return range;
+    	}
+    	
+    	else return null;
+    }
 }

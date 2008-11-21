@@ -48,4 +48,26 @@ public class CountExpressionAttributeAdapterTest {
 		int ii = ceaa.calculateCountExpression();
 		Assert.assertEquals("calculated value", 5, ii);
 	}
+	
+	
+	@Test
+	public void testGetRange() {
+		String s =
+			"<join countExpression='range(4,8)' xmlns='http://www.xml-cml.org/schema'/>";
+		CMLJoin join = (CMLJoin) TstBase.parseValidString(s);
+		Attribute att = join.getAttribute("countExpression");
+		CountExpressionAttributeAdapter ceaa = new CountExpressionAttributeAdapter(att);
+		int [] range = ceaa.getRange();
+		Assert.assertEquals(2, range.length);
+		Assert.assertEquals(4, range[0]);
+		Assert.assertEquals(8, range[1]);
+		
+		String s2 =
+			"<join countExpression='1' xmlns='http://www.xml-cml.org/schema'/>";
+		CMLJoin join2 = (CMLJoin) TstBase.parseValidString(s2);
+		Attribute att2 = join2.getAttribute("countExpression");
+		CountExpressionAttributeAdapter ceaa2 = new CountExpressionAttributeAdapter(att2);
+		range = ceaa2.getRange();
+		Assert.assertNull(range);
+	}
 }
