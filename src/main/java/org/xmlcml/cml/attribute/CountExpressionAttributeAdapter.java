@@ -89,7 +89,7 @@ public class CountExpressionAttributeAdapter extends StringSTAttribute {
             } else if (countEx.startsWith("range")) {
                 countEx = countEx.substring("range".length());
                 int[] counts = parseCount(countEx);
-                if (counts.length != 2 || counts[0] <= 0 || counts[0] >= counts[1]) {
+                if (counts.length != 2 || counts[0] < 0 || counts[0] >= counts[1]) {
                     throw new RuntimeException("Bad range: "+countEx);
                 }
                 double mid2 = (counts[1] + counts[0])/2.;
