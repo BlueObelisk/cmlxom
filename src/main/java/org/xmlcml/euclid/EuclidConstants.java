@@ -14,6 +14,9 @@ import java.io.File;
  */
 public interface EuclidConstants {
 
+	char C_DEL = (char) 127;
+	char C_BACKSPACE = (char) 8;
+	
     /** constant */
     char C_COLON = ':';
 
