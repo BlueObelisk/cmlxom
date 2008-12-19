@@ -364,7 +364,7 @@ public class CMLFormula extends AbstractFormula {
 		try {
 			normalize();
 		} catch (RuntimeException e) {
-			LOG.info("skipped normalize() in finishMakingElement: "+e.getMessage());
+			LOG.trace("skipped normalize() in finishMakingElement: "+e.getMessage());
 		}
 	}
 
