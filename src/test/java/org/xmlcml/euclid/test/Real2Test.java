@@ -302,6 +302,30 @@ public class Real2Test {
 				.sin(Math.PI / 3));
 		Angle a = Real2.getAngle(p1, p2, p3);
 		Assert.assertEquals("angle", 2. * Math.PI / 3, a.getAngle(), EPS);
+		
+		p1 = new Real2(0., 1.);
+		p3 = new Real2(1., 0.);
+		p2 = new Real2(0., 0.);
+		a = Real2.getAngle(p1, p2, p3);
+		Assert.assertEquals("angle", - Math.PI / 2., a.getAngle(), EPS);
+		
+		p1 = new Real2(0., 1.);
+		p3 = new Real2(1., 1.);
+		p2 = new Real2(0., 0.);
+		a = Real2.getAngle(p1, p2, p3);
+		Assert.assertEquals("angle", - Math.PI / 4., a.getAngle(), EPS);
+		
+		p1 = new Real2(0., 1.);
+		p3 = new Real2(Math.sqrt(3.)/2., 0.5);
+		p2 = new Real2(0., 0.);
+		a = Real2.getAngle(p1, p2, p3);
+		Assert.assertEquals("angle", - Math.PI / 3., a.getAngle(), EPS);
+		
+		p1 = new Real2(0., 1.);
+		p3 = new Real2(0.5, Math.sqrt(3.)/2.);
+		p2 = new Real2(0., 0.);
+		a = Real2.getAngle(p1, p2, p3);
+		Assert.assertEquals("angle", - Math.PI / 6., a.getAngle(), EPS);
 	}
 
 	/**

@@ -108,6 +108,32 @@ public class Real2Array implements EuclidConstants {
     }
     
     /**
+     * make an Real2_Array from pairs of numbers separated by delimiter
+     * 
+     * @param s
+     * @param delimiter
+     * @exception EuclidRuntimeException
+     *                x and x must have number of elements
+     */
+    public static Real2Array createFromPairs(RealArray ra) {
+    	if (ra == null) {
+    		throw new RuntimeException("Null RealArray");
+    	}
+    	if (ra.size() % 2 != 0) {
+    		throw new RuntimeException("Must have even number of points");
+    	}
+    	Real2Array real2Array = new Real2Array();
+    	real2Array.xarr = new RealArray();
+    	real2Array.yarr = new RealArray();
+    	for (int i = 0; i < ra.size(); ) {
+    		real2Array.xarr.addElement(ra.elementAt(i++));
+    		real2Array.yarr.addElement(ra.elementAt(i++));
+    		real2Array.nelem++;
+    	}
+    	return real2Array;
+    }
+    
+    /**
      * extract X array.
      * 
      * @return array

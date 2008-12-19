@@ -9,6 +9,7 @@ import nu.xom.Element;
 import nu.xom.Node;
 import nu.xom.ParentNode;
 
+import org.apache.log4j.Logger;
 import org.xmlcml.cml.base.CMLElements;
 
 /**
@@ -20,7 +21,7 @@ import org.xmlcml.cml.base.CMLElements;
  *
  */
 public class CMLBondArray extends AbstractBondArray {
-
+	private static Logger LOG = Logger.getLogger(CMLBondArray.class);
     /** namespaced element name.*/
     public final static String NS = C_E+TAG;
 
@@ -199,8 +200,12 @@ public class CMLBondArray extends AbstractBondArray {
         bondMap.clear();
         bondIdMap.clear();
         for (CMLBond bond : bonds) {
-            indexBondAndLigands(bond);
-            indexBondId(bond);
+//        	try {
+        		indexBondAndLigands(bond);
+        		indexBondId(bond);
+//        	} catch (RuntimeException e) {
+//        		LOG.warn("SKIPPED BOND (maybe coincident)");
+//        	}
         }
     }
 
