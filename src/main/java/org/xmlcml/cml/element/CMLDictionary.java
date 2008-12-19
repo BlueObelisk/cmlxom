@@ -27,7 +27,7 @@ public class CMLDictionary extends AbstractDictionary {
 	public final static String NS = C_E+TAG;
 
 	final static Logger logger = Logger
-			.getLogger(CMLDictionary.class.getName());
+			.getLogger(CMLDictionary.class);
 
 	protected Map<String, CMLEntry> entryMap = null;
 

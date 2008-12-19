@@ -27,7 +27,7 @@ import org.apache.log4j.Logger;
  * @author (C) P. Murray-Rust, 1996
  */
 public class RealArray extends ArrayBase {
-    final static Logger logger = Logger.getLogger(RealArray.class.getName());
+    final static Logger LOG = Logger.getLogger(RealArray.class);
     /** filter */
     public enum Filter {
         /** */
@@ -87,8 +87,11 @@ public class RealArray extends ArrayBase {
     }
     // expands buffer if necessary and copies array into it
     private void makeSpace(int newCount) {
-        if (newCount > bufsize) {
-            while (newCount > bufsize) {
+    	if (bufsize < 5) {
+    		bufsize = 5;
+    	}
+        if (newCount >= bufsize || array.length < newCount) {
+            while (newCount >= bufsize) {
                 bufsize *= 2;
             }
             double[] array1 = new double[bufsize];
@@ -1220,7 +1223,9 @@ public class RealArray extends ArrayBase {
      *            elements to append
      */
     public void addArray(RealArray f) {
+        LOG.trace("COPY0 "+array.length+"//"+nelem+"/"+f.nelem+"/"+array.length);
         makeSpace(nelem + f.nelem);
+        LOG.trace("COPY1 "+array.length+"//"+nelem+"/"+f.nelem+"/"+array.length);
         System.arraycopy(f.array, 0, array, nelem, f.nelem);
         nelem += f.nelem;
     }

@@ -1,5 +1,7 @@
 package org.xmlcml.euclid;
 import java.util.List;
+
+import org.apache.log4j.Logger;
 /**
  * A pair of FPt numbers with no other assumptions
  * 
@@ -10,6 +12,7 @@ import java.util.List;
  * @author (C) P. Murray-Rust, 1996
  */
 public class Real2 implements EuclidConstants {
+	private static Logger LOG = Logger.getLogger(Real2.class);
     /** the first floating point value */
     public double x;
     /** the second floating point value */
@@ -125,12 +128,23 @@ public class Real2 implements EuclidConstants {
     /**
      * equality.
      * 
-     * @param r
-     *            to test
+     * @param r to test
      * @return equals
+     * @deprecated
      */
     public boolean isEqualTo(Real2 r) {
         return (Real.isEqual(x, r.x) && Real.isEqual(y, r.y));
+    }
+    
+    /**
+     * equality.
+     * 
+     * @param r to test
+     * @param eps tolerance
+     * @return equals
+     */
+    public boolean isEqualTo(Real2 r, double eps) {
+        return (Real.isEqual(x, r.x, eps) && Real.isEqual(y, r.y, eps));
     }
     
     /**
@@ -319,7 +333,15 @@ public class Real2 implements EuclidConstants {
         double y3 = p3.y - p2.y;
         double angle1 = Math.atan2(x1, y1);
         double angle3 = Math.atan2(x3, y3);
-        return new Angle(angle1 - angle3);
+        double angle13 = angle1 - angle3;
+        Angle angle123 = new Angle(angle13, Angle.Units.RADIANS);
+        double d12 = p1.getDistance(p2);
+        double d13 = p1.getDistance(p3);
+        double d23 = p2.getDistance(p3);
+        double cost = (-d13*d13 + d12*d12 + d23*d23)/(2*d12*d23);
+        double anglex = Math.acos(cost);
+        LOG.trace("AAA "+anglex+"/"+angle13+"//"+p1+"/"+p2+"/"+p3);
+        return angle123;
     }
     /**
      * transforms the point by a rot-trans matrix MODIFIES 'this' Note the next
