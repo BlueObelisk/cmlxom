@@ -19,6 +19,7 @@ import org.xmlcml.euclid.Util;
  * methods
  */
 public class CMLMap extends org.xmlcml.cml.element.AbstractMap {
+	@SuppressWarnings("unused")
 	private static Logger LOG = Logger.getLogger(CMLMap.class);
 
 

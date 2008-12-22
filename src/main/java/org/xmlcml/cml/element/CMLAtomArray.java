@@ -24,6 +24,7 @@ import org.xmlcml.euclid.Util;
  *
  */
 public class CMLAtomArray extends AbstractAtomArray {
+	private static Logger LOG = Logger.getLogger(CMLAtomArray.class);
 
     final static Logger logger = Logger.getLogger(CMLAtomArray.class);
 	/** namespaced element name.*/
@@ -357,9 +358,9 @@ public class CMLAtomArray extends AbstractAtomArray {
     void debugLigands() {
         List<CMLAtom> atomList = this.getAtoms();
         for (CMLAtom atom : atomList) {
-            System.out.println("ATOM: "+atom.getString());
+            Util.println("ATOM: "+atom.getString());
             for (CMLAtom ligand : atom.getLigandAtoms()) {
-                System.out.println("  LIG: "+ligand.getString());
+                Util.println("  LIG: "+ligand.getString());
             }
         }
     }
@@ -414,7 +415,7 @@ public class CMLAtomArray extends AbstractAtomArray {
         for (CMLAtom atom : atoms) {
 //        	atom.debug("ATOM IN MOLECULE");
             String id = atom.getId();
-//            System.out.println("ATOMID: "+id);
+//            LOG.debug("ATOMID: "+id);
             if (atomMap.containsKey(id)) {
 //            	this.debug("DUPLICATE INDEX ATOMS");
                 throw new RuntimeException("Index atom: duplicate atom: "+id);
@@ -507,7 +508,7 @@ public class CMLAtomArray extends AbstractAtomArray {
             throw new RuntimeException("null elementType");
         }
         List<CMLAtom> atomList = this.getAtoms(value.length, "elementType");
-        System.out.println("ATOM "+this.getAtoms().size());
+        LOG.debug("ATOM "+this.getAtoms().size());
         int i = 0;
         for (CMLAtom atom : atomList) {
             atom.setElementType(value[i++]);

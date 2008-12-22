@@ -1128,17 +1128,17 @@ public class Point3Vector implements EuclidConstants {
 //        RealArray eigval = new RealArray(4);
 //        EuclidRuntimeException illCond = null;
 //        pv2.inertialAxes(eigval, eigvec, illCond);
-//        System.out.println("EIG "+eigval+"/"+eigvec);
+//        LOG.debug("EIG "+eigval+"/"+eigvec);
 //        if (illCond != null) {
 //            throw illCond;
 //        }
 //        Transform3 axes = new Transform3(eigvec);
-//        System.out.println("AX "+axes);
+//        LOG.debug("AX "+axes);
 //        axes.transpose();
 //        Point3Vector pv22 = new Point3Vector(pv2);
-//        System.out.println("PVV "+pv22);
+//        LOG.debug("PVV "+pv22);
 //        pv22.transform(axes);
-//        System.out.println("PVVZZ "+pv22);
+//        LOG.debug("PVVZZ "+pv22);
 //	}
     /**
      * fit two coordinates of same length and alignment
@@ -1201,7 +1201,7 @@ public class Point3Vector implements EuclidConstants {
              * break out if converged
              */
             if (maxshift < converge) {
-//            	System.out.println("CONVERGED");
+//            	LOG.debug("CONVERGED");
                 break;
             } else if (maxshift < 0.1) {
                 // not yet used
@@ -1210,7 +1210,7 @@ public class Point3Vector implements EuclidConstants {
                 // not yet used
                 damp = 1.0;
             }
-//        	System.out.println("CYCLE");
+//        	LOG.debug("CYCLE");
             /**
              * make transformation matrix by rotations about 3 axes
              */

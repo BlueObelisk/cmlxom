@@ -44,7 +44,7 @@ public class CMLNodeFactory extends NodeFactory implements CMLConstants {
     }
     
     void init() {
-//    	System.out.println("NODE FACTORY INIT");
+//    	LOG.debug("NODE FACTORY INIT");
     }
 
     public static Class<?> makeClass(String base, String name) {

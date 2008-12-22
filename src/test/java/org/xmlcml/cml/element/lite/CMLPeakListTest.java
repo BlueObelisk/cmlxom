@@ -136,6 +136,7 @@ public class CMLPeakListTest {
 
 		toluenePeakList = (CMLPeakList) parseValidString(toluenePeakListS);
 
+		@SuppressWarnings("unused")
 		String tolueneMapS = "<map xmlns='http://www.xml-cml.org/schema'>"
 				+ "  <link from='a1' to='pc1'/>"
 				+ "  <link from='a2' to='pc2'/>"

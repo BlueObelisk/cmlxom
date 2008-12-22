@@ -13,6 +13,7 @@ import nu.xom.Node;
 
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.euclid.Point3;
+import org.xmlcml.euclid.Util;
 import org.xmlcml.euclid.Vector3;
 
 /**
@@ -251,7 +252,7 @@ public class CMLZMatrix extends AbstractZMatrix {
         for (CMLLength length : lengthList) {
             lengthByAtomHashMap.put(length.atomHash(), length);
         }
-//        System.out.println("LBYATOM "+lengthByAtomHashMap.size());
+//        LOG.debug("LBYATOM "+lengthByAtomHashMap.size());
         angleByAtomHashMap = new HashMap<String, CMLAngle>();
         for (CMLAngle angle : angleList) {
             angleByAtomHashMap.put(angle.atomHash(), angle);
@@ -272,7 +273,7 @@ public class CMLZMatrix extends AbstractZMatrix {
                 if (sprout == null) {
                     if (torsionList.size() != 0) {
 //                        for (CMLTorsion torsion : torsionList) {
-//                            System.out.println("UNUSED TOR: "+torsion.getString());
+//                            LOG.debug("UNUSED TOR: "+torsion.getString());
 //                        }
 //                        debugSprout();
                         throw new RuntimeException("UNUSED TORSIONs");
@@ -287,7 +288,7 @@ public class CMLZMatrix extends AbstractZMatrix {
 
     // a full torsion is one with 2 angles and 3 lengths
     private void addFirstFullTorsion() {
-//        System.out.println("=============FIRST FULL TORSION");
+//        LOG.debug("=============FIRST FULL TORSION");
         CMLTorsion torsion = null;
         for (CMLTorsion t : torsionList) {
             FullTorsion ft = getFullTorsion(t);
@@ -335,19 +336,19 @@ public class CMLZMatrix extends AbstractZMatrix {
         CMLTorsion t1 = getNewTorsion(tor);
         String atomRef = t1.getAtomRefs4()[3];
         if (!finalAtomSet.contains(atomRef)) {
-//            System.out.println("............. added "+atomRef);
+//            LOG.debug("............. added "+atomRef);
             addAtom(atomRef);
         } else {
             throw new RuntimeException("Atom already in atomSet: "+atomRef);
 //            System.err.println("Added atom already in atomSet");
         }
         appendChild(t1);
-//        System.out.println("added torsion "+tor.getString());
+//        LOG.debug("added torsion "+tor.getString());
         torsionList.remove(tor);
         deadTorsionList.add(tor);
         List<String> removedAtomIds = removeTorsion(torsionByAtomMap, tor);
         for (String atomId : removedAtomIds) {
-//            System.out.println(".............removedAtom: "+atomId);
+//            LOG.debug(".............removedAtom: "+atomId);
             deadAtomSet.add(atomId);
             currentAtomSet.remove(atomId);
         }
@@ -356,45 +357,45 @@ public class CMLZMatrix extends AbstractZMatrix {
     }
 
     void debugPrint() {
-        System.out.println("------DEAD ATOMS------");
+        Util.println("------DEAD ATOMS------");
         for (String dead : deadAtomSet) {
-            System.out.println(dead);
+            Util.println(dead);
         }
-        System.out.println("------DEAD LENGTH------");
+        Util.println("------DEAD LENGTH------");
         for (CMLLength dead : deadLengthList) {
-            System.out.println(dead.getString());
+            Util.println(dead.getString());
         }
-        System.out.println("------DEAD ANGLE------");
+        Util.println("------DEAD ANGLE------");
         for (CMLAngle dead : deadAngleList) {
-            System.out.println(dead.getString());
+            Util.println(dead.getString());
         }
-        System.out.println("------DEAD TORSION------");
+        Util.println("------DEAD TORSION------");
         for (CMLTorsion dead : deadTorsionList) {
-            System.out.println(dead.getString());
+            Util.println(dead.getString());
         }
-        System.out.println("-------CURRENT ATOMS---------");
+        Util.println("-------CURRENT ATOMS---------");
         for (String current : currentAtomSet) {
-            System.out.println(current);
+            Util.println(current);
         }
-        System.out.println("-------FINAL ATOM SET---------");
+        Util.println("-------FINAL ATOM SET---------");
         for (String finalx : finalAtomSet) {
-            System.out.println(finalx);
+            Util.println(finalx);
         }
-        System.out.println("-------LENGTH LIST---------");
+        Util.println("-------LENGTH LIST---------");
         for (CMLLength l : lengthList) {
-            System.out.println(l.getString());
+            Util.println(l.getString());
         }
-        System.out.println("--------ANGLE LIST--------");
+        Util.println("--------ANGLE LIST--------");
         for (CMLAngle a : angleList) {
-            System.out.println(""+a.getString());
+            Util.println(""+a.getString());
         }
-        System.out.println("-------TORSION LIST---------");
+        Util.println("-------TORSION LIST---------");
         for (CMLTorsion t : torsionList) {
-            System.out.println(t.getString());
+            Util.println(t.getString());
         }
-        System.out.println("-------CURRENT TORSION SET---------");
+        Util.println("-------CURRENT TORSION SET---------");
 //        for (CMLTorsion t : currentTorsionSet) {
-//            System.out.println(t.getString());
+//            Util.sysout(t.getString());
 //        }
     }
 
@@ -410,11 +411,11 @@ public class CMLZMatrix extends AbstractZMatrix {
     }
 
     void addSprout(Sprout sprout) {
-//        System.out.println(".........SPROUT "+sprout);
+//        LOG.debug(".........SPROUT "+sprout);
         addToMolecule(sprout.length);
         addToMolecule(sprout.angle);
         addToMolecule(sprout.torsion);
-//        System.out.println("............TOR............."+sprout.torsion.getString());
+//        LOG.debug("............TOR............."+sprout.torsion.getString());
         finalAtomSet.add(sprout.atom);
     }
 
@@ -459,28 +460,28 @@ public class CMLZMatrix extends AbstractZMatrix {
 
     Sprout getNextSprout() {
         Sprout sprout = null;
-//        System.out.println("SIZE "+currentTorsionSet.size());
+//        LOG.debug("SIZE "+currentTorsionSet.size());
         for (CMLTorsion t : currentTorsionSet) {
-//            System.out.println("............TORS "+t.getString());
+//            LOG.debug("............TORS "+t.getString());
             List<String> freeAtomList = getFreeAtomList(t);
             if (freeAtomList.size()== 1) {
                 String atom = freeAtomList.get(0);
-//                System.out.println("ATOM "+atom);
+//                LOG.debug("ATOM "+atom);
                 if (!deadAtomSet.contains(atom)) {
-//                    System.out.println("+++++++ATOM "+atom);
+//                    LOG.debug("+++++++ATOM "+atom);
                     sprout = getSprout(t, atom);
                     if (sprout != null) {
-//                        System.out.println("?????ATOM "+atom);
+//                        LOG.debug("?????ATOM "+atom);
                         break;
                     }
                 }
             } else if (freeAtomList.size() > 1) {
 //                for (String freeAtom  : freeAtomList) {
-//                    System.out.println("FREE ATOM "+t.getString()+"..."+freeAtom);
+//                    LOG.debug("FREE ATOM "+t.getString()+"..."+freeAtom);
 //                }
-//                System.out.println("...................");
+//                LOG.debug("...................");
             } else {
-//                System.out.println("NO FREE ATOM "+t.getString());
+//                LOG.debug("NO FREE ATOM "+t.getString());
             }
         }
         return sprout;
@@ -491,18 +492,18 @@ public class CMLZMatrix extends AbstractZMatrix {
         CMLLength length = null;
         CMLAngle angle = null;
         if (atom.equals(atomRefs4[0])) {
-//            System.out.println("00000000000000000");
+//            LOG.debug("00000000000000000");
             length = lengthByAtomHashMap.get(
                     CMLBond.atomHash(atomRefs4[0], atomRefs4[1]));
             angle = angleByAtomHashMap.get(
                     CMLAngle.atomHash(atomRefs4[0], atomRefs4[1], atomRefs4[2]));
         } else if (atom.equals(atomRefs4[3])) {
-//            System.out.println("3... "+Util.concatenate(atomRefs4, S_SPACE+S_MINUS+S_SPACE));
+//            LOG.debug("3... "+Util.concatenate(atomRefs4, S_SPACE+S_MINUS+S_SPACE));
             length = lengthByAtomHashMap.get(
                     CMLBond.atomHash(atomRefs4[2], atomRefs4[3]));
             if (length == null) {
 //                for (String key : lengthByAtomHashMap.keySet()) {
-//                    System.out.println("...K..."+key);
+//                    LOG.debug("...K..."+key);
 //                }
             }
             angle = angleByAtomHashMap.get(
@@ -510,7 +511,7 @@ public class CMLZMatrix extends AbstractZMatrix {
         } else {
             throw new RuntimeException("Sprout cannot be in middle of torsion");
         }
-//        System.out.println("L "+length+" -- A "+angle);
+//        LOG.debug("L "+length+" -- A "+angle);
 
         return (length != null && angle != null) ?
             new Sprout(atom, length, angle, t) : null;
@@ -581,7 +582,7 @@ public class CMLZMatrix extends AbstractZMatrix {
             for (CMLTorsion torsion : torsionList) {
                 s += " ("+torsion.getString()+S_RBRAK;
             }
-//            System.out.println(s);
+//            LOG.debug(s);
         }
     }
 

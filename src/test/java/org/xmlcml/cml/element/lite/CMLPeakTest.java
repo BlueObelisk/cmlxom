@@ -1,5 +1,8 @@
 package org.xmlcml.cml.element.lite;
 
+import static org.xmlcml.cml.element.main.AbstractTestBase.SIMPLE_RESOURCE;
+import static org.xmlcml.euclid.EuclidConstants.U_S;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -9,7 +12,6 @@ import nu.xom.ParsingException;
 import nu.xom.ValidityException;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLBuilder;
@@ -19,10 +21,6 @@ import org.xmlcml.cml.element.CMLPeak;
 import org.xmlcml.cml.element.CMLPeakList;
 import org.xmlcml.cml.element.CMLSpectrum;
 import org.xmlcml.euclid.Util;
-import static org.xmlcml.cml.base.CMLConstants.*;
-import static org.xmlcml.cml.base.TstBase.*;
-import static org.xmlcml.euclid.EuclidConstants.*;
-import static org.xmlcml.cml.element.main.AbstractTestBase.*;
 
 /**
  * test CMLPeak

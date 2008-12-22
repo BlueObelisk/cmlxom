@@ -717,7 +717,7 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 		ensureDelimiterAttribute(Action.PRESERVE);
 		delimiterAttribute.checkDelimiter(s);
 		String xmlContent = this.getXMLContent();
-		// System.out.println("["+xmlContent+"]["+s+"]");
+		// LOG.debug("["+xmlContent+"]["+s+"]");
 		String delimitedContent = delimiterAttribute.appendXMLContent(
 				xmlContent, s);
 		this.setXMLContent(delimitedContent);

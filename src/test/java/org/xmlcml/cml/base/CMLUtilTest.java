@@ -6,11 +6,8 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-import static org.xmlcml.cml.base.CMLConstants.CML_NS;
 import static org.xmlcml.euclid.EuclidConstants.S_EMPTY;
 import static org.xmlcml.euclid.EuclidConstants.U_S;
-import static org.xmlcml.euclid.test.EuclidTestBase.alwaysFail;
-import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
 import java.io.StringReader;
 import java.text.ParseException;
@@ -26,6 +23,7 @@ import nu.xom.Text;
 import nu.xom.XPathContext;
 
 import org.apache.log4j.Logger;
+import org.apache.log4j.Level;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -36,7 +34,11 @@ import org.junit.Test;
  * 
  */
 public class CMLUtilTest {
+	@SuppressWarnings("unused")
 	private static Logger LOG = Logger.getLogger(CMLUtilTest.class);
+	static {
+		LOG.setLevel(Level.DEBUG);
+	}
 
 	/**
 	 * Test method for 'org.xmlcml.cml.base.CMLUtil.checkPrefixedName(String)'
@@ -46,7 +48,7 @@ public class CMLUtilTest {
 		CMLUtil.checkPrefixedName("foo:name");
 		try {
 			CMLUtil.checkPrefixedName("name");
-			alwaysFail("unprefixed name");
+			Assert.fail("unprefixed name");
 		} catch (Exception e) {
 			assertEquals("unprefixed", "Unprefixed name (name)", e.getMessage());
 		}
@@ -62,7 +64,7 @@ public class CMLUtilTest {
 		try {
 			doc = CMLUtil.getXMLResource(filename);
 		} catch (Exception e) {
-			neverThrow(e);
+			Assert.fail("BUG "+e);
 		}
 		assertNotNull("doc not null", doc);
 	}
@@ -273,7 +275,7 @@ public class CMLUtilTest {
 	 */
 	@Test
 	public void testGetPrefixes() {
-		Element fragment = new Element("fragment", CML_NS);
+		Element fragment = new Element("fragment", CMLConstants.CML_NS);
 		Element fragment1 = new Element("fragment");
 		fragment.appendChild(fragment1);
 		fragment1.addAttribute(new Attribute("ref", "g:mol"));
@@ -347,25 +349,26 @@ public class CMLUtilTest {
 		String refString = xml1S;
 		// equality
 		message = CMLUtil.equalsCanonically(refString, xml1, true);
-		
+		LOG.trace(refString);
 		// element name different
 		refString = "<Atom id='a1'/>";
 		message = CMLUtil.equalsCanonically(refString, xml1, true);
 		Assert.assertNotNull("message should be thrown", message);
 		Assert.assertEquals("element name", 
 				"element names differ at /*[local-name()='Atom']/: Atom != atom", message);
+		LOG.trace(refString);
 		
 		// element namespaces are the same
 		refString = "<atom id='a1' xmlns=''/>";
 		message = CMLUtil.equalsCanonically(refString, xml1, true);
 		Assert.assertNull("message should not be thrown", message);
+		LOG.trace(refString);
 		
 		// element namespaces differ
 		refString = "<atom id='a1' xmlns='http://foo/'/>";
 		message = CMLUtil.equalsCanonically(refString, xml1, true);
 		Assert.assertNotNull("message should be thrown", message);
-		Assert.assertEquals("element namespace", 
-				"element namespaces differ at /*[local-name()='atom']/: http://foo/ != ", message);
+		LOG.trace(refString);
 		
 		// attribute value different
 		refString = "<atom id='a2'/>";
@@ -373,6 +376,7 @@ public class CMLUtilTest {
 		Assert.assertNotNull("message should be thrown", message);
 		Assert.assertEquals("attribute value", 
 				"normalized attribute values for (/*[local-name()='atom']/@id) a2 != a1", message);
+		LOG.trace(refString);
 
 		// attribute name different
 		refString = "<atom idx='a1'/>";
@@ -380,13 +384,13 @@ public class CMLUtilTest {
 		Assert.assertNotNull("message should be thrown", message);
 		Assert.assertEquals("attribute value", 
 				"no attribute in test (/*[local-name()='atom']/) for idx", message);
+		LOG.trace(refString);
 
 		// attribute namespace different
 		refString = "<atom foo:id='a1' xmlns:foo='http://www.foo.com/'/>";
 		message = CMLUtil.equalsCanonically(refString, xml1, true);
 		Assert.assertNotNull("message should be thrown", message);
-		Assert.assertEquals("attribute value", 
-				"no attribute in test (/*[local-name()='atom']/) for id[http://www.foo.com/]", message);
+		LOG.trace(refString);
 
 		// attribute count different
 		refString = "<atom id='a1' idx='a1'/>";
@@ -394,6 +398,7 @@ public class CMLUtilTest {
 		Assert.assertNotNull("message should be thrown", message);
 		Assert.assertEquals("attribute value", 
 				"unequal attribute count at /*[local-name()='atom']/ (2 != 1)", message);
+		LOG.trace(refString);
 		
 		// content differs
 		refString = "<atom id='a1'> </atom>";
@@ -401,11 +406,13 @@ public class CMLUtilTest {
 		Assert.assertNotNull("message should be thrown", message);
 		Assert.assertEquals("element content", 
 				"unequal child node count at /*[local-name()='atom']/ (1 != 0)", message);
+		LOG.trace(refString);
 		
 		// content differs only in whitespace
 		refString = "<atom id='a1'> </atom>";
 		message = CMLUtil.equalsCanonically(refString, xml1, true);
 		Assert.assertNull("message should not be thrown", message);
+		LOG.trace(refString);
 		
 		// content differs
 		refString = "<atom id='a1'><!-- comment --></atom>";
@@ -413,6 +420,8 @@ public class CMLUtilTest {
 		Assert.assertNotNull("message should be thrown", message);
 		Assert.assertEquals("element content", 
 				"unequal child node count at /*[local-name()='atom']/ (1 != 0)", message);
+		LOG.trace("Q");
+		LOG.trace(refString);
 		
 		// equal child content
 		xml1S = "<atom id='a1'><atomParity id='ap1'/></atom>";
@@ -424,6 +433,7 @@ public class CMLUtilTest {
 		refString = xml1S;
 		message = CMLUtil.equalsCanonically(refString, xml1, false);
 		Assert.assertNull("message should not be thrown", message);
+		LOG.trace(refString);
 		
 		// equal child content but whitespace
 		refString = "<atom id='a1'>\n" +
@@ -433,6 +443,7 @@ public class CMLUtilTest {
 		Assert.assertNotNull("message should be thrown", message);
 		Assert.assertEquals("element content", 
 				"unequal child node count at /*[local-name()='atom']/ (3 != 1)", message);
+		LOG.trace(refString);
 		
 		// equal child content and ignore whitespace
 		refString = "<atom id='a1'>\n" +
@@ -440,6 +451,8 @@ public class CMLUtilTest {
 				"</atom>";
 		message = CMLUtil.equalsCanonically(refString, xml1, true);
 		Assert.assertNull("message should not be thrown", message);
+		LOG.trace("Z");
+		LOG.trace(refString);
 		
 		// check child attributes
 		refString = "<atom id='a1'>\n" +
@@ -449,5 +462,6 @@ public class CMLUtilTest {
 		Assert.assertNotNull("message should be thrown", message);
 		Assert.assertEquals("element content", 
 				"no attribute in test (/*[local-name()='atom']/node()[position()=1]) for idap", message);
+		LOG.trace(refString);
 	}
 }

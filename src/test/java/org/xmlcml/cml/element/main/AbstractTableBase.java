@@ -1,5 +1,10 @@
 package org.xmlcml.cml.element.main;
 
+import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
+import static org.xmlcml.cml.base.TstBase.logger;
+import static org.xmlcml.cml.base.TstBase.parseValidString;
+import static org.xmlcml.euclid.EuclidConstants.S_EMPTY;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -16,10 +21,6 @@ import org.xmlcml.cml.element.CMLTableHeader;
 import org.xmlcml.cml.element.CMLTableRow;
 import org.xmlcml.cml.element.CMLTableRowList;
 import org.xmlcml.euclid.Util;
-import static org.xmlcml.cml.base.CMLConstants.*;
-import static org.xmlcml.cml.base.TstBase.*;
-import static org.xmlcml.euclid.EuclidConstants.*;
-import static org.xmlcml.cml.element.main.AbstractTestBase.*;
 
 /**
  * test CMLTable.

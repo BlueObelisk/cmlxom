@@ -1,5 +1,10 @@
 package org.xmlcml.cml.element.main;
 
+import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
+import static org.xmlcml.euclid.EuclidConstants.EPS;
+import static org.xmlcml.euclid.EuclidConstants.S_RBRAK;
+import static org.xmlcml.euclid.EuclidConstants.S_SPACE;
+
 import java.io.StringReader;
 
 import org.junit.Assert;
@@ -19,10 +24,6 @@ import org.xmlcml.euclid.test.DoubleTestBase;
 import org.xmlcml.euclid.test.Line3Test;
 import org.xmlcml.euclid.test.Point3Test;
 import org.xmlcml.euclid.test.Vector3Test;
-import static org.xmlcml.cml.base.CMLConstants.*;
-import static org.xmlcml.cml.base.TstBase.*;
-import static org.xmlcml.euclid.EuclidConstants.*;
-import static org.xmlcml.cml.element.main.AbstractTestBase.*;
 
 /**
  * tset CMLLine3

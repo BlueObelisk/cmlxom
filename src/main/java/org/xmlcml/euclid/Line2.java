@@ -176,9 +176,9 @@ public class Line2 implements EuclidConstants {
 	 */
 	public double getDistanceFromPoint(Real2 point) {
 		getUnitVector();
-//		System.out.println(unitVector);
+//		LOG.debug(unitVector);
 		Vector2 w = new Vector2(point.subtract(from));
-//		System.out.println(w);
+//		LOG.debug(w);
 		return unitVector.getPerpProduct(w);
 	}
 

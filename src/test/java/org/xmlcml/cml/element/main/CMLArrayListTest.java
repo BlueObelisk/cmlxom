@@ -3,9 +3,9 @@
  */
 package org.xmlcml.cml.element.main;
 
+import static org.xmlcml.cml.base.CMLConstants.XSD_DOUBLE;
 import static org.xmlcml.cml.base.TstBase.assertEqualsCanonically;
 import static org.xmlcml.cml.base.TstBase.parseValidString;
-import static org.xmlcml.cml.base.CMLConstants.XSD_DOUBLE;
 import static org.xmlcml.euclid.EuclidConstants.S_EMPTY;
 
 import java.util.List;
@@ -13,7 +13,6 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 import org.xmlcml.cml.element.CMLArray;
-import org.xmlcml.cml.element.CMLArrayList;
 import org.xmlcml.cml.element.CMLList;
 import org.xmlcml.cml.element.CMLScalar;
 import org.xmlcml.cml.element.CMLTableContent;

@@ -20,11 +20,11 @@ import org.xmlcml.cml.interfacex.HasUnits;
  * 
  */
 public class CMLScalar extends AbstractScalar implements HasUnits, HasScalar {
+	private static Logger LOG = Logger.getLogger(CMLScalar.class);
 
 	/** namespaced element name. */
 	public final static String NS = C_E + TAG;
 
-	final static Logger logger = Logger.getLogger(CMLScalar.class);
 
 	/**
 	 * default constructor. NOTE creates a CMLScalar with dataType = XSD_STRING
@@ -89,7 +89,7 @@ public class CMLScalar extends AbstractScalar implements HasUnits, HasScalar {
 		} else if (dataType.equals(XSD_INTEGER)) {
 			this.getInt();
 		} else if (dataType.equals(XSD_DATE)) {
-			System.out.println("skipped date");
+			LOG.trace("skipped date");
 			// this.getInt();
 		} else {
 			throw new RuntimeException("scalar does not support dataType: "

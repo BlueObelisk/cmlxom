@@ -18,9 +18,6 @@ import nu.xom.ValidityException;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.xml.sax.SAXException;
-import org.xml.sax.XMLReader;
-import org.xml.sax.helpers.XMLReaderFactory;
 import org.xmlcml.euclid.Util;
 
 /**
@@ -50,7 +47,7 @@ public class ElementTest {
 	private void xomNoValidate(String file) throws IOException,
 			ValidityException, ParsingException {
 		Document doc = null;
-		Util.output("  === xom Parse, no validation: " + file + " ====");
+		Util.println("  === xom Parse, no validation: " + file + " ====");
 		InputStream in = null;
 
 		in = Util.getInputStreamFromResource(BASE_RESOURCE + U_S + file);
@@ -130,8 +127,8 @@ public class ElementTest {
 	 */
 	@Test
 	public void testParseXomNoSchema1() {
-		Util.output("  === xom Parse, no schema, no validation: " + noSchema
-				+ " ====");
+		Util.println("  === xom Parse, no schema, no validation: " + noSchema
+		+ " ====");
 		InputStream in = null;
 		Document doc = null;
 		try {

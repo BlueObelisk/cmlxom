@@ -61,7 +61,6 @@ public class CMLTable extends AbstractTable {
      * contructor.
      */
     public CMLTable() {
-//    	System.out.println("TABLEEEEEEEEEEEEEEE");
     }
 
     /**

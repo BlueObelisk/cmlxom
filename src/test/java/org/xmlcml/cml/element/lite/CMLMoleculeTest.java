@@ -1,7 +1,7 @@
 package org.xmlcml.cml.element.lite;
 
-import static org.xmlcml.cml.base.TstBase.parseValidString;
 import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
+import static org.xmlcml.cml.base.TstBase.parseValidString;
 import static org.xmlcml.euclid.EuclidConstants.EPS;
 import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
@@ -15,14 +15,13 @@ import nu.xom.Elements;
 import nu.xom.Node;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.attribute.IdAttribute;
-import org.xmlcml.cml.base.TstBase;
 import org.xmlcml.cml.base.CMLAttribute;
 import org.xmlcml.cml.base.CMLBuilder;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.CMLUtil;
+import org.xmlcml.cml.base.TstBase;
 import org.xmlcml.cml.base.CMLElement.CoordinateType;
 import org.xmlcml.cml.base.CMLElement.FormalChargeControl;
 import org.xmlcml.cml.element.CMLAtom;
