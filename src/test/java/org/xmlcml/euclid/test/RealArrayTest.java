@@ -299,7 +299,7 @@ public class RealArrayTest {
 
 		for (int i = 0; i < 100; i++) {
 			/* double d = mean - halfrange + halfrange */Math.random();
-			// System.out.println(d);
+			// Util.sysout(d);
 		}
 	}
 
@@ -346,8 +346,8 @@ public class RealArrayTest {
 		RealArray cumulativeSum = new RealArray();
 		for (int i = 0; i < 50; i++) {
 			double random = x.getRandomVariate(freq, cumulativeSum);
-			// System.out.println(cumulativeSum);
-			// System.out.println(random);
+			// Util.sysout(cumulativeSum);
+			// Util.sysout(random);
 		}
 	}
 

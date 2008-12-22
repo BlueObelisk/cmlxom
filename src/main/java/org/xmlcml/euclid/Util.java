@@ -290,15 +290,6 @@ public class Util implements EuclidConstants {
 	}
 
 	/**
-	 * simple routes to output.
-	 * 
-	 * @param s
-	 */
-	public static void output(String s) {
-		System.out.println(s);
-	}
-
-	/**
 	 * delete a file If directory==true then file will be recursively deleted
 	 * 
 	 * @param file
@@ -2713,6 +2704,33 @@ public class Util implements EuclidConstants {
 	public static void sortByEmbeddedInteger(List<?> list) {
 		StringIntegerComparator fic = new StringIntegerComparator();
 		Collections.sort(list, fic);
+	}
+	
+	/** outputs to sysout.
+	 * primarily to allow trapping and tracing of sysout calls
+	 * which we try to avoid anyway
+	 * @param s
+	 */
+	public static void print(String s) {
+		System.out.print(s);
+	}
+	
+	/** outputs to sysout.
+	 * primarily to allow trapping and tracing of sysout calls
+	 * which we try to avoid anyway
+	 * @param s
+	 */
+	public static void println(String s) {
+		System.out.println(s);
+	}
+	
+	/** outputs to sysout.
+	 * primarily to allow trapping and tracing of sysout calls
+	 * which we try to avoid anyway
+	 * @param s
+	 */
+	public static void println() {
+		System.out.println();
 	}
 }
 

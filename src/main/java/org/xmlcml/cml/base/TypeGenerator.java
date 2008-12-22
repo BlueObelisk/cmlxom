@@ -11,12 +11,15 @@ import java.util.Map;
 import nu.xom.Element;
 import nu.xom.Node;
 
+import org.apache.log4j.Logger;
+
 
 /**
  * @author pm286
  *
  */
 public class TypeGenerator extends AbstractGenerator {
+	private static Logger LOG = Logger.getLogger(TypeGenerator.class);
 
 	Map<String, CMLType> map;
 	/**
@@ -107,7 +110,7 @@ public class TypeGenerator extends AbstractGenerator {
 					}
 					String baseJavaType = baseType.getJavaType();
 					if (baseJavaType == null) {
-//						System.out.println("base type "+base+" has null javaType");
+//						LOG.debug("base type "+base+" has null javaType");
 						continue;
 					}
 					type.setJavaType(baseJavaType);
@@ -132,14 +135,6 @@ public class TypeGenerator extends AbstractGenerator {
 		return ok;
 	}
 	
-//	private void typePrint() {
-//		System.out.println("types "+map.size());
-//		for (String name : nameList) {
-//			CMLType type = map.get(name);
-//			System.out.println("> "+name+type.listDataType());
-//		}
-//	}
-
 	/**
 	 * @return the map
 	 */
@@ -182,7 +177,7 @@ public class TypeGenerator extends AbstractGenerator {
 					map.put(name, type);
 					nameList.add(name);
 				} catch (Exception e) {
-					System.out.println("Cannot create "+name+"..."+e);
+					LOG.error("Cannot create "+name+"..."+e);
 				}
 			}
 		}

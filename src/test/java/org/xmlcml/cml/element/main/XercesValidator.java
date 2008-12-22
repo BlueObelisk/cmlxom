@@ -28,6 +28,7 @@ import org.w3c.dom.Text;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xmlcml.euclid.EuclidConstants;
+import org.xmlcml.euclid.Util;
 
 /**
  * A sample DOM counter. This sample program illustrates how to traverse a DOM
@@ -405,7 +406,7 @@ public class XercesValidator implements EuclidConstants {
             }
 
             if (1 == 2) {
-                System.out.println(namespaces + S_SLASH + validation + S_SLASH
+                Util.println(namespaces + S_SLASH + validation + S_SLASH
                         + schemaValidation + S_SLASH + schemaFullChecking + S_SLASH
                         + validateAnnotations + S_SLASH + dynamicValidation + S_SLASH
                         + xincludeProcessing + S_SLASH + xincludeFixupBaseURIs

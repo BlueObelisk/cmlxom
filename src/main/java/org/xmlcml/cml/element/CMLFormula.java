@@ -905,11 +905,11 @@ public class CMLFormula extends AbstractFormula {
 	 * (formulaConvention.equals(MULTIPLIED_ELEMENT_COUNT_WHITESPACE)) {
 	 * parseMultipliedElementCountWhitespace(formulaString); } else if
 	 * (formulaConvention.equals(MOIETY)) { parseMoiety(formulaString); } else
-	 * if (formulaConvention.equals(IUPAC)) { System.out.println("IUPAC formula
+	 * if (formulaConvention.equals(IUPAC)) { Util.sysout("IUPAC formula
 	 * convention not yet supported"); } else if
 	 * (formulaConvention.equals(NESTEDBRACKETS) ||
 	 * formulaConvention.equals(STRUCTURAL)) {
-	 * System.out.println("Nested/structural formula convention not yet
+	 * Util.sysout("Nested/structural formula convention not yet
 	 * supported"); } else if (formulaConvention.equals(ANY)) {
 	 * parseAny(formulaString); } else { throw new CMLRuntime("Unknown formula
 	 * convention: "); } }
@@ -931,11 +931,10 @@ public class CMLFormula extends AbstractFormula {
 		} else if (formulaConvention.equals(Type.SUBMOIETY)) {
 			parseSubMoiety(formulaString);
 		} else if (formulaConvention.equals(Type.IUPAC)) {
-			System.out.println("IUPAC formula convention not yet supported");
+			LOG.warn("IUPAC formula convention not yet supported");
 		} else if (formulaConvention.equals(Type.NESTEDBRACKETS)
 				|| formulaConvention.equals(Type.STRUCTURAL)) {
-			System.out
-			.println("Nested/structural formula convention not yet supported");
+			LOG.debug("Nested/structural formula convention not yet supported");
 		} else if (formulaConvention.equals(Type.ANY)) {
 			parseAny(formulaString);
 		} else {
@@ -2237,11 +2236,9 @@ public class CMLFormula extends AbstractFormula {
 	 */
 	public static void mainTest(String[] args) {
 		if (args.length == 0) {
-			System.out
-			.println("Usage: FormulaImpl -IN xmlFile -OUT formFile -FORMAT format -MWT");
+			Util.println("Usage: FormulaImpl -IN xmlFile -OUT formFile -FORMAT format -MWT");
 			// format -MWT -HCOUNT|EXPLICIT");
-			System.out
-			.println("      Format NOSPACE EL_SPACE_COUNT EL_COUNT_SPACE");
+			Util.println("      Format NOSPACE EL_SPACE_COUNT EL_COUNT_SPACE");
 			System.exit(0);
 		}
 		int i = 0;

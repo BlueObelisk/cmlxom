@@ -673,10 +673,10 @@ public class Point3 implements EuclidConstants {
     	Point3 one = new Point3(0.1, 0.2, 0.3);
     	Point3 two = new Point3(0.1, 0.2, 0.5);
     	if (one.equals(two)) {
-    		System.out.println("are equal in state");
+    		Util.println("are equal in state");
     	}
     	if (one == two) {
-    		System.out.println("same object");
+    		Util.println("same object");
     	}
     }
     

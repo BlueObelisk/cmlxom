@@ -15,6 +15,7 @@ import org.xmlcml.euclid.Point3;
 import org.xmlcml.euclid.Real2;
 import org.xmlcml.euclid.Transform2;
 import org.xmlcml.euclid.Transform3;
+import org.xmlcml.euclid.Util;
 import org.xmlcml.euclid.Vector2;
 import org.xmlcml.euclid.Vector3;
 import org.xmlcml.molutil.ChemicalElement;
@@ -188,7 +189,7 @@ public class CMLAtom extends AbstractAtom {
         		throw new RuntimeException("Cannot reindex id");
         	}
         } else {
-//        	System.out.println("ATOM SET ID "+id);
+//        	LOG.debug("ATOM SET ID "+id);
 	        super.setId(id);
 	        ParentNode parent = this.getParent();
 	        if (parent != null && parent instanceof CMLAtomArray) {
@@ -1160,9 +1161,9 @@ public class CMLAtom extends AbstractAtom {
 
 	public static void debugAtom(String msg, CMLAtom atom) {
 		if (atom == null) {
-			System.out.println(msg+"...");
+			Util.println(msg+"...");
 		} else {
-			System.out.println(msg+"..."+atom.getId());
+			Util.println(msg+"..."+atom.getId());
 		}
 	}
 }

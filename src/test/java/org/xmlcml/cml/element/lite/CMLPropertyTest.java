@@ -1,5 +1,11 @@
 package org.xmlcml.cml.element.lite;
 
+import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
+import static org.xmlcml.cml.base.CMLConstants.XSD_DOUBLE;
+import static org.xmlcml.cml.base.CMLConstants.XSD_STRING;
+import static org.xmlcml.cml.base.TstBase.parseValidString;
+import static org.xmlcml.euclid.EuclidConstants.EPS;
+
 import java.util.List;
 
 import org.junit.Assert;
@@ -8,12 +14,7 @@ import org.junit.Test;
 import org.xmlcml.cml.element.CMLCml;
 import org.xmlcml.cml.element.CMLProperty;
 import org.xmlcml.cml.element.CMLPropertyList;
-import org.xmlcml.cml.element.main.AbstractTestBase;
 import org.xmlcml.cml.interfacex.HasDataType;
-import static org.xmlcml.cml.base.CMLConstants.*;
-import static org.xmlcml.cml.base.TstBase.*;
-import static org.xmlcml.euclid.EuclidConstants.*;
-import static org.xmlcml.cml.element.main.AbstractTestBase.*;
 
 /**
  * tests property

@@ -1,5 +1,13 @@
 package org.xmlcml.cml.element.main;
 
+import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
+import static org.xmlcml.cml.base.CMLConstants.U_ANGSTROM;
+import static org.xmlcml.cml.base.CMLConstants.U_DEGREE;
+import static org.xmlcml.cml.base.TstBase.assertEqualsCanonically;
+import static org.xmlcml.cml.base.TstBase.parseValidString;
+import static org.xmlcml.euclid.EuclidConstants.EPS;
+import static org.xmlcml.euclid.EuclidConstants.S_SPACE;
+
 import java.util.List;
 
 import org.junit.Assert;
@@ -17,10 +25,6 @@ import org.xmlcml.cml.element.CMLCrystal.Centering;
 import org.xmlcml.euclid.RealSquareMatrix;
 import org.xmlcml.euclid.test.DoubleTestBase;
 import org.xmlcml.euclid.test.RealSquareMatrixTest;
-import static org.xmlcml.cml.base.CMLConstants.*;
-import static org.xmlcml.cml.base.TstBase.*;
-import static org.xmlcml.euclid.EuclidConstants.*;
-import static org.xmlcml.cml.element.main.AbstractTestBase.*;
 
 /**
  * test for CMLCrystal.

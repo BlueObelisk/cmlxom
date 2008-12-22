@@ -403,9 +403,9 @@ public class IntSet implements EuclidConstants {
      */
     public void debug() {
         for (int i = 0; i < nelem; i++) {
-            System.out.print(S_SPACE + array[i]);
+            Util.print(S_SPACE + array[i]);
         }
-        System.out.println();
+        Util.println();
     }
 
     /**

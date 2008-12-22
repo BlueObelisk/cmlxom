@@ -191,9 +191,9 @@ public abstract class CMLUtil implements CMLConstants {
 	 * @throws IOException
 	 */
 	public static void debug(Element el, String message) {
-		System.out.println(">>>>" + message + ">>>>");
+		Util.println(">>>>" + message + ">>>>");
 		CMLUtil.debug(el);
-		System.out.println("<<<<" + message + "<<<<");
+		Util.println("<<<<" + message + "<<<<");
 	}
 
 	/**
@@ -698,7 +698,7 @@ public abstract class CMLUtil implements CMLConstants {
 	 */
 	public static double parseFlexibleDouble(String value)
 			throws ParseException {
-		//System.out.println("Parsing "+ value);
+		//LOG.debug("Parsing "+ value);
 		if (value != null) {
 			// 0, -0, INF, -INF and NaN : Special cases from the XSD spec.
 			if ("INF".equals(value)) {
@@ -783,6 +783,9 @@ public abstract class CMLUtil implements CMLConstants {
 	private static String equalsCanonically(Element refElement, Element testElement, String xpath) {
 		String message;
 		message = CMLUtil.compareNamespacesCanonically(refElement, testElement, xpath);
+		if (message != null) {
+			return message;
+		}
 		String refName = refElement.getLocalName();
 		String testName = testElement.getLocalName();
 		if (message == null && !refName.equals(testName)) {
@@ -810,11 +813,37 @@ public abstract class CMLUtil implements CMLConstants {
 	 * @return
 	 */
 	public static String compareNamespacesCanonically(Element refNode, Element testNode, String xpath) {
-		int refCount = refNode.getNamespaceDeclarationCount();
-		int testCount = testNode.getNamespaceDeclarationCount();
-		
 		String message = null;
+		List<String> refNamespaceURIList = getNamespaceURIList(refNode);
+		List<String> testNamespaceURIList = getNamespaceURIList(testNode);
+		if (refNamespaceURIList.size() != testNamespaceURIList.size()) {
+				message = "unequal namespace count;" +
+				" ref "+refNamespaceURIList.size()+";" +
+				" testCount "+testNamespaceURIList.size();
+		} else {
+			for (String refNamespaceURI : refNamespaceURIList) {
+				if (!testNamespaceURIList.contains(refNamespaceURI)) {
+					message = "Cannot find "+refNamespaceURI+
+					" in test namespaces ";
+					break;
+				}
+			}
+		}
 		return message;
+	}
+
+	/**
+	 * @param node
+	 * @param count
+	 */
+	private static List<String> getNamespaceURIList(Element node) {
+		List<String> namespaceURIList = new ArrayList<String>();
+		for (int i = 0; i < node.getNamespaceDeclarationCount(); i++) {
+			String prefix = node.getNamespacePrefix(i);
+			String refNamespaceURI = node.getNamespaceURI(prefix);
+			namespaceURIList.add(refNamespaceURI);
+		}
+		return namespaceURIList;
 	}
 	
 	/** compare attributes on two elements.

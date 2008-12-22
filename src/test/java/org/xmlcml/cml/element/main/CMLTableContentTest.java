@@ -5,7 +5,6 @@ package org.xmlcml.cml.element.main;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.xmlcml.cml.element.CMLTableContent;
 import org.xmlcml.euclid.test.StringTestBase;
 
 /**

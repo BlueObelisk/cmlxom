@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import org.xmlcml.cml.base.CMLElement;
+import org.xmlcml.euclid.Util;
 
 /**
  * superclass of all CMLTests. creates CMLBuilder for subclasses. little other
@@ -76,7 +77,7 @@ public final class AbstractTestBase {
 	 * @param s
 	 */
 	public static void severeError(String s) {
-		System.out.println("***** SEVERE ERROR: " + s);
+		Util.println("***** SEVERE ERROR: " + s);
 	}
 
 	/**

@@ -2,7 +2,6 @@ package org.xmlcml.cml.element.main;
 
 import nu.xom.Attribute;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.element.CMLMetadata;
 

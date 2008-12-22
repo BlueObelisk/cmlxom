@@ -158,14 +158,14 @@ public class Real2Test {
 		Assert.assertEquals("double2", "(1.0,3.0)", r12.toString());
 	}
 
-	/**
-	 * Test method for 'org.xmlcml.euclid.Real2.isEqualTo(Real2)'
-	 */
-	@Test
-	public void testIsEqualTo() {
-		Assert.assertTrue("equals", r12.isEqualTo(r12));
-		Assert.assertFalse("equals", r11.isEqualTo(r12));
-	}
+//	/**
+//	 * Test method for 'org.xmlcml.euclid.Real2.isEqualTo(Real2)'
+//	 */
+//	@Test
+//	public void testIsEqualTo() {
+//		Assert.assertTrue("equals", r12.isEqualTo(r12));
+//		Assert.assertFalse("equals", r11.isEqualTo(r12));
+//	}
 
 	/**
 	 * Test method for 'org.xmlcml.euclid.Real2.plus(Real2)'

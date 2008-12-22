@@ -297,7 +297,7 @@ public class CMLSymmetry extends AbstractSymmetry {
                     }
                 }
                 if (!group) {
-                    // System.out.println("operators "+i+" and "+j+" do not
+                    // LOG.debug("operators "+i+" and "+j+" do not
                     // generate a group element: ");
                     break;
                 }
@@ -336,8 +336,7 @@ public class CMLSymmetry extends AbstractSymmetry {
                     }
                 }
                 if (!group) {
-                    // System.out.println("operators "+i+" and "+j+" do not
-                    // generate a group element: ");
+                    // LOG.debug("operators "+i+" and "+j+" do not generate a group element: ");
                     break;
                 }
                 j++;
