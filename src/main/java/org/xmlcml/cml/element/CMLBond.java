@@ -719,7 +719,7 @@ public class CMLBond extends AbstractBond {
 
 		double covd2 = covd * covd;
 
-		//System.out.println(atom1.getId()+"/"+atom2.getId()+" : d2 "+
+		//LOG.debug(atom1.getId()+"/"+atom2.getId()+" : d2 "+
 		//		d2+", covd2 "+covd2);
 		return (d2 < covd2);
 	}

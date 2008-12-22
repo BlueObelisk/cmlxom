@@ -521,7 +521,7 @@ public class CMLArg extends AbstractArg {
                 } else if (node instanceof Text) {
                     ((Text)node).setValue(val);
                 } else {
-                    System.out.println("BUG "+node.getClass());
+                    throw new RuntimeException("BUG "+node.getClass());
                 }
             }
         }

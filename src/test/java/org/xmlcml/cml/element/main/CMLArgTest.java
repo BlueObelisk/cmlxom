@@ -236,7 +236,7 @@ public class CMLArgTest {
 	// */
 	// @Test
 	// public void testArg2() throws Exception {
-	// System.out.println("=========start peo2 ============");
+	// Util.sysout("=========start peo2 ============");
 	// CMLCml peo2Cml = null;
 	// InputStream in = null;
 	// try {

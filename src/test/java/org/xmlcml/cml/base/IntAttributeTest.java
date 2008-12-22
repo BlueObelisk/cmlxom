@@ -1,11 +1,10 @@
 package org.xmlcml.cml.base;
 
+import static org.xmlcml.euclid.EuclidConstants.EPS;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.xmlcml.cml.base.CMLConstants.*;
-import org.xmlcml.cml.base.TstBase.*;
-import static org.xmlcml.euclid.EuclidConstants.*;
 
 /**
  * tests for intAttribute.

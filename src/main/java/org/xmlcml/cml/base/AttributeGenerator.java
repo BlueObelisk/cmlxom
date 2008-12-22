@@ -11,6 +11,14 @@ import java.util.Map;
 import nu.xom.Element;
 import nu.xom.Node;
 
+import org.xmlcml.cml.base.AbstractGenerator;
+import org.xmlcml.cml.base.AttributeFactory;
+import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLType;
+import org.xmlcml.cml.base.CMLUtil;
+import org.xmlcml.cml.base.SchemaManager;
+import org.xmlcml.euclid.Util;
+
 /**
  * @author pm286
  *
@@ -90,7 +98,7 @@ public class AttributeGenerator extends AbstractGenerator {
 		Element attributeElement = (Element) attributes.get(0);
 		String attributeName = attributeElement.getAttributeValue("name");
 		if (!attributeName.equals(attributeGroupName)) {
-//			System.out.println("NOTE: attributeGroup name != attribute ("+attributeGroupName+
+//			Util.sysout("NOTE: attributeGroup name != attribute ("+attributeGroupName+
 //					" != "+attributeName+")");
 		}
 		String typeS = attributeElement.getAttributeValue("type");
@@ -101,7 +109,7 @@ public class AttributeGenerator extends AbstractGenerator {
 		CMLType type = typeMap.get(typeS);
 		if (type == null) {
 			for (String sss : typeMap.keySet()) {
-				System.out.println(sss);
+				Util.println(sss);
 			}
 			throw new RuntimeException("Cannot find CMLType for "+typeS);
 		}
@@ -120,7 +128,7 @@ public class AttributeGenerator extends AbstractGenerator {
 	
 	void printAttributes() {
 		for (String name : nameList) {
-			System.out.println(name);
+			Util.println(name);
 		}
 	}
 

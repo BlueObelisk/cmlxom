@@ -45,6 +45,7 @@ public class RandomNumberGenerator implements java.io.Serializable {
   private int mag01[];
 
   // a good initial seed (of int size, though stored in a long)
+	@SuppressWarnings("unused")
   private static final long GOOD_SEED = 4357;
 
   private synchronized void writeObject(ObjectOutputStream out)
@@ -140,7 +141,7 @@ public class RandomNumberGenerator implements java.io.Serializable {
   // generate Poisson(lambda)
   // E(X)=lambda ; Var(X)=lambda
   public synchronized int nextPoisson(double lambda) {
-    int i,j,v=-1;
+    int v=-1;
     double l=Math.exp(-lambda),p;
     p=1.0;
     while (p>=l) {

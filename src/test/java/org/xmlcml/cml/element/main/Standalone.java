@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.xmlcml.cml.base.CMLBuilder;
 import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
+import org.xmlcml.euclid.Util;
 
 /**
  * miscellaneous test stuff
@@ -20,8 +21,7 @@ public class Standalone implements CMLConstants {
      */
     public static void main(String[] args) {
         if (args.length == 0) {
-            System.out
-                    .println("usage: org.xmlcml.cml.element.Standalone <number>");
+            Util.println("usage: org.xmlcml.cml.element.Standalone <number>");
         } else if (args[0].trim().equals("1")) {
             Test1();
         } else {

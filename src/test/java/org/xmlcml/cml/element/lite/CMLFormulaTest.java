@@ -86,11 +86,8 @@ public class CMLFormulaTest {
 
 		// build from scratch
 		xomForm1 = new CMLFormula();
-		// System.out.println("?????????????");
 		xomForm1.add(AS.H.value, 1.0);
-		// System.out.println("#############");
 		xomForm1.add(AS.O.value, 3.0);
-		// System.out.println("@@@@@@@@@@@@@");
 		xomForm1.add(AS.N.value, 1.0);
 		xomForm1.setCount(2.0);
 		xomForm1.setId("xomForm1");

@@ -466,7 +466,7 @@ public class CMLCrystal extends AbstractCrystal {
      */
     /*--
      public List<SymmetryOp> getSymmetryOperators() {
-     //System.out.println ("nu sym ops " + symOps.size ());
+     //LOG.debug ("nu sym ops " + symOps.size ());
      if ((symOps != null) && (symOps.size () != 0)) {
      List<SymmetryOp> ops = new ArrayList<SymmetryOp>();
 

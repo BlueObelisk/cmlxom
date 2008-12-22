@@ -656,16 +656,16 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
         }
     }
 
-    /** debug for element. makes copy if not document root writes to System.out
+    /** debug for element. makes copy if not document root writes to sysout
      * @param message
      */
     public void debug(String message) {
-        System.out.println("<<<<<<"+message+"<<<<<<");
+        Util.println("<<<<<<"+message+"<<<<<<");
         debug();
-        System.out.println(">>>>>>"+message+">>>>>>");
+        Util.println(">>>>>>"+message+">>>>>>");
     }
 
-    /** debug for element. makes copy if not document root writes to System.out
+    /** debug for element. makes copy if not document root writes to sysout
      */
     public void debug() {
         try {
@@ -675,7 +675,7 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
         }
     }
 
-    /** debug for element. makes copy if not docuemnt root writes to System.out
+    /** debug for element. makes copy if not docuemnt root writes to sysout
      * @param indent
      */
     public void debug(int indent) {

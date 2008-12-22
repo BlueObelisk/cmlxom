@@ -101,7 +101,7 @@ public class CMLElementType implements CMLConstants {
 			List<Node> elements = CMLUtil.getQueryNodes(complexType,
 					".//"+XSD_ELEMENT+"[@ref]", XPATH_XSD);
 			if (elements.size() == 0) {
-//				System.out.println("NOTE: no element children for "+name);
+//				LOG.debug("NOTE: no element children for "+name);
 			}
 			for (Node node : elements) {
 				Element xsdElement = (Element) node;

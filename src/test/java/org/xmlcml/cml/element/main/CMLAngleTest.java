@@ -1,7 +1,7 @@
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.cml.base.TstBase.parseValidString;
 import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
+import static org.xmlcml.cml.base.TstBase.parseValidString;
 import static org.xmlcml.euclid.EuclidConstants.EPS;
 import static org.xmlcml.euclid.EuclidConstants.S_EMPTY;
 import static org.xmlcml.euclid.test.EuclidTestBase.alwaysFail;
@@ -13,6 +13,7 @@ import java.util.Map;
 
 import nu.xom.Element;
 
+import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -31,6 +32,7 @@ import org.xmlcml.euclid.test.StringTestBase;
  */
 
 public class CMLAngleTest {
+	private static Logger LOG = Logger.getLogger(CMLAngleTest.class);
 
 	String s1 = S_EMPTY + "<cml " + CML_XMLNS + ">" + " <molecule id='m1'>"
 			+ "  <atomArray>" + "   <atom id='a1' x3='1.0' y3='0.0' z3='0.0'/>"
@@ -60,7 +62,7 @@ public class CMLAngleTest {
 			element = parseValidString(s1);
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("EXC " + e);
+			LOG.error("EXC " + e);
 			throw e;
 		}
 		CMLCml cml = (CMLCml) element;

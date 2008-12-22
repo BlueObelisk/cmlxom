@@ -677,7 +677,7 @@ public class Univariate {
     }    
     
     public static void test() {
-        System.out.println( "--------------Testing Univariate--------------\n");
+        Util.println( "--------------Testing Univariate--------------\n");
         RandomNumberGenerator rng = new RandomNumberGenerator();
         int npoints1 = 1000;
         double[] data1 = new double[npoints1];
@@ -686,8 +686,8 @@ public class Univariate {
         }
         RealArray dataArray1 = new RealArray(data1);
         Univariate univ1 = new Univariate(dataArray1);
-        System.out.println("mean: "+univ1.getMean());
-        System.out.println("sdev: "+univ1.getStandardDeviation());
+        Util.println("mean: "+univ1.getMean());
+        Util.println("sdev: "+univ1.getStandardDeviation());
         
         int npoints2 = 300;
         double[] data2 = new double[npoints2];
@@ -696,33 +696,33 @@ public class Univariate {
         }
         RealArray dataArray2 = new RealArray(data2);
         Univariate univ2 = new Univariate(dataArray2);
-        System.out.println("mean: "+univ2.getMean());
-        System.out.println("sdev: "+univ2.getStandardDeviation());
+        Util.println("mean: "+univ2.getMean());
+        Util.println("sdev: "+univ2.getStandardDeviation());
         
         dataArray1.addArray(dataArray2);
         Univariate univ3 = new Univariate(dataArray1);
-        System.out.println("mean: "+univ3.getMean());
-        System.out.println("sdev: "+univ3.getStandardDeviation());
-        System.out.println("min: "+univ3.getMin());      
-        System.out.println("q1: "+univ3.getQuantile(0.25));      
-        System.out.println("median: "+univ3.getMedian());      
-        System.out.println("q3: "+univ3.getQuantile(0.75));      
-        System.out.println("max: "+univ3.getMax());
+        Util.println("mean: "+univ3.getMean());
+        Util.println("sdev: "+univ3.getStandardDeviation());
+        Util.println("min: "+univ3.getMin());      
+        Util.println("q1: "+univ3.getQuantile(0.25));      
+        Util.println("median: "+univ3.getMedian());      
+        Util.println("q3: "+univ3.getQuantile(0.75));      
+        Util.println("max: "+univ3.getMax());
   
         univ3.setBinCount(30);      
         int[] bins = univ3.getHistogramCounts();
         for (int i = 0; i < bins.length; i++) {
-            System.out.println("bin: "+bins[i]);
+        	Util.println("bin: "+bins[i]);
         }
 
         Univariate norm = Univariate.getNormalParams(1000);
-        System.out.println("mean: "+norm.getMean());
-        System.out.println("sdev: "+norm.getStandardDeviation());
-        System.out.println("min: "+norm.getMin());      
-        System.out.println("q1: "+norm.getQuantile(0.25));      
-        System.out.println("median: "+norm.getMedian());      
-        System.out.println("q3: "+norm.getQuantile(0.75));      
-        System.out.println("max: "+norm.getMax());
+        Util.println("mean: "+norm.getMean());
+        Util.println("sdev: "+norm.getStandardDeviation());
+        Util.println("min: "+norm.getMin());      
+        Util.println("q1: "+norm.getQuantile(0.25));      
+        Util.println("median: "+norm.getMedian());      
+        Util.println("q3: "+norm.getQuantile(0.75));      
+        Util.println("max: "+norm.getMax());
   
     }
 

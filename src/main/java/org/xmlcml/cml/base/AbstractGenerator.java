@@ -47,7 +47,7 @@ public abstract class AbstractGenerator implements CMLConstants {
 			doc.replaceChild(elem, new Element("s_dummy"));
 			schema.appendChild(elem);
 		}
-//		System.out.println("CHILD "+schema.getChildCount());
+//		LOG.debug("CHILD "+schema.getChildCount());
 		
 		return schema;
 	}

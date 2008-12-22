@@ -11,6 +11,8 @@ import java.util.Map;
 import nu.xom.Element;
 import nu.xom.Node;
 
+import org.xmlcml.euclid.Util;
+
 
 /**
  * @author pm286
@@ -73,10 +75,10 @@ public class ElementGenerator extends AbstractGenerator {
 	void printElements() {
 		for (String name : nameList) {
 			CMLElementType elementType = elementTypeMap.get(name);
-			System.out.println("========================================");
-			System.out.println(name);
-			System.out.println("========================================");
-			System.out.println(elementType.toString());
+			Util.println("========================================");
+			Util.println(name);
+			Util.println("========================================");
+			Util.println(elementType.toString());
 		}
 	}
 
