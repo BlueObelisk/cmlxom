@@ -655,6 +655,17 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
             to.addAttribute(newAtt);
         }
     }
+    
+    /** it attribute exists detach it.
+     * @param element
+     * @param attName
+     */
+    public static void deleteAttribute(Element element, String attName) {
+    	Attribute att = element.getAttribute(attName);
+    	if (att != null) {
+    		att.detach();
+    	}
+    }
 
     /** debug for element. makes copy if not document root writes to sysout
      * @param message

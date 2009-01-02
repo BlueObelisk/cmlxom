@@ -556,4 +556,15 @@ public class Real2 implements EuclidConstants {
         dd[1] = y;
         return dd;
     }
+    
+    /** round to decimal places.
+     * 
+     * @param places
+     * @return this
+     */
+    public Real2 format(int places) {
+    	x = Util.format(x, places);
+    	y = Util.format(y, places);
+    	return this;
+    }
 }

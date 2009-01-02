@@ -95,15 +95,28 @@ public class RealRange implements EuclidConstants {
     public boolean isValid() {
         return (minval <= maxval);
     }
+    
     /**
      * invalid ranges return false
      * 
      * @param r
      * @return equal
      */
+    @Deprecated
     public boolean isEqualTo(RealRange r) {
         return (r != null && Real.isEqual(minval, r.minval)
                 && Real.isEqual(maxval, r.maxval) && minval <= maxval);
+    }
+    
+    /**
+     * invalid ranges return false
+     * 
+     * @param r
+     * @return equal
+     */
+    public boolean isEqualTo(RealRange r, double eps) {
+        return (r != null && Real.isEqual(minval, r.minval, eps)
+                && Real.isEqual(maxval, r.maxval, eps) && minval <= maxval);
     }
     /**
      * combine two ranges if both valid; takes greatest limits of both, else
@@ -248,6 +261,30 @@ public class RealRange implements EuclidConstants {
 			maxval = temp;
 		}
     }
+    
+    /** gets minimum signed translation required to move point into range
+     * If range=(-1, 10)
+     * -3 returns 2
+     * -1 returns 0
+     * 3 returns 0
+     * 10 returns 0
+     * 12 returns -2
+     * @param p null returns Double.NaN
+     * @return 0 if in or on range
+     */
+    public double distanceOutside(double d) {
+    	double dd = Double.NaN;
+    	if (!Double.isNaN(d)) {
+    		dd = 0.0;
+    		if (d < minval) {
+    			dd = d - minval;
+    		} else if (d > maxval) {
+    			dd = maxval - d;
+    		}
+    	}
+    	return dd;
+    }
+    
     /**
      * to string. format: "NULL" or S_LBRAK+minval+S_COMMA+maxval+S_RBRAK;
      * 

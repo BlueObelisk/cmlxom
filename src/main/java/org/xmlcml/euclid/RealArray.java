@@ -42,6 +42,12 @@ public class RealArray extends ArrayBase {
             this.string = s;
         }
     }
+    
+	public enum Monotonicity {
+		INCREASING,
+		DECREASING
+	}
+	
     /**
      * maximum number of elements (for bound checking) - resettable
      */
@@ -1308,10 +1314,22 @@ public class RealArray extends ArrayBase {
         }
         return temp;
     }
+    
+    public String getStringArray() {
+        StringBuffer s = new StringBuffer();
+        for (int i = 0; i < nelem; i++) {
+            if (i > 0) {
+                s.append(S_COMMA);
+            }
+            s.append(array[i]);
+        }
+        return s.toString();
+    }
+    
     /**
      * gets values as string.
-     * 
-     * @return element values seperated with spaces
+     * within brackets and including commas
+     * @return element values separated with spaces
      */
     public String toString() {
         // don't change this routine!!!
@@ -1447,6 +1465,19 @@ public class RealArray extends ArrayBase {
  		}
  		return baseOffset;
  	}
+ 	
+    /** round to decimal places.
+     * 
+     * @param places
+     * @return this
+     */
+    public RealArray format(int places) {
+    	for (int i = 0; i < nelem; i++) {
+    		array[i] = Util.format(array[i], places);
+    	}
+    	return this;
+    }
+ 	
     /**
      * copy a double[] into a new one
      */
@@ -1640,6 +1671,36 @@ public class RealArray extends ArrayBase {
     }
     
     /**
+	 * @param monotonicity
+	 * @return
+	 */
+	public Monotonicity getMonotonicity() {
+		Monotonicity monotonicity = null;
+		if (size() > 1) {
+			double last = get(0);
+			for (int i = 1; i < size(); i++) {
+				double current = get(i);
+				// equality with last
+				Monotonicity m = null;
+				if (current < last) {
+					m = Monotonicity.DECREASING;
+				} else if (current > last) {
+					m = Monotonicity.INCREASING;
+				}
+				// compare with last monotonocity
+				if (m != null) {
+					if (monotonicity == null) {
+						monotonicity = m;
+					} else if (monotonicity != m) {
+						monotonicity = null;
+						break;
+					}
+				}
+			}
+		}
+		return monotonicity;
+	}
+	/**
      * checks RealArray is not null and is of given size.
      * 
      * @param array

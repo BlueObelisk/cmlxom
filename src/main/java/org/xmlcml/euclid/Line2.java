@@ -1,5 +1,7 @@
 package org.xmlcml.euclid;
 
+import org.apache.log4j.Logger;
+
 /** line
  * determined by one point (R) and a vector (V)
  * this gives L = R + nV
@@ -9,6 +11,7 @@ package org.xmlcml.euclid;
  *
  */
 public class Line2 implements EuclidConstants {
+	private static Logger LOG = Logger.getLogger(Line2.class);
 
 	Real2 from;
 	Real2 to;
@@ -28,7 +31,7 @@ public class Line2 implements EuclidConstants {
 	public Line2(Real2 from, Real2 to) {
 		vector = new Vector2(to.subtract(from));
 		if (vector.getLength() < Real.EPS) {
-			throw new EuclidRuntimeException("Cannot form line from coincident points");
+			LOG.warn("line has coincident points: "+from+" ... "+to);
 		}
 		this.from = new Real2(from);
 		this.to = new Real2(to);
