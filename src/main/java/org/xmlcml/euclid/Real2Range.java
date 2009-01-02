@@ -37,6 +37,15 @@ public class Real2Range implements EuclidConstants {
         }
     }
     
+    public Real2Range(Real2 r2a, Real2 r2b) {
+    	double x0 = r2a.getX();
+    	double x1 = r2b.getX();
+    	xrange = new RealRange(Math.min(x0, x1), Math.max(x0, x1));
+    	double y0 = r2a.getY();
+    	double y1 = r2b.getY();
+    	yrange = new RealRange(Math.min(y0, y1), Math.max(y0, y1));
+    }
+    
     /**
      * copy constructor
      * 
@@ -103,7 +112,7 @@ public class Real2Range implements EuclidConstants {
         }
         RealRange xr = this.getXRange().intersectionWith(r2.getXRange());
         RealRange yr = this.getYRange().intersectionWith(r2.getYRange());
-        return new Real2Range(xr, yr);
+        return (xr == null || yr == null) ? null : new Real2Range(xr, yr);
     }
     
     /**
@@ -131,6 +140,17 @@ public class Real2Range implements EuclidConstants {
     public Real2 getCentroid() {
         return new Real2(xrange.getMidPoint(), yrange.getMidPoint());
     }
+    
+    /** gets lower left and upper right.
+     * @return minx,miny ... maxx, maxy
+     */
+    public Real2[] getCorners() {
+    	Real2[] rr = new Real2[2];
+    	rr[0] = new Real2(xrange.getMin(), yrange.getMin());
+    	rr[1] = new Real2(xrange.getMax(), yrange.getMax());
+    	return rr;
+    }
+    
     /**
      * is an Real2 within a Real2Range
      * 
@@ -194,6 +214,23 @@ public class Real2Range implements EuclidConstants {
             }
             yrange = yrange.plus(range);
         }
+    }
+
+    /** gets minimum X and Y translations required to move point into range
+     * uses RealRange.distanceOutside() - see this
+     * @param p 
+     * @return null if p == null or has bad coordinates; Real2(0,0) if in or on range, else translations to touch range
+     */
+    public Real2 distanceOutside(Real2 p) {
+    	Real2 r2 = null;
+    	if (p != null) {
+	    	double dx = xrange.distanceOutside(p.getX());
+	    	double dy = yrange.distanceOutside(p.getY());
+	    	if (!Double.isNaN(dx) && !Double.isNaN(dy)) {
+	    		r2 = new Real2(dx, dy);
+	    	}
+    	}
+    	return r2;
     }
 
     /**

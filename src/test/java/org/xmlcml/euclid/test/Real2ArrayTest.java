@@ -3,7 +3,9 @@ package org.xmlcml.euclid.test;
 import static org.xmlcml.euclid.EuclidConstants.EPS;
 import static org.xmlcml.euclid.EuclidConstants.S_COMMA;
 import static org.xmlcml.euclid.EuclidConstants.S_LBRAK;
+import static org.xmlcml.euclid.EuclidConstants.S_PIPE;
 import static org.xmlcml.euclid.EuclidConstants.S_RBRAK;
+import static org.xmlcml.euclid.EuclidConstants.S_SPACE;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -98,7 +100,7 @@ public class Real2ArrayTest {
 	@Test
 	public void testCreateFromPairs() {
 		String s = "1,2 3,4 5,6 7,8";
-		Real2Array real2Array = Real2Array.createFromPairs(s, S_COMMA);
+		Real2Array real2Array = Real2Array.createFromPairs(s, S_COMMA+S_PIPE+S_SPACE);
 		Assert.assertEquals("size", 4, real2Array.size());
 		RealArray xarr = real2Array.getXArray();
 		Assert.assertTrue("getXArray", xarr.isEqualTo(new RealArray(

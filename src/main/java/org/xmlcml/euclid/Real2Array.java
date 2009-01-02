@@ -1,5 +1,7 @@
 package org.xmlcml.euclid;
 
+import org.apache.log4j.Logger;
+
 
 /**
  * Real2Array is NOT a Vector of Real2s but a container for a 2 * n matrix
@@ -17,6 +19,9 @@ package org.xmlcml.euclid;
  * @author P.Murray-Rust, Copyright 1997
  */
 public class Real2Array implements EuclidConstants {
+	@SuppressWarnings("unused")
+	private static Logger LOG = Logger.getLogger(Real2Array.class);
+	
     RealArray xarr;
     RealArray yarr;
     int nelem = 0;
@@ -38,7 +43,18 @@ public class Real2Array implements EuclidConstants {
         }
         return range;
     }
-    
+
+    /** copy
+     * 
+     * @param r2a
+     */
+    public Real2Array(Real2Array r2a) {
+    	if (r2a != null && !r2a.equals(this)) {
+    		xarr = new RealArray(r2a.getXArray());
+    		yarr = new RealArray(r2a.getYArray());
+    		this.nelem = r2a.nelem;
+    	}
+    }
     /**
      * make an Real2_Array from 2 RealVec's; takes a copy
      * 
@@ -73,42 +89,39 @@ public class Real2Array implements EuclidConstants {
      * @param real2Array
      */
     public void add(Real2Array real2Array) {
-    	if (nelem == 0 || xarr == null || yarr == null) {
-    		xarr = new RealArray();
-    		yarr = new RealArray();
-    	}
-    	xarr.addArray(real2Array.xarr);
-    	yarr.addArray(real2Array.yarr);
-    	nelem += real2Array.size();
+    	if (real2Array != null) {
+	    	if (nelem == 0 || xarr == null || yarr == null) {
+	    		xarr = new RealArray();
+	    		yarr = new RealArray();
+	    	}
+	    	xarr.addArray(real2Array.xarr);
+	    	yarr.addArray(real2Array.yarr);
+	    	nelem += real2Array.size();
+	    }
     }
     
     /**
      * make an Real2_Array from pairs of numbers separated by delimiter
      * 
      * @param s
-     * @param delimiter
+     * @param delimiter (might be a regex e.g. ",| " (comma or space))
      * @exception EuclidRuntimeException
      *                x and x must have number of elements
      */
     public static Real2Array createFromPairs(String sss, String delimiter) {
-    	String[] ss = sss.split(S_SPACE);
-    	Real2Array real2Array = new Real2Array();
-    	real2Array.xarr = new RealArray();
-    	real2Array.yarr = new RealArray();
-    	for (String s : ss) {
-    		Real2 r2 = new Real2(s, delimiter);
-    		if (r2 == null) {
-    			throw new RuntimeException("bad real2: "+s);
+    	Real2Array real2Array = null;
+    	if (sss != null) {
+    		String[] ss = sss.split(delimiter);
+    		if (ss.length % 2 == 0) {
+            	RealArray realArray = new RealArray(ss);
+    	    	real2Array = Real2Array.createFromPairs(realArray);
     		}
-    		real2Array.xarr.addElement(r2.getX());
-    		real2Array.yarr.addElement(r2.getY());
-    		real2Array.nelem++;
     	}
     	return real2Array;
     }
     
     /**
-     * make an Real2_Array from pairs of numbers separated by delimiter
+     * make an Real2_Array from pairs of numbers x1,y1 .. x2,y2 .. etc
      * 
      * @param s
      * @param delimiter
@@ -177,6 +190,17 @@ public class Real2Array implements EuclidConstants {
         return new Real2(xarr.elementAt(elem), yarr.elementAt(elem));
     }
     
+    /**
+     * get element.
+     * 
+     * @param elem
+     * @return element
+     */
+    public void setElement(int elem, Real2 r2) {
+    	xarr.setElementAt(elem, r2.getX());
+    	yarr.setElementAt(elem, r2.getY());
+    }
+    
     /** delete element.
      * 
      * @param i
@@ -190,6 +214,51 @@ public class Real2Array implements EuclidConstants {
     		throw new EuclidRuntimeException("Cannt delete element at: "+i);
     	}
     }
+    
+    public void transformBy(Transform2 t2) {
+    	for (int i = 0; i < nelem; i++) {
+    		Real2 xy = this.get(i);
+    		xy.transformBy(t2);
+    		this.setElement(i, xy);
+    	}
+    }
+    
+    /** round to decimal places.
+     * 
+     * @param places
+     * @return this
+     */
+    public Real2Array format(int places) {
+    	double[] xarray = xarr.getArray();
+    	double[] yarray = yarr.getArray();
+    	for (int i = 0; i < nelem; i++) {
+    		xarray[i] = Util.format(xarray[i], places);
+    		yarray[i] = Util.format(yarray[i], places);
+    	}
+    	return this;
+    }
+ 	
+	/**
+     * to space-separated string.
+     * 
+     * @return string
+     */
+    public String getStringArray() {
+        // don't change this routine!!!
+        StringBuffer s = new StringBuffer();
+        double[] xarray = (xarr == null) ? null : xarr.getArray();
+        double[] yarray = (yarr == null) ? null : yarr.getArray();
+        for (int i = 0; i < nelem; i++) {
+        	if (i > 0) {
+                s.append(S_SPACE);
+        	}
+            s.append(xarray[i]);
+            s.append(S_SPACE);
+            s.append(yarray[i]);
+        }
+        return s.toString();
+    }
+    
 	/**
      * to string.
      * 
@@ -211,4 +280,5 @@ public class Real2Array implements EuclidConstants {
         s.append(S_RBRAK);
         return s.toString();
     }
+    
 }
