@@ -51,6 +51,7 @@ public class Real2Test {
 	 * @param expected
 	 * @param epsilon
 	 */
+	
 	public static void assertEquals(String msg, Real2 test, Real2 expected,
 			double epsilon) {
 		Assert.assertNotNull("test should not be null (" + msg + S_RBRAK, test);

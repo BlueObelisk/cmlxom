@@ -74,9 +74,9 @@ public class Real2RangeTest {
 	 */
 	@Test
 	public void testIsEqualTo() {
-		Assert.assertTrue("isEqual", i2r2.isEqualTo(i2r2));
-		Assert.assertFalse("isEqual", i2r2.isEqualTo(i2r1));
-		Assert.assertFalse("isEqual", i2r0.isEqualTo(i2r0));
+		Assert.assertTrue("isEqual", i2r2.isEqualTo(i2r2, 0.001));
+		Assert.assertFalse("isEqual", i2r2.isEqualTo(i2r1, 0.001));
+		Assert.assertFalse("isEqual", i2r0.isEqualTo(i2r0, 0.001));
 	}
 
 	/**

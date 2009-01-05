@@ -53,7 +53,7 @@ public class TestUtils {
 	 * @param eps tolerance
 	 * @return null if arrays are equal else indicative message
 	 */
-	static String testEquals(String msg, double[] a, double[] b, double eps) {
+	public static String testEquals(String msg, double[] a, double[] b, double eps) {
 		String s = testEquals(a, b, eps);
 		if (s != null) {
 			s = msg+": "+s;

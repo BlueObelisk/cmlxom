@@ -55,7 +55,7 @@ public class Real2ArrayTest {
 	public void testGetRange2() {
 		Real2Range real2Range = ra1.getRange2();
 		Assert.assertTrue("range2", real2Range.isEqualTo(new Real2Range(
-				new RealRange(1, 6), new RealRange(11, 16))));
+				new RealRange(1, 6), new RealRange(11, 16)), 0.001));
 	}
 
 	/**

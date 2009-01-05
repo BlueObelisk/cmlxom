@@ -87,7 +87,7 @@ public class Real3RangeTest {
 	@Test
 	public void testIsEqualTo() {
 		Real3Range rr = new Real3Range(r1);
-		Assert.assertTrue("real3", rr.isEqualTo(r1));
+		Assert.assertTrue("real3", rr.isEqualTo(r1, 0.001));
 	}
 
 	/**
