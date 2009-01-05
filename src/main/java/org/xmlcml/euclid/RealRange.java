@@ -132,9 +132,8 @@ public class RealRange implements EuclidConstants {
             }
             return new RealRange(r2);
         }
-        RealRange temp = new RealRange();
-        temp = new RealRange(Math.min(minval, r2.minval), Math.max(maxval,
-                r2.maxval));
+        RealRange temp = new RealRange(
+        		Math.min(minval, r2.minval), Math.max(maxval, r2.maxval));
         return temp;
     }
     /**

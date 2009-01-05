@@ -72,9 +72,24 @@ public class Real2Range implements EuclidConstants {
      * @param r2
      * @return tru if equal
      */
+    @Deprecated
     public boolean isEqualTo(Real2Range r2) {
         if (isValid() && r2 != null && r2.isValid()) {
             return (xrange.isEqualTo(r2.xrange) && yrange.isEqualTo(r2.yrange));
+        } else {
+            return false;
+        }
+    }
+    
+    /**
+     * is equals to.
+     * 
+     * @param r2
+     * @return tru if equal
+     */
+    public boolean isEqualTo(Real2Range r2, double eps) {
+        if (isValid() && r2 != null && r2.isValid()) {
+            return (xrange.isEqualTo(r2.xrange, eps) && yrange.isEqualTo(r2.yrange, eps));
         } else {
             return false;
         }

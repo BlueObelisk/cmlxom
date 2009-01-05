@@ -2,6 +2,7 @@ package org.xmlcml.euclid.test;
 
 import static org.xmlcml.euclid.EuclidConstants.EPS;
 
+import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,11 +16,11 @@ import org.xmlcml.euclid.RealRange;
  * 
  */
 public class RealRangeTest {
-
+	@SuppressWarnings("unused")
+	private static Logger LOG = Logger.getLogger(RealRangeTest.class);
+	
 	RealRange r0;
-
 	RealRange r1;
-
 	RealRange r2;
 
 	/**
@@ -90,9 +91,9 @@ public class RealRangeTest {
 	 */
 	@Test
 	public void testIsEqualTo() {
-		Assert.assertTrue("equal", r2.isEqualTo(r2));
-		Assert.assertFalse("equal", r2.isEqualTo(r0));
-		Assert.assertFalse("equal", r0.isEqualTo(r0));
+		Assert.assertTrue("equal", r2.isEqualTo(r2, 0.001));
+		Assert.assertFalse("equal", r2.isEqualTo(r0, 0.001));
+		Assert.assertFalse("equal", r0.isEqualTo(r0, 0.001));
 	}
 
 	/**
@@ -113,6 +114,21 @@ public class RealRangeTest {
 		iy = new RealRange();
 		ii = ix.plus(iy);
 		Assert.assertEquals("ii", "(1.0,4.0)", ii.toString());
+		//
+		RealRange r1 = new RealRange(-1,2);
+		RealRange r2 = new RealRange(-3,-4); // invalid
+		RealRange r = r1.plus(r2);
+		Assert.assertTrue("r1+r2", r.isEqualTo(new RealRange(-1, 2), 0.0001));
+		
+		r1 = new RealRange(-1,2);
+		r2 = new RealRange(-4,-3); // invalid
+		r = r1.plus(r2);
+		Assert.assertTrue("r1+r2", r.isEqualTo(new RealRange(-4, 2), 0.0001));
+		
+		r1 = new RealRange(-1,2);
+		r2 = new RealRange(-4,3); // invalid
+		r = r1.plus(r2);
+		Assert.assertTrue("r1+r2", r.isEqualTo(new RealRange(-4, 3), 0.0001));
 	}
 
 	/**
