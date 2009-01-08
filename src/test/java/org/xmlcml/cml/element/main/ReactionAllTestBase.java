@@ -1,7 +1,6 @@
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.cml.base.TstBase.parseValidString;
-import static org.xmlcml.euclid.EC.S_EMPTY;
+import static org.xmlcml.euclid.EuclidConstants.S_EMPTY;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -14,6 +13,7 @@ import org.junit.Before;
 import org.xmlcml.cml.base.CMLBuilder;
 import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElements;
+import org.xmlcml.cml.base.TstBase;
 import org.xmlcml.cml.element.CMLProduct;
 import org.xmlcml.cml.element.CMLProductList;
 import org.xmlcml.cml.element.CMLReactant;
@@ -111,7 +111,7 @@ public abstract class ReactionAllTestBase {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		xmlReact1 = (CMLReaction) parseValidString(xmlReact1S);
+		xmlReact1 = (CMLReaction)TstBase.parseValidString(xmlReact1S);
 		xmlReactantLists1 = xmlReact1.getReactantListElements();
 		xmlProductLists1 = xmlReact1.getProductListElements();
 		xmlSpectatorLists1 = xmlReact1.getSpectatorListElements();

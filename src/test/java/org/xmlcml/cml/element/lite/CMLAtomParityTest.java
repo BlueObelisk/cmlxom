@@ -1,13 +1,12 @@
 package org.xmlcml.cml.element.lite;
 
-import static org.xmlcml.cml.base.TstBase.parseValidString;
-
 import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLConstants;
+import org.xmlcml.cml.base.TstBase;
 import org.xmlcml.cml.element.CMLAtom;
 import org.xmlcml.cml.element.CMLAtomArray;
 import org.xmlcml.cml.element.CMLAtomParity;
@@ -47,7 +46,7 @@ public class CMLAtomParityTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		molecule = (CMLMolecule) parseValidString(s);
+		molecule = (CMLMolecule)TstBase.parseValidString(s);
 		List<CMLAtom> atoms = molecule.getAtoms();
 		atom = atoms.get(0);
 		parity = atom.getAtomParityElements().get(0);

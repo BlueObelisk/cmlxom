@@ -1,10 +1,9 @@
 package org.xmlcml.cml.element.lite;
 
-import static org.xmlcml.cml.base.TstBase.parseValidString;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLConstants;
+import org.xmlcml.cml.base.TstBase;
 import org.xmlcml.cml.element.CMLBond;
 import org.xmlcml.cml.element.CMLBondStereo;
 import org.xmlcml.cml.element.CMLMolecule;
@@ -34,7 +33,7 @@ public class CMLBondStereoTest {
 				+ "      <bondStereo atomRefs4='a1 a2 a3 a4'>C</bondStereo>"
 				+ "    </bond>" + "    <bond atomRefs2='a3 a4' order='1'/>"
 				+ "  </bondArray>" + "</molecule>";
-		CMLMolecule mol = (CMLMolecule) parseValidString(s);
+		CMLMolecule mol = (CMLMolecule) TstBase.parseValidString(s);
 		CMLBond b2 = mol.getBondByAtomIds("a2", "a3");
 		CMLBondStereo bs = b2.getBondStereo();
 		CMLBondStereo bs1 = new CMLBondStereo();

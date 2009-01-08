@@ -1,7 +1,6 @@
 package org.xmlcml.cml.element.main;
 
 import static org.xmlcml.cml.base.TstBase.assertEqualsCanonically;
-import static org.xmlcml.cml.base.TstBase.parseValidString;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElements;
+import org.xmlcml.cml.base.TstBase;
 import org.xmlcml.cml.element.CMLAtom;
 import org.xmlcml.cml.element.CMLBond;
 import org.xmlcml.cml.element.CMLLink;
@@ -48,8 +48,8 @@ public class CMLMapTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		xmlMap1 = (CMLMap) parseValidString(xmlMap1S);
-		xmlMap2 = (CMLMap) parseValidString(xmlMap2S);
+		xmlMap1 = (CMLMap)TstBase.parseValidString(xmlMap1S);
+		xmlMap2 = (CMLMap)TstBase.parseValidString(xmlMap2S);
 	}
 
 	/**
@@ -593,7 +593,7 @@ public class CMLMapTest {
 				+ "  <link from='a1' to='a11' fromContext='foo'/>"
 				+ "  <link from='a2' to='a12' fromContext='foo'/>"
 				+ "  <link from='a3' to='a13' fromContext='foo'/>" + "</map>";
-		CMLMap expected = (CMLMap) parseValidString(ss);
+		CMLMap expected = (CMLMap)TstBase.parseValidString(ss);
 		assertEqualsCanonically("set from", expected, xmlMap1);
 
 	}
@@ -609,7 +609,7 @@ public class CMLMapTest {
 				+ "  <link from='a1' to='a11' toContext='foo'/>"
 				+ "  <link from='a2' to='a12' toContext='foo'/>"
 				+ "  <link from='a3' to='a13' toContext='foo'/>" + "</map>";
-		CMLMap expected = (CMLMap) parseValidString(ss);
+		CMLMap expected = (CMLMap)TstBase.parseValidString(ss);
 		assertEqualsCanonically("set to", expected, xmlMap1);
 	}
 
@@ -624,7 +624,7 @@ public class CMLMapTest {
 				+ "  <link from='a1' to='a11' fromType='foo'/>"
 				+ "  <link from='a2' to='a12' fromType='foo'/>"
 				+ "  <link from='a3' to='a13' fromType='foo'/>" + "</map>";
-		CMLMap expected = (CMLMap) parseValidString(ss);
+		CMLMap expected = (CMLMap)TstBase.parseValidString(ss);
 		assertEqualsCanonically("set fromType", expected, xmlMap1);
 	}
 
@@ -639,7 +639,7 @@ public class CMLMapTest {
 				+ "  <link from='a1' to='a11' toType='foo'/>"
 				+ "  <link from='a2' to='a12' toType='foo'/>"
 				+ "  <link from='a3' to='a13' toType='foo'/>" + "</map>";
-		CMLMap expected = (CMLMap) parseValidString(ss);
+		CMLMap expected = (CMLMap)TstBase.parseValidString(ss);
 		assertEqualsCanonically("set fromType", expected, xmlMap1);
 	}
 

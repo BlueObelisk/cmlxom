@@ -1,12 +1,12 @@
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.cml.base.TstBase.parseValidString;
-import static org.xmlcml.euclid.EC.EPS;
+import static org.xmlcml.euclid.EuclidConstants.EPS;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLConstants;
+import org.xmlcml.cml.base.TstBase;
 import org.xmlcml.cml.element.CMLLattice;
 import org.xmlcml.cml.element.CMLLatticeVector;
 import org.xmlcml.cml.element.CMLVector3;
@@ -35,7 +35,7 @@ public class CMLLatticeTest {
 	@Before
 	public void setUp() throws Exception {
 		if (lattice1 == null) {
-			lattice1 = (CMLLattice) parseValidString(lattice1S);
+			lattice1 = (CMLLattice)TstBase.parseValidString(lattice1S);
 		}
 	}
 

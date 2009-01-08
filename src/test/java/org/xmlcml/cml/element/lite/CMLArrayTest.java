@@ -1,6 +1,5 @@
 package org.xmlcml.cml.element.lite;
 
-import static org.xmlcml.cml.base.TstBase.parseValidString;
 import nu.xom.ParsingException;
 
 import org.junit.Assert;
@@ -11,6 +10,7 @@ import org.xmlcml.cml.attribute.DelimiterAttribute.Action;
 import org.xmlcml.cml.base.CC;
 import org.xmlcml.cml.base.CMLBuilder;
 import org.xmlcml.cml.base.CMLConstants;
+import org.xmlcml.cml.base.TstBase;
 import org.xmlcml.cml.element.CMLArray;
 import org.xmlcml.euclid.EC;
 import org.xmlcml.euclid.test.DoubleTestBase;
@@ -90,7 +90,7 @@ public class CMLArrayTest {
 		try {
 
 			xomS = new CMLArray();
-			xmlS = (CMLArray) parseValidString(xmlSS);
+			xmlS = (CMLArray)TstBase.parseValidString(xmlSS);
 			xomD0 = new CMLArray(d0);
 			xomI0 = new CMLArray(i0);
 			xomS0 = new CMLArray(s0);
@@ -118,12 +118,12 @@ public class CMLArrayTest {
 			String xmlD1S = "<array dataType='xsd:double' delimiter='/' "
 					+ CMLConstants.CML_XMLNS + ">/10./20./30./40./50./</array>";
 
-			xmlS0 = (CMLArray) parseValidString(xmlS0S);
-			xmlS1 = (CMLArray) parseValidString(xmlS1S);
-			xmlI0 = (CMLArray) parseValidString(xmlI0S);
-			xmlI1 = (CMLArray) parseValidString(xmlI1S);
-			xmlD0 = (CMLArray) parseValidString(xmlD0S);
-			xmlD1 = (CMLArray) parseValidString(xmlD1S);
+			xmlS0 = (CMLArray)TstBase.parseValidString(xmlS0S);
+			xmlS1 = (CMLArray)TstBase.parseValidString(xmlS1S);
+			xmlI0 = (CMLArray)TstBase.parseValidString(xmlI0S);
+			xmlI1 = (CMLArray)TstBase.parseValidString(xmlI1S);
+			xmlD0 = (CMLArray)TstBase.parseValidString(xmlD0S);
+			xmlD1 = (CMLArray)TstBase.parseValidString(xmlD1S);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -1099,7 +1099,7 @@ public class CMLArrayTest {
 	// */
 	// @Test
 	// public void testGetUnits() {
-	// CMLCml cml = (CMLCml) parseValidString(unitsS);
+	// CMLCml cml = (CMLCml)TstBase.parseValidString(unitsS);
 	//
 	// // arrays
 	// List<CMLElement> arrays = cml.getElements(".//"+CMLArray.NS);
@@ -1128,7 +1128,7 @@ public class CMLArrayTest {
 	// */
 	// @Test
 	// public void testConvertToSI() {
-	// CMLCml cml = (CMLCml) parseValidString(unitsS);
+	// CMLCml cml = (CMLCml)TstBase.parseValidString(unitsS);
 	//
 	// // arrays
 	// List<CMLElement> arrays = cml.getElements(".//"+CMLArray.NS);

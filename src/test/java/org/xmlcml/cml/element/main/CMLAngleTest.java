@@ -1,6 +1,5 @@
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.cml.base.TstBase.parseValidString;
 import static org.xmlcml.euclid.EuclidConstants.EPS;
 import static org.xmlcml.euclid.test.EuclidTestBase.alwaysFail;
 import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
@@ -16,6 +15,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLConstants;
+import org.xmlcml.cml.base.TstBase;
 import org.xmlcml.cml.element.CMLAngle;
 import org.xmlcml.cml.element.CMLAtom;
 import org.xmlcml.cml.element.CMLBond;
@@ -58,7 +58,7 @@ public class CMLAngleTest {
 	public void setUp() throws Exception {
 		Element element = null;
 		try {
-			element = parseValidString(s1);
+			element =TstBase.parseValidString(s1);
 		} catch (Exception e) {
 			e.printStackTrace();
 			LOG.error("EXC " + e);

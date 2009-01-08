@@ -1,13 +1,12 @@
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.cml.base.TstBase.parseValidString;
-
 import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLConstants;
+import org.xmlcml.cml.base.TstBase;
 import org.xmlcml.cml.element.CMLMetadata;
 import org.xmlcml.cml.element.CMLMetadataList;
 import org.xmlcml.cml.element.CMLMolecule;
@@ -43,7 +42,7 @@ public class CMLMetadataListTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		molecule = (CMLMolecule) parseValidString(moleculeS);
+		molecule = (CMLMolecule)TstBase.parseValidString(moleculeS);
 		metadataList0 = (CMLMetadataList) molecule
 				.getFirstCMLChild(CMLMetadataList.TAG);
 		metadataList1 = (CMLMetadataList) molecule.getChildCMLElements(
