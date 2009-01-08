@@ -8,6 +8,7 @@ import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.attribute.RefAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.StringSTAttribute;
@@ -461,7 +462,7 @@ public abstract class AbstractMap extends CMLElement {
     * @return CMLElements<CMLLink>
     */
     public CMLElements<CMLLink> getLinkElements() {
-        Elements elements = this.getChildElements("link", CML_NS);
+        Elements elements = this.getChildElements("link", CMLConstants.CML_NS);
         return new CMLElements<CMLLink>(elements);
     }
     /** overrides addAttribute(Attribute)

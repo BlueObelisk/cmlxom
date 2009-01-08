@@ -7,6 +7,7 @@ import nu.xom.Elements;
 import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.StringSTAttribute;
@@ -206,7 +207,7 @@ public abstract class AbstractTableHeader extends CMLElement {
     * @return CMLElements<CMLTableHeaderCell>
     */
     public CMLElements<CMLTableHeaderCell> getTableHeaderCellElements() {
-        Elements elements = this.getChildElements("tableHeaderCell", CML_NS);
+        Elements elements = this.getChildElements("tableHeaderCell", CMLConstants.CML_NS);
         return new CMLElements<CMLTableHeaderCell>(elements);
     }
     /** overrides addAttribute(Attribute)

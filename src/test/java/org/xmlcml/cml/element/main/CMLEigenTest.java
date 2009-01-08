@@ -1,6 +1,6 @@
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.euclid.EuclidConstants.EPS;
+import static org.xmlcml.euclid.EC.EPS;
 import junit.framework.Assert;
 
 import org.junit.Before;

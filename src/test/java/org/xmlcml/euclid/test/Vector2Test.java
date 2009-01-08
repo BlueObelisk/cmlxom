@@ -1,12 +1,12 @@
 package org.xmlcml.euclid.test;
 
-import static org.xmlcml.euclid.EuclidConstants.EPS;
-import static org.xmlcml.euclid.EuclidConstants.S_RBRAK;
+import static org.xmlcml.euclid.EC.EPS;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.euclid.Angle;
+import org.xmlcml.euclid.EC;
 import org.xmlcml.euclid.Real2;
 import org.xmlcml.euclid.Vector2;
 
@@ -44,8 +44,8 @@ public class Vector2Test {
 	 */
 	public static void assertEquals(String msg, Vector2 test, Vector2 expected,
 			double epsilon) {
-		Assert.assertNotNull("test should not be null (" + msg + S_RBRAK, test);
-		Assert.assertNotNull("expected should not be null (" + msg + S_RBRAK,
+		Assert.assertNotNull("test should not be null (" + msg + EC.S_RBRAK, test);
+		Assert.assertNotNull("expected should not be null (" + msg + EC.S_RBRAK,
 				expected);
 		DoubleTestBase.assertEquals(msg, test.getXY(), expected.getXY(),
 				epsilon);

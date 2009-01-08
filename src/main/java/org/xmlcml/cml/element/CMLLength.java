@@ -11,6 +11,7 @@ import nu.xom.Element;
 import nu.xom.Node;
 import nu.xom.Nodes;
 
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.euclid.Point3;
@@ -204,12 +205,12 @@ public class CMLLength extends AbstractLength {
      * @return the string
      */
     public String getString() {
-        String s = S_EMPTY;
+        String s = CMLConstants.S_EMPTY;
         String[] a = getAtomRefs2();
         if (a != null) {
-            s += Util.concatenate(a, S_MINUS);
+            s += Util.concatenate(a, CMLConstants.S_MINUS);
         }
-        s += S_SPACE;
+        s += CMLConstants.S_SPACE;
         s += this.getXMLContent();
         return s;
     }
@@ -244,7 +245,7 @@ public class CMLLength extends AbstractLength {
                     w.write("<td>");
                     CMLAtom atom = atoms.get(i);
                     Nodes labelNodes = atom.query(
-                        CMLScalar.NS+"[@dictRef='iucr:_atom_site_label']", CML_XPATH);
+                        CMLScalar.NS+"[@dictRef='iucr:_atom_site_label']", CMLConstants.CML_XPATH);
                     String label = ((CMLScalar) labelNodes.get(0)).getXMLContent()+" ("+atom.getId()+S_RBRAK;
                     w.write( (label == null) ? atom.getId() : label);
                     w.write("</td>");

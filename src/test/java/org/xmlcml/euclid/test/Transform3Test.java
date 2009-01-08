@@ -1,12 +1,12 @@
 package org.xmlcml.euclid.test;
 
-import static org.xmlcml.euclid.EuclidConstants.EPS;
-import static org.xmlcml.euclid.EuclidConstants.S_RBRAK;
+import static org.xmlcml.euclid.EC.EPS;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.euclid.Angle;
+import org.xmlcml.euclid.EC;
 import org.xmlcml.euclid.Point3;
 import org.xmlcml.euclid.RealArray;
 import org.xmlcml.euclid.RealSquareMatrix;
@@ -44,8 +44,8 @@ public class Transform3Test extends GeomTest {
 	 */
 	public static void assertEquals(String msg, Transform3 test,
 			Transform3 expected, double epsilon) {
-		Assert.assertNotNull("test should not be null (" + msg + S_RBRAK, test);
-		Assert.assertNotNull("expected should not be null (" + msg + S_RBRAK,
+		Assert.assertNotNull("test should not be null (" + msg + EC.S_RBRAK, test);
+		Assert.assertNotNull("expected should not be null (" + msg + EC.S_RBRAK,
 				expected);
 		DoubleTestBase.assertEquals(msg, test.getMatrixAsArray(), expected
 				.getMatrixAsArray(), epsilon);
@@ -63,10 +63,10 @@ public class Transform3Test extends GeomTest {
 	 */
 	public static void assertEquals(String msg, double[] test,
 			Transform3 expected, double epsilon) {
-		Assert.assertNotNull("test should not be null (" + msg + S_RBRAK, test);
-		Assert.assertEquals("test should have 16 elements (" + msg + S_RBRAK,
+		Assert.assertNotNull("test should not be null (" + msg + EC.S_RBRAK, test);
+		Assert.assertEquals("test should have 16 elements (" + msg + EC.S_RBRAK,
 				16, test.length);
-		Assert.assertNotNull("ref should not be null (" + msg + S_RBRAK,
+		Assert.assertNotNull("ref should not be null (" + msg + EC.S_RBRAK,
 				expected);
 		DoubleTestBase.assertEquals(msg, test, expected.getMatrixAsArray(),
 				epsilon);

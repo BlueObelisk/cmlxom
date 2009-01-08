@@ -2,7 +2,6 @@ package org.xmlcml.cml.element.main;
 
 import static org.xmlcml.cml.base.TstBase.assertEqualsCanonically;
 import static org.xmlcml.cml.base.TstBase.parseValidString;
-import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
 import static org.xmlcml.cml.element.main.AbstractTestBase.SIMPLE_RESOURCE;
 
 import java.io.File;
@@ -13,6 +12,7 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLBuilder;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.element.CMLArg;
 import org.xmlcml.cml.element.CMLAtom;
 import org.xmlcml.cml.element.CMLBond;
@@ -48,7 +48,7 @@ public class CMLArgTest {
 	 */
 	@Test
 	public void testSubstituteNameByValueCMLElement() throws Exception {
-		String cmlS = "" + "<cml " + CML_XMLNS + " id='a_i_'>"
+		String cmlS = "" + "<cml " + CMLConstants.CML_XMLNS + " id='a_i_'>"
 				+ "  <molecule id='mol_i_' title='orig mol'>"
 				+ "    <arg name='i' substitute='.//@*'>"
 				+ "      <scalar dataType='xsd:integer'>42</scalar>"
@@ -144,7 +144,7 @@ public class CMLArgTest {
 	 */
 	@Test
 	public void testEval() throws Exception {
-		String cmlS = "" + "<cml " + CML_XMLNS + " id='a_i_'>"
+		String cmlS = "" + "<cml " + CMLConstants.CML_XMLNS + " id='a_i_'>"
 				+ "  <molecule id='mol_i_' title='orig mol'>"
 				+ "    <arg name='i' substitute='.//@*'>"
 				+ "      <scalar dataType='xsd:integer'>42</scalar>"
@@ -218,7 +218,7 @@ public class CMLArgTest {
 	// try {
 	// peo1Cml = (CMLCml) new CMLBuilder().build(
 	// Util.getInputStreamFromResource(EXPERIMENTAL_RESOURCE
-	// + S_SLASH + "peo1.xml")).getRootElement();
+	// + CMLConstants.S_SLASH + "peo1.xml")).getRootElement();
 	// } catch (Exception e) {
 	// e.printStackTrace();
 	// throw new RuntimeException("EXC" + e);
@@ -241,7 +241,7 @@ public class CMLArgTest {
 	// InputStream in = null;
 	// try {
 	// in = Util.getInputStreamFromResource(EXPERIMENTAL_RESOURCE
-	// + U_S + "peo2.xml");
+	// +CMLConstants.U_S + "peo2.xml");
 	// peo2Cml = (CMLCml) new CMLBuilder().build(in)
 	// .getRootElement();
 	// } catch (Exception e) {

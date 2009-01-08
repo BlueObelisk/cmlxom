@@ -188,7 +188,7 @@ public class CMLType implements CMLConstants {
 		isList = false;
 		if (restriction != null) {
 			lists = CMLUtil.getQueryNodes(restriction, "./" + XSD_SIMPLE_TYPE
-					+ S_SLASH + XSD_LIST, XPATH_XSD);
+					+ CMLConstants.S_SLASH + XSD_LIST, XPATH_XSD);
 			List<Node> lengths = CMLUtil.getQueryNodes(restriction, "./"
 					+ XSD_LENGTH, XPATH_XSD);
 			if (lengths.size() == 1) {
@@ -266,7 +266,7 @@ public class CMLType implements CMLConstants {
 
 	void createDocumentation() {
 		List<Node> docs = CMLUtil.getQueryNodes(simpleType, "./"
-				+ XSD_ANNOTATION + S_SLASH + XSD_DOCUMENTATION, XPATH_XSD);
+				+ XSD_ANNOTATION + CMLConstants.S_SLASH + XSD_DOCUMENTATION, XPATH_XSD);
 		if (docs.size() == 0) {
 		} else if (docs.size() == 1) {
 			Element documentation = (Element) docs.get(0);
@@ -283,7 +283,7 @@ public class CMLType implements CMLConstants {
 
 	void createPattern() {
 		List<Node> patterns = CMLUtil.getQueryNodes(simpleType, "./"
-				+ XSD_RESTRICTION + S_SLASH + XSD_PATTERN, XPATH_XSD);
+				+ XSD_RESTRICTION + CMLConstants.S_SLASH + XSD_PATTERN, XPATH_XSD);
 		if (patterns.size() > 0) {
 			pattern = ((Element) patterns.get(0)).getAttributeValue("value");
 		}
@@ -291,7 +291,7 @@ public class CMLType implements CMLConstants {
 
 	void createLength() {
 		List<Node> lengths = CMLUtil.getQueryNodes(simpleType, "./"
-				+ XSD_RESTRICTION + S_SLASH + XSD_LENGTH, XPATH_XSD);
+				+ XSD_RESTRICTION + CMLConstants.S_SLASH + XSD_LENGTH, XPATH_XSD);
 		if (lengths.size() > 0) {
 			try {
 				listLength = Integer.parseInt(((Element) lengths.get(0))
@@ -305,7 +305,7 @@ public class CMLType implements CMLConstants {
 
 	void createMinMax() {
 		List<Node> minEx = CMLUtil.getQueryNodes(simpleType, "./"
-				+ XSD_RESTRICTION + S_SLASH + XSD_MINEXCLUSIVE, XPATH_XSD);
+				+ XSD_RESTRICTION + CMLConstants.S_SLASH + XSD_MINEXCLUSIVE, XPATH_XSD);
 		if (minEx.size() > 0) {
 			Element elem = (Element) minEx.get(0);
 			String value = elem.getAttributeValue("value");
@@ -330,7 +330,7 @@ public class CMLType implements CMLConstants {
 		}
 
 		List<Node> maxEx = CMLUtil.getQueryNodes(simpleType, "./"
-				+ XSD_RESTRICTION + S_SLASH + XSD_MAXEXCLUSIVE, XPATH_XSD);
+				+ XSD_RESTRICTION + CMLConstants.S_SLASH + XSD_MAXEXCLUSIVE, XPATH_XSD);
 		if (maxEx.size() > 0) {
 			Element elem = (Element) maxEx.get(0);
 			String value = elem.getAttributeValue("value");
@@ -355,7 +355,7 @@ public class CMLType implements CMLConstants {
 		}
 
 		List<Node> minInc = CMLUtil.getQueryNodes(simpleType, "./"
-				+ XSD_RESTRICTION + S_SLASH + XSD_MININCLUSIVE, XPATH_XSD);
+				+ XSD_RESTRICTION + CMLConstants.S_SLASH + XSD_MININCLUSIVE, XPATH_XSD);
 		if (minInc.size() > 0) {
 			Element elem = (Element) minInc.get(0);
 			String value = elem.getAttributeValue("value");
@@ -380,7 +380,7 @@ public class CMLType implements CMLConstants {
 		}
 
 		List<Node> maxInc = CMLUtil.getQueryNodes(simpleType, "./"
-				+ XSD_RESTRICTION + S_SLASH + XSD_MAXINCLUSIVE, XPATH_XSD);
+				+ XSD_RESTRICTION + CMLConstants.S_SLASH + XSD_MAXINCLUSIVE, XPATH_XSD);
 		if (maxInc.size() > 0) {
 			Element elem = (Element) maxInc.get(0);
 			String value = elem.getAttributeValue("value");
@@ -407,7 +407,7 @@ public class CMLType implements CMLConstants {
 
 	void createEnumerations() {
 		List<Node> restrictions = CMLUtil.getQueryNodes(simpleType, "./"
-				+ XSD_RESTRICTION + S_SLASH + XSD_ENUMERATION, XPATH_XSD);
+				+ XSD_RESTRICTION + CMLConstants.S_SLASH + XSD_ENUMERATION, XPATH_XSD);
 		int size = restrictions.size();
 		if (size > 0) {
 			int i = 0;
@@ -1163,7 +1163,7 @@ public class CMLType implements CMLConstants {
 	public void setSummary(String s) {
 		summary = s.trim();
 		if (summary.length() != 0 && !summary.endsWith(S_PERIOD)) {
-			summary += S_PERIOD;
+			summary += CMLConstants.S_PERIOD;
 		}
 	}
 

@@ -1,7 +1,7 @@
 package org.xmlcml.molutil.test;
 
-import static org.xmlcml.euclid.EuclidConstants.EPS;
-import static org.xmlcml.euclid.EuclidConstants.S_EMPTY;
+import static org.xmlcml.euclid.EC.EPS;
+import static org.xmlcml.euclid.EC.S_EMPTY;
 
 import java.awt.Color;
 import java.util.ArrayList;

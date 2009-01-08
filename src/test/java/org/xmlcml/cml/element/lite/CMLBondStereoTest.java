@@ -1,10 +1,10 @@
 package org.xmlcml.cml.element.lite;
 
 import static org.xmlcml.cml.base.TstBase.parseValidString;
-import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.element.CMLBond;
 import org.xmlcml.cml.element.CMLBondStereo;
 import org.xmlcml.cml.element.CMLMolecule;
@@ -24,7 +24,7 @@ public class CMLBondStereoTest {
 	 */
 	@Test
 	public void testMatchParity() {
-		String s = "<molecule id='m1' " + CML_XMLNS + ">" + "  <atomArray>"
+		String s = "<molecule id='m1' " + CMLConstants.CML_XMLNS + ">" + "  <atomArray>"
 				+ "    <atom id='a1' elementType='F'/>"
 				+ "    <atom id='a2' elementType='C' hydrogenCount='1'/>"
 				+ "    <atom id='a3' elementType='C' hydrogenCount='1'/>"

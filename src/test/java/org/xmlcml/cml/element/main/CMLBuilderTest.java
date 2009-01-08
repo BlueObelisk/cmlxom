@@ -1,9 +1,6 @@
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
 import static org.xmlcml.cml.element.main.AbstractTestBase.COMPLEX_RESOURCE;
-import static org.xmlcml.euclid.EuclidConstants.S_EMPTY;
-import static org.xmlcml.euclid.EuclidConstants.U_S;
 import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
 import java.io.InputStream;
@@ -13,6 +10,7 @@ import nu.xom.NodeFactory;
 
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLBuilder;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLNodeFactory;
 import org.xmlcml.euclid.Util;
 
@@ -32,7 +30,7 @@ public class CMLBuilderTest {
 	public void testCMLBuilderBooleanNodeFactory() {
 		// fails because default CMLBuilder uses OldNodeFactory
 		// to validate element names
-		String s = S_EMPTY + "<cml " + CML_XMLNS + ">" + "<inchi/>" + "</cml>";
+		String s = CMLConstants.S_EMPTY + "<cml " + CMLConstants.CML_XMLNS + ">" + "<inchi/>" + "</cml>";
 		try {
 			new CMLBuilder().parseString(s);
 			Assert.fail("should throw: Unknown CML element: inchi");
@@ -80,7 +78,7 @@ public class CMLBuilderTest {
 	@Test
 	public void testParseString() {
 		// parse, validation by OldNodeFactory
-		String s = S_EMPTY + "<cml " + CML_XMLNS + ">" + "</cml>";
+		String s = CMLConstants.S_EMPTY + "<cml " + CMLConstants.CML_XMLNS + ">" + "</cml>";
 		CMLBuilder builder = new CMLBuilder();
 		try {
 			builder.parseString(s);
@@ -89,7 +87,7 @@ public class CMLBuilderTest {
 		}
 
 		// parse, validation by OldNodeFactory
-		s = S_EMPTY + "<cml " + CML_XMLNS + ">" + "<inchi/>" + "</cml>";
+		s = CMLConstants.S_EMPTY + "<cml " + CMLConstants.CML_XMLNS + ">" + "<inchi/>" + "</cml>";
 		builder = new CMLBuilder();
 		try {
 			builder.parseString(s);
@@ -100,7 +98,7 @@ public class CMLBuilderTest {
 		// parse against DOCTYPE (tests XOM DTD validation)
 		s = "<!DOCTYPE cml [" + "<!ELEMENT cml ANY>"
 				+ "<!ATTLIST cml xmlns CDATA #REQUIRED>" + "]>" + "<cml "
-				+ CML_XMLNS + ">" + "<inchi/>" + "</cml>";
+				+ CMLConstants.CML_XMLNS + ">" + "<inchi/>" + "</cml>";
 		boolean validate = true;
 		builder = new CMLBuilder(validate, new NodeFactory());
 		try {
@@ -121,7 +119,7 @@ public class CMLBuilderTest {
 		CMLBuilder builder = new CMLBuilder();
 		InputStream in = null;
 		try {
-			in = Util.getInputStreamFromResource(COMPLEX_RESOURCE + U_S
+			in = Util.getInputStreamFromResource(COMPLEX_RESOURCE +CMLConstants.U_S
 					+ "castep2.xml");
 			builder.build(in);
 			in.close();
@@ -134,7 +132,7 @@ public class CMLBuilderTest {
 		boolean validate = true;
 		builder = new CMLBuilder(validate);
 		try {
-			in = Util.getInputStreamFromResource(COMPLEX_RESOURCE + U_S
+			in = Util.getInputStreamFromResource(COMPLEX_RESOURCE +CMLConstants.U_S
 					+ "castep2.xml");
 			builder.build(in);
 			in.close();

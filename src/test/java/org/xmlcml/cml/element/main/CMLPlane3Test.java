@@ -1,12 +1,12 @@
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.euclid.EuclidConstants.EPS;
-import static org.xmlcml.euclid.EuclidConstants.S_RBRAK;
+import static org.xmlcml.euclid.EC.EPS;
 import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.element.CMLLine3;
 import org.xmlcml.cml.element.CMLPlane3;
 import org.xmlcml.cml.element.CMLPoint3;
@@ -45,8 +45,8 @@ public class CMLPlane3Test extends GeomTestBase {
 	 */
 	public static void assertEquals(String msg, CMLPlane3 test,
 			CMLPlane3 expected, double epsilon) {
-		Assert.assertNotNull("test should not be null (" + msg + S_RBRAK, test);
-		Assert.assertNotNull("expected should not be null (" + msg + S_RBRAK,
+		Assert.assertNotNull("test should not be null (" + msg + CMLConstants.S_RBRAK, test);
+		Assert.assertNotNull("expected should not be null (" + msg + CMLConstants.S_RBRAK,
 				expected);
 		DoubleTestBase.assertEquals(msg, test.getArray(), expected.getArray(),
 				epsilon);
@@ -64,9 +64,9 @@ public class CMLPlane3Test extends GeomTestBase {
 	 */
 	public static void assertEquals(String msg, double[] test,
 			CMLPlane3 expected, double epsilon) {
-		Assert.assertNotNull("test should not be null (" + msg + S_RBRAK, test);
+		Assert.assertNotNull("test should not be null (" + msg + CMLConstants.S_RBRAK, test);
 		Assert.assertEquals("must be of length 4", 4, test.length);
-		Assert.assertNotNull("expected should not be null (" + msg + S_RBRAK,
+		Assert.assertNotNull("expected should not be null (" + msg + CMLConstants.S_RBRAK,
 				expected);
 		DoubleTestBase.assertEquals(msg, test, expected.getArray(), epsilon);
 	}

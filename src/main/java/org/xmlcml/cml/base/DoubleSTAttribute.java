@@ -12,8 +12,6 @@ import nu.xom.Node;
 
 public class DoubleSTAttribute extends CMLAttribute {
 
-	private static final String S_PLUS = "+";
-
     /** dewisott */
 	public final static String JAVA_TYPE = "double";
 

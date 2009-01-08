@@ -7,6 +7,7 @@ import nu.xom.Elements;
 import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.StringSTAttribute;
@@ -354,7 +355,7 @@ public abstract class AbstractDictionary extends CMLElement {
 //    * @return CMLElements<CMLUnitList>
 //    */
 //    public CMLElements<CMLUnitList> getUnitListElements() {
-//        Elements elements = this.getChildElements("unitList", CML_NS);
+//        Elements elements = this.getChildElements("unitList", CMLConstants.CML_NS);
 //        return new CMLElements<CMLUnitList>(elements);
 //    }
 // element:   annotation
@@ -380,7 +381,7 @@ public abstract class AbstractDictionary extends CMLElement {
 //    * @return CMLElements<CMLAnnotation>
 //    */
 //    public CMLElements<CMLAnnotation> getAnnotationElements() {
-//        Elements elements = this.getChildElements("annotation", CML_NS);
+//        Elements elements = this.getChildElements("annotation", CMLConstants.CML_NS);
 //        return new CMLElements<CMLAnnotation>(elements);
 //    }
 // element:   description
@@ -406,7 +407,7 @@ public abstract class AbstractDictionary extends CMLElement {
 //    * @return CMLElements<CMLDescription>
 //    */
 //    public CMLElements<CMLDescription> getDescriptionElements() {
-//        Elements elements = this.getChildElements("description", CML_NS);
+//        Elements elements = this.getChildElements("description", CMLConstants.CML_NS);
 //        return new CMLElements<CMLDescription>(elements);
 //    }
 // element:   entry
@@ -432,7 +433,7 @@ public abstract class AbstractDictionary extends CMLElement {
     * @return CMLElements<CMLEntry>
     */
     public CMLElements<CMLEntry> getEntryElements() {
-        Elements elements = this.getChildElements("entry", CML_NS);
+        Elements elements = this.getChildElements("entry", CMLConstants.CML_NS);
         return new CMLElements<CMLEntry>(elements);
     }
     /** overrides addAttribute(Attribute)

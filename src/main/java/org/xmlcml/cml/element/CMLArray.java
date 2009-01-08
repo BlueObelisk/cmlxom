@@ -13,6 +13,7 @@ import org.xmlcml.cml.attribute.DelimiterAttribute;
 import org.xmlcml.cml.attribute.NamespaceRefAttribute;
 import org.xmlcml.cml.attribute.DelimiterAttribute.Action;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLType;
 import org.xmlcml.cml.base.CMLUtil;
@@ -484,7 +485,7 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 	}
 
 	// /**
-	// * get delimiter. if none, use default S_WHITEREGEX.
+	// * get delimiter. if none, use default CMLConstants.S_WHITEREGEX.
 	// *
 	// * @return delimiter
 	// */
@@ -492,7 +493,7 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 	// public String getDelimiter() {
 	// String delim = super.getDelimiter();
 	// if (delim == null || delim.equals(S_EMPTY)) {
-	// delim = S_WHITEREGEX;
+	// delim = CMLConstants.S_WHITEREGEX;
 	// }
 	// return delim;
 	// }
@@ -592,8 +593,8 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 				|| this.getSize() != array.getSize()) {
 			throw new RuntimeException(
 					"Unsuitable dataTypes for numeric operations / "
-							+ this.getDataType() + S_SLASH + this.getSize()
-							+ S_SLASH + array.getDataType() + S_SLASH
+							+ this.getDataType() + CMLConstants.S_SLASH + this.getSize()
+							+ CMLConstants.S_SLASH + array.getDataType() + CMLConstants.S_SLASH
 							+ array.getSize());
 		}
 	}

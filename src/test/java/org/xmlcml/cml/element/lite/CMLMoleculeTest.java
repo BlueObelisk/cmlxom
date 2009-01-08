@@ -1,8 +1,7 @@
 package org.xmlcml.cml.element.lite;
 
-import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
 import static org.xmlcml.cml.base.TstBase.parseValidString;
-import static org.xmlcml.euclid.EuclidConstants.EPS;
+import static org.xmlcml.euclid.EC.EPS;
 import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
 import java.io.File;
@@ -19,6 +18,7 @@ import org.junit.Test;
 import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
 import org.xmlcml.cml.base.CMLBuilder;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.CMLUtil;
 import org.xmlcml.cml.base.TstBase;
@@ -480,7 +480,7 @@ public class CMLMoleculeTest {
 	@Test
 	public void testGetMoleculeAncestor() throws Exception {
 		CMLCml cml = (CMLCml) parseValidString("<cml "
-				+ CML_XMLNS
+				+ CMLConstants.CML_XMLNS
 				+ ">"
 				+ "  <molecule id='m1'>"
 				+ "    <name>foo</name>"
@@ -510,7 +510,7 @@ public class CMLMoleculeTest {
 	@Test
 	public void testAddBond() throws Exception {
 		CMLMolecule molecule = (CMLMolecule) parseValidString("<molecule "
-				+ CML_XMLNS + " id='m1'>" + "  <atomArray>"
+				+ CMLConstants.CML_XMLNS + " id='m1'>" + "  <atomArray>"
 				+ "    <atom id='a1'/>" + "    <atom id='a2'/>"
 				+ "    <atom id='a3'/>" + "  </atomArray>" + "</molecule>");
 		List<CMLAtom> atoms = molecule.getAtoms();
@@ -792,7 +792,7 @@ public class CMLMoleculeTest {
 	public void testSetNormalizedBondOrders() {
 		String s = ""
 				+ "  <molecule id='m5' "
-				+ CML_XMLNS
+				+ CMLConstants.CML_XMLNS
 				+ ">"
 				+ "    <atomArray>"
 				+ "      <atom id='a1' elementType='C' x3='0.0' y3='0.0' z3='0.0'/>"

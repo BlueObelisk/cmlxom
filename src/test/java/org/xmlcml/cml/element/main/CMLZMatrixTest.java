@@ -1,10 +1,7 @@
 package org.xmlcml.cml.element.main;
 
 import static org.xmlcml.cml.base.TstBase.parseValidString;
-import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
 import static org.xmlcml.cml.element.main.AbstractTestBase.EXPERIMENTAL_RESOURCE;
-import static org.xmlcml.euclid.EuclidConstants.S_EMPTY;
-import static org.xmlcml.euclid.EuclidConstants.U_S;
 import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
 import java.io.File;
@@ -21,6 +18,7 @@ import nu.xom.ValidityException;
 
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLBuilder;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.element.CMLCml;
 import org.xmlcml.cml.element.CMLMolecule;
 import org.xmlcml.cml.element.CMLZMatrix;
@@ -43,9 +41,9 @@ public class CMLZMatrixTest {
 	@Test
 	public void testCMLZMatrixCMLElement() throws Exception {
 
-		String zmatS = S_EMPTY
+		String zmatS = CMLConstants.S_EMPTY
 				+ "<molecule id='polypropylene_oxide' "
-				+ CML_XMLNS
+				+ CMLConstants.CML_XMLNS
 				+ ">"
 				+ "<atomArray>"
 				+ "<atom id='oh1_a1' elementType='O' hydrogenCount='1'/>"
@@ -114,7 +112,7 @@ public class CMLZMatrixTest {
 				+ "<length atomRefs2='prop3_a4 h1_a1'>1.10</length>"
 				+ "<angle atomRefs3='prop3_a2 prop3_a4 h1_a1'>105</angle>"
 				+ "<torsion atomRefs4='prop3_a1 prop3_a2 prop3_a4 h1_a1'>60</torsion>"
-				+ "</molecule>" + S_EMPTY;
+				+ "</molecule>" + CMLConstants.S_EMPTY;
 		CMLMolecule molecule = (CMLMolecule) new CMLBuilder()
 				.parseString(zmatS);
 		CMLZMatrix zmat = new CMLZMatrix(molecule);
@@ -122,7 +120,7 @@ public class CMLZMatrixTest {
 
 		// test for bad input
 		String zmatBadS = "<cml "
-				+ CML_XMLNS
+				+ CMLConstants.CML_XMLNS
 				+ ">"
 				+ "<length atomRefs2='prop1_a1 prop1_a2'>1.54</length>"
 				+ "<length atomRefs2='prop1_a2 prop1_a3'>1.54</length>"
@@ -132,7 +130,7 @@ public class CMLZMatrixTest {
 				+ "<torsion atomRefs4='prop1_a1 prop1_a4 prop1_a2 prop1_a3'>120</torsion>"
 				+ "<length atomRefs2='prop2_a1 prop2_a2'>1.54</length>"
 				+ "<length atomRefs2='prop2_a2 prop2_a3'>1.54</length>"
-				+ "</cml>" + S_EMPTY;
+				+ "</cml>" + CMLConstants.S_EMPTY;
 		CMLCml cml = (CMLCml) parseValidString(zmatBadS);
 		try {
 			zmat = new CMLZMatrix(cml);
@@ -144,13 +142,13 @@ public class CMLZMatrixTest {
 							e.getMessage());
 		}
 
-		zmatBadS = "<cml " + CML_XMLNS + ">"
+		zmatBadS = "<cml " + CMLConstants.CML_XMLNS + ">"
 				+ "<length atomRefs2='prop1_a1 prop1_a2'>1.54</length>"
 				+ "<length atomRefs2='prop1_a2 prop1_a3'>1.54</length>"
 				+ "<angle atomRefs3='prop1_a1 prop1_a2 prop1_a3'>111</angle>"
 				+ "<length atomRefs2='prop1_a2 prop1_a4'>1.40</length>"
 				+ "<angle atomRefs3='prop1_a1 prop1_a2 prop1_a4'>111</angle>"
-				+ "</cml>" + S_EMPTY;
+				+ "</cml>" + CMLConstants.S_EMPTY;
 		cml = (CMLCml) parseValidString(zmatBadS);
 		try {
 			zmat = new CMLZMatrix(cml);
@@ -170,7 +168,7 @@ public class CMLZMatrixTest {
 	 */
 	@Test
 	public void testZMatrixElement2() {
-		String moleculeS = S_EMPTY + "<molecule id='branch0' "
+		String moleculeS = CMLConstants.S_EMPTY + "<molecule id='branch0' "
 				+ "convention='cml:PML-complete' "
 				+ "xmlns='http://www.xml-cml.org/schema'>" + "<atomArray>"
 				+ "<atom elementType='O' hydrogenCount='1' id='a0'/>"
@@ -218,7 +216,7 @@ public class CMLZMatrixTest {
 		Document doc = null;
 		CMLMolecule mol = null;
 		InputStream in = Util.getInputStreamFromResource(EXPERIMENTAL_RESOURCE
-				+ U_S + infileS);
+				+CMLConstants.U_S + infileS);
 		doc = new CMLBuilder().build(in);
 		in.close();
 		mol = (CMLMolecule) doc.getRootElement();

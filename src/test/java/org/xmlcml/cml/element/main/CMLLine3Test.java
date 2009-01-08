@@ -1,9 +1,6 @@
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
 import static org.xmlcml.euclid.EuclidConstants.EPS;
-import static org.xmlcml.euclid.EuclidConstants.S_RBRAK;
-import static org.xmlcml.euclid.EuclidConstants.S_SPACE;
 
 import java.io.StringReader;
 
@@ -11,6 +8,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLBuilder;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.element.CMLLine3;
 import org.xmlcml.cml.element.CMLPlane3;
 import org.xmlcml.cml.element.CMLPoint3;
@@ -65,8 +63,8 @@ public class CMLLine3Test extends GeomTestBase {
 	 */
 	public static void assertEquals(String msg, CMLLine3 test,
 			CMLLine3 expected, double epsilon) {
-		Assert.assertNotNull("test should not be null (" + msg + S_RBRAK, test);
-		Assert.assertNotNull("expected should not be null (" + msg + S_RBRAK,
+		Assert.assertNotNull("test should not be null (" + msg + CMLConstants.S_RBRAK, test);
+		Assert.assertNotNull("expected should not be null (" + msg + CMLConstants.S_RBRAK,
 				expected);
 		Line3Test.assertEquals(msg, test.getEuclidLine3(), expected
 				.getEuclidLine3(), epsilon);
@@ -84,11 +82,11 @@ public class CMLLine3Test extends GeomTestBase {
 	 */
 	public static void assertEquals(String msg, CMLPoint3 testPoint,
 			CMLVector3 testVector, CMLLine3 expected, double epsilon) {
-		Assert.assertNotNull("testVector should not be null (" + msg + S_RBRAK,
+		Assert.assertNotNull("testVector should not be null (" + msg + CMLConstants.S_RBRAK,
 				testVector);
-		Assert.assertNotNull("testPoint should not be null (" + msg + S_RBRAK,
+		Assert.assertNotNull("testPoint should not be null (" + msg + CMLConstants.S_RBRAK,
 				testPoint);
-		Assert.assertNotNull("expected should not be null (" + msg + S_RBRAK,
+		Assert.assertNotNull("expected should not be null (" + msg + CMLConstants.S_RBRAK,
 				expected);
 		Vector3Test.assertEquals(msg, testVector.getEuclidVector3(),
 				new Vector3(expected.getVector3()), epsilon);
@@ -110,8 +108,8 @@ public class CMLLine3Test extends GeomTestBase {
 	 */
 	@Test
 	public void testParse() {
-		String s = "<line3 point3='4. 5. 6.' vector3='1. 2. 3.'" + S_SPACE
-				+ CML_XMLNS + ">1. 2. 3. 4. 5. 6. </line3>";
+		String s = "<line3 point3='4. 5. 6.' vector3='1. 2. 3.'" + CMLConstants.S_SPACE
+				+ CMLConstants.CML_XMLNS + ">1. 2. 3. 4. 5. 6. </line3>";
 		CMLLine3 l = null;
 		try {
 			l = (CMLLine3) new CMLBuilder().build(new StringReader(s))

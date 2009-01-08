@@ -2,6 +2,7 @@ package org.xmlcml.euclid;
 import java.util.StringTokenizer;
 
 import org.apache.log4j.Logger;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.euclid.Axis.Axis3;
 /**
  * 3-D transformation matrix class Transform3 represents a transformation matrix
@@ -450,7 +451,7 @@ public class Transform3 extends RealSquareMatrix {
      */
     public Transform3(String opString) throws EuclidRuntimeException {
         super(4);
-        StringTokenizer st = new StringTokenizer(opString, S_COMMA);
+        StringTokenizer st = new StringTokenizer(opString, CMLConstants.S_COMMA);
         if (st.countTokens() != 3) {
             throw new EuclidRuntimeException("Must have 3 operators");
         }
@@ -780,13 +781,13 @@ public class Transform3 extends RealSquareMatrix {
             for (int jcol = 0; jcol < 3; jcol++) {
                 double f = flmat[irow][jcol];
                 if (f > 0.1) {
-                    s += S_PLUS+oper[jcol];
+                    s += CMLConstants.S_PLUS+oper[jcol];
                 } else if (f < -0.1) {
-                    s += S_MINUS+oper[jcol];
+                    s += CMLConstants.S_MINUS+oper[jcol];
                 }
             }
             if (irow < 2) {
-                s += S_COMMA;
+                s += CMLConstants.S_COMMA;
             }
         }
         return s;
@@ -807,12 +808,12 @@ public class Transform3 extends RealSquareMatrix {
             n /= 3;
             d /= 3;
         }
-        String s = S_EMPTY;
+        String s = CMLConstants.S_EMPTY;
         if (n != 0) {
             if (d == 1) {
-                s = S_EMPTY+n;
+                s = CMLConstants.S_EMPTY+n;
             } else {
-                s += S_EMPTY+n+S_SLASH+d;
+                s += CMLConstants.S_EMPTY+n+S_SLASH+d;
             }
         }
         return s;

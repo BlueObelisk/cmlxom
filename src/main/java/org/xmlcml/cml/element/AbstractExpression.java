@@ -7,6 +7,7 @@ import nu.xom.Elements;
 import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.StringSTAttribute;
@@ -251,7 +252,7 @@ public abstract class AbstractExpression extends CMLElement {
     * @return CMLElements<CMLParameter>
     */
     public CMLElements<CMLParameter> getParameterElements() {
-        Elements elements = this.getChildElements("parameter", CML_NS);
+        Elements elements = this.getChildElements("parameter", CMLConstants.CML_NS);
         return new CMLElements<CMLParameter>(elements);
     }
 // element:   operator
@@ -271,7 +272,7 @@ public abstract class AbstractExpression extends CMLElement {
     * @return CMLElements<CMLOperator>
     */
     public CMLElements<CMLOperator> getOperatorElements() {
-        Elements elements = this.getChildElements("operator", CML_NS);
+        Elements elements = this.getChildElements("operator", CMLConstants.CML_NS);
         return new CMLElements<CMLOperator>(elements);
     }
     /** overrides addAttribute(Attribute)

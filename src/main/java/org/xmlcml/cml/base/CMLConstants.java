@@ -2,6 +2,7 @@ package org.xmlcml.cml.base;
 
 import nu.xom.XPathContext;
 
+import org.xmlcml.euclid.EC;
 import org.xmlcml.euclid.EuclidConstants;
 
 /**
@@ -338,10 +339,10 @@ public interface CMLConstants extends EuclidConstants {
     String CML_NS_BASE = "http://www.xml-cml.org";
 
     /** constant */
-    String CML_NS = CML_NS_BASE+U_S+"schema";
+    String CML_NS = CML_NS_BASE+EC.U_S+"schema";
 
     /** cmlx namespace */
-    String CMLX_NS = CML_NS_BASE+U_S+"schema"+S_SLASH+"cmlx";
+    String CMLX_NS = CML_NS_BASE+EC.U_S+"schema"+S_SLASH+"cmlx";
 
     /** CMLX prefix (cmlx) for experimentation and development
      */
@@ -359,16 +360,16 @@ public interface CMLConstants extends EuclidConstants {
     /**
      * cml dictionary namespace reserved
      */
-    String DICT_NS = CML_NS_BASE+U_S+"dict";
+    String DICT_NS = CML_NS_BASE+EC.U_S+"dict";
 
     /**
      * cml URI namespace reserved
      */
-    String CML_REPOSITORY_BASE = CML_NS_BASE+U_S+"repository";
+    String CML_REPOSITORY_BASE = CML_NS_BASE+EC.U_S+"repository";
     /**
      * cml dictionary reserved
      */
-    String CML_DICT_NS = DICT_NS+U_S+"cml";
+    String CML_DICT_NS = DICT_NS+EC.U_S+"cml";
 
     /** constant */
     String CML1 = CML_NS + S_SLASH + "cml1";
@@ -528,22 +529,22 @@ public interface CMLConstants extends EuclidConstants {
     /**
      * units root namespace reserved
      */
-    String _UNIT_NS = CML_NS_BASE+U_S+"units";
+    String _UNIT_NS = CML_NS_BASE+EC.U_S+"units";
 
     /**
      * units dictionary namespace reserved
      */
-    String UNIT_NS = _UNIT_NS+U_S+"units";
+    String UNIT_NS = _UNIT_NS+EC.U_S+"units";
 
     /**
      * siUnits dictionary namespace reserved
      */
-    String SIUNIT_NS = _UNIT_NS+U_S+"siUnits";
+    String SIUNIT_NS = _UNIT_NS+EC.U_S+"siUnits";
 
     /**
      * unnitTypes dictionary namespace reserved
      */
-    String UNITTYPES_NS = _UNIT_NS+U_S+"unitTypes";
+    String UNITTYPES_NS = _UNIT_NS+EC.U_S+"unitTypes";
 
     /**
      * siUnits prefix reserved: for several uses

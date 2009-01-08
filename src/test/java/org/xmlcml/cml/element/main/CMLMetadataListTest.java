@@ -1,14 +1,13 @@
 package org.xmlcml.cml.element.main;
 
 import static org.xmlcml.cml.base.TstBase.parseValidString;
-import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
-import static org.xmlcml.euclid.EuclidConstants.S_EMPTY;
 
 import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.element.CMLMetadata;
 import org.xmlcml.cml.element.CMLMetadataList;
 import org.xmlcml.cml.element.CMLMolecule;
@@ -20,7 +19,7 @@ import org.xmlcml.cml.element.CMLMolecule;
  * 
  */
 public class CMLMetadataListTest {
-	String moleculeS = "<molecule " + CML_XMLNS
+	String moleculeS = "<molecule " + CMLConstants.CML_XMLNS
 			+ "  xmlns:foo='http://www.foo.org'" + "  >"
 			+ "  <metadataList id='ml1'>" + "    <metadataList id='ml2'>"
 			+ "      <metadata id='m1' name='foo:foo1' content='bar1'/>"
@@ -32,7 +31,7 @@ public class CMLMetadataListTest {
 			+ "    <metadata id='m5' name='foo:foo1' content='bar51'/>"
 			+ "  </metadataList>"
 			+ "  <metadata id='m6' name='foo:foo6' content='bar6'/>"
-			+ "</molecule>" + S_EMPTY;
+			+ "</molecule>" + CMLConstants.S_EMPTY;
 	CMLMolecule molecule;
 	CMLMetadataList metadataList0;
 	CMLMetadataList metadataList1;

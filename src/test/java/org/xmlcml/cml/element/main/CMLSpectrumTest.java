@@ -1,11 +1,8 @@
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
-import static org.xmlcml.cml.base.CMLConstants.CML_XPATH;
 import static org.xmlcml.cml.element.main.AbstractTestBase.COMPLEX_RESOURCE;
 import static org.xmlcml.cml.element.main.AbstractTestBase.SIMPLE_RESOURCE;
 import static org.xmlcml.euclid.EuclidConstants.EPS;
-import static org.xmlcml.euclid.EuclidConstants.U_S;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,6 +19,7 @@ import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLBuilder;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.element.CMLArray;
 import org.xmlcml.cml.element.CMLCml;
@@ -254,7 +252,7 @@ public class CMLSpectrumTest extends PeakSpectrumBase {
 	public void testReadCMLSpectrum5() throws IOException, ValidityException,
 			ParsingException {
 		CMLCml cml = null;
-		InputStream in = Util.getInputStreamFromResource(SIMPLE_RESOURCE + U_S
+		InputStream in = Util.getInputStreamFromResource(SIMPLE_RESOURCE +CMLConstants.U_S
 				+ testfile5);
 		cml = (CMLCml) new CMLBuilder().build(in).getRootElement();
 		in.close();
@@ -369,7 +367,7 @@ public class CMLSpectrumTest extends PeakSpectrumBase {
 		CMLCml cml = null;
 		try {
 			cml = (CMLCml) new CMLBuilder().build(
-					new StringReader("<cml " + CML_XMLNS + ">"
+					new StringReader("<cml " + CMLConstants.CML_XMLNS + ">"
 							+ "  <molecule id='m1'>" + "  </molecule>"
 							+ "  <spectrum id='s1'>" + "  </spectrum>"
 							+ "</cml>")).getRootElement();
@@ -430,11 +428,11 @@ public class CMLSpectrumTest extends PeakSpectrumBase {
 	public void testFindSpectraInDocument() throws IOException,
 			ValidityException, ParsingException {
 		Document document = null;
-		InputStream in = Util.getInputStreamFromResource(COMPLEX_RESOURCE + U_S
+		InputStream in = Util.getInputStreamFromResource(COMPLEX_RESOURCE +CMLConstants.U_S
 				+ testCompoundFile1);
 		document = new CMLBuilder().build(in);
 		in.close();
-		Nodes cmlNodes = document.query("//" + CMLCml.NS, CML_XPATH);
+		Nodes cmlNodes = document.query("//" + CMLCml.NS, CMLConstants.CML_XPATH);
 		Assert.assertEquals("spectra count", cmlNodes.size(), 1);
 		CMLCml cml = (CMLCml) cmlNodes.get(0);
 		Nodes spectrumNodes = cml.cmlQuery("//" + CMLSpectrum.NS);

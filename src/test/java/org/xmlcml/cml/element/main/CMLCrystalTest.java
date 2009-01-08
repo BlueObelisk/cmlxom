@@ -1,18 +1,18 @@
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
 import static org.xmlcml.cml.base.CMLConstants.U_ANGSTROM;
 import static org.xmlcml.cml.base.CMLConstants.U_DEGREE;
 import static org.xmlcml.cml.base.TstBase.assertEqualsCanonically;
 import static org.xmlcml.cml.base.TstBase.parseValidString;
-import static org.xmlcml.euclid.EuclidConstants.EPS;
-import static org.xmlcml.euclid.EuclidConstants.S_SPACE;
+import static org.xmlcml.euclid.EC.EPS;
+import static org.xmlcml.euclid.EC.S_SPACE;
 
 import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.element.CMLCellParameter;
 import org.xmlcml.cml.element.CMLCrystal;
@@ -40,66 +40,66 @@ public class CMLCrystalTest {
 
 	CMLCrystal crystal3;
 
-	String crystal1S = "" + "<crystal z='4' " + CML_XMLNS + ">"
+	String crystal1S = "" + "<crystal z='4' " + CMLConstants.CML_XMLNS + ">"
 			+ "<scalar id='sc1' dictRef='cml:a' errorValue='0.001' units='"
-			+ U_ANGSTROM + "'" + S_SPACE + CML_XMLNS + ">4.500</scalar>"
+			+ U_ANGSTROM + "'" + S_SPACE + CMLConstants.CML_XMLNS + ">4.500</scalar>"
 			+ "<scalar id='sc2' dictRef='cml:b' errorValue='0.001' units='"
-			+ U_ANGSTROM + "'" + S_SPACE + CML_XMLNS + ">4.500</scalar>"
+			+ U_ANGSTROM + "'" + S_SPACE + CMLConstants.CML_XMLNS + ">4.500</scalar>"
 			+ "<scalar id='sc3' dictRef='cml:c' errorValue='0.001' units='"
-			+ U_ANGSTROM + "'" + S_SPACE + CML_XMLNS + ">4.500</scalar>"
+			+ U_ANGSTROM + "'" + S_SPACE + CMLConstants.CML_XMLNS + ">4.500</scalar>"
 			+ "<scalar id='sc4' dictRef='cml:alpha' units='" + U_DEGREE + "' "
-			+ CML_XMLNS + ">90</scalar>"
+			+ CMLConstants.CML_XMLNS + ">90</scalar>"
 			+ "<scalar id='sc5' dictRef='cml:beta' units='" + U_DEGREE + "' "
-			+ CML_XMLNS + ">90</scalar>"
+			+ CMLConstants.CML_XMLNS + ">90</scalar>"
 			+ "<scalar id='sc6' dictRef='cml:gamma' units='" + U_DEGREE + "' "
-			+ CML_XMLNS + ">90</scalar>"
-			+ "<symmetry id='s1' spaceGroup='Fm3m' " + CML_XMLNS + "/>"
+			+ CMLConstants.CML_XMLNS + ">90</scalar>"
+			+ "<symmetry id='s1' spaceGroup='Fm3m' " + CMLConstants.CML_XMLNS + "/>"
 			+ "</crystal>" + "";
 
-	String crystal2S = "" + "<crystal " + CML_XMLNS + ">"
+	String crystal2S = "" + "<crystal " + CMLConstants.CML_XMLNS + ">"
 			+ "<scalar id='sc1' dictRef='cml:a' units='" + U_ANGSTROM + "'"
-			+ S_SPACE + CML_XMLNS + ">8</scalar>"
+			+ S_SPACE + CMLConstants.CML_XMLNS + ">8</scalar>"
 			+ "<scalar id='sc2' dictRef='cml:b' units='" + U_ANGSTROM + "'"
-			+ S_SPACE + CML_XMLNS + ">9</scalar>"
+			+ S_SPACE + CMLConstants.CML_XMLNS + ">9</scalar>"
 			+ "<scalar id='sc3' dictRef='cml:c' units='" + U_ANGSTROM + "'"
-			+ S_SPACE + CML_XMLNS + ">10</scalar>"
+			+ S_SPACE + CMLConstants.CML_XMLNS + ">10</scalar>"
 			+ "<scalar id='sc4' dictRef='cml:alpha' units='" + U_DEGREE + "' "
-			+ CML_XMLNS + ">80</scalar>"
+			+ CMLConstants.CML_XMLNS + ">80</scalar>"
 			+ "<scalar id='sc5' dictRef='cml:beta' units='" + U_DEGREE + "' "
-			+ CML_XMLNS + ">90</scalar>"
+			+ CMLConstants.CML_XMLNS + ">90</scalar>"
 			+ "<scalar id='sc6' dictRef='cml:gamma' units='" + U_DEGREE + "' "
-			+ CML_XMLNS + ">100</scalar>" + "</crystal>" + "";
+			+ CMLConstants.CML_XMLNS + ">100</scalar>" + "</crystal>" + "";
 
-	String crystal3S = "" + "<crystal " + CML_XMLNS + ">"
+	String crystal3S = "" + "<crystal " + CMLConstants.CML_XMLNS + ">"
 			+ "<scalar id='sc1' dictRef='cml:a' units='" + U_ANGSTROM + "'"
-			+ S_SPACE + CML_XMLNS + ">8</scalar>"
+			+ S_SPACE + CMLConstants.CML_XMLNS + ">8</scalar>"
 			+ "<scalar id='sc2' dictRef='cml:b' units='" + U_ANGSTROM + "'"
-			+ S_SPACE + CML_XMLNS + ">9</scalar>"
+			+ S_SPACE + CMLConstants.CML_XMLNS + ">9</scalar>"
 			+ "<scalar id='sc3' dictRef='cml:c' units='" + U_ANGSTROM + "'"
-			+ S_SPACE + CML_XMLNS + ">10</scalar>"
+			+ S_SPACE + CMLConstants.CML_XMLNS + ">10</scalar>"
 			+ "<scalar id='sc4' dictRef='cml:alpha' units='" + U_DEGREE + "' "
-			+ CML_XMLNS + ">90</scalar>"
+			+ CMLConstants.CML_XMLNS + ">90</scalar>"
 			+ "<scalar id='sc5' dictRef='cml:beta' units='" + U_DEGREE + "' "
-			+ CML_XMLNS + ">90</scalar>"
+			+ CMLConstants.CML_XMLNS + ">90</scalar>"
 			+ "<scalar id='sc6' dictRef='cml:gamma' units='" + U_DEGREE + "' "
-			+ CML_XMLNS + ">90</scalar>" + "</crystal>" + "";
+			+ CMLConstants.CML_XMLNS + ">90</scalar>" + "</crystal>" + "";
 
-	String lattice1S = "" + "<lattice " + CML_XMLNS + ">"
+	String lattice1S = "" + "<lattice " + CMLConstants.CML_XMLNS + ">"
 			+ "<latticeVector id='l1' dictRef='cml:a' units='" + U_ANGSTROM
-			+ "'" + S_SPACE + CML_XMLNS + ">8 0 0</latticeVector>"
+			+ "'" + S_SPACE + CMLConstants.CML_XMLNS + ">8 0 0</latticeVector>"
 			+ "<latticeVector id='l2' dictRef='cml:b' units='" + U_ANGSTROM
-			+ "'" + S_SPACE + CML_XMLNS + ">0 9 0</latticeVector>"
+			+ "'" + S_SPACE + CMLConstants.CML_XMLNS + ">0 9 0</latticeVector>"
 			+ "<latticeVector id='l3' dictRef='cml:c' units='" + U_ANGSTROM
-			+ "'" + S_SPACE + CML_XMLNS + ">0 0 10</latticeVector>"
+			+ "'" + S_SPACE + CMLConstants.CML_XMLNS + ">0 0 10</latticeVector>"
 			+ "</lattice>" + "";
 
-	String lattice2S = "" + "<lattice " + CML_XMLNS + ">"
+	String lattice2S = "" + "<lattice " + CMLConstants.CML_XMLNS + ">"
 			+ "<latticeVector id='l1' dictRef='cml:a' units='" + U_ANGSTROM
-			+ "'" + S_SPACE + CML_XMLNS + ">8 4 0</latticeVector>"
+			+ "'" + S_SPACE + CMLConstants.CML_XMLNS + ">8 4 0</latticeVector>"
 			+ "<latticeVector id='l2' dictRef='cml:b' units='" + U_ANGSTROM
-			+ "'" + S_SPACE + CML_XMLNS + ">0 9 0</latticeVector>"
+			+ "'" + S_SPACE + CMLConstants.CML_XMLNS + ">0 9 0</latticeVector>"
 			+ "<latticeVector id='l3' dictRef='cml:c' units='" + U_ANGSTROM
-			+ "'" + S_SPACE + CML_XMLNS + ">0 0 10</latticeVector>"
+			+ "'" + S_SPACE + CMLConstants.CML_XMLNS + ">0 0 10</latticeVector>"
 			+ "</lattice>" + "";
 	CMLLattice lattice1;
 	CMLLattice lattice2;

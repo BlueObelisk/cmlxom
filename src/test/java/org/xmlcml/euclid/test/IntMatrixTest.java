@@ -1,6 +1,6 @@
 package org.xmlcml.euclid.test;
 
-import static org.xmlcml.euclid.EuclidConstants.S_RBRAK;
+import static org.xmlcml.euclid.EC.S_RBRAK;
 import static org.xmlcml.euclid.test.EuclidTestBase.alwaysFail;
 import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 

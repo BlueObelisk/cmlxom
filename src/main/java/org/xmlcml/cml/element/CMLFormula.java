@@ -25,6 +25,7 @@ import nu.xom.Text;
 import org.apache.log4j.Logger;
 import org.xmlcml.cml.base.CMLAttribute;
 import org.xmlcml.cml.base.CMLBuilder;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.euclid.Real;
@@ -709,7 +710,7 @@ public class CMLFormula extends AbstractFormula {
 	 * @return stripped concise or empty if null
 	 */
 	public static String getCompactedConcise(String concise, boolean html) {
-		String s = S_EMPTY;
+		String s = CMLConstants.S_EMPTY;
 		if (concise != null) {
 			String[] split = concise.split(S_SPACE);
 			int n = split.length/2;
@@ -740,7 +741,7 @@ public class CMLFormula extends AbstractFormula {
 	
 	private static String makeCharge(String ss) {
 		int i = Integer.parseInt(ss);
-		String s = (i < 0) ? S_MINUS : S_PLUS;
+		String s = (i < 0) ? CMLConstants.S_MINUS : CMLConstants.S_PLUS;
 		i = Math.abs(i);
 		if (i > 1) {
 			s += i;
@@ -955,11 +956,11 @@ public class CMLFormula extends AbstractFormula {
 					countS = st.nextToken();
 				} catch (NoSuchElementException e) {
 					throw new RuntimeException("Bad formula: {" + formulaString
-							+ S_RCURLY);
+							+ CMLConstants.S_RCURLY);
 				}
 				elTypeS = s;
 			} else {
-				elTypeS = S_EMPTY;
+				elTypeS = CMLConstants.S_EMPTY;
 				int l = s.length();
 				if (!Character.isUpperCase(s.charAt(0))) {
 					throw new RuntimeException("Bad element 1st char in: " + s);
@@ -1063,7 +1064,7 @@ public class CMLFormula extends AbstractFormula {
 	 */
 	private void parseMoiety(String formulaString) {
 		formulaString = formulaString.trim();
-		StringTokenizer st = new StringTokenizer(formulaString, S_COMMA);
+		StringTokenizer st = new StringTokenizer(formulaString, CMLConstants.S_COMMA);
 		if (st.countTokens() == 1) {
 			parseMoiety0(formulaString);
 		} else {
@@ -1174,7 +1175,7 @@ public class CMLFormula extends AbstractFormula {
 			}
 			s = ss;
 			// get Element+count
-			String elem = S_EMPTY;
+			String elem = CMLConstants.S_EMPTY;
 			double count = 0;
 			if (Character.isUpperCase(s.charAt(0))) {
 				if (s.length() > 1) {
@@ -1330,13 +1331,13 @@ public class CMLFormula extends AbstractFormula {
 //	private void parseAnyOld(String formulaString) {
 //		// FIXME
 //		// ANY - make whitespace separated string and then recurse
-//		String result = S_EMPTY;
-//		formulaString += S_SPACE;
+//		String result = CMLConstants.S_EMPTY;
+//		formulaString += CMLConstants.S_SPACE;
 //		int l = formulaString.length();
 //		int i = 0;
 //		char c;
 //		int charge = 0;
-//		String count = S_EMPTY;
+//		String count = CMLConstants.S_EMPTY;
 //		while (i < l) {
 //			// skip white
 //			while (formulaString.charAt(i) == C_SPACE) {
@@ -1347,7 +1348,7 @@ public class CMLFormula extends AbstractFormula {
 //				break;
 //			c = formulaString.charAt(i);
 //			// start element or charge
-//			String el = S_EMPTY;
+//			String el = CMLConstants.S_EMPTY;
 //			// finish with -, -1, 1-, 2-, -2, +1, 1+, +2, 2+ ... etc
 //			if (Character.isDigit(c) || c == C_PLUS || c == C_MINUS || c == C_PERIOD) {
 //				if (true) throw new RuntimeException("FIX ME");
@@ -1383,7 +1384,7 @@ public class CMLFormula extends AbstractFormula {
 //			// multiplier?
 //			c = formulaString.charAt(i);
 //			// implied count of 1?
-//			count = S_EMPTY;
+//			count = CMLConstants.S_EMPTY;
 //			if (!Character.isDigit(c)) {
 //				count = "1";
 //			} else {
@@ -1397,7 +1398,7 @@ public class CMLFormula extends AbstractFormula {
 //						break;
 //				}
 //			}
-//			result += el + S_SPACE + count + S_SPACE;
+//			result += el + CMLConstants.S_SPACE + count + CMLConstants.S_SPACE;
 //		}
 //		createFromString(result, Type.ELEMENT_WHITESPACE_COUNT);
 //		if (charge != 0) {
@@ -1411,7 +1412,7 @@ public class CMLFormula extends AbstractFormula {
 //		}
 //		int sign = 0;
 //		int charge = 0;
-//		String ch = S_EMPTY;
+//		String ch = CMLConstants.S_EMPTY;
 //		int l = f.length();
 //		if (f.charAt(0) == C_PLUS) {
 //			sign = 1;
@@ -1669,7 +1670,7 @@ public class CMLFormula extends AbstractFormula {
 			}
 		} else {
 			// build from concise
-			String concise = S_EMPTY;
+			String concise = CMLConstants.S_EMPTY;
 			concise = form.getFormattedString(Type.ELEMENT_WHITESPACE_COUNT,
 					Sort.CHFIRST, false).trim();
 			if (getConciseAttribute() != null) {
@@ -1760,7 +1761,7 @@ public class CMLFormula extends AbstractFormula {
 	 */
 	public double getCalculatedMolecularMass() throws RuntimeException {
 		double mwt = 0.0;
-		Elements formulas = this.getChildElements("formula", CML_NS);
+		Elements formulas = this.getChildElements("formula", CMLConstants.CML_NS);
 		if (formulas.size() > 0) {
 			for (int i = 0; i < formulas.size(); i++) {
 				CMLFormula formula = (CMLFormula) formulas.get(i);
@@ -1854,7 +1855,7 @@ public class CMLFormula extends AbstractFormula {
 			atomArray.sort(sort);
 		}
 		StringBuffer sb = new StringBuffer();
-		Elements formulas = this.getChildElements("formula", CML_NS);
+		Elements formulas = this.getChildElements("formula", CMLConstants.CML_NS);
 		if (convention.equals(Type.NESTEDBRACKETS)) {
 			for (int i = 0; i < formulas.size(); i++) {
 				CMLFormula formula = (CMLFormula) formulas.get(i);
@@ -1916,7 +1917,7 @@ public class CMLFormula extends AbstractFormula {
 	 */
 	public int getFormalCharge() {
 		int charge = 0;
-		Elements childFormulas = this.getChildElements("formula", CML_NS);
+		Elements childFormulas = this.getChildElements("formula", CMLConstants.CML_NS);
 		if (childFormulas.size() > 0) {
 			for (int i = 0; i < childFormulas.size(); i++) {
 				CMLFormula childFormula = (CMLFormula) childFormulas.get(i);
@@ -1937,17 +1938,17 @@ public class CMLFormula extends AbstractFormula {
 	 * @return charge as a String
 	 */
 	public String getFormalChargeString() {
-		String s = S_EMPTY;
+		String s = CMLConstants.S_EMPTY;
 		int iCharge = this.getFormalCharge();
 		if (iCharge == 0) {
 			;
 		} else if (iCharge < 0) {
 			for (int i = iCharge; i < 0; i++) {
-				s += S_MINUS;
+				s += CMLConstants.S_MINUS;
 			}
 		} else {
 			for (int i = 0; i < iCharge; i++) {
-				s += S_PLUS;
+				s += CMLConstants.S_PLUS;
 			}
 		}
 		return s;
@@ -1963,7 +1964,7 @@ public class CMLFormula extends AbstractFormula {
 	}
 
 	private void combineSubFormulaElementVectors() {
-		Elements formulas = this.getChildElements("formula", CML_NS);
+		Elements formulas = this.getChildElements("formula", CMLConstants.CML_NS);
 		if (formulas.size() > 0) {
 			for (int i = 0; i < formulas.size(); i++) {
 				CMLFormula subFormula = (CMLFormula) formulas.get(i);
@@ -2164,7 +2165,7 @@ public class CMLFormula extends AbstractFormula {
 			for (int i = 0; i < elementTypes.length; i++) {
 				double d = counts[i];
 				s += elementTypes[i]
-				                  + ((d > 1.000000001) ? S_LBRAK + counts[i] + S_RBRAK : S_EMPTY);
+				                  + ((d > 1.000000001) ? CMLConstants.S_LBRAK + counts[i] + CMLConstants.S_RBRAK : CMLConstants.S_EMPTY);
 			}
 		}
 		return s;
@@ -2201,11 +2202,11 @@ public class CMLFormula extends AbstractFormula {
 					w.write(elementTypes[i]);
 					double d = counts[i];
 					int c = (int) Math.round(d);
-					String countS = S_EMPTY;
+					String countS = CMLConstants.S_EMPTY;
 					if (Math.abs(d - c) < EPS) {
-						countS = S_EMPTY+c;
+						countS = CMLConstants.S_EMPTY+c;
 					} else {
-						countS = S_EMPTY+d;
+						countS = CMLConstants.S_EMPTY+d;
 					}
 					if (!countS.equals("1")) {
 						w.write("<sub>"+countS+"</sub>");
@@ -2214,11 +2215,11 @@ public class CMLFormula extends AbstractFormula {
 				if (this.getFormalChargeAttribute() != null) {
 					int fc = this.getFormalCharge();
 					int signum = Integer.signum(fc);
-					String sign = S_EMPTY;
+					String sign = CMLConstants.S_EMPTY;
 
-					//no need to assign S_MINUS to sign if signum is negative as the S_MINUS will be in the formalChargeAttribute
+					//no need to assign CMLConstants.S_MINUS to sign if signum is negative as the CMLConstants.S_MINUS will be in the formalChargeAttribute
 					if (signum == 1) {
-						sign = S_PLUS;
+						sign = CMLConstants.S_PLUS;
 					}
 					if (fc != 0) {
 						w.write("<sup>"+fc+sign+"</sup>");
@@ -2242,9 +2243,9 @@ public class CMLFormula extends AbstractFormula {
 			System.exit(0);
 		}
 		int i = 0;
-		String infile = S_EMPTY;
-		String outfile = S_EMPTY;
-		String formatS = S_EMPTY;
+		String infile = CMLConstants.S_EMPTY;
+		String outfile = CMLConstants.S_EMPTY;
+		String formatS = CMLConstants.S_EMPTY;
 		Type format = null;
 		// String hCount = MoleculeTool.USE_HYDROGEN_COUNT;
 		while (i < args.length) {
@@ -2285,7 +2286,7 @@ public class CMLFormula extends AbstractFormula {
 				CMLBuilder builder = new CMLBuilder();
 				Document document = builder.build(new File(infile));
 				Elements moleculeVector = document.getRootElement()
-				.getChildElements(CMLMolecule.TAG, CML_NS);
+				.getChildElements(CMLMolecule.TAG, CMLConstants.CML_NS);
 				List<String> formulaVector = new ArrayList<String>();
 				for (i = 0; i < moleculeVector.size(); i++) {
 					CMLMolecule molecule = (CMLMolecule) moleculeVector.get(i);
@@ -2293,7 +2294,7 @@ public class CMLFormula extends AbstractFormula {
 						System.err.println("No molecule");
 					} else {
 						CMLFormula formula = (CMLFormula) molecule
-						.getFirstChildElement("formula", CML_NS);
+						.getFirstChildElement("formula", CMLConstants.CML_NS);
 						if (formula != null) {
 							String s = "<formula>"
 								+ formula.getFormattedString(format,
@@ -2306,7 +2307,7 @@ public class CMLFormula extends AbstractFormula {
 					FileWriter fw = new FileWriter(outfile);
 					fw.write("<cml>\n");
 					for (i = 0; i < formulaVector.size(); i++) {
-						fw.write(S_EMPTY + formulaVector.get(i) + S_NL);
+						fw.write(S_EMPTY + formulaVector.get(i) + CMLConstants.S_NL);
 					}
 					fw.write("</cml>\n");
 					fw.close();
@@ -2317,11 +2318,11 @@ public class CMLFormula extends AbstractFormula {
              "MWt:"+this.getCalculatedMolecularMass()+S_NL+
              this.getFormattedString(CMLFormula.NOPUNCTUATION, CMLFormula.CHFIRST, false)+S_NL+
              this.getFormattedString(CMLFormula.ELEMENT_WHITESPACE_COUNT, CMLFormula.CHFIRST, false)+S_NL+
-             this.getFormattedString(CMLFormula.ELEMENT_COUNT_WHITESPACE, S_EMPTY, false)+S_NL+
+             this.getFormattedString(CMLFormula.ELEMENT_COUNT_WHITESPACE, CMLConstants.S_EMPTY, false)+S_NL+
              this.getFormattedString(CMLFormula.NESTEDBRACKETS, CMLFormula.CHFIRST, false)+S_NL+
              this.getFormattedString(CMLFormula.NOPUNCTUATION, CMLFormula.ALPHABETIC_ELEMENTS, true)+S_NL+
              this.getFormattedString(CMLFormula.ELEMENT_WHITESPACE_COUNT, CMLFormula.CHFIRST, true)+S_NL+
-             this.getFormattedString(CMLFormula.ELEMENT_COUNT_WHITESPACE, S_EMPTY, true)+S_NL+
+             this.getFormattedString(CMLFormula.ELEMENT_COUNT_WHITESPACE, CMLConstants.S_EMPTY, true)+S_NL+
              this.getFormattedString(CMLFormula.NESTEDBRACKETS, CMLFormula.ALPHABETIC_ELEMENTS, true);
              --*/
 		} catch (Exception e) {

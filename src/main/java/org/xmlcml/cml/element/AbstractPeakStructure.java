@@ -9,6 +9,7 @@ import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.attribute.RefAttribute;
 import org.xmlcml.cml.attribute.UnitsAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.StringArraySTAttribute;
@@ -544,7 +545,7 @@ public abstract class AbstractPeakStructure extends CMLElement {
     * @return CMLElements<CMLPeakStructure>
     */
     public CMLElements<CMLPeakStructure> getPeakStructureElements() {
-        Elements elements = this.getChildElements("peakStructure", CML_NS);
+        Elements elements = this.getChildElements("peakStructure", CMLConstants.CML_NS);
         return new CMLElements<CMLPeakStructure>(elements);
     }
     /** overrides addAttribute(Attribute)

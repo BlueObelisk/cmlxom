@@ -183,7 +183,7 @@ public class Polar implements EuclidConstants {
      */
     public String toString() {
         StringBuffer sb = new StringBuffer();
-        sb.append("Polar: " + r + S_COMMA + theta);
+        sb.append("Polar: " + r + EC.S_COMMA + theta);
         return sb.toString();
     }
 }

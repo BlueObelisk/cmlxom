@@ -1,9 +1,7 @@
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
 import static org.xmlcml.cml.base.TstBase.parseValidString;
 import static org.xmlcml.euclid.EuclidConstants.EPS;
-import static org.xmlcml.euclid.EuclidConstants.S_EMPTY;
 import static org.xmlcml.euclid.test.EuclidTestBase.alwaysFail;
 import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
@@ -17,6 +15,7 @@ import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.element.CMLAngle;
 import org.xmlcml.cml.element.CMLAtom;
 import org.xmlcml.cml.element.CMLBond;
@@ -34,7 +33,7 @@ import org.xmlcml.euclid.test.StringTestBase;
 public class CMLAngleTest {
 	private static Logger LOG = Logger.getLogger(CMLAngleTest.class);
 
-	String s1 = S_EMPTY + "<cml " + CML_XMLNS + ">" + " <molecule id='m1'>"
+	String s1 = CMLConstants.S_EMPTY + "<cml " + CMLConstants.CML_XMLNS + ">" + " <molecule id='m1'>"
 			+ "  <atomArray>" + "   <atom id='a1' x3='1.0' y3='0.0' z3='0.0'/>"
 			+ "   <atom id='a2' x3='0.0' y3='0.0' z3='0.0'/>"
 			+ "   <atom id='a3' x3='0.0' y3='0.0' z3='2.0'/>"
@@ -43,7 +42,7 @@ public class CMLAngleTest {
 			+ "  </bondArray>" + " </molecule>"
 			+ " <angle id='aa0' atomRefs3='a1 a2 a3'/>"
 			+ " <angle id='aa1' atomRefs3='a2 a1 a3'/>"
-			+ " <angle id='aa2' atomRefs3='a1 a2 a4'/>" + "</cml>" + S_EMPTY;
+			+ " <angle id='aa2' atomRefs3='a1 a2 a4'/>" + "</cml>" + CMLConstants.S_EMPTY;
 
 	CMLAngle angle0;
 	CMLAngle angle1;

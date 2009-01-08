@@ -1,15 +1,13 @@
 package org.xmlcml.euclid.test;
 
-import static org.xmlcml.euclid.EuclidConstants.EPS;
-import static org.xmlcml.euclid.EuclidConstants.S_COMMA;
-import static org.xmlcml.euclid.EuclidConstants.S_LBRAK;
-import static org.xmlcml.euclid.EuclidConstants.S_PIPE;
-import static org.xmlcml.euclid.EuclidConstants.S_RBRAK;
-import static org.xmlcml.euclid.EuclidConstants.S_SPACE;
+import static org.xmlcml.euclid.EC.EPS;
+import static org.xmlcml.euclid.EC.S_PIPE;
+import static org.xmlcml.euclid.EC.S_SPACE;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.xmlcml.euclid.EC;
 import org.xmlcml.euclid.Real2;
 import org.xmlcml.euclid.Real2Array;
 import org.xmlcml.euclid.Real2Range;
@@ -64,9 +62,9 @@ public class Real2ArrayTest {
 	 */
 	@Test
 	public void testReal2ArrayRealArrayRealArray() {
-		Assert.assertEquals("realArrays", S_LBRAK + "(1.0,11.0)" + "(2.0,12.0)"
+		Assert.assertEquals("realArrays", EC.S_LBRAK + "(1.0,11.0)" + "(2.0,12.0)"
 				+ "(3.0,13.0)" + "(4.0,14.0)" + "(5.0,15.0)" + "(6.0,16.0)"
-				+ S_RBRAK, ra1.toString());
+				+ EC.S_RBRAK, ra1.toString());
 	}
 
 	/**
@@ -100,7 +98,7 @@ public class Real2ArrayTest {
 	@Test
 	public void testCreateFromPairs() {
 		String s = "1,2 3,4 5,6 7,8";
-		Real2Array real2Array = Real2Array.createFromPairs(s, S_COMMA+S_PIPE+S_SPACE);
+		Real2Array real2Array = Real2Array.createFromPairs(s, EC.S_COMMA+S_PIPE+S_SPACE);
 		Assert.assertEquals("size", 4, real2Array.size());
 		RealArray xarr = real2Array.getXArray();
 		Assert.assertTrue("getXArray", xarr.isEqualTo(new RealArray(

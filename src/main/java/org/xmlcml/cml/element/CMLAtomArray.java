@@ -11,6 +11,7 @@ import nu.xom.Node;
 import nu.xom.ParentNode;
 
 import org.apache.log4j.Logger;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.DoubleArraySTAttribute;
@@ -79,7 +80,7 @@ public class CMLAtomArray extends AbstractAtomArray {
         if (parent == null) {
             throw new RuntimeException("atomArray must have parent");
         } else if (parent.getLocalName().equals(CMLMolecule.TAG)) {
-            if (parent.getChildElements("atomArray", CML_NS).size() > 0) {
+            if (parent.getChildElements("atomArray", CMLConstants.CML_NS).size() > 0) {
                 throw new RuntimeException(
                     "molecule/atomArray must have no atomArray siblings");
             }
@@ -175,7 +176,7 @@ public class CMLAtomArray extends AbstractAtomArray {
 		int nelem = elems.length;
 		String[] sortS = new String[elems.length];
 		for (int i = 0; i < nelem; i++) {
-			sortS[i] = elems[i] + S_SPACE + counts[i];
+			sortS[i] = elems[i] + CMLConstants.S_SPACE + counts[i];
 		}
 		Arrays.sort(sortS);
 		if (sort.equals(Sort.ALPHABETIC_ELEMENTS)) {
@@ -244,7 +245,7 @@ public class CMLAtomArray extends AbstractAtomArray {
 			sb.append(S_SPACE);
 			sb.append(formalCharge);
 		}
-		concise = (sb.length() == 0) ? S_EMPTY : sb.substring(1);
+		concise = (sb.length() == 0) ? CMLConstants.S_EMPTY : sb.substring(1);
 		return concise;
 	}
 

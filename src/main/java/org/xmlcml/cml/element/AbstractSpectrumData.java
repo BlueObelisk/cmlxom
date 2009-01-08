@@ -8,6 +8,7 @@ import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.attribute.RefAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.StringSTAttribute;
@@ -242,7 +243,7 @@ public abstract class AbstractSpectrumData extends CMLElement {
     * @return CMLElements<CMLXaxis>
     */
     public CMLElements<CMLXaxis> getXaxisElements() {
-        Elements elements = this.getChildElements("xaxis", CML_NS);
+        Elements elements = this.getChildElements("xaxis", CMLConstants.CML_NS);
         return new CMLElements<CMLXaxis>(elements);
     }
 // element:   yaxis
@@ -258,7 +259,7 @@ public abstract class AbstractSpectrumData extends CMLElement {
     * @return CMLElements<CMLYaxis>
     */
     public CMLElements<CMLYaxis> getYaxisElements() {
-        Elements elements = this.getChildElements("yaxis", CML_NS);
+        Elements elements = this.getChildElements("yaxis", CMLConstants.CML_NS);
         return new CMLElements<CMLYaxis>(elements);
     }
     /** overrides addAttribute(Attribute)

@@ -9,6 +9,7 @@ import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.attribute.RefAttribute;
 import org.xmlcml.cml.base.BooleanSTAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.DoubleSTAttribute;
@@ -668,7 +669,7 @@ public abstract class AbstractMolecule extends CMLElement {
     * @return CMLElements<CMLArray>
     */
     public CMLElements<CMLArray> getArrayElements() {
-        Elements elements = this.getChildElements("array", CML_NS);
+        Elements elements = this.getChildElements("array", CMLConstants.CML_NS);
         return new CMLElements<CMLArray>(elements);
     }
 // element:   atomArray
@@ -686,7 +687,7 @@ public abstract class AbstractMolecule extends CMLElement {
     * @return CMLElements<CMLAtomArray>
     */
     public CMLElements<CMLAtomArray> getAtomArrayElements() {
-        Elements elements = this.getChildElements("atomArray", CML_NS);
+        Elements elements = this.getChildElements("atomArray", CMLConstants.CML_NS);
         return new CMLElements<CMLAtomArray>(elements);
     }
 // element:   bondArray
@@ -704,7 +705,7 @@ public abstract class AbstractMolecule extends CMLElement {
     * @return CMLElements<CMLBondArray>
     */
     public CMLElements<CMLBondArray> getBondArrayElements() {
-        Elements elements = this.getChildElements("bondArray", CML_NS);
+        Elements elements = this.getChildElements("bondArray", CMLConstants.CML_NS);
         return new CMLElements<CMLBondArray>(elements);
     }
 // element:   formula
@@ -722,7 +723,7 @@ public abstract class AbstractMolecule extends CMLElement {
     * @return CMLElements<CMLFormula>
     */
     public CMLElements<CMLFormula> getFormulaElements() {
-        Elements elements = this.getChildElements("formula", CML_NS);
+        Elements elements = this.getChildElements("formula", CMLConstants.CML_NS);
         return new CMLElements<CMLFormula>(elements);
     }
 // element:   label
@@ -740,7 +741,7 @@ public abstract class AbstractMolecule extends CMLElement {
     * @return CMLElements<CMLLabel>
     */
     public CMLElements<CMLLabel> getLabelElements() {
-        Elements elements = this.getChildElements("label", CML_NS);
+        Elements elements = this.getChildElements("label", CMLConstants.CML_NS);
         return new CMLElements<CMLLabel>(elements);
     }
 // element:   molecule
@@ -758,7 +759,7 @@ public abstract class AbstractMolecule extends CMLElement {
     * @return CMLElements<CMLMolecule>
     */
     public CMLElements<CMLMolecule> getMoleculeElements() {
-        Elements elements = this.getChildElements("molecule", CML_NS);
+        Elements elements = this.getChildElements("molecule", CMLConstants.CML_NS);
         return new CMLElements<CMLMolecule>(elements);
     }
 // element:   name
@@ -776,7 +777,7 @@ public abstract class AbstractMolecule extends CMLElement {
     * @return CMLElements<CMLName>
     */
     public CMLElements<CMLName> getNameElements() {
-        Elements elements = this.getChildElements("name", CML_NS);
+        Elements elements = this.getChildElements("name", CMLConstants.CML_NS);
         return new CMLElements<CMLName>(elements);
     }
 // element:   propertyList
@@ -794,7 +795,7 @@ public abstract class AbstractMolecule extends CMLElement {
     * @return CMLElements<CMLPropertyList>
     */
     public CMLElements<CMLPropertyList> getPropertyListElements() {
-        Elements elements = this.getChildElements("propertyList", CML_NS);
+        Elements elements = this.getChildElements("propertyList", CMLConstants.CML_NS);
         return new CMLElements<CMLPropertyList>(elements);
     }
 // element:   scalar
@@ -812,7 +813,7 @@ public abstract class AbstractMolecule extends CMLElement {
     * @return CMLElements<CMLScalar>
     */
     public CMLElements<CMLScalar> getScalarElements() {
-        Elements elements = this.getChildElements("scalar", CML_NS);
+        Elements elements = this.getChildElements("scalar", CMLConstants.CML_NS);
         return new CMLElements<CMLScalar>(elements);
     }
     /** overrides addAttribute(Attribute)

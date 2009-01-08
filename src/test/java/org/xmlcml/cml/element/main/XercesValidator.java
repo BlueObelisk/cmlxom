@@ -27,6 +27,8 @@ import org.w3c.dom.Node;
 import org.w3c.dom.Text;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
+import org.xmlcml.cml.base.CMLConstants;
+import org.xmlcml.euclid.EC;
 import org.xmlcml.euclid.EuclidConstants;
 import org.xmlcml.euclid.Util;
 
@@ -320,7 +322,7 @@ public class XercesValidator implements EuclidConstants {
         // process arguments
         for (int i = 0; i < argv.length; i++) {
             String arg = argv[i];
-            if (arg.startsWith(S_MINUS)) {
+            if (arg.startsWith(EC.S_MINUS)) {
                 String option = arg.substring(1);
                 if (option.equals("p")) {
                     // get parser name
@@ -406,11 +408,11 @@ public class XercesValidator implements EuclidConstants {
             }
 
             if (1 == 2) {
-                Util.println(namespaces + S_SLASH + validation + S_SLASH
-                        + schemaValidation + S_SLASH + schemaFullChecking + S_SLASH
-                        + validateAnnotations + S_SLASH + dynamicValidation + S_SLASH
-                        + xincludeProcessing + S_SLASH + xincludeFixupBaseURIs
-                        + S_SLASH + xincludeFixupLanguage);
+                Util.println(namespaces + CMLConstants.S_SLASH + validation + CMLConstants.S_SLASH
+                        + schemaValidation + CMLConstants.S_SLASH + schemaFullChecking + CMLConstants.S_SLASH
+                        + validateAnnotations + CMLConstants.S_SLASH + dynamicValidation + CMLConstants.S_SLASH
+                        + xincludeProcessing + CMLConstants.S_SLASH + xincludeFixupBaseURIs
+                        + CMLConstants.S_SLASH + xincludeFixupLanguage);
             }
 
             // use default parser?
@@ -433,14 +435,14 @@ public class XercesValidator implements EuclidConstants {
                 parser.setFeature(NAMESPACES_FEATURE_ID, true);
             } catch (SAXException e) {
                 System.err.println("warning: Parser does not support feature ("
-                        + NAMESPACES_FEATURE_ID + S_RBRAK);
+                        + NAMESPACES_FEATURE_ID + CMLConstants.S_RBRAK);
             }
             try {
                 // parser.setFeature(VALIDATION_FEATURE_ID, validation);
                 parser.setFeature(VALIDATION_FEATURE_ID, true);
             } catch (SAXException e) {
                 System.err.println("warning: Parser does not support feature ("
-                        + VALIDATION_FEATURE_ID + S_RBRAK);
+                        + VALIDATION_FEATURE_ID + CMLConstants.S_RBRAK);
             }
             try {
                 // parser.setFeature(SCHEMA_VALIDATION_FEATURE_ID,
@@ -448,7 +450,7 @@ public class XercesValidator implements EuclidConstants {
                 parser.setFeature(SCHEMA_VALIDATION_FEATURE_ID, true);
             } catch (SAXException e) {
                 System.err.println("warning: Parser does not support feature ("
-                        + SCHEMA_VALIDATION_FEATURE_ID + S_RBRAK);
+                        + SCHEMA_VALIDATION_FEATURE_ID + CMLConstants.S_RBRAK);
             }
             try {
                 // this checks the schema rather than the document
@@ -457,7 +459,7 @@ public class XercesValidator implements EuclidConstants {
                 // parser.setFeature(SCHEMA_FULL_CHECKING_FEATURE_ID, true);
             } catch (SAXException e) {
                 System.err.println("warning: Parser does not support feature ("
-                        + SCHEMA_FULL_CHECKING_FEATURE_ID + S_RBRAK);
+                        + SCHEMA_FULL_CHECKING_FEATURE_ID + CMLConstants.S_RBRAK);
             }
             try {
                 // parser.setFeature(VALIDATE_ANNOTATIONS_ID,
@@ -465,7 +467,7 @@ public class XercesValidator implements EuclidConstants {
                 parser.setFeature(VALIDATE_ANNOTATIONS_ID, true);
             } catch (SAXException e) {
                 System.err.println("warning: Parser does not support feature ("
-                        + VALIDATE_ANNOTATIONS_ID + S_RBRAK);
+                        + VALIDATE_ANNOTATIONS_ID + CMLConstants.S_RBRAK);
             }
             try {
                 // parser.setFeature(DYNAMIC_VALIDATION_FEATURE_ID,
@@ -474,14 +476,14 @@ public class XercesValidator implements EuclidConstants {
                 parser.setFeature(DYNAMIC_VALIDATION_FEATURE_ID, false);
             } catch (SAXException e) {
                 System.err.println("warning: Parser does not support feature ("
-                        + DYNAMIC_VALIDATION_FEATURE_ID + S_RBRAK);
+                        + DYNAMIC_VALIDATION_FEATURE_ID + CMLConstants.S_RBRAK);
             }
             try {
                 // parser.setFeature(XINCLUDE_FEATURE_ID, xincludeProcessing);
                 parser.setFeature(XINCLUDE_FEATURE_ID, true);
             } catch (SAXException e) {
                 System.err.println("warning: Parser does not support feature ("
-                        + XINCLUDE_FEATURE_ID + S_RBRAK);
+                        + XINCLUDE_FEATURE_ID + CMLConstants.S_RBRAK);
             }
             try {
                 // parser.setFeature(XINCLUDE_FIXUP_BASE_URIS_FEATURE_ID,
@@ -489,7 +491,7 @@ public class XercesValidator implements EuclidConstants {
                 parser.setFeature(XINCLUDE_FIXUP_BASE_URIS_FEATURE_ID, true);
             } catch (SAXException e) {
                 System.err.println("warning: Parser does not support feature ("
-                        + XINCLUDE_FIXUP_BASE_URIS_FEATURE_ID + S_RBRAK);
+                        + XINCLUDE_FIXUP_BASE_URIS_FEATURE_ID + CMLConstants.S_RBRAK);
             }
             try {
                 // parser.setFeature(XINCLUDE_FIXUP_LANGUAGE_FEATURE_ID,
@@ -497,7 +499,7 @@ public class XercesValidator implements EuclidConstants {
                 parser.setFeature(XINCLUDE_FIXUP_LANGUAGE_FEATURE_ID, true);
             } catch (SAXException e) {
                 System.err.println("warning: Parser does not support feature ("
-                        + XINCLUDE_FIXUP_LANGUAGE_FEATURE_ID + S_RBRAK);
+                        + XINCLUDE_FIXUP_LANGUAGE_FEATURE_ID + CMLConstants.S_RBRAK);
             }
 
             // parse file

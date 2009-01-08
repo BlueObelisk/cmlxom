@@ -25,6 +25,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXNotRecognizedException;
 import org.xml.sax.SAXNotSupportedException;
 import org.xml.sax.SAXParseException;
+import org.xmlcml.euclid.EC;
 import org.xmlcml.euclid.EuclidConstants;
 
 /**
@@ -150,7 +151,7 @@ public class XercesWrapper implements ParserWrapper,
      */
     protected void printError(String type, SAXParseException ex) {
 
-        System.err.print(S_LSQUARE);
+        System.err.print(EC.S_LSQUARE);
         System.err.print(type);
         System.err.print("] ");
         String systemId = ex.getSystemId();

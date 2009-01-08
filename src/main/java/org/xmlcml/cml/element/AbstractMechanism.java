@@ -7,6 +7,7 @@ import nu.xom.Elements;
 import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.StringSTAttribute;
@@ -206,7 +207,7 @@ public abstract class AbstractMechanism extends CMLElement {
     * @return CMLElements<CMLName>
     */
     public CMLElements<CMLName> getNameElements() {
-        Elements elements = this.getChildElements("name", CML_NS);
+        Elements elements = this.getChildElements("name", CMLConstants.CML_NS);
         return new CMLElements<CMLName>(elements);
     }
 // element:   label
@@ -222,7 +223,7 @@ public abstract class AbstractMechanism extends CMLElement {
     * @return CMLElements<CMLLabel>
     */
     public CMLElements<CMLLabel> getLabelElements() {
-        Elements elements = this.getChildElements("label", CML_NS);
+        Elements elements = this.getChildElements("label", CMLConstants.CML_NS);
         return new CMLElements<CMLLabel>(elements);
     }
 // element:   mechanismComponent
@@ -238,7 +239,7 @@ public abstract class AbstractMechanism extends CMLElement {
     * @return CMLElements<CMLMechanismComponent>
     */
     public CMLElements<CMLMechanismComponent> getMechanismComponentElements() {
-        Elements elements = this.getChildElements("mechanismComponent", CML_NS);
+        Elements elements = this.getChildElements("mechanismComponent", CMLConstants.CML_NS);
         return new CMLElements<CMLMechanismComponent>(elements);
     }
     /** overrides addAttribute(Attribute)

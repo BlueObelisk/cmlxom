@@ -8,6 +8,7 @@ import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.attribute.RefAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.StringSTAttribute;
@@ -320,7 +321,7 @@ public abstract class AbstractProperty extends CMLElement {
     * @return CMLElements<CMLName>
     */
     public CMLElements<CMLName> getNameElements() {
-        Elements elements = this.getChildElements("name", CML_NS);
+        Elements elements = this.getChildElements("name", CMLConstants.CML_NS);
         return new CMLElements<CMLName>(elements);
     }
 // element:   scalar
@@ -338,7 +339,7 @@ public abstract class AbstractProperty extends CMLElement {
     * @return CMLElements<CMLScalar>
     */
     public CMLElements<CMLScalar> getScalarElements() {
-        Elements elements = this.getChildElements("scalar", CML_NS);
+        Elements elements = this.getChildElements("scalar", CMLConstants.CML_NS);
         return new CMLElements<CMLScalar>(elements);
     }
 // element:   array
@@ -356,7 +357,7 @@ public abstract class AbstractProperty extends CMLElement {
     * @return CMLElements<CMLArray>
     */
     public CMLElements<CMLArray> getArrayElements() {
-        Elements elements = this.getChildElements("array", CML_NS);
+        Elements elements = this.getChildElements("array", CMLConstants.CML_NS);
         return new CMLElements<CMLArray>(elements);
     }
     /** overrides addAttribute(Attribute)

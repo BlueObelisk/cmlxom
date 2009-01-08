@@ -8,6 +8,7 @@ import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.attribute.UnitsAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.IntSTAttribute;
@@ -389,7 +390,7 @@ public abstract class AbstractTable extends CMLElement {
     * @return CMLElements<CMLArrayList>
     */
     public CMLElements<CMLArrayList> getArrayListElements() {
-        Elements elements = this.getChildElements("arrayList", CML_NS);
+        Elements elements = this.getChildElements("arrayList", CMLConstants.CML_NS);
         return new CMLElements<CMLArrayList>(elements);
     }
 // element:   tableHeader
@@ -405,7 +406,7 @@ public abstract class AbstractTable extends CMLElement {
     * @return CMLElements<CMLTableHeader>
     */
     public CMLElements<CMLTableHeader> getTableHeaderElements() {
-        Elements elements = this.getChildElements("tableHeader", CML_NS);
+        Elements elements = this.getChildElements("tableHeader", CMLConstants.CML_NS);
         return new CMLElements<CMLTableHeader>(elements);
     }
 // element:   tableRowList
@@ -421,7 +422,7 @@ public abstract class AbstractTable extends CMLElement {
     * @return CMLElements<CMLTableRowList>
     */
     public CMLElements<CMLTableRowList> getTableRowListElements() {
-        Elements elements = this.getChildElements("tableRowList", CML_NS);
+        Elements elements = this.getChildElements("tableRowList", CMLConstants.CML_NS);
         return new CMLElements<CMLTableRowList>(elements);
     }
 // element:   tableContent
@@ -437,7 +438,7 @@ public abstract class AbstractTable extends CMLElement {
     * @return CMLElements<CMLTableContent>
     */
     public CMLElements<CMLTableContent> getTableContentElements() {
-        Elements elements = this.getChildElements("tableContent", CML_NS);
+        Elements elements = this.getChildElements("tableContent", CMLConstants.CML_NS);
         return new CMLElements<CMLTableContent>(elements);
     }
     /** overrides addAttribute(Attribute)

@@ -7,6 +7,7 @@ import nu.xom.Elements;
 import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.DoubleSTAttribute;
@@ -398,7 +399,7 @@ public abstract class AbstractFormula extends CMLElement {
     * @return CMLElements<CMLFormula>
     */
     public CMLElements<CMLFormula> getFormulaElements() {
-        Elements elements = this.getChildElements("formula", CML_NS);
+        Elements elements = this.getChildElements("formula", CMLConstants.CML_NS);
         return new CMLElements<CMLFormula>(elements);
     }
 // element:   atomArray
@@ -416,7 +417,7 @@ public abstract class AbstractFormula extends CMLElement {
     * @return CMLElements<CMLAtomArray>
     */
     public CMLElements<CMLAtomArray> getAtomArrayElements() {
-        Elements elements = this.getChildElements("atomArray", CML_NS);
+        Elements elements = this.getChildElements("atomArray", CMLConstants.CML_NS);
         return new CMLElements<CMLAtomArray>(elements);
     }
     /** overrides addAttribute(Attribute)

@@ -7,6 +7,7 @@ import nu.xom.Elements;
 import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.IntSTAttribute;
@@ -261,7 +262,7 @@ public abstract class AbstractCrystal extends CMLElement {
     * @return CMLElements<CMLScalar>
     */
     public CMLElements<CMLScalar> getScalarElements() {
-        Elements elements = this.getChildElements("scalar", CML_NS);
+        Elements elements = this.getChildElements("scalar", CMLConstants.CML_NS);
         return new CMLElements<CMLScalar>(elements);
     }
 // element:   cellParameter
@@ -277,7 +278,7 @@ public abstract class AbstractCrystal extends CMLElement {
     * @return CMLElements<CMLCellParameter>
     */
     public CMLElements<CMLCellParameter> getCellParameterElements() {
-        Elements elements = this.getChildElements("cellParameter", CML_NS);
+        Elements elements = this.getChildElements("cellParameter", CMLConstants.CML_NS);
         return new CMLElements<CMLCellParameter>(elements);
     }
 // element:   symmetry
@@ -293,7 +294,7 @@ public abstract class AbstractCrystal extends CMLElement {
     * @return CMLElements<CMLSymmetry>
     */
     public CMLElements<CMLSymmetry> getSymmetryElements() {
-        Elements elements = this.getChildElements("symmetry", CML_NS);
+        Elements elements = this.getChildElements("symmetry", CMLConstants.CML_NS);
         return new CMLElements<CMLSymmetry>(elements);
     }
     /** overrides addAttribute(Attribute)

@@ -1,7 +1,7 @@
 package org.xmlcml.euclid.test;
 
-import static org.xmlcml.euclid.EuclidConstants.S_SLASH;
-import static org.xmlcml.euclid.EuclidConstants.S_SPACE;
+import static org.xmlcml.euclid.EC.S_SLASH;
+import static org.xmlcml.euclid.EC.S_SPACE;
 
 import org.junit.Assert;
 

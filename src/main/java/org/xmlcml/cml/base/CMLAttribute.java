@@ -270,7 +270,7 @@ public class CMLAttribute extends Attribute implements CMLConstants {
         if (s != null) {
             summary = s;
             if (!summary.endsWith(S_PERIOD)) {
-                summary += S_PERIOD;
+                summary += CMLConstants.S_PERIOD;
             }
         }
     }

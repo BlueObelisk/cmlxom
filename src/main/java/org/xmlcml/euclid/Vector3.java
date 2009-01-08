@@ -1,5 +1,6 @@
 package org.xmlcml.euclid;
 
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.euclid.Axis.Axis3;
 
 /**
@@ -608,8 +609,8 @@ public class Vector3 implements EuclidConstants {
      * @return string representation
      */
     public String toString() {
-        return S_LBRAK + flarray[0] + S_COMMA + flarray[1] + S_COMMA
-                + flarray[2] + S_RBRAK;
+        return CMLConstants.S_LBRAK + flarray[0] + CMLConstants.S_COMMA + flarray[1] + CMLConstants.S_COMMA
+                + flarray[2] + CMLConstants.S_RBRAK;
     }
 
 }

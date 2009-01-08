@@ -211,7 +211,7 @@ public class RealArray extends ArrayBase {
      */
     public RealArray(RealArray m, int low, int high) throws EuclidRuntimeException {
         if (low < 0 || low > high || high >= m.size()) {
-            throw new EuclidRuntimeException("index out of range " + low + S_SLASH + high);
+            throw new EuclidRuntimeException("index out of range " + low + EC.S_SLASH + high);
         }
         nelem = high - low + 1;
         checkSize(nelem);

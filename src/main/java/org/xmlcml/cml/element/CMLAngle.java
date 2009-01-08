@@ -13,6 +13,7 @@ import nu.xom.Nodes;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.euclid.Angle;
@@ -269,7 +270,7 @@ public class CMLAngle extends AbstractAngle {
                     w.write("<td>");
                     CMLAtom atom = atoms.get(i);
                     Nodes labelNodes = atom.query(
-                        CMLScalar.NS+"[@dictRef='iucr:_atom_site_label']", CML_XPATH);
+                        CMLScalar.NS+"[@dictRef='iucr:_atom_site_label']", CMLConstants.CML_XPATH);
                     String label = ((CMLScalar) labelNodes.get(0)).getXMLContent()+" ("+atom.getId()+S_RBRAK;
                     w.write( (label == null) ? atom.getId() : label);
                     w.write("</td>");

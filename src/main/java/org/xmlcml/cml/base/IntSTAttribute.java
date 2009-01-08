@@ -68,7 +68,7 @@ public class IntSTAttribute extends CMLAttribute {
      * @param value
      */
     public IntSTAttribute(Attribute att, String value) {
-        super(att, value.trim().replace(S_WHITEREGEX, S_SPACE));
+        super(att, value.trim().replace(S_WHITEREGEX, CMLConstants.S_SPACE));
     }
 
     /**

@@ -1,6 +1,6 @@
 package org.xmlcml.cml.element.lite;
 
-import static org.xmlcml.euclid.EuclidConstants.EPS;
+import static org.xmlcml.euclid.EC.EPS;
 import nu.xom.Node;
 
 import org.junit.Assert;

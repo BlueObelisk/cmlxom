@@ -7,6 +7,7 @@ import nu.xom.Elements;
 import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.StringSTAttribute;
@@ -246,7 +247,7 @@ public abstract class AbstractSpectator extends CMLElement {
     * @return CMLElements<CMLMetadataList>
     */
     public CMLElements<CMLMetadataList> getMetadataListElements() {
-        Elements elements = this.getChildElements("metadataList", CML_NS);
+        Elements elements = this.getChildElements("metadataList", CMLConstants.CML_NS);
         return new CMLElements<CMLMetadataList>(elements);
     }
 // element:   label
@@ -264,7 +265,7 @@ public abstract class AbstractSpectator extends CMLElement {
     * @return CMLElements<CMLLabel>
     */
     public CMLElements<CMLLabel> getLabelElements() {
-        Elements elements = this.getChildElements("label", CML_NS);
+        Elements elements = this.getChildElements("label", CMLConstants.CML_NS);
         return new CMLElements<CMLLabel>(elements);
     }
 // element:   molecule
@@ -282,7 +283,7 @@ public abstract class AbstractSpectator extends CMLElement {
     * @return CMLElements<CMLMolecule>
     */
     public CMLElements<CMLMolecule> getMoleculeElements() {
-        Elements elements = this.getChildElements("molecule", CML_NS);
+        Elements elements = this.getChildElements("molecule", CMLConstants.CML_NS);
         return new CMLElements<CMLMolecule>(elements);
     }
 // element:   object
@@ -300,7 +301,7 @@ public abstract class AbstractSpectator extends CMLElement {
     * @return CMLElements<CMLObject>
     */
     public CMLElements<CMLObject> getObjectElements() {
-        Elements elements = this.getChildElements("object", CML_NS);
+        Elements elements = this.getChildElements("object", CMLConstants.CML_NS);
         return new CMLElements<CMLObject>(elements);
     }
     /** overrides addAttribute(Attribute)

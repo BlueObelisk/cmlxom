@@ -180,7 +180,7 @@ public class Int2 implements EuclidConstants {
      * @return string
      */
     public String toString() {
-        return S_LBRAK + x + S_COMMA + y + S_RBRAK;
+        return EC.S_LBRAK + x + EC.S_COMMA + y + EC.S_RBRAK;
     }
 }
 /**

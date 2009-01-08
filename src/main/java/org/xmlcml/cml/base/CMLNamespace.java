@@ -68,7 +68,7 @@ public class CMLNamespace implements CMLConstants {
         } else if (namespace != null) {
             for (String n : CMLConstants.OLD_NAMESPACES) {
                 if (n.equals(namespace)) {
-                    namesp = CML_NS;
+                    namesp = CMLConstants.CML_NS;
                     break;
                 }
             }
