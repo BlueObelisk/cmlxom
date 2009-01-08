@@ -3,7 +3,6 @@ package org.xmlcml.cml.element.main;
 import static org.xmlcml.cml.base.CMLConstants.U_ANGSTROM;
 import static org.xmlcml.cml.base.CMLConstants.U_DEGREE;
 import static org.xmlcml.cml.base.CMLConstants.XSD_DOUBLE;
-import static org.xmlcml.cml.base.TstBase.parseValidString;
 import static org.xmlcml.euclid.EuclidConstants.EPS;
 
 import java.util.ArrayList;
@@ -15,6 +14,7 @@ import org.junit.Test;
 import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElements;
+import org.xmlcml.cml.base.TstBase;
 import org.xmlcml.cml.element.CMLCellParameter;
 import org.xmlcml.cml.element.CMLCrystal;
 import org.xmlcml.cml.element.CMLScalar;
@@ -49,7 +49,7 @@ public class CMLCellParameterTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		crystal1 = (CMLCrystal) parseValidString(crystal1S);
+		crystal1 = (CMLCrystal)TstBase.parseValidString(crystal1S);
 		cellParameterList = crystal1.getCellParameterElements();
 		Assert.assertEquals("setup ", 2, cellParameterList.size());
 	}

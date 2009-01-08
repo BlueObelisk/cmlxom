@@ -1,7 +1,6 @@
 package org.xmlcml.cml.element.main;
 
 import static org.xmlcml.cml.base.CMLConstants.CML1;
-import static org.xmlcml.cml.base.TstBase.parseValidString;
 import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 import nu.xom.Element;
 
@@ -11,6 +10,7 @@ import org.junit.Test;
 import org.xmlcml.cml.base.CMLBuilder;
 import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
+import org.xmlcml.cml.base.TstBase;
 
 /**
  * test OldNodeFactory.
@@ -28,7 +28,7 @@ public class CMLNodeFactoryTest {
 	@Test
 	public void testStartMakingElementStringString() {
 		String s1 = "<cml " + CMLConstants.CML_XMLNS + "/>";
-		CMLElement cmlElement = (CMLElement) parseValidString(s1);
+		CMLElement cmlElement = (CMLElement)TstBase.parseValidString(s1);
 		String namespace = cmlElement.getNamespaceURI();
 		Assert.assertEquals("ok namespace", CMLConstants.CML_NS, namespace);
 
@@ -67,7 +67,7 @@ public class CMLNodeFactoryTest {
 	@Test
 	public void testMakeAttributeStringStringStringType() {
 		// String s1 = "<cml " + CMLConstants.CML_XMLNS + "/>";
-		// CMLElement cmlElement = (CMLElement) parseValidString(s1);
+		// CMLElement cmlElement = (CMLElement)TstBase.parseValidString(s1);
 	}
 
 	/**

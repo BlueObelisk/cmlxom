@@ -5,13 +5,13 @@ package org.xmlcml.cml.element.main;
 
 import static org.xmlcml.cml.base.CMLConstants.XSD_DOUBLE;
 import static org.xmlcml.cml.base.TstBase.assertEqualsCanonically;
-import static org.xmlcml.cml.base.TstBase.parseValidString;
-import static org.xmlcml.euclid.EC.S_EMPTY;
+import static org.xmlcml.euclid.EuclidConstants.S_EMPTY;
 
 import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.xmlcml.cml.base.TstBase;
 import org.xmlcml.cml.element.CMLArray;
 import org.xmlcml.cml.element.CMLList;
 import org.xmlcml.cml.element.CMLScalar;
@@ -54,7 +54,7 @@ public class CMLArrayListTest extends AbstractTableBase {
 		Assert.assertNotNull("tableHeader not null", tableHeaderCell1);
 		String ss = "<tableHeaderCell title='my title' dictRef='my:dict'"
 				+ " dataType='xsd:double' xmlns='http://www.xml-cml.org/schema'/>";
-		CMLTableHeaderCell expected = (CMLTableHeaderCell) parseValidString(ss);
+		CMLTableHeaderCell expected = (CMLTableHeaderCell)TstBase.parseValidString(ss);
 		assertEqualsCanonically("tableHeaderCell", expected, tableHeaderCell1,
 				true);
 	}
@@ -77,7 +77,7 @@ public class CMLArrayListTest extends AbstractTableBase {
 		Assert.assertNotNull("tableHeader not null", tableHeaderCell1);
 		String ss = "<tableHeaderCell title='my title' dictRef='my:dict'"
 				+ " dataType='xsd:double' xmlns='http://www.xml-cml.org/schema'/>";
-		CMLTableHeaderCell expected = (CMLTableHeaderCell) parseValidString(ss);
+		CMLTableHeaderCell expected = (CMLTableHeaderCell)TstBase.parseValidString(ss);
 		assertEqualsCanonically("tableHeaderCell", expected, tableHeaderCell1,
 				true);
 	}
@@ -99,7 +99,7 @@ public class CMLArrayListTest extends AbstractTableBase {
 		Assert.assertNotNull("tableHeader not null", tableHeaderCell1);
 		String ss = "<tableHeaderCell title='my title' dictRef='my:dict'"
 				+ " dataType='array' xmlns='http://www.xml-cml.org/schema'/>";
-		CMLTableHeaderCell expected = (CMLTableHeaderCell) parseValidString(ss);
+		CMLTableHeaderCell expected = (CMLTableHeaderCell)TstBase.parseValidString(ss);
 		assertEqualsCanonically("tableHeaderCell", expected, tableHeaderCell1,
 				true);
 	}
@@ -122,7 +122,7 @@ public class CMLArrayListTest extends AbstractTableBase {
 		CMLTableContent tableContent = arrayList.createTableContent();
 		String ss = "<tableContent "
 				+ "xmlns='http://www.xml-cml.org/schema'>1 a 2 b 3 c</tableContent>";
-		CMLTableContent expected = (CMLTableContent) parseValidString(ss);
+		CMLTableContent expected = (CMLTableContent)TstBase.parseValidString(ss);
 		assertEqualsCanonically("tableContent", expected, tableContent, true);
 	}
 

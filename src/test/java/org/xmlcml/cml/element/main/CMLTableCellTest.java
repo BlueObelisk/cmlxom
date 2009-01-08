@@ -5,7 +5,6 @@ package org.xmlcml.cml.element.main;
 
 import static org.xmlcml.cml.base.TstBase.assertEqualsCanonically;
 import static org.xmlcml.cml.base.TstBase.assertWriteHTML;
-import static org.xmlcml.cml.base.TstBase.parseValidString;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -65,7 +64,7 @@ public class CMLTableCellTest extends AbstractTableBase {
 	public final void testCMLTableCellDouble() {
 		cell = new CMLTableCell(1.2);
 		String ss = "<tableCell " + CMLConstants.CML_XMLNS + ">1.2</tableCell>";
-		CMLTableCell expected = (CMLTableCell) parseValidString(ss);
+		CMLTableCell expected = (CMLTableCell)TstBase.parseValidString(ss);
 		assertEqualsCanonically("cell double", expected, cell);
 	}
 
@@ -77,7 +76,7 @@ public class CMLTableCellTest extends AbstractTableBase {
 	public final void testCMLTableCellInt() {
 		cell = new CMLTableCell(3);
 		String ss = "<tableCell " + CMLConstants.CML_XMLNS + ">3</tableCell>";
-		CMLTableCell expected = (CMLTableCell) parseValidString(ss);
+		CMLTableCell expected = (CMLTableCell)TstBase.parseValidString(ss);
 		assertEqualsCanonically("cell double", expected, cell);
 	}
 
@@ -91,10 +90,10 @@ public class CMLTableCellTest extends AbstractTableBase {
 				+ CMLConstants.CML_XMLNS
 				+ "><atomArray><atom id='a1' elementType='Cl'/></atomArray></molecule>";
 		String mol1S = "<molecule><atomArray><atom id='a1' elementType='Cl'/></atomArray></molecule>";
-		CMLElement mol = (CMLElement) parseValidString(molS);
+		CMLElement mol = (CMLElement)TstBase.parseValidString(molS);
 		cell = new CMLTableCell(mol);
 		String ss = "<tableCell " + CMLConstants.CML_XMLNS + ">" + mol1S + "</tableCell>";
-		CMLTableCell expected = (CMLTableCell) parseValidString(ss);
+		CMLTableCell expected = (CMLTableCell)TstBase.parseValidString(ss);
 		assertEqualsCanonically("cell molecule", expected, cell);
 	}
 

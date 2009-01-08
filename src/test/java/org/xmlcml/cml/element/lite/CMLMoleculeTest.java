@@ -1,7 +1,6 @@
 package org.xmlcml.cml.element.lite;
 
-import static org.xmlcml.cml.base.TstBase.parseValidString;
-import static org.xmlcml.euclid.EC.EPS;
+import static org.xmlcml.euclid.EuclidConstants.EPS;
 import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
 import java.io.File;
@@ -479,7 +478,7 @@ public class CMLMoleculeTest {
 	 */
 	@Test
 	public void testGetMoleculeAncestor() throws Exception {
-		CMLCml cml = (CMLCml) parseValidString("<cml "
+		CMLCml cml = (CMLCml)TstBase.parseValidString("<cml "
 				+ CMLConstants.CML_XMLNS
 				+ ">"
 				+ "  <molecule id='m1'>"
@@ -509,7 +508,7 @@ public class CMLMoleculeTest {
 	 */
 	@Test
 	public void testAddBond() throws Exception {
-		CMLMolecule molecule = (CMLMolecule) parseValidString("<molecule "
+		CMLMolecule molecule = (CMLMolecule)TstBase.parseValidString("<molecule "
 				+ CMLConstants.CML_XMLNS + " id='m1'>" + "  <atomArray>"
 				+ "    <atom id='a1'/>" + "    <atom id='a2'/>"
 				+ "    <atom id='a3'/>" + "  </atomArray>" + "</molecule>");
@@ -806,7 +805,7 @@ public class CMLMoleculeTest {
 				+ "      <bond id='a1_a5' atomRefs2='a1 a5' order='2'/>"
 				+ "      <bond id='a2_a3' atomRefs2='a2 a3'/>"
 				+ "    </bondArray>" + "  </molecule>" + "";
-		CMLMolecule mol = (CMLMolecule) parseValidString(s);
+		CMLMolecule mol = (CMLMolecule)TstBase.parseValidString(s);
 		List<CMLBond> bondList = mol.getBonds();
 		Assert
 				.assertEquals("bond0", CMLBond.SINGLE, bondList.get(0)
