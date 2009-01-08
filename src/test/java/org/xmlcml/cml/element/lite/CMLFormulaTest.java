@@ -6,14 +6,9 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-import static org.xmlcml.cml.base.CMLConstants.CML_NS;
-import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
 import static org.xmlcml.cml.base.TstBase.assertEqualsCanonically;
 import static org.xmlcml.cml.base.TstBase.parseValidString;
 import static org.xmlcml.euclid.EuclidConstants.EPS;
-import static org.xmlcml.euclid.EuclidConstants.S_EMPTY;
-import static org.xmlcml.euclid.EuclidConstants.S_QUOT;
-import static org.xmlcml.euclid.EuclidConstants.S_SPACE;
 import static org.xmlcml.euclid.test.EuclidTestBase.getAssertFormat;
 import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
@@ -32,6 +27,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLAttribute;
 import org.xmlcml.cml.base.CMLBuilder;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.CMLSerializer;
 import org.xmlcml.cml.base.DoubleSTAttribute;
@@ -66,7 +62,7 @@ public class CMLFormulaTest {
 
 	// read into xom;
 	String xmlForm1S = "<formula id='f1' concise='C 2 H 2 O 2 Br 1' "
-			+ CML_XMLNS + " formalCharge='-1'/>" + S_EMPTY;
+			+ CMLConstants.CML_XMLNS + " formalCharge='-1'/>" + CMLConstants.S_EMPTY;
 
 	Document xmlForm1Doc = null;
 
@@ -113,14 +109,14 @@ public class CMLFormulaTest {
 		xomForm3a = new CMLFormula();
 		xomForm3a.setId("xomForm3a");
 		String expectS = "<?xml version='1.0' encoding='UTF-8'?>" + (char) 13
-				+ (char) 10 + "<formula id='xomForm3a'  " + CML_XMLNS + "/>";
+				+ (char) 10 + "<formula id='xomForm3a'  " + CMLConstants.CML_XMLNS + "/>";
 		Element expectElem = parseValidString(expectS);
 		assertEqualsCanonically("formula setup", expectElem, xomForm3a);
 
 		xomForm3a.setConcise("H 2 S 1 O 4");
 		expectS = "<?xml version='1.0' encoding='UTF-8'?>" + (char) 13
 				+ (char) 10 + "<formula id='xomForm3a' concise='H 2 O 4 S 1'"
-				+ S_SPACE + CML_XMLNS + ">"
+				+ CMLConstants.S_SPACE + CMLConstants.CML_XMLNS + ">"
 				+ "<atomArray elementType='H O S' count='2.0 4.0 1.0'/>"
 				+ "</formula>";
 		expectElem = parseValidString(expectS);
@@ -132,13 +128,13 @@ public class CMLFormulaTest {
 		// should be
 		expectS = "<?xml version='1.0' encoding='UTF-8'?>" + (char) 13
 				+ (char) 10 + "<formula id='xomForm3aaa' concise='H 2 O 4 S 1'"
-				+ S_SPACE + CML_XMLNS + ">"
+				+ CMLConstants.S_SPACE + CMLConstants.CML_XMLNS + ">"
 				+ "<atomArray elementType='H O S' count='2.0 4.0 1.0'/>"
 				+ "</formula>";
 		// but is
 		expectS = "<?xml version='1.0' encoding='UTF-8'?>" + (char) 13
 				+ (char) 10 + "<formula id='xomForm3a' concise='H 2 O 4 S 1'"
-				+ S_SPACE + CML_XMLNS + ">"
+				+ CMLConstants.S_SPACE + CMLConstants.CML_XMLNS + ">"
 				+ "<atomArray elementType='H O S' count='2.0 4.0 1.0'/>"
 				+ "</formula>";
 
@@ -195,10 +191,10 @@ public class CMLFormulaTest {
 	@Test
 	public void testNoAtomArray() {
 		// read into xom;
-		String xmlForm1S = "<formula id='f1' " + CML_XMLNS + ">"
+		String xmlForm1S = "<formula id='f1' " + CMLConstants.CML_XMLNS + ">"
 				+ "  <atomArray>"
 				+ "    <atom id='a2' elementType='O' count='3'/>"
-				+ "  </atomArray>" + "</atom>" + S_EMPTY;
+				+ "  </atomArray>" + "</atom>" + CMLConstants.S_EMPTY;
 
 		try {
 			new CMLBuilder().build(new StringReader(xmlForm1S));
@@ -728,13 +724,13 @@ public class CMLFormulaTest {
 	public void testAddFormulaCMLFormula() {
 		CMLSerializer serializer = new CMLSerializer();
 		String s = serializer.getXML(xomForm3a).trim();
-		String expect = "<?xml version=" + S_QUOT + "1.0" + S_QUOT
-				+ " encoding=" + S_QUOT + "UTF-8" + S_QUOT + "?>" + (char) 13
-				+ (char) 10 + "<formula id=" + S_QUOT + "xomForm3a" + S_QUOT
-				+ " concise=" + S_QUOT + "H 2 O 4 S 1" + S_QUOT + " "
-				+ "xmlns=" + S_QUOT + "" + CML_NS + "" + S_QUOT + ">"
-				+ "<atomArray elementType=" + S_QUOT + "H O S" + S_QUOT
-				+ " count=" + S_QUOT + "2.0 4.0 1.0" + S_QUOT + "/>"
+		String expect = "<?xml version=" + CMLConstants.S_QUOT + "1.0" + CMLConstants.S_QUOT
+				+ " encoding=" + CMLConstants.S_QUOT + "UTF-8" + CMLConstants.S_QUOT + "?>" + (char) 13
+				+ (char) 10 + "<formula id=" + CMLConstants.S_QUOT + "xomForm3a" + CMLConstants.S_QUOT
+				+ " concise=" + CMLConstants.S_QUOT + "H 2 O 4 S 1" + CMLConstants.S_QUOT + " "
+				+ "xmlns=" + CMLConstants.S_QUOT + "" + CMLConstants.CML_NS + "" + CMLConstants.S_QUOT + ">"
+				+ "<atomArray elementType=" + CMLConstants.S_QUOT + "H O S" + CMLConstants.S_QUOT
+				+ " count=" + CMLConstants.S_QUOT + "2.0 4.0 1.0" + CMLConstants.S_QUOT + "/>"
 				+ "</formula>";
 		assertEquals("xom3a serializer", expect, s);
 		assertEquals("child count", 1, xomForm3a.getChildCount());
@@ -743,13 +739,13 @@ public class CMLFormulaTest {
 		assertEquals("concise", "C 1 H 1 Na 1 O 3", xomForm3b.getConcise());
 		serializer = new CMLSerializer();
 		s = serializer.getXML(xomForm3a).trim();
-		expect = "<?xml version=" + S_QUOT + "1.0" + S_QUOT + " encoding="
-				+ S_QUOT + "UTF-8" + S_QUOT + "?>" + (char) 13 + (char) 10
-				+ "<formula id=" + S_QUOT + "xomForm3a" + S_QUOT + " concise="
-				+ S_QUOT + "H 2 O 4 S 1" + S_QUOT + " " + "xmlns=" + S_QUOT
-				+ "" + CML_NS + "" + S_QUOT + ">" + "<atomArray elementType="
-				+ S_QUOT + "H O S" + S_QUOT + " count=" + S_QUOT
-				+ "2.0 4.0 1.0" + S_QUOT + "/>" + "</formula>";
+		expect = "<?xml version=" + CMLConstants.S_QUOT + "1.0" + CMLConstants.S_QUOT + " encoding="
+				+ CMLConstants.S_QUOT + "UTF-8" + CMLConstants.S_QUOT + "?>" + (char) 13 + (char) 10
+				+ "<formula id=" + CMLConstants.S_QUOT + "xomForm3a" + CMLConstants.S_QUOT + " concise="
+				+ CMLConstants.S_QUOT + "H 2 O 4 S 1" + CMLConstants.S_QUOT + " " + "xmlns=" + CMLConstants.S_QUOT
+				+ "" + CMLConstants.CML_NS + "" + CMLConstants.S_QUOT + ">" + "<atomArray elementType="
+				+ CMLConstants.S_QUOT + "H O S" + CMLConstants.S_QUOT + " count=" + CMLConstants.S_QUOT
+				+ "2.0 4.0 1.0" + CMLConstants.S_QUOT + "/>" + "</formula>";
 		assertEquals("xom3a serializer", expect, s);
 		// now add the formula
 		xomForm3a.addFormula(xomForm3b);
@@ -762,18 +758,18 @@ public class CMLFormulaTest {
 				1).getConcise());
 		serializer = new CMLSerializer();
 		s = serializer.getXML(xomForm3a).trim();
-		expect = "<?xml version=" + S_QUOT + "1.0" + S_QUOT + " encoding="
-				+ S_QUOT + "UTF-8" + S_QUOT + "?>" + (char) 13 + (char) 10
-				+ "<formula id=" + S_QUOT + "xomForm3a" + S_QUOT + " "
-				+ "xmlns=" + S_QUOT + "" + CML_NS + "" + S_QUOT + ">"
-				+ "<formula id=" + S_QUOT + "xomForm3a" + S_QUOT + " concise="
-				+ S_QUOT + "H 2 O 4 S 1" + S_QUOT + ">"
-				+ "<atomArray elementType=" + S_QUOT + "H O S" + S_QUOT
-				+ " count=" + S_QUOT + "2.0 4.0 1.0" + S_QUOT + "/>"
-				+ "</formula>" + "<formula concise=" + S_QUOT
-				+ "C 1 H 1 Na 1 O 3" + S_QUOT + ">" + "<atomArray elementType="
-				+ S_QUOT + "C H Na O" + S_QUOT + " count=" + S_QUOT
-				+ "1.0 1.0 1.0 3.0" + S_QUOT + "/>" + "</formula>"
+		expect = "<?xml version=" + CMLConstants.S_QUOT + "1.0" + CMLConstants.S_QUOT + " encoding="
+				+ CMLConstants.S_QUOT + "UTF-8" + CMLConstants.S_QUOT + "?>" + (char) 13 + (char) 10
+				+ "<formula id=" + CMLConstants.S_QUOT + "xomForm3a" + CMLConstants.S_QUOT + " "
+				+ "xmlns=" + CMLConstants.S_QUOT + "" + CMLConstants.CML_NS + "" + CMLConstants.S_QUOT + ">"
+				+ "<formula id=" + CMLConstants.S_QUOT + "xomForm3a" + CMLConstants.S_QUOT + " concise="
+				+ CMLConstants.S_QUOT + "H 2 O 4 S 1" + CMLConstants.S_QUOT + ">"
+				+ "<atomArray elementType=" + CMLConstants.S_QUOT + "H O S" + CMLConstants.S_QUOT
+				+ " count=" + CMLConstants.S_QUOT + "2.0 4.0 1.0" + CMLConstants.S_QUOT + "/>"
+				+ "</formula>" + "<formula concise=" + CMLConstants.S_QUOT
+				+ "C 1 H 1 Na 1 O 3" + CMLConstants.S_QUOT + ">" + "<atomArray elementType="
+				+ CMLConstants.S_QUOT + "C H Na O" + CMLConstants.S_QUOT + " count=" + CMLConstants.S_QUOT
+				+ "1.0 1.0 1.0 3.0" + CMLConstants.S_QUOT + "/>" + "</formula>"
 				+ "</formula>";
 		assertEquals("xom3a serializer", expect, s);
 
@@ -1067,9 +1063,9 @@ public class CMLFormulaTest {
 	@Test
 	public void testEqualsAggregate() throws Exception {
 		CMLFormula form1 = (CMLFormula) parseValidString("<formula "
-				+ CML_XMLNS + " concise='C 2 H 4'/>");
+				+ CMLConstants.CML_XMLNS + " concise='C 2 H 4'/>");
 		CMLFormula form2 = (CMLFormula) parseValidString("<formula "
-				+ CML_XMLNS + " concise='C 2 H 4 O 1'/>");
+				+ CMLConstants.CML_XMLNS + " concise='C 2 H 4 O 1'/>");
 		boolean equals = form1.equalsAggregate(form1);
 		assertTrue("equality", equals);
 		equals = form1.equalsAggregate(form2);
@@ -1168,7 +1164,7 @@ public class CMLFormulaTest {
 	@Test
 	public void testNormalize() throws Exception {
 		CMLFormula form1 = (CMLFormula) parseValidString("<formula "
-				+ CML_XMLNS + " concise='C 2 H 4'/>");
+				+ CMLConstants.CML_XMLNS + " concise='C 2 H 4'/>");
 		form1.normalize();
 		assertEquals("concise", "C 2 H 4", form1.getConcise());
 	}
@@ -1211,7 +1207,7 @@ public class CMLFormulaTest {
 	@Test
 	public void testGetConciseNoCharge() throws Exception {
 		CMLFormula form1 = (CMLFormula) parseValidString("<formula "
-				+ CML_XMLNS + " concise='C 2 H 4 O 2 -2'/>");
+				+ CMLConstants.CML_XMLNS + " concise='C 2 H 4 O 2 -2'/>");
 		assertEquals("concise", "C 2 H 4 O 2", form1.getConciseNoCharge());
 	}
 
@@ -1253,13 +1249,13 @@ public class CMLFormulaTest {
 	@Test
 	public void testCreateAggregatedFormula() throws Exception {
 		CMLFormula form1 = (CMLFormula) parseValidString("<formula "
-				+ CML_XMLNS + " concise='C 2 H 4 O 2 -2'/>");
+				+ CMLConstants.CML_XMLNS + " concise='C 2 H 4 O 2 -2'/>");
 		CMLFormula form2 = (CMLFormula) parseValidString("<formula "
-				+ CML_XMLNS + " concise='C 3 H 3 Cl 3 1'/>");
+				+ CMLConstants.CML_XMLNS + " concise='C 3 H 3 Cl 3 1'/>");
 		CMLFormula form3 = form1.createAggregatedFormula(form2);
 		assertEquals("concise", "C 5 H 7 Cl 3 O 2 -1", form3.getConcise());
 		CMLFormula form4 = (CMLFormula) parseValidString("<formula "
-				+ CML_XMLNS + " concise='C 3 H 3 Cl 3 -1' count='2'/>");
+				+ CMLConstants.CML_XMLNS + " concise='C 3 H 3 Cl 3 -1' count='2'/>");
 		form3 = form1.createAggregatedFormula(form4);
 		assertEquals("concise", "C 8 H 10 Cl 6 O 2 -4", form3.getConcise());
 	}
@@ -1274,7 +1270,7 @@ public class CMLFormulaTest {
 	@Test
 	public void testGetFormattedStringTypeSortBoolean() throws Exception {
 		CMLFormula form1 = (CMLFormula) parseValidString("<formula "
-				+ CML_XMLNS + " concise='C 1 H 4 O 2 Br 1 -2'/>");
+				+ CMLConstants.CML_XMLNS + " concise='C 1 H 4 O 2 Br 1 -2'/>");
 		boolean omit1 = true;
 		Sort sort = Sort.ALPHABETIC_ELEMENTS;
 		String formS = form1.getFormattedString(Type.ELEMENT_COUNT_WHITESPACE,
@@ -1304,7 +1300,7 @@ public class CMLFormulaTest {
 	@Test
 	public void testGetFormalChargeString() throws Exception {
 		CMLFormula form1 = (CMLFormula) parseValidString("<formula "
-				+ CML_XMLNS + " concise='C 1 H 4 O 2 Br 1 -2'/>");
+				+ CMLConstants.CML_XMLNS + " concise='C 1 H 4 O 2 Br 1 -2'/>");
 		String formS = form1.getFormalChargeString();
 		assertEquals("formatted", "--", formS);
 	}
@@ -1318,9 +1314,9 @@ public class CMLFormulaTest {
 	@Test
 	public void testEqualsCMLFormulaDouble() throws Exception {
 		CMLFormula form1 = (CMLFormula) parseValidString("<formula "
-				+ CML_XMLNS + " concise='C 1 H 4 O 2 Br 1 -2'/>");
+				+ CMLConstants.CML_XMLNS + " concise='C 1 H 4 O 2 Br 1 -2'/>");
 		CMLFormula form2 = (CMLFormula) parseValidString("<formula "
-				+ CML_XMLNS + " concise='C 1.001 H 3.99 O 2 Br 1 -2'/>");
+				+ CMLConstants.CML_XMLNS + " concise='C 1.001 H 3.99 O 2 Br 1 -2'/>");
 		assertFalse("equals", form1.equals(form2, 0.001));
 		assertTrue("equals", form1.equals(form2, 0.011));
 	}
@@ -1334,9 +1330,9 @@ public class CMLFormulaTest {
 	@Test
 	public void testEqualsConcise() throws Exception {
 		CMLFormula form1 = (CMLFormula) parseValidString("<formula "
-				+ CML_XMLNS + " concise='C 1 H 4 O 2 Br 1 -2'/>");
+				+ CMLConstants.CML_XMLNS + " concise='C 1 H 4 O 2 Br 1 -2'/>");
 		CMLFormula form2 = (CMLFormula) parseValidString("<formula "
-				+ CML_XMLNS + " concise='C 1.001 H 3.99 O 2 Br 1 -2'/>");
+				+ CMLConstants.CML_XMLNS + " concise='C 1.001 H 3.99 O 2 Br 1 -2'/>");
 		assertTrue("equals", form1.equals(form1));
 		assertFalse("equals", form1.equals(form2));
 	}

@@ -7,6 +7,7 @@ import nu.xom.Elements;
 import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.StringSTAttribute;
@@ -284,7 +285,7 @@ public abstract class AbstractMetadataList extends CMLElement {
     * @return CMLElements<CMLMetadataList>
     */
     public CMLElements<CMLMetadataList> getMetadataListElements() {
-        Elements elements = this.getChildElements("metadataList", CML_NS);
+        Elements elements = this.getChildElements("metadataList", CMLConstants.CML_NS);
         return new CMLElements<CMLMetadataList>(elements);
     }
 // element:   metadata
@@ -302,7 +303,7 @@ public abstract class AbstractMetadataList extends CMLElement {
     * @return CMLElements<CMLMetadata>
     */
     public CMLElements<CMLMetadata> getMetadataElements() {
-        Elements elements = this.getChildElements("metadata", CML_NS);
+        Elements elements = this.getChildElements("metadata", CMLConstants.CML_NS);
         return new CMLElements<CMLMetadata>(elements);
     }
     /** overrides addAttribute(Attribute)

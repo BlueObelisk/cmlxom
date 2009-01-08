@@ -41,7 +41,7 @@ public abstract class Int implements EuclidConstants {
      */
     public static void printArray(int[] a) {
         for (int i = 0; i < a.length; i++) {
-            logger.info(a[i] + S_SPACE);
+            logger.info(a[i] + EC.S_SPACE);
         }
         logger.info("");
     }

@@ -1,10 +1,8 @@
 package org.xmlcml.cml.element.main;
 
+import static org.xmlcml.cml.base.CMLConstants.C_E;
 import static org.xmlcml.cml.base.TstBase.assertEqualsCanonically;
 import static org.xmlcml.cml.base.TstBase.assertNotEqualsCanonically;
-import static org.xmlcml.cml.base.CMLConstants.CML_NS;
-import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
-import static org.xmlcml.cml.base.CMLConstants.C_E;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -22,6 +20,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLBuilder;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.element.CMLAtom;
 import org.xmlcml.cml.element.CMLLabel;
@@ -108,7 +107,7 @@ public class CMLElementTest {
 		 * Assert.fail("should not throw "+e); } Assert.assertNull("test2 ",
 		 * doc2); System.err.println("end deliberate error:"); --
 		 */
-		String test3S = "<c:cml " + "xmlns:c='" + CML_NS + "' "
+		String test3S = "<c:cml " + "xmlns:c='" + CMLConstants.CML_NS + "' "
 				+ "xmlns:foo='http://foo.org/' " + "id='a1' foo:bar='plugh'>"
 				+ "<xxx c:yyy='zzz'/>" + "</c:cml>";
 		Document doc3 = null;
@@ -122,9 +121,9 @@ public class CMLElementTest {
 			Assert.fail("should not throw " + e);
 		}
 		Assert.assertNotNull("test3 ", doc3);
-		String test4S = "<cml " + "xmlns='" + CML_NS + "' "
+		String test4S = "<cml " + "xmlns='" + CMLConstants.CML_NS + "' "
 				+ "xmlns:foo='http://foo.org/' " + "id='a1' foo:bar='plugh'>"
-				+ "<xxx xmlns:c='" + CML_NS + "' " + " c:yyy='zzz'/>"
+				+ "<xxx xmlns:c='" + CMLConstants.CML_NS + "' " + " c:yyy='zzz'/>"
 				+ "</cml>";
 		Document doc4 = null;
 		try {
@@ -151,7 +150,7 @@ public class CMLElementTest {
 				.getAttributeCount());
 		Assert.assertEquals("namespace", "", element.getNamespacePrefix());
 		Assert.assertEquals("namespace", "atom", element.getLocalName());
-		Assert.assertEquals("namespace", CML_NS, element.getNamespaceURI());
+		Assert.assertEquals("namespace", CMLConstants.CML_NS, element.getNamespaceURI());
 		// explicit prefix
 		element = new CMLElement(CMLAtom.NS);
 		Assert.assertNotNull("constructor", element);
@@ -188,11 +187,11 @@ public class CMLElementTest {
 		Assert.assertNotNull("copy constructor", atom1);
 		Assert.assertEquals("copy constructor", "", atom1.getNamespacePrefix());
 		Assert
-				.assertEquals("copy constructor", CML_NS, atom1
+				.assertEquals("copy constructor", CMLConstants.CML_NS, atom1
 						.getNamespaceURI());
 		Assert.assertEquals("copy constructor", 1, atom1.getChildCount());
 		// MUST remember the namespace!
-		Element child = atom1.getFirstChildElement("label", CML_NS);
+		Element child = atom1.getFirstChildElement("label", CMLConstants.CML_NS);
 		Assert.assertNotNull("child", child);
 		Assert.assertEquals("copy child", CMLLabel.class, child.getClass());
 		label = (CMLLabel) child;
@@ -273,7 +272,7 @@ public class CMLElementTest {
 		CMLMolecule molecule = null;
 		/*
 		 * -- // this example tests atom code so is not a good test for simple
-		 * children moleculeS = "<molecule " + CML_XMLNS + " title='myTitle'>" +
+		 * children moleculeS = "<molecule " + CMLConstants.CML_XMLNS + " title='myTitle'>" +
 		 * "  <atomArray>" + "    <atom id='a1' title='atom1' x3='1.23'/>" +
 		 * "  </atomArray>" + "</molecule>" + ""; CMLMolecule molecule = null;
 		 * try { molecule = (CMLMolecule) new
@@ -289,7 +288,7 @@ public class CMLElementTest {
 		 * idAtt1);
 		 * 
 		 * // this example tests atom code so is not a good test for simple
-		 * children moleculeS = "<molecule " + CML_XMLNS + " title='myTitle'>" +
+		 * children moleculeS = "<molecule " + CMLConstants.CML_XMLNS + " title='myTitle'>" +
 		 * "  <atomArray>" + "    <atom id='a1' title='atom1' x3='1.23'/>" +
 		 * "    <atom id='a2' title='atom2'/>" + "    <foo/>" + "  </atomArray>"
 		 * + "  <blinge/>" + "  <bondArray>" + "    <bar/>" +
@@ -299,7 +298,7 @@ public class CMLElementTest {
 		 * e1.printStackTrace(); Assert.assertEquals("bad names",
 		 * "Unknown CML Element : foo", e1.getMessage()); } --
 		 */
-		moleculeS = "<molecule " + CML_XMLNS + ">" + "  <atomArray>"
+		moleculeS = "<molecule " + CMLConstants.CML_XMLNS + ">" + "  <atomArray>"
 				+ "    <atom id='a1'/>" + "    <atom id='a2'/>"
 				+ "  </atomArray>" + "  <bondArray>"
 				+ "    <bond atomRefs2='a1 a2'/>" + "  </bondArray>"
@@ -504,7 +503,7 @@ public class CMLElementTest {
 	// @Test
 	// public void testGetNamespaceForPrefix() {
 	//
-	// String s = "" + "<cml " + CML_XMLNS + ""
+	// String s = "" + "<cml " + CMLConstants.CML_XMLNS + ""
 	// + "  xmlns:a='http://www.foo.org' "
 	// + "  xmlns:b='http://www.bar.com'>"
 	// + "    <molecule title='f.mol'/>" + "</cml>" + "";

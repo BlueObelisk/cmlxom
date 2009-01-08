@@ -66,7 +66,7 @@ public class BooleanArraySTAttribute extends CMLAttribute {
      * @param value
      */
     public BooleanArraySTAttribute(Attribute att, String value) {
-        super(att, value.trim().replace(S_WHITEREGEX, S_SPACE));
+        super(att, value.trim().replace(S_WHITEREGEX, CMLConstants.S_SPACE));
     }
 
     /**
@@ -80,7 +80,7 @@ public class BooleanArraySTAttribute extends CMLAttribute {
         for (int i = 0; i < bb.length; i++) {
             this.bb[i] = bb[i];
         }
-        this.setValue(Util.concatenate(bb, S_SPACE));
+        this.setValue(Util.concatenate(bb, CMLConstants.S_SPACE));
     }
 
     /**
@@ -109,10 +109,10 @@ public class BooleanArraySTAttribute extends CMLAttribute {
      *             cannot parse as ints
      */
     public static boolean[] split(String s, String delim) {
-        String sss = s.trim().replace(S_WHITEREGEX, S_SPACE);
+        String sss = s.trim().replace(S_WHITEREGEX, CMLConstants.S_SPACE);
         if (delim == null || delim.trim().equals(S_EMPTY)
                 || delim.equals(S_WHITEREGEX)) {
-            delim = S_WHITEREGEX;
+            delim = CMLConstants.S_WHITEREGEX;
             sss = sss.trim();
         }
         String[] ss = sss.split(delim);
@@ -135,7 +135,7 @@ public class BooleanArraySTAttribute extends CMLAttribute {
      * @throws RuntimeException
      */
     public void setCMLValue(String s) {
-        boolean[] bb = split(s.trim(), S_WHITEREGEX);
+        boolean[] bb = split(s.trim(), CMLConstants.S_WHITEREGEX);
         this.setCMLValue(bb);
     }
 

@@ -1,7 +1,6 @@
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.euclid.EuclidConstants.EPS;
-import static org.xmlcml.euclid.EuclidConstants.S_EMPTY;
+import static org.xmlcml.euclid.EC.EPS;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -12,6 +11,7 @@ import java.util.Set;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement.CoordinateType;
 import org.xmlcml.cml.element.CMLAtom;
 import org.xmlcml.cml.element.CMLAtomSet;
@@ -75,7 +75,7 @@ public class CMLAtomSetTest {
 		CMLAtomSet xomAtomSet = new CMLAtomSet();
 		Assert.assertNotNull("atom set creation", xomAtomSet);
 		Assert.assertEquals("atom set size", 0, xomAtomSet.size());
-		Assert.assertEquals("atom set ", new String[] { S_EMPTY }, xomAtomSet
+		Assert.assertEquals("atom set ", new String[] { CMLConstants.S_EMPTY }, xomAtomSet
 				.getXMLContent());
 
 	}

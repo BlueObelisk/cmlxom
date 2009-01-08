@@ -7,6 +7,7 @@ import nu.xom.Elements;
 import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.StringSTAttribute;
@@ -206,7 +207,7 @@ public abstract class AbstractTransitionState extends CMLElement {
     * @return CMLElements<CMLMolecule>
     */
     public CMLElements<CMLMolecule> getMoleculeElements() {
-        Elements elements = this.getChildElements("molecule", CML_NS);
+        Elements elements = this.getChildElements("molecule", CMLConstants.CML_NS);
         return new CMLElements<CMLMolecule>(elements);
     }
 // element:   propertyList
@@ -222,7 +223,7 @@ public abstract class AbstractTransitionState extends CMLElement {
     * @return CMLElements<CMLPropertyList>
     */
     public CMLElements<CMLPropertyList> getPropertyListElements() {
-        Elements elements = this.getChildElements("propertyList", CML_NS);
+        Elements elements = this.getChildElements("propertyList", CMLConstants.CML_NS);
         return new CMLElements<CMLPropertyList>(elements);
     }
     /** overrides addAttribute(Attribute)

@@ -12,6 +12,7 @@ import nu.xom.Element;
 import nu.xom.Node;
 
 import org.apache.log4j.Logger;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.element.CMLMap.Direction;
 import org.xmlcml.euclid.Point3;
@@ -436,8 +437,8 @@ public class CMLAtomSet extends AbstractAtomSet {
     public void removeAtom(CMLAtom atom) throws RuntimeException {
         if (atom != null) {
             if (!set.contains(atom)) {
-                throw new RuntimeException("atom not in set:" + atom.getId() + S_COLON
-                        + Util.concatenate(this.getXMLContent(), S_SLASH));
+                throw new RuntimeException("atom not in set:" + atom.getId() + CMLConstants.S_COLON
+                        + Util.concatenate(this.getXMLContent(), CMLConstants.S_SLASH));
             }
             // remove from set
             set.remove(atom);
@@ -1102,7 +1103,7 @@ public class CMLAtomSet extends AbstractAtomSet {
         List<CMLAtom> atoms = this.getAtoms();
         if (p2Vector.size() != atoms.size()) {
             throw new RuntimeException("Vector (" + p2Vector.size()
-                    + ") not same length as atoms (" + atoms.size() + S_RBRAK);
+                    + ") not same length as atoms (" + atoms.size() + CMLConstants.S_RBRAK);
         }
         for (int i = 0; i < atoms.size(); i++) {
             CMLAtom atom = atoms.get(i);

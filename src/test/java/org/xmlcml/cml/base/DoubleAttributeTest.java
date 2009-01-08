@@ -3,7 +3,7 @@ package org.xmlcml.cml.base;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import static org.xmlcml.cml.base.CMLConstants.*;
+import org.xmlcml.euclid.EC;
 
 /**
  * tests for doubleAttribute.
@@ -96,7 +96,7 @@ public class DoubleAttributeTest {
 	@Test
 	public void testGetDouble() {
 		daa1.setCMLValue(7.8);
-		Assert.assertEquals("get Value", 7.8, daa1.getDouble(), EPS);
+		Assert.assertEquals("get Value", 7.8, daa1.getDouble(), EC.EPS);
 	}
 
 }

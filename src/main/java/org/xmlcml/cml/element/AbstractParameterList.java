@@ -8,6 +8,7 @@ import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.attribute.RefAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.StringSTAttribute;
@@ -282,7 +283,7 @@ public abstract class AbstractParameterList extends CMLElement {
     * @return CMLElements<CMLMetadataList>
     */
     public CMLElements<CMLMetadataList> getMetadataListElements() {
-        Elements elements = this.getChildElements("metadataList", CML_NS);
+        Elements elements = this.getChildElements("metadataList", CMLConstants.CML_NS);
         return new CMLElements<CMLMetadataList>(elements);
     }
 // element:   name
@@ -300,7 +301,7 @@ public abstract class AbstractParameterList extends CMLElement {
     * @return CMLElements<CMLName>
     */
     public CMLElements<CMLName> getNameElements() {
-        Elements elements = this.getChildElements("name", CML_NS);
+        Elements elements = this.getChildElements("name", CMLConstants.CML_NS);
         return new CMLElements<CMLName>(elements);
     }
 // element:   parameter
@@ -318,7 +319,7 @@ public abstract class AbstractParameterList extends CMLElement {
     * @return CMLElements<CMLParameter>
     */
     public CMLElements<CMLParameter> getParameterElements() {
-        Elements elements = this.getChildElements("parameter", CML_NS);
+        Elements elements = this.getChildElements("parameter", CMLConstants.CML_NS);
         return new CMLElements<CMLParameter>(elements);
     }
 // element:   parameterList
@@ -336,7 +337,7 @@ public abstract class AbstractParameterList extends CMLElement {
     * @return CMLElements<CMLParameterList>
     */
     public CMLElements<CMLParameterList> getParameterListElements() {
-        Elements elements = this.getChildElements("parameterList", CML_NS);
+        Elements elements = this.getChildElements("parameterList", CMLConstants.CML_NS);
         return new CMLElements<CMLParameterList>(elements);
     }
     /** overrides addAttribute(Attribute)

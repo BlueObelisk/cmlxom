@@ -996,7 +996,7 @@ public abstract class AbstractEntry extends CMLElement {
 //    * @return CMLElements<CMLMetadataList>
 //    */
 //    public CMLElements<CMLMetadataList> getMetadataListElements() {
-//        Elements elements = this.getChildElements("metadataList", CML_NS);
+//        Elements elements = this.getChildElements("metadataList", CMLConstants.CML_NS);
 //        return new CMLElements<CMLMetadataList>(elements);
 //    }
 //// element:   annotation
@@ -1014,7 +1014,7 @@ public abstract class AbstractEntry extends CMLElement {
 //    * @return CMLElements<CMLAnnotation>
 //    */
 //    public CMLElements<CMLAnnotation> getAnnotationElements() {
-//        Elements elements = this.getChildElements("annotation", CML_NS);
+//        Elements elements = this.getChildElements("annotation", CMLConstants.CML_NS);
 //        return new CMLElements<CMLAnnotation>(elements);
 //    }
 //// element:   definition
@@ -1032,7 +1032,7 @@ public abstract class AbstractEntry extends CMLElement {
 //    * @return CMLElements<CMLDefinition>
 //    */
 //    public CMLElements<CMLDefinition> getDefinitionElements() {
-//        Elements elements = this.getChildElements("definition", CML_NS);
+//        Elements elements = this.getChildElements("definition", CMLConstants.CML_NS);
 //        return new CMLElements<CMLDefinition>(elements);
 //    }
 //// element:   description
@@ -1050,7 +1050,7 @@ public abstract class AbstractEntry extends CMLElement {
 //    * @return CMLElements<CMLDescription>
 //    */
 //    public CMLElements<CMLDescription> getDescriptionElements() {
-//        Elements elements = this.getChildElements("description", CML_NS);
+//        Elements elements = this.getChildElements("description", CMLConstants.CML_NS);
 //        return new CMLElements<CMLDescription>(elements);
 //    }
 //// element:   enumeration
@@ -1068,7 +1068,7 @@ public abstract class AbstractEntry extends CMLElement {
 //    * @return CMLElements<CMLEnumeration>
 //    */
 //    public CMLElements<CMLEnumeration> getEnumerationElements() {
-//        Elements elements = this.getChildElements("enumeration", CML_NS);
+//        Elements elements = this.getChildElements("enumeration", CMLConstants.CML_NS);
 //        return new CMLElements<CMLEnumeration>(elements);
 //    }
 //// element:   unitType
@@ -1086,7 +1086,7 @@ public abstract class AbstractEntry extends CMLElement {
 //    * @return CMLElements<CMLUnitType>
 //    */
 //    public CMLElements<CMLUnitType> getUnitTypeElements() {
-//        Elements elements = this.getChildElements("unitType", CML_NS);
+//        Elements elements = this.getChildElements("unitType", CMLConstants.CML_NS);
 //        return new CMLElements<CMLUnitType>(elements);
 //    }
 //// element:   alternative
@@ -1104,7 +1104,7 @@ public abstract class AbstractEntry extends CMLElement {
 //    * @return CMLElements<CMLAlternative>
 //    */
 //    public CMLElements<CMLAlternative> getAlternativeElements() {
-//        Elements elements = this.getChildElements("alternative", CML_NS);
+//        Elements elements = this.getChildElements("alternative", CMLConstants.CML_NS);
 //        return new CMLElements<CMLAlternative>(elements);
 //    }
 //// element:   relatedEntry
@@ -1122,7 +1122,7 @@ public abstract class AbstractEntry extends CMLElement {
 //    * @return CMLElements<CMLRelatedEntry>
 //    */
 //    public CMLElements<CMLRelatedEntry> getRelatedEntryElements() {
-//        Elements elements = this.getChildElements("relatedEntry", CML_NS);
+//        Elements elements = this.getChildElements("relatedEntry", CMLConstants.CML_NS);
 //        return new CMLElements<CMLRelatedEntry>(elements);
 //    }
     /** overrides addAttribute(Attribute)

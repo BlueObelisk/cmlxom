@@ -2,8 +2,6 @@ package org.xmlcml.cml.element.main;
 
 import static org.xmlcml.cml.base.TstBase.assertEqualsCanonically;
 import static org.xmlcml.cml.base.TstBase.parseValidString;
-import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
-import static org.xmlcml.euclid.EuclidConstants.S_EMPTY;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +11,7 @@ import nu.xom.Elements;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.element.CMLAtom;
 import org.xmlcml.cml.element.CMLBond;
@@ -33,14 +32,14 @@ public class CMLMapTest {
 	CMLMap xomMap1;
 	CMLMap xmlMap1;
 	String xmlMap1S = "<map id='m1' fromType='cml:atom' toType='cml:atom'"
-			+ " " + CML_XMLNS + ">" + "  <link from='a1' to='a11'/>"
+			+ " " + CMLConstants.CML_XMLNS + ">" + "  <link from='a1' to='a11'/>"
 			+ "  <link from='a2' to='a12'/>" + "  <link from='a3' to='a13'/>"
 			+ "</map>" + "";
 	CMLMap xmlMap2;
 	String xmlMap2S = "<map id='m1' fromType='cml:atom' toType='cml:atom'"
-			+ " " + CML_XMLNS + ">" + "  <link from='a4' to='a14'/>"
+			+ " " + CMLConstants.CML_XMLNS + ">" + "  <link from='a4' to='a14'/>"
 			+ "  <link from='a5' to='a15'/>" + "  <link from='a6' to='a16'/>"
-			+ "</map>" + S_EMPTY;
+			+ "</map>" + CMLConstants.S_EMPTY;
 
 	/**
 	 * setup.

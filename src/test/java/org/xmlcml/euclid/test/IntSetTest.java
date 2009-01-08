@@ -1,13 +1,13 @@
 package org.xmlcml.euclid.test;
 
-import static org.xmlcml.euclid.EuclidConstants.S_EMPTY;
-import static org.xmlcml.euclid.EuclidConstants.S_RBRAK;
+import static org.xmlcml.euclid.EC.S_EMPTY;
 
 import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.xmlcml.euclid.EC;
 import org.xmlcml.euclid.EuclidRuntimeException;
 import org.xmlcml.euclid.IntRange;
 import org.xmlcml.euclid.IntSet;
@@ -50,8 +50,8 @@ public class IntSetTest {
 	 * @param expected
 	 */
 	public static void assertEquals(String msg, IntSet test, IntSet expected) {
-		Assert.assertNotNull("test should not be null (" + msg + S_RBRAK, test);
-		Assert.assertNotNull("expected should not be null (" + msg + S_RBRAK,
+		Assert.assertNotNull("test should not be null (" + msg + EC.S_RBRAK, test);
+		Assert.assertNotNull("expected should not be null (" + msg + EC.S_RBRAK,
 				expected);
 		IntTest.assertEquals(msg, test.getElements(), expected.getElements());
 	}
@@ -65,8 +65,8 @@ public class IntSetTest {
 	 * @param expected
 	 */
 	public static void assertEquals(String msg, int[] test, IntSet expected) {
-		Assert.assertNotNull("test should not be null (" + msg + S_RBRAK, test);
-		Assert.assertNotNull("expected should not be null (" + msg + S_RBRAK,
+		Assert.assertNotNull("test should not be null (" + msg + EC.S_RBRAK, test);
+		Assert.assertNotNull("expected should not be null (" + msg + EC.S_RBRAK,
 				expected);
 		Assert.assertEquals("must be of equal length ", test.length, expected
 				.getElements().length);

@@ -73,7 +73,7 @@ public class IntArraySTAttribute extends CMLAttribute {
      * @param value
      */
     public IntArraySTAttribute(Attribute att, String value) {
-        super(att, value.trim().replace(S_WHITEREGEX, S_SPACE));
+        super(att, value.trim().replace(S_WHITEREGEX, CMLConstants.S_SPACE));
     }
 
     /**
@@ -87,7 +87,7 @@ public class IntArraySTAttribute extends CMLAttribute {
         for (int i = 0; i < ii.length; i++) {
             this.ii[i] = ii[i];
         }
-        this.setValue(Util.concatenate(ii, S_SPACE));
+        this.setValue(Util.concatenate(ii, CMLConstants.S_SPACE));
     }
 
     /**
@@ -114,10 +114,10 @@ public class IntArraySTAttribute extends CMLAttribute {
      * @return array
      */
     public static int[] split(String s, String delim) {
-        String sss = s.trim().replace(S_WHITEREGEX, S_SPACE);
+        String sss = s.trim().replace(S_WHITEREGEX, CMLConstants.S_SPACE);
         if (delim == null || delim.trim().equals(S_EMPTY)
                 || delim.equals(S_WHITEREGEX)) {
-            delim = S_WHITEREGEX;
+            delim = CMLConstants.S_WHITEREGEX;
             sss = sss.trim();
         }
         String[] ss = sss.split(delim);
@@ -140,7 +140,7 @@ public class IntArraySTAttribute extends CMLAttribute {
      * @throws RuntimeException
      */
     public void setCMLValue(String s) {
-        int[] ii = split(s.trim(), S_WHITEREGEX);
+        int[] ii = split(s.trim(), CMLConstants.S_WHITEREGEX);
         this.setCMLValue(ii);
     }
 

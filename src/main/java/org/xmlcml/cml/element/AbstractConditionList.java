@@ -8,6 +8,7 @@ import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.attribute.RefAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.StringSTAttribute;
@@ -282,7 +283,7 @@ public abstract class AbstractConditionList extends CMLElement {
     * @return CMLElements<CMLMetadataList>
     */
     public CMLElements<CMLMetadataList> getMetadataListElements() {
-        Elements elements = this.getChildElements("metadataList", CML_NS);
+        Elements elements = this.getChildElements("metadataList", CMLConstants.CML_NS);
         return new CMLElements<CMLMetadataList>(elements);
     }
 // element:   name
@@ -300,7 +301,7 @@ public abstract class AbstractConditionList extends CMLElement {
     * @return CMLElements<CMLName>
     */
     public CMLElements<CMLName> getNameElements() {
-        Elements elements = this.getChildElements("name", CML_NS);
+        Elements elements = this.getChildElements("name", CMLConstants.CML_NS);
         return new CMLElements<CMLName>(elements);
     }
 // element:   scalar
@@ -318,7 +319,7 @@ public abstract class AbstractConditionList extends CMLElement {
     * @return CMLElements<CMLScalar>
     */
     public CMLElements<CMLScalar> getScalarElements() {
-        Elements elements = this.getChildElements("scalar", CML_NS);
+        Elements elements = this.getChildElements("scalar", CMLConstants.CML_NS);
         return new CMLElements<CMLScalar>(elements);
     }
 // element:   list
@@ -336,7 +337,7 @@ public abstract class AbstractConditionList extends CMLElement {
     * @return CMLElements<CMLList>
     */
     public CMLElements<CMLList> getListElements() {
-        Elements elements = this.getChildElements("list", CML_NS);
+        Elements elements = this.getChildElements("list", CMLConstants.CML_NS);
         return new CMLElements<CMLList>(elements);
     }
     /** overrides addAttribute(Attribute)

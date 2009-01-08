@@ -8,6 +8,7 @@ import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.attribute.RefAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.IntSTAttribute;
@@ -373,7 +374,7 @@ public abstract class AbstractIsotope extends CMLElement {
     * @return CMLElements<CMLAbundance>
     */
     public CMLElements<CMLAbundance> getAbundanceElements() {
-        Elements elements = this.getChildElements("abundance", CML_NS);
+        Elements elements = this.getChildElements("abundance", CMLConstants.CML_NS);
         return new CMLElements<CMLAbundance>(elements);
     }
     /** overrides addAttribute(Attribute)

@@ -256,6 +256,6 @@ public class Real2Range implements EuclidConstants {
     public String toString() {
         String xx = (xrange == null) ? "NULL" : xrange.toString();
         String yy = (yrange == null) ? "NULL" : yrange.toString();
-        return S_LBRAK + xx + S_COMMA + yy + S_RBRAK;
+        return EC.S_LBRAK + xx + EC.S_COMMA + yy + EC.S_RBRAK;
     }
 }

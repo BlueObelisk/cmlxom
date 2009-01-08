@@ -94,7 +94,7 @@ public class CMLElements<E extends Element> implements Iterable<E>, CMLConstants
                     type = classx;
                 } else if (!(type.equals(classx))) {
                     throw new RuntimeException("CMLElements is not homogeneous: "
-                            + type + S_SLASH + classx);
+                            + type + CMLConstants.S_SLASH + classx);
                 }
                 i++;
             }

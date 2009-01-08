@@ -13,7 +13,6 @@ import nu.xom.NodeFactory;
 import nu.xom.ParsingException;
 import nu.xom.ValidityException;
 
-
 /**
  * 
  * <p>
@@ -93,7 +92,7 @@ public class CMLBuilder extends Builder implements CMLConstants {
     public static Document ensureCML(Document doc) {
     	Element root = doc.getRootElement();
 		String nameURI = root.getNamespaceURI();
-    	if (!CML_NS.equals(nameURI)) {
+    	if (!CMLConstants.CML_NS.equals(nameURI)) {
     		
     		try {
 	    		System.err.println("No CML namespace; munging one in");
@@ -107,7 +106,7 @@ public class CMLBuilder extends Builder implements CMLConstants {
 	    			idx = s.indexOf(">\n", idx);
 	    		}
 	    		// add namespace
-	    		String sss = s.substring(0, idx) + S_SPACE+CML_XMLNS +s.substring(idx);
+	    		String sss = s.substring(0, idx) + S_SPACE+CMLConstants.CML_XMLNS +s.substring(idx);
 	    		Element newRoot = new CMLBuilder().parseString(sss);
 	    		doc = newRoot.getDocument();
     		} catch (Exception e) {

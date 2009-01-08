@@ -8,6 +8,7 @@ import nu.xom.Element;
 import nu.xom.Node;
 import nu.xom.Nodes;
 
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.CMLType;
@@ -184,7 +185,7 @@ public class CMLProperty extends AbstractProperty {
      */ 
     public static CMLPropertyList getPropertyList(CMLElement parent, String dictRef) {
     	CMLPropertyList propertyList = new CMLPropertyList();
-    	Nodes nodes = parent.query("./cml:property", CML_XPATH);
+    	Nodes nodes = parent.query("./cml:property", CMLConstants.CML_XPATH);
     	for (int i = 0; i < nodes.size(); i++ ) {
     		CMLProperty property = (CMLProperty) nodes.get(i);
     		property.canonicalize();
@@ -362,7 +363,7 @@ public class CMLProperty extends AbstractProperty {
 	 */
 	public HasDataType getChild() {
 		if (child == null) {
-	    	Nodes nodes = this.query("cml:scalar | cml:array | cml:matrix", CML_XPATH);
+	    	Nodes nodes = this.query("cml:scalar | cml:array | cml:matrix", CMLConstants.CML_XPATH);
 	    	if (nodes.size() == 1) {
 	    		child = (HasDataType) nodes.get(0);
 	    	}

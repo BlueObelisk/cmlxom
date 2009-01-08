@@ -1,6 +1,6 @@
 package org.xmlcml.euclid.test;
 
-import static org.xmlcml.euclid.EuclidConstants.EPS;
+import static org.xmlcml.euclid.EC.EPS;
 
 import org.junit.Test;
 import org.xmlcml.euclid.Real;

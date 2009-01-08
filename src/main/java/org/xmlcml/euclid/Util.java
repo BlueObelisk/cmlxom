@@ -165,8 +165,8 @@ public class Util implements EuclidConstants {
 	 * @param e
 	 */
 	public static void BUG(String msg, Exception e) {
-		msg = (msg == null || msg.trim().length() == 0) ? S_EMPTY : S_LBRAK
-				+ msg + S_RBRAK;
+		msg = (msg == null || msg.trim().length() == 0) ? EC.S_EMPTY : EC.S_LBRAK
+				+ msg + EC.S_RBRAK;
 		throw new RuntimeException("BUG: " + msg + "should never throw: " + e,
 				e);
 	}
@@ -230,7 +230,7 @@ public class Util implements EuclidConstants {
 		if (!dir.exists()) {
 			boolean ok = dir.mkdirs();
 			if (!ok) {
-				throw new IOException("cannot make dictories: " + dir + S_SPACE
+				throw new IOException("cannot make dictories: " + dir + EC.S_SPACE
 						+ filename);
 			}
 		}
@@ -360,7 +360,7 @@ public class Util implements EuclidConstants {
 		int count = 0;
 		StringBuffer sb = new StringBuffer();
 		String s0 = "\n";
-		String s1 = S_EMPTY;
+		String s1 = EC.S_EMPTY;
 		while (true) {
 			int i = br.read();
 			if (i == -1) {
@@ -374,11 +374,11 @@ public class Util implements EuclidConstants {
 			if (i >= 32 && i < 128) {
 				s1 += (char) i;
 			} else {
-				s1 += S_SPACE;
+				s1 += EC.S_SPACE;
 			}
 			if (++count % 10 == 0) {
 				sb.append(s0 + "   " + s1);
-				s1 = S_EMPTY;
+				s1 = EC.S_EMPTY;
 				s0 = "\n";
 			}
 		}
@@ -397,7 +397,7 @@ public class Util implements EuclidConstants {
 	 */
 	public static String spaces(int nspace) {
 		if (nspace <= 0) {
-			return S_EMPTY;
+			return EC.S_EMPTY;
 		} else {
 			StringBuffer sb = new StringBuffer();
 			for (int i = 0; i < nspace; i++) {
@@ -492,7 +492,7 @@ public class Util implements EuclidConstants {
 			return null;
 		}
 		if (s.trim().equals(S_EMPTY)) {
-			return S_EMPTY;
+			return EC.S_EMPTY;
 		}
 		int l = s.length();
 		while (l >= 0) {
@@ -516,7 +516,7 @@ public class Util implements EuclidConstants {
 			return null;
 		}
 		if (s.trim().equals(S_EMPTY)) {
-			return S_EMPTY;
+			return EC.S_EMPTY;
 		}
 		int l = s.length();
 		for (int i = 0; i < l; i++) {
@@ -572,9 +572,9 @@ public class Util implements EuclidConstants {
 	}
 
 	/**
-	 * parse comma-separated Strings Note fields can be S_EMPTY (as in ,,,) and
+	 * parse comma-separated Strings Note fields can be EC.S_EMPTY (as in ,,,) and
 	 * fields can be quoted "...". If so, embedded quotes are represented as
-	 * S_EMPTY, for example A," this is a S_EMPTYBS_EMPTY character",C. An
+	 * EC.S_EMPTY, for example A," this is a EC.S_EMPTYBS_EMPTY character",C. An
 	 * unbalanced quote returns a mess
 	 * 
 	 * @param s
@@ -593,18 +593,18 @@ public class Util implements EuclidConstants {
 		List<String> v = new ArrayList<String>();
 		while (!s.equals(S_EMPTY)) {
 			if (s.startsWith(S_QUOT)) {
-				String temp = S_EMPTY;
+				String temp = EC.S_EMPTY;
 				s = s.substring(1);
 				while (true) {
 					int idx = s.indexOf(S_QUOT);
 					if (idx == -1) {
 						throw new RuntimeException("Missing Quote:" + s0
-								+ S_COLON);
+								+ EC.S_COLON);
 					}
-					int idx2 = s.indexOf(S_QUOT + S_QUOT);
-					// next quote is actually S_EMPTY
+					int idx2 = s.indexOf(S_QUOT + EC.S_QUOT);
+					// next quote is actually EC.S_EMPTY
 					if (idx2 == idx) {
-						temp += s.substring(0, idx) + S_QUOT;
+						temp += s.substring(0, idx) + EC.S_QUOT;
 						s = s.substring(idx + 2);
 						// single quote
 					} else {
@@ -619,7 +619,7 @@ public class Util implements EuclidConstants {
 				} else if (s.equals(S_EMPTY)) {
 				} else {
 					throw new RuntimeException("Unbalanced Quotes:" + s0
-							+ S_COLON);
+							+ EC.S_COLON);
 				}
 			} else {
 				int idx = s.indexOf(S_COMMA);
@@ -644,9 +644,9 @@ public class Util implements EuclidConstants {
 
 	/**
 	 * create comma-separated Strings fields include a comma or a " they are
-	 * wrapped with quotes ("). Note fields can be S_EMPTY (as in ,,,) and
+	 * wrapped with quotes ("). Note fields can be EC.S_EMPTY (as in ,,,) and
 	 * fields can be quoted "...". If so, embedded quotes are represented as
-	 * S_EMPTY, for example A," this is a S_EMPTYBS_EMPTY character",C.
+	 * EC.S_EMPTY, for example A," this is a EC.S_EMPTYBS_EMPTY character",C.
 	 * 
 	 * @param v
 	 *            vector of strings to be concatenated (null returns null)
@@ -659,11 +659,11 @@ public class Util implements EuclidConstants {
 		StringBuffer sb = new StringBuffer();
 		for (int i = 0; i < v.size(); i++) {
 			String s = v.get(i).toString();
-			s = Util.substituteStrings(s, new String[] { S_QUOT },
-					new String[] { S_QUOT + S_QUOT });
+			s = Util.substituteStrings(s, new String[] { EC.S_QUOT },
+					new String[] { EC.S_QUOT + EC.S_QUOT });
 			// wrap in quotes to escape comma or other quotes
 			if (s.indexOf(S_COMMA) != -1 || s.indexOf(S_QUOT) != -1) {
-				s = S_QUOT + s + S_QUOT;
+				s = EC.S_QUOT + s + EC.S_QUOT;
 			}
 			if (i > 0) {
 				sb.append(S_COMMA);
@@ -829,8 +829,8 @@ public class Util implements EuclidConstants {
 	 * @param t
 	 */
 	public static void BUG(String msg, Throwable t) {
-		msg = (msg == null || msg.trim().length() == 0) ? S_EMPTY : S_LBRAK
-				+ msg + S_RBRAK;
+		msg = (msg == null || msg.trim().length() == 0) ? EC.S_EMPTY : EC.S_LBRAK
+				+ msg + EC.S_RBRAK;
 		throw new RuntimeException("BUG: " + msg + "should never throw", t);
 	}
 
@@ -978,7 +978,7 @@ public class Util implements EuclidConstants {
 		if (ol != nl) {
 			throw new RuntimeException(
 					"Util.substituteStrings  arguments of different lengths: "
-							+ ol + S_SLASH + nl);
+							+ ol + EC.S_SLASH + nl);
 		}
 		for (int i = 0; i < ol; i++) {
 			String oldS = oldSubstrings[i];
@@ -987,7 +987,7 @@ public class Util implements EuclidConstants {
 			if (s.indexOf(oldS) == -1) {
 				continue;
 			}
-			String ss = S_EMPTY;
+			String ss = EC.S_EMPTY;
 			while (true) {
 				int idx = s.indexOf(oldS);
 				if (idx == -1) {
@@ -1013,7 +1013,7 @@ public class Util implements EuclidConstants {
 	 * 
 	 * 
 	 */
-	static String[] dosEquivalents = { S_EMPTY + (char) 12,
+	static String[] dosEquivalents = { EC.S_EMPTY + (char) 12,
 	// ??
 			S_EMPTY + (char) 127,
 			// ??
@@ -1150,7 +1150,7 @@ public class Util implements EuclidConstants {
 	// uuml
 	};
 
-	static String[] asciiEquivalents = { S_EMPTY,
+	static String[] asciiEquivalents = { EC.S_EMPTY,
 	// ??
 			S_EMPTY + (char) 0,
 			// ??
@@ -1416,7 +1416,7 @@ public class Util implements EuclidConstants {
 	 */
 	private static String replaceNumericEntityByMnemonic(String s, String ent,
 			int lo, int hi, String[] chars) throws RuntimeException {
-		if (ent == null || !ent.endsWith(S_AMP + S_HASH)) {
+		if (ent == null || !ent.endsWith(S_AMP + EC.S_HASH)) {
 			throw new RuntimeException("bad entity: " + ent);
 		}
 		int idx = s.indexOf(ent);
@@ -1439,16 +1439,16 @@ public class Util implements EuclidConstants {
 					int ia = Integer.parseInt(sss);
 					// ascii
 					if (ia >= 32 && ia <= 127) {
-						alpha = S_EMPTY + (char) ia;
+						alpha = EC.S_EMPTY + (char) ia;
 					} else if (ia < lo || ia > hi) {
-						alpha = S_UNDER + "ent" + ia + S_UNDER;
+						alpha = EC.S_UNDER + "ent" + ia + EC.S_UNDER;
 					} else {
-						alpha = S_UNDER + chars[ia] + S_UNDER;
+						alpha = EC.S_UNDER + chars[ia] + EC.S_UNDER;
 					}
 				} catch (NumberFormatException e) {
 					throw new RuntimeException("Bad numeric entity: " + sss);
 				}
-				s = s.replace(ent + sss + S_SEMICOLON, alpha);
+				s = s.replace(ent + sss + EC.S_SEMICOLON, alpha);
 			}
 		}
 		return s;
@@ -1855,7 +1855,7 @@ public class Util implements EuclidConstants {
 	 */
 	public static String capitalise(String s) {
 		if (s.equals(S_EMPTY)) {
-			return S_EMPTY;
+			return EC.S_EMPTY;
 		}
 		if (s.length() == 1) {
 			return s.toUpperCase();
@@ -1874,10 +1874,10 @@ public class Util implements EuclidConstants {
 	 */
 	public static String toCamelCase(String s) {
 		StringTokenizer st = new StringTokenizer(s, " \n\r\t");
-		String out = S_EMPTY;
+		String out = EC.S_EMPTY;
 		while (st.hasMoreTokens()) {
 			s = st.nextToken();
-			if (out != S_EMPTY) {
+			if (out != EC.S_EMPTY) {
 				s = capitalise(s);
 			}
 			out += s;
@@ -1972,13 +1972,13 @@ public class Util implements EuclidConstants {
 		}
 		StringTokenizer st = new StringTokenizer(s, Util.WHITESPACE);
 		int l = s.length();
-		String ss = S_EMPTY;
+		String ss = EC.S_EMPTY;
 		if (Character.isWhitespace(s.charAt(0))) {
-			ss = S_SPACE;
+			ss = EC.S_SPACE;
 		}
-		String end = S_EMPTY;
+		String end = EC.S_EMPTY;
 		if (Character.isWhitespace(s.charAt(l - 1))) {
-			end = S_SPACE;
+			end = EC.S_SPACE;
 		}
 		boolean start = true;
 		while (st.hasMoreTokens()) {
@@ -1986,7 +1986,7 @@ public class Util implements EuclidConstants {
 				ss += st.nextToken();
 				start = false;
 			} else {
-				ss += S_SPACE + st.nextToken();
+				ss += EC.S_SPACE + st.nextToken();
 			}
 		}
 		return ss + end;
@@ -2060,10 +2060,10 @@ public class Util implements EuclidConstants {
 	 */
 	public static String outputFloat(int nPlaces, int nDec, double value)
 			throws EuclidRuntimeException {
-		String f = "f" + nPlaces + S_PERIOD + nDec;
+		String f = "f" + nPlaces + EC.S_PERIOD + nDec;
 		DecimalFormat form = formTable.get(f);
 		if (form == null) {
-			String pattern = S_EMPTY;
+			String pattern = EC.S_EMPTY;
 			for (int i = 0; i < nPlaces - nDec - 2; i++) {
 				pattern += "#";
 			}
@@ -2087,7 +2087,7 @@ public class Util implements EuclidConstants {
 			negative = true;
 		}
 		if (negative) {
-			result = S_MINUS + result;
+			result = EC.S_MINUS + result;
 		}
 		StringBuffer sb = new StringBuffer();
 		int l = result.length();
@@ -2099,9 +2099,9 @@ public class Util implements EuclidConstants {
 			s = s.substring(0, nPlaces);
 			// decimal point got truncated?
 			if (s.indexOf(S_PERIOD) == -1) {
-				s = S_EMPTY;
+				s = EC.S_EMPTY;
 				for (int i = 0; i < nPlaces; i++) {
-					s += S_STAR;
+					s += EC.S_STAR;
 				}
 			}
 		}
@@ -2190,7 +2190,7 @@ public class Util implements EuclidConstants {
 			throws EuclidRuntimeException {
 		if (n < low || n > high) {
 			throw new EuclidRuntimeException("index (" + n + ")out of range: "
-					+ low + S_SLASH + high);
+					+ low + EC.S_SLASH + high);
 		}
 	}
 
@@ -2344,7 +2344,7 @@ public class Util implements EuclidConstants {
 	 *             cannot parse as ints
 	 */
 	public final static double[] splitToDoubleArray(String s) {
-		return splitToDoubleArray(s, S_SPACE);
+		return splitToDoubleArray(s, EC.S_SPACE);
 	}
 
 	/**
@@ -2465,7 +2465,7 @@ public class Util implements EuclidConstants {
 	 * @return trimmed string
 	 */
 	public static String trim(double d) {
-		String s = S_EMPTY + d;
+		String s = EC.S_EMPTY + d;
 		int idx = s.lastIndexOf(S_PERIOD);
 		if (idx > 0) {
 			int l = s.length() - 1;
@@ -2655,7 +2655,7 @@ public class Util implements EuclidConstants {
 			boolean ignoreCase = true;
 			int imonth = Util.indexOf(month, months, ignoreCase);
 			int year = Integer.parseInt(matcher.group(3));
-			dateS = "" + year + S_MINUS + imonth + S_MINUS + day;
+			dateS = "" + year + EC.S_MINUS + imonth + EC.S_MINUS + day;
 		} else {
 			pattern = Pattern.compile(DATE_REGEX2, Pattern.CASE_INSENSITIVE);
 			matcher = pattern.matcher(s.toLowerCase());

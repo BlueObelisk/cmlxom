@@ -312,7 +312,7 @@ public abstract class Molutils implements CMLConstants {
         logger.info("add ligands to: " + pZero + "; length: " + length
                 + "; angle: " + angle);
         for (int geometry = ANY; geometry <= TETRAHEDRAL; geometry++) {
-            logger.info("\nType of geometry: " + geometry + S_COLON);
+            logger.info("\nType of geometry: " + geometry + CMLConstants.S_COLON);
             try {
                 List<Point3> ligands = calculate3DCoordinates0(pZero, geometry,
                         length);
@@ -329,7 +329,7 @@ public abstract class Molutils implements CMLConstants {
                 + "; angle: " + angle);
         logger.info("reference atom: " + pOne);
         for (int geometry = LINEAR; geometry <= TETRAHEDRAL; geometry++) {
-            logger.info("\nType of geometry: " + geometry + S_COLON);
+            logger.info("\nType of geometry: " + geometry + CMLConstants.S_COLON);
             List<Point3> ligands = calculate3DCoordinates1(pZero, pOne,
                     pStaggered, geometry, length, angles[geometry - 2]);
             for (int i = 0; i < ligands.size(); i++) {
@@ -364,9 +364,9 @@ public abstract class Molutils implements CMLConstants {
         logger.info("\n\nadd ligands to atom with two ligands");
         logger.info("add ligands to: " + pZero + "; length: " + length
                 + "; angle: " + angle);
-        logger.info("reference atoms: " + pTwoa + S_SLASH + pTwob);
+        logger.info("reference atoms: " + pTwoa + CMLConstants.S_SLASH + pTwob);
         for (int geometry = TRIGONAL; geometry <= TETRAHEDRAL; geometry++) {
-            logger.info("\nType of geometry: " + geometry + S_COLON);
+            logger.info("\nType of geometry: " + geometry + CMLConstants.S_COLON);
             List<Point3> ligands = calculate3DCoordinates2(pZero, pTwoa,
                     pTwob, geometry, length, angles[geometry - 2]);
             for (int i = 0; i < ligands.size(); i++) {
@@ -394,7 +394,7 @@ public abstract class Molutils implements CMLConstants {
         }
 
         logger.info("\n\nadd ligand to atom with three ligands");
-        logger.info("reference atoms: " + pThreea + S_SLASH + pThreeb + S_SLASH
+        logger.info("reference atoms: " + pThreea + CMLConstants.S_SLASH + pThreeb + CMLConstants.S_SLASH
                 + pThreec);
         Point3 ligand = calculate3DCoordinates3(pZero, pThreea, pThreeb,
                 pThreec, length);

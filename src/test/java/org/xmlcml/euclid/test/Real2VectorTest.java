@@ -1,7 +1,6 @@
 package org.xmlcml.euclid.test;
 
-import static org.xmlcml.euclid.EuclidConstants.EPS;
-import static org.xmlcml.euclid.EuclidConstants.S_RBRAK;
+import static org.xmlcml.euclid.EC.EPS;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +9,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.euclid.Angle;
+import org.xmlcml.euclid.EC;
 import org.xmlcml.euclid.EuclidRuntimeException;
 import org.xmlcml.euclid.IntSet;
 import org.xmlcml.euclid.Real2;
@@ -57,8 +57,8 @@ public class Real2VectorTest {
 	 */
 	public static void assertEquals(String msg, Real2Vector expected,
 			Real2Vector test, double epsilon) {
-		Assert.assertNotNull("test should not be null (" + msg + S_RBRAK, test);
-		Assert.assertNotNull("expected should not be null (" + msg + S_RBRAK,
+		Assert.assertNotNull("test should not be null (" + msg + EC.S_RBRAK, test);
+		Assert.assertNotNull("expected should not be null (" + msg + EC.S_RBRAK,
 				expected);
 		DoubleTestBase.assertEquals(msg, expected.getXY().getArray(), test
 				.getXY().getArray(), epsilon);
@@ -76,8 +76,8 @@ public class Real2VectorTest {
 	 */
 	public static void assertEquals(String msg, double[] test,
 			Real2Vector expected, double epsilon) {
-		Assert.assertNotNull("test should not be null (" + msg + S_RBRAK, test);
-		Assert.assertNotNull("expected should not be null (" + msg + S_RBRAK,
+		Assert.assertNotNull("test should not be null (" + msg + EC.S_RBRAK, test);
+		Assert.assertNotNull("expected should not be null (" + msg + EC.S_RBRAK,
 				expected);
 		Assert.assertEquals("must be of equal length ", test.length, expected
 				.getXY().getArray().length);

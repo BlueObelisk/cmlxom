@@ -7,6 +7,7 @@ import nu.xom.Elements;
 import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.StringSTAttribute;
@@ -206,7 +207,7 @@ public abstract class AbstractBandList extends CMLElement {
     * @return CMLElements<CMLBand>
     */
     public CMLElements<CMLBand> getBandElements() {
-        Elements elements = this.getChildElements("band", CML_NS);
+        Elements elements = this.getChildElements("band", CMLConstants.CML_NS);
         return new CMLElements<CMLBand>(elements);
     }
     /** overrides addAttribute(Attribute)

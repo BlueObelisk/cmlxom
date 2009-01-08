@@ -557,17 +557,17 @@ public class Transform2 extends RealSquareMatrix {
      * @return Description of the Return Value
      */
     public String toString() {
-        String s = S_LBRAK;
+        String s = EC.S_LBRAK;
         for (int i = 0; i < this.flmat.length; i++) {
             for (int j = 0; j < this.flmat[i].length; j++) {
                 s += flmat[i][j];
-                s += S_COMMA;
+                s += EC.S_COMMA;
             }
             if (i < flmat.length - 1) {
-                s += S_NEWLINE;
+                s += EC.S_NEWLINE;
             }
         }
-        s += S_RBRAK;
+        s += EC.S_RBRAK;
         return s;
     }
 }

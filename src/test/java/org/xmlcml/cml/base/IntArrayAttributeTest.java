@@ -4,7 +4,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.euclid.test.IntTest;
-import static org.xmlcml.cml.base.CMLConstants.*;
 
 /**
  * tests for intAttribute.
@@ -89,7 +88,7 @@ public class IntArrayAttributeTest {
 	 */
 	@Test
 	public void testSplit() {
-		int[] dd = IntArraySTAttribute.split("1 3 5", S_SPACE);
+		int[] dd = IntArraySTAttribute.split("1 3 5", CMLConstants.S_SPACE);
 		Assert.assertEquals("split", 3, dd.length);
 		IntTest.assertEquals("split", new int[] { 1, 3, 5 }, dd);
 		dd = IntArraySTAttribute.split("7 3 5", null);

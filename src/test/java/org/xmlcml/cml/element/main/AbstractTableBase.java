@@ -1,9 +1,7 @@
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
 import static org.xmlcml.cml.base.TstBase.logger;
 import static org.xmlcml.cml.base.TstBase.parseValidString;
-import static org.xmlcml.euclid.EuclidConstants.S_EMPTY;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,6 +12,7 @@ import nu.xom.ParsingException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.xmlcml.cml.base.CMLBuilder;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.element.CMLArrayList;
 import org.xmlcml.cml.element.CMLTable;
 import org.xmlcml.cml.element.CMLTableContent;
@@ -30,7 +29,7 @@ import org.xmlcml.euclid.Util;
  */
 public class AbstractTableBase {
 
-	String tableRowListS = S_EMPTY + "<tableRowList " + CML_XMLNS + ">"
+	String tableRowListS = CMLConstants.S_EMPTY + "<tableRowList " + CMLConstants.CML_XMLNS + ">"
 			+ "  <tableRow>" + "    <tableCell>1</tableCell>"
 			+ "    <tableCell>a</tableCell>" + "  </tableRow>" + "  <tableRow>"
 			+ "    <tableCell>2</tableCell>" + "    <tableCell>b</tableCell>"
@@ -40,26 +39,26 @@ public class AbstractTableBase {
 	protected CMLTableRowList tableRowList = null;
 	CMLTableRow tableRow = null;
 
-	String tableContentS = S_EMPTY + "<tableContent " + CML_XMLNS + ">"
+	String tableContentS = CMLConstants.S_EMPTY + "<tableContent " + CMLConstants.CML_XMLNS + ">"
 			+ "1 a\n" + "2 b\n" + "3 c" + "</tableContent>";
 	protected CMLTableContent tableContent = null;
 
-	String tableHeaderS = S_EMPTY
+	String tableHeaderS = CMLConstants.S_EMPTY
 			+ "<tableHeader "
-			+ CML_XMLNS
+			+ CMLConstants.CML_XMLNS
 			+ ">"
 			+ "  <tableHeaderCell id='th1' dictRef='c:foo' title='foo' dataType='xsd:string'/>"
 			+ "  <tableHeaderCell id='th2' dictRef='c:bar' title='bar' dataType='xsd:string'/>"
-			+ "</tableHeader>" + S_EMPTY;
+			+ "</tableHeader>" + CMLConstants.S_EMPTY;
 	protected CMLTableHeader tableHeader = null;
 
-	String arrayListS = S_EMPTY
+	String arrayListS = CMLConstants.S_EMPTY
 			+ "<arrayList "
-			+ CML_XMLNS
+			+ CMLConstants.CML_XMLNS
 			+ ">"
 			+ "  <array id='th1' dictRef='c:foo' title='foo' size='3'>1 2 3</array>"
 			+ "  <array id='th2' dictRef='c:bar' title='bar' size='3'>a b c</array>"
-			+ "</arrayList>" + S_EMPTY;
+			+ "</arrayList>" + CMLConstants.S_EMPTY;
 	protected CMLArrayList arrayList = null;
 
 	static String COLUMN_TABLE1_XML = "org/xmlcml/cml/element/examples/misc/columnTable1.xml";

@@ -1,8 +1,7 @@
 package org.xmlcml.cml.element.main;
 
 import static org.xmlcml.cml.base.TstBase.parseValidString;
-import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
-import static org.xmlcml.euclid.EuclidConstants.EPS;
+import static org.xmlcml.euclid.EC.EPS;
 import static org.xmlcml.euclid.test.EuclidTestBase.alwaysFail;
 import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
@@ -13,6 +12,7 @@ import java.util.Map;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.element.CMLAtom;
 import org.xmlcml.cml.element.CMLBond;
 import org.xmlcml.cml.element.CMLCml;
@@ -28,7 +28,7 @@ import org.xmlcml.euclid.test.StringTestBase;
  */
 public class CMLLengthTest {
 
-	String s1 = "" + "<cml " + CML_XMLNS + ">" + " <molecule id='m1'>"
+	String s1 = "" + "<cml " + CMLConstants.CML_XMLNS + ">" + " <molecule id='m1'>"
 			+ "  <atomArray>" + "   <atom id='a1' x3='1.0' y3='0.0' z3='0.0'/>"
 			+ "   <atom id='a2' x3='0.0' y3='0.0' z3='0.0'/>"
 			+ "   <atom id='a3' x3='0.0' y3='0.0' z3='2.0'/>"

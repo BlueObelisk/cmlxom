@@ -65,7 +65,7 @@ public class StringSTAttribute extends CMLAttribute {
      * @param value
      */
     public StringSTAttribute(Attribute att, String value) {
-        super(att, value.trim().replace(S_WHITEREGEX, S_SPACE));
+        super(att, value.trim().replace(S_WHITEREGEX, CMLConstants.S_SPACE));
     }
 
     /**

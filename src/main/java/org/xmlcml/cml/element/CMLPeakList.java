@@ -7,6 +7,7 @@ import nu.xom.Element;
 import nu.xom.Node;
 import nu.xom.Nodes;
 
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.interfacex.PeakOrGroup;
 
@@ -91,7 +92,7 @@ public class CMLPeakList extends AbstractPeakList {
      * @return list of peak children (not peakGroups or descendants)
      */
     public List<CMLPeak> getPeakChildren() {
-    	Nodes nodes = this.query("./cml:peak", CML_XPATH);
+    	Nodes nodes = this.query("./cml:peak", CMLConstants.CML_XPATH);
     	List<CMLPeak> peaks = new ArrayList<CMLPeak>();
     	for (int i = 0; i < nodes.size(); i++) {
     		peaks.add((CMLPeak) nodes.get(i));
@@ -103,7 +104,7 @@ public class CMLPeakList extends AbstractPeakList {
      * @return list of peak descendants (not peakGroups)
      */
     public List<CMLPeak> getPeakDescendants() {
-    	Nodes nodes = this.query(".//cml:peak", CML_XPATH);
+    	Nodes nodes = this.query(".//cml:peak", CMLConstants.CML_XPATH);
     	List<CMLPeak> peaks = new ArrayList<CMLPeak>();
     	for (int i = 0; i < nodes.size(); i++) {
     		peaks.add((CMLPeak) nodes.get(i));
@@ -115,7 +116,7 @@ public class CMLPeakList extends AbstractPeakList {
      * @return list of peak or peakGroup children (not descendants)
      */
     public List<PeakOrGroup> getPeakOrGroupChildren() {
-    	Nodes nodes = this.query("./cml:peak | ./cml:peakGroup", CML_XPATH);
+    	Nodes nodes = this.query("./cml:peak | ./cml:peakGroup", CMLConstants.CML_XPATH);
     	List<PeakOrGroup> peaks = new ArrayList<PeakOrGroup>();
     	for (int i = 0; i < nodes.size(); i++) {
     		peaks.add((PeakOrGroup) nodes.get(i));

@@ -14,6 +14,7 @@ import nu.xom.Text;
 
 import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.attribute.RefAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLUtil;
 
@@ -31,10 +32,10 @@ public class CMLArg extends AbstractArg {
 
     /** start of expandable argument.
      */
-    public final static String START_CHARS = S_LCURLY+S_DOLLAR;
+    public final static String START_CHARS = CMLConstants.S_LCURLY+S_DOLLAR;
     /** end of expandable argument.
      */
-    public final static String END_CHARS = S_RCURLY;
+    public final static String END_CHARS = CMLConstants.S_RCURLY;
 
     /**
      * constructor.
@@ -130,7 +131,7 @@ public class CMLArg extends AbstractArg {
      */
     public static void removeArgs(CMLElement element) {
     	if (element != null) {
-	        List<Node> args = CMLUtil.getQueryNodes(element, CMLArg.NS, CML_XPATH);
+	        List<Node> args = CMLUtil.getQueryNodes(element, CMLArg.NS, CMLConstants.CML_XPATH);
 	        for (Node arg : args) {
 	        	arg.detach();
 	        }
@@ -321,8 +322,8 @@ public class CMLArg extends AbstractArg {
             String value = eval.getValue().trim();
             if (this.getDataType().equals(XSD_STRING)) {
             } else {
-                value = value.replace(S_PLUS, S_SPACE+S_PLUS+S_SPACE);
-                value = value.replace(S_MINUS, S_SPACE+S_MINUS+S_SPACE);
+                value = value.replace(S_PLUS, CMLConstants.S_SPACE+S_PLUS+S_SPACE);
+                value = value.replace(S_MINUS, CMLConstants.S_SPACE+S_MINUS+S_SPACE);
                 String[] tokens = value.trim().split("\\s+");
                 if (tokens.length % 2 != 1) {
                     throw new RuntimeException("bad eval for numeric data: "+value);
@@ -330,7 +331,7 @@ public class CMLArg extends AbstractArg {
                 if (this.getDataType().equals(XSD_DOUBLE)) {
                     try {
                         double dd = new Double(tokens[0]).doubleValue();
-                        String op = S_EMPTY;
+                        String op = CMLConstants.S_EMPTY;
                         for (int i = 1; i < tokens.length; i+=2) {
                             op = tokens[i];
                             double d = new Double(tokens[i+1]).doubleValue();
@@ -349,7 +350,7 @@ public class CMLArg extends AbstractArg {
                 } else if (this.getDataType().equals(XSD_INTEGER)) {
                     try {
                         int jj = Integer.parseInt(tokens[0]);
-                        String op = S_EMPTY;
+                        String op = CMLConstants.S_EMPTY;
                         for (int i = 1; i < tokens.length; i+=2) {
                             op = tokens[i];
                             int j = Integer.parseInt(tokens[i+1]);
@@ -478,7 +479,7 @@ public class CMLArg extends AbstractArg {
      */
     public static void processArgs(CMLElement element) {
         Nodes parameterNameArgs =
-            element.query(CMLArg.NS+"[@parameterName]", CML_XPATH);
+            element.query(CMLArg.NS+"[@parameterName]", CMLConstants.CML_XPATH);
         for (int i = 0; i < parameterNameArgs.size(); i++) {
             CMLArg arg = (CMLArg) parameterNameArgs.get(i);
             if (1 == 2) {
@@ -499,7 +500,7 @@ public class CMLArg extends AbstractArg {
         String id = element.getAttributeValue(IdAttribute.NAME);
         CMLArg parameterArg = null;
         Nodes nameArgs =
-            element.query(CMLArg.NS+"[@parameterName='"+name+"']", CML_XPATH);
+            element.query(CMLArg.NS+"[@parameterName='"+name+"']", CMLConstants.CML_XPATH);
         if (nameArgs.size() == 0) {
         	element.debug("ARG NOT FOUND");
             throw new RuntimeException("arg not found: "+name+S_SLASH+id);
@@ -535,7 +536,7 @@ public class CMLArg extends AbstractArg {
      */
     public static void substituteParentAttributes(CMLElement element) {
         Nodes parentAttributeArgs =
-            element.query(".//"+CMLArg.NS+"[@parentAttribute]", CML_XPATH);
+            element.query(".//"+CMLArg.NS+"[@parentAttribute]", CMLConstants.CML_XPATH);
         for (int i = 0; i < parentAttributeArgs.size(); i++) {
             CMLArg parentAttributeArg = (CMLArg) parentAttributeArgs.get(i);
             String parentAttribute = parentAttributeArg.getParentAttribute();
@@ -553,7 +554,7 @@ public class CMLArg extends AbstractArg {
      */
     public static void substituteTextContent(CMLElement element) {
         Nodes textContentArgs =
-            element.query(".//"+CMLArg.NS+"[@substitute[.='.']]", CML_XPATH);
+            element.query(".//"+CMLArg.NS+"[@substitute[.='.']]", CMLConstants.CML_XPATH);
         for (int i = 0; i < textContentArgs.size(); i++) {
             CMLArg textContentArg = (CMLArg) textContentArgs.get(i);
             String value = textContentArg.getValue();
@@ -589,16 +590,16 @@ public class CMLArg extends AbstractArg {
      * @param localName of element to search for
      */
     public static void addIdxArgsWithSerialNumber(CMLElement current, String localName) {
-        Nodes nodes = current.query(".//"+C_E+localName+"[@ref]", CML_XPATH);
+        Nodes nodes = current.query(".//"+C_E+localName+"[@ref]", CMLConstants.CML_XPATH);
         Set<String> idSet = new HashSet<String>();
         for (int i = 0; i < nodes.size(); i++) {
             CMLElement element = (CMLElement) nodes.get(i);
-            String serial = S_EMPTY+(i+1);
+            String serial = CMLConstants.S_EMPTY+(i+1);
             String id = element.getAttributeValue(IdAttribute.NAME);
             if (id == null) {
-                id = S_EMPTY+serial;
+                id = CMLConstants.S_EMPTY+serial;
             } else {
-                id += S_UNDER+serial;
+                id += CMLConstants.S_UNDER+serial;
                 if (idSet.contains(id)) {
                     throw new RuntimeException("Non-unique element id: "+id);
                 }

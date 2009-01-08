@@ -8,6 +8,7 @@ import nu.xom.Elements;
 import nu.xom.Node;
 import nu.xom.Nodes;
 
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.element.CMLCellParameter.Type;
@@ -350,8 +351,8 @@ public class CMLCrystal extends AbstractCrystal {
      */
     public List<CMLScalar> getCellScalars() throws RuntimeException {
         List<CMLScalar> cellScalars = new ArrayList<CMLScalar>();
-//        Nodes cellScalarNodes = this.query("cml:scalar[starts-with(@dictRef, 'iucr:_cell')]", CML_XPATH);
-        Nodes cellScalarNodes = this.query("cml:scalar[@dictRef]", CML_XPATH);
+//        Nodes cellScalarNodes = this.query("cml:scalar[starts-with(@dictRef, 'iucr:_cell')]", CMLConstants.CML_XPATH);
+        Nodes cellScalarNodes = this.query("cml:scalar[@dictRef]", CMLConstants.CML_XPATH);
         int cellScalarCount = cellScalarNodes.size();
         if (cellScalarCount != 6) {
         	throw new RuntimeException("Bad number of cell scalars: "+cellScalarCount);
@@ -740,7 +741,7 @@ public class CMLCrystal extends AbstractCrystal {
      * @throws RuntimeException if 0 or >1 nodes
      */
     public static CMLCrystal getContainedCrystal(CMLElement element) throws RuntimeException {
-        Nodes crystalNodes = element.query(".//"+CMLCrystal.NS, CML_XPATH);
+        Nodes crystalNodes = element.query(".//"+CMLCrystal.NS, CMLConstants.CML_XPATH);
         if (crystalNodes.size() == 0) {
             throw new RuntimeException("NO <crystal> FOUND");
         } else if (crystalNodes.size() > 1) {

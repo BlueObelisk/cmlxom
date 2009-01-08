@@ -7,6 +7,7 @@ import nu.xom.Elements;
 import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.IntSTAttribute;
@@ -377,7 +378,7 @@ public abstract class AbstractSymmetry extends CMLElement {
     * @return CMLElements<CMLMatrix>
     */
     public CMLElements<CMLMatrix> getMatrixElements() {
-        Elements elements = this.getChildElements("matrix", CML_NS);
+        Elements elements = this.getChildElements("matrix", CMLConstants.CML_NS);
         return new CMLElements<CMLMatrix>(elements);
     }
 // element:   transform3
@@ -395,7 +396,7 @@ public abstract class AbstractSymmetry extends CMLElement {
     * @return CMLElements<CMLTransform3>
     */
     public CMLElements<CMLTransform3> getTransform3Elements() {
-        Elements elements = this.getChildElements("transform3", CML_NS);
+        Elements elements = this.getChildElements("transform3", CMLConstants.CML_NS);
         return new CMLElements<CMLTransform3>(elements);
     }
     /** overrides addAttribute(Attribute)

@@ -1,14 +1,13 @@
 package org.xmlcml.cml.element.main;
 
 import static org.xmlcml.cml.base.TstBase.parseValidString;
-import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
-import static org.xmlcml.euclid.EuclidConstants.S_EMPTY;
 
 import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.element.CMLParameter;
 import org.xmlcml.cml.element.CMLParameterList;
 
@@ -20,13 +19,13 @@ import org.xmlcml.cml.element.CMLParameterList;
  */
 public class CMLParameterListTest {
 
-	String parameterS = S_EMPTY + "<parameterList id='a1' " + CML_XMLNS + ">"
+	String parameterS = CMLConstants.S_EMPTY + "<parameterList id='a1' " + CMLConstants.CML_XMLNS + ">"
 			+ "  <parameter id='a2' name='foo:angle' dictRef='bar:xxx'>"
 			+ "    <scalar id='a3'>1.23</scalar>" + "  </parameter>"
-			+ "  <parameterList id='a11' " + CML_XMLNS + ">"
+			+ "  <parameterList id='a11' " + CMLConstants.CML_XMLNS + ">"
 			+ "    <parameter id='a21' name='foo:mpt' dictRef='bar:yyy'>"
 			+ "      <scalar id='a31'>11.23</scalar>" + "    </parameter>"
-			+ "  </parameterList>" + "</parameterList>" + S_EMPTY;
+			+ "  </parameterList>" + "</parameterList>" + CMLConstants.S_EMPTY;
 
 	CMLParameterList parameterList = null;
 

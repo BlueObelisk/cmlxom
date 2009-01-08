@@ -8,6 +8,7 @@ import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.attribute.RefAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.StringSTAttribute;
@@ -242,7 +243,7 @@ public abstract class AbstractPeakList extends CMLElement {
     * @return CMLElements<CMLPeak>
     */
     public CMLElements<CMLPeak> getPeakElements() {
-        Elements elements = this.getChildElements("peak", CML_NS);
+        Elements elements = this.getChildElements("peak", CMLConstants.CML_NS);
         return new CMLElements<CMLPeak>(elements);
     }
 // element:   peakGroup
@@ -258,7 +259,7 @@ public abstract class AbstractPeakList extends CMLElement {
     * @return CMLElements<CMLPeakGroup>
     */
     public CMLElements<CMLPeakGroup> getPeakGroupElements() {
-        Elements elements = this.getChildElements("peakGroup", CML_NS);
+        Elements elements = this.getChildElements("peakGroup", CMLConstants.CML_NS);
         return new CMLElements<CMLPeakGroup>(elements);
     }
     /** overrides addAttribute(Attribute)

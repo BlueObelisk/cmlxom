@@ -3,6 +3,7 @@ package org.xmlcml.cml.element;
 import nu.xom.Element;
 import nu.xom.Node;
 
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.euclid.RealArray;
 import org.xmlcml.euclid.RealMatrix;
@@ -117,13 +118,13 @@ public class CMLEigen extends AbstractEigen {
         if (eigenvectors.getRows() != eigenvectors.getColumns()) {
             throw new RuntimeException("eigenvector matrix must be square: rows("
                     + eigenvectors.getRows() + ") columns ("
-                    + eigenvectors.getColumns() + S_RBRAK);
+                    + eigenvectors.getColumns() + CMLConstants.S_RBRAK);
         }
         if (eigenvalues.getSize() != eigenvectors.getColumns()) {
             throw new RuntimeException("eigenvector matrix ("
                     + eigenvectors.getColumns()
                     + ") incompatible with eigenvalues ("
-                    + eigenvalues.getSize() + S_RBRAK);
+                    + eigenvalues.getSize() + CMLConstants.S_RBRAK);
         }
         if (!(XSD_DOUBLE.equals(eigenvalues.getDataType()))) {
             throw new RuntimeException("eigenvalue matrix must be real numbers");

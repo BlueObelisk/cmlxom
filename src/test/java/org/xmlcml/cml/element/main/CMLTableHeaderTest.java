@@ -4,10 +4,10 @@
 package org.xmlcml.cml.element.main;
 
 import static org.xmlcml.cml.base.TstBase.assertWriteHTML;
-import static org.xmlcml.euclid.EuclidConstants.S_EMPTY;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.xmlcml.cml.base.CMLConstants;
 
 /**
  * @author pm286
@@ -21,7 +21,7 @@ public class CMLTableHeaderTest extends AbstractTableBase {
 	 */
 	@Test
 	public final void testWriteHTML() {
-		String expected = S_EMPTY
+		String expected = CMLConstants.S_EMPTY
 				+ "\n<tr><th class='c:foo'>foo</th><th class='c:bar'>bar</th></tr>";
 		assertWriteHTML(tableHeader, expected);
 	}

@@ -169,6 +169,6 @@ public class Int2Range implements EuclidConstants {
      * @return string
      */
     public String toString() {
-        return S_LBRAK + xrange.toString() + S_COMMA + yrange.toString() + S_RBRAK;
+        return EC.S_LBRAK + xrange.toString() + EC.S_COMMA + yrange.toString() + EC.S_RBRAK;
     }
 }

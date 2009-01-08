@@ -120,7 +120,7 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
      *            tagname
      */
     public CMLElement(String name) {
-        super(name, CML_NS);
+        super(name, CMLConstants.CML_NS);
         init();
     }
     
@@ -582,7 +582,7 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
 
     protected CMLElement getOrCreateChild(String name) throws RuntimeException {
         CMLElement element = (CMLElement) this.getFirstChildElement(name,
-                CML_NS);
+                CMLConstants.CML_NS);
         if (element == null) {
             try {
                 element = (CMLElement) Class.forName(
@@ -600,7 +600,7 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
      * @return nodes
      */
     public Nodes cmlQuery(String query) {
-    	return super.query(query, CML_XPATH);
+    	return super.query(query, CMLConstants.CML_XPATH);
     }
 
     /**
@@ -802,7 +802,7 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
      * @return the children of that type
      */
     public Elements getChildCMLElements(String name) {
-        return getChildElements(name, CML_NS);
+        return getChildElements(name, CMLConstants.CML_NS);
     }
 
     /**
@@ -814,7 +814,7 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
      * @return the first child of that type or null
      */
     public Element getFirstCMLChild(String name) {
-        return getFirstChildElement(name, CML_NS);
+        return getFirstChildElement(name, CMLConstants.CML_NS);
     }
 
     /**
@@ -884,7 +884,7 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
      * @return list of CMLelements
      */
     public List<CMLElement> getElements(String cmlQueryString) {
-        Nodes nodes = this.query(cmlQueryString, CML_XPATH);
+        Nodes nodes = this.query(cmlQueryString, CMLConstants.CML_XPATH);
         List<CMLElement> cmlElements = new ArrayList<CMLElement>();
         for (int i = 0; i < nodes.size(); i++) {
             if (nodes.get(i) instanceof CMLElement) {

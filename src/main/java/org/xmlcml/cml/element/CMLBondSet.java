@@ -10,6 +10,7 @@ import java.util.Set;
 import nu.xom.Element;
 import nu.xom.Node;
 
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.euclid.Util;
 
@@ -527,8 +528,8 @@ public class CMLBondSet extends AbstractBondSet {
     public void removeBond(CMLBond bond) throws RuntimeException {
         if (bond != null) {
             if (!set.contains(bond)) {
-                throw new RuntimeException("Bond not in set:" + bond.getId() + S_COLON
-                        + Util.concatenate(this.getXMLContent(), S_SLASH));
+                throw new RuntimeException("Bond not in set:" + bond.getId() + CMLConstants.S_COLON
+                        + Util.concatenate(this.getXMLContent(), CMLConstants.S_SLASH));
             }
             // remove from set
             set.remove(bond);

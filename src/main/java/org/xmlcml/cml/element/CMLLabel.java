@@ -6,6 +6,7 @@ import nu.xom.Element;
 import nu.xom.Node;
 import nu.xom.Text;
 
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLUtil;
 
@@ -90,7 +91,7 @@ public class CMLLabel extends AbstractLabel {
     public static CMLLabel getLabel(CMLElement element, Position side) {
         String dictRef = C_E+side;
         List<Node> nodeList = CMLUtil.getQueryNodes(
-            element, CMLLabel.NS+"[@dictRef='"+dictRef+"']", CML_XPATH);
+            element, CMLLabel.NS+"[@dictRef='"+dictRef+"']", CMLConstants.CML_XPATH);
         return (nodeList.size() == 0) ? null : (CMLLabel) nodeList.get(0);
     }
 

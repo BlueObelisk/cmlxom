@@ -1,9 +1,7 @@
 package org.xmlcml.euclid.test;
 
-import static org.xmlcml.euclid.EuclidConstants.S_RBRAK;
-import static org.xmlcml.euclid.EuclidConstants.S_SLASH;
-
 import org.junit.Assert;
+import org.xmlcml.euclid.EC;
 import org.xmlcml.euclid.Real;
 
 /**
@@ -47,7 +45,7 @@ public class DoubleTestBase {
 		} else if (b == null) {
 			s = "b is null";
 		} else if (a.length != b.length) {
-			s = "unequal arrays: " + a.length + S_SLASH + b.length;
+			s = "unequal arrays: " + a.length + EC.S_SLASH + b.length;
 		} else {
 			for (int i = 0; i < a.length; i++) {
 				if (!(((Double) a[i]).equals(b[i]) || !Real.isEqual(a[i], b[i],
@@ -102,7 +100,7 @@ public class DoubleTestBase {
 		} else if (b == null) {
 			s = "b is null";
 		} else if (a.length != b.length) {
-			s = "unequal arrays: " + a.length + S_SLASH + b.length;
+			s = "unequal arrays: " + a.length + EC.S_SLASH + b.length;
 		} else {
 			for (int i = 0; i < a.length; i++) {
 				if (!Real.isEqual(a[i], b[i], eps)) {
@@ -133,18 +131,18 @@ public class DoubleTestBase {
 		} else if (b == null) {
 			s = "b is null";
 		} else if (a.length != b.length) {
-			s = "unequal arrays: " + a.length + S_SLASH + b.length;
+			s = "unequal arrays: " + a.length + EC.S_SLASH + b.length;
 		} else {
 			for (int i = 0; i < a.length; i++) {
 				if (a[i].length != b[i].length) {
 					s = "row (" + i + ") has unequal lengths: " + a[i].length
-							+ S_SLASH + b[i].length;
+							+ EC.S_SLASH + b[i].length;
 					break;
 				}
 				for (int j = 0; j < a[i].length; j++) {
 					if (!Real.isEqual(a[i][j], b[i][j], eps)) {
 						s = "unequal element at (" + i + ", " + j + "), ("
-								+ a[i][j] + " != " + b[i][j] + S_RBRAK;
+								+ a[i][j] + " != " + b[i][j] + EC.S_RBRAK;
 						break;
 					}
 				}

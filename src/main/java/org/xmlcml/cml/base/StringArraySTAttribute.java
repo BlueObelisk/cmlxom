@@ -73,7 +73,7 @@ public class StringArraySTAttribute extends CMLAttribute {
      * @param value
      */
     public StringArraySTAttribute(Attribute att, String value) {
-        super(att, value.trim().replace(S_WHITEREGEX, S_SPACE));
+        super(att, value.trim().replace(S_WHITEREGEX, CMLConstants.S_SPACE));
     }
 
     /**
@@ -95,7 +95,7 @@ public class StringArraySTAttribute extends CMLAttribute {
     public void setCMLValue(String[] ss) {
         checkValue(ss);
         this.ss = ss;
-        this.setValue(Util.concatenate(ss, S_SPACE));
+        this.setValue(Util.concatenate(ss, CMLConstants.S_SPACE));
     }
 
     /**

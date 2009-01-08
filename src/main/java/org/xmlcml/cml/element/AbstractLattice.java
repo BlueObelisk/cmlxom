@@ -7,6 +7,7 @@ import nu.xom.Elements;
 import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.StringSTAttribute;
@@ -284,7 +285,7 @@ public abstract class AbstractLattice extends CMLElement {
     * @return CMLElements<CMLScalar>
     */
     public CMLElements<CMLScalar> getScalarElements() {
-        Elements elements = this.getChildElements("scalar", CML_NS);
+        Elements elements = this.getChildElements("scalar", CMLConstants.CML_NS);
         return new CMLElements<CMLScalar>(elements);
     }
 // element:   latticeVector
@@ -302,7 +303,7 @@ public abstract class AbstractLattice extends CMLElement {
     * @return CMLElements<CMLLatticeVector>
     */
     public CMLElements<CMLLatticeVector> getLatticeVectorElements() {
-        Elements elements = this.getChildElements("latticeVector", CML_NS);
+        Elements elements = this.getChildElements("latticeVector", CMLConstants.CML_NS);
         return new CMLElements<CMLLatticeVector>(elements);
     }
 // element:   matrix
@@ -320,7 +321,7 @@ public abstract class AbstractLattice extends CMLElement {
     * @return CMLElements<CMLMatrix>
     */
     public CMLElements<CMLMatrix> getMatrixElements() {
-        Elements elements = this.getChildElements("matrix", CML_NS);
+        Elements elements = this.getChildElements("matrix", CMLConstants.CML_NS);
         return new CMLElements<CMLMatrix>(elements);
     }
 // element:   symmetry
@@ -338,7 +339,7 @@ public abstract class AbstractLattice extends CMLElement {
     * @return CMLElements<CMLSymmetry>
     */
     public CMLElements<CMLSymmetry> getSymmetryElements() {
-        Elements elements = this.getChildElements("symmetry", CML_NS);
+        Elements elements = this.getChildElements("symmetry", CMLConstants.CML_NS);
         return new CMLElements<CMLSymmetry>(elements);
     }
     /** overrides addAttribute(Attribute)
