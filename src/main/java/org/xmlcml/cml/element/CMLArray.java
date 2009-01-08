@@ -196,6 +196,16 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 	 * 
 	 * @param array
 	 */
+	public CMLArray(RealArray array) {
+		this.setArray(array.getArray());
+	}
+
+	/**
+	 * formed from components. size is extracted from array dimensions sets
+	 * dataType to xsd:double
+	 * 
+	 * @param array
+	 */
 	public CMLArray(double[] array) {
 		this.setArray(array);
 	}
