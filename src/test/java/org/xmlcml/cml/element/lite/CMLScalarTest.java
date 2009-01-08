@@ -766,7 +766,7 @@ public class CMLScalarTest {
 	// */
 	// @Test
 	// public void testGetUnits() {
-	// CMLCml cml = (CMLCml) parseValidString(unitsS);
+	// CMLCml cml = (CMLCml)TstBase.parseValidString(unitsS);
 	//
 	// // scalars
 	// List<CMLElement> scalars = cml.getElements(".//" + CMLScalar.NS);

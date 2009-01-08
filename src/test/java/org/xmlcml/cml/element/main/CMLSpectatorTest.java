@@ -40,7 +40,7 @@ public class CMLSpectatorTest extends ReactionAllTestBase {
 //                "<formula formalCharge=\'0\' concise=\'F 1 P 1\' xmlns=\'http://www.xml-cml.org/schema\'>" +
 //                "  <atomArray elementType=\'F P\' count=\'1.0 1.0\'/>" +
 //                "</formula>";
-//        CMLFormula expected = (CMLFormula) parseValidString(ss);
+//        CMLFormula expected = (CMLFormula)TstBase.parseValidString(ss);
 //        assertEqualsCanonically("form",expected, formula, true);
 //    }
 

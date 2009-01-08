@@ -1,8 +1,7 @@
 package org.xmlcml.cml.element.main;
 
 import static org.xmlcml.cml.base.CMLConstants.XSD_DOUBLE;
-import static org.xmlcml.cml.base.TstBase.parseValidString;
-import static org.xmlcml.euclid.EC.EPS;
+import static org.xmlcml.euclid.EuclidConstants.EPS;
 import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
 import java.util.List;
@@ -12,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLBuilder;
 import org.xmlcml.cml.base.CMLConstants;
+import org.xmlcml.cml.base.TstBase;
 import org.xmlcml.cml.element.CMLArray;
 import org.xmlcml.cml.element.CMLAtomicBasisFunction;
 import org.xmlcml.cml.element.CMLBasisSet;
@@ -97,9 +97,9 @@ public class CMLBasisSetTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		molecule = (CMLMolecule) parseValidString(moleculeS);
+		molecule = (CMLMolecule)TstBase.parseValidString(moleculeS);
 		basisSet = new CMLBasisSet();
-		basisSet2 = (CMLBasisSet) parseValidString(basisSetS2);
+		basisSet2 = (CMLBasisSet)TstBase.parseValidString(basisSetS2);
 	}
 
 	/**

@@ -1,13 +1,12 @@
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.cml.base.TstBase.parseValidString;
-
 import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLConstants;
+import org.xmlcml.cml.base.TstBase;
 import org.xmlcml.cml.element.CMLParameter;
 import org.xmlcml.cml.element.CMLParameterList;
 
@@ -36,7 +35,7 @@ public class CMLParameterListTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		parameterList = (CMLParameterList) parseValidString(parameterS);
+		parameterList = (CMLParameterList)TstBase.parseValidString(parameterS);
 	}
 
 	/**

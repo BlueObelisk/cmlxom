@@ -7,9 +7,8 @@ import static org.xmlcml.cml.base.CMLConstants.U_DEGREE;
 import static org.xmlcml.cml.base.CMLConstants.U_KCAL;
 import static org.xmlcml.cml.base.CMLConstants.XSD_DOUBLE;
 import static org.xmlcml.cml.base.CMLConstants.XSD_INTEGER;
-import static org.xmlcml.cml.base.TstBase.parseValidString;
-import static org.xmlcml.euclid.EC.EPS;
-import static org.xmlcml.euclid.EC.S_RBRAK;
+import static org.xmlcml.euclid.EuclidConstants.EPS;
+import static org.xmlcml.euclid.EuclidConstants.S_RBRAK;
 import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
 import java.util.ArrayList;
@@ -21,6 +20,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLConstants;
+import org.xmlcml.cml.base.TstBase;
 import org.xmlcml.cml.element.CMLCml;
 import org.xmlcml.cml.element.CMLMatrix;
 import org.xmlcml.euclid.EuclidRuntimeException;
@@ -64,7 +64,7 @@ public class CMLMatrixTest {
 	public void setUp() throws Exception {
 
 		if (cml == null) {
-			cml = (CMLCml) parseValidString(unitsS);
+			cml = (CMLCml)TstBase.parseValidString(unitsS);
 			Elements matrixElements = cml.getChildCMLElements(CMLMatrix.TAG);
 			Assert.assertEquals("matrix element count", 3, matrixElements
 					.size());
@@ -477,7 +477,7 @@ public class CMLMatrixTest {
 	// */
 	// @Test
 	// public void testGetUnits() {
-	// CMLCml cml = (CMLCml) parseValidString(unitsS);
+	// CMLCml cml = (CMLCml)TstBase.parseValidString(unitsS);
 	// 
 	// // matrixs
 	// List<CMLElement> matrixs = cml.getElements(".//"+CMLMatrix.NS);
@@ -497,7 +497,7 @@ public class CMLMatrixTest {
 	// */
 	// @Test
 	// public void testConvertToSI() {
-	// CMLCml cml = (CMLCml) parseValidString(unitsS);
+	// CMLCml cml = (CMLCml)TstBase.parseValidString(unitsS);
 	//
 	// // matrixs
 	// List<CMLElement> matrixs = cml.getElements(".//"+CMLMatrix.NS);

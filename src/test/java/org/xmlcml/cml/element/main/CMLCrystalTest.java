@@ -3,9 +3,8 @@ package org.xmlcml.cml.element.main;
 import static org.xmlcml.cml.base.CMLConstants.U_ANGSTROM;
 import static org.xmlcml.cml.base.CMLConstants.U_DEGREE;
 import static org.xmlcml.cml.base.TstBase.assertEqualsCanonically;
-import static org.xmlcml.cml.base.TstBase.parseValidString;
-import static org.xmlcml.euclid.EC.EPS;
-import static org.xmlcml.euclid.EC.S_SPACE;
+import static org.xmlcml.euclid.EuclidConstants.EPS;
+import static org.xmlcml.euclid.EuclidConstants.S_SPACE;
 
 import java.util.List;
 
@@ -14,6 +13,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElements;
+import org.xmlcml.cml.base.TstBase;
 import org.xmlcml.cml.element.CMLCellParameter;
 import org.xmlcml.cml.element.CMLCrystal;
 import org.xmlcml.cml.element.CMLLattice;
@@ -112,15 +112,15 @@ public class CMLCrystalTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		crystal1 = (CMLCrystal) parseValidString(crystal1S);
-		crystal2 = (CMLCrystal) parseValidString(crystal2S);
-		crystal3 = (CMLCrystal) parseValidString(crystal3S);
+		crystal1 = (CMLCrystal)TstBase.parseValidString(crystal1S);
+		crystal2 = (CMLCrystal)TstBase.parseValidString(crystal2S);
+		crystal3 = (CMLCrystal)TstBase.parseValidString(crystal3S);
 	}
 
 	private void makeLattice() {
 
-		lattice1 = (CMLLattice) parseValidString(lattice1S);
-		lattice2 = (CMLLattice) parseValidString(lattice2S);
+		lattice1 = (CMLLattice)TstBase.parseValidString(lattice1S);
+		lattice2 = (CMLLattice)TstBase.parseValidString(lattice2S);
 		latticeVectorList1 = lattice1.getLatticeVectorElements();
 	}
 
