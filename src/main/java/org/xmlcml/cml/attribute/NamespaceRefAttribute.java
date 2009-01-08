@@ -3,6 +3,7 @@ package org.xmlcml.cml.attribute;
 import nu.xom.Attribute;
 import nu.xom.Element;
 
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.StringSTAttribute;
 import org.xmlcml.cml.interfacex.HasUnits;
@@ -136,8 +137,8 @@ public /*abstract*/ class NamespaceRefAttribute extends StringSTAttribute {
 //            NamespaceRefAttribute namespaceRefAttribute = (NamespaceRefAttribute) elem
 //                    .getAttribute(attributeName);
 //            if (namespaceRefAttribute == null) {
-//                errorList.add("NULL " + attributeName + ": " + S_LSQUARE
-//                        + elem.toXML() + S_RSQUARE);
+//                errorList.add("NULL " + attributeName + ": " + CMLConstants.S_LSQUARE
+//                        + elem.toXML() + CMLConstants.S_RSQUARE);
 //            } else {
 //                GenericEntry entry = dictionaryMap
 //                        .getEntry(namespaceRefAttribute);
@@ -146,8 +147,8 @@ public /*abstract*/ class NamespaceRefAttribute extends StringSTAttribute {
 //                        errorList.add("==== too many errors ===");
 //                    } else if (count < 100) {
 //                        errorList.add(attributeName + " NOT FOUND "
-//                                + namespaceRefAttribute + S_LSQUARE + elem.toXML()
-//                                + S_RSQUARE);
+//                                + namespaceRefAttribute + CMLConstants.S_LSQUARE + elem.toXML()
+//                                + CMLConstants.S_RSQUARE);
 //                    }
 //                } else {
 //                    // Util.sysout("FOUND "+dictRefAttribute);
@@ -268,7 +269,7 @@ public /*abstract*/ class NamespaceRefAttribute extends StringSTAttribute {
             throw new RuntimeException("Prefix [" + prefix + "] incompatible with "
                     + PREFIX_REGEX);
         }
-        return prefix + S_COLON + value;
+        return prefix + CMLConstants.S_COLON + value;
     }
 
     /** return the local name after the colon.

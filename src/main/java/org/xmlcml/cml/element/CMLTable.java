@@ -8,6 +8,7 @@ import java.util.List;
 import nu.xom.Element;
 import nu.xom.Node;
 
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 
@@ -317,7 +318,7 @@ public class CMLTable extends AbstractTable {
             if (rows == -1) {
                 rows = nr;
             } else if (rows != nr) {
-                throw new RuntimeException("inconsistent row lengths: " + rows + S_SLASH
+                throw new RuntimeException("inconsistent row lengths: " + rows + CMLConstants.S_SLASH
                         + nr);
             }
             stringListList.add(strings);
@@ -364,7 +365,7 @@ public class CMLTable extends AbstractTable {
                 nc = ncols;
             } else if (nc != ncols) {
                 throw new RuntimeException("inconsistent column length in rows: "
-                        + nc + S_SLASH + ncols);
+                        + nc + CMLConstants.S_SLASH + ncols);
             }
             row.writeHTML(w);
         }
@@ -378,7 +379,7 @@ public class CMLTable extends AbstractTable {
         String[] strings = content.getStrings();
         if (strings.length % ncols != 0) {
             throw new RuntimeException("non-rectangular table: " + strings.length
-                    + S_SLASH + ncols);
+                    + CMLConstants.S_SLASH + ncols);
         }
         int count = 0;
         for (String string : strings) {

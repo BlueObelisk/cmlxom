@@ -6,6 +6,7 @@ import java.util.List;
 import nu.xom.Element;
 import nu.xom.Node;
 
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.element.CMLBasisSet.Basis;
 import org.xmlcml.molutil.ChemicalElement;
@@ -128,8 +129,8 @@ public class CMLAtomicBasisFunction extends AbstractAtomicBasisFunction {
      * @return string
      */
     public String getString() {
-        String s = S_EMPTY + getN() + getLm() + S_LBRAK + getSymbol() + ")(" + getId()
-                + S_RBRAK;
+        String s = CMLConstants.S_EMPTY + getN() + getLm() + CMLConstants.S_LBRAK + getSymbol() + ")(" + getId()
+                + CMLConstants.S_RBRAK;
         return s;
     }
 }

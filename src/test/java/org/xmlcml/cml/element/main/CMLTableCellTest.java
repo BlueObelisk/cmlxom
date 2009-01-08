@@ -6,12 +6,12 @@ package org.xmlcml.cml.element.main;
 import static org.xmlcml.cml.base.TstBase.assertEqualsCanonically;
 import static org.xmlcml.cml.base.TstBase.assertWriteHTML;
 import static org.xmlcml.cml.base.TstBase.parseValidString;
-import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.xmlcml.cml.base.TstBase;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
+import org.xmlcml.cml.base.TstBase;
 import org.xmlcml.cml.element.CMLTableCell;
 
 /**
@@ -64,7 +64,7 @@ public class CMLTableCellTest extends AbstractTableBase {
 	@Test
 	public final void testCMLTableCellDouble() {
 		cell = new CMLTableCell(1.2);
-		String ss = "<tableCell " + CML_XMLNS + ">1.2</tableCell>";
+		String ss = "<tableCell " + CMLConstants.CML_XMLNS + ">1.2</tableCell>";
 		CMLTableCell expected = (CMLTableCell) parseValidString(ss);
 		assertEqualsCanonically("cell double", expected, cell);
 	}
@@ -76,7 +76,7 @@ public class CMLTableCellTest extends AbstractTableBase {
 	@Test
 	public final void testCMLTableCellInt() {
 		cell = new CMLTableCell(3);
-		String ss = "<tableCell " + CML_XMLNS + ">3</tableCell>";
+		String ss = "<tableCell " + CMLConstants.CML_XMLNS + ">3</tableCell>";
 		CMLTableCell expected = (CMLTableCell) parseValidString(ss);
 		assertEqualsCanonically("cell double", expected, cell);
 	}
@@ -88,12 +88,12 @@ public class CMLTableCellTest extends AbstractTableBase {
 	@Test
 	public final void testCMLTableCellElement() {
 		String molS = "<molecule "
-				+ CML_XMLNS
+				+ CMLConstants.CML_XMLNS
 				+ "><atomArray><atom id='a1' elementType='Cl'/></atomArray></molecule>";
 		String mol1S = "<molecule><atomArray><atom id='a1' elementType='Cl'/></atomArray></molecule>";
 		CMLElement mol = (CMLElement) parseValidString(molS);
 		cell = new CMLTableCell(mol);
-		String ss = "<tableCell " + CML_XMLNS + ">" + mol1S + "</tableCell>";
+		String ss = "<tableCell " + CMLConstants.CML_XMLNS + ">" + mol1S + "</tableCell>";
 		CMLTableCell expected = (CMLTableCell) parseValidString(ss);
 		assertEqualsCanonically("cell molecule", expected, cell);
 	}

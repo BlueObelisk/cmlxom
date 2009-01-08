@@ -1,7 +1,6 @@
 package org.xmlcml.cml.base;
 
 import static org.xmlcml.cml.base.TstBase.BASE_RESOURCE;
-import static org.xmlcml.euclid.EuclidConstants.U_S;
 import static org.xmlcml.euclid.test.EuclidTestBase.neverFail;
 import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
@@ -50,7 +49,7 @@ public class ElementTest {
 		Util.println("  === xom Parse, no validation: " + file + " ====");
 		InputStream in = null;
 
-		in = Util.getInputStreamFromResource(BASE_RESOURCE + U_S + file);
+		in = Util.getInputStreamFromResource(BASE_RESOURCE +CMLConstants.U_S + file);
 		doc = new Builder().build(in);
 		Assert.assertNotNull("document ", doc);
 	}
@@ -76,7 +75,7 @@ public class ElementTest {
 //		xerces.setFeature("http://apache.org/xml/features/validation/schema",
 //				true);
 //		Builder builder = new Builder(xerces, /* true */false);
-//		in = Util.getInputStreamFromResource(BASE_RESOURCE + U_S + file);
+//		in = Util.getInputStreamFromResource(BASE_RESOURCE +CMLConstants.U_S + file);
 //		doc = builder.build(in);
 //		Assert.assertNotNull("document ", doc);
 //	}
@@ -132,7 +131,7 @@ public class ElementTest {
 		InputStream in = null;
 		Document doc = null;
 		try {
-			in = Util.getInputStreamFromResource(BASE_RESOURCE + U_S + noSchema);
+			in = Util.getInputStreamFromResource(BASE_RESOURCE +CMLConstants.U_S + noSchema);
 			doc = new Builder().build(in);
 			Assert.assertNotNull("document", doc);
 		} catch (ValidityException e) {

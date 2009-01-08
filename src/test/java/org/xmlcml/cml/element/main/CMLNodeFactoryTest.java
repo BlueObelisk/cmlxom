@@ -1,9 +1,7 @@
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.cml.base.TstBase.parseValidString;
 import static org.xmlcml.cml.base.CMLConstants.CML1;
-import static org.xmlcml.cml.base.CMLConstants.CML_NS;
-import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
+import static org.xmlcml.cml.base.TstBase.parseValidString;
 import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 import nu.xom.Element;
 
@@ -11,6 +9,7 @@ import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLBuilder;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 
 /**
@@ -28,10 +27,10 @@ public class CMLNodeFactoryTest {
 	 */
 	@Test
 	public void testStartMakingElementStringString() {
-		String s1 = "<cml " + CML_XMLNS + "/>";
+		String s1 = "<cml " + CMLConstants.CML_XMLNS + "/>";
 		CMLElement cmlElement = (CMLElement) parseValidString(s1);
 		String namespace = cmlElement.getNamespaceURI();
-		Assert.assertEquals("ok namespace", CML_NS, namespace);
+		Assert.assertEquals("ok namespace", CMLConstants.CML_NS, namespace);
 
 		// guess namespace
 		s1 = "<cml xmlns='" + CML1 + "'/>";
@@ -43,7 +42,7 @@ public class CMLNodeFactoryTest {
 		Assert.assertTrue("is CMLElement", CMLElement.class
 				.isAssignableFrom(cmlElement.getClass()));
 		namespace = cmlElement.getNamespaceURI();
-		Assert.assertEquals("old namespace -> new", CML_NS, namespace);
+		Assert.assertEquals("old namespace -> new", CMLConstants.CML_NS, namespace);
 
 		Element element = null;
 		// cannot guess namespace
@@ -67,7 +66,7 @@ public class CMLNodeFactoryTest {
 	@Ignore
 	@Test
 	public void testMakeAttributeStringStringStringType() {
-		// String s1 = "<cml " + CML_XMLNS + "/>";
+		// String s1 = "<cml " + CMLConstants.CML_XMLNS + "/>";
 		// CMLElement cmlElement = (CMLElement) parseValidString(s1);
 	}
 

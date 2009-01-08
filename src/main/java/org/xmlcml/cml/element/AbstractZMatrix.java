@@ -7,6 +7,7 @@ import nu.xom.Elements;
 import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.StringSTAttribute;
@@ -206,7 +207,7 @@ public abstract class AbstractZMatrix extends CMLElement {
     * @return CMLElements<CMLLength>
     */
     public CMLElements<CMLLength> getLengthElements() {
-        Elements elements = this.getChildElements("length", CML_NS);
+        Elements elements = this.getChildElements("length", CMLConstants.CML_NS);
         return new CMLElements<CMLLength>(elements);
     }
 // element:   angle
@@ -222,7 +223,7 @@ public abstract class AbstractZMatrix extends CMLElement {
     * @return CMLElements<CMLAngle>
     */
     public CMLElements<CMLAngle> getAngleElements() {
-        Elements elements = this.getChildElements("angle", CML_NS);
+        Elements elements = this.getChildElements("angle", CMLConstants.CML_NS);
         return new CMLElements<CMLAngle>(elements);
     }
 // element:   torsion
@@ -238,7 +239,7 @@ public abstract class AbstractZMatrix extends CMLElement {
     * @return CMLElements<CMLTorsion>
     */
     public CMLElements<CMLTorsion> getTorsionElements() {
-        Elements elements = this.getChildElements("torsion", CML_NS);
+        Elements elements = this.getChildElements("torsion", CMLConstants.CML_NS);
         return new CMLElements<CMLTorsion>(elements);
     }
     /** overrides addAttribute(Attribute)

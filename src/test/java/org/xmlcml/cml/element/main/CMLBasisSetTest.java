@@ -1,9 +1,8 @@
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.cml.base.TstBase.parseValidString;
-import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
 import static org.xmlcml.cml.base.CMLConstants.XSD_DOUBLE;
-import static org.xmlcml.euclid.EuclidConstants.EPS;
+import static org.xmlcml.cml.base.TstBase.parseValidString;
+import static org.xmlcml.euclid.EC.EPS;
 import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
 import java.util.List;
@@ -12,6 +11,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLBuilder;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.element.CMLArray;
 import org.xmlcml.cml.element.CMLAtomicBasisFunction;
 import org.xmlcml.cml.element.CMLBasisSet;
@@ -29,7 +29,7 @@ public class CMLBasisSetTest {
 
 	CMLBasisSet basisSet = null;
 
-	String moleculeS = "" + "<molecule " + CML_XMLNS + ">" + "  <atomArray>"
+	String moleculeS = "" + "<molecule " + CMLConstants.CML_XMLNS + ">" + "  <atomArray>"
 			+ "	 <atom elementType='H' id='a1'></atom>"
 			+ "	 <atom elementType='C' id='a2'></atom>"
 			+ "	 <atom elementType='H' id='a3'></atom>"
@@ -39,7 +39,7 @@ public class CMLBasisSetTest {
 	CMLMolecule molecule;
 
 	String basisSetS2 = "<basisSet "
-			+ CML_XMLNS
+			+ CMLConstants.CML_XMLNS
 			+ ">"
 			+ "   <atomicBasisFunction id='a1' n='1' l='0' lm='s' symbol='S' atomRef='a1'/>"
 			+ "   <atomicBasisFunction id='a2' n='2' l='0' lm='s' symbol='S' atomRef='a2'/>"
@@ -57,7 +57,7 @@ public class CMLBasisSetTest {
 
 	String coefficientS = "<eigen dictRef='mopac:eig' title='EIGENVECTORS AND EIGENVALUES' "
 			+ "	orientation='columnVectors' "
-			+ CML_XMLNS
+			+ CMLConstants.CML_XMLNS
 			+ ">"
 			+ "<array title='eigenvalues' size='10' dataType='xsd:double'>"
 			+ "	-37.90004 -20.34372 -13.10423 -12.71709 -12.07969 -7.47084"

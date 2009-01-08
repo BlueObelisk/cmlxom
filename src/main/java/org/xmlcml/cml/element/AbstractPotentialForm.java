@@ -7,6 +7,7 @@ import nu.xom.Elements;
 import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.StringSTAttribute;
@@ -246,7 +247,7 @@ public abstract class AbstractPotentialForm extends CMLElement {
     * @return CMLElements<CMLArg>
     */
     public CMLElements<CMLArg> getArgElements() {
-        Elements elements = this.getChildElements("arg", CML_NS);
+        Elements elements = this.getChildElements("arg", CMLConstants.CML_NS);
         return new CMLElements<CMLArg>(elements);
     }
 // element:   parameter
@@ -264,7 +265,7 @@ public abstract class AbstractPotentialForm extends CMLElement {
     * @return CMLElements<CMLParameter>
     */
     public CMLElements<CMLParameter> getParameterElements() {
-        Elements elements = this.getChildElements("parameter", CML_NS);
+        Elements elements = this.getChildElements("parameter", CMLConstants.CML_NS);
         return new CMLElements<CMLParameter>(elements);
     }
 // element:   expression
@@ -282,7 +283,7 @@ public abstract class AbstractPotentialForm extends CMLElement {
     * @return CMLElements<CMLExpression>
     */
     public CMLElements<CMLExpression> getExpressionElements() {
-        Elements elements = this.getChildElements("expression", CML_NS);
+        Elements elements = this.getChildElements("expression", CMLConstants.CML_NS);
         return new CMLElements<CMLExpression>(elements);
     }
     /** overrides addAttribute(Attribute)

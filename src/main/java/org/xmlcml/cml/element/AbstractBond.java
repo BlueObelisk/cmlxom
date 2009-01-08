@@ -8,6 +8,7 @@ import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.attribute.RefAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.StringArraySTAttribute;
@@ -500,7 +501,7 @@ public abstract class AbstractBond extends CMLElement {
     * @return CMLElements<CMLBondStereo>
     */
     public CMLElements<CMLBondStereo> getBondStereoElements() {
-        Elements elements = this.getChildElements("bondStereo", CML_NS);
+        Elements elements = this.getChildElements("bondStereo", CMLConstants.CML_NS);
         return new CMLElements<CMLBondStereo>(elements);
     }
     /** overrides addAttribute(Attribute)

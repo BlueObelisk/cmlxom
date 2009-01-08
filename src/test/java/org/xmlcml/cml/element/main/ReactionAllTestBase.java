@@ -1,8 +1,7 @@
 package org.xmlcml.cml.element.main;
 
 import static org.xmlcml.cml.base.TstBase.parseValidString;
-import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
-import static org.xmlcml.euclid.EuclidConstants.S_EMPTY;
+import static org.xmlcml.euclid.EC.S_EMPTY;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -13,6 +12,7 @@ import nu.xom.ValidityException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.xmlcml.cml.base.CMLBuilder;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.element.CMLProduct;
 import org.xmlcml.cml.element.CMLProductList;
@@ -31,7 +31,7 @@ import org.xmlcml.cml.element.CMLSpectatorList;
 public abstract class ReactionAllTestBase {
 	protected CMLReaction xomReact1;
 	protected CMLReaction xomReact2;
-	protected String xmlReact1S = "<reaction id='r1' " + CML_XMLNS + ">"
+	protected String xmlReact1S = "<reaction id='r1' " + CMLConstants.CML_XMLNS + ">"
 			+ "  <reactantList id='rl1'>" + "    <reactant id='re1'>"
 			+ "      <molecule id='rm1'>" + "        <atomArray>"
 			+ "          <atom id='a1' elementType='C' hydrogenCount='3'>"
@@ -88,7 +88,7 @@ public abstract class ReactionAllTestBase {
 	protected CMLElements<CMLReactant> xmlReactants1;
 	protected CMLElements<CMLProduct> xmlProducts1;
 	protected CMLElements<CMLSpectator> xmlSpectators1;
-	protected String xmlReact2S = "<reaction id='r1' " + CML_XMLNS + ">"
+	protected String xmlReact2S = "<reaction id='r1' " + CMLConstants.CML_XMLNS + ">"
 			+ "  <reactantList id='rl1'>" + "    <reactant id='re1'>"
 			+ "      <formula concise='H 1 Cl 1' id='r_f1'/>"
 			+ "    </reactant>" + "    <reactant id='re2'>"
@@ -130,7 +130,7 @@ public abstract class ReactionAllTestBase {
 	}
 
 	protected void makeMultiProductReactantLists() {
-		String multiReact1S = "<reaction id='r1' " + CML_XMLNS + ">"
+		String multiReact1S = "<reaction id='r1' " + CMLConstants.CML_XMLNS + ">"
 				+ "  <reactantList id='rl1'>" + "    <reactant id='re1'>"
 				+ "      <molecule id='m1'>" + "        <atomArray>"
 				+ "          <atom id='a1' elementType='C' hydrogenCount='3'>"

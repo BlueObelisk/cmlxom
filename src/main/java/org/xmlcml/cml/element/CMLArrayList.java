@@ -7,6 +7,7 @@ import java.util.List;
 import nu.xom.Element;
 import nu.xom.Node;
 
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.CMLUtil;
@@ -143,7 +144,7 @@ public class CMLArrayList extends org.xmlcml.cml.element.AbstractArrayList {
         if (list.getConventionAttribute() != null) {
             tableHeaderCell.setConvention(list.getConvention());
         }
-        List<Node> childNodes = CMLUtil.getQueryNodes(this, S_STAR);
+        List<Node> childNodes = CMLUtil.getQueryNodes(this, CMLConstants.S_STAR);
         if (childNodes.size() > 0) {
             tableHeaderCell.setDataType(((Element)childNodes.get(0)).getQualifiedName());
         }
@@ -157,7 +158,7 @@ public class CMLArrayList extends org.xmlcml.cml.element.AbstractArrayList {
     public List<HasArraySize> getArrays() {
         List<HasArraySize> list = new ArrayList<HasArraySize>();
         List<Node> nodes = CMLUtil.getQueryNodes(this,
-                CMLArray.NS+X_OR+CMLList.NS, CML_XPATH);
+                CMLArray.NS+X_OR+CMLList.NS, CMLConstants.CML_XPATH);
         for (Node node : nodes) {
             list.add((HasArraySize) node);
         }

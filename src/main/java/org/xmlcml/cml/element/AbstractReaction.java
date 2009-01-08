@@ -8,6 +8,7 @@ import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.attribute.RefAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.DoubleSTAttribute;
@@ -565,7 +566,7 @@ public abstract class AbstractReaction extends CMLElement {
     * @return CMLElements<CMLMetadataList>
     */
     public CMLElements<CMLMetadataList> getMetadataListElements() {
-        Elements elements = this.getChildElements("metadataList", CML_NS);
+        Elements elements = this.getChildElements("metadataList", CMLConstants.CML_NS);
         return new CMLElements<CMLMetadataList>(elements);
     }
 // element:   label
@@ -583,7 +584,7 @@ public abstract class AbstractReaction extends CMLElement {
     * @return CMLElements<CMLLabel>
     */
     public CMLElements<CMLLabel> getLabelElements() {
-        Elements elements = this.getChildElements("label", CML_NS);
+        Elements elements = this.getChildElements("label", CMLConstants.CML_NS);
         return new CMLElements<CMLLabel>(elements);
     }
 // element:   name
@@ -601,7 +602,7 @@ public abstract class AbstractReaction extends CMLElement {
     * @return CMLElements<CMLName>
     */
     public CMLElements<CMLName> getNameElements() {
-        Elements elements = this.getChildElements("name", CML_NS);
+        Elements elements = this.getChildElements("name", CMLConstants.CML_NS);
         return new CMLElements<CMLName>(elements);
     }
 // element:   identifier
@@ -619,7 +620,7 @@ public abstract class AbstractReaction extends CMLElement {
     * @return CMLElements<CMLIdentifier>
     */
     public CMLElements<CMLIdentifier> getIdentifierElements() {
-        Elements elements = this.getChildElements("identifier", CML_NS);
+        Elements elements = this.getChildElements("identifier", CMLConstants.CML_NS);
         return new CMLElements<CMLIdentifier>(elements);
     }
 // element:   reactiveCentre
@@ -637,7 +638,7 @@ public abstract class AbstractReaction extends CMLElement {
     * @return CMLElements<CMLReactiveCentre>
     */
     public CMLElements<CMLReactiveCentre> getReactiveCentreElements() {
-        Elements elements = this.getChildElements("reactiveCentre", CML_NS);
+        Elements elements = this.getChildElements("reactiveCentre", CMLConstants.CML_NS);
         return new CMLElements<CMLReactiveCentre>(elements);
     }
 // element:   mechanism
@@ -655,7 +656,7 @@ public abstract class AbstractReaction extends CMLElement {
     * @return CMLElements<CMLMechanism>
     */
     public CMLElements<CMLMechanism> getMechanismElements() {
-        Elements elements = this.getChildElements("mechanism", CML_NS);
+        Elements elements = this.getChildElements("mechanism", CMLConstants.CML_NS);
         return new CMLElements<CMLMechanism>(elements);
     }
 // element:   reactantList
@@ -673,7 +674,7 @@ public abstract class AbstractReaction extends CMLElement {
     * @return CMLElements<CMLReactantList>
     */
     public CMLElements<CMLReactantList> getReactantListElements() {
-        Elements elements = this.getChildElements("reactantList", CML_NS);
+        Elements elements = this.getChildElements("reactantList", CMLConstants.CML_NS);
         return new CMLElements<CMLReactantList>(elements);
     }
 // element:   spectatorList
@@ -691,7 +692,7 @@ public abstract class AbstractReaction extends CMLElement {
     * @return CMLElements<CMLSpectatorList>
     */
     public CMLElements<CMLSpectatorList> getSpectatorListElements() {
-        Elements elements = this.getChildElements("spectatorList", CML_NS);
+        Elements elements = this.getChildElements("spectatorList", CMLConstants.CML_NS);
         return new CMLElements<CMLSpectatorList>(elements);
     }
 // element:   substanceList
@@ -709,7 +710,7 @@ public abstract class AbstractReaction extends CMLElement {
     * @return CMLElements<CMLSubstanceList>
     */
     public CMLElements<CMLSubstanceList> getSubstanceListElements() {
-        Elements elements = this.getChildElements("substanceList", CML_NS);
+        Elements elements = this.getChildElements("substanceList", CMLConstants.CML_NS);
         return new CMLElements<CMLSubstanceList>(elements);
     }
 // element:   conditionList
@@ -727,7 +728,7 @@ public abstract class AbstractReaction extends CMLElement {
     * @return CMLElements<CMLConditionList>
     */
     public CMLElements<CMLConditionList> getConditionListElements() {
-        Elements elements = this.getChildElements("conditionList", CML_NS);
+        Elements elements = this.getChildElements("conditionList", CMLConstants.CML_NS);
         return new CMLElements<CMLConditionList>(elements);
     }
 // element:   transitionState
@@ -745,7 +746,7 @@ public abstract class AbstractReaction extends CMLElement {
     * @return CMLElements<CMLTransitionState>
     */
     public CMLElements<CMLTransitionState> getTransitionStateElements() {
-        Elements elements = this.getChildElements("transitionState", CML_NS);
+        Elements elements = this.getChildElements("transitionState", CMLConstants.CML_NS);
         return new CMLElements<CMLTransitionState>(elements);
     }
 // element:   productList
@@ -763,7 +764,7 @@ public abstract class AbstractReaction extends CMLElement {
     * @return CMLElements<CMLProductList>
     */
     public CMLElements<CMLProductList> getProductListElements() {
-        Elements elements = this.getChildElements("productList", CML_NS);
+        Elements elements = this.getChildElements("productList", CMLConstants.CML_NS);
         return new CMLElements<CMLProductList>(elements);
     }
 // element:   propertyList
@@ -781,7 +782,7 @@ public abstract class AbstractReaction extends CMLElement {
     * @return CMLElements<CMLPropertyList>
     */
     public CMLElements<CMLPropertyList> getPropertyListElements() {
-        Elements elements = this.getChildElements("propertyList", CML_NS);
+        Elements elements = this.getChildElements("propertyList", CMLConstants.CML_NS);
         return new CMLElements<CMLPropertyList>(elements);
     }
 // element:   map
@@ -799,7 +800,7 @@ public abstract class AbstractReaction extends CMLElement {
     * @return CMLElements<CMLMap>
     */
     public CMLElements<CMLMap> getMapElements() {
-        Elements elements = this.getChildElements("map", CML_NS);
+        Elements elements = this.getChildElements("map", CMLConstants.CML_NS);
         return new CMLElements<CMLMap>(elements);
     }
 // element:   object
@@ -817,7 +818,7 @@ public abstract class AbstractReaction extends CMLElement {
     * @return CMLElements<CMLObject>
     */
     public CMLElements<CMLObject> getObjectElements() {
-        Elements elements = this.getChildElements("object", CML_NS);
+        Elements elements = this.getChildElements("object", CMLConstants.CML_NS);
         return new CMLElements<CMLObject>(elements);
     }
     /** overrides addAttribute(Attribute)

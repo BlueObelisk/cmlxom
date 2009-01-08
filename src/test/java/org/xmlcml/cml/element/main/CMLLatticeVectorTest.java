@@ -1,13 +1,12 @@
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
 import static org.xmlcml.euclid.EuclidConstants.EPS;
-import static org.xmlcml.euclid.EuclidConstants.S_RBRAK;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLBuilder;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.element.CMLLatticeVector;
 import org.xmlcml.cml.element.CMLVector3;
 import org.xmlcml.euclid.test.DoubleTestBase;
@@ -20,7 +19,7 @@ import org.xmlcml.euclid.test.DoubleTestBase;
  */
 public class CMLLatticeVectorTest {
 
-	String latticeVector1S = "<latticeVector " + CML_XMLNS
+	String latticeVector1S = "<latticeVector " + CMLConstants.CML_XMLNS
 			+ ">1. 2. 3.</latticeVector>";
 
 	CMLLatticeVector latticeVector1 = null;
@@ -47,8 +46,8 @@ public class CMLLatticeVectorTest {
 	 */
 	public static void assertEquals(String msg, CMLLatticeVector test,
 			CMLLatticeVector expected, double epsilon) {
-		Assert.assertNotNull("test should not be null (" + msg + S_RBRAK, test);
-		Assert.assertNotNull("expected should not be null (" + msg + S_RBRAK,
+		Assert.assertNotNull("test should not be null (" + msg + CMLConstants.S_RBRAK, test);
+		Assert.assertNotNull("expected should not be null (" + msg + CMLConstants.S_RBRAK,
 				expected);
 		DoubleTestBase.assertEquals(msg, test.getXMLContent(), expected
 				.getXMLContent(), epsilon);
@@ -66,9 +65,9 @@ public class CMLLatticeVectorTest {
 	 */
 	public static void assertEquals(String msg, double[] test,
 			CMLLatticeVector expected, double epsilon) {
-		Assert.assertNotNull("test should not be null (" + msg + S_RBRAK, test);
+		Assert.assertNotNull("test should not be null (" + msg + CMLConstants.S_RBRAK, test);
 		Assert.assertEquals("must be of length 3", 3, test.length);
-		Assert.assertNotNull("expected should not be null (" + msg + S_RBRAK,
+		Assert.assertNotNull("expected should not be null (" + msg + CMLConstants.S_RBRAK,
 				expected);
 		DoubleTestBase.assertEquals(msg, test, expected.getXMLContent(),
 				epsilon);

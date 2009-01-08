@@ -8,6 +8,7 @@ import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.attribute.RefAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.StringSTAttribute;
@@ -282,7 +283,7 @@ public abstract class AbstractSpectrumList extends CMLElement {
     * @return CMLElements<CMLMetadataList>
     */
     public CMLElements<CMLMetadataList> getMetadataListElements() {
-        Elements elements = this.getChildElements("metadataList", CML_NS);
+        Elements elements = this.getChildElements("metadataList", CMLConstants.CML_NS);
         return new CMLElements<CMLMetadataList>(elements);
     }
 // element:   list
@@ -300,7 +301,7 @@ public abstract class AbstractSpectrumList extends CMLElement {
     * @return CMLElements<CMLList>
     */
     public CMLElements<CMLList> getListElements() {
-        Elements elements = this.getChildElements("list", CML_NS);
+        Elements elements = this.getChildElements("list", CMLConstants.CML_NS);
         return new CMLElements<CMLList>(elements);
     }
 // element:   spectrumList
@@ -318,7 +319,7 @@ public abstract class AbstractSpectrumList extends CMLElement {
     * @return CMLElements<CMLSpectrumList>
     */
     public CMLElements<CMLSpectrumList> getSpectrumListElements() {
-        Elements elements = this.getChildElements("spectrumList", CML_NS);
+        Elements elements = this.getChildElements("spectrumList", CMLConstants.CML_NS);
         return new CMLElements<CMLSpectrumList>(elements);
     }
 // element:   spectrum
@@ -336,7 +337,7 @@ public abstract class AbstractSpectrumList extends CMLElement {
     * @return CMLElements<CMLSpectrum>
     */
     public CMLElements<CMLSpectrum> getSpectrumElements() {
-        Elements elements = this.getChildElements("spectrum", CML_NS);
+        Elements elements = this.getChildElements("spectrum", CMLConstants.CML_NS);
         return new CMLElements<CMLSpectrum>(elements);
     }
     /** overrides addAttribute(Attribute)

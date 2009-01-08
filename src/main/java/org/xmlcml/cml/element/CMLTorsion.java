@@ -12,6 +12,7 @@ import nu.xom.Node;
 import nu.xom.Nodes;
 
 import org.apache.log4j.Logger;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.euclid.Angle;
@@ -285,14 +286,14 @@ public class CMLTorsion extends AbstractTorsion {
                     w.write("<td>");
                     CMLAtom atom = atoms.get(i);
                     Nodes labelNodes = atom.query(
-                        CMLScalar.NS+"[@dictRef='iucr:_atom_site_label']", CML_XPATH);
+                        CMLScalar.NS+"[@dictRef='iucr:_atom_site_label']", CMLConstants.CML_XPATH);
                     String label = ((CMLScalar) labelNodes.get(0)).getXMLContent()+" ("+atom.getId()+S_RBRAK;
                     w.write( (label == null) ? atom.getId() : label);
                     w.write("</td>");
                 }
                 String s = "UNSET";
                 try {
-                    s = S_EMPTY+torsion.getXMLContent();
+                    s = CMLConstants.S_EMPTY+torsion.getXMLContent();
                 } catch (RuntimeException e) {
                     //
                 }
@@ -308,10 +309,10 @@ public class CMLTorsion extends AbstractTorsion {
      * @return string
      */
     public String getString() {
-        String s = S_EMPTY;
+        String s = CMLConstants.S_EMPTY;
         String[] aa = this.getAtomRefs4();
         if (aa != null) {
-            s += Util.concatenate(aa, S_MINUS);
+            s += Util.concatenate(aa, CMLConstants.S_MINUS);
         }
         // torsion might be unset
         String ss = "UNSET";

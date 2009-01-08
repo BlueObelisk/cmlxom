@@ -217,7 +217,7 @@ public class Point3Vector implements EuclidConstants {
     private void checkConformable(Point3Vector v) throws EuclidRuntimeException {
         if (size() != v.size()) {
             throw new EuclidRuntimeException("incompatible Point3Vector sizes: "
-                    + size() + S_SLASH + v.size());
+                    + size() + EC.S_SLASH + v.size());
         }
     }
     /**

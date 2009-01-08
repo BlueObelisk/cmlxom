@@ -8,6 +8,7 @@ import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.attribute.RefAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.StringArraySTAttribute;
@@ -399,7 +400,7 @@ public abstract class AbstractJoin extends CMLElement {
     * @return CMLElements<CMLAngle>
     */
     public CMLElements<CMLAngle> getAngleElements() {
-        Elements elements = this.getChildElements("angle", CML_NS);
+        Elements elements = this.getChildElements("angle", CMLConstants.CML_NS);
         return new CMLElements<CMLAngle>(elements);
     }
 // element:   arg
@@ -417,7 +418,7 @@ public abstract class AbstractJoin extends CMLElement {
     * @return CMLElements<CMLArg>
     */
     public CMLElements<CMLArg> getArgElements() {
-        Elements elements = this.getChildElements("arg", CML_NS);
+        Elements elements = this.getChildElements("arg", CMLConstants.CML_NS);
         return new CMLElements<CMLArg>(elements);
     }
 // element:   label
@@ -435,7 +436,7 @@ public abstract class AbstractJoin extends CMLElement {
     * @return CMLElements<CMLLabel>
     */
     public CMLElements<CMLLabel> getLabelElements() {
-        Elements elements = this.getChildElements("label", CML_NS);
+        Elements elements = this.getChildElements("label", CMLConstants.CML_NS);
         return new CMLElements<CMLLabel>(elements);
     }
 // element:   length
@@ -453,7 +454,7 @@ public abstract class AbstractJoin extends CMLElement {
     * @return CMLElements<CMLLength>
     */
     public CMLElements<CMLLength> getLengthElements() {
-        Elements elements = this.getChildElements("length", CML_NS);
+        Elements elements = this.getChildElements("length", CMLConstants.CML_NS);
         return new CMLElements<CMLLength>(elements);
     }
 // element:   metadataList
@@ -471,7 +472,7 @@ public abstract class AbstractJoin extends CMLElement {
     * @return CMLElements<CMLMetadataList>
     */
     public CMLElements<CMLMetadataList> getMetadataListElements() {
-        Elements elements = this.getChildElements("metadataList", CML_NS);
+        Elements elements = this.getChildElements("metadataList", CMLConstants.CML_NS);
         return new CMLElements<CMLMetadataList>(elements);
     }
 // element:   molecule
@@ -489,7 +490,7 @@ public abstract class AbstractJoin extends CMLElement {
     * @return CMLElements<CMLMolecule>
     */
     public CMLElements<CMLMolecule> getMoleculeElements() {
-        Elements elements = this.getChildElements("molecule", CML_NS);
+        Elements elements = this.getChildElements("molecule", CMLConstants.CML_NS);
         return new CMLElements<CMLMolecule>(elements);
     }
 // element:   torsion
@@ -507,7 +508,7 @@ public abstract class AbstractJoin extends CMLElement {
     * @return CMLElements<CMLTorsion>
     */
     public CMLElements<CMLTorsion> getTorsionElements() {
-        Elements elements = this.getChildElements("torsion", CML_NS);
+        Elements elements = this.getChildElements("torsion", CMLConstants.CML_NS);
         return new CMLElements<CMLTorsion>(elements);
     }
     /** overrides addAttribute(Attribute)

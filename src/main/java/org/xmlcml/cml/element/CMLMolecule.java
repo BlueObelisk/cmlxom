@@ -1322,9 +1322,9 @@ public class CMLMolecule
 		Map<String, String> newTable = new HashMap<String, String>();
 		List<CMLAtom> atoms = this.getAtoms();
 		if (oldIds.size() != atoms.size() || newIds.size() != atoms.size()) {
-			throw new RuntimeException("Lists (" + oldIds.size() + S_SLASH
+			throw new RuntimeException("Lists (" + oldIds.size() + CMLConstants.S_SLASH
 					+ newIds.size() + ") must be same length as atomCount ("
-					+ atoms.size() + S_RBRAK);
+					+ atoms.size() + CMLConstants.S_RBRAK);
 		}
 		for (int i = 0; i < atoms.size(); i++) {
 			String oldId = oldIds.get(i);
@@ -1335,7 +1335,7 @@ public class CMLMolecule
 			if (newTable.containsKey(newId)) {
 				throw new RuntimeException("Duplicate new id: " + newId);
 			} else {
-				newTable.put(newId, S_EMPTY);
+				newTable.put(newId, CMLConstants.S_EMPTY);
 			}
 			mapTable.put(oldId, newId);
 		}

@@ -1,12 +1,10 @@
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.cml.base.TstBase.parseValidString;
-import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
 import static org.xmlcml.cml.base.CMLConstants.U_ANGSTROM;
 import static org.xmlcml.cml.base.CMLConstants.U_DEGREE;
 import static org.xmlcml.cml.base.CMLConstants.XSD_DOUBLE;
+import static org.xmlcml.cml.base.TstBase.parseValidString;
 import static org.xmlcml.euclid.EuclidConstants.EPS;
-import static org.xmlcml.euclid.EuclidConstants.S_RBRAK;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +13,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.attribute.IdAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.element.CMLCellParameter;
 import org.xmlcml.cml.element.CMLCrystal;
@@ -31,14 +30,14 @@ public class CMLCellParameterTest {
 
 	CMLCrystal crystal1;
 
-	String crystal1S = "" + "<crystal z='4' " + CML_XMLNS + ">"
+	String crystal1S = "" + "<crystal z='4' " + CMLConstants.CML_XMLNS + ">"
 			+ "<cellParameter id='scp1' error='0.001 0.002 0.003' units='"
-			+ U_ANGSTROM + "'" + " type='length' " + CML_XMLNS
+			+ U_ANGSTROM + "'" + " type='length' " + CMLConstants.CML_XMLNS
 			+ ">4.500 5.500 6.500</cellParameter>"
 			+ "<cellParameter id='cp2' error='0.01 0.02 0.03' units='"
-			+ U_DEGREE + "'" + " type='angle' " + CML_XMLNS
+			+ U_DEGREE + "'" + " type='angle' " + CMLConstants.CML_XMLNS
 			+ ">45.00 55.00 65.00</cellParameter>"
-			+ "<symmetry id='s1' spaceGroup='P1' " + CML_XMLNS + "/>"
+			+ "<symmetry id='s1' spaceGroup='P1' " + CMLConstants.CML_XMLNS + "/>"
 			+ "</crystal>" + "";
 
 	CMLElements<CMLCellParameter> cellParameterList = null;
@@ -66,8 +65,8 @@ public class CMLCellParameterTest {
 	 */
 	public static void assertEquals(String msg, CMLCellParameter test,
 			CMLCellParameter expected, double epsilon) {
-		Assert.assertNotNull("test should not be null (" + msg + S_RBRAK, test);
-		Assert.assertNotNull("expected should not be null (" + msg + S_RBRAK,
+		Assert.assertNotNull("test should not be null (" + msg + CMLConstants.S_RBRAK, test);
+		Assert.assertNotNull("expected should not be null (" + msg + CMLConstants.S_RBRAK,
 				expected);
 		CMLCellParameterTest.assertEquals(msg, test.getType(), test
 				.getXMLContent(), expected, epsilon);
@@ -86,13 +85,13 @@ public class CMLCellParameterTest {
 	 */
 	public static void assertEquals(String msg, String type, double[] test,
 			CMLCellParameter expected, double epsilon) {
-		Assert.assertNotNull("test should not be null (" + msg + S_RBRAK, test);
+		Assert.assertNotNull("test should not be null (" + msg + CMLConstants.S_RBRAK, test);
 		Assert.assertEquals("must be of length 3", 3, test.length);
-		Assert.assertNotNull("type should not be null (" + msg + S_RBRAK, type);
-		Assert.assertNotNull("expected should not be null (" + msg + S_RBRAK,
+		Assert.assertNotNull("type should not be null (" + msg + CMLConstants.S_RBRAK, type);
+		Assert.assertNotNull("expected should not be null (" + msg + CMLConstants.S_RBRAK,
 				expected);
 		Assert.assertNotNull("expected should not have null type (" + msg
-				+ S_RBRAK, expected.getType());
+				+ CMLConstants.S_RBRAK, expected.getType());
 		Assert.assertEquals("types must be equal", 3, test.length);
 		DoubleTestBase.assertEquals(msg, test, expected.getXMLContent(),
 				epsilon);
@@ -233,7 +232,7 @@ public class CMLCellParameterTest {
 				.get(0).copy();
 		// "<cellParameter id='scp1' error='0.001 0.002 0.003'
 		// units='"+U_ANGSTROM+"'" +
-		// S_SPACE+CML_XMLNS+">4.500 5.500 6.500</cellParameter>"+
+		// CMLConstants.S_SPACE+CMLConstants.CML_XMLNS+">4.500 5.500 6.500</cellParameter>"+
 		Assert.assertEquals(IdAttribute.NAME, "scp1", cellParameter1.getId());
 		Assert.assertEquals("units", U_ANGSTROM, cellParameter1.getUnits());
 		DoubleTestBase.assertEquals("error",

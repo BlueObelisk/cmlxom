@@ -1,8 +1,7 @@
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
-import static org.xmlcml.euclid.EuclidConstants.EPS;
-import static org.xmlcml.euclid.EuclidConstants.S_RBRAK;
+import static org.xmlcml.euclid.EC.EPS;
+import static org.xmlcml.euclid.EC.S_RBRAK;
 import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
 import java.io.IOException;
@@ -16,6 +15,7 @@ import nu.xom.ValidityException;
 import org.junit.Assert;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLBuilder;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.element.CMLLine3;
 import org.xmlcml.cml.element.CMLMatrix;
 import org.xmlcml.cml.element.CMLPoint3;
@@ -95,7 +95,7 @@ public class CMLTransform3Test extends GeomTestBase {
 	@Test
 	public void testParse() {
 		CMLTransform3 t = null;
-		String s = "<transform3 " + CML_XMLNS
+		String s = "<transform3 " + CMLConstants.CML_XMLNS
 				+ ">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</transform3>";
 		try {
 			t = (CMLTransform3) builder.build(new StringReader(s))
@@ -112,7 +112,7 @@ public class CMLTransform3Test extends GeomTestBase {
 			Assert.fail("should not throw IO exception " + e.getMessage());
 		}
 
-		s = "<transform3 " + CML_XMLNS
+		s = "<transform3 " + CMLConstants.CML_XMLNS
 				+ ">1 0 0 0 0 1 0 0 0 0 1 0 0 0 1</transform3>";
 		try {
 			t = (CMLTransform3) builder.build(new StringReader(s))
@@ -127,7 +127,7 @@ public class CMLTransform3Test extends GeomTestBase {
 			Assert.fail("should not throw IO " + e.getMessage());
 		}
 
-		s = "<transform3 " + CML_XMLNS
+		s = "<transform3 " + CMLConstants.CML_XMLNS
 				+ ">1 0 X 0 0 0 1 0 0 0 0 1 0 0 0 1</transform3>";
 		try {
 			t = (CMLTransform3) builder.build(new StringReader(s))

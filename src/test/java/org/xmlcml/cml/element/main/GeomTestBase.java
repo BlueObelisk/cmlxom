@@ -1,12 +1,11 @@
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
-
 import java.io.StringReader;
 
 import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.xmlcml.cml.base.CMLBuilder;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.element.CMLLine3;
 import org.xmlcml.cml.element.CMLPlane3;
 import org.xmlcml.cml.element.CMLPoint3;
@@ -129,11 +128,11 @@ public abstract class GeomTestBase {
 		xomV321 = new CMLVector3(new double[] { 3., 2., 1. });
 
 		// create from XML
-		xmlP111S = "<point3 " + CML_XMLNS + ">1. 1. 1.</point3>";
-		xmlP100S = "<point3 " + CML_XMLNS + ">1 0 0</point3>";
-		xmlP010S = "<point3 " + CML_XMLNS + ">0 1.0E+00 0</point3>";
-		xmlP001S = "<point3 " + CML_XMLNS + ">0 0 1</point3>";
-		xmlP123S = "<point3 " + CML_XMLNS + ">1 2 3</point3>";
+		xmlP111S = "<point3 " + CMLConstants.CML_XMLNS + ">1. 1. 1.</point3>";
+		xmlP100S = "<point3 " + CMLConstants.CML_XMLNS + ">1 0 0</point3>";
+		xmlP010S = "<point3 " + CMLConstants.CML_XMLNS + ">0 1.0E+00 0</point3>";
+		xmlP001S = "<point3 " + CMLConstants.CML_XMLNS + ">0 0 1</point3>";
+		xmlP123S = "<point3 " + CMLConstants.CML_XMLNS + ">1 2 3</point3>";
 
 		CMLBuilder builder = new CMLBuilder();
 		xmlP111 = (CMLPoint3) builder.build(new StringReader(xmlP111S))

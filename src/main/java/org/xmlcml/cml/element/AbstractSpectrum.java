@@ -8,6 +8,7 @@ import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.attribute.RefAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.StringSTAttribute;
@@ -472,7 +473,7 @@ public abstract class AbstractSpectrum extends CMLElement {
     * @return CMLElements<CMLMetadataList>
     */
     public CMLElements<CMLMetadataList> getMetadataListElements() {
-        Elements elements = this.getChildElements("metadataList", CML_NS);
+        Elements elements = this.getChildElements("metadataList", CMLConstants.CML_NS);
         return new CMLElements<CMLMetadataList>(elements);
     }
 // element:   sample
@@ -490,7 +491,7 @@ public abstract class AbstractSpectrum extends CMLElement {
     * @return CMLElements<CMLSample>
     */
     public CMLElements<CMLSample> getSampleElements() {
-        Elements elements = this.getChildElements("sample", CML_NS);
+        Elements elements = this.getChildElements("sample", CMLConstants.CML_NS);
         return new CMLElements<CMLSample>(elements);
     }
 // element:   parameterList
@@ -508,7 +509,7 @@ public abstract class AbstractSpectrum extends CMLElement {
     * @return CMLElements<CMLParameterList>
     */
     public CMLElements<CMLParameterList> getParameterListElements() {
-        Elements elements = this.getChildElements("parameterList", CML_NS);
+        Elements elements = this.getChildElements("parameterList", CMLConstants.CML_NS);
         return new CMLElements<CMLParameterList>(elements);
     }
 // element:   substanceList
@@ -526,7 +527,7 @@ public abstract class AbstractSpectrum extends CMLElement {
     * @return CMLElements<CMLSubstanceList>
     */
     public CMLElements<CMLSubstanceList> getSubstanceListElements() {
-        Elements elements = this.getChildElements("substanceList", CML_NS);
+        Elements elements = this.getChildElements("substanceList", CMLConstants.CML_NS);
         return new CMLElements<CMLSubstanceList>(elements);
     }
 // element:   conditionList
@@ -544,7 +545,7 @@ public abstract class AbstractSpectrum extends CMLElement {
     * @return CMLElements<CMLConditionList>
     */
     public CMLElements<CMLConditionList> getConditionListElements() {
-        Elements elements = this.getChildElements("conditionList", CML_NS);
+        Elements elements = this.getChildElements("conditionList", CMLConstants.CML_NS);
         return new CMLElements<CMLConditionList>(elements);
     }
 // element:   spectrumData
@@ -562,7 +563,7 @@ public abstract class AbstractSpectrum extends CMLElement {
     * @return CMLElements<CMLSpectrumData>
     */
     public CMLElements<CMLSpectrumData> getSpectrumDataElements() {
-        Elements elements = this.getChildElements("spectrumData", CML_NS);
+        Elements elements = this.getChildElements("spectrumData", CMLConstants.CML_NS);
         return new CMLElements<CMLSpectrumData>(elements);
     }
 // element:   peakList
@@ -580,7 +581,7 @@ public abstract class AbstractSpectrum extends CMLElement {
     * @return CMLElements<CMLPeakList>
     */
     public CMLElements<CMLPeakList> getPeakListElements() {
-        Elements elements = this.getChildElements("peakList", CML_NS);
+        Elements elements = this.getChildElements("peakList", CMLConstants.CML_NS);
         return new CMLElements<CMLPeakList>(elements);
     }
     /** overrides addAttribute(Attribute)

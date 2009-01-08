@@ -10,6 +10,7 @@ import nu.xom.ParentNode;
 
 import org.apache.log4j.Logger;
 import org.xmlcml.cml.attribute.IdAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.euclid.Point3;
 import org.xmlcml.euclid.Real2;
 import org.xmlcml.molutil.ChemicalElement;
@@ -63,8 +64,8 @@ public class CMLBond extends AbstractBond {
 	public final static String AROMATIC = "A";
 
 	// same as SMILES
-	/** zero bond (disjoint == S_PERIOD in SMILES) */
-	public final static String ZERO = S_PERIOD;
+	/** zero bond (disjoint == CMLConstants.S_PERIOD in SMILES) */
+	public final static String ZERO = CMLConstants.S_PERIOD;
 
 	/** wedge bond */
 	public final static String WEDGE = "W";
@@ -88,7 +89,7 @@ public class CMLBond extends AbstractBond {
 	public final static String LINEAR = "L";
 
 	/** nostereo bond */
-	public final static String NOSTEREO = S_MINUS;
+	public final static String NOSTEREO = CMLConstants.S_MINUS;
 
 	/** acyclic bond */
 	public final static String ACYCLIC = "ACYCLIC";
@@ -128,10 +129,10 @@ public class CMLBond extends AbstractBond {
 		1.0, 1.0, };
 
     /** dewisott */
-	public final static String HASH_SYMB = S_UNDER+S_UNDER;
+	public final static String HASH_SYMB = CMLConstants.S_UNDER+S_UNDER;
 
     /** dewisott */
-	public final static String BOND_LINK = S_MINUS;
+	public final static String BOND_LINK = CMLConstants.S_MINUS;
 
 	List<CMLAtom> atomList;
 
@@ -812,7 +813,7 @@ public class CMLBond extends AbstractBond {
 	 */
 	public String getString() {
 //		CMLMolecule molecule = this.getMolecule();
-		String s = S_EMPTY;
+		String s = CMLConstants.S_EMPTY;
 		String[] atomRefs2 = this.getAtomRefs2();
 		if (atomRefs2 != null) {
 			s = atomHash();
@@ -837,8 +838,8 @@ public class CMLBond extends AbstractBond {
 		// int idx = atomRefs2.indexOf(S_SPACE);
 		// String atomRef0 = atomRefs2.substring(0, idx);
 		// String atomRef1 = atomRefs2.substring(idx+1);
-		String newAtomRef0 = S_EMPTY;
-		String newAtomRef1 = S_EMPTY;
+		String newAtomRef0 = CMLConstants.S_EMPTY;
+		String newAtomRef1 = CMLConstants.S_EMPTY;
 		if (oldId.equals(atomRefs2[0])) {
 			newAtomRef0 = newId;
 			newAtomRef1 = atomRefs2[1];
@@ -867,7 +868,7 @@ public class CMLBond extends AbstractBond {
 		String at0id = atomList.get(0).getId();
 		String at1id = atomList.get(1).getId();
 
-		bondId = at0id + S_UNDER + at1id;
+		bondId = at0id + CMLConstants.S_UNDER + at1id;
 		this.setId(bondId);
 		return bondId;
 	}

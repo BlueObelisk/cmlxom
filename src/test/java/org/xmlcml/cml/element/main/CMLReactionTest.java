@@ -1,13 +1,13 @@
 package org.xmlcml.cml.element.main;
 
 import static org.xmlcml.cml.base.TstBase.parseValidString;
-import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
 
 import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.element.CMLAtom;
 import org.xmlcml.cml.element.CMLBond;
@@ -259,7 +259,7 @@ public class CMLReactionTest extends ReactionAllTestBase {
 	 */
 	@Test
 	public void testMergeReactantLists() {
-		String reactionS = "" + "<reaction id='r1' " + CML_XMLNS + ">"
+		String reactionS = "" + "<reaction id='r1' " + CMLConstants.CML_XMLNS + ">"
 				+ "  <reactantList id='rl1'>" + "    <reactant id='re1'>"
 				+ "      <molecule id='rm1'>" + "        <atomArray>"
 				+ "          <atom id='a1' elementType='C' hydrogenCount='3'>"

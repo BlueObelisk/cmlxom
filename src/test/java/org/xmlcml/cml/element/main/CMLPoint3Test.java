@@ -1,8 +1,7 @@
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
-import static org.xmlcml.euclid.EuclidConstants.EPS;
-import static org.xmlcml.euclid.EuclidConstants.S_RBRAK;
+import static org.xmlcml.euclid.EC.EPS;
+import static org.xmlcml.euclid.EC.S_RBRAK;
 import static org.xmlcml.euclid.test.EuclidTestBase.alwaysFail;
 
 import java.io.IOException;
@@ -14,6 +13,7 @@ import nu.xom.ValidityException;
 import org.junit.Assert;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLBuilder;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.element.CMLLine3;
 import org.xmlcml.cml.element.CMLPlane3;
 import org.xmlcml.cml.element.CMLPoint3;
@@ -75,11 +75,11 @@ public class CMLPoint3Test extends GeomTestBase {
 	 */
 	@Test
 	public void testParse() {
-		String xml1S = "<point3 " + CML_XMLNS + "/>";
-		String xml2S = "<point3 " + CML_XMLNS + ">1 2</point3>";
-		String xml3S = "<point3 " + CML_XMLNS + ">1 2 x</point3>";
-		String xml4S = "<point3 " + CML_XMLNS + ">1 2 3 4</point3>";
-		String xml5S = "<point3 " + CML_XMLNS + ">1  2  3</point3>";
+		String xml1S = "<point3 " + CMLConstants.CML_XMLNS + "/>";
+		String xml2S = "<point3 " + CMLConstants.CML_XMLNS + ">1 2</point3>";
+		String xml3S = "<point3 " + CMLConstants.CML_XMLNS + ">1 2 x</point3>";
+		String xml4S = "<point3 " + CMLConstants.CML_XMLNS + ">1 2 3 4</point3>";
+		String xml5S = "<point3 " + CMLConstants.CML_XMLNS + ">1  2  3</point3>";
 
 		try {
 			builder.build(new StringReader(xml1S)).getRootElement();

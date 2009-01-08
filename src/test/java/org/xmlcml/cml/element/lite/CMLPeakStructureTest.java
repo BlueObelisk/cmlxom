@@ -1,7 +1,6 @@
 package org.xmlcml.cml.element.lite;
 
 import static org.xmlcml.cml.element.main.AbstractTestBase.SIMPLE_RESOURCE;
-import static org.xmlcml.euclid.EuclidConstants.U_S;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,6 +14,7 @@ import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLBuilder;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.element.CMLAtom;
 import org.xmlcml.cml.element.CMLCml;
@@ -58,7 +58,7 @@ public class CMLPeakStructureTest extends PeakSpectrumBase {
 	public void testGetPeaks1() throws IOException, ValidityException,
 			ParsingException {
 		CMLCml cml = null;
-		InputStream in = Util.getInputStreamFromResource(SIMPLE_RESOURCE + U_S
+		InputStream in = Util.getInputStreamFromResource(SIMPLE_RESOURCE +CMLConstants.U_S
 				+ peakStructureFile1);
 		cml = (CMLCml) new CMLBuilder().build(in).getRootElement();
 		in.close();
@@ -97,7 +97,7 @@ public class CMLPeakStructureTest extends PeakSpectrumBase {
 	public void testGetPeaks2() throws IOException, ValidityException,
 			ParsingException {
 		CMLCml cml = null;
-		InputStream in = Util.getInputStreamFromResource(SIMPLE_RESOURCE + U_S
+		InputStream in = Util.getInputStreamFromResource(SIMPLE_RESOURCE +CMLConstants.U_S
 				+ peakStructureFile2);
 		cml = (CMLCml) new CMLBuilder().build(in).getRootElement();
 		Assert.assertNotNull("cml not null: ", cml);
@@ -158,7 +158,7 @@ public class CMLPeakStructureTest extends PeakSpectrumBase {
 		CMLCml cml = null;
 		CMLSpectrum spectrum = null;
 		CMLMolecule molecule = null;
-		InputStream in = Util.getInputStreamFromResource(SIMPLE_RESOURCE + U_S
+		InputStream in = Util.getInputStreamFromResource(SIMPLE_RESOURCE +CMLConstants.U_S
 				+ peakStructureFile1);
 		cml = (CMLCml) new CMLBuilder().build(in).getRootElement();
 		spectrum = (CMLSpectrum) cml.getChildCMLElements(CMLSpectrum.TAG)
@@ -290,7 +290,7 @@ public class CMLPeakStructureTest extends PeakSpectrumBase {
 	public void testHasValidNestedPeakStructure() throws IOException,
 			ValidityException, ParsingException {
 		CMLCml cml = null;
-		InputStream in = Util.getInputStreamFromResource(SIMPLE_RESOURCE + U_S
+		InputStream in = Util.getInputStreamFromResource(SIMPLE_RESOURCE +CMLConstants.U_S
 				+ peakStructureFile2);
 		cml = (CMLCml) new CMLBuilder().build(in).getRootElement();
 		in.close();

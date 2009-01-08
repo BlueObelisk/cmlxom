@@ -9,6 +9,7 @@ import nu.xom.Node;
 import nu.xom.Nodes;
 
 import org.apache.log4j.Logger;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 
 /**
@@ -160,7 +161,7 @@ public class CMLReaction extends AbstractReaction implements ReactionComponent {
      * @return an id including the reaction id and type
      */
     public String getId(String type) {
-        return this.getId() + S_PERIOD + type;
+        return this.getId() + CMLConstants.S_PERIOD + type;
     }
 
     /**
@@ -515,10 +516,10 @@ public class CMLReaction extends AbstractReaction implements ReactionComponent {
     	Nodes nodes = null;
     	if (typeS == null) {
     	} else if(typeS.equals(CMLReaction.Component.ANY)) {
-    		nodes = this.query(".//cml:molecule", CML_XPATH);
+    		nodes = this.query(".//cml:molecule", CMLConstants.CML_XPATH);
     	} else {
     		String qs = ".//"+typeS+"/cml:molecule";
-    		nodes = this.query(qs, CML_XPATH);
+    		nodes = this.query(qs, CMLConstants.CML_XPATH);
     	}
     	if (nodes != null) {
 			for (int i = 0; i < nodes.size(); i++) {

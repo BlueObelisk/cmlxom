@@ -8,6 +8,7 @@ import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.attribute.RefAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.StringSTAttribute;
@@ -571,7 +572,7 @@ public abstract class AbstractArg extends CMLElement {
     * @return CMLElements<CMLAtom>
     */
     public CMLElements<CMLAtom> getAtomElements() {
-        Elements elements = this.getChildElements("atom", CML_NS);
+        Elements elements = this.getChildElements("atom", CMLConstants.CML_NS);
         return new CMLElements<CMLAtom>(elements);
     }
 // element:   atomType
@@ -593,7 +594,7 @@ public abstract class AbstractArg extends CMLElement {
     * @return CMLElements<CMLAtomType>
     */
     public CMLElements<CMLAtomType> getAtomTypeElements() {
-        Elements elements = this.getChildElements("atomType", CML_NS);
+        Elements elements = this.getChildElements("atomType", CMLConstants.CML_NS);
         return new CMLElements<CMLAtomType>(elements);
     }
 // element:   scalar
@@ -615,7 +616,7 @@ public abstract class AbstractArg extends CMLElement {
     * @return CMLElements<CMLScalar>
     */
     public CMLElements<CMLScalar> getScalarElements() {
-        Elements elements = this.getChildElements("scalar", CML_NS);
+        Elements elements = this.getChildElements("scalar", CMLConstants.CML_NS);
         return new CMLElements<CMLScalar>(elements);
     }
 // element:   array
@@ -637,7 +638,7 @@ public abstract class AbstractArg extends CMLElement {
     * @return CMLElements<CMLArray>
     */
     public CMLElements<CMLArray> getArrayElements() {
-        Elements elements = this.getChildElements("array", CML_NS);
+        Elements elements = this.getChildElements("array", CMLConstants.CML_NS);
         return new CMLElements<CMLArray>(elements);
     }
 // element:   matrix
@@ -659,7 +660,7 @@ public abstract class AbstractArg extends CMLElement {
     * @return CMLElements<CMLMatrix>
     */
     public CMLElements<CMLMatrix> getMatrixElements() {
-        Elements elements = this.getChildElements("matrix", CML_NS);
+        Elements elements = this.getChildElements("matrix", CMLConstants.CML_NS);
         return new CMLElements<CMLMatrix>(elements);
     }
 // element:   expression
@@ -681,7 +682,7 @@ public abstract class AbstractArg extends CMLElement {
     * @return CMLElements<CMLExpression>
     */
     public CMLElements<CMLExpression> getExpressionElements() {
-        Elements elements = this.getChildElements("expression", CML_NS);
+        Elements elements = this.getChildElements("expression", CMLConstants.CML_NS);
         return new CMLElements<CMLExpression>(elements);
     }
     /** overrides addAttribute(Attribute)

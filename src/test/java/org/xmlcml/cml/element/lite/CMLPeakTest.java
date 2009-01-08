@@ -1,7 +1,6 @@
 package org.xmlcml.cml.element.lite;
 
 import static org.xmlcml.cml.element.main.AbstractTestBase.SIMPLE_RESOURCE;
-import static org.xmlcml.euclid.EuclidConstants.U_S;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,6 +14,7 @@ import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLBuilder;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.element.CMLCml;
 import org.xmlcml.cml.element.CMLPeak;
@@ -41,7 +41,7 @@ public class CMLPeakTest extends PeakSpectrumBase {
 	public void testGetPeaks() throws IOException, ValidityException,
 			ParsingException {
 		CMLCml cml = null;
-		InputStream in = Util.getInputStreamFromResource(SIMPLE_RESOURCE + U_S
+		InputStream in = Util.getInputStreamFromResource(SIMPLE_RESOURCE +CMLConstants.U_S
 				+ testfile2);
 		cml = (CMLCml) new CMLBuilder().build(in).getRootElement();
 		in.close();
@@ -78,7 +78,7 @@ public class CMLPeakTest extends PeakSpectrumBase {
 	public void testGetDescendantPeaks() throws IOException, ValidityException,
 			ParsingException {
 		CMLCml cml = null;
-		InputStream in = Util.getInputStreamFromResource(SIMPLE_RESOURCE + U_S
+		InputStream in = Util.getInputStreamFromResource(SIMPLE_RESOURCE +CMLConstants.U_S
 				+ testfile2);
 		cml = (CMLCml) new CMLBuilder().build(in).getRootElement();
 		in.close();

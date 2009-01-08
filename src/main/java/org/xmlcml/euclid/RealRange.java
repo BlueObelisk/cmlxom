@@ -285,11 +285,11 @@ public class RealRange implements EuclidConstants {
     }
     
     /**
-     * to string. format: "NULL" or S_LBRAK+minval+S_COMMA+maxval+S_RBRAK;
+     * to string. format: "NULL" or EC.S_LBRAK+minval+S_COMMA+maxval+S_RBRAK;
      * 
      * @return string
      */
     public String toString() {
-        return (minval > maxval) ? "NULL" : S_LBRAK + minval + S_COMMA + maxval + S_RBRAK;
+        return (minval > maxval) ? "NULL" : EC.S_LBRAK + minval + EC.S_COMMA + maxval + EC.S_RBRAK;
     }
 }

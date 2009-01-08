@@ -7,6 +7,7 @@ import java.io.Writer;
 import nu.xom.Element;
 import nu.xom.Node;
 
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLUtil;
 
@@ -54,7 +55,7 @@ public class CMLTableCell extends org.xmlcml.cml.element.AbstractTableCell {
      */
     public CMLTableCell(double d) {
         this();
-        CMLUtil.setXMLContent(this, S_EMPTY+d);
+        CMLUtil.setXMLContent(this, CMLConstants.S_EMPTY+d);
     }
 
     /** constructor.
@@ -63,7 +64,7 @@ public class CMLTableCell extends org.xmlcml.cml.element.AbstractTableCell {
      */
     public CMLTableCell(int i) {
         this();
-        CMLUtil.setXMLContent(this, S_EMPTY+i);
+        CMLUtil.setXMLContent(this, CMLConstants.S_EMPTY+i);
     }
 
     /** constructor.
@@ -128,7 +129,7 @@ public class CMLTableCell extends org.xmlcml.cml.element.AbstractTableCell {
     public void writeHTML(Writer w) throws IOException {
         w.write("<td>");
         String s = this.getStringContent();
-        w.write((s == null) ? S_EMPTY : s);
+        w.write((s == null) ? CMLConstants.S_EMPTY : s);
         w.write("</td>");
     }
 

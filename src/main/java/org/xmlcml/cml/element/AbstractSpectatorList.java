@@ -7,6 +7,7 @@ import nu.xom.Elements;
 import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.StringSTAttribute;
@@ -206,7 +207,7 @@ public abstract class AbstractSpectatorList extends CMLElement {
     * @return CMLElements<CMLSpectator>
     */
     public CMLElements<CMLSpectator> getSpectatorElements() {
-        Elements elements = this.getChildElements("spectator", CML_NS);
+        Elements elements = this.getChildElements("spectator", CMLConstants.CML_NS);
         return new CMLElements<CMLSpectator>(elements);
     }
     /** overrides addAttribute(Attribute)

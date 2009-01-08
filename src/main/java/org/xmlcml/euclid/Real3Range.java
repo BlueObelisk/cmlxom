@@ -222,7 +222,7 @@ public class Real3Range implements EuclidConstants {
      * @return string
      */
     public String toString() {
-        return S_LBRAK + xyzrange[0] + S_COMMA + xyzrange[1] + S_COMMA
-                + xyzrange[2] + S_RBRAK;
+        return EC.S_LBRAK + xyzrange[0] + EC.S_COMMA + xyzrange[1] + EC.S_COMMA
+                + xyzrange[2] + EC.S_RBRAK;
     }
 }

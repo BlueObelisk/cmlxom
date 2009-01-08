@@ -8,6 +8,7 @@ import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.attribute.RefAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.StringSTAttribute;
@@ -318,7 +319,7 @@ public abstract class AbstractAtomType extends CMLElement {
     * @return CMLElements<CMLMolecule>
     */
     public CMLElements<CMLMolecule> getMoleculeElements() {
-        Elements elements = this.getChildElements("molecule", CML_NS);
+        Elements elements = this.getChildElements("molecule", CMLConstants.CML_NS);
         return new CMLElements<CMLMolecule>(elements);
     }
 // element:   atom
@@ -334,7 +335,7 @@ public abstract class AbstractAtomType extends CMLElement {
     * @return CMLElements<CMLAtom>
     */
     public CMLElements<CMLAtom> getAtomElements() {
-        Elements elements = this.getChildElements("atom", CML_NS);
+        Elements elements = this.getChildElements("atom", CMLConstants.CML_NS);
         return new CMLElements<CMLAtom>(elements);
     }
 // element:   label
@@ -350,7 +351,7 @@ public abstract class AbstractAtomType extends CMLElement {
     * @return CMLElements<CMLLabel>
     */
     public CMLElements<CMLLabel> getLabelElements() {
-        Elements elements = this.getChildElements("label", CML_NS);
+        Elements elements = this.getChildElements("label", CMLConstants.CML_NS);
         return new CMLElements<CMLLabel>(elements);
     }
 // element:   scalar
@@ -366,7 +367,7 @@ public abstract class AbstractAtomType extends CMLElement {
     * @return CMLElements<CMLScalar>
     */
     public CMLElements<CMLScalar> getScalarElements() {
-        Elements elements = this.getChildElements("scalar", CML_NS);
+        Elements elements = this.getChildElements("scalar", CMLConstants.CML_NS);
         return new CMLElements<CMLScalar>(elements);
     }
 // element:   array
@@ -382,7 +383,7 @@ public abstract class AbstractAtomType extends CMLElement {
     * @return CMLElements<CMLArray>
     */
     public CMLElements<CMLArray> getArrayElements() {
-        Elements elements = this.getChildElements("array", CML_NS);
+        Elements elements = this.getChildElements("array", CMLConstants.CML_NS);
         return new CMLElements<CMLArray>(elements);
     }
 // element:   matrix
@@ -398,7 +399,7 @@ public abstract class AbstractAtomType extends CMLElement {
     * @return CMLElements<CMLMatrix>
     */
     public CMLElements<CMLMatrix> getMatrixElements() {
-        Elements elements = this.getChildElements("matrix", CML_NS);
+        Elements elements = this.getChildElements("matrix", CMLConstants.CML_NS);
         return new CMLElements<CMLMatrix>(elements);
     }
 // element:   property
@@ -414,7 +415,7 @@ public abstract class AbstractAtomType extends CMLElement {
     * @return CMLElements<CMLProperty>
     */
     public CMLElements<CMLProperty> getPropertyElements() {
-        Elements elements = this.getChildElements("property", CML_NS);
+        Elements elements = this.getChildElements("property", CMLConstants.CML_NS);
         return new CMLElements<CMLProperty>(elements);
     }
     /** overrides addAttribute(Attribute)

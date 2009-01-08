@@ -987,8 +987,8 @@ class Diagonalise implements EuclidConstants {
                         /* test for l = second from last column */
                         // L270
                         if (l == (order - 1)) {
-                            RealSquareMatrix.logger.info(S_LSQUARE + l + S_SLASH + order
-                                    + S_RSQUARE);
+                            RealSquareMatrix.logger.info(S_LSQUARE + l + EC.S_SLASH + order
+                                    + EC.S_RSQUARE);
                             break;
                         }
                         // goto L100;
@@ -996,7 +996,7 @@ class Diagonalise implements EuclidConstants {
                         ++l;
                     }
                     // L290
-                    RealSquareMatrix.logger.info(S_PLUS + l + S_SLASH + ind);
+                    RealSquareMatrix.logger.info(S_PLUS + l + EC.S_SLASH + ind);
                     if (ind != 1) {
                         break;
                     }

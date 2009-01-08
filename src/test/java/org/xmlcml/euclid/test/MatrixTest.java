@@ -1,8 +1,8 @@
 package org.xmlcml.euclid.test;
 
-import static org.xmlcml.euclid.EuclidConstants.EPS;
-import static org.xmlcml.euclid.EuclidConstants.S_EMPTY;
-import static org.xmlcml.euclid.EuclidConstants.S_RBRAK;
+import static org.xmlcml.euclid.EC.EPS;
+import static org.xmlcml.euclid.EC.S_EMPTY;
+import static org.xmlcml.euclid.EC.S_RBRAK;
 import static org.xmlcml.euclid.test.EuclidTestBase.getAssertFormat;
 import junit.framework.Assert;
 

@@ -2,7 +2,6 @@ package org.xmlcml.cml.element.lite;
 
 import static org.xmlcml.cml.base.TstBase.assertEqualsCanonically;
 import static org.xmlcml.cml.base.TstBase.parseValidString;
-import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
 import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
 import java.util.List;
@@ -13,6 +12,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.StringSTAttribute;
 import org.xmlcml.cml.base.CMLElement.CoordinateType;
 import org.xmlcml.cml.element.CMLAtom;
@@ -465,7 +465,7 @@ public class CMLBondTest {
 		CMLBondStereo bs = bond.getBondStereo();
 		Assert.assertNull(bs);
 
-		String s = "<molecule id='m1' " + CML_XMLNS + ">" + "  <atomArray>"
+		String s = "<molecule id='m1' " + CMLConstants.CML_XMLNS + ">" + "  <atomArray>"
 				+ "    <atom id='a1' elementType='F'/>"
 				+ "    <atom id='a2' elementType='C' hydrogenCount='1'/>"
 				+ "    <atom id='a3' elementType='C' hydrogenCount='1'/>"
@@ -481,7 +481,7 @@ public class CMLBondTest {
 		assertEqualsCanonically(
 				"bs",
 				(CMLBondStereo) parseValidString("<bondStereo atomRefs4='a1 a2 a3 a4' "
-						+ CML_XMLNS + ">C</bondStereo>"), bs, true);
+						+ CMLConstants.CML_XMLNS + ">C</bondStereo>"), bs, true);
 		bs = new CMLBondStereo();
 		bs.setAtomRefs4("a1 a2 a3 a4");
 		bs.setXMLContent(CMLBond.TRANS);
@@ -499,7 +499,7 @@ public class CMLBondTest {
 	 */
 	@Test
 	public final void testSetBondStereo() {
-		String s = "<molecule id='m1' " + CML_XMLNS + ">" + "  <atomArray>"
+		String s = "<molecule id='m1' " + CMLConstants.CML_XMLNS + ">" + "  <atomArray>"
 				+ "    <atom id='a1' elementType='F'/>"
 				+ "    <atom id='a2' elementType='C' hydrogenCount='1'/>"
 				+ "    <atom id='a3' elementType='C' hydrogenCount='1'/>"
@@ -516,7 +516,7 @@ public class CMLBondTest {
 		assertEqualsCanonically(
 				"bs",
 				(CMLBondStereo) parseValidString("<bondStereo atomRefs4='a1 a2 a3 a4' "
-						+ CML_XMLNS + ">C</bondStereo>"), bs, true);
+						+ CMLConstants.CML_XMLNS + ">C</bondStereo>"), bs, true);
 		try {
 			b2.setBondStereo(bs);
 		} catch (RuntimeException e) {

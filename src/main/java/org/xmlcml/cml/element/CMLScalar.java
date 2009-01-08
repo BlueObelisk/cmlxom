@@ -8,6 +8,7 @@ import nu.xom.Node;
 import org.apache.log4j.Logger;
 import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.attribute.NamespaceRefAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLType;
 import org.xmlcml.cml.base.CMLUtil;
@@ -28,7 +29,7 @@ public class CMLScalar extends AbstractScalar implements HasUnits, HasScalar {
 
 	/**
 	 * default constructor. NOTE creates a CMLScalar with dataType = XSD_STRING
-	 * and content S_EMPTY.
+	 * and content CMLConstants.S_EMPTY.
 	 * 
 	 */
 	public CMLScalar() {
@@ -267,7 +268,7 @@ public class CMLScalar extends AbstractScalar implements HasUnits, HasScalar {
 		if (!this.getDataType().equals(scalar.getDataType())) {
 			throw new RuntimeException(
 					"Unsuitable dataTypes for numeric operations / "
-							+ this.getDataType() + S_SLASH
+							+ this.getDataType() + CMLConstants.S_SLASH
 							+ scalar.getDataType());
 		}
 	}

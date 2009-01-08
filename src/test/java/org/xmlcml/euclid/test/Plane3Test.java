@@ -1,13 +1,13 @@
 package org.xmlcml.euclid.test;
 
-import static org.xmlcml.euclid.EuclidConstants.EPS;
-import static org.xmlcml.euclid.EuclidConstants.S_RBRAK;
+import static org.xmlcml.euclid.EC.EPS;
 import static org.xmlcml.euclid.test.EuclidTestBase.alwaysFail;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.euclid.Angle;
+import org.xmlcml.euclid.EC;
 import org.xmlcml.euclid.EuclidRuntimeException;
 import org.xmlcml.euclid.Line3;
 import org.xmlcml.euclid.Plane3;
@@ -43,8 +43,8 @@ public class Plane3Test extends GeomTest {
 	 */
 	public static void assertEquals(String msg, Plane3 test, Plane3 expected,
 			double epsilon) {
-		Assert.assertNotNull("test should not be null (" + msg + S_RBRAK, test);
-		Assert.assertNotNull("ref should not be null (" + msg + S_RBRAK,
+		Assert.assertNotNull("test should not be null (" + msg + EC.S_RBRAK, test);
+		Assert.assertNotNull("ref should not be null (" + msg + EC.S_RBRAK,
 				expected);
 		DoubleTestBase.assertEquals(msg, test.getArray(), expected.getArray(),
 				epsilon);
@@ -62,9 +62,9 @@ public class Plane3Test extends GeomTest {
 	 */
 	public static void assertEquals(String msg, double[] test, Plane3 expected,
 			double epsilon) {
-		Assert.assertNotNull("test should not be null (" + msg + S_RBRAK, test);
+		Assert.assertNotNull("test should not be null (" + msg + EC.S_RBRAK, test);
 		Assert.assertEquals("must be of length 4", 4, test.length);
-		Assert.assertNotNull("ref should not be null (" + msg + S_RBRAK,
+		Assert.assertNotNull("ref should not be null (" + msg + EC.S_RBRAK,
 				expected);
 		DoubleTestBase.assertEquals(msg, test, expected.getArray(), epsilon);
 	}

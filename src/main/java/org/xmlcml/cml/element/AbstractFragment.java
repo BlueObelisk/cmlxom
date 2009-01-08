@@ -9,6 +9,7 @@ import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.attribute.RefAttribute;
 import org.xmlcml.cml.attribute.main.CountExpressionAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.StringSTAttribute;
@@ -316,7 +317,7 @@ public abstract class AbstractFragment extends CMLElement {
     * @return CMLElements<CMLMetadataList>
     */
     public CMLElements<CMLMetadataList> getMetadataListElements() {
-        Elements elements = this.getChildElements("metadataList", CML_NS);
+        Elements elements = this.getChildElements("metadataList", CMLConstants.CML_NS);
         return new CMLElements<CMLMetadataList>(elements);
     }
 // element:   label
@@ -332,7 +333,7 @@ public abstract class AbstractFragment extends CMLElement {
     * @return CMLElements<CMLLabel>
     */
     public CMLElements<CMLLabel> getLabelElements() {
-        Elements elements = this.getChildElements("label", CML_NS);
+        Elements elements = this.getChildElements("label", CMLConstants.CML_NS);
         return new CMLElements<CMLLabel>(elements);
     }
 // element:   molecule
@@ -348,7 +349,7 @@ public abstract class AbstractFragment extends CMLElement {
     * @return CMLElements<CMLMolecule>
     */
     public CMLElements<CMLMolecule> getMoleculeElements() {
-        Elements elements = this.getChildElements("molecule", CML_NS);
+        Elements elements = this.getChildElements("molecule", CMLConstants.CML_NS);
         return new CMLElements<CMLMolecule>(elements);
     }
 // element:   fragmentList
@@ -364,7 +365,7 @@ public abstract class AbstractFragment extends CMLElement {
     * @return CMLElements<CMLFragmentList>
     */
     public CMLElements<CMLFragmentList> getFragmentListElements() {
-        Elements elements = this.getChildElements("fragmentList", CML_NS);
+        Elements elements = this.getChildElements("fragmentList", CMLConstants.CML_NS);
         return new CMLElements<CMLFragmentList>(elements);
     }
 // element:   join
@@ -380,7 +381,7 @@ public abstract class AbstractFragment extends CMLElement {
     * @return CMLElements<CMLJoin>
     */
     public CMLElements<CMLJoin> getJoinElements() {
-        Elements elements = this.getChildElements("join", CML_NS);
+        Elements elements = this.getChildElements("join", CMLConstants.CML_NS);
         return new CMLElements<CMLJoin>(elements);
     }
     /** overrides addAttribute(Attribute)

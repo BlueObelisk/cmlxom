@@ -1,7 +1,5 @@
 package org.xmlcml.cml.element.lite;
 
-import static org.xmlcml.cml.base.CMLConstants.CML_NS;
-import static org.xmlcml.cml.base.CMLConstants.CML_XMLNS;
 import static org.xmlcml.cml.base.CMLConstants.SIUNIT_NS;
 import static org.xmlcml.cml.base.CMLConstants.UNIT_NS;
 import static org.xmlcml.cml.base.CMLConstants.U_CELSIUS;
@@ -24,6 +22,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.base.CMLBuilder;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.element.CMLCml;
 import org.xmlcml.cml.element.CMLScalar;
@@ -64,37 +63,37 @@ public class CMLScalarTest {
 
 	CMLBuilder builder = new CMLBuilder();
 
-	String xmlS = "<scalar " + CML_XMLNS + "/>";
+	String xmlS = "<scalar " + CMLConstants.CML_XMLNS + "/>";
 
-	String xmlD0S = "<scalar dataType='xsd:double' " + CML_XMLNS
+	String xmlD0S = "<scalar dataType='xsd:double' " + CMLConstants.CML_XMLNS
 			+ ">2.1</scalar>";
 
-	String xmlDNaNOK = "<scalar dataType='xsd:double' " + CML_XMLNS
+	String xmlDNaNOK = "<scalar dataType='xsd:double' " + CMLConstants.CML_XMLNS
 			+ ">NaN</scalar>";
 
-	String xmlI0S = "<scalar dataType='xsd:integer' " + CML_XMLNS
+	String xmlI0S = "<scalar dataType='xsd:integer' " + CMLConstants.CML_XMLNS
 			+ ">2</scalar>";
 
-	String xmlS0S = "<scalar dataType='xsd:string' " + CML_XMLNS
+	String xmlS0S = "<scalar dataType='xsd:string' " + CMLConstants.CML_XMLNS
 			+ ">two</scalar>";
 
-	String xmlD1S = "<scalar dataType='xsd:double' " + CML_XMLNS
+	String xmlD1S = "<scalar dataType='xsd:double' " + CMLConstants.CML_XMLNS
 			+ ">2.3</scalar>";
 
-	String xmlI1S = "<scalar dataType='xsd:integer' " + CML_XMLNS
+	String xmlI1S = "<scalar dataType='xsd:integer' " + CMLConstants.CML_XMLNS
 			+ ">3</scalar>";
 
-	String xmlS1S = "<scalar dataType='xsd:string' " + CML_XMLNS
+	String xmlS1S = "<scalar dataType='xsd:string' " + CMLConstants.CML_XMLNS
 			+ ">three</scalar>";
 
-	String xmlBad1 = "<scalar dataType='xsd:double' " + CML_XMLNS
+	String xmlBad1 = "<scalar dataType='xsd:double' " + CMLConstants.CML_XMLNS
 			+ ">three</scalar>";
 
-	String xmlBad2 = "<scalar dataType='xsd:integer' " + CML_XMLNS
+	String xmlBad2 = "<scalar dataType='xsd:integer' " + CMLConstants.CML_XMLNS
 			+ ">2.1</scalar>";
 
 	String unitsS = S_EMPTY + "<c:cml " + " id='a234234' " + "  xmlns:c='"
-			+ CML_NS + "' " + "  xmlns:siUnits='" + SIUNIT_NS + "' "
+			+ CMLConstants.CML_NS + "' " + "  xmlns:siUnits='" + SIUNIT_NS + "' "
 			+ "  xmlns:units='" + UNIT_NS + "' " + ">"
 			+ "<c:scalar id='s1' dictRef='cmlDict:angle' units='" + U_DEGREE
 			+ "' " + "  dataType='xsd:double'>180</c:scalar>"
@@ -804,7 +803,7 @@ public class CMLScalarTest {
 	// Assert.assertEquals("scalar0", U_DEGREE, scalar0.getUnits());
 	// scalar0.convertToSI(unitsUnitListMap);
 	// Assert.assertEquals("scalar0", Math.PI, scalar0.getDouble(), .000001);
-	// Assert.assertEquals("scalar0", CML_SIUNITS + S_COLON + "radian",
+	// Assert.assertEquals("scalar0", CMLConstants.CML_SIUNITS + S_COLON + "radian",
 	// scalar0.getUnits());
 	//
 	// CMLScalar scalar1 = (CMLScalar) scalars.get(1);
@@ -812,7 +811,7 @@ public class CMLScalarTest {
 	// Assert.assertEquals("scalar1", U_KCAL, scalar1.getUnits());
 	// scalar1.convertToSI(unitsUnitListMap);
 	// Assert.assertEquals("scalar1", 4.184E+05, scalar1.getDouble(), 1);
-	// Assert.assertEquals("scalar1", CML_SIUNITS + S_COLON + "joule", scalar1
+	// Assert.assertEquals("scalar1", CMLConstants.CML_SIUNITS + S_COLON + "joule", scalar1
 	// .getUnits());
 	//
 	// CMLScalar scalar2 = (CMLScalar) scalars.get(2);
@@ -820,7 +819,7 @@ public class CMLScalarTest {
 	// Assert.assertEquals("scalar2", U_CELSIUS, scalar2.getUnits());
 	// scalar2.convertToSI(unitsUnitListMap);
 	// Assert.assertEquals("scalar2", 373.15, scalar2.getDouble(), EPS);
-	// Assert.assertEquals("scalar2", CML_SIUNITS + S_COLON + "k", scalar2
+	// Assert.assertEquals("scalar2", CMLConstants.CML_SIUNITS + S_COLON + "k", scalar2
 	// .getUnits());
 	// }
 

@@ -635,8 +635,8 @@ public class Point3 implements EuclidConstants {
      * @return the string
      */
     public String toString() {
-        return S_LBRAK + flarray[0] + S_COMMA + S_SPACE + flarray[1] + S_COMMA
-                + S_SPACE + flarray[2] + S_RBRAK;
+        return EC.S_LBRAK + flarray[0] + EC.S_COMMA + EC.S_SPACE + flarray[1] + EC.S_COMMA
+                + EC.S_SPACE + flarray[2] + EC.S_RBRAK;
     }
 
     /** equals.

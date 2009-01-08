@@ -1,6 +1,7 @@
 package org.xmlcml.euclid;
 
 import org.apache.log4j.Logger;
+import org.xmlcml.cml.base.CMLConstants;
 
 
 
@@ -372,7 +373,7 @@ public class Plane3 implements EuclidConstants {
      * @return the string
      */
     public String toString() {
-        return S_LBRAK + vect + S_COMMA + dist + S_RBRAK;
+        return CMLConstants.S_LBRAK + vect + CMLConstants.S_COMMA + dist + CMLConstants.S_RBRAK;
     }
 
 }

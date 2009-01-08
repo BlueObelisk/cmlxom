@@ -6,8 +6,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-import static org.xmlcml.euclid.EuclidConstants.S_EMPTY;
-import static org.xmlcml.euclid.EuclidConstants.U_S;
+import static org.xmlcml.euclid.EC.S_EMPTY;
 
 import java.io.StringReader;
 import java.text.ParseException;
@@ -22,8 +21,8 @@ import nu.xom.Node;
 import nu.xom.Text;
 import nu.xom.XPathContext;
 
-import org.apache.log4j.Logger;
 import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -59,7 +58,7 @@ public class CMLUtilTest {
 	 */
 	@Test
 	public final void testGetXMLResource() {
-		String filename = TstBase.BASE_RESOURCE + U_S + "cml0.xml";
+		String filename = TstBase.BASE_RESOURCE +CMLConstants.U_S + "cml0.xml";
 		Document doc = null;
 		try {
 			doc = CMLUtil.getXMLResource(filename);

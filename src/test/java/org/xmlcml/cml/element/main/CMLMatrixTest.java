@@ -1,7 +1,5 @@
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.cml.base.TstBase.parseValidString;
-import static org.xmlcml.cml.base.CMLConstants.CML_NS;
 import static org.xmlcml.cml.base.CMLConstants.SIUNIT_NS;
 import static org.xmlcml.cml.base.CMLConstants.UNIT_NS;
 import static org.xmlcml.cml.base.CMLConstants.U_CELSIUS;
@@ -9,8 +7,9 @@ import static org.xmlcml.cml.base.CMLConstants.U_DEGREE;
 import static org.xmlcml.cml.base.CMLConstants.U_KCAL;
 import static org.xmlcml.cml.base.CMLConstants.XSD_DOUBLE;
 import static org.xmlcml.cml.base.CMLConstants.XSD_INTEGER;
-import static org.xmlcml.euclid.EuclidConstants.EPS;
-import static org.xmlcml.euclid.EuclidConstants.S_RBRAK;
+import static org.xmlcml.cml.base.TstBase.parseValidString;
+import static org.xmlcml.euclid.EC.EPS;
+import static org.xmlcml.euclid.EC.S_RBRAK;
 import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
 import java.util.ArrayList;
@@ -21,6 +20,7 @@ import nu.xom.Elements;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.element.CMLCml;
 import org.xmlcml.cml.element.CMLMatrix;
 import org.xmlcml.euclid.EuclidRuntimeException;
@@ -39,7 +39,7 @@ import org.xmlcml.euclid.test.RealMatrixTest;
  */
 public class CMLMatrixTest {
 
-	String unitsS = "<c:cml " + "id='a234234' " + "xmlns:c='" + CML_NS + "' "
+	String unitsS = "<c:cml " + "id='a234234' " + "xmlns:c='" + CMLConstants.CML_NS + "' "
 			+ "xmlns:siUnits='" + SIUNIT_NS + "' " + "xmlns:units='" + UNIT_NS
 			+ "' " + ">" + "<c:matrix id='s1' dictRef='cmlDict:angle' units='"
 			+ U_DEGREE + "' " + "  dataType='xsd:double' rows='2' columns='2'>"
@@ -504,17 +504,17 @@ public class CMLMatrixTest {
 	// Assert.assertEquals("matrix count", 3, matrixs.size());
 	// testMatrix((CMLMatrix) matrixs.get(0),
 	// new double[] { 180., 90, 45., 0. },
-	// CML_UNITS + S_COLON + "deg", new double[] { 3.1415922,
-	// 1.5707961, 0.78539805, 0 }, CML_SIUNITS + S_COLON
+	// CMLConstants.CML_UNITS + S_COLON + "deg", new double[] { 3.1415922,
+	// 1.5707961, 0.78539805, 0 }, CMLConstants.CML_SIUNITS + S_COLON
 	// + "radian");
 	//
 	// testMatrix((CMLMatrix) matrixs.get(1), new double[] { 100., 50, 0.,
-	// -25. }, CML_UNITS + S_COLON + "kcal", new double[] { 418400.,
-	// 209200., 0., -104600. }, CML_SIUNITS + S_COLON + "joule");
+	// -25. }, CMLConstants.CML_UNITS + S_COLON + "kcal", new double[] { 418400.,
+	// 209200., 0., -104600. }, CMLConstants.CML_SIUNITS + S_COLON + "joule");
 	//
 	// testMatrix((CMLMatrix) matrixs.get(2), new double[] { 100., 50, 0.,
-	// -50. }, CML_UNITS + S_COLON + "celsius", new double[] { 373.15,
-	// 323.15, 273.15, 223.15 }, CML_SIUNITS + S_COLON + "k");
+	// -50. }, CMLConstants.CML_UNITS + S_COLON + "celsius", new double[] { 373.15,
+	// 323.15, 273.15, 223.15 }, CMLConstants.CML_SIUNITS + S_COLON + "k");
 	// }
 
 	// private void testMatrix(CMLMatrix matrix, double[] expected0,

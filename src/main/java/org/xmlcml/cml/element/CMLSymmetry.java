@@ -7,6 +7,7 @@ import nu.xom.Element;
 import nu.xom.Node;
 import nu.xom.Nodes;
 
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.euclid.Point3;
@@ -397,7 +398,7 @@ public class CMLSymmetry extends AbstractSymmetry {
      * @throws RuntimeException if 0 or >1 nodes
      */
     public static CMLSymmetry getContainedSymmetry(CMLElement element) throws RuntimeException {
-        Nodes symmetryNodes = element.query("//"+CMLSymmetry.NS, CML_XPATH);
+        Nodes symmetryNodes = element.query("//"+CMLSymmetry.NS, CMLConstants.CML_XPATH);
         if (symmetryNodes.size() == 0) {
             throw new RuntimeException("NO <symmetry> FOUND");
         } else if (symmetryNodes.size() > 1) {

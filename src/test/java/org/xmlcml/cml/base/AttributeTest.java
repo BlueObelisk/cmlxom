@@ -1,9 +1,9 @@
 package org.xmlcml.cml.base;
 
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import static org.xmlcml.cml.base.CMLConstants.*;
 
 /**
  * test for attribute.
@@ -33,9 +33,9 @@ public class AttributeTest {
 		Assert.assertEquals("string att", "string", string.getLocalName());
 		Assert.assertEquals("string att", "string", string.getQualifiedName());
 		Assert.assertEquals("string att", "string", string.getLocalName());
-		Assert.assertEquals("string att", S_EMPTY, string.getValue());
-		Assert.assertEquals("string att", S_EMPTY, string.getCMLValue());
-		Assert.assertEquals("string att", S_EMPTY, string.getNamespaceURI());
+		Assert.assertEquals("string att", CMLConstants.S_EMPTY, string.getValue());
+		Assert.assertEquals("string att", CMLConstants.S_EMPTY, string.getCMLValue());
+		Assert.assertEquals("string att", CMLConstants.S_EMPTY, string.getNamespaceURI());
 		Assert.assertEquals("string att", "String", string.getJavaType());
 		// Assert.assertEquals("string att", "setCMLValue", string
 		// .getJavaSetMethod());
@@ -60,7 +60,7 @@ public class AttributeTest {
 		Assert.assertEquals("string att", "string", string.getLocalName());
 		Assert.assertEquals("string att", "a1", string.getValue());
 		Assert.assertEquals("string att", "a1", string.getCMLValue());
-		Assert.assertEquals("string att", S_EMPTY, string.getNamespaceURI());
+		Assert.assertEquals("string att", CMLConstants.S_EMPTY, string.getNamespaceURI());
 		Assert.assertEquals("string att", "String", string.getJavaType());
 		// Assert.assertEquals("string att", "setCMLValue", string
 		// .getJavaSetMethod());
@@ -124,7 +124,7 @@ public class AttributeTest {
 		CMLType fc = att1.getSchemaType();
 		Assert.assertNotNull("schema type fc", fc);
 		Assert.assertEquals("schema type fc", "formalChargeType", fc.getName());
-		Assert.assertEquals("schema type fc", XSD_INTEGER, fc.getBase());
+		Assert.assertEquals("schema type fc", CC.XSD_INTEGER, fc.getBase());
 	}
 
 	/**
@@ -162,7 +162,7 @@ public class AttributeTest {
 		att1
 				.setDescription("x2 is the 2D coordinate in arbitrary units.\n it should always be accompanied by y2");
 		// note added period
-		Assert.assertEquals("doc", "the x2 coordinate" + S_PERIOD, att1
+		Assert.assertEquals("doc", "the x2 coordinate" + CMLConstants.S_PERIOD, att1
 				.getSummary());
 		Assert
 				.assertEquals(
@@ -186,7 +186,7 @@ public class AttributeTest {
 	 */
 	@Test
 	public void testGetSetNamespace() {
-		Assert.assertEquals("namespace", S_EMPTY, att1.getNamespacePrefix());
+		Assert.assertEquals("namespace", CMLConstants.S_EMPTY, att1.getNamespacePrefix());
 		att1.setNamespace("xyz", "http://foo");
 		Assert.assertEquals("namespace", "xyz", att1.getNamespacePrefix());
 		Assert.assertEquals("namespace", "http://foo", att1.getNamespaceURI());

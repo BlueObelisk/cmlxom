@@ -8,6 +8,7 @@ import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.attribute.RefAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.DoubleSTAttribute;
@@ -343,7 +344,7 @@ public abstract class AbstractReactantList extends CMLElement {
     * @return CMLElements<CMLMetadataList>
     */
     public CMLElements<CMLMetadataList> getMetadataListElements() {
-        Elements elements = this.getChildElements("metadataList", CML_NS);
+        Elements elements = this.getChildElements("metadataList", CMLConstants.CML_NS);
         return new CMLElements<CMLMetadataList>(elements);
     }
 // element:   name
@@ -363,7 +364,7 @@ public abstract class AbstractReactantList extends CMLElement {
     * @return CMLElements<CMLName>
     */
     public CMLElements<CMLName> getNameElements() {
-        Elements elements = this.getChildElements("name", CML_NS);
+        Elements elements = this.getChildElements("name", CMLConstants.CML_NS);
         return new CMLElements<CMLName>(elements);
     }
 // element:   reactantList
@@ -383,7 +384,7 @@ public abstract class AbstractReactantList extends CMLElement {
     * @return CMLElements<CMLReactantList>
     */
     public CMLElements<CMLReactantList> getReactantListElements() {
-        Elements elements = this.getChildElements("reactantList", CML_NS);
+        Elements elements = this.getChildElements("reactantList", CMLConstants.CML_NS);
         return new CMLElements<CMLReactantList>(elements);
     }
 // element:   reactant
@@ -403,7 +404,7 @@ public abstract class AbstractReactantList extends CMLElement {
     * @return CMLElements<CMLReactant>
     */
     public CMLElements<CMLReactant> getReactantElements() {
-        Elements elements = this.getChildElements("reactant", CML_NS);
+        Elements elements = this.getChildElements("reactant", CMLConstants.CML_NS);
         return new CMLElements<CMLReactant>(elements);
     }
     /** overrides addAttribute(Attribute)
