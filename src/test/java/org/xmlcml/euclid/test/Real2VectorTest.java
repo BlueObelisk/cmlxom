@@ -1,6 +1,6 @@
 package org.xmlcml.euclid.test;
 
-import static org.xmlcml.euclid.EC.EPS;
+import static org.xmlcml.euclid.EuclidConstants.EPS;
 
 import java.util.ArrayList;
 import java.util.List;

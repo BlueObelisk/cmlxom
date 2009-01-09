@@ -17,7 +17,7 @@ import org.xmlcml.euclid.Real;
 public class DoubleTestBase {
 
 	/**
-	 * Assert.asserts equality of double arrays.
+	 * Asserts equality of double arrays.
 	 * 
 	 * checks for non-null, then equality of length, then individual elements
 	 * 
@@ -62,7 +62,7 @@ public class DoubleTestBase {
 	}
 
 	/**
-	 * Assert.asserts non equality of double arrays.
+	 * Asserts non equality of double arrays.
 	 * 
 	 * checks for non-null, then equality of length, then individual elements
 	 * 

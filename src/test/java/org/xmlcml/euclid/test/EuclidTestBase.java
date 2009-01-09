@@ -17,7 +17,7 @@ import org.xmlcml.euclid.EuclidRuntimeException;
 public final class EuclidTestBase {
 
 	/**
-	 * used by Assert.assert routines. copied from Assert
+	 * used by Assert routines. copied from Assert
 	 * 
 	 * @param message
 	 *            prepends if not null
