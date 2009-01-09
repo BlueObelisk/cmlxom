@@ -39,7 +39,7 @@ public class IntTest {
 	}
 
 	/**
-	 * Assert.asserts equality of int arrays.
+	 * Asserts equality of int arrays.
 	 * 
 	 * checks for non-null, then equality of length, then individual elements
 	 * 
@@ -57,7 +57,7 @@ public class IntTest {
 	}
 
 	/**
-	 * Assert.asserts non equality of double arrays.
+	 * Asserts non equality of double arrays.
 	 * 
 	 * checks for non-null, then equality of length, then individual elements
 	 * 

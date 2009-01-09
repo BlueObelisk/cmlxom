@@ -3,14 +3,10 @@
  */
 package org.xmlcml.cml.element.lite;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.fail;
-
 import java.util.List;
 import java.util.Map;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.element.CMLAtom;
@@ -64,22 +60,22 @@ public class CMLBondArrayTest {
 	public final void testDetach() {
 		CMLMolecule xomMolecule = fixture.xomMolecule;
 		CMLBondArray bondArray = xomMolecule.getBondArray();
-		assertNotNull("get bondarray", bondArray);
+		Assert.assertNotNull("get bondarray", bondArray);
 		List<CMLBond> bondList = xomMolecule.getBonds();
-		assertEquals("bond count before detach", 5, bondList.size());
-		assertEquals("bond count before detach", 5, bondArray.getBondElements()
+		Assert.assertEquals("bond count before detach", 5, bondList.size());
+		Assert.assertEquals("bond count before detach", 5, bondArray.getBondElements()
 				.size());
 		CMLBond b1 = xomMolecule.getBondById("b1");
-		assertNotNull("get bond", b1);
-		assertEquals("get bond", "b1", b1.getId());
+		Assert.assertNotNull("get bond", b1);
+		Assert.assertEquals("get bond", "b1", b1.getId());
 
 		bondArray.detach();
-		assertEquals("bond count after detach", 5, bondArray.getBondElements()
+		Assert.assertEquals("bond count after detach", 5, bondArray.getBondElements()
 				.size());
 		bondList = xomMolecule.getBonds();
-		assertEquals("bond count after detach", 0, bondList.size());
+		Assert.assertEquals("bond count after detach", 0, bondList.size());
 		b1 = xomMolecule.getBondById("b1");
-		assertNull("get bond", b1);
+		Assert.assertNull("get bond", b1);
 	}
 
 	/**
@@ -89,7 +85,7 @@ public class CMLBondArrayTest {
 	@Test
 	public final void testCMLBondArray() {
 		CMLBondArray bondArray = new CMLBondArray();
-		assertNotNull("get bondarray", bondArray);
+		Assert.assertNotNull("get bondarray", bondArray);
 		CMLMolecule xMolecule = CMLMolecule.createMoleculeWithId("m1");
 		CMLAtom atom0 = new CMLAtom("a0");
 		xMolecule.addAtom(atom0);
@@ -98,14 +94,14 @@ public class CMLBondArrayTest {
 		CMLAtom atom2 = new CMLAtom("a2");
 		xMolecule.addAtom(atom2);
 		List<CMLBond> bondList = bondArray.getBonds();
-		assertEquals("bond count ", 0, bondList.size());
+		Assert.assertEquals("bond count ", 0, bondList.size());
 		CMLBond bond01 = new CMLBond("b01", atom0, atom1);
 		// adding bond will fail, as no parent molecule
 		try {
 			bondArray.addBond(bond01);
-			fail("cannot add bonds unless they belong to molecule");
+			Assert.fail("cannot add bonds unless they belong to molecule");
 		} catch (RuntimeException e) {
-			assertEquals("expected fail", "bondArray parent must be molecule",
+			Assert.assertEquals("expected fail", "bondArray parent must be molecule",
 					e.getMessage());
 		}
 		xMolecule.addBondArray(bondArray);
@@ -113,18 +109,18 @@ public class CMLBondArrayTest {
 		bondArray.addBond(bond01);
 		CMLBond bond12 = new CMLBond("b12", atom1, atom2);
 		bondArray.addBond(bond12);
-		assertEquals("bond count ", 2, bondArray.size());
+		Assert.assertEquals("bond count ", 2, bondArray.size());
 		CMLBond bx = xMolecule.getBondById("b12");
-		assertNotNull("get bond not null", bx);
-		assertEquals("get bond", "b12", bx.getId());
+		Assert.assertNotNull("get bond not null", bx);
+		Assert.assertEquals("get bond", "b12", bx.getId());
 
 		bondArray.detach();
-		assertEquals("bond count after detach", 2, bondArray.getBondElements()
+		Assert.assertEquals("bond count after detach", 2, bondArray.getBondElements()
 				.size());
 		bondList = xMolecule.getBonds();
-		assertEquals("bond count after detach", 0, bondList.size());
+		Assert.assertEquals("bond count after detach", 0, bondList.size());
 		bx = xMolecule.getBondById("b1");
-		assertNull("get bond", bx);
+		Assert.assertNull("get bond", bx);
 	}
 
 	/**
@@ -136,8 +132,8 @@ public class CMLBondArrayTest {
 	public final void testAppendChildCMLBond() {
 		CMLMolecule molecule = CMLMolecule.createMoleculeWithId("m1");
 		CMLBondArray bondArray = new CMLBondArray();
-		assertNotNull("get bondarray", bondArray);
-		assertNull("mol bondarray", molecule.getBondArray());
+		Assert.assertNotNull("get bondarray", bondArray);
+		Assert.assertNull("mol bondarray", molecule.getBondArray());
 		CMLAtom atom0 = new CMLAtom("a0");
 		molecule.addAtom(atom0);
 		CMLAtom atom1 = new CMLAtom("a1");
@@ -145,17 +141,17 @@ public class CMLBondArrayTest {
 		CMLBond bond01 = new CMLBond("b01", atom0, atom1);
 		molecule.appendChild(bond01);
 		CMLBond bondx = molecule.getBonds().get(0);
-		assertNotNull("bond01", bondx);
+		Assert.assertNotNull("bond01", bondx);
 		// test size
 		// bondArray not yet added
-		assertEquals("size", 0, bondArray.size());
+		Assert.assertEquals("size", 0, bondArray.size());
 		bondArray = molecule.getBondArray();
-		assertEquals("size", 1, bondArray.size());
+		Assert.assertEquals("size", 1, bondArray.size());
 		CMLAtom atom2 = new CMLAtom("a2");
 		molecule.addAtom(atom2);
 		CMLBond bond12 = new CMLBond("b12", atom1, atom2);
 		bondArray.addBond(bond12);
-		assertEquals("size", 2, bondArray.size());
+		Assert.assertEquals("size", 2, bondArray.size());
 	}
 
 	/** test insertBond(). */
@@ -167,9 +163,9 @@ public class CMLBondArrayTest {
 		moleculex.addAtom(atom3x);
 		CMLBond bond34x = new CMLBond("b23", atom2x, atom3x);
 		bondArrayx.insertBond(bond34x, 1);
-		assertEquals("size", 3, bondArrayx.size());
+		Assert.assertEquals("size", 3, bondArrayx.size());
 		CMLBond bondx = moleculex.getBonds().get(1);
-		assertEquals("insertBond ", "b23", bondx.getId());
+		Assert.assertEquals("insertBond ", "b23", bondx.getId());
 	}
 
 	/**
@@ -191,11 +187,11 @@ public class CMLBondArrayTest {
 	@Test
 	public final void testRemoveChild() {
 		makeMola();
-		assertEquals("size", 2, bondArrayx.size());
+		Assert.assertEquals("size", 2, bondArrayx.size());
 		bondArrayx.removeChild(bond01x);
-		assertEquals("size", 1, bondArrayx.size());
+		Assert.assertEquals("size", 1, bondArrayx.size());
 		CMLBond bondx = moleculex.getBonds().get(0);
-		assertEquals("removeChild ", "b12", bondx.getId());
+		Assert.assertEquals("removeChild ", "b12", bondx.getId());
 	}
 
 	/**
@@ -206,7 +202,7 @@ public class CMLBondArrayTest {
 	public final void testRemoveBond() {
 		makeMola();
 		bondArrayx.removeBond(bondArrayx.getBonds().get(0));
-		assertEquals("size", 1, bondArrayx.size());
+		Assert.assertEquals("size", 1, bondArrayx.size());
 
 	}
 
@@ -218,9 +214,9 @@ public class CMLBondArrayTest {
 	public final void testGetBondMap() {
 		makeMola();
 		Map<String, CMLBond> bondMap = bondArrayx.getBondMap();
-		assertEquals("map size", 2, bondMap.size());
-		assertNull("id 99", bondMap.get("foo"));
-		assertEquals("id 12", "b12", bondMap.get(CMLBond.atomHash(bond12x))
+		Assert.assertEquals("map size", 2, bondMap.size());
+		Assert.assertNull("id 99", bondMap.get("foo"));
+		Assert.assertEquals("id 12", "b12", bondMap.get(CMLBond.atomHash(bond12x))
 				.getId());
 	}
 
@@ -232,9 +228,9 @@ public class CMLBondArrayTest {
 	public final void testGetBondIdMap() {
 		makeMola();
 		Map<String, CMLBond> bondIdMap = bondArrayx.getBondIdMap();
-		assertEquals("map size", 2, bondIdMap.size());
-		assertNull("id 99", bondIdMap.get("foo"));
-		assertEquals("id 12", "b12", bondIdMap.get("b12").getId());
+		Assert.assertEquals("map size", 2, bondIdMap.size());
+		Assert.assertNull("id 99", bondIdMap.get("foo"));
+		Assert.assertEquals("id 12", "b12", bondIdMap.get("b12").getId());
 	}
 
 	/**
@@ -245,9 +241,9 @@ public class CMLBondArrayTest {
 	public final void testGetBonds() {
 		makeMola();
 		List<CMLBond> bondList = bondArrayx.getBonds();
-		assertEquals("map size", 2, bondList.size());
-		assertEquals("id 01", "b01", bondList.get(0).getId());
-		assertEquals("id 12", "b12", bondList.get(1).getId());
+		Assert.assertEquals("map size", 2, bondList.size());
+		Assert.assertEquals("id 01", "b01", bondList.get(0).getId());
+		Assert.assertEquals("id 12", "b12", bondList.get(1).getId());
 	}
 
 	/**
@@ -259,11 +255,11 @@ public class CMLBondArrayTest {
 	public final void testGetBondByHash() {
 		makeMola();
 		CMLBond bondx = bondArrayx.getBondByHash(CMLBond.atomHash("a1", "a2"));
-		assertEquals("id 12", "b12", bondx.getId());
+		Assert.assertEquals("id 12", "b12", bondx.getId());
 		bondx = bondArrayx.getBondByHash(CMLBond.atomHash("a2", "a1"));
-		assertEquals("id 12", "b12", bondx.getId());
+		Assert.assertEquals("id 12", "b12", bondx.getId());
 		bondx = bondArrayx.getBondByHash(CMLBond.atomHash("a2", "a0"));
-		assertNull("id 02", bondx);
+		Assert.assertNull("id 02", bondx);
 	}
 
 	/**
@@ -276,11 +272,11 @@ public class CMLBondArrayTest {
 		makeMola();
 		CMLBond bondx = bondArrayx
 				.getBondByAtomRefs2(new String[] { "a1", "a2" });
-		assertEquals("id 12", "b12", bondx.getId());
+		Assert.assertEquals("id 12", "b12", bondx.getId());
 		bondx = bondArrayx.getBondByAtomRefs2(new String[] { "a2", "a1" });
-		assertEquals("id 12", "b12", bondx.getId());
+		Assert.assertEquals("id 12", "b12", bondx.getId());
 		bondx = bondArrayx.getBondByAtomRefs2(new String[] { "a2", "a0" });
-		assertNull("id 02", bondx);
+		Assert.assertNull("id 02", bondx);
 	}
 
 	/**
@@ -292,9 +288,9 @@ public class CMLBondArrayTest {
 	public final void testGetBondById() {
 		makeMola();
 		CMLBond bondx = bondArrayx.getBondById("b12");
-		assertEquals("id 12", "b12", bondx.getId());
+		Assert.assertEquals("id 12", "b12", bondx.getId());
 		bondx = bondArrayx.getBondById("b99");
-		assertNull("id 02", bondx);
+		Assert.assertNull("id 02", bondx);
 	}
 
 }

@@ -175,7 +175,7 @@ public final class MoleculeAtomBondFixture {
 	@Test
 	public void testParse() {
 
-		// Assert.assert that reference molecule read correctly
+		// Assert that reference molecule read correctly
 		CMLMolecule molecule = (CMLMolecule) xmlDocument.getRootElement();
 		Assert.assertNotNull("root should not be null", molecule);
 		Assert.assertEquals("molecule id", "m1", molecule.getId());

@@ -1,7 +1,5 @@
 package org.xmlcml.cml.element.lite;
 
-import static org.xmlcml.cml.base.TstBase.assertEqualsCanonically;
-import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
 import java.util.List;
 
@@ -361,7 +359,7 @@ public class CMLBondTest {
 		try {
 			bond.setId("FOO");
 		} catch (RuntimeException e) {
-			neverThrow(e);
+			Assert.fail("bug");
 		}
 		Assert.assertEquals("getid", "FOO", bond.getId());
 	}
@@ -478,7 +476,7 @@ public class CMLBondTest {
 		CMLMolecule mol = (CMLMolecule)TstBase.parseValidString(s);
 		CMLBond b2 = mol.getBondByAtomIds("a2", "a3");
 		bs = b2.getBondStereo();
-		assertEqualsCanonically(
+		TstBase.assertEqualsCanonically(
 				"bs",
 				(CMLBondStereo)TstBase.parseValidString("<bondStereo atomRefs4='a1 a2 a3 a4' "
 						+ CMLConstants.CML_XMLNS + ">C</bondStereo>"), bs, true);
@@ -513,7 +511,7 @@ public class CMLBondTest {
 		CMLBondStereo bs = new CMLBondStereo();
 		bs.setAtomRefs4("a1 a2 a3 a4");
 		bs.setXMLContent(CMLBond.CIS);
-		assertEqualsCanonically(
+		TstBase.assertEqualsCanonically(
 				"bs",
 				(CMLBondStereo)TstBase.parseValidString("<bondStereo atomRefs4='a1 a2 a3 a4' "
 						+ CMLConstants.CML_XMLNS + ">C</bondStereo>"), bs, true);

@@ -1,10 +1,6 @@
 package org.xmlcml.cml.base;
 
-import static org.xmlcml.cml.base.TstBase.BASE_RESOURCE;
-import static org.xmlcml.euclid.test.EuclidTestBase.neverFail;
-import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
@@ -49,7 +45,7 @@ public class ElementTest {
 		Util.println("  === xom Parse, no validation: " + file + " ====");
 		InputStream in = null;
 
-		in = Util.getInputStreamFromResource(BASE_RESOURCE +CMLConstants.U_S + file);
+		in = Util.getInputStreamFromResource(TstBase.BASE_RESOURCE +CMLConstants.U_S + file);
 		doc = new Builder().build(in);
 		Assert.assertNotNull("document ", doc);
 	}
@@ -131,17 +127,11 @@ public class ElementTest {
 		InputStream in = null;
 		Document doc = null;
 		try {
-			in = Util.getInputStreamFromResource(BASE_RESOURCE +CMLConstants.U_S + noSchema);
+			in = Util.getInputStreamFromResource(TstBase.BASE_RESOURCE +CMLConstants.U_S + noSchema);
 			doc = new Builder().build(in);
 			Assert.assertNotNull("document", doc);
-		} catch (ValidityException e) {
-			neverFail(e);
-		} catch (FileNotFoundException e) {
-			neverFail(e);
-		} catch (ParsingException e) {
-			neverFail(e);
-		} catch (IOException e) {
-			neverFail(e);
+		} catch (Exception e) {
+			Assert.fail("BUG"+e);
 		}
 	}
 
@@ -177,20 +167,9 @@ public class ElementTest {
 	public void testRemoveWhitespaceNodesElement() {
 		String element0S = "" + "<foo>" + "  <bar>"
 				+ "    <plugh>  <br/>  </plugh>" + "  </bar>" + "</foo>" + "";
-		Element element0 = null;
-		try {
-			element0 = new CMLBuilder().parseString(element0S);
-		} catch (Exception e) {
-			e.printStackTrace();
-			neverThrow(e);
-		}
+		Element element0 = TstBase.parseValidString(element0S);
 		String element1S = "<foo><bar><plugh><br/></plugh></bar></foo>";
-		Element element1 = null;
-		try {
-			element1 = new CMLBuilder().parseString(element1S);
-		} catch (Exception e) {
-			neverThrow(e);
-		}
+		Element element1 = TstBase.parseValidString(element1S);
 		TstBase.assertNotEqualsCanonically("before whitespace", element0,
 				element1);
 		CMLUtil.removeWhitespaceNodes(element0);

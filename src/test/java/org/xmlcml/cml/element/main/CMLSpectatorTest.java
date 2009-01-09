@@ -41,7 +41,7 @@ public class CMLSpectatorTest extends ReactionAllTestBase {
 //                "  <atomArray elementType=\'F P\' count=\'1.0 1.0\'/>" +
 //                "</formula>";
 //        CMLFormula expected = (CMLFormula)TstBase.parseValidString(ss);
-//        assertEqualsCanonically("form",expected, formula, true);
+//       TstBase.assertEqualsCanonically("form",expected, formula, true);
 //    }
 
     /**
