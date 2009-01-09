@@ -18,7 +18,7 @@ import org.junit.Assert;
 public class StringTestBase {
 
 	/**
-	 * Assert.asserts equality of String arrays.
+	 * Asserts equality of String arrays.
 	 * 
 	 * checks for non-null, then equality of length, then individual elements
 	 * equality if individual elements are equal or both elements are null
@@ -37,7 +37,7 @@ public class StringTestBase {
 	}
 
 	/**
-	 * Assert.asserts equality of String arrays.
+	 * Asserts equality of String arrays.
 	 * 
 	 * convenience method where test is a whitespace-separated set of tokens
 	 * 
@@ -86,7 +86,7 @@ public class StringTestBase {
 	}
 
 	/**
-	 * Assert.asserts non equality of String arrays.
+	 * Asserts non equality of String arrays.
 	 * 
 	 * checks for non-null, then equality of length, then individual elements
 	 * 

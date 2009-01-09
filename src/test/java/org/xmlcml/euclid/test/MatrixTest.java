@@ -35,7 +35,7 @@ public class MatrixTest {
 	}
 
 	/**
-	 * Assert.asserts equality of RealMatrix.
+	 * Asserts equality of RealMatrix.
 	 * 
 	 * checks for non-null, then equality of length, then individual elements
 	 * 
@@ -78,7 +78,7 @@ public class MatrixTest {
 	}
 
 	/**
-	 * Assert.asserts equality of RealMatrix.
+	 * Asserts equality of RealMatrix.
 	 * 
 	 * checks for non-null, then equality of length, then individual elements
 	 * 

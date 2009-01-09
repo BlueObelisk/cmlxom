@@ -1,10 +1,9 @@
 package org.xmlcml.cml.base;
 
-import static org.xmlcml.euclid.EC.EPS;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.xmlcml.euclid.EC;
 
 /**
  * tests for intAttribute.
@@ -45,7 +44,7 @@ public class IntAttributeTest {
 	public void testSetCMLValueString() {
 		daa1.setCMLValue("3");
 		Integer dd = (Integer) daa1.getCMLValue();
-		Assert.assertEquals("get CMLValue", 3, dd.intValue(), EPS);
+		Assert.assertEquals("get CMLValue", 3, dd.intValue(), EC.EPS);
 	}
 
 	/**
@@ -57,7 +56,7 @@ public class IntAttributeTest {
 		daa1.setCMLValue("3");
 		daa2 = new IntSTAttribute(daa1);
 		Integer dd = (Integer) daa2.getCMLValue();
-		Assert.assertEquals("get CMLValue", 3, dd.intValue(), EPS);
+		Assert.assertEquals("get CMLValue", 3, dd.intValue(), EC.EPS);
 	}
 
 	/**

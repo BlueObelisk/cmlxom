@@ -1,10 +1,9 @@
 package org.xmlcml.cml.base;
 
-import static org.xmlcml.euclid.EuclidConstants.EPS;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.xmlcml.euclid.EC;
 import org.xmlcml.euclid.test.DoubleTestBase;
 
 /**
@@ -50,7 +49,7 @@ public class DoubleArrayAttributeTest {
 		daa1.setCMLValue("3.4  5.6");
 		double[] dd = (double[]) daa1.getCMLValue();
 		DoubleTestBase.assertEquals("get CMLValue", new double[] { 3.4, 5.6 },
-				dd, EPS);
+				dd, EC.EPS);
 
 	}
 
@@ -64,7 +63,7 @@ public class DoubleArrayAttributeTest {
 		daa2 = new DoubleArraySTAttribute(daa1);
 		double[] dd = (double[]) daa2.getCMLValue();
 		DoubleTestBase.assertEquals("get CMLValue", new double[] { 3.4, 5.6 },
-				dd, EPS);
+				dd, EC.EPS);
 
 	}
 
@@ -97,11 +96,11 @@ public class DoubleArrayAttributeTest {
 		double[] dd = DoubleArraySTAttribute.split("1.2 3.4 5.6", CMLConstants.S_SPACE);
 		Assert.assertEquals("split", 3, dd.length);
 		DoubleTestBase.assertEquals("split", new double[] { 1.2, 3.4, 5.6 },
-				dd, EPS);
+				dd, EC.EPS);
 		dd = DoubleArraySTAttribute.split("1.7 3.4 5.6", null);
 		Assert.assertEquals("split", 3, dd.length);
 		DoubleTestBase.assertEquals("split", new double[] { 1.7, 3.4, 5.6 },
-				dd, EPS);
+				dd, EC.EPS);
 	}
 
 	@Test
@@ -109,7 +108,7 @@ public class DoubleArrayAttributeTest {
 		double[] dd = DoubleArraySTAttribute.split("NaN INF -INF 2.1", CMLConstants.S_SPACE);
 		DoubleTestBase.assertObjectivelyEquals("NaN split", new double[] {
 				Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY,
-				2.1 }, dd, EPS);
+				2.1 }, dd, EC.EPS);
 	}
 
 	/**
@@ -120,7 +119,7 @@ public class DoubleArrayAttributeTest {
 	public void testGetDoubleArray() {
 		daa1.setCMLValue(new double[] { 5.6, 7.8 });
 		DoubleTestBase.assertEquals("get Value", new double[] { 5.6, 7.8 },
-				daa1.getDoubleArray(), EPS);
+				daa1.getDoubleArray(), EC.EPS);
 	}
 
 }

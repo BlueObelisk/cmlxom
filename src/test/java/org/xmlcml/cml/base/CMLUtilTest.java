@@ -1,13 +1,5 @@
 package org.xmlcml.cml.base;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-import static org.xmlcml.euclid.EC.S_EMPTY;
-
 import java.io.StringReader;
 import java.text.ParseException;
 import java.util.List;
@@ -25,6 +17,7 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
+import org.xmlcml.euclid.EC;
 
 /**
  * test CMLUtil.
@@ -49,7 +42,7 @@ public class CMLUtilTest {
 			CMLUtil.checkPrefixedName("name");
 			Assert.fail("unprefixed name");
 		} catch (Exception e) {
-			assertEquals("unprefixed", "Unprefixed name (name)", e.getMessage());
+			Assert.assertEquals("unprefixed", "Unprefixed name (name)", e.getMessage());
 		}
 	}
 
@@ -65,7 +58,7 @@ public class CMLUtilTest {
 		} catch (Exception e) {
 			Assert.fail("BUG "+e);
 		}
-		assertNotNull("doc not null", doc);
+		Assert.assertNotNull("doc not null", doc);
 	}
 
 	/**
@@ -77,21 +70,21 @@ public class CMLUtilTest {
 		String s = "<foo>abc<bar/>def<bar1>ghi</bar1>jkl</foo>";
 		Element root = CMLUtil.parseXML(s);
 		List<Node> childNodes = CMLUtil.getChildNodes(root);
-		assertEquals("count", 5, childNodes.size());
-		assertEquals("class", Text.class, childNodes.get(0).getClass());
-		assertEquals("value", "abc", childNodes.get(0).getValue());
-		assertEquals("class", Element.class, childNodes.get(1).getClass());
-		assertEquals("class", "bar", ((Element) childNodes.get(1))
+		Assert.assertEquals("count", 5, childNodes.size());
+		Assert.assertEquals("class", Text.class, childNodes.get(0).getClass());
+		Assert.assertEquals("value", "abc", childNodes.get(0).getValue());
+		Assert.assertEquals("class", Element.class, childNodes.get(1).getClass());
+		Assert.assertEquals("class", "bar", ((Element) childNodes.get(1))
 				.getLocalName());
-		assertEquals("value", "", childNodes.get(1).getValue());
-		assertEquals("class", Text.class, childNodes.get(2).getClass());
-		assertEquals("value", "def", childNodes.get(2).getValue());
-		assertEquals("class", Element.class, childNodes.get(3).getClass());
-		assertEquals("class", "bar1", ((Element) childNodes.get(3))
+		Assert.assertEquals("value", "", childNodes.get(1).getValue());
+		Assert.assertEquals("class", Text.class, childNodes.get(2).getClass());
+		Assert.assertEquals("value", "def", childNodes.get(2).getValue());
+		Assert.assertEquals("class", Element.class, childNodes.get(3).getClass());
+		Assert.assertEquals("class", "bar1", ((Element) childNodes.get(3))
 				.getLocalName());
-		assertEquals("value", "ghi", childNodes.get(3).getValue());
-		assertEquals("class", Text.class, childNodes.get(4).getClass());
-		assertEquals("value", "jkl", childNodes.get(4).getValue());
+		Assert.assertEquals("value", "ghi", childNodes.get(3).getValue());
+		Assert.assertEquals("class", Text.class, childNodes.get(4).getClass());
+		Assert.assertEquals("value", "jkl", childNodes.get(4).getValue());
 	}
 
 	/**
@@ -125,13 +118,13 @@ public class CMLUtilTest {
 		String s = "<foo>abc<boo:bar xmlns:boo='http://boo'>xyz</boo:bar>def<bar>ghi</bar>jkl</foo>";
 		Element root = CMLUtil.parseXML(s);
 		List<Node> nodeList = CMLUtil.getQueryNodes(root, "/foo");
-		assertEquals("nodes", 1, nodeList.size());
+		Assert.assertEquals("nodes", 1, nodeList.size());
 		nodeList = CMLUtil.getQueryNodes(root, "//bar");
-		assertEquals("nodes", 1, nodeList.size());
-		assertEquals("nodes", "ghi", nodeList.get(0).getValue());
+		Assert.assertEquals("nodes", 1, nodeList.size());
+		Assert.assertEquals("nodes", "ghi", nodeList.get(0).getValue());
 		nodeList = CMLUtil.getQueryNodes(root, "//boo:bar", XPC);
-		assertEquals("nodes", 1, nodeList.size());
-		assertEquals("nodes", "xyz", nodeList.get(0).getValue());
+		Assert.assertEquals("nodes", 1, nodeList.size());
+		Assert.assertEquals("nodes", "xyz", nodeList.get(0).getValue());
 	}
 
 	/**
@@ -144,15 +137,15 @@ public class CMLUtilTest {
 		String s = "<foo>abc<bar/>def<bar1>ghi</bar1>jkl</foo>";
 		Element root = CMLUtil.parseXML(s);
 		List<Node> nodeList = CMLUtil.getQueryNodes(root, ".//text()");
-		assertEquals("nodes", 4, nodeList.size());
+		Assert.assertEquals("nodes", 4, nodeList.size());
 		nodeList = CMLUtil.getQueryNodes(root, "/*/text()");
-		assertEquals("nodes", 3, nodeList.size());
+		Assert.assertEquals("nodes", 3, nodeList.size());
 		nodeList = CMLUtil.getQueryNodes(root, "/text()");
-		assertEquals("nodes", 0, nodeList.size());
+		Assert.assertEquals("nodes", 0, nodeList.size());
 		nodeList = CMLUtil.getQueryNodes(root, "/foo");
-		assertEquals("nodes", 1, nodeList.size());
+		Assert.assertEquals("nodes", 1, nodeList.size());
 		nodeList = CMLUtil.getQueryNodes(root, "/foo/*");
-		assertEquals("nodes", 2, nodeList.size());
+		Assert.assertEquals("nodes", 2, nodeList.size());
 	}
 
 	/**
@@ -166,14 +159,14 @@ public class CMLUtilTest {
 		List<Node> nodeList = CMLUtil.getChildNodes(root);
 		Node text = nodeList.get(0);
 		Node sibNode = CMLUtil.getFollowingSibling(text);
-		assertEquals("fsib", "bar", ((Element) sibNode).getLocalName());
+		Assert.assertEquals("fsib", "bar", ((Element) sibNode).getLocalName());
 		Node bar1 = nodeList.get(3);
-		assertEquals("fsib", "bar1", ((Element) bar1).getLocalName());
+		Assert.assertEquals("fsib", "bar1", ((Element) bar1).getLocalName());
 		sibNode = CMLUtil.getFollowingSibling(bar1);
-		assertEquals("fsib", "jkl", sibNode.getValue());
+		Assert.assertEquals("fsib", "jkl", sibNode.getValue());
 		text = nodeList.get(4);
 		sibNode = CMLUtil.getFollowingSibling(text);
-		assertNull("fsib", sibNode);
+		Assert.assertNull("fsib", sibNode);
 	}
 
 	/**
@@ -187,14 +180,14 @@ public class CMLUtilTest {
 		List<Node> nodeList = CMLUtil.getChildNodes(root);
 		Node text = nodeList.get(0);
 		Node sibNode = CMLUtil.getPrecedingSibling(text);
-		assertNull("fsib", sibNode);
+		Assert.assertNull("fsib", sibNode);
 		Node bar1 = nodeList.get(3);
-		assertEquals("fsib", "bar1", ((Element) bar1).getLocalName());
+		Assert.assertEquals("fsib", "bar1", ((Element) bar1).getLocalName());
 		sibNode = CMLUtil.getPrecedingSibling(bar1);
-		assertEquals("fsib", "def", sibNode.getValue());
+		Assert.assertEquals("fsib", "def", sibNode.getValue());
 		text = nodeList.get(4);
 		sibNode = CMLUtil.getFollowingSibling(text);
-		assertEquals("fsib", "bar1", ((Element) bar1).getLocalName());
+		Assert.assertEquals("fsib", "bar1", ((Element) bar1).getLocalName());
 	}
 
 	/**
@@ -206,12 +199,12 @@ public class CMLUtilTest {
 		String s = "<foo>abc<bar/>def<bar1>ghi</bar1>jkl</foo>";
 		Element root = CMLUtil.parseXML(s);
 		Text text = CMLUtil.getLastTextDescendant(root);
-		assertNotNull("text", text);
-		assertEquals("text", "jkl", text.getValue());
+		Assert.assertNotNull("text", text);
+		Assert.assertEquals("text", "jkl", text.getValue());
 		s = "<foo><bar1><plugh/></bar1></foo>";
 		root = CMLUtil.parseXML(s);
 		text = CMLUtil.getLastTextDescendant(root);
-		assertNull("text", text);
+		Assert.assertNull("text", text);
 	}
 
 	/**
@@ -223,12 +216,12 @@ public class CMLUtilTest {
 		String s = "<foo>abc<bar/>def<bar1>ghi</bar1>jkl</foo>";
 		Element root = CMLUtil.parseXML(s);
 		Text text = CMLUtil.getFirstTextDescendant(root);
-		assertNotNull("text", text);
-		assertEquals("text", "abc", text.getValue());
+		Assert.assertNotNull("text", text);
+		Assert.assertEquals("text", "abc", text.getValue());
 		s = "<foo><bar1><plugh/></bar1></foo>";
 		root = CMLUtil.parseXML(s);
 		text = CMLUtil.getFirstTextDescendant(root);
-		assertNull("text", text);
+		Assert.assertNull("text", text);
 	}
 
 	/**
@@ -295,39 +288,39 @@ public class CMLUtilTest {
 		fragment1.addAttribute(new Attribute("ref", "xxx"));
 
 		List<String> prefixList = CMLUtil.getPrefixes(fragment, "ref");
-		assertEquals("set", 3, prefixList.size());
-		assertTrue("set", prefixList.contains(S_EMPTY));
-		assertTrue("set", prefixList.contains("g"));
-		assertTrue("set", prefixList.contains("k"));
-		assertFalse("set", prefixList.contains("q"));
+		Assert.assertEquals("set", 3, prefixList.size());
+		Assert.assertTrue("set", prefixList.contains(EC.S_EMPTY));
+		Assert.assertTrue("set", prefixList.contains("g"));
+		Assert.assertTrue("set", prefixList.contains("k"));
+		Assert.assertFalse("set", prefixList.contains("q"));
 
 		prefixList = CMLUtil.getPrefixes(fragment, "dictRef");
-		assertEquals("set", 2, prefixList.size());
-		assertFalse("set", prefixList.contains(S_EMPTY));
-		assertFalse("set", prefixList.contains("g"));
-		assertTrue("set", prefixList.contains("k"));
-		assertTrue("set", prefixList.contains("q"));
+		Assert.assertEquals("set", 2, prefixList.size());
+		Assert.assertFalse("set", prefixList.contains(EC.S_EMPTY));
+		Assert.assertFalse("set", prefixList.contains("g"));
+		Assert.assertTrue("set", prefixList.contains("k"));
+		Assert.assertTrue("set", prefixList.contains("q"));
 	}
 
 	@Test
 	public void checkDoubleParsing() throws ParseException {
-		assertEquals(1.0, CMLUtil.parseFlexibleDouble("1.0"));
-		assertEquals(Double.NaN, CMLUtil.parseFlexibleDouble("NaN"));
-		assertEquals(Double.POSITIVE_INFINITY, CMLUtil
+		Assert.assertEquals(1.0, CMLUtil.parseFlexibleDouble("1.0"));
+		Assert.assertEquals(Double.NaN, CMLUtil.parseFlexibleDouble("NaN"));
+		Assert.assertEquals(Double.POSITIVE_INFINITY, CMLUtil
 				.parseFlexibleDouble("INF"));
-		assertEquals(Double.NEGATIVE_INFINITY, CMLUtil
+		Assert.assertEquals(Double.NEGATIVE_INFINITY, CMLUtil
 				.parseFlexibleDouble("-INF"));
-		assertEquals(-0.001, CMLUtil.parseFlexibleDouble("-0.001"));
-		assertEquals(-0.1, CMLUtil.parseFlexibleDouble("-000.1"));
-		assertEquals(1000.0, CMLUtil.parseFlexibleDouble("1.0E3"));
-		assertEquals(1000.0, CMLUtil.parseFlexibleDouble("1.0e3"));
-		assertEquals(10000.0, CMLUtil.parseFlexibleDouble("10.0E3"));
-		assertEquals(1000.0, CMLUtil.parseFlexibleDouble("1.0E+3"));
-		assertEquals(0.001, CMLUtil.parseFlexibleDouble("1.0E-3"));
-		assertEquals(1000.0, CMLUtil.parseFlexibleDouble("1.0E+03"));
+		Assert.assertEquals(-0.001, CMLUtil.parseFlexibleDouble("-0.001"));
+		Assert.assertEquals(-0.1, CMLUtil.parseFlexibleDouble("-000.1"));
+		Assert.assertEquals(1000.0, CMLUtil.parseFlexibleDouble("1.0E3"));
+		Assert.assertEquals(1000.0, CMLUtil.parseFlexibleDouble("1.0e3"));
+		Assert.assertEquals(10000.0, CMLUtil.parseFlexibleDouble("10.0E3"));
+		Assert.assertEquals(1000.0, CMLUtil.parseFlexibleDouble("1.0E+3"));
+		Assert.assertEquals(0.001, CMLUtil.parseFlexibleDouble("1.0E-3"));
+		Assert.assertEquals(1000.0, CMLUtil.parseFlexibleDouble("1.0E+03"));
 		try {
 			CMLUtil.parseFlexibleDouble("1.0e3foobar");
-			fail("Parsing 1.0e3foobar should have resulted in a ParseException being raised");
+			Assert.fail("Parsing 1.0e3foobar should have resulted in a ParseException being raised");
 		} catch (ParseException e) {
 			// OK
 			// e.printStackTrace();

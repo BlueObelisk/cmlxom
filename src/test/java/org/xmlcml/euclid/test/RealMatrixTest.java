@@ -1,8 +1,5 @@
 package org.xmlcml.euclid.test;
 
-import static org.xmlcml.euclid.EC.EPS;
-import static org.xmlcml.euclid.EC.S_RBRAK;
-import static org.xmlcml.euclid.test.EuclidTestBase.alwaysFail;
 import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
 import java.io.IOException;
@@ -13,6 +10,7 @@ import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.xmlcml.euclid.EC;
 import org.xmlcml.euclid.EuclidRuntimeException;
 import org.xmlcml.euclid.Int2;
 import org.xmlcml.euclid.IntMatrix;
@@ -63,20 +61,20 @@ public class RealMatrixTest extends MatrixTest {
 	 */
 	public static void assertEquals(String msg, RealMatrix test,
 			RealMatrix expected, double epsilon) {
-		Assert.assertNotNull("test should not be null (" + msg + S_RBRAK, test);
-		Assert.assertNotNull("expected should not be null (" + msg + S_RBRAK,
+		Assert.assertNotNull("test should not be null (" + msg + EC.S_RBRAK, test);
+		Assert.assertNotNull("expected should not be null (" + msg + EC.S_RBRAK,
 				expected);
-		Assert.assertNotNull("expected should have columns (" + msg + S_RBRAK,
+		Assert.assertNotNull("expected should have columns (" + msg + EC.S_RBRAK,
 				expected.getCols());
-		Assert.assertNotNull("expected should have rows (" + msg + S_RBRAK,
+		Assert.assertNotNull("expected should have rows (" + msg + EC.S_RBRAK,
 				expected.getRows());
-		Assert.assertNotNull("test should have columns (" + msg + S_RBRAK, test
+		Assert.assertNotNull("test should have columns (" + msg + EC.S_RBRAK, test
 				.getCols());
-		Assert.assertNotNull("test should have rows (" + msg + S_RBRAK, test
+		Assert.assertNotNull("test should have rows (" + msg + EC.S_RBRAK, test
 				.getRows());
-		Assert.assertEquals("rows should be equal (" + msg + S_RBRAK, test
+		Assert.assertEquals("rows should be equal (" + msg + EC.S_RBRAK, test
 				.getRows(), expected.getRows());
-		Assert.assertEquals("columns should be equal (" + msg + S_RBRAK, test
+		Assert.assertEquals("columns should be equal (" + msg + EC.S_RBRAK, test
 				.getCols(), expected.getCols());
 		DoubleTestBase.assertEquals(msg, test.getMatrixAsArray(), expected
 				.getMatrixAsArray(), epsilon);
@@ -95,12 +93,12 @@ public class RealMatrixTest extends MatrixTest {
 	 */
 	public static void assertEquals(String msg, int rows, int cols,
 			double[] test, RealMatrix expected, double epsilon) {
-		Assert.assertNotNull("test should not be null (" + msg + S_RBRAK, test);
-		Assert.assertNotNull("ref should not be null (" + msg + S_RBRAK,
+		Assert.assertNotNull("test should not be null (" + msg + EC.S_RBRAK, test);
+		Assert.assertNotNull("ref should not be null (" + msg + EC.S_RBRAK,
 				expected);
-		Assert.assertEquals("rows should be equal (" + msg + S_RBRAK, rows,
+		Assert.assertEquals("rows should be equal (" + msg + EC.S_RBRAK, rows,
 				expected.getRows());
-		Assert.assertEquals("columns should be equal (" + msg + S_RBRAK, cols,
+		Assert.assertEquals("columns should be equal (" + msg + EC.S_RBRAK, cols,
 				expected.getCols());
 		DoubleTestBase.assertEquals(msg, test, expected.getMatrixAsArray(),
 				epsilon);
@@ -268,7 +266,7 @@ public class RealMatrixTest extends MatrixTest {
 		double[] array = m2.getMatrixAsArray();
 		DoubleTestBase.assertEquals("matrix as array", new double[] { 11.0,
 				12.0, 13.0, 14.0, 21.0, 22.0, 23.0, 24.0, 31.0, 32.0, 33.0,
-				34.0 }, array, EPS);
+				34.0 }, array, EC.EPS);
 	}
 
 	/**
@@ -287,7 +285,7 @@ public class RealMatrixTest extends MatrixTest {
 		RealMatrix m = m2.plus(m2);
 		RealMatrixTest.assertEquals("matrix as array", 3, 4, new double[] {
 				22.0, 24.0, 26.0, 28.0, 42.0, 44.0, 46.0, 48.0, 62.0, 64.0,
-				66.0, 68.0 }, m, EPS);
+				66.0, 68.0 }, m, EC.EPS);
 	}
 
 	/**
@@ -302,7 +300,7 @@ public class RealMatrixTest extends MatrixTest {
 		RealMatrix mm = m2.subtract(m);
 		RealMatrixTest.assertEquals("matrix as array", 3, 4, new double[] {
 				-0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1,
-				-0.1, -0.1, }, mm, EPS);
+				-0.1, -0.1, }, mm, EC.EPS);
 	}
 
 	/**
@@ -313,7 +311,7 @@ public class RealMatrixTest extends MatrixTest {
 		m2.negative();
 		RealMatrixTest.assertEquals("matrix as array", 3, 4, new double[] {
 				-11.0, -12.0, -13.0, -14.0, -21.0, -22.0, -23.0, -24.0, -31.0,
-				-32.0, -33.0, -34.0 }, m2, EPS);
+				-32.0, -33.0, -34.0 }, m2, EC.EPS);
 	}
 
 	/**
@@ -326,7 +324,7 @@ public class RealMatrixTest extends MatrixTest {
 		RealMatrix mm = m.multiply(m2);
 		RealMatrixTest.assertEquals("matrix as array", 2, 4,
 				new double[] { 1460.0, 1520.0, 1580.0, 1640.0, 3350.0, 3500.0,
-						3650.0, 3800.0, }, mm, EPS);
+						3650.0, 3800.0, }, mm, EC.EPS);
 	}
 
 	/**
@@ -337,7 +335,7 @@ public class RealMatrixTest extends MatrixTest {
 		m2.multiplyBy(10.);
 		RealMatrixTest.assertEquals("matrix as array", 3, 4, new double[] {
 				110.0, 120.0, 130.0, 140.0, 210.0, 220.0, 230.0, 240.0, 310.0,
-				320.0, 330.0, 340.0, }, m2, EPS);
+				320.0, 330.0, 340.0, }, m2, EC.EPS);
 	}
 
 	/**
@@ -349,7 +347,7 @@ public class RealMatrixTest extends MatrixTest {
 				new double[] { 10, 20, 30 }, new double[] { 40, 50, 60 }, });
 		try {
 			m2.multiplyEquals(m);
-			alwaysFail("non-conformable matrices");
+			Assert.fail("non-conformable matrices");
 		} catch (EuclidRuntimeException e) {
 			Assert.assertEquals("multiplyEquals", "unequal matrices (4, 2)", e
 					.getMessage());
@@ -357,7 +355,7 @@ public class RealMatrixTest extends MatrixTest {
 		m.multiplyEquals(m2);
 		RealMatrixTest.assertEquals("matrix as array", 2, 4,
 				new double[] { 1460.0, 1520.0, 1580.0, 1640.0, 3350.0, 3500.0,
-						3650.0, 3800.0, }, m, EPS);
+						3650.0, 3800.0, }, m, EC.EPS);
 	}
 
 	/**
@@ -368,7 +366,7 @@ public class RealMatrixTest extends MatrixTest {
 		RealArray ra = new RealArray(new double[] { 1., 2., 3., 4. });
 		RealArray raa = m2.multiply(ra);
 		RealArrayTest.assertEquals("array",
-				new double[] { 130.0, 230.0, 330.0 }, raa, EPS);
+				new double[] { 130.0, 230.0, 330.0 }, raa, EC.EPS);
 	}
 
 	/**
@@ -389,7 +387,7 @@ public class RealMatrixTest extends MatrixTest {
 	 */
 	@Test
 	public void testElementAtIntInt() {
-		Assert.assertEquals("elementAt ", 32.0, m2.elementAt(2, 1), EPS);
+		Assert.assertEquals("elementAt ", 32.0, m2.elementAt(2, 1), EC.EPS);
 		try {
 			m2.elementAt(5, 5);
 		} catch (EuclidRuntimeException e) {
@@ -404,7 +402,7 @@ public class RealMatrixTest extends MatrixTest {
 	@Test
 	public void testElementAtInt2() {
 		Assert.assertEquals("elementAt ", 32.0, m2.elementAt(new Int2(2, 1)),
-				EPS);
+				EC.EPS);
 		try {
 			m2.elementAt(new Int2(5, 5));
 		} catch (EuclidRuntimeException e) {
@@ -422,7 +420,7 @@ public class RealMatrixTest extends MatrixTest {
 		m2.setElementAt(1, 2, 15.);
 		RealMatrixTest.assertEquals("matrix as array", 3, 4, new double[] {
 				11.0, 12.0, 13.0, 14.0, 21.0, 22.0, 15.0, 24.0, 31.0, 32.0,
-				33.0, 34.0, }, m2, EPS);
+				33.0, 34.0, }, m2, EC.EPS);
 	}
 
 	/**
@@ -431,7 +429,7 @@ public class RealMatrixTest extends MatrixTest {
 	@Test
 	public void testLargestElement() {
 		double d = m2.largestElement();
-		Assert.assertEquals("largestElement", 34., d, EPS);
+		Assert.assertEquals("largestElement", 34., d, EC.EPS);
 	}
 
 	/**
@@ -451,7 +449,7 @@ public class RealMatrixTest extends MatrixTest {
 	@Test
 	public void testLargestElementInColumn() {
 		double d = m2.largestElementInColumn(1);
-		Assert.assertEquals("largestElement", 32., d, EPS);
+		Assert.assertEquals("largestElement", 32., d, EC.EPS);
 	}
 
 	/**
@@ -470,7 +468,7 @@ public class RealMatrixTest extends MatrixTest {
 	@Test
 	public void testLargestElementInRow() {
 		double d = m2.largestElementInRow(1);
-		Assert.assertEquals("largestElement", 24., d, EPS);
+		Assert.assertEquals("largestElement", 24., d, EC.EPS);
 	}
 
 	/**
@@ -489,7 +487,7 @@ public class RealMatrixTest extends MatrixTest {
 	@Test
 	public void testSmallestElement() {
 		double d = m2.smallestElement();
-		Assert.assertEquals("smallestElement", 11., d, EPS);
+		Assert.assertEquals("smallestElement", 11., d, EC.EPS);
 	}
 
 	/**
@@ -509,7 +507,7 @@ public class RealMatrixTest extends MatrixTest {
 	@Test
 	public void testSmallestElementInColumn() {
 		double d = m2.smallestElementInColumn(1);
-		Assert.assertEquals("smallestElement", 12., d, EPS);
+		Assert.assertEquals("smallestElement", 12., d, EC.EPS);
 	}
 
 	/**
@@ -528,7 +526,7 @@ public class RealMatrixTest extends MatrixTest {
 	@Test
 	public void testSmallestElementInRow() {
 		double d = m2.smallestElementInRow(1);
-		Assert.assertEquals("smallestElement", 21., d, EPS);
+		Assert.assertEquals("smallestElement", 21., d, EC.EPS);
 	}
 
 	/**
@@ -561,7 +559,7 @@ public class RealMatrixTest extends MatrixTest {
 	@Test
 	public void testEuclideanRowLength() {
 		double d = m2.euclideanRowLength(1);
-		Assert.assertEquals("euclidean row length", 45.05552130427524, d, EPS);
+		Assert.assertEquals("euclidean row length", 45.05552130427524, d, EC.EPS);
 	}
 
 	/**
@@ -572,7 +570,7 @@ public class RealMatrixTest extends MatrixTest {
 		RealArray ra = m2.euclideanRowLengths();
 		RealArrayTest.assertEquals("euclidean row lengths", new double[] {
 				25.099800796022265, 45.05552130427524, 65.0384501660364 }, ra,
-				EPS);
+				EC.EPS);
 	}
 
 	/**
@@ -581,7 +579,7 @@ public class RealMatrixTest extends MatrixTest {
 	@Test
 	public void testEuclideanColumnLength() {
 		double d = m2.euclideanColumnLength(1);
-		Assert.assertEquals("euclidean row length", 40.64480286580315, d, EPS);
+		Assert.assertEquals("euclidean row length", 40.64480286580315, d, EC.EPS);
 	}
 
 	/**
@@ -592,7 +590,7 @@ public class RealMatrixTest extends MatrixTest {
 		RealArray ra = m2.euclideanColumnLengths();
 		RealArrayTest.assertEquals("euclidean column lengths", new double[] {
 				39.02563260217571, 40.64480286580315, 42.2729227756965,
-				43.9089968002003 }, ra, EPS);
+				43.9089968002003 }, ra, EC.EPS);
 	}
 
 	/**
@@ -602,7 +600,7 @@ public class RealMatrixTest extends MatrixTest {
 	public void testExtractColumnData() {
 		RealArray ra = m2.extractColumnData(1);
 		RealArrayTest.assertEquals("euclidean column lengths", new double[] {
-				12., 22., 32. }, ra, EPS);
+				12., 22., 32. }, ra, EC.EPS);
 	}
 
 	/**
@@ -612,7 +610,7 @@ public class RealMatrixTest extends MatrixTest {
 	public void testExtractRowData() {
 		RealArray ra = m2.extractRowData(1);
 		RealArrayTest.assertEquals("euclidean column lengths", new double[] {
-				21., 22., 23., 24. }, ra, EPS);
+				21., 22., 23., 24. }, ra, EC.EPS);
 	}
 
 	/**
@@ -622,7 +620,7 @@ public class RealMatrixTest extends MatrixTest {
 	public void testClearMatrix() {
 		m2.clearMatrix();
 		RealMatrixTest.assertEquals("matrix as array", 3, 4, new double[] { 0.,
-				0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., }, m2, EPS);
+				0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., }, m2, EC.EPS);
 	}
 
 	/**
@@ -633,7 +631,7 @@ public class RealMatrixTest extends MatrixTest {
 		m2.setAllElements(23.);
 		RealMatrixTest.assertEquals("matrix as array", 3, 4, new double[] {
 				23., 23., 23., 23., 23., 23., 23., 23., 23., 23., 23., 23., },
-				m2, EPS);
+				m2, EC.EPS);
 	}
 
 	/**
@@ -647,7 +645,7 @@ public class RealMatrixTest extends MatrixTest {
 				0.5577733510227171, 0.46609159969939906, 0.4882864377803228,
 				0.5104812758612466, 0.5326761139421703, 0.47664112414825727,
 				0.49201664428207204, 0.5073921644158867, 0.5227676845497016, },
-				m2, EPS);
+				m2, EC.EPS);
 	}
 
 	/**
@@ -661,7 +659,7 @@ public class RealMatrixTest extends MatrixTest {
 				0.31884126307199384, 0.5381078691041957, 0.5412746144356352,
 				0.5440835052272074, 0.5465850224091323, 0.7943497115347651,
 				0.7873085300881967, 0.7806415509781671, 0.7743287817462708, },
-				m2, EPS);
+				m2, EC.EPS);
 	}
 
 	/**
@@ -672,7 +670,7 @@ public class RealMatrixTest extends MatrixTest {
 		RealMatrix m = m2.getTranspose();
 		RealMatrixTest.assertEquals("transpose", 4, 3, new double[] { 11.0,
 				21.0, 31.0, 12.0, 22.0, 32.0, 13.0, 23.0, 33.0, 14.0, 24.0,
-				34.0, }, m, EPS);
+				34.0, }, m, EC.EPS);
 	}
 
 	/**
@@ -693,7 +691,7 @@ public class RealMatrixTest extends MatrixTest {
 		m2.deleteColumn(1);
 		RealMatrixTest.assertEquals("matrix as array", 3, 3, new double[] {
 				11.0, 13.0, 14.0, 21.0, 23.0, 24.0, 31.0, 33.0, 34.0, }, m2,
-				EPS);
+				EC.EPS);
 	}
 
 	/**
@@ -703,7 +701,7 @@ public class RealMatrixTest extends MatrixTest {
 	public void testDeleteColumns() {
 		m2.deleteColumns(1, 2);
 		RealMatrixTest.assertEquals("matrix as array", 3, 2, new double[] {
-				11.0, 14.0, 21.0, 24.0, 31.0, 34.0, }, m2, EPS);
+				11.0, 14.0, 21.0, 24.0, 31.0, 34.0, }, m2, EC.EPS);
 	}
 
 	/**
@@ -713,7 +711,7 @@ public class RealMatrixTest extends MatrixTest {
 	public void testDeleteRow() {
 		m2.deleteRow(1);
 		RealMatrixTest.assertEquals("matrix as array", 2, 4, new double[] {
-				11.0, 12.0, 13.0, 14.0, 31.0, 32.0, 33.0, 34.0, }, m2, EPS);
+				11.0, 12.0, 13.0, 14.0, 31.0, 32.0, 33.0, 34.0, }, m2, EC.EPS);
 	}
 
 	/**
@@ -724,7 +722,7 @@ public class RealMatrixTest extends MatrixTest {
 		// FIXME does not work for high = nrows
 		m2.deleteRows(1, 1);
 		RealMatrixTest.assertEquals("matrix as array", 2, 4, new double[] {
-				11.0, 12., 13., 14.0, 31.0, 32., 33., 34.0, }, m2, EPS);
+				11.0, 12., 13., 14.0, 31.0, 32., 33., 34.0, }, m2, EC.EPS);
 	}
 
 	/**
@@ -736,7 +734,7 @@ public class RealMatrixTest extends MatrixTest {
 		m2.replaceColumnData(1, new RealArray(new double[] { 19., 29., 39. }));
 		RealMatrixTest.assertEquals("matrix as array", 3, 4, new double[] {
 				11.0, 19., 13., 14.0, 21.0, 29., 23., 24.0, 31.0, 39., 33.,
-				34.0, }, m2, EPS);
+				34.0, }, m2, EC.EPS);
 	}
 
 	/**
@@ -748,7 +746,7 @@ public class RealMatrixTest extends MatrixTest {
 		m2.replaceColumnData(1, new double[] { 19., 29., 39. });
 		RealMatrixTest.assertEquals("matrix as array", 3, 4, new double[] {
 				11.0, 19., 13., 14.0, 21.0, 29., 23., 24.0, 31.0, 39., 33.,
-				34.0, }, m2, EPS);
+				34.0, }, m2, EC.EPS);
 	}
 
 	/**
@@ -763,7 +761,7 @@ public class RealMatrixTest extends MatrixTest {
 		m2.replaceColumnData(1, m);
 		RealMatrix expect = new RealMatrix(3, 4, new double[] { 11.0, 72.0,
 				73.0, 14.0, 21.0, 82.0, 83.0, 24.0, 31.0, 92.0, 93.0, 34.0, });
-		RealMatrixTest.assertEquals("matrix as array", m2, expect, EPS);
+		RealMatrixTest.assertEquals("matrix as array", m2, expect, EC.EPS);
 	}
 
 	/**
@@ -776,7 +774,7 @@ public class RealMatrixTest extends MatrixTest {
 		RealMatrix expect = new RealMatrix(3, 7, new double[] { 11.0, 0.0, 0.0,
 				0.0, 12.0, 13.0, 14.0, 21.0, 0.0, 0.0, 0.0, 22.0, 23.0, 24.0,
 				31.0, 0.0, 0.0, 0.0, 32.0, 33.0, 34.0, });
-		RealMatrixTest.assertEquals("matrix as array", m2, expect, EPS);
+		RealMatrixTest.assertEquals("matrix as array", m2, expect, EC.EPS);
 	}
 
 	/**
@@ -790,7 +788,7 @@ public class RealMatrixTest extends MatrixTest {
 		RealMatrix expect = new RealMatrix(3, 5, new double[] { 11.0, 12.0,
 				91.0, 13.0, 14.0, 21.0, 22.0, 92.0, 23.0, 24.0, 31.0, 32.0,
 				93.0, 33.0, 34.0, });
-		RealMatrixTest.assertEquals("matrix as array", m2, expect, EPS);
+		RealMatrixTest.assertEquals("matrix as array", m2, expect, EC.EPS);
 	}
 
 	/**
@@ -806,7 +804,7 @@ public class RealMatrixTest extends MatrixTest {
 		RealMatrix expect = new RealMatrix(3, 6, new double[] { 11.0, 12.0,
 				72.0, 73.0, 13.0, 14.0, 21.0, 22.0, 82.0, 83.0, 23.0, 24.0,
 				31.0, 32.0, 92.0, 93.0, 33.0, 34.0, });
-		RealMatrixTest.assertEquals("matrix as array", m2, expect, EPS);
+		RealMatrixTest.assertEquals("matrix as array", m2, expect, EC.EPS);
 	}
 
 	/**
@@ -817,7 +815,7 @@ public class RealMatrixTest extends MatrixTest {
 		m2.insertRows(1, 2);
 		RealMatrixTest.assertEquals("matrix as array", 5, 4, new double[] {
 				11.0, 12.0, 13.0, 14.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-				21.0, 22.0, 23.0, 24.0, 31.0, 32.0, 33.0, 34.0, }, m2, EPS);
+				21.0, 22.0, 23.0, 24.0, 31.0, 32.0, 33.0, 34.0, }, m2, EC.EPS);
 	}
 
 	/**
@@ -830,7 +828,7 @@ public class RealMatrixTest extends MatrixTest {
 				new RealArray(new double[] { 71.0, 72., 73., 74. }));
 		RealMatrixTest.assertEquals("matrix as array", 3, 4, new double[] {
 				11.0, 12.0, 13.0, 14.0, 71.0, 72.0, 73.0, 74.0, 31.0, 32.0,
-				33.0, 34.0, }, m2, EPS);
+				33.0, 34.0, }, m2, EC.EPS);
 	}
 
 	/**
@@ -842,7 +840,7 @@ public class RealMatrixTest extends MatrixTest {
 		m2.replaceRowData(1, new double[] { 71.0, 72., 73., 74. });
 		RealMatrixTest.assertEquals("matrix as array", 3, 4, new double[] {
 				11.0, 12.0, 13.0, 14.0, 71.0, 72.0, 73.0, 74.0, 31.0, 32.0,
-				33.0, 34.0, }, m2, EPS);
+				33.0, 34.0, }, m2, EC.EPS);
 	}
 
 	/**
@@ -859,7 +857,7 @@ public class RealMatrixTest extends MatrixTest {
 		RealMatrix expect = new RealMatrix(3, 4, new double[] { 11.0, 12.0,
 				13.0, 14.0, 71.0, 72.0, 73.0, 74.0, 81.0, 82.0, 83.0, 84.0, });
 		// rows 2 and 3 are not filled
-		RealMatrixTest.assertEquals("matrix as array", m2, expect, EPS);
+		RealMatrixTest.assertEquals("matrix as array", m2, expect, EC.EPS);
 	}
 
 	/**
@@ -874,7 +872,7 @@ public class RealMatrixTest extends MatrixTest {
 		RealMatrix expect = new RealMatrix(5, 4, new double[] { 11.0, 12.0,
 				13.0, 14.0, 21.0, 22.0, 23.0, 24.0, 71.0, 72.0, 73.0, 74.0,
 				81.0, 82.0, 83.0, 84.0, 31.0, 32.0, 33.0, 34.0, });
-		RealMatrixTest.assertEquals("matrix as array", m2, expect, EPS);
+		RealMatrixTest.assertEquals("matrix as array", m2, expect, EC.EPS);
 	}
 
 	/**
@@ -887,7 +885,7 @@ public class RealMatrixTest extends MatrixTest {
 				new RealArray(new double[] { 71.0, 72., 73., 74., }));
 		RealMatrixTest.assertEquals("matrix as array", 4, 4, new double[] {
 				11.0, 12.0, 13.0, 14.0, 21.0, 22.0, 23.0, 24.0, 71.0, 72.0,
-				73.0, 74.0, 31.0, 32.0, 33.0, 34.0, }, m2, EPS);
+				73.0, 74.0, 31.0, 32.0, 33.0, 34.0, }, m2, EC.EPS);
 	}
 
 	/**
@@ -899,7 +897,7 @@ public class RealMatrixTest extends MatrixTest {
 		m2.appendColumnData(new RealArray(new double[] { 17., 27., 37., }));
 		RealMatrixTest.assertEquals("matrix as array", 3, 5, new double[] {
 				11.0, 12.0, 13.0, 14.0, 17.0, 21.0, 22.0, 23.0, 24.0, 27.0,
-				31.0, 32.0, 33.0, 34.0, 37.0 }, m2, EPS);
+				31.0, 32.0, 33.0, 34.0, 37.0 }, m2, EC.EPS);
 	}
 
 	/**
@@ -915,7 +913,7 @@ public class RealMatrixTest extends MatrixTest {
 		RealMatrix expect = new RealMatrix(3, 6, new double[] { 11.0, 12.0,
 				13.0, 14.0, 17.0, 18.0, 21.0, 22.0, 23.0, 24.0, 27.0, 28.0,
 				31.0, 32.0, 33.0, 34.0, 37.0, 38.0 });
-		RealMatrixTest.assertEquals("matrix as array", m2, expect, EPS);
+		RealMatrixTest.assertEquals("matrix as array", m2, expect, EC.EPS);
 	}
 
 	/**
@@ -928,7 +926,7 @@ public class RealMatrixTest extends MatrixTest {
 		// fails to insert data
 		RealMatrixTest.assertEquals("matrix as array", 4, 4, new double[] {
 				11.0, 12.0, 13.0, 14.0, 21.0, 22.0, 23.0, 24.0, 31.0, 32.0,
-				33.0, 34.0, 41.0, 42.0, 43.0, 44.0 }, m2, EPS);
+				33.0, 34.0, 41.0, 42.0, 43.0, 44.0 }, m2, EC.EPS);
 	}
 
 	/**
@@ -944,7 +942,7 @@ public class RealMatrixTest extends MatrixTest {
 		RealMatrix expect = new RealMatrix(5, 4, new double[] { 11.0, 12.0,
 				13.0, 14.0, 21.0, 22.0, 23.0, 24.0, 31.0, 32.0, 33.0, 34.0,
 				41.0, 42.0, 43.0, 44.0, 51.0, 52.0, 53.0, 54.0 });
-		RealMatrixTest.assertEquals("matrix as array", m2, expect, EPS);
+		RealMatrixTest.assertEquals("matrix as array", m2, expect, EC.EPS);
 	}
 
 	/**
@@ -959,7 +957,7 @@ public class RealMatrixTest extends MatrixTest {
 		// fails to insert data
 		RealMatrixTest.assertEquals("matrix as array", 3, 4, new double[] {
 				71.0, 72.0, 13.0, 14.0, 81.0, 82.0, 23.0, 24.0, 31.0, 32.0,
-				33.0, 34.0, }, m2, EPS);
+				33.0, 34.0, }, m2, EC.EPS);
 	}
 
 	/**
@@ -972,7 +970,7 @@ public class RealMatrixTest extends MatrixTest {
 		// fails to insert data
 		RealMatrixTest.assertEquals("matrix as array", 3, 4, new double[] {
 				14.0, 12.0, 13.0, 11.0, 24.0, 22.0, 23.0, 21.0, 34.0, 32.0,
-				33.0, 31.0 }, mm, EPS);
+				33.0, 31.0 }, mm, EC.EPS);
 	}
 
 	/**
@@ -984,7 +982,7 @@ public class RealMatrixTest extends MatrixTest {
 		// fails to insert data
 		RealMatrixTest.assertEquals("matrix as array", 3, 4, new double[] {
 				21.0, 22.0, 23.0, 24.0, 31.0, 32.0, 33.0, 34.0, 11.0, 12.0,
-				13.0, 14.0, }, mm, EPS);
+				13.0, 14.0, }, mm, EC.EPS);
 	}
 
 	/**
@@ -995,7 +993,7 @@ public class RealMatrixTest extends MatrixTest {
 	public void testExtractSubMatrixData() {
 		RealMatrix mm = m2.extractSubMatrixData(1, 2, 2, 3);
 		RealMatrixTest.assertEquals("sub matrix", 2, 2, new double[] { 23.0,
-				24.0, 33.0, 34.0 }, mm, EPS);
+				24.0, 33.0, 34.0 }, mm, EC.EPS);
 	}
 
 	/**
@@ -1005,9 +1003,9 @@ public class RealMatrixTest extends MatrixTest {
 	public void testExtractColumns() {
 		Real2Array mm = m2.extractColumns(1, 3);
 		RealArrayTest.assertEquals("extract columns", new double[] { 12.0,
-				22.0, 32.0 }, mm.getXArray(), EPS);
+				22.0, 32.0 }, mm.getXArray(), EC.EPS);
 		RealArrayTest.assertEquals("extract columns", new double[] { 14.0,
-				24.0, 34.0 }, mm.getYArray(), EPS);
+				24.0, 34.0 }, mm.getYArray(), EC.EPS);
 	}
 
 	/**
@@ -1017,9 +1015,9 @@ public class RealMatrixTest extends MatrixTest {
 	public void testExtractRows() {
 		Real2Array mm = m2.extractRows(2, 0);
 		RealArrayTest.assertEquals("extract rows", new double[] { 31.0, 32.0,
-				33.0, 34.0 }, mm.getXArray(), EPS);
+				33.0, 34.0 }, mm.getXArray(), EC.EPS);
 		RealArrayTest.assertEquals("extract rows", new double[] { 11.0, 12.0,
-				13.0, 14.0 }, mm.getYArray(), EPS);
+				13.0, 14.0 }, mm.getYArray(), EC.EPS);
 	}
 
 	/**

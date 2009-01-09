@@ -60,7 +60,7 @@ public final class TstBase {
 
 	/**
 	 * compares two XML nodes and checks float near-equivalence (can also be
-	 * used for documents without floats) uses assertEqualsCanonically and only
+	 * used for documents without floats) usesTstBase.assertEqualsCanonically and only
 	 * uses PMR code if fails
 	 * 
 	 * @param message
@@ -76,7 +76,7 @@ public final class TstBase {
 
 	/**
 	 * compares two XML nodes and checks float near-equivalence (can also be
-	 * used for documents without floats) uses assertEqualsCanonically and only
+	 * used for documents without floats) usesTstBase.assertEqualsCanonically and only
 	 * uses PMR code if fails
 	 * 
 	 * @param message
