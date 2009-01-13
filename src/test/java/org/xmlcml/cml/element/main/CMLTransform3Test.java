@@ -1,7 +1,7 @@
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.euclid.EC.EPS;
-import static org.xmlcml.euclid.EC.S_RBRAK;
+import static org.xmlcml.euclid.EuclidConstants.EPS;
+import static org.xmlcml.euclid.EuclidConstants.S_RBRAK;
 import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
 import java.io.IOException;
