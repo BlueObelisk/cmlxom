@@ -363,7 +363,8 @@ public class CMLFormula extends AbstractFormula {
 	public void finishMakingElement(Element parent) {
 		super.finishMakingElement(parent);
 		try {
-			normalize();
+			// DO NOT NORMALIZE
+//			normalize();
 		} catch (RuntimeException e) {
 			LOG.trace("skipped normalize() in finishMakingElement: "+e.getMessage());
 		}
