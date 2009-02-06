@@ -1185,7 +1185,6 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
      * 
      * @throws IllegalAddException if this node cannot have children 
      *     of this type
-     * @throws MultipleParentException if child already has a parent
      * @throws NullPointerException if <code>child</code> is null
      * 
      */
