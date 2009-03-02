@@ -44,12 +44,15 @@ public class CMLBond extends AbstractBond {
 
 	/** single bond */
 	public final static String SINGLE = "1";
+	public final static String SINGLE_NORM = SINGLE;
 
 	/** double bond */
 	public final static String DOUBLE = "2";
+	public final static String DOUBLE_NORM = DOUBLE;
 
 	/** triple bond */
 	public final static String TRIPLE = "3";
+	public final static String TRIPLE_NORM = TRIPLE;
 
 	/** single bond */
 	public final static String SINGLE_S = "S";

@@ -322,16 +322,24 @@ public class CMLFormula extends AbstractFormula {
 		copyAttributesFrom(old);
 		// concise will have triggered the creation of atomArray, so detach if
 		// necessary
-		if (old.getConcise() != null) {
-			CMLAtomArray newAtomArray = this.getAtomArrayElements().get(0);
-			CMLAtomArray oldAtomArray = old.getAtomArrayElements().get(0);
-			if (oldAtomArray != null) {
-				this.removeChild(newAtomArray);
-			}
+		CMLAtomArray newAtomArray = this.getAtomArrayElements().get(0);
+		if (newAtomArray != null) {
+			this.removeChild(newAtomArray);
 		}
 		copyChildrenFrom(old);
 		copyProperties(old);
+		
 	}
+
+	/**
+	 * 
+	 */
+//	public void detachAllAtomArraysAsTheyAreAMenace() {
+//		CMLElements<CMLAtomArray> atomArrays = this.getAtomArrayElements();
+//		for (CMLAtomArray atomArray : atomArrays) {
+//			atomArray.detach();
+//		}
+//	}
 
 	/**
 	 * copy node .
@@ -362,12 +370,12 @@ public class CMLFormula extends AbstractFormula {
 	 */
 	public void finishMakingElement(Element parent) {
 		super.finishMakingElement(parent);
-		try {
-			// DO NOT NORMALIZE
-//			normalize();
-		} catch (RuntimeException e) {
-			LOG.trace("skipped normalize() in finishMakingElement: "+e.getMessage());
-		}
+//		try {
+//			// DO NOT NORMALIZE
+////			normalize();
+//		} catch (RuntimeException e) {
+			LOG.info("skipped normalize() in finishMakingElement");
+//		}
 	}
 
 	// FIXME move to tools	
@@ -492,9 +500,10 @@ public class CMLFormula extends AbstractFormula {
     	}
 		// if no atomArray, create
 		if (atomArray == null) {
-			if (conciseS != null) {
-				atomArray = createAndAddAtomArrayAndFormalChargeFromConcise(conciseS);
-			}
+			// causes problems with Jmol
+//			if (conciseS != null) {
+//				atomArray = createAndAddAtomArrayAndFormalChargeFromConcise(conciseS);
+//			}
 		} else {
 			checkAtomArrayFormat(atomArray);
 		}
