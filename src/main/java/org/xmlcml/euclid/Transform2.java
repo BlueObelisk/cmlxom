@@ -538,7 +538,8 @@ public class Transform2 extends RealSquareMatrix {
 	 * @param targetPoint point to translate movingAtom to
 	 * @return
 	 */
-	public static Transform2 getTransformToRotateAndStretchLine(Real2 pivotPoint, Real2 movingPoint, Real2 targetPoint) {
+	public static Transform2 getTransformToRotateAndStretchLine(
+			Real2 pivotPoint, Real2 movingPoint, Real2 targetPoint) {
 		Vector2 pivotVector = new Vector2(movingPoint.subtract(pivotPoint));
 		Vector2 targetVector = new Vector2(targetPoint.subtract(pivotPoint));
 		Angle angle = pivotVector.getAngleMadeWith(targetVector);
