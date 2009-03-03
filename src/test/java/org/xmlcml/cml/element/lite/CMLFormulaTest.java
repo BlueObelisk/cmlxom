@@ -116,7 +116,7 @@ public class CMLFormulaTest {
 		TstBase.assertEqualsCanonically("formula setup", expectElem, xomForm3a);
 		Assert.assertEquals("xom3a child", 1, xomForm3a.getChildCount());
 		CMLFormula xomForm3aCopy = new CMLFormula(xomForm3a);
-		xomForm3aCopy.debug("FORM");
+//		xomForm3aCopy.debug("FORM");
 		Assert.assertEquals("xom3a children", 1, xomForm3aCopy.getAtomArrayElements()
 				.size());
 		// should be
