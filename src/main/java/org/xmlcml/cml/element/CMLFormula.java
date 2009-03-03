@@ -333,13 +333,15 @@ public class CMLFormula extends AbstractFormula {
 
 	/**
 	 * 
+	 * mainly used for software such as Jmol which dislikes
+	 * child atomArrays
 	 */
-//	public void detachAllAtomArraysAsTheyAreAMenace() {
-//		CMLElements<CMLAtomArray> atomArrays = this.getAtomArrayElements();
-//		for (CMLAtomArray atomArray : atomArrays) {
-//			atomArray.detach();
-//		}
-//	}
+	public void detachAllAtomArraysAsTheyAreAMenace() {
+		CMLElements<CMLAtomArray> atomArrays = this.getAtomArrayElements();
+		for (CMLAtomArray atomArray : atomArrays) {
+			atomArray.detach();
+		}
+	}
 
 	/**
 	 * copy node .
