@@ -3,6 +3,7 @@ package org.xmlcml.cml.element;
 
 import nu.xom.Element;
 import nu.xom.Node;
+import nu.xom.ParentNode;
 
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.euclid.Util;
@@ -204,4 +205,48 @@ public class CMLJoin extends org.xmlcml.cml.element.AbstractJoin {
     	}
     	return s;
     }
+    
+    
+    /**
+     * gets the element that is previous or parent to the join, depending
+     * on moleculeRefs2
+     * 
+     * @return
+     */
+	public Element getParentOrPrevious() {
+		
+		if (getMoleculeRefs2Attribute().getValue().equals(PARENT_S + " " + CHILD_S)) {
+			return (Element) getParent();
+		}
+		else if (getMoleculeRefs2Attribute().getValue().equals(PREVIOUS_S + " " + NEXT_S)) {
+			ParentNode parent = getParent();
+			int position = parent.indexOf(this);
+			if (position == 0) return null;
+			return (Element) parent.getChild(position - 1);
+		}
+		return null;
+	}
+	
+	
+	/**
+	 * gets the element that is next or child to the join, depending
+	 * on moleculeRefs2
+	 * 
+	 * @return
+	 */
+	public CMLFragment getChildOrNext() {
+
+		if (getMoleculeRefs2Attribute().getValue().equals(PARENT_S + " " + CHILD_S)) {
+			if (getChildCount() > 0) return (CMLFragment) getChild(0);
+		}
+		else if (getMoleculeRefs2Attribute().getValue().equals(PREVIOUS_S + " " + NEXT_S)) {
+			ParentNode parent = getParent();
+			int position = getParent().indexOf(this);
+			if (position == parent.getChildCount() - 1) return null;
+			return (CMLFragment) parent.getChild(position + 1);
+		}
+		
+		return null;
+	}
+    
 }
