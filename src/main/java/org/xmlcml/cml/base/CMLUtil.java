@@ -296,6 +296,25 @@ public abstract class CMLUtil implements CMLConstants {
 	}
 
 	/**
+	 * parses CML string into element. convenience method to avoid trapping
+	 * exceptions when string is known to be valid
+	 * 
+	 * @param cmlString
+	 * @return root element
+	 * @throws RuntimeException
+	 */
+	public static CMLElement parseCML(String cmlString) throws RuntimeException {
+		CMLElement root = null;
+		try {
+			Document doc = new CMLBuilder().build(new StringReader(cmlString));
+			root = (CMLElement) doc.getRootElement();
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+		return root;
+	}
+
+	/**
 	 * convenience routine to get query nodes (iterating thorugh get(i) is
 	 * fragile if nodes are removed)
 	 * 

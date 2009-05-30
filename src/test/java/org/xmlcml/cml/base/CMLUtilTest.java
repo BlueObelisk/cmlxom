@@ -17,6 +17,7 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
+import org.xmlcml.cml.element.CMLCml;
 import org.xmlcml.euclid.EC;
 
 /**
@@ -105,6 +106,27 @@ public class CMLUtilTest {
 		root1.appendChild(new Text("jkl"));
 		TstBase.assertEqualsCanonically("parseXML", root1, root);
 
+		// parseXML does not generate CML
+		s = "<cml:cml xmlns:cml='http://www.xml-cml.org/schema'><bar/></cml:cml>";
+		root = CMLUtil.parseXML(s);
+		Assert.assertEquals("class", Element.class, root.getClass());
+	}
+
+	/**
+	 * Test method for {@link org.xmlcml.cml.base.CMLUtil#parseCML(String)}.
+	 */
+	@Test
+	public final void testParseCMLString() {
+		String s = "<cml:cml xmlns:cml='http://www.xml-cml.org/schema'><bar/></cml:cml>";
+		CMLElement root = CMLUtil.parseCML(s);
+		Assert.assertEquals("class", CMLCml.class, root.getClass());
+		// if applied to non-CML, throws exception
+		s = "<foo>abc<bar/>def<bar1>ghi</bar1>jkl</foo>";
+		try {
+			root = CMLUtil.parseCML(s);
+			Assert.fail("should throw ClassCastException");
+		} catch (RuntimeException cce) {
+		}
 	}
 
 	/**
