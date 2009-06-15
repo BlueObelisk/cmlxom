@@ -191,14 +191,25 @@ public class CMLScalar extends AbstractScalar implements HasUnits, HasScalar {
 
 	/**
 	 * sets value to String.. updates dataType.
-	 * 
-	 * @param scalar
-	 *            no action if null
+	 * TRIMS value
+	 * @param scalar no action if null
 	 */
 	public void setValue(String scalar) {
 		if (scalar != null) {
 			setXMLContent(scalar);
 			super.setDataType(XSD_STRING);
+		}
+	}
+
+	/**
+	 * sets value to String.. updates dataType.
+	 * does NOT trim value
+	 * @param scalar no action if null
+	 */
+	public void setValueNoTrim(String scalar) {
+		if (scalar != null) {
+			this.removeChildren();
+			this.appendChild(scalar);
 		}
 	}
 
