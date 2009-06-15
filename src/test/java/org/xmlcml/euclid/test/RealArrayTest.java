@@ -1,6 +1,6 @@
 package org.xmlcml.euclid.test;
 
-import static org.xmlcml.euclid.EC.EPS;
+import static org.xmlcml.euclid.EuclidConstants.EPS;
 import static org.xmlcml.euclid.test.EuclidTestBase.alwaysFail;
 
 import org.junit.Assert;
@@ -14,6 +14,7 @@ import org.xmlcml.euclid.RealArray;
 import org.xmlcml.euclid.RealRange;
 import org.xmlcml.euclid.ArrayBase.Trim;
 import org.xmlcml.euclid.RealArray.Filter;
+import org.xmlcml.euclid.RealArray.Monotonicity;
 
 /**
  * test RealArray.
@@ -269,6 +270,45 @@ public class RealArrayTest {
 		Assert.assertEquals("range min+1", 9.2, realArray.getArray()[1], EPS);
 		Assert.assertEquals("range max", 11.0, realArray.getArray()[10], EPS);
 		Assert.assertEquals("range mid", 10.0, realArray.getArray()[5], EPS);
+	}
+	
+	@Test
+	public void testGetMonotonicity() {
+		RealArray realArray = new RealArray(new double[]{
+				1., 2., 3., 4., 4., 5.
+		});
+		Monotonicity m = realArray.getMonotonicity();
+		Assert.assertEquals("monotonicity", Monotonicity.INCREASING, m);
+		
+		realArray = new RealArray(new double[]{
+				1., 2.,
+		});
+		m = realArray.getMonotonicity();
+		Assert.assertEquals("monotonicity", Monotonicity.INCREASING, m);
+		
+		realArray = new RealArray(new double[]{
+				1., 1.,
+		});
+		m = realArray.getMonotonicity();
+		Assert.assertNull("monotonicity", m);
+		
+		realArray = new RealArray(new double[]{
+				1.,
+		});
+		m = realArray.getMonotonicity();
+		Assert.assertNull("monotonicity", m);
+		
+		realArray = new RealArray(new double[]{
+				5., 4., 3., 2., 2., 1.
+		});
+		m = realArray.getMonotonicity();
+		Assert.assertEquals("monotonicity", Monotonicity.DECREASING, m);
+		
+		realArray = new RealArray(new double[]{
+				5., 4., 1., 2., 2., 1.
+		});
+		m = realArray.getMonotonicity();
+		Assert.assertNull("monotonicity", m);
 	}
 
 	/**

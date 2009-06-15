@@ -126,7 +126,6 @@ public class ChemicalElement {
         Br("Br", 35),
         /** element symbol*/
         I("I", 53),
-        
         /** element symbol*/
         R("R", 119),
         
