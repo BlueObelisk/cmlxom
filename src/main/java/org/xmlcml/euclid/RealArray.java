@@ -1696,6 +1696,7 @@ public class RealArray extends ArrayBase {
 						break;
 					}
 				}
+				last = current;
 			}
 		}
 		return monotonicity;

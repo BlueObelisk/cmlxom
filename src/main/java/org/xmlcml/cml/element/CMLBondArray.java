@@ -202,12 +202,12 @@ public class CMLBondArray extends AbstractBondArray {
         bondMap.clear();
         bondIdMap.clear();
         for (CMLBond bond : bonds) {
-//        	try {
+        	try {
         		indexBondAndLigands(bond);
         		indexBondId(bond);
-//        	} catch (RuntimeException e) {
-//        		LOG.warn("SKIPPED BOND (maybe coincident)");
-//        	}
+        	} catch (RuntimeException e) {
+        		LOG.warn("BUG: SKIPPED BOND (maybe coincident)");
+        	}
         }
     }
 
