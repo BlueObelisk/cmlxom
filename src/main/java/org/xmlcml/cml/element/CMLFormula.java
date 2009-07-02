@@ -487,7 +487,7 @@ public class CMLFormula extends AbstractFormula {
     			throw new RuntimeException("Move to SMILESTool");
 //    			inline2Concise = getConciseFromSMILES(inline);
     		} else {
-    			inline2Concise = createConcise(inline);
+//    			inline2Concise = createConcise(inline); // never do this!
     		}
     	}
     	if (conciseS == null) {
@@ -929,6 +929,7 @@ public class CMLFormula extends AbstractFormula {
 	 */
 
 	void createFromString(String formulaString, Type formulaConvention) {
+		LOG.debug("FORMMMMM "+formulaString);
 		formulaString = formulaString.trim();
 		if (formulaConvention.equals(Type.ELEMENT_WHITESPACE_COUNT)
 				|| formulaConvention.equals(Type.ELEMENT_COUNT_WHITESPACE)) {
@@ -1579,7 +1580,6 @@ public class CMLFormula extends AbstractFormula {
 			fNew.multiplyBy(d);
 			String concise1 = fNew.getConcise();
 			this.setConcise(concise1);
-			atomArray.detach();
 			CMLAtomArray fAtomArray = fNew.getAtomArrayElements().get(0);
 			fAtomArray.detach();
 			this.addAtomArray(fAtomArray);
