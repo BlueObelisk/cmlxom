@@ -436,4 +436,12 @@ public class ChemicalElementTest {
 		Assert.assertEquals("elem 4", 35, elemList.get(4).getAtomicNumber());
 	}
 
+	@Test
+	public void dumpPeriodicTable() {
+		for (ChemicalElement el : ChemicalElement.periodicTable) {
+			if (el != null) {
+				System.out.println(""+el.getSymbol()+", new ChemicalElement(\""+el.getSymbol()+"\","+el.getAtomicNumber()+","+el.getAtomicWeight()+")");
+			}
+		}
+	}
 }

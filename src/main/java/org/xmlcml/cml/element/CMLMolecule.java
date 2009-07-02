@@ -10,6 +10,7 @@ import nu.xom.Document;
 import nu.xom.Element;
 import nu.xom.Elements;
 import nu.xom.Node;
+import nu.xom.Nodes;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -1395,6 +1396,8 @@ public class CMLMolecule
 	 * should only be required immediately after parsing
 	 * values (S->1, D->2, T->3)
 	 *
+	 *IMPORTANT NOTE; we have changed this 2009 to be the reverse.
+	 * 1->S, 2->D 3->T
 	 */
 	public void setNormalizedBondOrders() {
 		List<CMLBond> bonds = this.getBonds();
@@ -1403,12 +1406,12 @@ public class CMLMolecule
 				String order = bond.getOrder();
 				if (order != null) {
 					// synonyms
-					if (order.equals(CMLBond.SINGLE_S)) {
-						order = CMLBond.SINGLE;
-					} else if (order.equals(CMLBond.DOUBLE_D)) {
-						order = CMLBond.DOUBLE;
-					} else if (order.equals(CMLBond.TRIPLE_T)) {
-						order = CMLBond.TRIPLE;
+					if (order.equals(CMLBond.SINGLE)) {
+						order = CMLBond.SINGLE_S;
+					} else if (order.equals(CMLBond.DOUBLE)) {
+						order = CMLBond.DOUBLE_D;
+					} else if (order.equals(CMLBond.TRIPLE)) {
+						order = CMLBond.TRIPLE_T;
 					}
 					bond.setOrder(order);
 				}
@@ -1449,6 +1452,27 @@ public class CMLMolecule
 		}
 	}
 
-
+	public void normalizeFormulas() {
+		CMLFormula formula = new CMLFormula(this);
+		String concise = formula.getConcise();
+		Nodes formulaElements = this.query("./cml:formula", CML_XPATH);
+		for (int i = 0; i < formulaElements.size(); i++) {
+			CMLFormula formulaElement = (CMLFormula) formulaElements.get(i);
+			String conciseString = formulaElement.getConcise();
+			if (conciseString == null) {
+				formulaElement.setConcise(concise);
+			} else if (conciseString.equals(concise)) {
+				// no need to update
+			} else {
+				throw new RuntimeException("incompatible concise formulae; was "+
+						conciseString+"; now "+concise);
+			}
+			// remove any spurious atomArrays
+			Nodes atomArrays = formulaElement.query("./cml:atomArray", CML_XPATH);
+			for (int j = 0; j < atomArrays.size(); j++) {
+				atomArrays.get(j).detach();
+			}
+		}
+	}
 
 }
