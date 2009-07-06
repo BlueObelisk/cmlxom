@@ -91,8 +91,33 @@ public abstract class CMLUtil implements CMLConstants {
 	 * @return value if exactly 1 node (0 or many returns null)
 	 */
 	public static String getSingleValue(Element element, String xpath, XPathContext xPathContext) {
-		Nodes nodes = element.query(xpath, xPathContext);
-		return (nodes.size() == 1) ? nodes.get(0).getValue() : null;
+		String  s = null;
+		if (element == null) {
+			LOG.warn("Null element");
+		} else {
+			Nodes nodes = element.query(xpath, xPathContext);
+			s = (nodes.size() == 1) ? nodes.get(0).getValue() : null;
+		}
+		return s;
+	}
+
+	/**
+	 * convenience method to extract value of the first of one-or-more nodes.
+	 * uses element.query(xpath, xPathContext);
+	 * @param element
+	 * @param xpath 
+	 * @param xPathContext defines prefix/namespace used in query
+	 * @return value if exactly 1 node (0 or many returns null)
+	 */
+	public static String getFirstValue(Element element, String xpath, XPathContext xPathContext) {
+		String  s = null;
+		if (element == null) {
+			LOG.warn("Null element");
+		} else {
+			Nodes nodes = element.query(xpath, xPathContext);
+			s = (nodes.size() >= 1) ? nodes.get(0).getValue() : null;
+		}
+		return s;
 	}
 	
 	/**
