@@ -1174,7 +1174,11 @@ public abstract class AbstractEntry extends CMLElement {
         } else if (name.equals("term")) {
             setTerm(value);
 	     } else {
-            super.addAttribute(att);
+	    	 try {
+	    		 super.addAttribute(att);
+	    	 } catch (Exception e) {
+	    		 throw new RuntimeException("Bad attribute: "+att.getQualifiedName()+"/"+att.getValue());
+	    	 }
         }
     }
 }
