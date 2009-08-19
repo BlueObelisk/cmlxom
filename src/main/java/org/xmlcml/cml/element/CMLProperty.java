@@ -266,13 +266,21 @@ public class CMLProperty extends AbstractProperty {
 	 * @return the value (NaN if not set)
 	 */
 	public double getDouble() {
-		getChild();
+		return getDouble1(this);
+	}
+
+	private static double getDouble1(CMLElement element) {
+		HasDataType child =  getChild1(element);
 		double result = Double.NaN;
-		String dataType = CMLType.getNormalizedValue(child.getDataType());
+		String dataType = CMLType.getNormalizedValue(getDataType1(child));
 		if (XSD_DOUBLE.equals(dataType) && child instanceof HasScalar) {
 			result = ((HasScalar) child).getDouble();
 		}
 		return result;
+	}
+	
+	static String getDataType1(HasDataType hasDataType) {
+		return hasDataType.getDataType();
 	}
 
 	/**
@@ -363,12 +371,19 @@ public class CMLProperty extends AbstractProperty {
 	 */
 	public HasDataType getChild() {
 		if (child == null) {
-	    	Nodes nodes = this.query("cml:scalar | cml:array | cml:matrix", CMLConstants.CML_XPATH);
-	    	if (nodes.size() == 1) {
-	    		child = (HasDataType) nodes.get(0);
-	    	}
+			child = getChild1(this);
 		}
 		return child;
+	}
+	
+	static HasDataType getChild1(CMLElement element) {
+		
+		HasDataType dataType = null;
+    	Nodes nodes = element.query("cml:scalar | cml:array | cml:matrix", CMLConstants.CML_XPATH);
+    	if (nodes.size() == 1) {
+    		dataType = (HasDataType) nodes.get(0);
+    	}
+		return dataType;
 	}
 
 	/**
