@@ -110,15 +110,9 @@ public /*abstract*/ class NamespaceRefAttribute extends StringSTAttribute {
      * @return null if attribute has no value or no prefix
      */
     public String getIdRef() {
-        String idRef = null;
-        String value = this.getValue();
-        if (value != null) {
-            int idx = value.indexOf(S_COLON);
-            idRef = value.substring(idx + 1);
-        }
-        return idRef;
+        return getLocalName(this.getValue());
     }
-
+    
     static int count = 0;
 
 //    /**

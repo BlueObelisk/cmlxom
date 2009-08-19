@@ -394,4 +394,21 @@ public class CMLScalar extends AbstractScalar implements HasUnits, HasScalar {
 		NamespaceRefAttribute.setUnits((HasUnits) this, prefix, id,
 				namespaceURI);
 	}
+	
+    /** null
+	    * @param value title value
+	    * THIS MENDS A BUG IN AUTOGENERATION OF AbstractScalar
+	    */
+	@Override
+    public void setUnitType(String value) throws RuntimeException {
+    	NamespaceRefAttribute att = null;
+        if (_att_unittype == null) {
+            _att_unittype = new NamespaceRefAttribute("unitType", value);
+            if (_att_unittype == null) {
+                throw new RuntimeException("BUG: cannot process attributeGroupName : unitType probably incompatible attributeGroupName and attributeName");
+            }
+        }
+        att = new NamespaceRefAttribute(_att_unittype);
+        super.addRemove(att, value);
+    }
 }
