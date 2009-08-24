@@ -22,7 +22,7 @@ import org.xmlcml.cml.interfacex.HasScalar;
  * a shell which can be edited
  *
  */
-public class CMLProperty extends AbstractProperty {
+public class CMLProperty extends AbstractProperty implements HasDictRef {
 	
 	/** basic properties (in dictionary) */
 	public enum DictRef {
