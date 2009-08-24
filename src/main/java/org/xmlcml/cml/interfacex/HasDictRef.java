@@ -33,4 +33,11 @@ public interface HasDictRef {
      */
     String getDictRef();
 
+
+    /** get dictRef value.
+     * 
+     * @return value
+     */
+    void setDictRef(String dictRef);
+
 }

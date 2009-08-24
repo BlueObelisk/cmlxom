@@ -203,13 +203,14 @@ public class CMLScalar extends AbstractScalar implements HasUnits, HasScalar {
 
 	/**
 	 * sets value to String.. updates dataType.
-	 * does NOT trim value
+	 * does NOT trim value or normalize whitespace
 	 * @param scalar no action if null
 	 */
 	public void setValueNoTrim(String scalar) {
 		if (scalar != null) {
 			this.removeChildren();
 			this.appendChild(scalar);
+			this.setDataType(XSD_STRING);
 		}
 	}
 
