@@ -8,6 +8,7 @@ import org.xmlcml.cml.attribute.NamespaceRefAttribute;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLType;
 import org.xmlcml.cml.interfacex.HasDataType;
+import org.xmlcml.cml.interfacex.HasDictRef;
 import org.xmlcml.cml.interfacex.HasUnits;
 import org.xmlcml.euclid.EuclidRuntimeException;
 import org.xmlcml.euclid.IntMatrix;
@@ -21,7 +22,7 @@ import org.xmlcml.euclid.Util;
  * shell which can be edited
  *
  */
-public class CMLMatrix extends AbstractMatrix implements HasUnits, HasDataType {
+public class CMLMatrix extends AbstractMatrix implements HasUnits, HasDataType, HasDictRef {
 
 	/** types of matrix.
 	 */

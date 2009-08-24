@@ -19,6 +19,7 @@ import org.xmlcml.cml.base.CMLType;
 import org.xmlcml.cml.base.CMLUtil;
 import org.xmlcml.cml.interfacex.HasArraySize;
 import org.xmlcml.cml.interfacex.HasDataType;
+import org.xmlcml.cml.interfacex.HasDictRef;
 import org.xmlcml.cml.interfacex.HasUnits;
 import org.xmlcml.euclid.EuclidRuntimeException;
 import org.xmlcml.euclid.IntArray;
@@ -30,7 +31,7 @@ import org.xmlcml.euclid.RealArray;
  * 
  */
 public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
-		HasDataType {
+		HasDataType, HasDictRef {
 
 	static Logger logger = Logger.getLogger(CMLArray.class);
 	/** namespaced element name. */
