@@ -12,6 +12,8 @@ import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLType;
 import org.xmlcml.cml.base.CMLUtil;
+import org.xmlcml.cml.interfacex.HasDataType;
+import org.xmlcml.cml.interfacex.HasDictRef;
 import org.xmlcml.cml.interfacex.HasScalar;
 import org.xmlcml.cml.interfacex.HasUnits;
 
@@ -20,7 +22,7 @@ import org.xmlcml.cml.interfacex.HasUnits;
  * shell which can be edited
  * 
  */
-public class CMLScalar extends AbstractScalar implements HasUnits, HasScalar {
+public class CMLScalar extends AbstractScalar implements HasUnits, HasScalar, HasDictRef, HasDataType {
 	private static Logger LOG = Logger.getLogger(CMLScalar.class);
 
 	/** namespaced element name. */
