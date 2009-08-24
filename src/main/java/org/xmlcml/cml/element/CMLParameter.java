@@ -1,10 +1,17 @@
 package org.xmlcml.cml.element;
 
+import java.util.List;
+
 import nu.xom.Element;
 import nu.xom.Node;
+import nu.xom.Nodes;
 
 import org.xmlcml.cml.attribute.DictRefAttribute;
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
+import org.xmlcml.cml.base.CMLElements;
+import org.xmlcml.cml.base.CMLType;
+import org.xmlcml.cml.interfacex.HasDataType;
 import org.xmlcml.cml.interfacex.HasDictRef;
 
 /**
@@ -17,6 +24,8 @@ public class CMLParameter extends AbstractParameter implements HasDictRef {
 	/** namespaced element name.*/
 	public final static String NS = C_E+TAG;
 
+	private HasDataType child;
+	
     /**
      * constructor.
      */
@@ -65,4 +74,141 @@ public class CMLParameter extends AbstractParameter implements HasDictRef {
         }
         return att.getString();
     }
+    
+    /** gets descendant parameter elements.
+     * may either thave the dictRef on the parameter element or on 
+     * its child.
+     * properties are normalized
+     * @param parent
+     * @param dictRef
+     * @return parameterList containing references (normally 1 or 0 entries)
+     */ 
+    public static CMLParameterList getParameterList(CMLElement parent, String dictRef) {
+    	CMLParameterList parameterList = new CMLParameterList();
+    	Nodes nodes = parent.query("./cml:parameter", CMLConstants.CML_XPATH);
+    	for (int i = 0; i < nodes.size(); i++ ) {
+    		CMLParameter parameter = (CMLParameter) nodes.get(i);
+    		parameter.canonicalize();
+    		if (dictRef.equals(parameter.getAttributeValue("dictRef"))) {
+	    		parameterList.addParameter(parameter);
+    		}
+    	}
+    	return parameterList;
+    }
+
+    /** gets single parameter.
+     * if zero or many properties with gievn dictRef returns null
+     * @param parent
+     * @param dictRef
+     * @return parameter or null
+     */
+    public static CMLParameter getParameter(CMLElement parent, String dictRef) {
+    	CMLParameterList parameterList = CMLParameter.getParameterList(parent, dictRef);
+    	CMLElements<CMLParameter> properties = parameterList.getParameterElements();
+    	CMLParameter parameter = null;
+    	if (properties.size() == 1) {
+    		parameter = properties.get(0);
+    	}
+    	return parameter;
+    }
+
+    // ------------------------ analogous to CMLProperty -------------------
+    /** makes sure property has the structure:
+     * <property @title @dictRef><scalar @dataType @units>...
+     * if zero or many children (scalar, array, matrix) no-op
+     *
+     */
+    public void canonicalize() {
+    	CMLProperty.staticCanonicalize(this);
+    }
+    
+	/**
+	 * @return units on child
+	 */
+	public String getUnits() {
+		return CMLProperty.getStaticUnits(this);
+	}
+	
+	/**
+	 * gets real value of scalar child
+	 * 
+	 * @return the value (NaN if not set)
+	 */
+	public double getDouble() {
+		return CMLProperty.getStaticDouble(this);
+	}
+
+	/**
+	 * gets String value. dataType must be XSD_STRING.
+	 * 
+	 * @return the value (null if not set)
+	 */
+	public String getString() {
+		return CMLProperty.getStaticString(this);
+	}
+	
+
+	/**
+	 * gets int value. dataType must be XSD_INTEGER.
+	 * 
+	 * @return the value
+	 * @throws RuntimeException
+	 *             if different type
+	 */
+	public int getInt() {
+		return CMLProperty.getStaticInt(this);
+	}
+
+    /** get array elements.
+     * recalculates each time so best cached for frequent use
+     * @return elements as String
+     */
+    public List<String> getStringValues() {
+		return CMLProperty.getStaticStringValues(this);
+	}
+    
+    /**
+     * gets values of element;
+     * 
+     * @return integer values
+     */
+    public int[] getInts() {
+		return CMLProperty.getStaticInts(this);
+	}
+
+    /**
+     * gets values of element;
+     * 
+     * @return double values
+     */
+    public double[] getDoubles() {
+		return CMLProperty.getStaticDoubles(this);
+	}
+	
+	/**
+	 * requires exactly one child of type scalar array matrix
+	 * @return the child
+	 */
+	public HasDataType getChild() {
+		if (child == null) {
+			child = CMLProperty.getStaticChild(this);
+		}
+		return child;
+	}
+	
+	/**
+	 * @param child the child to set
+	 */
+	public void setChild(HasDataType child) {
+		this.child = child;
+	}
+
+
+	/** gets dataType
+	 * @return dataType as string
+	 */
+	public String getDataType() {
+		return CMLProperty.getStaticDataType(this);
+	}
+
 }

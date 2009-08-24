@@ -218,16 +218,20 @@ public class CMLProperty extends AbstractProperty {
      *
      */
     public void canonicalize() {
-    	getChild();
+    	CMLProperty.staticCanonicalize(this);
+    }
+    
+    static void staticCanonicalize(CMLElement element) {
+    	HasDataType child =  CMLProperty.getStaticChild(element);
     	if (child != null) {
-    		String thisDictRef = this.getDictRef();
+    		String thisDictRef = ((HasDictRef)element).getDictRef();
     		String childDictRef = ((HasDictRef) child).getDictRef();
     		if (thisDictRef == null) {
     			if (childDictRef == null) {
     				throw new RuntimeException("No dictRef attribute given: ");
     			}
     			// copy to property
-    			this.setDictRef(childDictRef);
+    			((HasDictRef)element).setDictRef(childDictRef);
     		} else {
     			if (childDictRef == null) {
     			} else if (thisDictRef.equals(childDictRef)) {
@@ -236,7 +240,7 @@ public class CMLProperty extends AbstractProperty {
     				throw new RuntimeException("inconsistent dictRefs: "+thisDictRef+" // "+childDictRef);
     			}
     		}
-    		String units = getUnits();
+    		String units = CMLProperty.getStaticUnits(element);
     		String dataType = CMLType.getNormalizedValue(child.getDataType());
     		if (units != null) {
     			if (!dataType.equals(XSD_DOUBLE)) {
@@ -255,32 +259,16 @@ public class CMLProperty extends AbstractProperty {
 	 * @return units on child
 	 */
 	public String getUnits() {
-		getChild();
-		String units = ((CMLElement) child).getAttributeValue("units");
-		return units;
+		return CMLProperty.getStaticUnits(this);
 	}
-    
+	
 	/**
 	 * gets real value of scalar child
 	 * 
 	 * @return the value (NaN if not set)
 	 */
 	public double getDouble() {
-		return getDouble1(this);
-	}
-
-	private static double getDouble1(CMLElement element) {
-		HasDataType child =  getChild1(element);
-		double result = Double.NaN;
-		String dataType = CMLType.getNormalizedValue(getDataType1(child));
-		if (XSD_DOUBLE.equals(dataType) && child instanceof HasScalar) {
-			result = ((HasScalar) child).getDouble();
-		}
-		return result;
-	}
-	
-	static String getDataType1(HasDataType hasDataType) {
-		return hasDataType.getDataType();
+		return CMLProperty.getStaticDouble(this);
 	}
 
 	/**
@@ -289,15 +277,9 @@ public class CMLProperty extends AbstractProperty {
 	 * @return the value (null if not set)
 	 */
 	public String getString() {
-		getChild();
-		String result = null;
-		if (XSD_STRING.equals(child.getDataType()) &&
-				(child instanceof HasScalar)
-				) {
-			result = ((HasScalar) child).getString();
-		}
-		return result;
+		return CMLProperty.getStaticString(this);
 	}
+	
 
 	/**
 	 * gets int value. dataType must be XSD_INTEGER.
@@ -307,30 +289,16 @@ public class CMLProperty extends AbstractProperty {
 	 *             if different type
 	 */
 	public int getInt() {
-		getChild();
-		int result = Integer.MIN_VALUE;
-		String dataType = CMLType.getNormalizedValue(child.getDataType());
-		if (XSD_INTEGER.equals(dataType) && 
-				(child instanceof HasScalar)) {
-			result = ((HasScalar) child).getInt();
-		}
-		return result;
+		return CMLProperty.getStaticInt(this);
 	}
 
     /** get array elements.
-     * recalcuates each time so best cached for frequent use
+     * recalculates each time so best cached for frequent use
      * @return elements as String
      */
     public List<String> getStringValues() {
-		getChild();
-		List<String> result = null;
-		String dataType = CMLType.getNormalizedValue(child.getDataType());
-		if (XSD_STRING.equals(dataType) && 
-			child instanceof HasArraySize) {
-			result = ((HasArraySize) child).getStringValues();
-		}
-		return result;
-    }
+		return CMLProperty.getStaticStringValues(this);
+	}
     
     /**
      * gets values of element;
@@ -338,15 +306,8 @@ public class CMLProperty extends AbstractProperty {
      * @return integer values
      */
     public int[] getInts() {
-		getChild();
-		int[] result = null;
-		String dataType = CMLType.getNormalizedValue(child.getDataType());
-		if (XSD_INTEGER.equals(dataType) && 
-			child instanceof HasArraySize) {
-			result = ((HasArraySize) child).getInts();
-		}
-		return result;
-    }
+		return CMLProperty.getStaticInts(this);
+	}
 
     /**
      * gets values of element;
@@ -354,16 +315,8 @@ public class CMLProperty extends AbstractProperty {
      * @return double values
      */
     public double[] getDoubles() {
-		getChild();
-		double[] result = null;
-		String dataType = CMLType.getNormalizedValue(child.getDataType());
-		if (XSD_DOUBLE.equals(dataType) && 
-			child instanceof HasArraySize) {
-			result = ((HasArraySize) child).getDoubles();
-		}
-		return result;
-    }
-
+		return CMLProperty.getStaticDoubles(this);
+	}
 	
 	/**
 	 * requires exactly one child of type scalar array matrix
@@ -371,21 +324,11 @@ public class CMLProperty extends AbstractProperty {
 	 */
 	public HasDataType getChild() {
 		if (child == null) {
-			child = getChild1(this);
+			child = getStaticChild(this);
 		}
 		return child;
 	}
 	
-	static HasDataType getChild1(CMLElement element) {
-		
-		HasDataType dataType = null;
-    	Nodes nodes = element.query("cml:scalar | cml:array | cml:matrix", CMLConstants.CML_XPATH);
-    	if (nodes.size() == 1) {
-    		dataType = (HasDataType) nodes.get(0);
-    	}
-		return dataType;
-	}
-
 	/**
 	 * @param child the child to set
 	 */
@@ -398,7 +341,100 @@ public class CMLProperty extends AbstractProperty {
 	 * @return dataType as string
 	 */
 	public String getDataType() {
-		getChild();
+		return getStaticDataType(this);
+	}
+	
+	// -------------------------- helpers ---------------------------
+	static String getStaticUnits(CMLElement element) {
+		HasDataType child =  getStaticChild(element);
+		String units = ((CMLElement) child).getAttributeValue("units");
+		return units;
+	}
+    
+	static double getStaticDouble(CMLElement element) {
+		HasDataType child =  getStaticChild(element);
+		double result = Double.NaN;
+		String dataType = CMLType.getNormalizedValue(getStaticDataType(child));
+		if (XSD_DOUBLE.equals(dataType) && child instanceof HasScalar) {
+			result = ((HasScalar) child).getDouble();
+		}
+		return result;
+	}
+	
+	static String getStaticDataType(HasDataType hasDataType) {
+		return hasDataType.getDataType();
+	}
+
+	
+	static String getStaticString(CMLElement element) {
+		HasDataType child =  getStaticChild(element);
+		String result = null;
+		if (XSD_STRING.equals(child.getDataType()) &&
+				(child instanceof HasScalar)
+				) {
+			result = ((HasScalar) child).getString();
+		}
+		return result;
+	}
+	
+	static int getStaticInt(CMLElement element) {
+		HasDataType child =  getStaticChild(element);
+		int result = Integer.MIN_VALUE;
+		String dataType = CMLType.getNormalizedValue(child.getDataType());
+		if (XSD_INTEGER.equals(dataType) && 
+				(child instanceof HasScalar)) {
+			result = ((HasScalar) child).getInt();
+		}
+		return result;
+	}
+	
+	static List<String> getStaticStringValues(CMLElement element) {
+		HasDataType child =  getStaticChild(element);
+		List<String> result = null;
+		String dataType = CMLType.getNormalizedValue(child.getDataType());
+		if (XSD_STRING.equals(dataType) && 
+			child instanceof HasArraySize) {
+			result = ((HasArraySize) child).getStringValues();
+		}
+		return result;
+    }
+	
+	static int[] getStaticInts(CMLElement element) {
+		HasDataType child =  getStaticChild(element);
+		int[] result = null;
+		String dataType = CMLType.getNormalizedValue(child.getDataType());
+		if (XSD_INTEGER.equals(dataType) && 
+			child instanceof HasArraySize) {
+			result = ((HasArraySize) child).getInts();
+		}
+		return result;
+    }
+	
+	static double[] getStaticDoubles(CMLElement element) {
+		HasDataType child =  getStaticChild(element);
+		double[] result = null;
+		String dataType = CMLType.getNormalizedValue(child.getDataType());
+		if (XSD_DOUBLE.equals(dataType) && 
+			child instanceof HasArraySize) {
+			result = ((HasArraySize) child).getDoubles();
+		}
+		return result;
+    }
+
+	
+	static HasDataType getStaticChild(CMLElement element) {
+		
+		HasDataType dataType = null;
+    	Nodes nodes = element.query("cml:scalar | cml:array | cml:matrix", CMLConstants.CML_XPATH);
+    	if (nodes.size() == 1) {
+    		dataType = (HasDataType) nodes.get(0);
+    	}
+		return dataType;
+	}
+
+	
+	static String getStaticDataType(CMLElement element) {
+		HasDataType child =  getStaticChild(element);
 		String dataType = (child == null) ? null : ((HasDataType) child).getDataType();
 		return CMLType.getNormalizedValue(dataType);
 	}
