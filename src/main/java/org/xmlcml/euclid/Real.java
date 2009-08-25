@@ -166,8 +166,8 @@ public abstract class Real implements EuclidConstants {
      * still only parses to double
      * @return Double.NaN or throws exception
      */
-    public static String SCIENTIFIC_PARSE = "[+-]?\\d*(\\.?\\d+)?([EeDdGgHh][+-]?\\d+)?";
-    public static Pattern SCIENTIFIC_PATTERN = Pattern.compile(SCIENTIFIC_PARSE);
+    public static final String SCIENTIFIC_PARSE = "[+-]?\\d*(\\.?\\d+)?([EeDdGgHh][+-]?\\d+)?";
+    public static final Pattern SCIENTIFIC_PATTERN = Pattern.compile(SCIENTIFIC_PARSE);
     public static double parseDouble(String s) {
     	double d = Double.NaN;
     	if (s != null) {
