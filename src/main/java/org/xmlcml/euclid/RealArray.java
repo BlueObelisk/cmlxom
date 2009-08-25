@@ -341,8 +341,8 @@ public class RealArray extends ArrayBase {
         this(strings.length);
         for (int i = 0; i < strings.length; i++) {
         	try {
-        		array[i] = (Double.valueOf(strings[i])).doubleValue();
-        	} catch (NumberFormatException e) {
+        		array[i] = Real.parseDouble(strings[i]);
+        	} catch (Exception e) {
         		throw new EuclidRuntimeException("Bad array element at ("+i+") :"+strings[i]+":");
         	}
         }

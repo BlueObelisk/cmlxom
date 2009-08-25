@@ -1,5 +1,7 @@
 package org.xmlcml.euclid;
 
+import java.util.regex.Pattern;
+
 import org.apache.log4j.Logger;
 
 /**
@@ -157,6 +159,37 @@ public abstract class Real implements EuclidConstants {
      * @return true if a is zero within epsilon
      * 
      */
+
+    /**
+     * parses a string to a double.
+     * deals with FORTRAN extensions (exponent E can be D or G)
+     * still only parses to double
+     * @return Double.NaN or throws exception
+     */
+    public static String SCIENTIFIC_PARSE = "[+-]?\\d*(\\.?\\d+)?([EeDdGgHh][+-]?\\d+)?";
+    public static Pattern SCIENTIFIC_PATTERN = Pattern.compile(SCIENTIFIC_PARSE);
+    public static double parseDouble(String s) {
+    	double d = Double.NaN;
+    	if (s != null) {
+    		s = s.trim();
+	    	try {
+	    		d = Double.parseDouble(s);
+	    	} catch (NumberFormatException e) {
+	    		if (SCIENTIFIC_PATTERN.matcher(s).matches()) {
+	    			s = s.replaceFirst("[DdGgHh]", "E");
+	    			try {
+	    				d = Double.parseDouble(s);
+	    			} catch (NumberFormatException ee) {
+		    			throw new RuntimeException("cannot parse number as double after converting DdGgHh to E: ", e);
+	    			}
+	    		} else {
+	    			throw new RuntimeException("cannot parse number as double: ", e);
+	    		}
+	    	}
+    	}
+    	return d;
+    }
+    
     public static boolean isZero(double a, double epsilon) {
         return Math.abs(a) < epsilon;
     }
