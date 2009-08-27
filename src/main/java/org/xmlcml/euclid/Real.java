@@ -161,35 +161,45 @@ public abstract class Real implements EuclidConstants {
      */
 
     /**
-     * parses a string to a double.
-     * deals with FORTRAN extensions (exponent E can be D or G)
-     * still only parses to double
-     * @return Double.NaN or throws exception
+     * A regular expression match a number pattern.
      */
-    public static final String SCIENTIFIC_PARSE = "[+-]?\\d*(\\.?\\d+)?([EeDdGgHh][+-]?\\d+)?";
+    public static final String SCIENTIFIC_PARSE = "(?:[+-]?(?:(?:\\d*(?:\\.?\\d+)?)|(?:\\d+(?:\\.?\\d*)?))(?:[EeDdGgHh][+-]?\\d+[dDfF]?)?)";
+                                             //  sign? |                     number                   |      exponent?      | precision?
+    /**
+     * A compiled Pattern object which matches a number pattern.
+     */
     public static final Pattern SCIENTIFIC_PATTERN = Pattern.compile(SCIENTIFIC_PARSE);
-    public static double parseDouble(String s) {
-    	double d = Double.NaN;
-    	if (s != null) {
-    		s = s.trim();
-	    	try {
-	    		d = Double.parseDouble(s);
-	    	} catch (NumberFormatException e) {
-	    		if (SCIENTIFIC_PATTERN.matcher(s).matches()) {
-	    			s = s.replaceFirst("[DdGgHh]", "E");
-	    			try {
-	    				d = Double.parseDouble(s);
-	    			} catch (NumberFormatException ee) {
-		    			throw new RuntimeException("cannot parse number as double after converting DdGgHh to E: ", e);
-	    			}
-	    		} else {
-	    			throw new RuntimeException("cannot parse number as double: ", e);
-	    		}
-	    	}
-    	}
-    	return d;
+
+    /**
+     * Parse a string to double value, similar to Double.parseDouble function, but
+     * also try to parse against FORTRAN number, e.g. 12.3D-05.
+     *
+     * <p>If the return value is Double.NaN, a RuntimeException is thrown.
+     * This should not happen anyway.
+     *
+     * @author (C) Weerapong Phadungsukanan, 2009
+     * @param db String of number value
+     * @return double value of the given String
+     * @throws NullPointerException if db is null.
+     * @throws NumberFormatException if db is not a number.
+     */
+    public static double parseDouble(String db) {
+        double d = Double.NaN;
+        db = db.trim();
+        // Try to parse string using java routine first. If it does not match
+        // the string could be number in FORTRAN format, [DdGgHh] as exponential
+        // notation. So we replace the first exponential notation by E and then
+        // try to parse again with java routine. The two steps are necessary and
+        // cannot be removed otherwise the number such as 12.0d will not be parsed.
+        try {
+            d = Double.parseDouble(db);
+        } catch (NumberFormatException nfe) {
+            d = Double.parseDouble(db.replaceFirst("[DdGgHh]", "E"));
+        }
+        if (d == Double.NaN) throw new RuntimeException("Cannot parse {" + db + "} as double and cannot throw NumberFormatException. This is a program bug.");
+        return d;
     }
-    
+
     public static boolean isZero(double a, double epsilon) {
         return Math.abs(a) < epsilon;
     }
