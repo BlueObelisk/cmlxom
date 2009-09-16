@@ -1530,7 +1530,13 @@ public class CMLFormula extends AbstractFormula {
 	 * @return count
 	 */
 	public double getTotalAtomCount() {
+		//nwe23 - Fixed a bug here where getCounts() returns null
+		// for an empty formula, resulting in this crashing rather than
+		// returning 0 as expected for empty formula
 		double[] counts = getCounts();
+		if(counts==null){
+			return 0;
+		}
 		double total = 0;
 		for (double count : counts) {
 			total += count;
