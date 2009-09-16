@@ -1237,6 +1237,22 @@ public class CMLFormulaTest {
 	}
 
 	/**
+	 * Test method for 'org.xmlcml.cml.element.CMLFormula.getTotalAtomCount()'
+	 * 
+	 * @exception Exception
+	 */
+	@Test
+	public void testGetTotalAtomCount() throws Exception{
+		CMLFormula form1 = CMLFormula.createFormula("C2H10");
+		Assert.assertEquals(form1.getTotalAtomCount(), 12.0);
+		
+		CMLFormula form2 = CMLFormula.createFormula("C2H10");
+		CMLFormula diff = form1.getDifference((form2));
+		Assert.assertEquals(0.0, diff.getTotalAtomCount());
+		
+	}
+	
+	/**
 	 * Test method for
 	 * 'org.xmlcml.cml.element.CMLFormula.createAggregatedFormula(CMLFormula)'
 	 * 
