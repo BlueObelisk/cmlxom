@@ -34,6 +34,7 @@ import org.xmlcml.cml.element.CMLFormula.Type;
 import org.xmlcml.cml.element.main.MoleculeAtomBondFixture;
 import org.xmlcml.euclid.test.DoubleTestBase;
 import org.xmlcml.euclid.test.StringTestBase;
+import org.xmlcml.molutil.ChemicalElement;
 import org.xmlcml.molutil.ChemicalElement.AS;
 
 /**
@@ -1366,5 +1367,28 @@ public class CMLFormulaTest {
 			e.printStackTrace();
 			Assert.fail("Should not fail parse"+e.getMessage());
 		}
+	}
+	
+	
+	@Test
+	public void testNullCreateFromMoleculeFactory(){
+		CMLMolecule mol = null;
+		CMLFormula form = CMLFormula.createFormula(mol);
+		Assert.assertNull(form);
+	}
+	@Test
+	public void testEmptyCreateFromMoleculeFactory(){
+		CMLMolecule mol = new CMLMolecule();
+		CMLFormula form = CMLFormula.createFormula(mol);
+		Assert.assertNotNull(form);
+		Assert.assertEquals(0.0, form.getTotalAtomCount(), 0.0001);
+	}
+	@Test
+	public void testCreateFromMoleculeFactory(){
+		CMLMolecule mol = new CMLMolecule();
+		mol.addAtom(new CMLAtom("a1", ChemicalElement.AS.C));
+		CMLFormula form = CMLFormula.createFormula(mol);
+		Assert.assertNotNull(form);
+		Assert.assertEquals(1.0, form.getTotalAtomCount(), 0.0001);
 	}
 }
