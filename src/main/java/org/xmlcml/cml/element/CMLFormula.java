@@ -831,6 +831,21 @@ public class CMLFormula extends AbstractFormula {
 	}
 
 	/**
+	 * create formula from molecule.
+	 * @author nwe23
+	 * @param mol
+	 *            the CMLMolecule
+	 * @exception RuntimeException
+	 * @return the CMLFormula derived from the CMLMolecule
+	 */
+	public static CMLFormula createFormula(CMLMolecule mol){
+		if(mol==null){
+			return null;
+		}
+		return new CMLFormula(mol);
+	}
+	
+	/**
 	 * create formula from string. convention defaults to ANY
 	 *
 	 * @param s the String describing the formula
