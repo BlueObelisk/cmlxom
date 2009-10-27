@@ -24,6 +24,13 @@ public class CMLBond extends AbstractBond {
 
 	/** namespaced element name.*/
 	public final static String NS = C_E+TAG;
+    /// bond orders
+    // 1 should be normalized into S
+    public final static String DEPRECATED_SINGLE = "1";
+    // 2 should be normalized into D
+    public final static String DEPRECATED_DOUBLE = "2";
+    // 3 should be normalized into T
+    public final static String DEPRECATED_TRIPLE = "3";
 
 	/** messages.*/
 	public enum Message {
@@ -867,14 +874,24 @@ public class CMLBond extends AbstractBond {
 		if (bondId != null) {
 			this.removeAttribute(IdAttribute.NAME);
 		}
-		List<CMLAtom> atomList = this.getAtoms();
-		String at0id = atomList.get(0).getId();
-		String at1id = atomList.get(1).getId();
+		List<CMLAtom> atomListx = this.getAtoms();
+		String at0id = atomListx.get(0).getId();
+		String at1id = atomListx.get(1).getId();
 
 		bondId = at0id + CMLConstants.S_UNDER + at1id;
 		this.setId(bondId);
 		return bondId;
 	}
+
+    public void swapAtomsInBond(CMLAtom atom0, CMLAtom atom1)
+    {
+        this.setAtomRefs2(new String[] { atom1.getId(), atom0.getId() });
+    }
+
+    public void swapAtomsInBond()
+    {
+        this.setAtomRefs2(new String[] { this.getAtomRefs2()[1], this.getAtomRefs2()[0] });
+    }
 
 	/**
 	 * get bond length.

@@ -133,6 +133,7 @@ public abstract class CMLUtil implements CMLConstants {
 		return (nodes.size() == 1) ? (Element) nodes.get(0) : null;
 	}
 	
+
 	
 	/**
 	 * convenience routine to get query CMLelements (iterating thorugh get(i) is
@@ -849,6 +850,16 @@ public abstract class CMLUtil implements CMLConstants {
 		return message;
 	}
 	
+    public static String getCommonLeadingString(String s1, String s2) {
+        int l = Math.min(s1.length(), s2.length());
+        int i;
+        for (i = 0; i < l; i++) {
+            if (s1.charAt(i) != s2.charAt(i)) {
+                break;
+            }
+        }
+        return s1.substring(0, i);
+    }
 	/** compare namespaces on two elements
 	 * 
 	 * @param refNode
