@@ -34,7 +34,7 @@ public interface HasDictRef {
     String getDictRef();
 
 
-    /** get dictRef value.
+    /** set dictRef value.
      * 
      * @return value
      */

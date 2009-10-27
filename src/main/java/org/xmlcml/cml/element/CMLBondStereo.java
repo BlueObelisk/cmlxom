@@ -15,6 +15,13 @@ public class CMLBondStereo extends AbstractBondStereo {
 	/** namespaced element name.*/
 	public final static String NS = C_E+TAG;
 
+        public final static String HATCH = "H";
+        public final static String WEDGE = "W";
+        public final static String NONE = "none";
+        public final static String XML_NONE = "";
+        public final static String REVERSE = "flip";
+        public final static String WEDGEHATCH = "wedgehatch";
+
     /**
      * constructor.
      */
@@ -93,4 +100,8 @@ public class CMLBondStereo extends AbstractBondStereo {
     	return res;
     }
 
+        public void SetCMLWedgeHatchConvention()
+        {
+            this.setConvention (CMLBondStereo.WEDGEHATCH);
+        }
 }
