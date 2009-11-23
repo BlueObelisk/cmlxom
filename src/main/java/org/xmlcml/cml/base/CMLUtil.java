@@ -470,21 +470,15 @@ public abstract class CMLUtil implements CMLConstants {
 	}
 
 	/**
-	 * transfers children of element to its parent. element is left in place and
-	 * children come immediately before normally element will be deleted
-	 * 
+	 * copies atributes of 'from' to 'to'
 	 * @param element
-	 *            (will be left with no children)
 	 */
-	public static void transferChildrenToParent(Element element) {
-		int nc = element.getChildCount();
-		ParentNode parent = element.getParent();
-		int ii = parent.indexOf(element);
-		for (int i = nc - 1; i >= 0; i--) {
-			Node child = element.getChild(i);
-			child.detach();
-			parent.insertChild(child, ii);
-		}
+	public static void copyAttributes(Element from, Element to) {
+		int natt = from.getAttributeCount();
+        for (int i = 0; i < natt; i++) {
+            Attribute newAtt = new Attribute(from.getAttribute(i));
+            to.addAttribute(newAtt);
+        }
 	}
 
 	/**
