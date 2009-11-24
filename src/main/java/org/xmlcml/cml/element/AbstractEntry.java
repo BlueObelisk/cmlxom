@@ -163,7 +163,7 @@ public abstract class AbstractEntry extends CMLElement {
     /** cache */
     StringSTAttribute _att_datatype = null;
     /** The data type of the object.
-    * Normally applied to scalar/array 
+    * Normally applied to scalar/array
     *                 objects but may extend to more complex one.
     * @return CMLAttribute
     */
@@ -171,7 +171,7 @@ public abstract class AbstractEntry extends CMLElement {
         return (CMLAttribute) getAttribute("dataType");
     }
     /** The data type of the object.
-    * Normally applied to scalar/array 
+    * Normally applied to scalar/array
     *                 objects but may extend to more complex one.
     * @return String
     */
@@ -181,6 +181,25 @@ public abstract class AbstractEntry extends CMLElement {
             return null;
         }
         return att.getString();
+    }
+    /**
+     * The data storage of the CMLElement created by the entry or entryTool.
+     * @return CMLAttribute
+     */
+    public Attribute getDataStorageAttribute() {
+        return getAttribute("dataStorage");
+    }
+
+    /**
+     * The data storage of the CMLElement created by the entry or entryTool.
+     * @return String
+     */
+    public String getDataStorage() {
+        String att = this.getDataStorageAttribute().getValue();
+        if (att == null) {
+            return null;
+        }
+        return att;
     }
     /** The data type of the object.
     * Normally applied to scalar/array 
@@ -1173,12 +1192,12 @@ public abstract class AbstractEntry extends CMLElement {
             setPattern(value);
         } else if (name.equals("term")) {
             setTerm(value);
-	     } else {
-	    	 try {
-	    		 super.addAttribute(att);
-	    	 } catch (Exception e) {
-	    		 throw new RuntimeException("Bad attribute: "+att.getQualifiedName()+"/"+att.getValue());
-	    	 }
+        } else {
+            try {
+                super.addAttribute(att);
+            } catch (Exception e) {
+                throw new RuntimeException("Bad attribute: " + att.getQualifiedName() + "/" + att.getValue());
+            }
         }
     }
 }
