@@ -182,25 +182,6 @@ public abstract class AbstractEntry extends CMLElement {
         }
         return att.getString();
     }
-    /**
-     * The data storage of the CMLElement created by the entry or entryTool.
-     * @return CMLAttribute
-     */
-    public Attribute getDataStorageAttribute() {
-        return getAttribute("dataStorage");
-    }
-
-    /**
-     * The data storage of the CMLElement created by the entry or entryTool.
-     * @return String
-     */
-    public String getDataStorage() {
-        String att = this.getDataStorageAttribute().getValue();
-        if (att == null) {
-            return null;
-        }
-        return att;
-    }
     /** The data type of the object.
     * Normally applied to scalar/array 
     *                 objects but may extend to more complex one.
