@@ -309,4 +309,22 @@ public class CMLReactionTest extends ReactionAllTestBase {
 				.getReactantElements().get(3).getId());
 	}
 
+	@Test
+	public void testAddReactant(){
+		CMLReaction reaction = new CMLReaction();
+		Assert.assertEquals(null, reaction.getReactantList());
+		CMLReactant reactant = new CMLReactant();
+		reaction.addReactant(reactant);
+		Assert.assertEquals(reactant, reaction.getReactantList().getReactantElements().get(0));
+	}
+	@Test
+	public void testAddProduct(){
+		CMLReaction reaction = new CMLReaction();
+		Assert.assertEquals(null, reaction.getProductList());
+		CMLProduct product = new CMLProduct();
+		reaction.addProduct(product);
+		Assert.assertEquals(product, reaction.getProductList().getProductElements().get(0));
+	}
+	
+	
 }
