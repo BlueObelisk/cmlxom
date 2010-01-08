@@ -34,6 +34,7 @@ public class CMLReaction extends AbstractReaction implements ReactionComponent {
     }
 
     /** not quite sure.*/
+    @Deprecated
     public enum Index {
         /** reactant index CHECK */
         REACTANT_I(1),
@@ -368,6 +369,23 @@ public class CMLReaction extends AbstractReaction implements ReactionComponent {
     	}
     	return reactantList;
     }
+    
+	public void addProduct(CMLProduct product) {
+		CMLProductList productList = getOrCreateProductList();
+		productList.addProduct(product);
+		
+	}
+    
+    private CMLProductList getOrCreateProductList() {
+    	CMLProductList productList = this.getProductList();
+    	if (productList == null) {
+    		productList = new CMLProductList();
+    		this.addProductList(productList);
+    	}
+    	return productList;
+	}
+
+	
 
     /**
      * utility for any ReactionComponent classes.
@@ -574,5 +592,7 @@ public class CMLReaction extends AbstractReaction implements ReactionComponent {
         }
         return spectatorList;
     }
+
+
 
 }
