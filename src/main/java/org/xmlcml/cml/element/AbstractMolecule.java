@@ -726,6 +726,34 @@ public abstract class AbstractMolecule extends CMLElement {
         Elements elements = this.getChildElements("formula", CMLConstants.CML_NS);
         return new CMLElements<CMLFormula>(elements);
     }
+    
+    /**Returns the value of the first formula element with a convention.
+     * if an inline exists returns that value in preference.
+     * Returns null if no formula of that convention exists
+     * @param convention The Convention to look for.
+     * @return The value of the formula inline or text if no inline exists.
+     * @author nwe23
+     */
+    public String getFormulaWithConvention(String convention){
+    	if(convention==null){
+    		throw new IllegalArgumentException("Called with "+convention);
+    	}
+    	CMLElements<CMLFormula> forms=this.getFormulaElements();
+    	for(CMLFormula form:forms){
+    		if(convention.equals(form.getConvention())){
+    			String value=form.getInline();
+    			if(value!=null){
+    				return value;
+    			}
+    			value = form.getValue();
+    			return value;
+    		}
+    			
+    	}
+    	return null;
+    	
+    }
+    
 // element:   label
 
     /** Role of the object.

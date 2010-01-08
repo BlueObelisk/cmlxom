@@ -28,6 +28,7 @@ import org.xmlcml.cml.element.CMLAtomArray;
 import org.xmlcml.cml.element.CMLBond;
 import org.xmlcml.cml.element.CMLBondArray;
 import org.xmlcml.cml.element.CMLCml;
+import org.xmlcml.cml.element.CMLFormula;
 import org.xmlcml.cml.element.CMLMolecule;
 import org.xmlcml.cml.element.CMLName;
 import org.xmlcml.cml.element.main.MoleculeAtomBondFixture;
@@ -1315,5 +1316,29 @@ public class CMLMoleculeTest {
 		Assert.assertEquals("bondArray", 0, bondArray.getChildCMLElements(
 				CMLBond.TAG).size());
 	}
-
+	/**
+	 * Tests getFormulaWithConvention method.
+	 * @author nwe23
+	 */
+	@Test
+	public final void testGetFormulaWithConvention(){
+		CMLMolecule mol = new CMLMolecule();
+		String value=mol.getFormulaWithConvention("foo");
+		Assert.assertEquals(null, value);
+		
+		CMLFormula form = new CMLFormula();
+		form.setInline("testing");
+		form.setConvention("foo");
+		mol.addFormula(form);
+		value=mol.getFormulaWithConvention("foo");
+		Assert.assertEquals("testing", value);
+		
+		form=new CMLFormula();
+		form.setConvention("bar");
+		form.appendChild("test2");
+		mol.addFormula(form);
+		value=mol.getFormulaWithConvention("bar");
+		Assert.assertEquals("test2", value);
+	}
+	
 }
