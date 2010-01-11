@@ -505,6 +505,15 @@ public class Transform2 extends RealSquareMatrix {
         return new Real2(flmat[0][2], flmat[1][2]);
     }
     /**
+     * get translation component only
+     * 
+     * @return The translation value
+     */
+    public void setTranslation(Real2 xy) {
+        flmat[0][2] = xy.x;
+        flmat[1][2] = xy.y;
+    }
+    /**
      * get scales (as a 2-element RealArray)
      * 
      * @return The scales value
