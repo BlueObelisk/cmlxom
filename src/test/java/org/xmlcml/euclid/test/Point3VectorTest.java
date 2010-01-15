@@ -512,28 +512,6 @@ public class Point3VectorTest {
 						s3, s2, 1., 0. }, rsm, EPS);
 	}
 
-	// FIXME
-	// /**
-	// * Test method for 'org.xmlcml.euclid.Point3Vector.inertialAxes(RealArray,
-	// * RealSquareMatrix, EuclidException)'
-	// */
-	// @Test
-	// @Ignore
-	// public void testInertialAxes() {
-	// RealArray eigval = new RealArray();
-	// RealSquareMatrix eigvec = new RealSquareMatrix();
-	// EuclidRuntimeException exc = new EuclidRuntimeException("dummy");
-	// p2.inertialAxes(eigval, eigvec, exc);
-	// }
-
-	/**
-	 * Test method for 'org.xmlcml.euclid.Point3Vector.bestPlane()'
-	 */
-	@Test
-	@Ignore
-	public void testBestPlane() {
-	}
-
 	/**
 	 * Test method for
 	 * 'org.xmlcml.euclid.Point3Vector.deviationsFromPlane(Plane3)'

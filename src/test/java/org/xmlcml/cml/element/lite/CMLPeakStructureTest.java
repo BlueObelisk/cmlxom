@@ -300,14 +300,5 @@ public class CMLPeakStructureTest extends PeakSpectrumBase {
 				.hasValidNestedPeakStructure());
 	}
 
-	/**
-	 * Test method for
-	 * 'org.xmlcml.cml.element.CMLPeakStructure.getCouplingsFrom(CMLMolecule)'
-	 */
-	@Ignore
-	@Test
-	public void testGetCouplingsFromCMLMolecule() {
-
-	}
 
 }
