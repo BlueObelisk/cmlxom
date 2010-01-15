@@ -511,6 +511,7 @@ public class CMLFormula extends AbstractFormula {
 		}
 		if (atomArray != null) {
 			atomArray.sort(Sort.CHFIRST);
+			removeZeroAtomCounts();
 		}
 		// check consistency
 		if (inline2Concise != null && !conciseS.equals(inline2Concise)) {
@@ -523,6 +524,9 @@ public class CMLFormula extends AbstractFormula {
 		if (conciseS != null) {
 			super.setConcise(conciseS);
 		}
+	}
+
+    private void removeZeroAtomCounts() {
 	}
 
 // FIXME move to tools	
@@ -944,7 +948,6 @@ public class CMLFormula extends AbstractFormula {
 	 */
 
 	void createFromString(String formulaString, Type formulaConvention) {
-		LOG.debug("FORMMMMM "+formulaString);
 		formulaString = formulaString.trim();
 		if (formulaConvention.equals(Type.ELEMENT_WHITESPACE_COUNT)
 				|| formulaConvention.equals(Type.ELEMENT_COUNT_WHITESPACE)) {
@@ -1680,6 +1683,7 @@ public class CMLFormula extends AbstractFormula {
 			throw new RuntimeException("Null formula in createAggregatedFormula");
 		}
 		CMLFormula newFormula = new CMLFormula();
+		newFormula.setAllowNegativeCounts(this.allowNegativeCounts | form.allowNegativeCounts);
 		newFormula.aggregate(this);
 		form = form.getAggregateFormula();
 		newFormula.aggregate(form);
