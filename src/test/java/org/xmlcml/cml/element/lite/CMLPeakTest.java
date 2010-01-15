@@ -87,25 +87,5 @@ public class CMLPeakTest extends PeakSpectrumBase {
 		Assert.assertEquals("peak count ", 4, peaks.size());
 	}
 
-	/**
-	 * Test method for 'org.xmlcml.cml.element.CMLPeak.getDerefencedAtoms()'
-	 */
-	@Ignore
-	@Test
-	public void testGetDerefencedAtoms() {
-		// TODO Auto-generated method stub
-
-	}
-
-	/**
-	 * Test method for
-	 * 'org.xmlcml.cml.element.CMLPeak.getCouplingsFrom(CMLMolecule)'
-	 */
-	@Ignore
-	@Test
-	public void testGetCouplingsFromCMLMolecule() {
-		// TODO Auto-generated method stub
-
-	}
 
 }
