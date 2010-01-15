@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>cml</groupId>
 	<artifactId>cmlxom</artifactId>
-	<name>CMLXOM</name>
 	<version>2.5.1-SNAPSHOT</version>
+	<name>CMLXOM</name>
 	<description>A Java library for processing CML</description>
 	<url>http://sourceforge.net/projects/cml/ </url>
+	
 	<inceptionYear>1994</inceptionYear>
 	<mailingLists>
 		<mailingList>
@@ -130,13 +134,13 @@
 		<license>
 			<name>Artistic License</name>
 			<url> http://www.opensource.org/licenses/artistic-license.php</url>
-			<distribution>manual</distribution>
+			<distribution>repo</distribution>
 		</license>
 	</licenses>
 	<scm>
-		<connection> scm:svn:https://cml.svn.sourceforge.net/svnroot/cml </connection>
-		<developerConnection> scm:svn:https://cml.svn.sourceforge.net/svnroot/cml </developerConnection>
-		<url>http://cml.svn.sourceforge.net/viewvc/cml/ </url>
+		<connection>scm:svn:http://cml.svn.sourceforge.net/svnroot/cml/cmlxom/trunk</connection>
+		<developerConnection> scm:svn:https://cml.svn.sourceforge.net/svnroot/cml/cmlxom/trunk</developerConnection>
+		<url>http://cml.svn.sourceforge.net/svnroot/cml/cmlxom/trunk/</url>
 	</scm>
 	<organization>
 		<name>Peter Murray-Rust</name>
@@ -163,13 +167,15 @@
 			</plugin>
 		</plugins>
 	</build>
+	
 	<repositories>
 		<repository>
-			<id>wwmm</id>
-			<name>WWMM</name>
-			<url>http://wwmm.ch.cam.ac.uk/maven2/ </url>
+			<id>ucc</id>
+			<name>ch.cam.ac.uk</name>
+			<url>http://maven.ch.cam.ac.uk/m2repo/</url>
 		</repository>
 	</repositories>
+	
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -193,13 +199,7 @@
 			<version>2.8.0</version>
 		</dependency>
 	</dependencies>
-	<distributionManagement>
-		<repository>
-			<id>wwmm-dav</id>
-			<name>WWMM</name>
-			<url>dav:http://wwmm.ch.cam.ac.uk/maven2 </url>
-		</repository>
-	</distributionManagement>
+
 	<profiles>
 		<profile>
 			<id>release</id>
@@ -217,4 +217,5 @@
 			</build>
 		</profile>
 	</profiles>
+	
 </project>
