@@ -58,25 +58,4 @@ public class CMLNodeFactoryTest {
 		Assert.assertEquals("other namespace", "http://foo", namespace);
 	}
 
-	/**
-	 * Test method for
-	 * 'org.xmlcml.cml.element.OldNodeFactory.makeAttribute(String, String,
-	 * String, Type)'
-	 */
-	@Ignore
-	@Test
-	public void testMakeAttributeStringStringStringType() {
-		// String s1 = "<cml " + CMLConstants.CML_XMLNS + "/>";
-		// CMLElement cmlElement = (CMLElement)TstBase.parseValidString(s1);
-	}
-
-	/**
-	 * Test method for 'org.xmlcml.cml.element.OldNodeFactory.makeText(String)'
-	 */
-	@Ignore
-	@Test
-	public void testMakeTextString() {
-		// TODO Auto-generated method stub
-	}
-
 }

@@ -653,7 +653,6 @@ public class Point3VectorTest {
 	 * Test method for 'org.xmlcml.euclid.Point3Vector.roughAlign(Point3Vector)'
 	 */
 	@Test
-	// @Ignore
 	public void testRoughAlign() {
 		Transform3 t = null;
 		Point3Vector pthis = new Point3Vector(new double[] { 1., -1., 0., 0.,

@@ -385,39 +385,6 @@ public class CMLSpectrumTest extends PeakSpectrumBase {
 	}
 
 	/**
-	 * Test method for
-	 * 'org.xmlcml.cml.element.CMLSpectrum.getSpectrum(CMLElement)'
-	 */
-	@Test
-	@Ignore
-	public void testGetSpectrum() {
-		// TODO Auto-generated method stub
-
-	}
-
-	/**
-	 * Test method for
-	 * 'org.xmlcml.cml.element.CMLSpectrum.getAuntMolecule(CMLElement)'
-	 */
-	@Test
-	@Ignore
-	public void testGetAuntMolecule() {
-		// TODO Auto-generated method stub
-
-	}
-
-	/**
-	 * Test method for
-	 * 'org.xmlcml.cml.element.CMLSpectrum.getDescendantPeaks(CMLElement)'
-	 */
-	@Test
-	@Ignore
-	public void testGetDescendantPeaks() {
-		// TODO Auto-generated method stub
-
-	}
-
-	/**
 	 * test compound document.
 	 * 
 	 * @throws IOException
