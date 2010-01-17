@@ -16,6 +16,7 @@ import nu.xom.ParsingException;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLAttribute;
 import org.xmlcml.cml.base.CMLBuilder;
@@ -1391,4 +1392,34 @@ public class CMLFormulaTest {
 		Assert.assertNotNull(form);
 		Assert.assertEquals(1.0, form.getTotalAtomCount(), 0.0001);
 	}
+	
+	@Test
+	public void test2LetterElements() {
+		CMLFormula formula = CMLFormula.createFormula("H 6 O 2 Cl 2 R 4");
+		String formulaS = formula.getConcise();
+		Assert.assertEquals("2LetterTest", "H 6 Cl 2 O 2 R 4", formulaS);
+	}
+	
+	@Test
+	public void test2LetterElements1() {
+		CMLFormula formula = CMLFormula.createFormula("H 6 Xe 1 O 2 Cl 2 R 4 B 3 Sn 4");
+		String formulaS = formula.getConcise();
+		Assert.assertEquals("2LetterTest", "H 6 B 3 Cl 2 O 2 R 4 Sn 4 Xe 1", formulaS);
+	}
+	
+	@Test
+	@Ignore ("doesnt read negative")
+	public void testNegativeElements() {
+		CMLFormula formula = CMLFormula.createFormula("H 4 O -2 C 3", Type.CONCISE);
+		String formulaS = formula.getConcise();
+		Assert.assertEquals("2LetterTest", "H 6 B 3 Cl 2 O 2 R 4 Sn 4 Xe 1", formulaS);
+	}
+	
+	@Test
+	public void testCreateConcise() {
+		CMLFormula formula = CMLFormula.createFormula("H 4 O 2 C 3", Type.CONCISE);
+		String formulaS = formula.getConcise();
+		Assert.assertEquals("Concise", "C 3 H 4 O 2", formulaS);
+	}
+	
 }
