@@ -366,6 +366,12 @@ public class Transform2 extends RealSquareMatrix {
     	return Transform2.applyScales(scale, scale);
     }
     
+    public void applyScalesToThis(double scaleX, double scaleY) {
+    	Transform2 t2 = Transform2.applyScales(scaleX, scaleY);
+    	t2 = this.concatenate(t2);
+    	this.flmat = t2.flmat;
+    }
+    
     /**
      * concatenate
      * 

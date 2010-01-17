@@ -421,8 +421,6 @@ public class CMLSymmetryTest {
 	 * 'org.xmlcml.cml.element.CMLSymmetry.convolute(CMLSymmetry)'
 	 */
 	@Test
-	@Ignore("doesn't yet work")
-	@SuppressWarnings("unused")
 	public void testConvolute() {
 		List<String> list = new ArrayList<String>();
 		list.add("x, y, z");
@@ -433,6 +431,8 @@ public class CMLSymmetryTest {
 		@SuppressWarnings("unused")
 		CMLSymmetry symmetry2 = CMLSymmetry.createFromXYZStrings(list);
 		CMLSymmetry symmetry3 = symmetry1.convolute(symmetry2);
+		Assert.assertNotNull(symmetry3);
+		// doesn't give right answer
 	}
 
 	/**

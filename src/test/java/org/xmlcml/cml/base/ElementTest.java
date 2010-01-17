@@ -42,7 +42,7 @@ public class ElementTest {
 	private void xomNoValidate(String file) throws IOException,
 			ValidityException, ParsingException {
 		Document doc = null;
-		Util.println("  === xom Parse, no validation: " + file + " ====");
+//		Util.println("  === xom Parse, no validation: " + file + " ====");
 		InputStream in = null;
 
 		in = Util.getInputStreamFromResource(TstBase.BASE_RESOURCE +CMLConstants.U_S + file);
