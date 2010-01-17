@@ -23,6 +23,7 @@ import nu.xom.Nodes;
 import nu.xom.Text;
 
 import org.apache.log4j.Logger;
+import org.junit.Test;
 import org.xmlcml.cml.base.CMLAttribute;
 import org.xmlcml.cml.base.CMLBuilder;
 import org.xmlcml.cml.base.CMLConstants;
@@ -967,6 +968,8 @@ public class CMLFormula extends AbstractFormula {
 		} else if (formulaConvention.equals(Type.NESTEDBRACKETS)
 				|| formulaConvention.equals(Type.STRUCTURAL)) {
 			LOG.debug("Nested/structural formula convention not yet supported");
+		} else if (formulaConvention.equals(Type.CONCISE)) {
+			parseElementCountWhitespace(formulaString, Type.ELEMENT_WHITESPACE_COUNT);
 		} else if (formulaConvention.equals(Type.ANY)) {
 			parseAny(formulaString);
 		} else {
@@ -2388,5 +2391,6 @@ public class CMLFormula extends AbstractFormula {
 	public boolean isProcessedConcise() {
 		return processedConcise;
 	}
+
 
 }
