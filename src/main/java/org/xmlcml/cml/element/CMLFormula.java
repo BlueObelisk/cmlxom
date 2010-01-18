@@ -1,6 +1,7 @@
 package org.xmlcml.cml.element;
 
 import java.io.File;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
@@ -23,7 +24,6 @@ import nu.xom.Nodes;
 import nu.xom.Text;
 
 import org.apache.log4j.Logger;
-import org.junit.Test;
 import org.xmlcml.cml.base.CMLAttribute;
 import org.xmlcml.cml.base.CMLBuilder;
 import org.xmlcml.cml.base.CMLConstants;
