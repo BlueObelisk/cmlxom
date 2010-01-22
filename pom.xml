@@ -179,7 +179,7 @@
 						<haltOnFailure>false</haltOnFailure>
 						<regexes>
 							<regex>
-								<pattern>org.xmlcml.cml.*</pattern>
+								<pattern>org.xmlcml.*</pattern>
 								<branchRate>80</branchRate>
 								<lineRate>80</lineRate>
 							</regex>
@@ -187,7 +187,7 @@
 					</check>
 					<instrumentation>
 						<includes>
-							<include>org/xmlcml/cml/**/*.class</include>
+							<include>org/xmlcml/**/*.class</include>
 						</includes>
 					</instrumentation>
 				</configuration>
