@@ -45,7 +45,7 @@ public class ElementTest {
 //		Util.println("  === xom Parse, no validation: " + file + " ====");
 		InputStream in = null;
 
-		in = Util.getInputStreamFromResource(TstBase.BASE_RESOURCE +CMLConstants.U_S + file);
+		in = Util.getInputStreamFromResource(CMLXOMTestUtils.BASE_RESOURCE +CMLConstants.U_S + file);
 		doc = new Builder().build(in);
 		Assert.assertNotNull("document ", doc);
 	}
@@ -127,7 +127,7 @@ public class ElementTest {
 		InputStream in = null;
 		Document doc = null;
 		try {
-			in = Util.getInputStreamFromResource(TstBase.BASE_RESOURCE +CMLConstants.U_S + noSchema);
+			in = Util.getInputStreamFromResource(CMLXOMTestUtils.BASE_RESOURCE +CMLConstants.U_S + noSchema);
 			doc = new Builder().build(in);
 			Assert.assertNotNull("document", doc);
 		} catch (Exception e) {
@@ -167,13 +167,13 @@ public class ElementTest {
 	public void testRemoveWhitespaceNodesElement() {
 		String element0S = "" + "<foo>" + "  <bar>"
 				+ "    <plugh>  <br/>  </plugh>" + "  </bar>" + "</foo>" + "";
-		Element element0 = TstBase.parseValidString(element0S);
+		Element element0 = CMLXOMTestUtils.parseValidString(element0S);
 		String element1S = "<foo><bar><plugh><br/></plugh></bar></foo>";
-		Element element1 = TstBase.parseValidString(element1S);
-		TstBase.assertNotEqualsCanonically("before whitespace", element0,
+		Element element1 = CMLXOMTestUtils.parseValidString(element1S);
+		CMLXOMTestUtils.assertNotEqualsCanonically("before whitespace", element0,
 				element1);
 		CMLUtil.removeWhitespaceNodes(element0);
-		TstBase.assertEqualsCanonically("before whitespace ", element0,
+		CMLXOMTestUtils.assertEqualsCanonically("before whitespace ", element0,
 				element1);
 	}
 

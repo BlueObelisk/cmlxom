@@ -10,7 +10,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLConstants;
-import org.xmlcml.cml.base.TstBase;
+import org.xmlcml.cml.base.CMLXOMTestUtils;
 import org.xmlcml.cml.base.CMLConstants.Units;
 import org.xmlcml.cml.element.CMLCml;
 import org.xmlcml.cml.element.CMLProperty;
@@ -37,7 +37,7 @@ public class CMLPropertyTest {
 				+ ">"
 				+ "  <scalar dictRef='foo:bar' units='"+Units.GRAM+"' dataType='xsd:double'>12.3</scalar>"
 				+ "</property>";
-		prop1 = (CMLProperty)TstBase.parseValidString(prop1S);
+		prop1 = (CMLProperty)CMLXOMTestUtils.parseValidString(prop1S);
 	}
 
 	/** dewisott */
@@ -59,7 +59,7 @@ public class CMLPropertyTest {
 				+ ">"
 				+ "  <scalar dictRef='foo:plugh' units='"+Units.GRAM+"' dataType='xsd:double'>49.6</scalar>"
 				+ "</property>" + "</cml>";
-		CMLCml cml = (CMLCml)TstBase.parseValidString(cmlS);
+		CMLCml cml = (CMLCml)CMLXOMTestUtils.parseValidString(cmlS);
 		CMLPropertyList propertyList = CMLProperty.getPropertyList(cml,
 				"foo:bar");
 		Assert.assertEquals("propertyList", 1, propertyList
@@ -85,7 +85,7 @@ public class CMLPropertyTest {
 				+ ">"
 				+ "  <scalar dictRef='foo:plugh' units='"+Units.GRAM+"' dataType='xsd:double'>49.6</scalar>"
 				+ "</property>" + "</cml>";
-		CMLCml cml = (CMLCml)TstBase.parseValidString(cmlS);
+		CMLCml cml = (CMLCml)CMLXOMTestUtils.parseValidString(cmlS);
 		CMLProperty property = CMLProperty.getProperty(cml, "foo:bar");
 		Assert.assertEquals("property", 12.3, property.getDouble(), EPS);
 		property = CMLProperty.getProperty(cml, "foo:plugh");
@@ -117,7 +117,7 @@ public class CMLPropertyTest {
 				+ "</property>" + "<property " + CMLConstants.CML_XMLNS + ">"
 				+ "  <scalar dictRef='foo:plugh'>penguin</scalar>"
 				+ "</property>" + "</cml>";
-		CMLCml cml = (CMLCml)TstBase.parseValidString(cmlS);
+		CMLCml cml = (CMLCml)CMLXOMTestUtils.parseValidString(cmlS);
 		CMLProperty property = CMLProperty.getProperty(cml, "foo:bar");
 		String val = property.getString();
 		Assert.assertNull("string", val);
@@ -138,7 +138,7 @@ public class CMLPropertyTest {
 				+ "<property>"
 				+ "  <scalar dictRef='foo:plugh' dataType='xsd:integer'>12</scalar>"
 				+ "</property>" + "</cml>";
-		CMLCml cml = (CMLCml)TstBase.parseValidString(cmlS);
+		CMLCml cml = (CMLCml)CMLXOMTestUtils.parseValidString(cmlS);
 		CMLProperty property = CMLProperty.getProperty(cml, "foo:bar");
 		int val = property.getInt();
 		Assert.assertEquals("int", Integer.MIN_VALUE, val);
@@ -156,7 +156,7 @@ public class CMLPropertyTest {
 				+ "<property  dictRef='foo:bar'>"
 				+ "  <scalar>penguin bear wombat</scalar>" + "</property>"
 				+ "</cml>";
-		CMLCml cml = (CMLCml)TstBase.parseValidString(cmlS);
+		CMLCml cml = (CMLCml)CMLXOMTestUtils.parseValidString(cmlS);
 		CMLProperty property = CMLProperty.getProperty(cml, "foo:plugh");
 		List<String> val = property.getStringValues();
 		Assert.assertNotNull("strings", val);
@@ -175,7 +175,7 @@ public class CMLPropertyTest {
 				+ "<property  dictRef='foo:plugh'>"
 				+ "  <array dataType='xsd:integer'>1 2 3</array>"
 				+ "</property>" + "</cml>";
-		CMLCml cml = (CMLCml)TstBase.parseValidString(cmlS);
+		CMLCml cml = (CMLCml)CMLXOMTestUtils.parseValidString(cmlS);
 		CMLProperty property = CMLProperty.getProperty(cml, "foo:plugh");
 		int[] val = property.getInts();
 		Assert.assertNotNull("ints", val);
@@ -192,7 +192,7 @@ public class CMLPropertyTest {
 				+ "<property  dictRef='foo:plugh'>"
 				+ "  <array dataType='xsd:double' units='"+Units.GRAM+"'>1.1 2.1 3.1</array>"
 				+ "</property>" + "</cml>";
-		CMLCml cml = (CMLCml)TstBase.parseValidString(cmlS);
+		CMLCml cml = (CMLCml)CMLXOMTestUtils.parseValidString(cmlS);
 		CMLProperty property = CMLProperty.getProperty(cml, "foo:plugh");
 		double[] val = property.getDoubles();
 		Assert.assertNotNull("doubles", val);
@@ -211,7 +211,7 @@ public class CMLPropertyTest {
 				+ "</property>" + "<property  dictRef='foo:bar'>"
 				+ "  <molecule/>" + "</property>"
 				+ "<property  dictRef='foo:xyzzy'/>" + "</cml>";
-		CMLCml cml = (CMLCml)TstBase.parseValidString(cmlS);
+		CMLCml cml = (CMLCml)CMLXOMTestUtils.parseValidString(cmlS);
 		CMLProperty property = CMLProperty.getProperty(cml, "foo:plugh");
 		HasDataType child = property.getChild();
 		Assert.assertNotNull("child", child);
@@ -231,7 +231,7 @@ public class CMLPropertyTest {
 				+ "</property>" + "<property  dictRef='foo:bar'>"
 				+ "  <scalar/>" + "</property>"
 				+ "<property  dictRef='foo:xyzzy'/>" + "</cml>";
-		CMLCml cml = (CMLCml)TstBase.parseValidString(cmlS);
+		CMLCml cml = (CMLCml)CMLXOMTestUtils.parseValidString(cmlS);
 		CMLProperty property = CMLProperty.getProperty(cml, "foo:plugh");
 		String dataType = property.getDataType();
 		Assert.assertEquals("datatype", XSD_DOUBLE, dataType);

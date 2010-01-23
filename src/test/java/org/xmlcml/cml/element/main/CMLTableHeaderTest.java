@@ -3,7 +3,7 @@
  */
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.cml.base.TstBase.assertWriteHTML;
+import static org.xmlcml.cml.base.CMLXOMTestUtils.assertWriteHTML;
 
 import org.junit.Assert;
 import org.junit.Test;

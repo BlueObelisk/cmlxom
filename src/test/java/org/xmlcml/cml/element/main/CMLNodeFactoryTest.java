@@ -10,7 +10,7 @@ import org.junit.Test;
 import org.xmlcml.cml.base.CMLBuilder;
 import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
-import org.xmlcml.cml.base.TstBase;
+import org.xmlcml.cml.base.CMLXOMTestUtils;
 
 /**
  * test OldNodeFactory.
@@ -28,7 +28,7 @@ public class CMLNodeFactoryTest {
 	@Test
 	public void testStartMakingElementStringString() {
 		String s1 = "<cml " + CMLConstants.CML_XMLNS + "/>";
-		CMLElement cmlElement = (CMLElement)TstBase.parseValidString(s1);
+		CMLElement cmlElement = (CMLElement)CMLXOMTestUtils.parseValidString(s1);
 		String namespace = cmlElement.getNamespaceURI();
 		Assert.assertEquals("ok namespace", CMLConstants.CML_NS, namespace);
 

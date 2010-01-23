@@ -6,7 +6,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLConstants;
-import org.xmlcml.cml.base.TstBase;
+import org.xmlcml.cml.base.CMLXOMTestUtils;
 import org.xmlcml.cml.element.CMLLattice;
 import org.xmlcml.cml.element.CMLLatticeVector;
 import org.xmlcml.cml.element.CMLVector3;
@@ -35,7 +35,7 @@ public class CMLLatticeTest {
 	@Before
 	public void setUp() throws Exception {
 		if (lattice1 == null) {
-			lattice1 = (CMLLattice)TstBase.parseValidString(lattice1S);
+			lattice1 = (CMLLattice)CMLXOMTestUtils.parseValidString(lattice1S);
 		}
 	}
 

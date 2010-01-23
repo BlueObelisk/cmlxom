@@ -29,10 +29,10 @@ import org.xmlcml.euclid.Util;
  * @version 5.0
  * 
  */
-public final class TstBase {
+public final class CMLXOMTestUtils {
 
 	/** logger */
-	public final static Logger logger = Logger.getLogger(TstBase.class
+	public final static Logger logger = Logger.getLogger(CMLXOMTestUtils.class
 			.getName());
 
 	/** root of tests. */
@@ -60,7 +60,7 @@ public final class TstBase {
 
 	/**
 	 * compares two XML nodes and checks float near-equivalence (can also be
-	 * used for documents without floats) usesTstBase.assertEqualsCanonically and only
+	 * used for documents without floats) uses .assertEqualsCanonically and only
 	 * uses PMR code if fails
 	 * 
 	 * @param message
@@ -76,7 +76,7 @@ public final class TstBase {
 
 	/**
 	 * compares two XML nodes and checks float near-equivalence (can also be
-	 * used for documents without floats) usesTstBase.assertEqualsCanonically and only
+	 * used for documents without floats) uses .assertEqualsCanonically and only
 	 * uses PMR code if fails
 	 * 
 	 * @param message

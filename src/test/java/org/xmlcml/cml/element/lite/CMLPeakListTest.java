@@ -5,7 +5,7 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.xmlcml.cml.base.TstBase;
+import org.xmlcml.cml.base.CMLXOMTestUtils;
 import org.xmlcml.cml.element.CMLMap;
 import org.xmlcml.cml.element.CMLMolecule;
 import org.xmlcml.cml.element.CMLPeak;
@@ -67,10 +67,10 @@ public class CMLPeakListTest {
 			peakList.addPeak(peak);
 		}
 		if (peakAndGroupList == null) {
-			peakAndGroupList = (CMLPeakList)TstBase.parseValidString(peakAndGroupListS);
+			peakAndGroupList = (CMLPeakList)CMLXOMTestUtils.parseValidString(peakAndGroupListS);
 		}
 		if (molecule == null) {
-			molecule = (CMLMolecule)TstBase.parseValidString(moleculeS);
+			molecule = (CMLMolecule)CMLXOMTestUtils.parseValidString(moleculeS);
 		}
 	}
 
@@ -112,7 +112,7 @@ public class CMLPeakListTest {
 				+ "      <bond id='a6_a7_h1' atomRefs2='a6 a7_h1'/>"
 				+ "      <bond id='a1_a6' atomRefs2='a1 a6'/>"
 				+ "    </bondArray>" + "  </molecule>";
-		toluene = (CMLMolecule)TstBase.parseValidString(tolueneS);
+		toluene = (CMLMolecule)CMLXOMTestUtils.parseValidString(tolueneS);
 
 		// delieberately unordered - numbers meaningless
 		String toluenePeakListS = "<peakList xmlns='http://www.xml-cml.org/schema'>"
@@ -133,7 +133,7 @@ public class CMLPeakListTest {
 				+ "  <peak id='pc5' xValue='63.2'/>"
 				+ "  <peak id='pc6' xValue='62.2'/>" + "</peakList>";
 
-		toluenePeakList = (CMLPeakList)TstBase.parseValidString(toluenePeakListS);
+		toluenePeakList = (CMLPeakList)CMLXOMTestUtils.parseValidString(toluenePeakListS);
 
 		@SuppressWarnings("unused")
 		String tolueneMapS = "<map xmlns='http://www.xml-cml.org/schema'>"
@@ -151,7 +151,6 @@ public class CMLPeakListTest {
 				+ "  <link from='a4_h1' to='ph4'/>"
 				+ "  <link from='a5_h1' to='ph5'/>"
 				+ "  <link from='a6_h1' to='ph6'/>" + "</map>";
-		// tolueneMap = (CMLMap)TstBase.parseValidString(tolueneMapS);
 	}
 
 	/**

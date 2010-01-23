@@ -12,7 +12,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLConstants;
-import org.xmlcml.cml.base.TstBase;
+import org.xmlcml.cml.base.CMLXOMTestUtils;
 import org.xmlcml.cml.element.CMLAtom;
 import org.xmlcml.cml.element.CMLBond;
 import org.xmlcml.cml.element.CMLCml;
@@ -52,7 +52,7 @@ public class CMLLengthTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		CMLCml cml = (CMLCml)TstBase.parseValidString(s1);
+		CMLCml cml = (CMLCml)CMLXOMTestUtils.parseValidString(s1);
 		molecule1 = (CMLMolecule) cml.getChildCMLElements("molecule").get(0);
 		length0 = (CMLLength) cml.getChildCMLElements("length").get(0);
 		length1 = (CMLLength) cml.getChildCMLElements("length").get(1);
