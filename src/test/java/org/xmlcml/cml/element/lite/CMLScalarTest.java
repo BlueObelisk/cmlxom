@@ -24,6 +24,7 @@ import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.base.CMLBuilder;
 import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
+import org.xmlcml.cml.base.CMLConstants.Units;
 import org.xmlcml.cml.element.CMLCml;
 import org.xmlcml.cml.element.CMLScalar;
 
@@ -875,7 +876,7 @@ public class CMLScalarTest {
 	@Test
 	public void testSetUnitsStringString() {
 		xmlScalarD0.setUnits("units", "g", UNIT_NS);
-		Assert.assertEquals("set units", "units:g", xmlScalarD0.getUnits());
+		Assert.assertEquals("set units", Units.GRAM.toString(), xmlScalarD0.getUnits());
 		Assert.assertEquals("set units", UNIT_NS, xmlScalarD0
 				.getNamespaceURIForPrefix("units"));
 	}

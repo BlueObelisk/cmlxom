@@ -120,7 +120,7 @@ public class CMLProperty extends AbstractProperty implements HasDictRef {
 			value = s;
 		}
 	}
-	
+
 	
 	private HasDataType child;
 

@@ -523,6 +523,8 @@ public class CMLFormula extends AbstractFormula {
 			throw new RuntimeException("concise ("+conciseS+") and atomArray ("+atomArray2Concise+") differ");
 		}
 		if (conciseS != null) {
+			// by this time we may have generated a non-zero formal charge, so normalize it into concise
+    		conciseS = normalizeConciseAndFormalCharge(conciseS, this.getFormalCharge());
 			super.setConcise(conciseS);
 		}
 	}
@@ -969,7 +971,7 @@ public class CMLFormula extends AbstractFormula {
 				|| formulaConvention.equals(Type.STRUCTURAL)) {
 			LOG.debug("Nested/structural formula convention not yet supported");
 		} else if (formulaConvention.equals(Type.CONCISE)) {
-			parseElementCountWhitespace(formulaString, Type.ELEMENT_WHITESPACE_COUNT);
+			setConcise(formulaString);
 		} else if (formulaConvention.equals(Type.ANY)) {
 			parseAny(formulaString);
 		} else {
