@@ -2,6 +2,8 @@ package org.xmlcml.euclid;
 import java.io.IOException;
 import java.io.Writer;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 
@@ -1485,4 +1487,27 @@ public class IntMatrix implements EuclidConstants {
         sb.append("</matrix>");
         w.write(sb.toString());
     }
+	/**
+	 * should really be in IntMatrix
+	 */
+	public static List<Integer> findLargestUniqueElementsInRowColumn(IntMatrix intMatrix) {
+		List<Integer> intList = new ArrayList<Integer>();
+		for (int jcol = 0, max = intMatrix.getCols(); jcol < max; jcol++) {
+			int irow = intMatrix.indexOfLargestElementInColumn(jcol);
+			int maxval = intMatrix.elementAt(irow, jcol);
+			if (maxval == -1) {
+				irow = -1;
+			} else {
+				for (int ii = irow + 1, maxrow = intMatrix.getRows(); ii < maxrow; ii++) {
+					int val = intMatrix.elementAt(ii, jcol);
+					if (val >= maxval) {
+						irow = -1;
+						break;
+					}
+				}
+			}
+			intList.add(irow);
+		}
+		return intList;
+	}
 }

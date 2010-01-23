@@ -500,13 +500,17 @@ public class CMLReaction extends AbstractReaction implements ReactionComponent {
      */
     public List<CMLMolecule> getMolecules(Component type) {
     	String typeS = null;
-    	if (Component.PRODUCT.equals(type)) {
-    		typeS = "cml:product";
+    	if (type == null) {
+    		throw new RuntimeException("null component type");
+    	} else if (Component.PRODUCT.equals(type)) {
     	} else if (Component.REACTANT.equals(type)) {
-    		typeS = "cml:product";
+    		typeS = "cml:reactant";
     	} else if (Component.SPECTATOR.equals(type)) {
     		typeS = "cml:spectator";
+    	} else {
+    		throw new RuntimeException("bad component type: "+type );
     	}
+    	
     	List<CMLMolecule> moleculeList = new ArrayList<CMLMolecule>();
     	Nodes nodes = null;
     	if (typeS == null) {
