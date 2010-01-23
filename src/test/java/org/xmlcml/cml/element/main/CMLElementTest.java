@@ -1,8 +1,8 @@
 package org.xmlcml.cml.element.main;
 
 import static org.xmlcml.cml.base.CMLConstants.C_E;
-import static org.xmlcml.cml.base.TstBase.assertEqualsCanonically;
-import static org.xmlcml.cml.base.TstBase.assertNotEqualsCanonically;
+import static org.xmlcml.cml.base.CMLXOMTestUtils.assertEqualsCanonically;
+import static org.xmlcml.cml.base.CMLXOMTestUtils.assertNotEqualsCanonically;
 
 import java.io.IOException;
 import java.io.StringReader;

@@ -20,7 +20,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLConstants;
-import org.xmlcml.cml.base.TstBase;
+import org.xmlcml.cml.base.CMLXOMTestUtils;
 import org.xmlcml.cml.element.CMLCml;
 import org.xmlcml.cml.element.CMLMatrix;
 import org.xmlcml.euclid.EuclidRuntimeException;
@@ -64,7 +64,7 @@ public class CMLMatrixTest {
 	public void setUp() throws Exception {
 
 		if (cml == null) {
-			cml = (CMLCml)TstBase.parseValidString(unitsS);
+			cml = (CMLCml)CMLXOMTestUtils.parseValidString(unitsS);
 			Elements matrixElements = cml.getChildCMLElements(CMLMatrix.TAG);
 			Assert.assertEquals("matrix element count", 3, matrixElements
 					.size());
@@ -443,90 +443,6 @@ public class CMLMatrixTest {
 				16200., 8100., 4050. }, mat1, EPS);
 	}
 
-	// /**
-	// * Test method for
-	// 'org.xmlcml.cml.element.CMLMatrix.getUnit(NamespaceToUnitListMap)'
-	// */
-	// @Test
-	// public void testGetUnit() {
-	// CMLMatrix mat = matrixList.get(0);
-	// CMLUnit unit = mat.getUnit(unitsUnitListMap);
-	// Assert.assertNotNull("unit", unit);
-	// Assert.assertEquals("unit", "deg", unit.getId());
-	// }
-
-	// /**
-	// * Test method for 'org.xmlcml.cml.element.CMLMatrix.setUnits(String,
-	// * String)'
-	// */
-	// @Test
-	// public void testSetUnitsStringString() {
-	// CMLMatrix mat = matrixList.get(0);
-	// CMLUnit unit = mat.getUnit(unitsUnitListMap);
-	// Assert.assertNotNull("unit", unit);
-	// Assert.assertEquals("unit", "deg", unit.getId());
-	// mat.setUnits("siUnits", "kg", SIUNIT_NS);
-	// unit = mat.getUnit(unitsUnitListMap);
-	// Assert.assertNotNull("unit", unit);
-	// Assert.assertEquals("unit", "kg", unit.getId());
-	// }
-
-	// /**
-	// * test units.
-	// *
-	// */
-	// @Test
-	// public void testGetUnits() {
-	// CMLCml cml = (CMLCml)TstBase.parseValidString(unitsS);
-	// 
-	// // matrixs
-	// List<CMLElement> matrixs = cml.getElements(".//"+CMLMatrix.NS);
-	// Assert.assertEquals("matrix count", 3, matrixs.size());
-	// CMLMatrix matrix = (CMLMatrix) matrixs.get(0);
-	// UnitsAttribute unitsAttribute = (UnitsAttribute) matrix
-	// .getUnitsAttribute();
-	// Assert.assertNotNull("units attribute not null", unitsAttribute);
-	// CMLUnit unit = unitsUnitListMap.getUnit(unitsAttribute);
-	// Assert.assertNotNull("unit not null", unit);
-	// Assert.assertEquals("unit ", "deg", unit.getId());
-	// }
-
-	// /**
-	// * test conversion to SI.
-	// *
-	// */
-	// @Test
-	// public void testConvertToSI() {
-	// CMLCml cml = (CMLCml)TstBase.parseValidString(unitsS);
-	//
-	// // matrixs
-	// List<CMLElement> matrixs = cml.getElements(".//"+CMLMatrix.NS);
-	// Assert.assertEquals("matrix count", 3, matrixs.size());
-	// testMatrix((CMLMatrix) matrixs.get(0),
-	// new double[] { 180., 90, 45., 0. },
-	// CMLConstants.CML_UNITS + S_COLON + "deg", new double[] { 3.1415922,
-	// 1.5707961, 0.78539805, 0 }, CMLConstants.CML_SIUNITS + S_COLON
-	// + "radian");
-	//
-	// testMatrix((CMLMatrix) matrixs.get(1), new double[] { 100., 50, 0.,
-	// -25. }, CMLConstants.CML_UNITS + S_COLON + "kcal", new double[] { 418400.,
-	// 209200., 0., -104600. }, CMLConstants.CML_SIUNITS + S_COLON + "joule");
-	//
-	// testMatrix((CMLMatrix) matrixs.get(2), new double[] { 100., 50, 0.,
-	// -50. }, CMLConstants.CML_UNITS + S_COLON + "celsius", new double[] { 373.15,
-	// 323.15, 273.15, 223.15 }, CMLConstants.CML_SIUNITS + S_COLON + "k");
-	// }
-
-	// private void testMatrix(CMLMatrix matrix, double[] expected0,
-	// String units0, double[] expected1, String units1) {
-	// DoubleTestBase.assertEquals("matrix", expected0, matrix.getDoubleArray(),
-	// EPS);
-	// Assert.assertEquals("matrix", units0, matrix.getUnits());
-	// matrix.convertToSI(unitsUnitListMap);
-	// DoubleTestBase.assertEquals("matrix", expected1, matrix.getDoubleArray(),
-	// EPS * 10);
-	// Assert.assertEquals("matrix", units1, matrix.getUnits());
-	// }
 
 	/**
 	 * Test method for 'org.xmlcml.cml.element.CMLMatrix.copy()'

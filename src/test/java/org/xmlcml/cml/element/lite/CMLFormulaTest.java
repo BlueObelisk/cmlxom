@@ -23,7 +23,7 @@ import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.CMLSerializer;
 import org.xmlcml.cml.base.DoubleSTAttribute;
-import org.xmlcml.cml.base.TstBase;
+import org.xmlcml.cml.base.CMLXOMTestUtils;
 import org.xmlcml.cml.element.CMLAtom;
 import org.xmlcml.cml.element.CMLAtomArray;
 import org.xmlcml.cml.element.CMLBond;
@@ -105,8 +105,8 @@ public class CMLFormulaTest {
 		xomForm3a.setId("xomForm3a");
 		String expectS = "<?xml version='1.0' encoding='UTF-8'?>" + (char) 13
 				+ (char) 10 + "<formula id='xomForm3a'  " + CMLConstants.CML_XMLNS + "/>";
-		Element expectElem =TstBase.parseValidString(expectS);
-		TstBase.assertEqualsCanonically("formula setup", expectElem, xomForm3a);
+		Element expectElem =CMLXOMTestUtils.parseValidString(expectS);
+		CMLXOMTestUtils.assertEqualsCanonically("formula setup", expectElem, xomForm3a);
 
 		xomForm3a.setConcise("H 2 S 1 O 4");
 		expectS = "<?xml version='1.0' encoding='UTF-8'?>" + (char) 13
@@ -114,8 +114,8 @@ public class CMLFormulaTest {
 				+ CMLConstants.S_SPACE + CMLConstants.CML_XMLNS + ">"
 				+ "<atomArray elementType='H O S' count='2.0 4.0 1.0'/>"
 				+ "</formula>";
-		expectElem =TstBase.parseValidString(expectS);
-		TstBase.assertEqualsCanonically("formula setup", expectElem, xomForm3a);
+		expectElem =CMLXOMTestUtils.parseValidString(expectS);
+		CMLXOMTestUtils.assertEqualsCanonically("formula setup", expectElem, xomForm3a);
 		Assert.assertEquals("xom3a child", 1, xomForm3a.getChildCount());
 		CMLFormula xomForm3aCopy = new CMLFormula(xomForm3a);
 //		xomForm3aCopy.debug("FORM");
@@ -134,9 +134,9 @@ public class CMLFormulaTest {
 				+ "<atomArray elementType='H O S' count='2.0 4.0 1.0'/>"
 				+ "</formula>";
 
-		expectElem =TstBase.parseValidString(expectS);
+		expectElem =CMLXOMTestUtils.parseValidString(expectS);
 
-		TstBase.assertEqualsCanonically("formula setup", expectElem, xomForm3aCopy);
+		CMLXOMTestUtils.assertEqualsCanonically("formula setup", expectElem, xomForm3aCopy);
 
 		xomForm3.appendChild(xomForm3a);
 		xomForm3b = new CMLFormula();
@@ -532,11 +532,9 @@ public class CMLFormulaTest {
 		Assert.assertEquals("count class is DoubleSTAttribute", countAtt.getClass(),
 				DoubleSTAttribute.class);
 		Assert.assertEquals("count value", formula.getCount(), xformula.getCount());
-		// FIXME?
-		//TstBase.assertEqualsCanonically("compare Formula", formula, xformula);
 
 		CMLFormula copyForm = new CMLFormula(xmlForm1);
-		TstBase.assertEqualsCanonically("compare Formula", copyForm, xmlForm1);
+		CMLXOMTestUtils.assertEqualsCanonically("compare Formula", copyForm, xmlForm1);
 	}
 
 	/**
@@ -1060,9 +1058,9 @@ public class CMLFormulaTest {
 	 */
 	@Test
 	public void testEqualsAggregate() throws Exception {
-		CMLFormula form1 = (CMLFormula)TstBase.parseValidString("<formula "
+		CMLFormula form1 = (CMLFormula)CMLXOMTestUtils.parseValidString("<formula "
 				+ CMLConstants.CML_XMLNS + " concise='C 2 H 4'/>");
-		CMLFormula form2 = (CMLFormula)TstBase.parseValidString("<formula "
+		CMLFormula form2 = (CMLFormula)CMLXOMTestUtils.parseValidString("<formula "
 				+ CMLConstants.CML_XMLNS + " concise='C 2 H 4 O 1'/>");
 		boolean equals = form1.equalsAggregate(form1);
 		Assert.assertTrue("equality", equals);
@@ -1161,7 +1159,7 @@ public class CMLFormulaTest {
 	 */
 	@Test
 	public void testNormalize() throws Exception {
-		CMLFormula form1 = (CMLFormula)TstBase.parseValidString("<formula "
+		CMLFormula form1 = (CMLFormula)CMLXOMTestUtils.parseValidString("<formula "
 				+ CMLConstants.CML_XMLNS + " concise='C 2 H 4'/>");
 		form1.normalize();
 		Assert.assertEquals("concise", "C 2 H 4", form1.getConcise());
@@ -1204,7 +1202,7 @@ public class CMLFormulaTest {
 	 */
 	@Test
 	public void testGetConciseNoCharge() throws Exception {
-		CMLFormula form1 = (CMLFormula)TstBase.parseValidString("<formula "
+		CMLFormula form1 = (CMLFormula)CMLXOMTestUtils.parseValidString("<formula "
 				+ CMLConstants.CML_XMLNS + " concise='C 2 H 4 O 2 -2'/>");
 		Assert.assertEquals("concise", "C 2 H 4 O 2", form1.getConciseNoCharge());
 	}
@@ -1262,13 +1260,13 @@ public class CMLFormulaTest {
 	 */
 	@Test
 	public void testCreateAggregatedFormula() throws Exception {
-		CMLFormula form1 = (CMLFormula)TstBase.parseValidString("<formula "
+		CMLFormula form1 = (CMLFormula)CMLXOMTestUtils.parseValidString("<formula "
 				+ CMLConstants.CML_XMLNS + " concise='C 2 H 4 O 2 -2'/>");
-		CMLFormula form2 = (CMLFormula)TstBase.parseValidString("<formula "
+		CMLFormula form2 = (CMLFormula)CMLXOMTestUtils.parseValidString("<formula "
 				+ CMLConstants.CML_XMLNS + " concise='C 3 H 3 Cl 3 1'/>");
 		CMLFormula form3 = form1.createAggregatedFormula(form2);
 		Assert.assertEquals("concise", "C 5 H 7 Cl 3 O 2 -1", form3.getConcise());
-		CMLFormula form4 = (CMLFormula)TstBase.parseValidString("<formula "
+		CMLFormula form4 = (CMLFormula)CMLXOMTestUtils.parseValidString("<formula "
 				+ CMLConstants.CML_XMLNS + " concise='C 3 H 3 Cl 3 -1' count='2'/>");
 		form3 = form1.createAggregatedFormula(form4);
 		Assert.assertEquals("concise", "C 8 H 10 Cl 6 O 2 -4", form3.getConcise());
@@ -1283,7 +1281,7 @@ public class CMLFormulaTest {
 	 */
 	@Test
 	public void testGetFormattedStringTypeSortBoolean() throws Exception {
-		CMLFormula form1 = (CMLFormula)TstBase.parseValidString("<formula "
+		CMLFormula form1 = (CMLFormula)CMLXOMTestUtils.parseValidString("<formula "
 				+ CMLConstants.CML_XMLNS + " concise='C 1 H 4 O 2 Br 1 -2'/>");
 		boolean omit1 = true;
 		Sort sort = Sort.ALPHABETIC_ELEMENTS;
@@ -1313,7 +1311,7 @@ public class CMLFormulaTest {
 	 */
 	@Test
 	public void testGetFormalChargeString() throws Exception {
-		CMLFormula form1 = (CMLFormula)TstBase.parseValidString("<formula "
+		CMLFormula form1 = (CMLFormula)CMLXOMTestUtils.parseValidString("<formula "
 				+ CMLConstants.CML_XMLNS + " concise='C 1 H 4 O 2 Br 1 -2'/>");
 		String formS = form1.getFormalChargeString();
 		Assert.assertEquals("formatted", "--", formS);
@@ -1327,9 +1325,9 @@ public class CMLFormulaTest {
 	 */
 	@Test
 	public void testEqualsCMLFormulaDouble() throws Exception {
-		CMLFormula form1 = (CMLFormula)TstBase.parseValidString("<formula "
+		CMLFormula form1 = (CMLFormula)CMLXOMTestUtils.parseValidString("<formula "
 				+ CMLConstants.CML_XMLNS + " concise='C 1 H 4 O 2 Br 1 -2'/>");
-		CMLFormula form2 = (CMLFormula)TstBase.parseValidString("<formula "
+		CMLFormula form2 = (CMLFormula)CMLXOMTestUtils.parseValidString("<formula "
 				+ CMLConstants.CML_XMLNS + " concise='C 1.001 H 3.99 O 2 Br 1 -2'/>");
 		Assert.assertFalse("equals", form1.equals(form2, 0.001));
 		Assert.assertTrue("equals", form1.equals(form2, 0.011));
@@ -1343,9 +1341,9 @@ public class CMLFormulaTest {
 	 */
 	@Test
 	public void testEqualsConcise() throws Exception {
-		CMLFormula form1 = (CMLFormula)TstBase.parseValidString("<formula "
+		CMLFormula form1 = (CMLFormula)CMLXOMTestUtils.parseValidString("<formula "
 				+ CMLConstants.CML_XMLNS + " concise='C 1 H 4 O 2 Br 1 -2'/>");
-		CMLFormula form2 = (CMLFormula)TstBase.parseValidString("<formula "
+		CMLFormula form2 = (CMLFormula)CMLXOMTestUtils.parseValidString("<formula "
 				+ CMLConstants.CML_XMLNS + " concise='C 1.001 H 3.99 O 2 Br 1 -2'/>");
 		Assert.assertTrue("equals", form1.equals(form1));
 		Assert.assertFalse("equals", form1.equals(form2));
@@ -1415,7 +1413,7 @@ public class CMLFormulaTest {
 		String expectedFormulaS = "<formula formalCharge='-1' concise='C 3 H 4 O 2 -1' xmlns='http://www.xml-cml.org/schema'>" +
 				"<atomArray elementType='C H O' count='3.0 4.0 2.0'/>" +
 				"</formula>";
-		TstBase.assertEqualsCanonically("concise", TstBase.parseValidString(expectedFormulaS), formula, true);
+		CMLXOMTestUtils.assertEqualsCanonically("concise", CMLXOMTestUtils.parseValidString(expectedFormulaS), formula, true);
 		String formulaS = formula.getConcise();
 		Assert.assertEquals("negative", "C 3 H 4 O 2 -1", formulaS);
 	}

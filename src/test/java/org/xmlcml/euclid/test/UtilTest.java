@@ -24,7 +24,7 @@ import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLConstants;
-import org.xmlcml.cml.base.TstBase;
+import org.xmlcml.cml.base.CMLXOMTestUtils;
 import org.xmlcml.euclid.Util;
 
 /**
@@ -65,7 +65,7 @@ public class UtilTest {
 	public final void testCreateFile() {
 		File dir = null;
 		try {
-			dir = Util.getResourceFile(TstBase.BASE_RESOURCE);
+			dir = Util.getResourceFile(CMLXOMTestUtils.BASE_RESOURCE);
 		} catch (Exception e1) {
 			neverThrow(e1);
 		}
@@ -157,7 +157,7 @@ public class UtilTest {
 	 */
 	@Test
 	public final void testGetInputStreamFromResource() {
-		String filename = TstBase.BASE_RESOURCE +CMLConstants.U_S + "cml0.xml";
+		String filename = CMLXOMTestUtils.BASE_RESOURCE +CMLConstants.U_S + "cml0.xml";
 		InputStream is = null;
 		try {
 			is = Util.getInputStreamFromResource(filename);
@@ -178,7 +178,7 @@ public class UtilTest {
 	 */
 	@Test
 	public final void testGetResource() {
-		String filename = TstBase.BASE_RESOURCE +CMLConstants.U_S + "cml0.xml";
+		String filename = CMLXOMTestUtils.BASE_RESOURCE +CMLConstants.U_S + "cml0.xml";
 		URL url = Util.getResource(filename);
 		Assert.assertNotNull("url", url);
 		Assert.assertTrue("target", url.toString().endsWith(
@@ -191,7 +191,7 @@ public class UtilTest {
 	 */
 	@Test
 	public final void testGetResourceFile() {
-		String filename = TstBase.BASE_RESOURCE +CMLConstants.U_S + "cml0.xml";
+		String filename = CMLXOMTestUtils.BASE_RESOURCE +CMLConstants.U_S + "cml0.xml";
 		File file = null;
 		try {
 			file = Util.getResourceFile(filename);

@@ -13,7 +13,7 @@ import org.junit.Before;
 import org.xmlcml.cml.base.CMLBuilder;
 import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElements;
-import org.xmlcml.cml.base.TstBase;
+import org.xmlcml.cml.base.CMLXOMTestUtils;
 import org.xmlcml.cml.element.CMLProduct;
 import org.xmlcml.cml.element.CMLProductList;
 import org.xmlcml.cml.element.CMLReactant;
@@ -111,7 +111,7 @@ public abstract class ReactionAllTestBase {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		xmlReact1 = (CMLReaction)TstBase.parseValidString(xmlReact1S);
+		xmlReact1 = (CMLReaction)CMLXOMTestUtils.parseValidString(xmlReact1S);
 		xmlReactantLists1 = xmlReact1.getReactantListElements();
 		xmlProductLists1 = xmlReact1.getProductListElements();
 		xmlSpectatorLists1 = xmlReact1.getSpectatorListElements();

@@ -1,6 +1,6 @@
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.cml.base.TstBase.assertEqualsCanonically;
+import static org.xmlcml.cml.base.CMLXOMTestUtils.assertEqualsCanonically;
 import static org.xmlcml.cml.element.main.AbstractTestBase.SIMPLE_RESOURCE;
 
 import java.io.File;
@@ -12,7 +12,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLBuilder;
 import org.xmlcml.cml.base.CMLConstants;
-import org.xmlcml.cml.base.TstBase;
+import org.xmlcml.cml.base.CMLXOMTestUtils;
 import org.xmlcml.cml.element.CMLArg;
 import org.xmlcml.cml.element.CMLAtom;
 import org.xmlcml.cml.element.CMLBond;
@@ -55,7 +55,7 @@ public class CMLArgTest {
 				+ "    </arg>" + "    <atomArray>"
 				+ "      <atom id='m_i__a1'/>" + "      <atom id='m_i__a2'/>"
 				+ "    </atomArray>" + "  </molecule>" + "</cml>" + "";
-		CMLCml cml = (CMLCml)TstBase.parseValidString(cmlS);
+		CMLCml cml = (CMLCml)CMLXOMTestUtils.parseValidString(cmlS);
 		Assert.assertEquals("untouched id", "a_i_", cml.getId());
 		Assert.assertEquals("child count", 1, cml.getChildElements().size());
 		CMLMolecule mol = (CMLMolecule) cml
@@ -128,7 +128,7 @@ public class CMLArgTest {
 				+ "<arg name='a1'>"
 				+ "<scalar dataType='xsd:integer'>1</scalar>" + "</arg>"
 				+ "</list>";
-		assertEqualsCanonically("add arg",TstBase.parseValidString(s), list, true);
+		assertEqualsCanonically("add arg",CMLXOMTestUtils.parseValidString(s), list, true);
 		try {
 			arg = new CMLArg("a1", 2);
 			CMLArg.addArg(list, arg, 0);
@@ -154,7 +154,7 @@ public class CMLArgTest {
 				+ "    <atomArray>" + "      <atom id='m_j__a1'/>"
 				+ "      <atom id='m_j__a2'/>" + "    </atomArray>"
 				+ "  </molecule>" + "</cml>" + "";
-		CMLCml cml = (CMLCml)TstBase.parseValidString(cmlS);
+		CMLCml cml = (CMLCml)CMLXOMTestUtils.parseValidString(cmlS);
 		Assert.assertEquals("untouched id", "a_i_", cml.getId());
 		Assert.assertEquals("child count", 1, cml.getChildElements().size());
 		CMLMolecule mol = (CMLMolecule) cml

@@ -11,7 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLBuilder;
 import org.xmlcml.cml.base.CMLConstants;
-import org.xmlcml.cml.base.TstBase;
+import org.xmlcml.cml.base.CMLXOMTestUtils;
 import org.xmlcml.cml.element.CMLArray;
 import org.xmlcml.cml.element.CMLAtomicBasisFunction;
 import org.xmlcml.cml.element.CMLBasisSet;
@@ -97,9 +97,9 @@ public class CMLBasisSetTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		molecule = (CMLMolecule)TstBase.parseValidString(moleculeS);
+		molecule = (CMLMolecule)CMLXOMTestUtils.parseValidString(moleculeS);
 		basisSet = new CMLBasisSet();
-		basisSet2 = (CMLBasisSet)TstBase.parseValidString(basisSetS2);
+		basisSet2 = (CMLBasisSet)CMLXOMTestUtils.parseValidString(basisSetS2);
 	}
 
 	/**

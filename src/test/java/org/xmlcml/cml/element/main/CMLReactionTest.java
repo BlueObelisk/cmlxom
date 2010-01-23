@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElements;
-import org.xmlcml.cml.base.TstBase;
+import org.xmlcml.cml.base.CMLXOMTestUtils;
 import org.xmlcml.cml.element.CMLAtom;
 import org.xmlcml.cml.element.CMLBond;
 import org.xmlcml.cml.element.CMLFormula;
@@ -289,7 +289,7 @@ public class CMLReactionTest extends ReactionAllTestBase {
 				+ "      </molecule>" + "    </reactant>" + "  </reactantList>"
 				+ "</reaction>";
 
-		CMLReaction reaction = (CMLReaction)TstBase.parseValidString(reactionS);
+		CMLReaction reaction = (CMLReaction)CMLXOMTestUtils.parseValidString(reactionS);
 		Assert.assertEquals("before merge", 2, reaction
 				.getReactantListElements().size());
 		reaction.mergeReactantLists();

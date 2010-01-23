@@ -11,7 +11,7 @@ import org.xmlcml.cml.attribute.IdAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
 import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.StringSTAttribute;
-import org.xmlcml.cml.base.TstBase;
+import org.xmlcml.cml.base.CMLXOMTestUtils;
 import org.xmlcml.cml.base.CMLElement.CoordinateType;
 import org.xmlcml.cml.element.CMLAtom;
 import org.xmlcml.cml.element.CMLBond;
@@ -473,12 +473,12 @@ public class CMLBondTest {
 				+ "      <bondStereo atomRefs4='a1 a2 a3 a4'>C</bondStereo>"
 				+ "    </bond>" + "    <bond atomRefs2='a3 a4' order='1'/>"
 				+ "  </bondArray>" + "</molecule>";
-		CMLMolecule mol = (CMLMolecule)TstBase.parseValidString(s);
+		CMLMolecule mol = (CMLMolecule)CMLXOMTestUtils.parseValidString(s);
 		CMLBond b2 = mol.getBondByAtomIds("a2", "a3");
 		bs = b2.getBondStereo();
-		TstBase.assertEqualsCanonically(
+		CMLXOMTestUtils.assertEqualsCanonically(
 				"bs",
-				(CMLBondStereo)TstBase.parseValidString("<bondStereo atomRefs4='a1 a2 a3 a4' "
+				(CMLBondStereo)CMLXOMTestUtils.parseValidString("<bondStereo atomRefs4='a1 a2 a3 a4' "
 						+ CMLConstants.CML_XMLNS + ">C</bondStereo>"), bs, true);
 		bs = new CMLBondStereo();
 		bs.setAtomRefs4("a1 a2 a3 a4");
@@ -506,14 +506,14 @@ public class CMLBondTest {
 				+ "    <bond atomRefs2='a2 a3' order='2'>" + "    </bond>"
 				+ "    <bond atomRefs2='a3 a4' order='1'/>" + "  </bondArray>"
 				+ "</molecule>";
-		CMLMolecule mol = (CMLMolecule)TstBase.parseValidString(s);
+		CMLMolecule mol = (CMLMolecule)CMLXOMTestUtils.parseValidString(s);
 		CMLBond b2 = mol.getBondByAtomIds("a2", "a3");
 		CMLBondStereo bs = new CMLBondStereo();
 		bs.setAtomRefs4("a1 a2 a3 a4");
 		bs.setXMLContent(CMLBond.CIS);
-		TstBase.assertEqualsCanonically(
+		CMLXOMTestUtils.assertEqualsCanonically(
 				"bs",
-				(CMLBondStereo)TstBase.parseValidString("<bondStereo atomRefs4='a1 a2 a3 a4' "
+				(CMLBondStereo)CMLXOMTestUtils.parseValidString("<bondStereo atomRefs4='a1 a2 a3 a4' "
 						+ CMLConstants.CML_XMLNS + ">C</bondStereo>"), bs, true);
 		try {
 			b2.setBondStereo(bs);

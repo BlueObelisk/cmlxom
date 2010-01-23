@@ -761,69 +761,6 @@ public class CMLScalarTest {
 
 	}
 
-	// /**
-	// * test units.
-	// *
-	// */
-	// @Test
-	// public void testGetUnits() {
-	// CMLCml cml = (CMLCml)TstBase.parseValidString(unitsS);
-	//
-	// // scalars
-	// List<CMLElement> scalars = cml.getElements(".//" + CMLScalar.NS);
-	// Assert.assertEquals("scalar count", 3, scalars.size());
-	// CMLScalar scalar = (CMLScalar) scalars.get(0);
-	// UnitsAttribute unitsAttribute = (UnitsAttribute) scalar
-	// .getUnitsAttribute();
-	// Assert.assertNotNull("units attribute not null", unitsAttribute);
-	// CMLUnit unit = unitsUnitListMap.getUnit(unitsAttribute);
-	// Assert.assertNotNull("unit not null", unit);
-	// Assert.assertEquals("unit ", "deg", unit.getId());
-	// }
-
-	// /**
-	// * test conversion to SI.
-	// *
-	// */
-	// @Test
-	// public void testConvertToSI() {
-	// CMLCml cml = null;
-	// try {
-	// cml = (CMLCml) new CMLBuilder().build(new StringReader(unitsS))
-	// .getRootElement();
-	// } catch (Exception e) {
-	// e.printStackTrace();
-	// Assert.fail("should not throw " + e);
-	// }
-	//
-	// // scalars
-	// List<CMLElement> scalars = cml.getElements(".//" + CMLScalar.NS);
-	// Assert.assertEquals("scalar count", 3, scalars.size());
-	// CMLScalar scalar0 = (CMLScalar) scalars.get(0);
-	// Assert.assertEquals("scalar0", 180., scalar0.getDouble(), EPS);
-	// Assert.assertEquals("scalar0", U_DEGREE, scalar0.getUnits());
-	// scalar0.convertToSI(unitsUnitListMap);
-	// Assert.assertEquals("scalar0", Math.PI, scalar0.getDouble(), .000001);
-	// Assert.assertEquals("scalar0", CMLConstants.CML_SIUNITS + S_COLON + "radian",
-	// scalar0.getUnits());
-	//
-	// CMLScalar scalar1 = (CMLScalar) scalars.get(1);
-	// Assert.assertEquals("scalar1", 100, scalar1.getDouble(), EPS);
-	// Assert.assertEquals("scalar1", U_KCAL, scalar1.getUnits());
-	// scalar1.convertToSI(unitsUnitListMap);
-	// Assert.assertEquals("scalar1", 4.184E+05, scalar1.getDouble(), 1);
-	// Assert.assertEquals("scalar1", CMLConstants.CML_SIUNITS + S_COLON + "joule", scalar1
-	// .getUnits());
-	//
-	// CMLScalar scalar2 = (CMLScalar) scalars.get(2);
-	// Assert.assertEquals("scalar2", 100, scalar2.getDouble(), EPS);
-	// Assert.assertEquals("scalar2", U_CELSIUS, scalar2.getUnits());
-	// scalar2.convertToSI(unitsUnitListMap);
-	// Assert.assertEquals("scalar2", 373.15, scalar2.getDouble(), EPS);
-	// Assert.assertEquals("scalar2", CMLConstants.CML_SIUNITS + S_COLON + "k", scalar2
-	// .getUnits());
-	// }
-
 	/**
 	 * Test method for 'org.xmlcml.cml.element.CMLScalar.copy()'
 	 */
