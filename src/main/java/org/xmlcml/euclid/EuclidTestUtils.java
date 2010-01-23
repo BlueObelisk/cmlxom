@@ -9,7 +9,7 @@ package org.xmlcml.euclid;
  * @author pm286
  *
  */
-public class TestUtils {
+public class EuclidTestUtils {
 
 	/**
 	 * returns a message if arrays differ.
