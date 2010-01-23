@@ -1,0 +1,510 @@
+<reaction 
+xmlns="http://www.xml-cml.org/schema" xmlns:cmlDict="http://www.xml-cml.org/dictionary/cml/" 
+xmlns:nameDict="http://www.xml-cml.org/dictionary/cml/name/" convention="cmlDict:cmllite">
+<reactantList>
+<reactant>
+  <molecule xmlns:s="http://sea36.cam.ac.uk/chemkit" id="m1">
+    <name dictRef="nameDict:unknown">Isopropyl 3-(hydroxymethyl)pyridine-2-carboxylate</name>
+    <atomArray>
+      <atom id="a1" elementType="C" s:flags="!s:aromatic" x2="2.222222222222221" y2="-1.7690598923241494">
+        <label value="1" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a2" elementType="C" s:flags="!s:aromatic" x2="2.2222222222222205" y2="-2.9690598923241494">
+        <label value="2" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a3" elementType="C" s:flags="!s:aromatic" x2="3.2614527067635475" y2="-1.1690598923241498">
+        <label value="3" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a16" elementType="H" s:flags="!s:aromatic" x2="1.0222222222222213" y2="-1.7690598923241492" />
+      <atom id="a17" elementType="H" s:flags="!s:aromatic" x2="1.0222222222222208" y2="-2.9690598923241485" />
+      <atom id="a18" elementType="H" s:flags="!s:aromatic" x2="3.4222222222222207" y2="-2.9690598923241494" />
+      <atom id="a19" elementType="H" s:flags="!s:aromatic" x2="2.22222222222222" y2="-4.169059892324149" />
+      <atom id="a20" elementType="H" s:flags="!s:aromatic" x2="4.300683191304874" y2="-0.569059892324151" />
+      <atom id="a21" elementType="H" s:flags="!s:aromatic" x2="3.861452706763548" y2="-2.208290376865476" />
+      <atom id="a22" elementType="H" s:flags="!s:aromatic" x2="2.6614527067635483" y2="-0.12982940778282326" />
+      <atom id="a4" elementType="O" s:flags="!s:aromatic" x2="-3.0170082623191035" y2="-1.329829407782822">
+        <label value="O" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a23" elementType="H" s:flags="!s:aromatic" x2="-4.05623874686043" y2="-0.7298294077828213" />
+      <atom id="a5" elementType="C" s:flags="!s:aromatic" x2="-1.9777777777777779" y2="-0.7298294077828218">
+        <label value="1" dictRef="cmlDict:locant" />
+        <label value="C" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a24" elementType="H" s:flags="!s:aromatic" x2="-0.9385472932364515" y2="-0.12982940778282237" />
+      <atom id="a25" elementType="H" s:flags="!s:aromatic" x2="-2.577777777777777" y2="0.30940107675850537" />
+      <atom id="a6" elementType="N" hydrogenCount="0" x2="0.42222222222222244" y2="-2.808290376865475" s:flags="s:aromatic">
+        <label value="1" dictRef="cmlDict:locant" />
+        <label value="N" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a7" elementType="C" hydrogenCount="0" x2="-0.17777777777777837" y2="-1.769059892324149" s:flags="s:aromatic">
+        <label value="2" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a8" elementType="C" hydrogenCount="0" x2="-1.3777777777777787" y2="-1.7690598923241483" s:flags="s:aromatic">
+        <label value="3" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a9" elementType="C" x2="-1.9777777777777792" y2="-2.8082903768654743" s:flags="s:aromatic">
+        <label value="4" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a10" elementType="C" x2="-1.377777777777779" y2="-3.8475208614068004" s:flags="s:aromatic">
+        <label value="5" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a11" elementType="C" x2="-0.17777777777777864" y2="-3.8475208614068013" s:flags="s:aromatic">
+        <label value="6" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a12" elementType="C" hydrogenCount="0" s:flags="!s:aromatic" x2="0.4222222222222215" y2="-0.7298294077828227">
+        <label value="C" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a13" elementType="O" hydrogenCount="0" s:flags="!s:aromatic" x2="-0.17777777777777803" y2="0.30940107675850403">
+        <label value="O'" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a14" elementType="O" hydrogenCount="0" s:flags="!s:aromatic" x2="1.6222222222222213" y2="-0.7298294077828227">
+        <label value="O" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a26" elementType="H" s:flags="!s:aromatic" x2="-3.177777777777779" y2="-2.8082903768654734" />
+      <atom id="a27" elementType="H" s:flags="!s:aromatic" x2="-1.97777777777778" y2="-4.886751345948126" />
+      <atom id="a28" elementType="H" s:flags="!s:aromatic" x2="0.4222222222222208" y2="-4.886751345948127" />
+    </atomArray>
+    <bondArray>
+      <bond id="a1_a2" atomRefs2="a1 a2" order="S" s:flags="!s:aromatic" />
+      <bond id="a1_a3" atomRefs2="a1 a3" order="S" s:flags="!s:aromatic" />
+      <bond id="a1_a16" atomRefs2="a1 a16" order="S" s:flags="!s:aromatic" />
+      <bond id="a2_a17" atomRefs2="a2 a17" order="S" s:flags="!s:aromatic" />
+      <bond id="a2_a18" atomRefs2="a2 a18" order="S" s:flags="!s:aromatic" />
+      <bond id="a2_a19" atomRefs2="a2 a19" order="S" s:flags="!s:aromatic" />
+      <bond id="a3_a20" atomRefs2="a3 a20" order="S" s:flags="!s:aromatic" />
+      <bond id="a3_a21" atomRefs2="a3 a21" order="S" s:flags="!s:aromatic" />
+      <bond id="a3_a22" atomRefs2="a3 a22" order="S" s:flags="!s:aromatic" />
+      <bond id="a4_a23" atomRefs2="a4 a23" order="S" s:flags="!s:aromatic" />
+      <bond id="a5_a24" atomRefs2="a5 a24" order="S" s:flags="!s:aromatic" />
+      <bond id="a5_a25" atomRefs2="a5 a25" order="S" s:flags="!s:aromatic" />
+      <bond id="a4_a5" atomRefs2="a4 a5" order="S" s:flags="!s:aromatic" />
+      <bond id="a6_a7" atomRefs2="a6 a7" order="D" s:flags="s:aromatic" />
+      <bond id="a7_a8" atomRefs2="a7 a8" order="S" s:flags="s:aromatic" />
+      <bond id="a8_a9" atomRefs2="a8 a9" order="D" s:flags="s:aromatic" />
+      <bond id="a9_a10" atomRefs2="a9 a10" order="S" s:flags="s:aromatic" />
+      <bond id="a10_a11" atomRefs2="a10 a11" order="D" s:flags="s:aromatic" />
+      <bond id="a11_a6" atomRefs2="a11 a6" order="S" s:flags="s:aromatic" />
+      <bond id="a12_a13" atomRefs2="a12 a13" order="D" s:flags="!s:aromatic" />
+      <bond id="a12_a14" atomRefs2="a12 a14" order="S" s:flags="!s:aromatic" />
+      <bond id="a7_a12" atomRefs2="a7 a12" order="S" s:flags="!s:aromatic" />
+      <bond id="a9_a26" atomRefs2="a9 a26" order="S" s:flags="!s:aromatic" />
+      <bond id="a10_a27" atomRefs2="a10 a27" order="S" s:flags="!s:aromatic" />
+      <bond id="a11_a28" atomRefs2="a11 a28" order="S" s:flags="!s:aromatic" />
+      <bond id="a5_a8" atomRefs2="a5 a8" order="S" s:flags="!s:aromatic" />
+      <bond id="a14_a1" atomRefs2="a14 a1" order="S" s:flags="!s:aromatic" />
+    </bondArray>
+  </molecule>
+  <amount units="units:mol">1.02</amount>
+  </reactant>
+  <reactant>
+<molecule xmlns:s="http://sea36.cam.ac.uk/chemkit" id="m1">
+    <name dictRef="nameDict:unknown">methyl N-[(4-methylphenyl)sulfonyl]aminoacetate</name>
+    <atomArray>
+      <atom id="a1" elementType="C" s:flags="!s:aromatic" x2="-7.919653002883901" y2="4.034482758620699">
+        <label value="1" dictRef="cmlDict:locant" />
+        <label value="C" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a18" elementType="H" s:flags="!s:aromatic" x2="-8.519653002883903" y2="2.995252274079374" />
+      <atom id="a19" elementType="H" s:flags="!s:aromatic" x2="-7.3196530028839" y2="5.073713243162025" />
+      <atom id="a20" elementType="H" s:flags="!s:aromatic" x2="-8.958883487425226" y2="4.634482758620702" />
+      <atom id="a2" elementType="C" s:flags="!s:aromatic" x2="1.4334213579880402" y2="5.8344827586206875">
+        <label value="1" dictRef="cmlDict:locant" />
+        <label value="C" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a21" elementType="H" s:flags="!s:aromatic" x2="2.033421357988037" y2="4.79525227407936" />
+      <atom id="a22" elementType="H" s:flags="!s:aromatic" x2="0.8334213579880405" y2="6.873713243162014" />
+      <atom id="a23" elementType="H" s:flags="!s:aromatic" x2="2.472651842529368" y2="6.434482758620686" />
+      <atom id="a3" elementType="C" hydrogenCount="0" x2="-1.6842700956359427" y2="4.034482758620691" s:flags="s:aromatic">
+        <label value="1" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a4" elementType="C" x2="-0.6450396110946164" y2="3.4344827586206907" s:flags="s:aromatic">
+        <label value="2" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a5" elementType="C" x2="0.39419087344671233" y2="4.0344827586206895" s:flags="s:aromatic">
+        <label value="3" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a6" elementType="C" hydrogenCount="0" x2="0.3941908734467132" y2="5.234482758620689" s:flags="s:aromatic">
+        <label value="4" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a7" elementType="C" x2="-0.6450396110946128" y2="5.834482758620689" s:flags="s:aromatic">
+        <label value="5" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a8" elementType="C" x2="-1.6842700956359402" y2="5.234482758620691" s:flags="s:aromatic">
+        <label value="6" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a24" elementType="H" s:flags="!s:aromatic" x2="-0.6450396110946199" y2="2.234482758620691" />
+      <atom id="a25" elementType="H" s:flags="!s:aromatic" x2="1.4334213579880375" y2="3.43448275862069" />
+      <atom id="a26" elementType="H" s:flags="!s:aromatic" x2="-0.6450396110946102" y2="7.034482758620689" />
+      <atom id="a27" elementType="H" s:flags="!s:aromatic" x2="-2.7235005801772667" y2="5.834482758620691" />
+      <atom id="a9" elementType="S" hydrogenCount="0" s:flags="!s:aromatic" x2="-2.7235005801772703" y2="3.434482758620693">
+        <label value="S" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a10" elementType="O" hydrogenCount="0" s:flags="!s:aromatic" x2="-2.1235005801772733" y2="2.3952522740793647">
+        <label value="O" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a11" elementType="O" hydrogenCount="0" s:flags="!s:aromatic" x2="-3.3235005801772672" y2="4.47371324316202">
+        <label value="O'" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a12" elementType="N" s:flags="!s:aromatic" x2="-3.762731064718597" y2="2.8344827586206947">
+        <label value="N" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a28" elementType="H" s:flags="!s:aromatic" x2="-3.7627310647186" y2="1.6344827586206945" />
+      <atom id="a13" elementType="C" hydrogenCount="0" s:flags="!s:aromatic" x2="-5.841192033801249" y2="4.0344827586206975">
+        <label value="1" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a14" elementType="C" s:flags="!s:aromatic" x2="-4.801961549259923" y2="3.4344827586206965">
+        <label value="2" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a15" elementType="O" hydrogenCount="0" s:flags="!s:aromatic" x2="-5.8411920338012475" y2="5.234482758620698">
+        <label value="O'" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a17" elementType="O" hydrogenCount="0" s:flags="!s:aromatic" x2="-6.880422518342575" y2="3.4344827586206983">
+        <label value="O" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a29" elementType="H" s:flags="!s:aromatic" x2="-4.201961549259921" y2="4.473713243162021" />
+      <atom id="a30" elementType="H" s:flags="!s:aromatic" x2="-5.401961549259924" y2="2.395252274079371" />
+    </atomArray>
+    <bondArray>
+      <bond id="a1_a18" atomRefs2="a1 a18" order="S" s:flags="!s:aromatic" />
+      <bond id="a1_a19" atomRefs2="a1 a19" order="S" s:flags="!s:aromatic" />
+      <bond id="a1_a20" atomRefs2="a1 a20" order="S" s:flags="!s:aromatic" />
+      <bond id="a2_a21" atomRefs2="a2 a21" order="S" s:flags="!s:aromatic" />
+      <bond id="a2_a22" atomRefs2="a2 a22" order="S" s:flags="!s:aromatic" />
+      <bond id="a2_a23" atomRefs2="a2 a23" order="S" s:flags="!s:aromatic" />
+      <bond id="a3_a4" atomRefs2="a3 a4" order="D" s:flags="s:aromatic" />
+      <bond id="a4_a5" atomRefs2="a4 a5" order="S" s:flags="s:aromatic" />
+      <bond id="a5_a6" atomRefs2="a5 a6" order="D" s:flags="s:aromatic" />
+      <bond id="a6_a7" atomRefs2="a6 a7" order="S" s:flags="s:aromatic" />
+      <bond id="a7_a8" atomRefs2="a7 a8" order="D" s:flags="s:aromatic" />
+      <bond id="a8_a3" atomRefs2="a8 a3" order="S" s:flags="s:aromatic" />
+      <bond id="a4_a24" atomRefs2="a4 a24" order="S" s:flags="!s:aromatic" />
+      <bond id="a5_a25" atomRefs2="a5 a25" order="S" s:flags="!s:aromatic" />
+      <bond id="a7_a26" atomRefs2="a7 a26" order="S" s:flags="!s:aromatic" />
+      <bond id="a8_a27" atomRefs2="a8 a27" order="S" s:flags="!s:aromatic" />
+      <bond id="a2_a6" atomRefs2="a2 a6" order="S" s:flags="!s:aromatic" />
+      <bond id="a9_a10" atomRefs2="a9 a10" order="D" s:flags="!s:aromatic" />
+      <bond id="a9_a11" atomRefs2="a9 a11" order="D" s:flags="!s:aromatic" />
+      <bond id="a3_a9" atomRefs2="a3 a9" order="S" s:flags="!s:aromatic" />
+      <bond id="a12_a28" atomRefs2="a12 a28" order="S" s:flags="!s:aromatic" />
+      <bond id="a9_a12" atomRefs2="a9 a12" order="S" s:flags="!s:aromatic" />
+      <bond id="a13_a14" atomRefs2="a13 a14" order="S" s:flags="!s:aromatic" />
+      <bond id="a13_a15" atomRefs2="a13 a15" order="D" s:flags="!s:aromatic" />
+      <bond id="a13_a17" atomRefs2="a13 a17" order="S" s:flags="!s:aromatic" />
+      <bond id="a14_a29" atomRefs2="a14 a29" order="S" s:flags="!s:aromatic" />
+      <bond id="a14_a30" atomRefs2="a14 a30" order="S" s:flags="!s:aromatic" />
+      <bond id="a12_a14" atomRefs2="a12 a14" order="S" s:flags="!s:aromatic" />
+      <bond id="a17_a1" atomRefs2="a17 a1" order="S" s:flags="!s:aromatic" />
+    </bondArray>
+  </molecule>
+<amount units="units:mol">1.02</amount>
+  </reactant>
+  <reactant>
+  <molecule id="m1">
+    <name dictRef="nameDict:unknown">triphenylphosphine</name>
+    <atomArray>
+      <atom id="a1" elementType="C" hydrogenCount="0" x2="0.3619684164547672" y2="-0.8622075127658766">
+        <label value="1" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a2" elementType="C" x2="1.2104965538786239" y2="-1.710735650189734">
+        <label value="2" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a3" elementType="C" x2="2.369607545425506" y2="-1.4001527960667088">
+        <label value="3" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a4" elementType="C" x2="2.680190399548531" y2="-0.24104180451982604">
+        <label value="4" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a5" elementType="C" x2="1.8316622621246736" y2="0.6074863329040306">
+        <label value="5" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a6" elementType="C" x2="0.6725512705777918" y2="0.29690347878100576">
+        <label value="6" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a20" elementType="H" x2="1.2104965538786248" y2="-2.9107356501897335" />
+      <atom id="a21" elementType="H" x2="3.218135682849362" y2="-2.248680933490565" />
+      <atom id="a22" elementType="H" x2="3.8393013910954137" y2="0.06954104960319918" />
+      <atom id="a23" elementType="H" x2="2.1422451162476985" y2="1.7665973244509123" />
+      <atom id="a24" elementType="H" x2="-0.3666792139635346" y2="0.8969034787810052" />
+      <atom id="a7" elementType="P" hydrogenCount="0" x2="-0.8380315835452329" y2="-0.8622075127658761">
+        <label value="1" dictRef="cmlDict:locant" />
+        <label value="P" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a8" elementType="C" hydrogenCount="0" x2="-1.4380315835452322" y2="0.17702297177545068">
+        <label value="1''" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a9" elementType="C" x2="-1.1274487294222044" y2="1.3361339633223315">
+        <label value="2''" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a10" elementType="C" x2="-1.9759768668460602" y2="2.18466210074619">
+        <label value="3''" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a11" elementType="C" x2="-3.1350878583929425" y2="1.8740792466231668">
+        <label value="4''" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a12" elementType="C" x2="-3.4456707125159705" y2="0.7149682550762854">
+        <label value="5''" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a13" elementType="C" x2="-2.597142575092114" y2="-0.1335598823475731">
+        <label value="6''" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a25" elementType="H" x2="-0.0882182448808777" y2="1.9361339633223316" />
+      <atom id="a26" elementType="H" x2="-1.6653940127230342" y2="3.343773092293072" />
+      <atom id="a27" elementType="H" x2="-3.983615995816798" y2="2.7226073840470253" />
+      <atom id="a28" elementType="H" x2="-4.604781704062852" y2="0.40438540095326225" />
+      <atom id="a29" elementType="H" x2="-3.368487706715963" y2="-1.052813214090346" />
+      <atom id="a14" elementType="C" hydrogenCount="0" x2="-1.438031583545234" y2="-1.9014379973072018">
+        <label value="1'" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a15" elementType="C" x2="-0.5895034461213781" y2="-2.74996613473106">
+        <label value="2'" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a16" elementType="C" x2="-0.9000863002444033" y2="-3.9090771262779422">
+        <label value="3'" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a17" elementType="C" x2="-2.0591972917912855" y2="-4.219659980400963">
+        <label value="4'" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a18" elementType="C" x2="-2.907725429215142" y2="-3.3711318429771064">
+        <label value="5'" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a19" elementType="C" x2="-2.597142575092116" y2="-2.212020851430224">
+        <label value="6'" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a30" elementType="H" x2="0.5696075454255038" y2="-2.4393832806080358" />
+      <atom id="a31" elementType="H" x2="-0.05155816282054715" y2="-4.7576052637018" />
+      <atom id="a32" elementType="H" x2="-2.3697801459143113" y2="-5.378770971947846" />
+      <atom id="a33" elementType="H" x2="-4.066836420762025" y2="-3.6817146971001296" />
+      <atom id="a34" elementType="H" x2="-3.7247737200352065" y2="-1.8015966794394203" />
+    </atomArray>
+    <bondArray>
+      <bond id="a1_a2" atomRefs2="a1 a2" order="D" />
+      <bond id="a2_a3" atomRefs2="a2 a3" order="S" />
+      <bond id="a3_a4" atomRefs2="a3 a4" order="D" />
+      <bond id="a4_a5" atomRefs2="a4 a5" order="S" />
+      <bond id="a5_a6" atomRefs2="a5 a6" order="D" />
+      <bond id="a6_a1" atomRefs2="a6 a1" order="S" />
+      <bond id="a2_a20" atomRefs2="a2 a20" order="S" />
+      <bond id="a3_a21" atomRefs2="a3 a21" order="S" />
+      <bond id="a4_a22" atomRefs2="a4 a22" order="S" />
+      <bond id="a5_a23" atomRefs2="a5 a23" order="S" />
+      <bond id="a6_a24" atomRefs2="a6 a24" order="S" />
+      <bond id="a1_a7" atomRefs2="a1 a7" order="S" />
+      <bond id="a8_a9" atomRefs2="a8 a9" order="D" />
+      <bond id="a9_a10" atomRefs2="a9 a10" order="S" />
+      <bond id="a10_a11" atomRefs2="a10 a11" order="D" />
+      <bond id="a11_a12" atomRefs2="a11 a12" order="S" />
+      <bond id="a12_a13" atomRefs2="a12 a13" order="D" />
+      <bond id="a13_a8" atomRefs2="a13 a8" order="S" />
+      <bond id="a9_a25" atomRefs2="a9 a25" order="S" />
+      <bond id="a10_a26" atomRefs2="a10 a26" order="S" />
+      <bond id="a11_a27" atomRefs2="a11 a27" order="S" />
+      <bond id="a12_a28" atomRefs2="a12 a28" order="S" />
+      <bond id="a13_a29" atomRefs2="a13 a29" order="S" />
+      <bond id="a8_a7" atomRefs2="a8 a7" order="S" />
+      <bond id="a14_a15" atomRefs2="a14 a15" order="D" />
+      <bond id="a15_a16" atomRefs2="a15 a16" order="S" />
+      <bond id="a16_a17" atomRefs2="a16 a17" order="D" />
+      <bond id="a17_a18" atomRefs2="a17 a18" order="S" />
+      <bond id="a18_a19" atomRefs2="a18 a19" order="D" />
+      <bond id="a19_a14" atomRefs2="a19 a14" order="S" />
+      <bond id="a15_a30" atomRefs2="a15 a30" order="S" />
+      <bond id="a16_a31" atomRefs2="a16 a31" order="S" />
+      <bond id="a17_a32" atomRefs2="a17 a32" order="S" />
+      <bond id="a18_a33" atomRefs2="a18 a33" order="S" />
+      <bond id="a19_a34" atomRefs2="a19 a34" order="S" />
+      <bond id="a14_a7" atomRefs2="a14 a7" order="S" />
+    </bondArray>
+  </molecule>
+<amount units="units:mol">1.5</amount>
+  </reactant>
+  <reactant>
+  <molecule title="THF"/>
+<amount units="units:ml">3000</amount>
+  </reactant>
+  <reactant>
+  <molecule title="diethylazodicarboxylate (DEAD)"/>
+<amount units="units:mol">1.5</amount>
+  </reactant>
+</reactantList>
+  <productList>
+  <product>
+<molecule xmlns:s="http://sea36.cam.ac.uk/chemkit" id="m1">
+    <name dictRef="nameDict:unknown">3-{[Methoxycarbonylmethyl-(toluene-4-sulfonyl)-amino]-methyl}-pyridine-2-carboxylic acid isopropyl ester</name>
+    <atomArray>
+      <atom id="a1" elementType="C" s:flags="!s:aromatic" x2="4.590807083695541" y2="-5.511312092226359">
+        <label value="1" dictRef="cmlDict:locant" />
+        <label value="C" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a20" elementType="O" hydrogenCount="0" s:flags="!s:aromatic" x2="3.4316960921486586" y2="-5.200729238103336">
+        <label value="O" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a35" elementType="H" s:flags="!s:aromatic" x2="4.280224229572518" y2="-6.670423083773242" />
+      <atom id="a36" elementType="H" s:flags="!s:aromatic" x2="5.749918075242424" y2="-5.821894946349383" />
+      <atom id="a37" elementType="H" s:flags="!s:aromatic" x2="4.901389937818564" y2="-4.352201100679477" />
+      <atom id="a2" elementType="C" hydrogenCount="0" s:flags="!s:aromatic" x2="2.583167954724802" y2="-6.049257375527193">
+        <label value="C" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a22" elementType="O" hydrogenCount="0" s:flags="!s:aromatic" x2="2.8937508088478276" y2="-7.208368367074074">
+        <label value="O" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a4" elementType="C" s:flags="!s:aromatic" x2="1.4240569631779194" y2="-5.738674521404169">
+        <label value="1" dictRef="cmlDict:locant" />
+        <label value="C" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a38" elementType="H" s:flags="!s:aromatic" x2="1.734639817300944" y2="-4.579563529857287" />
+      <atom id="a39" elementType="H" s:flags="!s:aromatic" x2="1.1134741090548954" y2="-6.897785512951051" />
+      <atom id="a5" elementType="C" hydrogenCount="0" x2="-3.129166578064392" y2="-8.822204216976576" s:flags="s:aromatic">
+        <label value="1" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a6" elementType="C" x2="-1.97005558651751" y2="-9.1327870710996" s:flags="s:aromatic">
+        <label value="2" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a7" elementType="C" x2="-1.1215274490936515" y2="-8.284258933675742" s:flags="s:aromatic">
+        <label value="3" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a8" elementType="C" hydrogenCount="0" x2="-1.4321103032166755" y2="-7.1251479421288595" s:flags="s:aromatic">
+        <label value="4" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a9" elementType="C" x2="-2.591221294763558" y2="-6.8145650880058355" s:flags="s:aromatic">
+        <label value="5" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a10" elementType="C" x2="-3.4397494321874165" y2="-7.663093225429693" s:flags="s:aromatic">
+        <label value="6" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a11" elementType="C" s:flags="!s:aromatic" x2="-3.9776947154882496" y2="-9.670732354400432">
+        <label value="alpha" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a24" elementType="S" hydrogenCount="0" s:flags="!s:aromatic" x2="-0.5835821657928189" y2="-6.276619804705002">
+        <label value="S" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a25" elementType="O" hydrogenCount="0" s:flags="!s:aromatic" x2="0.26494597163103795" y2="-7.1251479421288595">
+        <label value="O" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a26" elementType="O" hydrogenCount="0" s:flags="!s:aromatic" x2="-1.432110303216677" y2="-5.428091667281146">
+        <label value="O'" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a40" elementType="H" s:flags="!s:aromatic" x2="-1.6594727323944867" y2="-10.291898062646482" />
+      <atom id="a41" elementType="H" s:flags="!s:aromatic" x2="0.037583542453230284" y2="-8.594841787798769" />
+      <atom id="a42" elementType="H" s:flags="!s:aromatic" x2="-2.9018041488865816" y2="-5.655454096458954" />
+      <atom id="a43" elementType="H" s:flags="!s:aromatic" x2="-4.598860423734298" y2="-7.352510371306669" />
+      <atom id="a44" elementType="H" s:flags="!s:aromatic" x2="-4.826222852912104" y2="-8.822204216976573" />
+      <atom id="a45" elementType="H" s:flags="!s:aromatic" x2="-3.1291665780643942" y2="-10.51926049182429" />
+      <atom id="a46" elementType="H" s:flags="!s:aromatic" x2="-4.826222852912108" y2="-10.519260491824287" />
+      <atom id="a12" elementType="N" hydrogenCount="0" s:flags="!s:aromatic" x2="0.2649459716310374" y2="-5.428091667281144">
+        <label value="N" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a13" elementType="C" s:flags="!s:aromatic" x2="-0.04563688249198672" y2="-4.268980675734262">
+        <label value="1" dictRef="cmlDict:locant" />
+        <label value="C" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a47" elementType="H" s:flags="!s:aromatic" x2="1.1134741090548952" y2="-3.9583978216112365" />
+      <atom id="a48" elementType="H" s:flags="!s:aromatic" x2="-1.2047478740388688" y2="-4.579563529857287" />
+      <atom id="a14" elementType="N" hydrogenCount="0" x2="0.18172554668582466" y2="-1.102230555216639" s:flags="s:aromatic">
+        <label value="1" dictRef="cmlDict:locant" />
+        <label value="N" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a15" elementType="C" hydrogenCount="0" x2="0.49230840080884725" y2="-2.261341546763523" s:flags="s:aromatic">
+        <label value="2" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a16" elementType="C" hydrogenCount="0" x2="-0.35621973661501066" y2="-3.1098696841873794" s:flags="s:aromatic">
+        <label value="3" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a17" elementType="C" x2="-1.5153307281618933" y2="-2.799286830064356" s:flags="s:aromatic">
+        <label value="4" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a18" elementType="C" x2="-1.8259135822849166" y2="-1.6401758385174734" s:flags="s:aromatic">
+        <label value="5" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a19" elementType="C" x2="-0.9773854448610582" y2="-0.7916477010936167" s:flags="s:aromatic">
+        <label value="6" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a28" elementType="C" hydrogenCount="0" s:flags="!s:aromatic" x2="1.6514193923557299" y2="-2.571924400886547">
+        <label value="C" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a29" elementType="O" hydrogenCount="0" s:flags="!s:aromatic" x2="1.9620022464787519" y2="-3.731035392433429">
+        <label value="O'" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a30" elementType="O" hydrogenCount="0" s:flags="!s:aromatic" x2="2.499947529779587" y2="-1.7233962634626896">
+        <label value="O" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a49" elementType="H" s:flags="!s:aromatic" x2="-2.363858865585751" y2="-3.6478149674882125" />
+      <atom id="a50" elementType="H" s:flags="!s:aromatic" x2="-2.985024573831798" y2="-1.3295929843944494" />
+      <atom id="a51" elementType="H" s:flags="!s:aromatic" x2="-1.2879682989840824" y2="0.36746329045326487" />
+      <atom id="a32" elementType="C" s:flags="!s:aromatic" x2="2.189364675656564" y2="-0.5642852719158071">
+        <label value="1" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a33" elementType="C" s:flags="!s:aromatic" x2="3.348475667203446" y2="-0.2537024177927849">
+        <label value="2" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a34" elementType="C" s:flags="!s:aromatic" x2="1.3408365382327039" y2="0.28424286550804734">
+        <label value="3" dictRef="cmlDict:locant" />
+      </atom>
+      <atom id="a52" elementType="H" s:flags="!s:aromatic" x2="1.3408365382327059" y2="-1.4128134093396638" />
+      <atom id="a53" elementType="H" s:flags="!s:aromatic" x2="3.037892813080423" y2="0.905408573754098" />
+      <atom id="a54" elementType="H" s:flags="!s:aromatic" x2="4.507586658750329" y2="0.05688043633023643" />
+      <atom id="a55" elementType="H" s:flags="!s:aromatic" x2="3.6590585213264752" y2="-1.4128134093396651" />
+      <atom id="a56" elementType="H" s:flags="!s:aromatic" x2="0.4923084008088497" y2="-0.5642852719158129" />
+      <atom id="a57" elementType="H" s:flags="!s:aromatic" x2="0.4923084008088449" y2="1.1327710029319027" />
+      <atom id="a58" elementType="H" s:flags="!s:aromatic" x2="2.1893646756565612" y2="1.1327710029319045" />
+    </atomArray>
+    <bondArray>
+      <bond id="a1_a20" atomRefs2="a1 a20" order="S" s:flags="!s:aromatic" />
+      <bond id="a1_a35" atomRefs2="a1 a35" order="S" s:flags="!s:aromatic" />
+      <bond id="a1_a36" atomRefs2="a1 a36" order="S" s:flags="!s:aromatic" />
+      <bond id="a1_a37" atomRefs2="a1 a37" order="S" s:flags="!s:aromatic" />
+      <bond id="a2_a22" atomRefs2="a2 a22" order="D" s:flags="!s:aromatic" />
+      <bond id="a20_a2" atomRefs2="a20 a2" order="S" s:flags="!s:aromatic" />
+      <bond id="a4_a38" atomRefs2="a4 a38" order="S" s:flags="!s:aromatic" />
+      <bond id="a4_a39" atomRefs2="a4 a39" order="S" s:flags="!s:aromatic" />
+      <bond id="a2_a4" atomRefs2="a2 a4" order="S" s:flags="!s:aromatic" />
+      <bond id="a5_a6" atomRefs2="a5 a6" order="D" s:flags="s:aromatic" />
+      <bond id="a6_a7" atomRefs2="a6 a7" order="S" s:flags="s:aromatic" />
+      <bond id="a7_a8" atomRefs2="a7 a8" order="D" s:flags="s:aromatic" />
+      <bond id="a8_a9" atomRefs2="a8 a9" order="S" s:flags="s:aromatic" />
+      <bond id="a9_a10" atomRefs2="a9 a10" order="D" s:flags="s:aromatic" />
+      <bond id="a10_a5" atomRefs2="a10 a5" order="S" s:flags="s:aromatic" />
+      <bond id="a11_a5" atomRefs2="a11 a5" order="S" s:flags="!s:aromatic" />
+      <bond id="a24_a25" atomRefs2="a24 a25" order="D" s:flags="!s:aromatic" />
+      <bond id="a24_a26" atomRefs2="a24 a26" order="D" s:flags="!s:aromatic" />
+      <bond id="a8_a24" atomRefs2="a8 a24" order="S" s:flags="!s:aromatic" />
+      <bond id="a6_a40" atomRefs2="a6 a40" order="S" s:flags="!s:aromatic" />
+      <bond id="a7_a41" atomRefs2="a7 a41" order="S" s:flags="!s:aromatic" />
+      <bond id="a9_a42" atomRefs2="a9 a42" order="S" s:flags="!s:aromatic" />
+      <bond id="a10_a43" atomRefs2="a10 a43" order="S" s:flags="!s:aromatic" />
+      <bond id="a11_a44" atomRefs2="a11 a44" order="S" s:flags="!s:aromatic" />
+      <bond id="a11_a45" atomRefs2="a11 a45" order="S" s:flags="!s:aromatic" />
+      <bond id="a11_a46" atomRefs2="a11 a46" order="S" s:flags="!s:aromatic" />
+      <bond id="a24_a12" atomRefs2="a24 a12" order="S" s:flags="!s:aromatic" />
+      <bond id="a4_a12" atomRefs2="a4 a12" order="S" s:flags="!s:aromatic" />
+      <bond id="a13_a47" atomRefs2="a13 a47" order="S" s:flags="!s:aromatic" />
+      <bond id="a13_a48" atomRefs2="a13 a48" order="S" s:flags="!s:aromatic" />
+      <bond id="a12_a13" atomRefs2="a12 a13" order="S" s:flags="!s:aromatic" />
+      <bond id="a14_a15" atomRefs2="a14 a15" order="D" s:flags="s:aromatic" />
+      <bond id="a15_a16" atomRefs2="a15 a16" order="S" s:flags="s:aromatic" />
+      <bond id="a16_a17" atomRefs2="a16 a17" order="D" s:flags="s:aromatic" />
+      <bond id="a17_a18" atomRefs2="a17 a18" order="S" s:flags="s:aromatic" />
+      <bond id="a18_a19" atomRefs2="a18 a19" order="D" s:flags="s:aromatic" />
+      <bond id="a19_a14" atomRefs2="a19 a14" order="S" s:flags="s:aromatic" />
+      <bond id="a28_a29" atomRefs2="a28 a29" order="D" s:flags="!s:aromatic" />
+      <bond id="a28_a30" atomRefs2="a28 a30" order="S" s:flags="!s:aromatic" />
+      <bond id="a15_a28" atomRefs2="a15 a28" order="S" s:flags="!s:aromatic" />
+      <bond id="a17_a49" atomRefs2="a17 a49" order="S" s:flags="!s:aromatic" />
+      <bond id="a18_a50" atomRefs2="a18 a50" order="S" s:flags="!s:aromatic" />
+      <bond id="a19_a51" atomRefs2="a19 a51" order="S" s:flags="!s:aromatic" />
+      <bond id="a13_a16" atomRefs2="a13 a16" order="S" s:flags="!s:aromatic" />
+      <bond id="a32_a33" atomRefs2="a32 a33" order="S" s:flags="!s:aromatic" />
+      <bond id="a32_a34" atomRefs2="a32 a34" order="S" s:flags="!s:aromatic" />
+      <bond id="a32_a52" atomRefs2="a32 a52" order="S" s:flags="!s:aromatic" />
+      <bond id="a33_a53" atomRefs2="a33 a53" order="S" s:flags="!s:aromatic" />
+      <bond id="a33_a54" atomRefs2="a33 a54" order="S" s:flags="!s:aromatic" />
+      <bond id="a33_a55" atomRefs2="a33 a55" order="S" s:flags="!s:aromatic" />
+      <bond id="a34_a56" atomRefs2="a34 a56" order="S" s:flags="!s:aromatic" />
+      <bond id="a34_a57" atomRefs2="a34 a57" order="S" s:flags="!s:aromatic" />
+      <bond id="a34_a58" atomRefs2="a34 a58" order="S" s:flags="!s:aromatic" />
+      <bond id="a30_a32" atomRefs2="a30 a32" order="S" s:flags="!s:aromatic" />
+    </bondArray>
+  </molecule>
+  </product>
+  </productList>
+  </reaction>
+</cml>
