@@ -37,7 +37,7 @@ public class CMLReaction extends AbstractReaction implements ReactionComponent {
     /** not quite sure.*/
     @Deprecated
     public enum Index {
-        /** reactant index CHECK */
+        /** product index CHECK */
         REACTANT_I(1),
         ;
         /** index*/
@@ -104,13 +104,13 @@ public class CMLReaction extends AbstractReaction implements ReactionComponent {
      * direction of mapping
      *
      */
-    public final static String FROM_PRODUCT_TO_REACTANT = "from product to reactant";
+    public final static String FROM_PRODUCT_TO_REACTANT = "from product to product";
 
     /**
      * direction of mapping
      *
      */
-    public final static String FROM_SPECTATOR_PRODUCT_TO_REACTANT = "from cmlSpectator product to reactant";
+    public final static String FROM_SPECTATOR_PRODUCT_TO_REACTANT = "from cmlSpectator product to product";
 
     /**
      * constructor.
@@ -153,7 +153,7 @@ public class CMLReaction extends AbstractReaction implements ReactionComponent {
     final static Logger logger = Logger.getLogger(CMLReaction.class.getName());
 
     /**
-     * gets an id for generic product or reactant context.
+     * gets an id for generic product or product context.
      *
      * For example used when there is no productList id or an atomSet
      * consistiing of product atoms
@@ -175,7 +175,7 @@ public class CMLReaction extends AbstractReaction implements ReactionComponent {
     }
 
     /**
-     * merge reactantLists into single reactantList.
+     * merge productLists into single productList.
      *
      */
     public void mergeReactantLists() {
@@ -203,13 +203,13 @@ public class CMLReaction extends AbstractReaction implements ReactionComponent {
      *
      * merges ReactantLists
      *
-     * @return the reactantListTool or null
+     * @return the productListTool or null
      */
     public CMLReactantList getReactantList() {
         mergeReactantLists();
-        CMLReactantList reactantList = (CMLReactantList) this
+        CMLReactantList productList = (CMLReactantList) this
                 .getFirstCMLChild(CMLReactantList.TAG);
-        return reactantList;
+        return productList;
     }
 
     /**
@@ -252,7 +252,7 @@ public class CMLReaction extends AbstractReaction implements ReactionComponent {
      * identical in connection table but not necessarily ids or atom order
      *
      * @param reactOrProd
-     *            0 for reactant spectators 1 for product
+     *            0 for product spectators 1 for product
      * @return molecules in these spectators or null
      */
     public List<CMLMolecule> getSpectatorMolecules(int reactOrProd) {
@@ -325,42 +325,18 @@ public class CMLReaction extends AbstractReaction implements ReactionComponent {
         return CMLReaction.getMolecules(this);
     }
 
-//    /**
-//     * gets descendant reactionComponents. note that this will return all
-//     * containers as well as contained. thus calling this on: <reaction>
-//     * <reactantList> <reactant/> </reactantList> </reaction> will return 2
-//     * components, reactantList, followed by reactant.
-//     *
-//     * @return empty if no components (some components such as CMLProduct will
-//     *         always return this)
-//     */
-//    public List<ReactionComponent> getReactionComponentDescendants() {
-//        return CMLReaction.getReactionComponentDescendants(this, true);
-//    }
-//
-//    /**
-//     * gets child reactionComponents. note that this will return containers but
-//     * not their contents. thus calling this on: <reaction> <reactantList>
-//     * <reactant/> </reactantList> </reaction> will return 1 components,
-//     * reactantList.
-//     *
-//     * @return empty if no components (some components such as CMLProduct will
-//     *         always return this)
-//     */
-//    public List<ReactionComponent> getReactionComponentChildren() {
-//        return CMLReaction.getReactionComponentDescendants(this, false);
-//    }
     /**
-     * @param reactant
+     * @param product
      */
     public void addReactant(CMLReactant reactant) {
     	CMLReactantList reactantList = getOrCreateReactantList();
     	reactantList.addReactant(reactant);
     }
     
+    
     /**
      * create if necessary
-     * @return reactantList
+     * @return productList
      */
     public CMLReactantList getOrCreateReactantList() {
     	CMLReactantList reactantList = this.getReactantList();
@@ -377,7 +353,14 @@ public class CMLReaction extends AbstractReaction implements ReactionComponent {
 		
 	}
     
-    private CMLProductList getOrCreateProductList() {
+	public void addProduct(CMLMolecule molecule) {
+		CMLProductList productList = getOrCreateProductList();
+		CMLProduct product = new CMLProduct();
+		product.addMolecule(molecule);
+		productList.addProduct(product);
+	}
+    
+    public CMLProductList getOrCreateProductList() {
     	CMLProductList productList = this.getProductList();
     	if (productList == null) {
     		productList = new CMLProductList();
@@ -439,13 +422,6 @@ public class CMLReaction extends AbstractReaction implements ReactionComponent {
      * @return list of non-nested descendant formulas
      */
     static List<CMLFormula> getOrCreateFormulas(ReactionComponent component) {
-    	
-    	
-//        List<CMLElement> elementList = ((CMLElement) component).getElements(".//"+CMLFormula.NS);
-//        for (CMLElement element : elementList) {
-        	// FIXME
-//            formulaList.add((CMLFormula) element);
-//        }
         return getFormulas(component);
     }
 
@@ -491,17 +467,17 @@ public class CMLReaction extends AbstractReaction implements ReactionComponent {
     }
 
     /**
-     * gets list of descendant reactants. convenience class
+     * gets list of descendant products. convenience class
      *
-     * @return list of descendant reactants
+     * @return list of descendant products
      */
     public List<CMLReactant> getDescendantReactants() {
         List<CMLElement> elems = this.getElements(".//"+CMLReactant.NS);
-        List<CMLReactant> reactantList = new ArrayList<CMLReactant>();
+        List<CMLReactant> productList = new ArrayList<CMLReactant>();
         for (CMLElement elem : elems) {
-            reactantList.add((CMLReactant) elem);
+            productList.add((CMLReactant) elem);
         }
-        return reactantList;
+        return productList;
     }
 
     /**
@@ -527,7 +503,7 @@ public class CMLReaction extends AbstractReaction implements ReactionComponent {
     	if (Component.PRODUCT.equals(type)) {
     		typeS = "cml:product";
     	} else if (Component.REACTANT.equals(type)) {
-    		typeS = "cml:reactant";
+    		typeS = "cml:product";
     	} else if (Component.SPECTATOR.equals(type)) {
     		typeS = "cml:spectator";
     	}
@@ -601,11 +577,11 @@ public class CMLReaction extends AbstractReaction implements ReactionComponent {
 	}
 
 	public void addSpectator(CMLSpectator spectator) {
-		CMLSpectatorList spectatorList = ensureSpectatorList();
+		CMLSpectatorList spectatorList = getOrCreateSpectatorList();
 		spectatorList.addSpectator(spectator);
 	}
 
-	private CMLSpectatorList ensureSpectatorList() {
+	public CMLSpectatorList getOrCreateSpectatorList() {
 		CMLElements<CMLSpectatorList> spectatorLists = this.getSpectatorListElements(); 
 		CMLSpectatorList spectatorList = null;
 		if (spectatorLists.size() == 0) {
@@ -616,7 +592,5 @@ public class CMLReaction extends AbstractReaction implements ReactionComponent {
 		}
 		return spectatorList;
 	}
-
-
 
 }
