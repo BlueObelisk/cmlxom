@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<example id="h0005" title="EXAMPLE 1">
+<heading id="h0006" title="N-(3,5-dichlorobenzyl)-8-hydroxy-1,6-naphthyridine-7-carboxamide">
+<p id="p0135" num="0135">
+<chemistry id="chem0077" num="0077">
+<img id="ib0077" file="imgb0077.tif" wi="72" he="37" img-content="chem" img-format="tif" orientation="portrait" inline="no"/>
+</chemistry>
+</p>
+</heading>
+<heading id="h0007" title="Step 1: Preparation of 3-{[Methoxycarbonylmethyl-(toluene-4-sulfonyl)-amino]-methyl}-pyridine-2-carboxylic acid isopropyl ester">
+<p id="p0136" num="0136">Isopropyl 3-(hydroxymethyl)pyridine-2-carboxylate, (200 g, 1.02 mol; prepared as in <nplcit id="ncit0022" npl-type="s">
+<text>P. Ornstein et. al. J. Med. Chem. 1989, 32, 827</text>
+</nplcit>), methyl N-[(4-methylphenyl)sulfonyl]glycinate (249g, 1.02 mol), and triphenylphosphine (403g, 1.5 mol) were dissolved in dry THF (3000mls) and cooled to zero degrees under N2. The diethylazodicarboxylate (DEAD) (267.6 g, 1.5 mol) was dissolved in dry THF (250 mls) and placed in a 500 ml addition funnel. The DEAD was added dropwise over 1 hour. The ice bath was removed and the reaction was allowed to warm slowly to RT. After 2 hours, the reaction was checked by HPLC and some glycinate remained. More starting reagents were added and the reaction was left to stir at RT. After 30 min, the reaction was checked again and saw a very small amount of the glycinate remaining. Concentrated reaction down to a reddish-orange oil that was carried onto the next step.</p>
+</heading>
+<heading id="h0008" title="Step 2: Preparation of methyl 8-hydroxy-1,6-naphthyridine-7-carboxylate">
+<p id="p0137" num="0137">3-{[Methoxycarbonylmethyl-(toluene-4-sulfonyl)-amino]-methyl}-pyridine-2-carboxylic acid isopropyl ester (1.02 mol) was dissolved in dry methanol (4000ml) and cooled to zero degrees under nitrogen. Then via addition funnel, sodium methoxide (137.8g, 2.5 mol) was added slowly to avoid any exotherm. The reaction was stirred at zero degrees, and checked by HPLC after 1.5 hours and was found to be completed. The solvent was removed <i>in vacuo</i> to obtain a reddish-orange oil, which was partitioned between water (1L) and ethyl acetate (1L). The organic layer was back extracted with saturated sodium bicarbonate solution. The pH of the aqueous layer was adjusted to 7, and the layer was maintained at this pH while extracting with methylene chloride. The organic layer was dried with Na2S04, filtered, and the solvent was removed <i>in vacuo</i> to obtain a tan solid. The solid was dissolved in hot ethyl acetate, and the solution was filtered while hot to filter out any insoluble material. The product precipitated upon cooling. The precipitate was then filtered and dried in a vacuum oven. The filtrate was recrystallized by concentrating the filtrate and redissolving the resulting solid in a minimal amount of methylene chloride. Sufficient ethyl acetate was added to turn the solution slightly cloudy, after which the solution was boiled to reduce the volume, cooled, and the resulting crystals were filtered out and dried in a vacuum oven.<br/>
+<spectrum type="hnmr">1H NMR (<quantity type="solvent">CDCl3</quantity>, <quantity type="frequency">
+<value>
+<point>500</point>
+</value>
+<units>MHz</units>
+</quantity>) δ <peaks type="..">
+<peak>
+<quantity type="shift">
+<value>
+<point>11.794</point>
+</value>
+</quantity> (<quantity type="integral">
+<value>
+<point>5</point>
+</value>
+<units>H</units>
+</quantity>,<quantity type="peaktype">s</quantity>)</peak>, <peak>
+<quantity type="shift">
+<value>
+<point>9.2</point>
+</value>
+</quantity> (<quantity type="integral">
+<value>
+<point>1</point>
+</value>
+<units>H</units>
+</quantity>,<quantity type="peaktype">dd</quantity>, J= <quantity type="coupling">
+<value>
+<point>1.7</point>
+</value> and <value>
+<point>6.1</point>
+</value>
+<units>Hz</units>
+</quantity>)</peak>, <peak>
+<quantity type="shift">
+<value>
+<point>8.8</point>
+</value>
+</quantity> (<quantity type="integral">
+<value>
+<point>1</point>
+</value>
+<units>H</units>
+</quantity>,<quantity type="peaktype">s</quantity>)</peak>, <peak>
+<quantity type="shift">
+<value>
+<point>8.3</point>
+</value>
+</quantity> (<quantity type="integral">
+<value>
+<point>1</point>
+</value>
+<units>H</units>
+</quantity>,<quantity type="peaktype">dd</quantity>, J= <quantity type="coupling">
+<value>
+<point>1.5</point>
+</value> and <value>
+<point>9.7</point>
+</value> <units>Hz</units>
+</quantity>)</peak>, <peak>
+<quantity type="shift">
+<value>
+<point>7.7</point>
+</value>
+</quantity> (<quantity type="integral">
+<value>
+<point>1</point>
+</value>
+<units>H</units>
+</quantity>, <quantity type="peaktype">dd</quantity>, J= <quantity type="coupling">
+<value>
+<point>4.2</point>
+</value> and <value>
+<point>12.4</point>
+</value> <units>Hz</units>
+</quantity>)</peak>, <peak>
+<quantity type="shift">
+<value>
+<point>4.1</point>
+</value>
+</quantity> (<quantity type="integral">
+<value>
+<point>3</point>
+</value>
+<units>H</units>
+</quantity>,<quantity type="peaktype">s</quantity>)</peak> ppm</peaks>
+</spectrum>.<br/>
+ES MS exact mass calculated for C10H8N2O3 204.1869 (MH+), found 205.1.</p>
+</heading>
+<heading id="h0009" title="Step 3: Preparation of N-(3,5-dichlorobenzyl)-8-hydroxy-1,6-naphthyridine-7-carboxamide">
+<p id="p0138" num="0138">A slurry of the ester from step 2 (3.0g, 0.0147 mol) and 3,5,dichlorobenzylamine (2.85g, 0.016mol) in toluene (45 mL) were heated at reflux for 18hrs. Upon cooling to room temperature, the resulting solids were collected by filtration and washed 3 times with methanol (50ml; 30ml and 20ml)to afford the title compound as a white solid.<br/>
+<spectrum type="hnmr">1H NMR (<quantity type="solvent">CDCl3</quantity>, <quantity type="frequency">
+<value>
+<point>400</point>
+</value>
+<units>MHz</units>
+</quantity>) δ <peaks type="..">
+<peak>
+<quantity type="shift">
+<value>
+<point>13.1</point>
+</value>
+</quantity> (<quantity type="integral">
+<value>
+<point>1</point>
+</value>
+<units>H</units>
+</quantity>, <quantity type="peaktype">s</quantity>)</peak>, <peak>
+<quantity type="shift">
+<value>
+<point>9.20</point>
+</value>
+</quantity> (<quantity type="integral">
+<value>
+<point>1</point>
+</value>
+<units>H</units>
+</quantity>, <quantity type="peaktype">d</quantity>, J=<quantity type="coupling">
+<value>
+<point>4.2</point>
+</value> <units>Hz</units>
+</quantity>)</peak>, <peak>
+<quantity type="shift">
+<value>
+<point>8.68</point>
+</value>
+</quantity> (<quantity type="integral">
+<value>
+<point>1</point>
+</value>
+<units>H</units>
+</quantity>, <quantity type="peaktype">s</quantity>)</peak>, <peak>
+<quantity type="shift">
+<value>
+<point>8.49</point>
+</value>
+</quantity> (<quantity type="integral">
+<value>
+<point>1</point>
+</value>
+<units>H</units>
+</quantity>, <quantity type="comment">brs</quantity>)</peak>, <peak>
+<quantity type="shift">
+<value>
+<point>8.29</point>
+</value>
+</quantity> (<quantity type="integral">
+<value>
+<point>1</point>
+</value>
+<units>H</units>
+</quantity>, <quantity type="peaktype">d</quantity>, J=<quantity type="coupling">
+<value>
+<point>8.3</point>
+</value>
+<units>Hz</units>
+</quantity>)</peak>, <peak>
+<quantity type="shift">
+<value>
+<point>7.67</point>
+</value>
+</quantity> (<quantity type="integral">
+<value>
+<point>1</point>
+</value>
+<units>H</units>
+</quantity>, <quantity type="peaktype">dd</quantity>, J=<quantity type="coupling">
+<value>
+<point>8.3</point>
+</value> and <value>
+<point>4.2</point>
+</value> <units>Hz</units>
+</quantity>)</peak>, <peak>
+<quantity type="shift">
+<value>
+<min>7.35</min>-<max>7.22</max>
+</value>
+</quantity> (<quantity type="integral">
+<value>
+<point>3</point>
+</value>
+<units>H</units>
+</quantity>, <quantity type="peaktype">m</quantity>)</peak>, <peak>
+<quantity type="shift">
+<value>
+<point>4.67</point>
+</value>
+</quantity> (<quantity type="integral">
+<value>
+<point>2</point>
+</value>
+<units>H</units>
+</quantity>, <quantity type="peaktype">d</quantity>, J=<quantity type="coupling">
+<value>
+<point>5.4</point>
+</value> <units>Hz</units>
+</quantity>)</peak> ppm</peaks>
+</spectrum>.<br/>
+FAB MS calcd for C<sub>16</sub>H<sub>11</sub>N<sub>3</sub>O<sub>2</sub>Cl<sub>2</sub> 348 (MH<sup>+</sup>), found 348.<br/>
+FAB HRMS exact mass calcd for C<sub>16</sub>H<sub>11</sub>N<sub>3</sub>O<sub>2</sub>Cl<sub>2</sub> 348.0301 (MH<sup>+</sup>), found 348.0294.</p>
+</heading>
+</example>
