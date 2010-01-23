@@ -18,7 +18,7 @@ import nu.xom.ValidityException;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLBuilder;
 import org.xmlcml.cml.base.CMLConstants;
-import org.xmlcml.cml.base.TstBase;
+import org.xmlcml.cml.base.CMLXOMTestUtils;
 import org.xmlcml.cml.element.CMLCml;
 import org.xmlcml.cml.element.CMLMolecule;
 import org.xmlcml.cml.element.CMLZMatrix;
@@ -131,7 +131,7 @@ public class CMLZMatrixTest {
 				+ "<length atomRefs2='prop2_a1 prop2_a2'>1.54</length>"
 				+ "<length atomRefs2='prop2_a2 prop2_a3'>1.54</length>"
 				+ "</cml>" + CMLConstants.S_EMPTY;
-		CMLCml cml = (CMLCml)TstBase.parseValidString(zmatBadS);
+		CMLCml cml = (CMLCml)CMLXOMTestUtils.parseValidString(zmatBadS);
 		try {
 			zmat = new CMLZMatrix(cml);
 		} catch (RuntimeException e) {
@@ -149,7 +149,7 @@ public class CMLZMatrixTest {
 				+ "<length atomRefs2='prop1_a2 prop1_a4'>1.40</length>"
 				+ "<angle atomRefs3='prop1_a1 prop1_a2 prop1_a4'>111</angle>"
 				+ "</cml>" + CMLConstants.S_EMPTY;
-		cml = (CMLCml)TstBase.parseValidString(zmatBadS);
+		cml = (CMLCml)CMLXOMTestUtils.parseValidString(zmatBadS);
 		try {
 			zmat = new CMLZMatrix(cml);
 		} catch (RuntimeException e) {
@@ -206,7 +206,7 @@ public class CMLZMatrixTest {
 				+ "<torsion atomRefs4='a1 a2 a3 a5'>-90</torsion>"
 				+ "<torsion atomRefs4='a0 a1 a2 a3'>120</torsion>"
 				+ "</molecule>";
-		CMLMolecule molecule = (CMLMolecule)TstBase.parseValidString(moleculeS);
+		CMLMolecule molecule = (CMLMolecule)CMLXOMTestUtils.parseValidString(moleculeS);
 		/* CMLZMatrix zMatrix = */new CMLZMatrix(molecule);
 	}
 

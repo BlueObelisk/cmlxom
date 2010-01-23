@@ -12,7 +12,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLConstants;
-import org.xmlcml.cml.base.TstBase;
+import org.xmlcml.cml.base.CMLXOMTestUtils;
 import org.xmlcml.cml.element.CMLAtom;
 import org.xmlcml.cml.element.CMLAtomSet;
 import org.xmlcml.cml.element.CMLBond;
@@ -58,7 +58,7 @@ public class CMLTorsionTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		CMLCml cml = (CMLCml)TstBase.parseValidString(s1);
+		CMLCml cml = (CMLCml)CMLXOMTestUtils.parseValidString(s1);
 		molecule1 = (CMLMolecule) cml.getChildCMLElements("molecule").get(0);
 		torsion0 = (CMLTorsion) cml.getChildCMLElements("torsion").get(0);
 		torsion1 = (CMLTorsion) cml.getChildCMLElements("torsion").get(1);

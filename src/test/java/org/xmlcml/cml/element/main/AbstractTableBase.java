@@ -1,6 +1,6 @@
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.cml.base.TstBase.logger;
+import static org.xmlcml.cml.base.CMLXOMTestUtils.logger;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,7 +12,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.xmlcml.cml.base.CMLBuilder;
 import org.xmlcml.cml.base.CMLConstants;
-import org.xmlcml.cml.base.TstBase;
+import org.xmlcml.cml.base.CMLXOMTestUtils;
 import org.xmlcml.cml.element.CMLArrayList;
 import org.xmlcml.cml.element.CMLTable;
 import org.xmlcml.cml.element.CMLTableContent;
@@ -115,11 +115,11 @@ public class AbstractTableBase {
 			logger.error("Parse exception " + e.getMessage());
 			Assert.fail("Should not throw ParsingException" + e.getCause());
 		}
-		tableContent = (CMLTableContent)TstBase.parseValidString(tableContentS);
-		tableHeader = (CMLTableHeader)TstBase.parseValidString(tableHeaderS);
-		tableRowList = (CMLTableRowList)TstBase.parseValidString(tableRowListS);
+		tableContent = (CMLTableContent)CMLXOMTestUtils.parseValidString(tableContentS);
+		tableHeader = (CMLTableHeader)CMLXOMTestUtils.parseValidString(tableHeaderS);
+		tableRowList = (CMLTableRowList)CMLXOMTestUtils.parseValidString(tableRowListS);
 		tableRow = tableRowList.getTableRowElements().get(1);
-		arrayList = (CMLArrayList)TstBase.parseValidString(arrayListS);
+		arrayList = (CMLArrayList)CMLXOMTestUtils.parseValidString(arrayListS);
 	}
 
 }

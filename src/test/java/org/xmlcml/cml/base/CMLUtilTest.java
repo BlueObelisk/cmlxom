@@ -52,7 +52,7 @@ public class CMLUtilTest {
 	 */
 	@Test
 	public final void testGetXMLResource() {
-		String filename = TstBase.BASE_RESOURCE +CMLConstants.U_S + "cml0.xml";
+		String filename = CMLXOMTestUtils.BASE_RESOURCE +CMLConstants.U_S + "cml0.xml";
 		Document doc = null;
 		try {
 			doc = CMLUtil.getXMLResource(filename);
@@ -104,7 +104,7 @@ public class CMLUtilTest {
 		bar1.appendChild(new Text("ghi"));
 		root1.appendChild(bar1);
 		root1.appendChild(new Text("jkl"));
-		TstBase.assertEqualsCanonically("parseXML", root1, root);
+		CMLXOMTestUtils.assertEqualsCanonically("parseXML", root1, root);
 
 		// parseXML does not generate CML
 		s = "<cml:cml xmlns:cml='http://www.xml-cml.org/schema'><bar/></cml:cml>";
@@ -262,7 +262,7 @@ public class CMLUtilTest {
 		Element newRoot = CMLUtil.parseXML("<root>"
 				+ "<foo>abc<bar/>def<bar1>ghi</bar1>jkl<qqq/>zzz</foo>"
 				+ "and<plugh/></root>");
-		TstBase.assertEqualsCanonically("new root", root, newRoot);
+		CMLXOMTestUtils.assertEqualsCanonically("new root", root, newRoot);
 	}
 
 	/**
