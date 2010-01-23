@@ -228,6 +228,13 @@
 			<version>4.0</version>
 			<scope>test</scope>
 		</dependency>
+		
+		<dependency>
+		   <groupId>cml</groupId>
+		   <artifactId>jumbo-testutil</artifactId>
+		   <version>1.0-SNAPSHOT</version>
+		   <scope>test</scope>
+		</dependency>
 		<dependency>
 			<groupId>xom</groupId>
 			<artifactId>xom</artifactId>

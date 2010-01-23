@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.TstBase;
+import org.xmlcml.cml.base.CMLConstants.Units;
 import org.xmlcml.cml.element.CMLCml;
 import org.xmlcml.cml.element.CMLProperty;
 import org.xmlcml.cml.element.CMLPropertyList;
@@ -34,7 +35,7 @@ public class CMLPropertyTest {
 		String prop1S = "<property "
 				+ CMLConstants.CML_XMLNS
 				+ ">"
-				+ "  <scalar dictRef='foo:bar' units='units:g' dataType='xsd:double'>12.3</scalar>"
+				+ "  <scalar dictRef='foo:bar' units='"+Units.GRAM+"' dataType='xsd:double'>12.3</scalar>"
 				+ "</property>";
 		prop1 = (CMLProperty)TstBase.parseValidString(prop1S);
 	}
@@ -46,17 +47,17 @@ public class CMLPropertyTest {
 				+ CMLConstants.CML_XMLNS
 				+ ">"
 				+ "<property>"
-				+ "  <scalar dictRef='foo:bar' units='units:g' dataType='xsd:double'>12.3</scalar>"
+				+ "  <scalar dictRef='foo:bar' units='"+Units.GRAM+"' dataType='xsd:double'>12.3</scalar>"
 				+ "</property>"
 				+ "<property "
 				+ CMLConstants.CML_XMLNS
 				+ ">"
-				+ "  <scalar dictRef='foo:plugh' units='units:g' dataType='xsd:double'>45.6</scalar>"
+				+ "  <scalar dictRef='foo:plugh' units='"+Units.GRAM+"' dataType='xsd:double'>45.6</scalar>"
 				+ "</property>"
 				+ "<property "
 				+ CMLConstants.CML_XMLNS
 				+ ">"
-				+ "  <scalar dictRef='foo:plugh' units='units:g' dataType='xsd:double'>49.6</scalar>"
+				+ "  <scalar dictRef='foo:plugh' units='"+Units.GRAM+"' dataType='xsd:double'>49.6</scalar>"
 				+ "</property>" + "</cml>";
 		CMLCml cml = (CMLCml)TstBase.parseValidString(cmlS);
 		CMLPropertyList propertyList = CMLProperty.getPropertyList(cml,
@@ -72,17 +73,17 @@ public class CMLPropertyTest {
 				+ CMLConstants.CML_XMLNS
 				+ ">"
 				+ "<property>"
-				+ "  <scalar dictRef='foo:bar' units='units:g' dataType='xsd:double'>12.3</scalar>"
+				+ "  <scalar dictRef='foo:bar' units='"+Units.GRAM+"' dataType='xsd:double'>12.3</scalar>"
 				+ "</property>"
 				+ "<property "
 				+ CMLConstants.CML_XMLNS
 				+ ">"
-				+ "  <scalar dictRef='foo:plugh' units='units:g' dataType='xsd:double'>45.6</scalar>"
+				+ "  <scalar dictRef='foo:plugh' units='"+Units.GRAM+"' dataType='xsd:double'>45.6</scalar>"
 				+ "</property>"
 				+ "<property "
 				+ CMLConstants.CML_XMLNS
 				+ ">"
-				+ "  <scalar dictRef='foo:plugh' units='units:g' dataType='xsd:double'>49.6</scalar>"
+				+ "  <scalar dictRef='foo:plugh' units='"+Units.GRAM+"' dataType='xsd:double'>49.6</scalar>"
 				+ "</property>" + "</cml>";
 		CMLCml cml = (CMLCml)TstBase.parseValidString(cmlS);
 		CMLProperty property = CMLProperty.getProperty(cml, "foo:bar");
@@ -112,7 +113,7 @@ public class CMLPropertyTest {
 				+ CMLConstants.CML_XMLNS
 				+ ">"
 				+ "<property>"
-				+ "  <scalar dictRef='foo:bar' units='units:g' dataType='xsd:double'>12.3</scalar>"
+				+ "  <scalar dictRef='foo:bar' units='"+Units.GRAM+"' dataType='xsd:double'>12.3</scalar>"
 				+ "</property>" + "<property " + CMLConstants.CML_XMLNS + ">"
 				+ "  <scalar dictRef='foo:plugh'>penguin</scalar>"
 				+ "</property>" + "</cml>";
@@ -132,7 +133,7 @@ public class CMLPropertyTest {
 				+ CMLConstants.CML_XMLNS
 				+ ">"
 				+ "<property>"
-				+ "  <scalar dictRef='foo:bar' units='units:g' dataType='xsd:double'>12.3</scalar>"
+				+ "  <scalar dictRef='foo:bar' units='"+Units.GRAM+"' dataType='xsd:double'>12.3</scalar>"
 				+ "</property>"
 				+ "<property>"
 				+ "  <scalar dictRef='foo:plugh' dataType='xsd:integer'>12</scalar>"
@@ -189,7 +190,7 @@ public class CMLPropertyTest {
 				+ CMLConstants.CML_XMLNS
 				+ ">"
 				+ "<property  dictRef='foo:plugh'>"
-				+ "  <array dataType='xsd:double' units='units:g'>1.1 2.1 3.1</array>"
+				+ "  <array dataType='xsd:double' units='"+Units.GRAM+"'>1.1 2.1 3.1</array>"
 				+ "</property>" + "</cml>";
 		CMLCml cml = (CMLCml)TstBase.parseValidString(cmlS);
 		CMLProperty property = CMLProperty.getProperty(cml, "foo:plugh");
@@ -206,7 +207,7 @@ public class CMLPropertyTest {
 				+ CMLConstants.CML_XMLNS
 				+ ">"
 				+ "<property  dictRef='foo:plugh'>"
-				+ "  <array dataType='xsd:double' units='units:g'>1.1 2.1 3.1</array>"
+				+ "  <array dataType='xsd:double' units='"+Units.GRAM+"'>1.1 2.1 3.1</array>"
 				+ "</property>" + "<property  dictRef='foo:bar'>"
 				+ "  <molecule/>" + "</property>"
 				+ "<property  dictRef='foo:xyzzy'/>" + "</cml>";
@@ -226,7 +227,7 @@ public class CMLPropertyTest {
 				+ CMLConstants.CML_XMLNS
 				+ ">"
 				+ "<property  dictRef='foo:plugh'>"
-				+ "  <array dataType='xsd:double' units='units:g'>1.1 2.1 3.1</array>"
+				+ "  <array dataType='xsd:double' units='"+Units.GRAM+"'>1.1 2.1 3.1</array>"
 				+ "</property>" + "<property  dictRef='foo:bar'>"
 				+ "  <scalar/>" + "</property>"
 				+ "<property  dictRef='foo:xyzzy'/>" + "</cml>";

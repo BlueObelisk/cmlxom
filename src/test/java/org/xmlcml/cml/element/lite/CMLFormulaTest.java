@@ -16,7 +16,6 @@ import nu.xom.ParsingException;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLAttribute;
 import org.xmlcml.cml.base.CMLBuilder;
@@ -35,6 +34,7 @@ import org.xmlcml.cml.element.CMLFormula.Type;
 import org.xmlcml.cml.element.main.MoleculeAtomBondFixture;
 import org.xmlcml.euclid.test.DoubleTestBase;
 import org.xmlcml.euclid.test.StringTestBase;
+import org.xmlcml.euclid.test.UtilTest;
 import org.xmlcml.molutil.ChemicalElement;
 import org.xmlcml.molutil.ChemicalElement.AS;
 
@@ -1408,11 +1408,34 @@ public class CMLFormulaTest {
 	}
 	
 	@Test
-	@Ignore ("doesnt read negative")
-	public void testNegativeElements() {
-		CMLFormula formula = CMLFormula.createFormula("H 4 O -2 C 3", Type.CONCISE);
+	public void testConciseCharge() {
+		CMLFormula formula = new CMLFormula();
+		formula.setConcise("H 4 O 2 C 3 -1");
+		formula.debug();
+		String expectedFormulaS = "<formula formalCharge='-1' concise='C 3 H 4 O 2 -1' xmlns='http://www.xml-cml.org/schema'>" +
+				"<atomArray elementType='C H O' count='3.0 4.0 2.0'/>" +
+				"</formula>";
+		TstBase.assertEqualsCanonically("concise", TstBase.parseValidString(expectedFormulaS), formula, true);
 		String formulaS = formula.getConcise();
-		Assert.assertEquals("2LetterTest", "H 6 B 3 Cl 2 O 2 R 4 Sn 4 Xe 1", formulaS);
+		Assert.assertEquals("negative", "C 3 H 4 O 2 -1", formulaS);
+	}
+	
+	@Test
+	public void testNegativeElements() {
+		CMLFormula formula = new CMLFormula();
+		formula.setConcise("H 4 O -2 C 3");
+		Assert.assertFalse("negative", formula.isAllowNegativeCounts());
+		String formulaS = formula.getConcise();
+		Assert.assertEquals("negative", "C 3 H 4 O -2", formulaS);
+	}
+	
+	@Test
+	public void testNegativeElements1() {
+		CMLFormula formula = new CMLFormula();
+		formula.setConcise("H 4 O -2 C 3 -3");
+		formula.debug();
+		String formulaS = formula.getConcise();
+		Assert.assertEquals("negative", "C 3 H 4 O -2 -3", formulaS);
 	}
 	
 	@Test
