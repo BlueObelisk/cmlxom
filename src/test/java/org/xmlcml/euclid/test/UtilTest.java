@@ -4,6 +4,7 @@
 package org.xmlcml.euclid.test;
 
 import static org.xmlcml.euclid.EuclidConstants.EPS;
+
 import static org.xmlcml.euclid.EuclidConstants.F_S;
 import static org.xmlcml.euclid.EuclidConstants.S_PERIOD;
 import static org.xmlcml.euclid.test.EuclidTestBase.neverFail;
@@ -14,12 +15,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
 import nu.xom.Builder;
 import nu.xom.Document;
 
+import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -779,5 +782,18 @@ public class UtilTest {
 		Assert.assertEquals("3", "a123", ssList.get(3));
 		Assert.assertEquals("4", "b213", ssList.get(4));
 	}
+
+	@Test
+	@Ignore ("switch off if server is down")
+	public void testHTTP() throws IOException {
+		// will fail if server is down
+		String s = "Isopropyl 3-(hydroxymethyl)pyridine-2-carboxylate";
+		String u = "http://opsin.ch.cam.ac.uk/opsin/";
+		s = URLEncoder.encode(s, "UTF-8");
+		String mediaType = "chemical/x-cml";
+		List<String> lines = Util.getRESTQueryAsLines(s, u, mediaType);
+		Assert.assertEquals("lines", 88, lines.size());
+	}
+
 
 }
