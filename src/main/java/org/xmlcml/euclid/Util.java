@@ -3,6 +3,7 @@ package org.xmlcml.euclid;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.EOFException;
 import java.io.File;
@@ -12,6 +13,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.text.DecimalFormat;
@@ -28,8 +30,10 @@ import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 import org.xmlcml.cml.base.CMLUtil;
+
 
 /**
  * A number of miscellaneous tools. Originally devised for jumbo.sgml, now
@@ -2731,6 +2735,27 @@ public class Util implements EuclidConstants {
 	 */
 	public static void println() {
 		System.out.println();
+	}
+
+	public static List<String> getRESTQueryAsLines(String s, String u,
+			String mediaType) throws IOException {
+		byte[] content = Util.getRESTQuery(s, u, mediaType);
+		BufferedReader br = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(content)));
+		List<String> lines = new ArrayList<String>();
+		String line;
+		while ((line = br.readLine()) != null) {
+			lines.add(line);
+		}
+		return lines;
+	}
+
+	public static byte[] getRESTQuery(String serviceUrl, String urlString, String mediaType) throws IOException {
+		URL url = new URL(urlString+serviceUrl);
+		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+		conn.addRequestProperty("accept", mediaType);
+		conn.connect();
+		InputStream is = conn.getInputStream();
+		return IOUtils.toByteArray(is);
 	}
 }
 
