@@ -21,7 +21,6 @@ import org.xmlcml.cml.base.CMLElements;
  *
  */
 public class CMLBondArray extends AbstractBondArray {
-	@SuppressWarnings("unused")
 	private static Logger LOG = Logger.getLogger(CMLBondArray.class);
 	
     /** namespaced element name.*/
