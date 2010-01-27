@@ -485,7 +485,7 @@ public class CMLFormula extends AbstractFormula {
     	if (inline != null) {
     		if (SMILES.equals(convention) ||
     			SMILES1.equals(convention)) {
-    			throw new RuntimeException("Move to SMILESTool");
+//    			throw new RuntimeException("Move to SMILESTool");
 //    			inline2Concise = getConciseFromSMILES(inline);
     		} else {
 //    			inline2Concise = createConcise(inline); // never do this!
