@@ -6,6 +6,7 @@ import java.util.List;
 import nu.xom.Element;
 import nu.xom.Elements;
 import nu.xom.Node;
+import nu.xom.Nodes;
 
 import org.xmlcml.cml.base.CMLElement;
 
@@ -277,5 +278,10 @@ public class CMLSpectator extends AbstractSpectator implements ReactionComponent
     public List<ReactionComponent> getReactionComponentChildren() {
         return new ArrayList<ReactionComponent>();
     }
+
+	public CMLMolecule getMolecule() {
+		Nodes molecules = this.query("./*[local-name()='"+CMLMolecule.TAG+"']");
+		return (molecules.size() == 1) ? (CMLMolecule) molecules.get(0) : null;
+	}
 
 }
