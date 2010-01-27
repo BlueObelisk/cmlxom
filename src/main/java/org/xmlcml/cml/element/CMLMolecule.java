@@ -1474,5 +1474,15 @@ public class CMLMolecule
 			}
 		}
 	}
+	
+	public CMLFormula getFirstConciseFormula() {
+		Nodes nodes = this.query("./*[local-name()='"+CMLFormula.TAG+"' and @concise]");
+		return (nodes.size() > 0) ? (CMLFormula) nodes.get(0) : null;
+	}
+	
+	public String getFirstConciseFormulaString() {
+		CMLFormula formula = this.getFirstConciseFormula();
+		return (formula == null) ? null : formula.getConcise();
+	}
 
 }
