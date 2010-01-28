@@ -18,6 +18,7 @@ import org.xmlcml.cml.element.CMLReactant;
 import org.xmlcml.cml.element.CMLReactantList;
 import org.xmlcml.cml.element.CMLReaction;
 import org.xmlcml.cml.element.CMLSpectator;
+import org.xmlcml.cml.element.CMLSpectatorList;
 import org.xmlcml.cml.element.CMLSubstance;
 import org.xmlcml.cml.element.CMLSubstanceList;
 import org.xmlcml.cml.element.CMLReaction.Component;
@@ -117,6 +118,14 @@ public class CMLReactionTest extends ReactionAllTestBase {
 		Assert.assertEquals("products", 2, products.size());
 	}
 
+	@Test
+	public void testGetSpectatorList() {
+		CMLSpectatorList sl = xmlReact1.getSpectatorList();
+		Assert.assertNotNull("spectatorList", sl);
+		CMLElements<CMLSpectator> spectators = sl.getSpectatorElements();
+		Assert.assertEquals("spectators", 2, spectators.size());
+	}
+	
 	/**
 	 * Test method for 'org.xmlcml.cml.element.CMLReaction.getFilename()'
 	 */
@@ -326,5 +335,26 @@ public class CMLReactionTest extends ReactionAllTestBase {
 		Assert.assertEquals(product, reaction.getProductList().getProductElements().get(0));
 	}
 	
-	
+	@Test
+	public void testMergeSpectatorLists() {
+		CMLReaction reaction = new CMLReaction();
+		CMLSpectatorList list1 = new CMLSpectatorList();
+		CMLSpectatorList list2 = new CMLSpectatorList();
+		
+		list1.addSpectator(new CMLSpectator());
+		list2.addSpectator(new CMLSpectator());
+		list2.addSpectator(new CMLSpectator());
+		reaction.addSpectatorList(list1);
+		reaction.addSpectatorList(list2);
+		Assert.assertEquals(2, reaction.getSpectatorListElements().size());
+		Assert.assertEquals(1, list1.getChildCount());
+		Assert.assertEquals(2, list2.getChildCount());
+		
+		reaction.mergeSpectatorLists();
+		Assert.assertEquals(1, reaction.getSpectatorListElements().size());
+		Assert.assertEquals(3, list1.getChildCount());
+		Assert.assertEquals(0, list2.getChildCount());
+		Assert.assertTrue(list1.getParent() == reaction);
+		Assert.assertFalse(list2.getParent() == reaction);
+	}
 }

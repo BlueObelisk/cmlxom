@@ -175,12 +175,20 @@ public class CMLReaction extends AbstractReaction implements ReactionComponent {
     }
 
     /**
-     * merge productLists into single productList.
+     * merge reactantLists into single reactantList.
      *
      */
     public void mergeReactantLists() {
         mergePRLists(Component.REACTANTLIST, Component.REACTANT);
     }
+    
+    /**
+     * merge spectatorLists into single spectatorList.
+     *
+     */
+    public void mergeSpectatorLists() {
+    	mergePRLists(Component.SPECTATORLIST, Component.SPECTATOR);
+	}
 
     private void mergePRLists(Component prListC, Component prC) {
         Elements prLists = this.getChildCMLElements(prListC.name);
@@ -225,6 +233,21 @@ public class CMLReaction extends AbstractReaction implements ReactionComponent {
                 .getFirstCMLChild(CMLProductList.TAG);
         return productList;
     }
+    
+    /**
+     * convenience method to get SpectatorList.
+     *
+     * merges SpectatorLists
+     *
+     * @return the spectatorList or null
+     */
+	public CMLSpectatorList getSpectatorList() {
+		mergeSpectatorLists();
+        CMLSpectatorList spectatorList = (CMLSpectatorList) this
+                .getFirstCMLChild(CMLSpectatorList.TAG);
+        return spectatorList;
+	}
+
 
     /**
      * gets filename from components of CMLReaction. uses
