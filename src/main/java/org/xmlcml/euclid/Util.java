@@ -2755,7 +2755,9 @@ public class Util implements EuclidConstants {
 		conn.addRequestProperty("accept", mediaType);
 		conn.connect();
 		InputStream is = conn.getInputStream();
-		return IOUtils.toByteArray(is);
+		byte[] bytes = IOUtils.toByteArray(is);
+		conn.disconnect();
+		return bytes;
 	}
 }
 
