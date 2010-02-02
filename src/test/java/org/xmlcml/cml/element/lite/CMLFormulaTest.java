@@ -1409,7 +1409,7 @@ public class CMLFormulaTest {
 	public void testConciseCharge() {
 		CMLFormula formula = new CMLFormula();
 		formula.setConcise("H 4 O 2 C 3 -1");
-		formula.debug();
+//		formula.debug();
 		String expectedFormulaS = "<formula formalCharge='-1' concise='C 3 H 4 O 2 -1' xmlns='http://www.xml-cml.org/schema'>" +
 				"<atomArray elementType='C H O' count='3.0 4.0 2.0'/>" +
 				"</formula>";
@@ -1431,7 +1431,7 @@ public class CMLFormulaTest {
 	public void testNegativeElements1() {
 		CMLFormula formula = new CMLFormula();
 		formula.setConcise("H 4 O -2 C 3 -3");
-		formula.debug();
+//		formula.debug();
 		String formulaS = formula.getConcise();
 		Assert.assertEquals("negative", "C 3 H 4 O -2 -3", formulaS);
 	}
