@@ -122,8 +122,8 @@ public class ElementTest {
 	 */
 	@Test
 	public void testParseXomNoSchema1() {
-		Util.println("  === xom Parse, no schema, no validation: " + noSchema
-		+ " ====");
+//		Util.println("  === xom Parse, no schema, no validation: " + noSchema
+//		+ " ====");
 		InputStream in = null;
 		Document doc = null;
 		try {
