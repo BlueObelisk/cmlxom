@@ -1485,4 +1485,9 @@ public class CMLMolecule
 		return (formula == null) ? null : formula.getConcise();
 	}
 
+	public void addName(String nameString) {
+		CMLName name = new CMLName();
+		name.setXMLContent(nameString);
+		this.addName(name);
+	}
 }
