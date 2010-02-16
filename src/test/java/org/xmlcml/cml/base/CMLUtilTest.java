@@ -10,6 +10,7 @@ import nu.xom.Document;
 import nu.xom.Element;
 import nu.xom.Elements;
 import nu.xom.Node;
+import nu.xom.Nodes;
 import nu.xom.Text;
 import nu.xom.XPathContext;
 
@@ -19,6 +20,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.xmlcml.cml.element.CMLCml;
 import org.xmlcml.euclid.EC;
+import org.xmlcml.euclid.Util;
 
 /**
  * test CMLUtil.
@@ -477,5 +479,31 @@ public class CMLUtilTest {
 		Assert.assertEquals("element content", 
 				"no attribute in test (/*[local-name()='atom']/node()[position()=1]) for idap", message);
 		LOG.trace(refString);
+	}
+	
+	@Test
+	public void stripTrailingWhitespaceinTexts() {
+		Element element = CMLUtil.parseXML("<foo> bar </foo>");
+		CMLUtil.stripTrailingWhitespaceinTexts(element); 
+		Assert.assertEquals("stripWS", "<foo> bar</foo>", element.toXML());
+	}
+	@Test
+	public void stripTrailingWhitespaceinTexts2() {
+		Element element = CMLUtil.parseXML("<foo> bar</foo>");
+		CMLUtil.stripTrailingWhitespaceinTexts(element); 
+		Assert.assertEquals("stripWS", "<foo> bar</foo>", element.toXML());
+	}
+	@Test
+	public void stripTrailingWhitespaceinTexts3() {
+		Element element = CMLUtil.parseXML("<foo> bar  \n\t</foo>");
+		CMLUtil.stripTrailingWhitespaceinTexts(element); 
+		Assert.assertEquals("stripWS", "<foo> bar</foo>", element.toXML());
+	}
+	@Test
+	public void stripTrailingWhitespaceinTexts4() {
+		Element element = CMLUtil.parseXML("<foo> bar  \n\t<plinge> \n<boo/> a\n</plinge></foo>");
+		CMLUtil.stripTrailingWhitespaceinTexts(element); 
+		Assert.assertEquals("stripWS", "<foo> bar<plinge><boo /> a</plinge></foo>", element.toXML());
+
 	}
 }

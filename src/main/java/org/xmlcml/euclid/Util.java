@@ -500,7 +500,7 @@ public class Util implements EuclidConstants {
 		}
 		int l = s.length();
 		while (l >= 0) {
-			if (s.charAt(--l) != ' ') {
+			if (!Character.isWhitespace(s.charAt(--l))) {
 				l++;
 				break;
 			}
