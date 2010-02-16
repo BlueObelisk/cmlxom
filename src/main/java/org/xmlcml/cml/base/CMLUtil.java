@@ -243,7 +243,7 @@ public abstract class CMLUtil implements CMLConstants {
 			Element copyElem = new Element(el);
 			document = new Document(copyElem);
 		}
-		Serializer serializer = new Serializer(os);
+		Serializer serializer = new Serializer(os, "UTF-8");
 		if (indent > 0) {
 			serializer.setIndent(indent);
 		}
@@ -1012,5 +1012,18 @@ public abstract class CMLUtil implements CMLConstants {
 		}
 		return message;
 	}
-	
+
+	/**
+	 * some formatted XML introduces spurious WS after text strings
+	 * @param element
+	 */
+	public static void stripTrailingWhitespaceinTexts(Element element) {
+		Nodes texts = element.query("//text()");
+		for (int i = 0; i < texts.size(); i++) {
+			Text text = (Text) texts.get(i);
+			String value = text.getValue();
+			value = Util.rightTrim(value);
+			text.setValue(value);
+		}
+	}
 }
