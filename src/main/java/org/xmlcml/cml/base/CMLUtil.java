@@ -236,18 +236,20 @@ public abstract class CMLUtil implements CMLConstants {
 	public static void debug(Element el, OutputStream os, int indent)
 			throws IOException {
 		Document document;
-		Node parent = el.getParent();
-		if (parent instanceof Document) {
-			document = (Document) parent;
-		} else {
-			Element copyElem = new Element(el);
-			document = new Document(copyElem);
+		if (el != null) {
+			Node parent = el.getParent();
+			if (parent instanceof Document) {
+				document = (Document) parent;
+			} else {
+				Element copyElem = new Element(el);
+				document = new Document(copyElem);
+			}
+			Serializer serializer = new Serializer(os, "UTF-8");
+			if (indent > 0) {
+				serializer.setIndent(indent);
+			}
+			serializer.write(document);
 		}
-		Serializer serializer = new Serializer(os, "UTF-8");
-		if (indent > 0) {
-			serializer.setIndent(indent);
-		}
-		serializer.write(document);
 	}
 
 	/**

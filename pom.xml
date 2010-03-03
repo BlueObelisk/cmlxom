@@ -139,7 +139,7 @@
 	<licenses>
 		<license>
 			<name>Artistic License</name>
-			<url>http://www.opensource.org/licenses/artistic-license.php</url>
+			<url>http://www.opensource.org/licenses/artistic-license-2.0.php</url>
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
