@@ -1,0 +1,42 @@
+<!-- 1H NMR of N-(3,5-dichlorobenzyl)-8-hydroxy-1,6-naphthyridine-7-carboxamide -->
+<spectrum xmlns="http://www.xml-cml.org/schema" type="hnmr">
+	<parameterList>
+		<parameter dictRef="cmlx:solvent">
+			<molecule>
+				<name>CDCl3</name>
+			</molecule>
+		</parameter>
+		<parameter dictRef="cmlx:frequency">
+			<scalar dataType="xsd:double" units="unit:mhz">
+				400.0
+			</scalar>
+		</parameter>
+	</parameterList>
+	<peakList>
+		<peak xValue="13.1" integral="1.0" yUnits="unit:hydrogen"
+			peakMultiplicity="cmlx:singlet" />
+		<peak xValue="9.2" integral="1.0" yUnits="unit:hydrogen"
+			peakMultiplicity="cmlx:doublet">
+			<peakStructure type="coupling" value="4.2" units="unit:hz" />
+		</peak>
+		<peak xValue="8.68" integral="1.0" yUnits="unit:hydrogen"
+			peakMultiplicity="cmlx:singlet" />
+		<peak xValue="8.49" integral="1.0" yUnits="unit:hydrogen">
+			<metadata content="brs" />
+		</peak>
+		<peak xValue="8.29" integral="1.0" yUnits="unit:hydrogen"
+			peakMultiplicity="cmlx:doublet">
+			<peakStructure type="coupling" value="8.3" units="unit:hz" />
+		</peak>
+		<peak xValue="7.67" integral="1.0" yUnits="unit:hydrogen"
+			peakMultiplicity="cmlx:doubletdoublet">
+			<peakStructure type="coupling" value="4.2" units="unit:hz" />
+		</peak>
+		<peak xMin="7.35" integral="3.0" yUnits="unit:hydrogen"
+			peakMultiplicity="cmlx:multiplet" />
+		<peak xValue="4.67" integral="2.0" yUnits="unit:hydrogen"
+			peakMultiplicity="cmlx:doublet">
+			<peakStructure type="coupling" value="5.4" units="unit:hz" />
+		</peak>
+	</peakList>
+</spectrum>
