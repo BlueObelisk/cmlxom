@@ -394,7 +394,7 @@ public class CMLFormulaTest {
 		}
 		formula = new CMLFormula(molecule);
 		// formula.debug("BAD");
-		Assert.assertEquals("methane - all H explicit but count = 2", "C 1 H 2",
+		Assert.assertEquals("methane - all H explicit but count = 2", "C 1 H 4",
 				formula.getConcise());
 
 		// methanol
