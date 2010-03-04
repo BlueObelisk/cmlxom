@@ -2,8 +2,10 @@ package org.xmlcml.cml.element;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import nu.xom.Attribute;
 import nu.xom.Document;
@@ -1489,5 +1491,28 @@ public class CMLMolecule
 		CMLName name = new CMLName();
 		name.setXMLContent(nameString);
 		this.addName(name);
+	}
+
+	/**
+	 *	Calculates the hydrogen count of a molecule. Includes hydrogenCount
+	 *  attribute and does not double count bridging hydrogens. 
+	 */
+	public int calculateHydrogenCount() {
+		/* beware bridging hydrogens - simply returning the sum of the atom
+		 * hydrogen counts may not work!
+		 */
+		int totalImplicitHydrogenCount = 0;
+		Set <CMLAtom> uniqueHydrogens = new HashSet<CMLAtom>();
+		
+		for (CMLAtom atom : getAtoms()) {
+			int hydrogenCount = atom.getHydrogenCount();
+			List <CMLAtom> explicitHydrogens = atom.getLigandHydrogenAtoms();
+			int implicitHydrogenCount = hydrogenCount - explicitHydrogens.size();
+			if (implicitHydrogenCount > 0) {
+				totalImplicitHydrogenCount += implicitHydrogenCount;
+			}
+			uniqueHydrogens.addAll(explicitHydrogens);
+		}
+		return totalImplicitHydrogenCount + uniqueHydrogens.size();
 	}
 }

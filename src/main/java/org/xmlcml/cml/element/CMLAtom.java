@@ -950,25 +950,19 @@ public class CMLAtom extends AbstractAtom {
     }
 
     /**
-     * gets count of hydrogens. combines value of hydrogenCount attribute with
-     * the actual ligands of type hydrogen.
-     * DANGEROUS since result may not be normalized
+     * gets count of hydrogens. Explicit hydrogen count overrides value of HydrogenCount
+     * attribute if it is greater.
      * @return hydrogenCount();
      */
     public int getHydrogenCount() {
-        int hc = 0;
-        if (super.getHydrogenCountAttribute() == null) {
-            List<CMLAtom> ligands = this.getLigandAtoms();
-            for (CMLAtom ligand : ligands) {
-                if (AS.H.equals(ligand.getElementType())) {
-                    hc++;
-                }
-            }
-        } else {
-            hc = super.getHydrogenCount();
-        }
-        return hc;
-    }
+    	int hcAttributeValue = 0;
+    	if (super.getHydrogenCountAttribute() != null) {
+    		hcAttributeValue = super.getHydrogenCount();
+    	}
+    	int hcExplicit = getLigandHydrogenAtoms().size();
+    	
+    	return Math.max(hcAttributeValue, hcExplicit);
+	}
 
     /** gets formal charge.
      *

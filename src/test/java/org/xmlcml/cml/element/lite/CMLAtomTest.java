@@ -570,6 +570,44 @@ public class CMLAtomTest {
 		nh = atom1.getHydrogenCount();
 		Assert.assertEquals("h2o", 2, nh);
 	}
+	
+	@Test
+	public void testGetHydrogenCountMixedHydrogens() {
+		CMLMolecule molecule = new CMLMolecule();
+		CMLAtom atom1 = new CMLAtom("a1", ChemicalElement
+				.getChemicalElement(AS.C.value));
+		molecule.addAtom(atom1);
+		atom1.setHydrogenCount(4);
+		Assert.assertEquals(4, atom1.getHydrogenCount());
+		
+		CMLAtom atom2 = new CMLAtom("a1_h1", ChemicalElement
+				.getChemicalElement(AS.H.value));
+		molecule.addAtom(atom2);
+		molecule.addBond(new CMLBond(atom1, atom2));
+		Assert.assertEquals(4, atom1.getHydrogenCount());
+		
+		CMLAtom atom3 = new CMLAtom("a1_h2", ChemicalElement
+				.getChemicalElement(AS.H.value));
+		molecule.addAtom(atom3);
+		molecule.addBond(new CMLBond(atom1, atom3));
+		Assert.assertEquals(4, atom1.getHydrogenCount());
+		
+		CMLAtom atom4 = new CMLAtom("a1_h3", ChemicalElement
+				.getChemicalElement(AS.H.value));
+		molecule.addAtom(atom4);
+		molecule.addBond(new CMLBond(atom1, atom4));
+		Assert.assertEquals(4, atom1.getHydrogenCount());
+		
+		CMLAtom atom5 = new CMLAtom("a1_h4", ChemicalElement
+				.getChemicalElement(AS.H.value));
+		molecule.addAtom(atom5);
+		molecule.addBond(new CMLBond(atom1, atom5));
+		Assert.assertEquals(4, atom1.getHydrogenCount());
+		
+		atom1.setHydrogenCount(2);
+		//hydrogenCount is overridden by additional explicit hydrogens
+		Assert.assertEquals(4, atom1.getHydrogenCount());
+	}
 
 	/**
 	 * Test method for
