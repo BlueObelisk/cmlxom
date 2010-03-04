@@ -260,32 +260,19 @@ public class CMLFormula extends AbstractFormula {
 //			}
 			if (!AS.H.equals(elementType) ) {
 //				HydrogenStrategy.EXPLICIT_HYDROGENS == strategy) {
-				this.add(elementType, 1.0);
-//			}
-			
+					this.add(elementType, 1.0);
+	//			}
+				
 				if (atom.getFormalChargeAttribute() != null) {
 					formalCharge += atom.getFormalCharge();
 				}
-				if (atom.getHydrogenCountAttribute() != null) {
-//					if (strategy == null) {
-//						strategy = HydrogenStrategy.HYDROGEN_COUNT;
-//					}
-//				if (strategy.equals(HydrogenStrategy.HYDROGEN_COUNT)) {
-					int hydrogenCount = atom.getHydrogenCount();
-					if (hydrogenCount != 0) {
-						this.add(AS.H.value, hydrogenCount);
-					}
-				} else {
-					// count H's
-					List<CMLAtom> batoms = atom.getLigandHydrogenAtoms();
-					for (CMLAtom bonded : batoms) {
-						String btype = bonded.getElementType();
-						if (AS.H.equals(btype)) {
-							this.add(AS.H.value, 1.0);
-						}
-					}
+	
+				int hydrogenCount = atom.getHydrogenCount();
+				if (hydrogenCount > 0) {
+					this.add(AS.H.value, hydrogenCount);
 				}
-			} else {
+			}
+			else {
 				// only count a H if it is not bonded to non-hydrogens
 				List<CMLAtom> oatoms = atom.getLigandAtoms();
 				boolean countit = true;
