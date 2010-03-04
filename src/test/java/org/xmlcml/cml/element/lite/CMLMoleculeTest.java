@@ -34,6 +34,8 @@ import org.xmlcml.cml.element.CMLName;
 import org.xmlcml.cml.element.main.MoleculeAtomBondFixture;
 import org.xmlcml.euclid.Real2;
 import org.xmlcml.euclid.Real2Vector;
+import org.xmlcml.molutil.ChemicalElement;
+import org.xmlcml.molutil.ChemicalElement.AS;
 
 /**
  * test CMLMolecule.
@@ -1341,4 +1343,89 @@ public class CMLMoleculeTest {
 		Assert.assertEquals("test2", value);
 	}
 	
+	
+	@Test
+	public void testCalculateHydrogenCountSimple() {
+		CMLMolecule molecule = new CMLMolecule();
+		CMLAtom carbon1 = new CMLAtom("a1", ChemicalElement
+				.getChemicalElement(AS.C.value));
+		molecule.addAtom(carbon1);
+		CMLAtom carbon2 = new CMLAtom("a2", ChemicalElement
+				.getChemicalElement(AS.C.value));
+		molecule.addAtom(carbon2);
+		CMLAtom oxygen = new CMLAtom("a3", ChemicalElement
+				.getChemicalElement(AS.O.value));
+		molecule.addAtom(oxygen);
+		molecule.addBond(new CMLBond(carbon1, carbon2));
+		molecule.addBond(new CMLBond(carbon2, oxygen));
+		
+		oxygen.setHydrogenCount(1);
+		carbon2.setHydrogenCount(2);
+		carbon1.setHydrogenCount(3);
+		Assert.assertEquals(6, molecule.calculateHydrogenCount());
+		
+		CMLAtom hydrogen1 = new CMLAtom("h1", ChemicalElement
+				.getChemicalElement(AS.H.value));
+		molecule.addAtom(hydrogen1);
+		molecule.addBond(new CMLBond(carbon1, hydrogen1));
+		Assert.assertEquals(6, molecule.calculateHydrogenCount());
+		
+		CMLAtom hydrogen2 = new CMLAtom("h2", ChemicalElement
+				.getChemicalElement(AS.H.value));
+		molecule.addAtom(hydrogen2);
+		molecule.addBond(new CMLBond(carbon1, hydrogen2));
+		Assert.assertEquals(6, molecule.calculateHydrogenCount());
+		
+		CMLAtom hydrogen3 = new CMLAtom("h3", ChemicalElement
+				.getChemicalElement(AS.H.value));
+		molecule.addAtom(hydrogen3);
+		molecule.addBond(new CMLBond(carbon1, hydrogen3));
+		Assert.assertEquals(6, molecule.calculateHydrogenCount());
+		
+		carbon1.setHydrogenCount(1);
+		//additional explicit hydrogens override value of hydrogenCount
+		Assert.assertEquals(6, molecule.calculateHydrogenCount());
+	}
+	
+	
+	@Test
+	public void testCalculateHydrogenCountWithBridgingHydrogens() {
+		//diborane
+		CMLMolecule molecule = new CMLMolecule();
+		CMLAtom boron1 = new CMLAtom("a1", ChemicalElement
+				.getChemicalElement(AS.B.value));
+		molecule.addAtom(boron1);
+		CMLAtom boron2 = new CMLAtom("a2", ChemicalElement
+				.getChemicalElement(AS.B.value));
+		molecule.addAtom(boron2);
+		CMLAtom hydrogen1 = new CMLAtom("h1", ChemicalElement
+				.getChemicalElement(AS.H.value));
+		molecule.addAtom(hydrogen1);
+		molecule.addBond(new CMLBond(boron1, hydrogen1));
+		CMLAtom hydrogen2 = new CMLAtom("h2", ChemicalElement
+				.getChemicalElement(AS.H.value));
+		molecule.addAtom(hydrogen2);
+		molecule.addBond(new CMLBond(boron1, hydrogen2));
+		CMLAtom hydrogen3 = new CMLAtom("h3", ChemicalElement
+				.getChemicalElement(AS.H.value));
+		molecule.addAtom(hydrogen3);
+		molecule.addBond(new CMLBond(boron2, hydrogen3));
+		CMLAtom hydrogen4 = new CMLAtom("h4", ChemicalElement
+				.getChemicalElement(AS.H.value));
+		molecule.addAtom(hydrogen4);
+		molecule.addBond(new CMLBond(boron2, hydrogen4));
+		
+		CMLAtom bridging1 = new CMLAtom("h5", ChemicalElement
+				.getChemicalElement(AS.H.value));
+		molecule.addAtom(bridging1);
+		molecule.addBond(new CMLBond(boron1, bridging1));
+		molecule.addBond(new CMLBond(boron2, bridging1));
+		CMLAtom bridging2 = new CMLAtom("h6", ChemicalElement
+				.getChemicalElement(AS.H.value));
+		molecule.addAtom(bridging2);
+		molecule.addBond(new CMLBond(boron1, bridging2));
+		molecule.addBond(new CMLBond(boron2, bridging2));
+		
+		Assert.assertEquals(6, molecule.calculateHydrogenCount());
+	}
 }
