@@ -23,7 +23,7 @@
 	
 	<ciManagement>
 	    <system>hudson</system>
-    	<url>http://hudson.ch.cam.ac.uk/job/jumbo5</url>
+    	<url>https://hudson.ch.cam.ac.uk/job/jumbo5</url>
 	</ciManagement>
 	
 	<developers>
