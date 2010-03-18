@@ -330,9 +330,9 @@ public class CMLAtomSetTest {
 		// delete non-existent
 		try {
 			atomSet.removeAtom(fixture.xomAtom[1]);
-			Assert.fail("Should throw CMLRuntime");
+//			Assert.fail("Should throw CMLRuntime");
 		} catch (RuntimeException e) {
-			Assert.assertEquals("atom contains",
+			Assert.assertEquals("no longer throws exception: atom contains",
 					"atom not in set:a2:a1/a3/a4/a5", e.getMessage());
 		}
 		atomSet.removeAtom(fixture.xomAtom[3]);

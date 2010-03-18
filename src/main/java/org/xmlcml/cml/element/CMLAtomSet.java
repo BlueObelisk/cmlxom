@@ -265,8 +265,13 @@ public class CMLAtomSet extends AbstractAtomSet {
         }
         if (molecule == null) {
         	molecule = atom.getMolecule();
-        } else if (checkDuplicates && molecule != atom.getMolecule()) {
-        	throw new RuntimeException("cannot add atoms from different moelcules");
+        } else if (checkDuplicates) {
+        	if (!molecule.equals(atom.getMolecule())) {
+        		if (atom.getMolecule() != null) {
+		        	System.out.println(molecule.hashCode()+ "/" + atom.getMolecule().hashCode());
+		        	throw new RuntimeException("cannot add atoms from different moelcules");
+        		}
+        	}
         }
     }
 
@@ -436,23 +441,23 @@ public class CMLAtomSet extends AbstractAtomSet {
      */
     public void removeAtom(CMLAtom atom) throws RuntimeException {
         if (atom != null) {
-            if (!set.contains(atom)) {
-                throw new RuntimeException("atom not in set:" + atom.getId() + CMLConstants.S_COLON
-                        + Util.concatenate(this.getXMLContent(), CMLConstants.S_SLASH));
-            }
-            // remove from set
-            set.remove(atom);
-            // and from id table
-            String id = atom.getId();
-            idTable.remove(id);
-            // and from XOM XMLContent
-            String[] content = this.getXMLContent();
-            content = Util.removeElementFromStringArray(content, id);
-            this.setXMLContent(content);
-            // and adjust size
-            int c = this.getSize();
-            this.setSize(c - 1);
-            // atom.detach(); this kills the atoms relationship to its molecule!
+            if (set.contains(atom)) {
+//                throw new RuntimeException("atom not in set:" + atom.getId() + CMLConstants.S_COLON
+//                        + Util.concatenate(this.getXMLContent(), CMLConstants.S_SLASH));
+	            // remove from set
+	            set.remove(atom);
+	            // and from id table
+	            String id = atom.getId();
+	            idTable.remove(id);
+	            // and from XOM XMLContent
+	            String[] content = this.getXMLContent();
+	            content = Util.removeElementFromStringArray(content, id);
+	            this.setXMLContent(content);
+	            // and adjust size
+	            int c = this.getSize();
+	            this.setSize(c - 1);
+	            // atom.detach(); this kills the atoms relationship to its molecule!
+	        }
         }
     }
 
