@@ -245,7 +245,7 @@ public abstract class CMLUtil implements CMLConstants {
 				document = new Document(copyElem);
 			}
 			Serializer serializer = new Serializer(os, "UTF-8");
-			if (indent > 0) {
+			if (indent >= 0) {
 				serializer.setIndent(indent);
 			}
 			serializer.write(document);

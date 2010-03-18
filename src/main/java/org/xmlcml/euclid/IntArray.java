@@ -1251,4 +1251,23 @@ public class IntArray extends ArrayBase {
         iarr.setElementAt(a, iarr.elementAt(b));
         iarr.setElementAt(b, t);
     }
+    
+	/**
+	 * parse string as integerArray.
+	 * 
+	 * @param s
+	 * @param delimiterRegex
+	 * @return true if can be parsed.
+	 */
+	public static boolean isIntArray(String s, String delimiterRegex) {
+		boolean couldBeIntArray = true;
+		String[] ss = s.split(delimiterRegex);
+		try {
+			new IntArray(ss);
+		} catch (NumberFormatException e) {
+			couldBeIntArray = false;
+		}
+		return couldBeIntArray;
+	}
+
 }

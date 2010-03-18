@@ -212,13 +212,4 @@ public class CMLSpectrum extends AbstractSpectrum {
         }
     }
 
-	public double calculateIntegralSum() {
-		double sum = 0;
-		for (CMLPeak peak : getDescendantPeaks(this)) {
-			if (peak.getIntegral() != null) {
-				sum += Double.parseDouble(peak.getIntegral());
-			}
-		}
-		return sum;
-	}
 }
