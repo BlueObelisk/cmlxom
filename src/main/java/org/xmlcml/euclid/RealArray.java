@@ -1,6 +1,7 @@
 package org.xmlcml.euclid;
 import java.text.DecimalFormat;
 
+
 import org.apache.log4j.Logger;
 
 /**
@@ -1719,5 +1720,23 @@ public class RealArray extends ArrayBase {
                     + ") found " + array.size());
         }
     }
+
+	/**
+	 * parse string as realArray.
+	 * 
+	 * @param s
+	 * @param delimiterRegex
+	 * @return true if can be parsed.
+	 */
+	public static boolean isFloatArray(String s, String delimiterRegex) {
+		boolean couldBeFloatArray = true;
+		String[] ss = s.split(delimiterRegex);
+		try {
+			new RealArray(ss);
+		} catch (Exception e) {
+			couldBeFloatArray = false;
+		}
+		return couldBeFloatArray;
+	}
 
 }

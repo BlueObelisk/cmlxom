@@ -152,7 +152,7 @@ public class CMLMolecule
 
 	/**
 	 * copy constructor.
-	 *
+	 * PMR I don't trust this...
 	 * @param old
 	 *            molcule to copy
 	 */

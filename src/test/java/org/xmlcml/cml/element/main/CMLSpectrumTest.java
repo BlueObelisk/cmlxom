@@ -1,7 +1,8 @@
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.cml.element.main.AbstractTestBase.*;
-import static org.xmlcml.euclid.EuclidConstants.*;
+import static org.xmlcml.cml.element.main.AbstractTestBase.COMPLEX_RESOURCE;
+import static org.xmlcml.cml.element.main.AbstractTestBase.SIMPLE_RESOURCE;
+import static org.xmlcml.euclid.EuclidConstants.EPS;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -415,10 +416,4 @@ public class CMLSpectrumTest extends PeakSpectrumBase {
 		// parameterListNodes.get(0);
 	}
 
-	
-	@Test
-	public void calculateIntegralSum() throws Exception {
-		CMLSpectrum spectrum = readSpectrum(6);
-		Assert.assertEquals(11d, spectrum.calculateIntegralSum());
-	}
 }
