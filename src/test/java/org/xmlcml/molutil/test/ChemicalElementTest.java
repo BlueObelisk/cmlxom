@@ -1,7 +1,6 @@
 package org.xmlcml.molutil.test;
 
-import static org.xmlcml.euclid.EC.EPS;
-import static org.xmlcml.euclid.EC.S_EMPTY;
+import static org.xmlcml.euclid.EuclidConstants.*;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -190,6 +189,44 @@ public class ChemicalElementTest {
 		Assert.assertEquals("iso", 2, iso.length);
 		DoubleTestBase.assertEquals("iso", new double[] { 98.93, 1.07 }, iso,
 				EPS);
+	}
+	
+	@Test
+	public void getIsotopePreciseMassesNotSet() {
+		ChemicalElement el = new ChemicalElement("Yz", 123, 299.99);
+		Assert.assertNotNull("iso", el);
+		double[] iso = el.getIsotopePreciseMasses();
+		Assert.assertNull("iso", iso);
+	}
+		
+	@Test
+	public void getIsotopePreciseMassesCarbon() {
+		ChemicalElement el = ChemicalElement.getChemicalElement(AS.C.value);
+		double [] iso = el.getIsotopePreciseMasses();
+		Assert.assertNotNull("iso", iso);
+		Assert.assertEquals("iso", 2, iso.length);
+		DoubleTestBase.assertEquals("iso", new double[] { 12.000000, 13.003354 }, iso, EPS);
+	}
+	
+	@Test
+	public void getIsotopePreciseMassesHydrogen() {
+		ChemicalElement el = ChemicalElement.getChemicalElement(AS.H.value);
+		double [] iso = el.getIsotopePreciseMasses();
+		Assert.assertNotNull("iso", iso);
+		Assert.assertEquals("iso", 2, iso.length);
+		DoubleTestBase.assertEquals("iso", new double[] { 1.007825032, 2.014101778 }, iso, EPS);
+	}
+	
+	@Test
+	public void getIsotopePreciseMassesNotSpecified() {
+		//will need to be changed to a different element if the precise masses for
+		//Uranium are ever added to elementdata.xml
+		ChemicalElement el = ChemicalElement.getChemicalElement("U");
+		double [] iso = el.getIsotopePreciseMasses();
+		Assert.assertEquals(3, iso.length);
+		for (double d : iso) {
+			Assert.assertTrue(Double.isNaN(d));
+		}
 	}
 
 	/**
