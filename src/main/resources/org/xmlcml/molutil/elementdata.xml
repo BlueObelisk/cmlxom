@@ -2,6 +2,7 @@
 <!-- OpenBabel's covalent radii appear to be atomic radii, and the bond order radii are actually the covalent radii -->
 <!-- Webelements data added 28th July -->
 <!--  PMR 2007-01-12 replaced Xx by Dummy and R -->
+<!-- precise masses of isotopes added 2010-03-30 by David Jessop, sourced from webelements. I've done H -> Ca plus Br and I -->
 <elements>
   <element atomicnumber="0" id="Dummy">
     <radii source="openbabel">
@@ -49,8 +50,8 @@
     <electronegativity source="openbabel">2.10</electronegativity>
     <rgb red="1.00" green="1.00" blue="1.00"/>
     <isotopes source="IUPAC">
-      <isotope mass="1" abundanceerror="70" abundance="99.9885"/>
-      <isotope mass="2" abundanceerror="70" abundance="0.0115"/>
+      <isotope mass="1" abundanceerror="70" abundance="99.9885" preciseMass="1.007825032"/>
+      <isotope mass="2" abundanceerror="70" abundance="0.0115" preciseMass="2.014101778"/>
     </isotopes>
     <mass source="webelements" unit="amu">1.00794</mass>
     <electronicconfiguration source="webelements" type="groundstate">1s1</electronicconfiguration>
@@ -75,8 +76,8 @@
     <electronegativity source="openbabel">0.00</electronegativity>
     <rgb red="0.85" green="1.00" blue="1.00"/>
     <isotopes source="IUPAC">
-      <isotope mass="3" abundanceerror="3" abundance="0.000137"/>
-      <isotope mass="4" abundanceerror="3" abundance="99.999863"/>
+      <isotope mass="3" abundanceerror="3" abundance="0.000137" preciseMass="3.016029"/>
+      <isotope mass="4" abundanceerror="3" abundance="99.999863" preciseMass="4.002603"/>
     </isotopes>
     <mass source="webelements" unit="amu">4.002602</mass>
     <electronicconfiguration source="webelements" type="groundstate">1s2</electronicconfiguration>
@@ -97,8 +98,8 @@
     <electronegativity source="openbabel">0.98</electronegativity>
     <rgb red="0.80" green="0.50" blue="1.00"/>
     <isotopes source="IUPAC">
-      <isotope mass="6" abundanceerror="24" abundance="7.589"/>
-      <isotope mass="7" abundanceerror="24" abundance="92.411"/>
+      <isotope mass="6" abundanceerror="24" abundance="7.589" preciseMass="6.015122"/>
+      <isotope mass="7" abundanceerror="24" abundance="92.411" preciseMass="7.016004"/>
     </isotopes>
     <mass source="webelements" unit="amu">6.941</mass>
     <electronicconfiguration source="webelements" type="groundstate">[He].2s1</electronicconfiguration>
@@ -121,7 +122,7 @@
     <electronegativity source="openbabel">1.57</electronegativity>
     <rgb red="0.76" green="1.00" blue="0.00"/>
     <isotopes source="IUPAC">
-      <isotope mass="9" abundance="100"/>
+      <isotope mass="9" abundance="100" preciseMass="9.012182"/>
     </isotopes>
     <mass source="webelements" unit="amu">9.012182</mass>
     <electronicconfiguration source="webelements" type="groundstate">[He].2s2</electronicconfiguration>
@@ -143,8 +144,8 @@
     <electronegativity source="openbabel">2.04</electronegativity>
     <rgb red="1.00" green="0.71" blue="0.71"/>
     <isotopes source="IUPAC">
-      <isotope mass="10" abundanceerror="7" abundance="19.9"/>
-      <isotope mass="11" abundanceerror="7" abundance="80.1"/>
+      <isotope mass="10" abundanceerror="7" abundance="19.9" preciseMass="10.012937"/>
+      <isotope mass="11" abundanceerror="7" abundance="80.1" preciseMass="11.009305"/>
     </isotopes>
     <mass source="webelements" unit="amu">10.811</mass>
     <electronicconfiguration source="webelements" type="groundstate">[He].2s2.2p1</electronicconfiguration>
@@ -166,8 +167,8 @@
     <electronegativity source="openbabel">2.55</electronegativity>
     <rgb red="0.50" green="0.50" blue="0.50"/>
     <isotopes source="IUPAC">
-      <isotope mass="12" abundanceerror="8" abundance="98.93"/>
-      <isotope mass="13" abundanceerror="8" abundance="1.07"/>
+      <isotope mass="12" abundanceerror="8" abundance="98.93" preciseMass="12.000000"/>
+      <isotope mass="13" abundanceerror="8" abundance="1.07" preciseMass="13.003354"/>
     </isotopes>
     <mass source="webelements" unit="amu">12.0107</mass>
     <electronicconfiguration source="webelements" type="groundstate">[He].2s2.2p2</electronicconfiguration>
@@ -190,8 +191,8 @@
     <electronegativity source="openbabel">3.04</electronegativity>
     <rgb red="0.05" green="0.05" blue="1.00"/>
     <isotopes source="IUPAC">
-      <isotope mass="14" abundanceerror="7" abundance="99.632"/>
-      <isotope mass="15" abundanceerror="7" abundance="0.368"/>
+      <isotope mass="14" abundanceerror="7" abundance="99.632" preciseMass="14.003074"/>
+      <isotope mass="15" abundanceerror="7" abundance="0.368" preciseMass="15.000108"/>
     </isotopes>
     <mass source="webelements" unit="amu">14.0067</mass>
     <electronicconfiguration source="webelements" type="groundstate">[He].2s2.2p3</electronicconfiguration>
@@ -214,9 +215,9 @@
     <electronegativity source="openbabel">3.44</electronegativity>
     <rgb red="1.00" green="0.05" blue="0.05"/>
     <isotopes source="IUPAC">
-      <isotope mass="16" abundanceerror="16" abundance="99.757"/>
-      <isotope mass="17" abundanceerror="1" abundance="0.038"/>
-      <isotope mass="18" abundanceerror="14" abundance="0.205"/>
+      <isotope mass="16" abundanceerror="16" abundance="99.757" preciseMass="15.99491463"/>
+      <isotope mass="17" abundanceerror="1" abundance="0.038" preciseMass="16.9991312"/>
+      <isotope mass="18" abundanceerror="14" abundance="0.205" preciseMass="17.9991603"/>
     </isotopes>
     <mass source="webelements" unit="amu">15.9994</mass>
     <electronicconfiguration source="webelements" type="groundstate">[He].2s2.2p4</electronicconfiguration>
@@ -239,7 +240,7 @@
     <electronegativity source="openbabel">3.98</electronegativity>
     <rgb red="0.70" green="1.00" blue="1.00"/>
     <isotopes source="IUPAC">
-      <isotope mass="19" abundance="100"/>
+      <isotope mass="19" abundance="100" preciseMass="18.99840322"/>
     </isotopes>
     <mass source="webelements" unit="amu">18.9984032</mass>
     <electronicconfiguration source="webelements" type="groundstate">[He].2s2.2p5</electronicconfiguration>
@@ -262,9 +263,9 @@
     <electronegativity source="openbabel">0.00</electronegativity>
     <rgb red="0.70" green="0.89" blue="0.96"/>
     <isotopes source="IUPAC">
-      <isotope mass="20" abundanceerror="3" abundance="90.48"/>
-      <isotope mass="21" abundanceerror="1" abundance="0.27"/>
-      <isotope mass="22" abundanceerror="3" abundance="9.25"/>
+      <isotope mass="20" abundanceerror="3" abundance="90.48" preciseMass="19.9924356"/>
+      <isotope mass="21" abundanceerror="1" abundance="0.27" preciseMass="20.9938428"/>
+      <isotope mass="22" abundanceerror="3" abundance="9.25" preciseMass="21.9913831"/>
     </isotopes>
     <mass source="webelements" unit="amu">20.1797</mass>
     <electronicconfiguration source="webelements" type="groundstate">[He].2s2.2p6</electronicconfiguration>
@@ -285,7 +286,7 @@
     <electronegativity source="openbabel">0.93</electronegativity>
     <rgb red="0.67" green="0.36" blue="0.95"/>
     <isotopes source="IUPAC">
-      <isotope mass="23" abundance="100"/>
+      <isotope mass="23" abundance="100" preciseMass="22.9897677"/>
     </isotopes>
     <mass source="webelements" unit="amu">22.989770</mass>
     <electronicconfiguration source="webelements" type="groundstate">[Ne].3s1</electronicconfiguration>
@@ -308,9 +309,9 @@
     <electronegativity source="openbabel">1.31</electronegativity>
     <rgb red="0.54" green="1.00" blue="0.00"/>
     <isotopes source="IUPAC">
-      <isotope mass="24" abundanceerror="4" abundance="78.99"/>
-      <isotope mass="25" abundanceerror="1" abundance="10.00"/>
-      <isotope mass="26" abundanceerror="3" abundance="11.01"/>
+      <isotope mass="24" abundanceerror="4" abundance="78.99" preciseMass="23.9850423"/>
+      <isotope mass="25" abundanceerror="1" abundance="10.00" preciseMass="24.9858374"/>
+      <isotope mass="26" abundanceerror="3" abundance="11.01" preciseMass="25.9825937"/>
     </isotopes>
     <mass source="webelements" unit="amu">24.3050</mass>
     <electronicconfiguration source="webelements" type="groundstate">[Ne].3s2</electronicconfiguration>
@@ -333,7 +334,7 @@
     <electronegativity source="openbabel">1.61</electronegativity>
     <rgb red="0.75" green="0.65" blue="0.65"/>
     <isotopes source="IUPAC">
-      <isotope mass="27" abundance="100"/>
+      <isotope mass="27" abundance="100" preciseMass="26.9815386"/>
     </isotopes>
     <mass source="webelements" unit="amu">26.981538</mass>
     <electronicconfiguration source="webelements" type="groundstate">[Ne].3s2.3p1</electronicconfiguration>
@@ -355,9 +356,9 @@
     <electronegativity source="openbabel">1.90</electronegativity>
     <rgb red="0.50" green="0.60" blue="0.60"/>
     <isotopes source="IUPAC">
-      <isotope mass="28" abundanceerror="7" abundance="92.2297"/>
-      <isotope mass="29" abundanceerror="5" abundance="4.6832"/>
-      <isotope mass="30" abundanceerror="5" abundance="3.0872"/>
+      <isotope mass="28" abundanceerror="7" abundance="92.2297" preciseMass="27.9769271"/>
+      <isotope mass="29" abundanceerror="5" abundance="4.6832" preciseMass="28.9764949"/>
+      <isotope mass="30" abundanceerror="5" abundance="3.0872" preciseMass="29.9737707"/>
     </isotopes>
     <mass source="webelements" unit="amu">28.0855</mass>
     <electronicconfiguration source="webelements" type="groundstate">[Ne].3s2.3p2</electronicconfiguration>
@@ -380,7 +381,7 @@
     <electronegativity source="openbabel">2.19</electronegativity>
     <rgb red="1.00" green="0.50" blue="0.00"/>
     <isotopes source="IUPAC">
-      <isotope mass="31" abundance="100"/>
+      <isotope mass="31" abundance="100" preciseMass="30.9737620"/>
     </isotopes>
     <mass source="webelements" unit="amu">30.973761</mass>
     <electronicconfiguration source="webelements" type="groundstate">[Ne].3s2.3p3</electronicconfiguration>
@@ -403,10 +404,10 @@
     <electronegativity source="openbabel">2.58</electronegativity>
     <rgb red="1.00" green="1.00" blue="0.19"/>
     <isotopes source="IUPAC">
-      <isotope mass="32" abundanceerror="31" abundance="94.93"/>
-      <isotope mass="33" abundanceerror="2" abundance="0.76"/>
-      <isotope mass="34" abundanceerror="28" abundance="4.29"/>
-      <isotope mass="36" abundanceerror="1" abundance="0.02"/>
+      <isotope mass="32" abundanceerror="31" abundance="94.93" preciseMass="31.97207070"/>
+      <isotope mass="33" abundanceerror="2" abundance="0.76" preciseMass="32.97145843"/>
+      <isotope mass="34" abundanceerror="28" abundance="4.29" preciseMass="33.96786665"/>
+      <isotope mass="36" abundanceerror="1" abundance="0.02" preciseMass="35.96708062"/>
     </isotopes>
     <mass source="webelements" unit="amu">32.065</mass>
     <electronicconfiguration source="webelements" type="groundstate">[Ne].3s2.3p4</electronicconfiguration>
@@ -429,8 +430,8 @@
     <electronegativity source="openbabel">3.16</electronegativity>
     <rgb red="0.12" green="0.94" blue="0.12"/>
     <isotopes source="IUPAC">
-      <isotope mass="35" abundanceerror="4" abundance="75.78"/>
-      <isotope mass="37" abundanceerror="4" abundance="24.22"/>
+      <isotope mass="35" abundanceerror="4" abundance="75.78" preciseMass="34.968852721"/>
+      <isotope mass="37" abundanceerror="4" abundance="24.22" preciseMass="36.96590262"/>
     </isotopes>
     <mass source="webelements" unit="amu">35.453</mass>
     <electronicconfiguration source="webelements" type="groundstate">[Ne].3s2.3p5</electronicconfiguration>
@@ -453,9 +454,9 @@
     <electronegativity source="openbabel">0.00</electronegativity>
     <rgb red="0.50" green="0.82" blue="0.89"/>
     <isotopes source="IUPAC">
-      <isotope mass="36" abundanceerror="30" abundance="0.3365"/>
-      <isotope mass="38" abundanceerror="5" abundance="0.0632"/>
-      <isotope mass="40" abundanceerror="30" abundance="99.6003"/>
+      <isotope mass="36" abundanceerror="30" abundance="0.3365" preciseMass="35.96754552"/>
+      <isotope mass="38" abundanceerror="5" abundance="0.0632" preciseMass="37.9627325"/>
+      <isotope mass="40" abundanceerror="30" abundance="99.6003" preciseMass="39.9623837"/>
     </isotopes>
     <mass source="webelements" unit="amu">39.948</mass>
     <electronicconfiguration source="webelements" type="groundstate">[Ne].3s2.3p6</electronicconfiguration>
@@ -476,9 +477,9 @@
     <electronegativity source="openbabel">0.82</electronegativity>
     <rgb red="0.56" green="0.25" blue="0.83"/>
     <isotopes source="IUPAC">
-      <isotope mass="39" abundanceerror="44" abundance="93.2581"/>
-      <isotope mass="40" abundanceerror="1" abundance="0.0117"/>
-      <isotope mass="41" abundanceerror="44" abundance="6.7302"/>
+      <isotope mass="39" abundanceerror="44" abundance="93.2581" preciseMass="38.9637074"/>
+      <isotope mass="40" abundanceerror="1" abundance="0.0117" preciseMass="39.9639992"/>
+      <isotope mass="41" abundanceerror="44" abundance="6.7302" preciseMass="40.9618254"/>
     </isotopes>
     <mass source="webelements" unit="amu">39.0983</mass>
     <electronicconfiguration source="webelements" type="groundstate">[Ar].4s1</electronicconfiguration>
@@ -501,12 +502,12 @@
     <electronegativity source="openbabel">1.00</electronegativity>
     <rgb red="0.24" green="1.00" blue="0.00"/>
     <isotopes source="IUPAC">
-      <isotope mass="40" abundanceerror="156" abundance="96.941"/>
-      <isotope mass="42" abundanceerror="23" abundance="0.647"/>
-      <isotope mass="43" abundanceerror="10" abundance="0.135"/>
-      <isotope mass="44" abundanceerror="110" abundance="2.086"/>
-      <isotope mass="46" abundanceerror="3" abundance="0.004"/>
-      <isotope mass="48" abundanceerror="21" abundance="0.187"/>
+      <isotope mass="40" abundanceerror="156" abundance="96.941" preciseMass="39.9625906"/>
+      <isotope mass="42" abundanceerror="23" abundance="0.647" preciseMass="41.9586176"/>
+      <isotope mass="43" abundanceerror="10" abundance="0.135" preciseMass="42.9587662"/>
+      <isotope mass="44" abundanceerror="110" abundance="2.086" preciseMass="43.9554806"/>
+      <isotope mass="46" abundanceerror="3" abundance="0.004" preciseMass="45.953689"/>
+      <isotope mass="48" abundanceerror="21" abundance="0.187" preciseMass="47.952533"/>
     </isotopes>
     <mass source="webelements" unit="amu">40.078</mass>
     <electronicconfiguration source="webelements" type="groundstate">[Ar].4s2</electronicconfiguration>
@@ -869,8 +870,8 @@
     <electronegativity source="openbabel">2.96</electronegativity>
     <rgb red="0.65" green="0.16" blue="0.16"/>
     <isotopes source="IUPAC">
-      <isotope mass="79" abundanceerror="7" abundance="50.69"/>
-      <isotope mass="81" abundanceerror="7" abundance="49.31"/>
+      <isotope mass="79" abundanceerror="7" abundance="50.69" preciseMass="78.9183361"/>
+      <isotope mass="81" abundanceerror="7" abundance="49.31" preciseMass="80.916289"/>
     </isotopes>
     <mass source="webelements" unit="amu">79.904</mass>
     <electronicconfiguration source="webelements" type="groundstate">[Ar].3d10.4s2.4p5</electronicconfiguration>

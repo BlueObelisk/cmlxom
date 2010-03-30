@@ -198,6 +198,8 @@ public class ChemicalElement {
 
     protected double[] isotopeAbundances;
 
+    protected double[] isotopePreciseMasses;
+    
     /** Covalent radius, in angstrom. */
     protected double covalentRadius;
 
@@ -301,6 +303,15 @@ public class ChemicalElement {
         isotopeMasses = masses;
         isotopeAbundances = abundances;
     }
+    
+    /**
+     * set precise masses for the isotopes of this element
+     * 
+     * @param preciseMasses
+     */
+    public void setIsotopePreciseMasses(double [] preciseMasses) {
+    	isotopePreciseMasses = preciseMasses;
+    }
 
     /**
      * @return array of isotope masses, or null if isotopes not known.
@@ -315,6 +326,14 @@ public class ChemicalElement {
     public double[] getIsotopeAbundances() {
         return isotopeAbundances;
     }
+    
+    /**
+     * @return array of precise isotope masses, or null if isotopes not known.
+     * Double.NaN is used where precise mass has not been added to elementdata.xml 
+     */
+    public double[] getIsotopePreciseMasses() {
+		return isotopePreciseMasses;
+	}
 
     /**
      * get the mass of the most abundant isotope.
@@ -781,6 +800,7 @@ public class ChemicalElement {
             Elements nodelist = element.getChildElements("isotopes");
             int[] ii = {};
             double[] aa = {};
+            double[] preciseMasses = {};
 
             if (nodelist.size() > 0) {
                 Element node = (Element) nodelist.get(0);
@@ -789,6 +809,7 @@ public class ChemicalElement {
                 if (isotopes.size() > 0) {
                     ii = new int[isotopes.size()];
                     aa = new double[isotopes.size()];
+                    preciseMasses = new double[isotopes.size()];
 
                     for (int j = 0; j < isotopes.size(); j++) {
                         Element isotope = (Element) isotopes.get(j);
@@ -797,13 +818,22 @@ public class ChemicalElement {
                                     .getAttributeValue("mass"));
                             aa[j] = Double.parseDouble(isotope
                                     .getAttributeValue("abundance"));
+                            String preciseMass = isotope.getAttributeValue("preciseMass");
+                            if (preciseMass == null) {
+                            	preciseMasses[j] = Double.NaN;
+                            }
+                            else {
+                            	preciseMasses[j] = Double.parseDouble(preciseMass);
+                            }
                         } catch (NullPointerException e) {
-                            ;
+                            //FIXME squish the nullpointer and leave the value set to 0? this doesn't look right...
+                        	;
                         }
                     }
                 }
             }
             el.addIsotope(ii, aa);
+            el.setIsotopePreciseMasses(preciseMasses);
 
             nodelist = element.getChildElements("rgb");
             if (nodelist.size() > 0) {
@@ -971,4 +1001,5 @@ public class ChemicalElement {
         }
         return set;
     }
+
 }    
