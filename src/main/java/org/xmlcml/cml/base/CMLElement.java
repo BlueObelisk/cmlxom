@@ -1163,6 +1163,7 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
     	} else {
     		Attribute attribute = makeCMLXAttribute(attName, attValue);
     		this.addAttribute(attribute);
+    		this.addNamespaceDeclaration(CMLConstants.CMLX_PREFIX, CMLX_NS);
     	}
     }
     

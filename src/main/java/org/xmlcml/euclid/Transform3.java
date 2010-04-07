@@ -63,10 +63,14 @@ public class Transform3 extends RealSquareMatrix {
      */
     public Transform3() {
         super(4);
-        for (int i = 0; i < 4; i++) {
+        createIdentityTransform();
+    }
+    
+	private void createIdentityTransform() {
+		for (int i = 0; i < 4; i++) {
             flmat[i][i] = 1.0;
         }
-    }
+	}
     /**
      * This gives a default unit matrix of type t.
      * 
@@ -140,25 +144,26 @@ public class Transform3 extends RealSquareMatrix {
      */
     public Transform3(Angle xrot, Angle yrot, Angle zrot) {
         super(4);
+    	double cosx = 0.0;
+    	double sinx = 0.0;
         trnsfrm = Type.ROT_ORIG;
         // X-axis
         int mat = 0;
         RealSquareMatrix t1 = new RealSquareMatrix(4);
-        if (!xrot.isEqualTo(0.0)) {
-            double cosx = xrot.cos();
-            double sinx = xrot.sin();
-            t1.flmat[0][0] = 1.0;
-            t1.flmat[1][1] = cosx;
-            t1.flmat[1][2] = sinx;
-            t1.flmat[2][1] = -sinx;
-            t1.flmat[2][2] = cosx;
-            t1.flmat[3][3] = 1.0;
-            mat = 1;
-        }
+        //must have non=zero matrix even for zero angle
+        cosx = xrot.cos();
+        sinx = xrot.sin();
+        t1.flmat[0][0] = 1.0;
+        t1.flmat[1][1] = cosx;
+        t1.flmat[1][2] = sinx;
+        t1.flmat[2][1] = -sinx;
+        t1.flmat[2][2] = cosx;
+        t1.flmat[3][3] = 1.0;
+        mat = 1;
         // Y-axis
         if (!yrot.isEqualTo(0.0)) {
-            double cosx = yrot.cos();
-            double sinx = yrot.sin();
+            cosx = yrot.cos();
+            sinx = yrot.sin();
             // unit matrix
             RealSquareMatrix t2 = new RealSquareMatrix(4);
             t2.flmat[0][0] = cosx;
@@ -176,8 +181,8 @@ public class Transform3 extends RealSquareMatrix {
         }
         // Z-axis
         if (!zrot.isEqualTo(0.0)) {
-            double cosx = yrot.cos();
-            double sinx = yrot.sin();
+            cosx = zrot.cos();
+            sinx = zrot.sin();
             // unit matrix
             RealSquareMatrix t2 = new RealSquareMatrix(4);
             t2.flmat[0][0] = cosx;

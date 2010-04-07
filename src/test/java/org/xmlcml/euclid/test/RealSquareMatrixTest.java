@@ -8,6 +8,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.euclid.EC;
+import org.xmlcml.euclid.EuclidTestUtils;
 import org.xmlcml.euclid.RealArray;
 import org.xmlcml.euclid.RealMatrix;
 import org.xmlcml.euclid.RealSquareMatrix;
@@ -500,5 +501,36 @@ public class RealSquareMatrixTest extends MatrixTest {
 				-0.10185185185185185, 0.14814814814814814, });
 		MatrixTest.assertEquals("inverse", mm, inv, 0.000000000001);
 	}
+	
+	@Test
+	public void calculateEigenvalues() {
+		RealSquareMatrix m = new RealSquareMatrix(3, new double[] { 
+				1., 2., 3.,
+				2., 1., 8.,
+				3., 8., 7.
+		});
+		RealArray realArray = m.calculateEigenvalues();
+		double[] expected = new double[]{13.57729611363183,-0.03241110263496161,-4.54488501099687};
+		EuclidTestUtils.testEquals("inverse", expected, realArray.getArray(), 0.0000001);
+	}
+	
+	@Test
+	public void calculateInverse() {
+		RealSquareMatrix m = new RealSquareMatrix(3, new double[] { 
+				1., 2., 3.,
+				2., 1., 8.,
+				3., 8., 7.
+		});
+		RealSquareMatrix expected = new RealSquareMatrix(3, new double[] { 
+				-28.5, 5.0, 6.5,
+				5.0, -1.0, -1.0,
+				6.5, -1.0, -1.5
+				});
+		RealSquareMatrix rsm = m.calculateInverse();
+		EuclidTestUtils.testEquals("inverse", expected.getMatrix(), rsm.getMatrix(), 0.0000001);
+		RealSquareMatrix one = m.multiply(rsm);
+	}
+	
+	
 
 }
