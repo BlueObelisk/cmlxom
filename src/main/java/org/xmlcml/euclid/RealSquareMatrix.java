@@ -1,5 +1,8 @@
 package org.xmlcml.euclid;
 
+import org.apache.commons.math.linear.Array2DRowRealMatrix;
+import org.apache.commons.math.linear.EigenDecompositionImpl;
+import org.apache.commons.math.linear.InvalidMatrixException;
 import org.apache.log4j.Logger;
 
 /**
@@ -39,6 +42,10 @@ public class RealSquareMatrix extends RealMatrix {
         }
     }
     final static Logger logger = Logger.getLogger(RealSquareMatrix.class);
+	private EigenDecompositionImpl eigenDecompositionImpl;
+	private RealSquareMatrix inverse;
+	private RealArray eigenvalues;
+	private RealSquareMatrix eigenvectors;
     /**
      * Constructor. This gives a default matrix with cols = rows = 0.
      */
@@ -653,6 +660,48 @@ public class RealSquareMatrix extends RealMatrix {
                     "Sorry: orthogonalise only up to 3x3 matrices");
         }
     }
+
+    public RealArray calculateEigenvalues() {
+    	solveDecomposition();
+    	return eigenvalues;
+    }
+    
+    public RealSquareMatrix calculateInverse() {
+    	solveDecomposition();
+    	return inverse;
+    }
+	private void solveDecomposition() {
+		if (eigenDecompositionImpl == null) {
+	    	Array2DRowRealMatrix realMatrix = new Array2DRowRealMatrix(this.getMatrix());
+	    	try {
+		    	eigenDecompositionImpl = new EigenDecompositionImpl(realMatrix, 0.0);
+		    	inverse = new RealSquareMatrix(eigenDecompositionImpl.getSolver().getInverse().getData());
+		    	eigenvalues = new RealArray(eigenDecompositionImpl.getRealEigenvalues());
+	    		eigenvectors = new RealSquareMatrix(eigenDecompositionImpl.getV().getData());
+	    	} catch (InvalidMatrixException ime) {
+		    	inverse = null;
+		    	eigenvalues = null;
+	    		eigenvectors = null;
+	    	}
+		}
+	}
+    
+	/**
+    	V is an orthogonal matrix, i.e. its transpose is also its inverse.
+    	The columns of V are the eigenvectors of the original matrix.    	
+    	uses apachae.commons.math
+	 * @return
+	 */
+    public RealSquareMatrix calculateEigenvectors() {
+    	solveDecomposition();
+    	return eigenvectors;
+    }
+    
+    public void resetEigenDecomposition() {
+    	eigenDecompositionImpl = null;
+    	inverse = null;
+    }
+    
     /**
      * create orthogonlisation matrix from cell lengths and angles. Rollett
      * "Computing Methods in Crystallography" Pergamon 1965 p.23

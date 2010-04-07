@@ -113,132 +113,17 @@ public /*abstract*/ class NamespaceRefAttribute extends StringSTAttribute {
         return getLocalName(this.getValue());
     }
     
+    /**
+     * sets idRef. portion of value following the colon
+     * 
+     */
+    public void setIdRef(String idRef) {
+    	String value = NamespaceRefAttribute.createValue(this.getPrefix(), idRef);
+    	this.setCMLValue(value);
+    }
+    
     static int count = 0;
 
-//    /**
-//     * checks resolvability of namespaceRef attributes.
-//     * 
-//     * @param element to search under
-//     * @param attributeName in descendant elements (null == wildcard)
-//     * @param dictionaryMap
-//     * @return list of errors
-//     */
-//    public List<String> check(CMLElement element,
-//            String attributeName, GenericDictionaryMap dictionaryMap) {
-//        List<String> errorList = new ArrayList<String>();
-//        List<CMLElement> elems = element.getElements(".//"+C_E+C_STAR+"/@"+attributeName);
-//        for (CMLElement elem : elems) {
-//            NamespaceRefAttribute namespaceRefAttribute = (NamespaceRefAttribute) elem
-//                    .getAttribute(attributeName);
-//            if (namespaceRefAttribute == null) {
-//                errorList.add("NULL " + attributeName + ": " + CMLConstants.S_LSQUARE
-//                        + elem.toXML() + CMLConstants.S_RSQUARE);
-//            } else {
-//                GenericEntry entry = dictionaryMap
-//                        .getEntry(namespaceRefAttribute);
-//                if (entry == null) {
-//                    if (count++ == 100) {
-//                        errorList.add("==== too many errors ===");
-//                    } else if (count < 100) {
-//                        errorList.add(attributeName + " NOT FOUND "
-//                                + namespaceRefAttribute + CMLConstants.S_LSQUARE + elem.toXML()
-//                                + CMLConstants.S_RSQUARE);
-//                    }
-//                } else {
-//                    // Util.sysout("FOUND "+dictRefAttribute);
-//                }
-//            }
-//        }
-//        return errorList;
-//    }
-//
-//    /**
-//     * checks a file for valid attributes. checks that all namespaceRef
-//     * attributes in a file resolve.
-//     * 
-//     * @param file
-//     *            to check
-//     * @param dictionaryMap
-//     * @return list of errors (empty if none)
-//     */
-//    public List<String> checkAttribute(File file,
-//            GenericDictionaryMap dictionaryMap) {
-//        List<String> errorList = new ArrayList<String>();
-////        CMLElement element = null;
-//        Element rootElement = null;
-//        try {
-////            rootElement = new Builder().build(file).getRootElement();
-//            rootElement = new CMLBuilder().build(file).getRootElement();
-//        } catch (ClassCastException e) {
-//            System.err.println("Class cast in file: ("+rootElement+S_RBRAK+file);
-//            e.printStackTrace();
-//        } catch (Exception e) {
-//            System.err.println("Error in file: "+file);
-//            e.printStackTrace();
-//            errorList.add("should not throw " + e);
-//        }
-//        if (errorList.size() == 0) {
-//            errorList = this.checkAttribute(rootElement, dictionaryMap);
-//        }
-//        return errorList;
-//    }
-//
-//    /**
-//     * subclassed to provide class-specific checking.
-//     * 
-//     * @param element
-//     * @param dictionaryMap
-//     * @return list of Errors
-//     */
-//    public abstract List<String> checkAttribute(/*CML*/Element element,
-//            GenericDictionaryMap dictionaryMap);
-//
-//    /**
-//     * gets dictionary associated with this attribute. applicable to attributes
-//     * pointing to dictionaries such as dictRef, units, unitType, parentSI
-//     * 
-//     * @param dictionaryMap
-//     *            map of namespace to dictionaries
-//     * @return dictionary
-//     */
-//    public GenericDictionary getDictionary(GenericDictionaryMap dictionaryMap) {
-//        GenericDictionary dictionary = null;
-//        String namespace = this.getNamespaceURIString();
-//        if (namespace != null) {
-//            dictionary = dictionaryMap.get(namespace);
-//        }
-//        return dictionary;
-//    }
-
-//    /**
-//     * gets entry associated with this attribute. applicable to attributes
-//     * pointing to dictionaries+id such as dictRef, units, unitType, parentSI
-//     * 
-//     * @param dictionaryMap
-//     *            map of namespace to dictionaries
-//     * @return entry or null if not found
-//     */
-//    public GenericEntry getEntry(GenericDictionaryMap dictionaryMap) {
-//        if (dictionaryMap == null) {
-//            new Exception().printStackTrace();
-//            throw new RuntimeException("Null dictionaryMap");
-//        }
-//        GenericDictionary dictionary = null;
-//        String namespace = this.getNamespaceURIString();
-//        if (namespace != null) {
-//            dictionary = dictionaryMap.get(namespace);
-//        } else {
-//            throw new RuntimeException("Unknown namespace for " + this.getValue());
-//        }
-//        GenericEntry entry = null;
-//        String idRef = this.getIdRef();
-//        if (dictionary != null && idRef != null) {
-//            if (dictionary instanceof CMLUnitList) {
-//            }
-//            entry = dictionary.getGenericEntry(this.getIdRef());
-//        }
-//        return entry;
-//    }
 
     /** create valid prefixed value.
      * 
