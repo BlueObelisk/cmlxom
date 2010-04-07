@@ -1,4 +1,4 @@
-package org.xmlcml.euclid;
+ package org.xmlcml.euclid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -481,7 +481,7 @@ public class Point3Vector implements EuclidConstants {
      * 
      * @return the inertial tensor
      */
-    public RealSquareMatrix inertialTensor() {
+    public RealSquareMatrix calculateNonMassWeightedInertialTensorOld() {
         RealSquareMatrix tensor = new RealSquareMatrix(3);
         Point3 centre = this.getCentroid();
         // subtract centroid from each coord and sum outerproduct of result
@@ -493,6 +493,28 @@ public class Point3Vector implements EuclidConstants {
         }
         return tensor;
     }
+    
+    public RealSquareMatrix calculateRotationToInertialAxes() {
+    	RealSquareMatrix inertialTensor = calculateNonMassWeightedInertialTensor();
+    	RealSquareMatrix eigenvectors = inertialTensor.calculateEigenvectors();
+    	if (eigenvectors != null) {
+	    	// make sure axes are right-handed
+			double determinant = eigenvectors.determinant();
+			if (determinant < 0.1) {
+				RealSquareMatrix flip = new RealSquareMatrix(
+					new double[][] {
+						new double[] {1.0,  0.0,  0.0},  
+						new double[] {0.0, -1.0,  0.0},  
+						new double[] {0.0,  0.0,  1.0},  
+					}
+					);
+				eigenvectors = eigenvectors.multiply(flip);
+			}
+			eigenvectors = new RealSquareMatrix(eigenvectors.getTranspose());
+    	}
+    	return eigenvectors;
+    }
+    
     /**
      * transform all coordinates. MODIFIES p3Vector
      * 
@@ -644,6 +666,27 @@ public class Point3Vector implements EuclidConstants {
         }
         return distances;
     }
+    
+    public RealSquareMatrix calculateNonMassWeightedInertialTensor() {
+    	RealSquareMatrix rsm = new RealSquareMatrix(3);
+    	for (int i = 0; i < this.size(); i++) {
+    		Point3 p = this.get(i);
+    		double x = p.getArray()[0];
+    		double y = p.getArray()[1];
+    		double z = p.getArray()[2];
+        	rsm.flmat[0][0] += y*y + z*z;
+        	rsm.flmat[1][1] += x*x + z*z;
+        	rsm.flmat[2][2] += y*y + x*x;
+        	rsm.flmat[0][1] += -x*y;
+        	rsm.flmat[0][2] += -x*z;
+        	rsm.flmat[1][2] += -y*z;
+        	rsm.flmat[1][0] = rsm.flmat[0][1];
+        	rsm.flmat[2][0] = rsm.flmat[0][2];
+        	rsm.flmat[2][1] = rsm.flmat[1][2];
+    	}
+    	return rsm;
+    }
+    
     /**
      * get Inertial axes; do not throw exception for pathological cases, but
      * return it. Axes (lengths and unit vectors) are returned through the
@@ -1243,4 +1286,12 @@ public class Point3Vector implements EuclidConstants {
         sb.append(S_RBRAK);
         return sb.toString();
     }
+    
+    public RealArray extractRealArray() {
+    	return new RealArray(getArray());
+    }
+	public Double innerProduct() {
+		return extractRealArray().innerProduct();
+	}
+    
 }

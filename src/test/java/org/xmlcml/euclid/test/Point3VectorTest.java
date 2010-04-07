@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.xmlcml.euclid.Angle;
 import org.xmlcml.euclid.EC;
 import org.xmlcml.euclid.EuclidRuntimeException;
+import org.xmlcml.euclid.EuclidTestUtils;
 import org.xmlcml.euclid.IntSet;
 import org.xmlcml.euclid.Line3;
 import org.xmlcml.euclid.Plane3;
@@ -405,7 +406,7 @@ public class Point3VectorTest {
 	public void testInertialTensor() {
 		Point3Vector p = new Point3Vector(new double[] { 1., 2., 3., 2., 4.,
 				6., 3., 6., 9., 4., 1., 0., 3., 6., 1. });
-		RealMatrix m = p.inertialTensor();
+		RealMatrix m = p.calculateNonMassWeightedInertialTensorOld();
 		RealMatrixTest.assertEquals("move to centroid", 3, 3, new double[] {
 				5.2, 0.6, -4.4, 0.6, 20.8, 17.8, -4.4, 17.8, 54.8 }, m, EPS);
 	}
@@ -697,7 +698,59 @@ public class Point3VectorTest {
 		t = pa.fitTo(pb);
 		pa.transform(t);
 		rms = pa.rms(pb);
-		Assert.assertEquals("rms", 0.03470386605101721, rms, 0.00001);
+		Assert.assertEquals("rms", 0.03470386605101721, rms, 0.0001);
 	}
 
+	@Test
+	public void calculateInertialTensor() {
+		Point3Vector p3v = new Point3Vector(
+			new double[] {
+			3., 0., 0.,
+			0., 2., 0.,
+			0., 0., 1.,
+			-3., 0., 0.,
+			0., -2., 0.,
+			0., 0., -1.}
+		);
+		RealSquareMatrix rsm = p3v.calculateNonMassWeightedInertialTensor();
+		RealSquareMatrixTest.assertEquals("rsm", 3,
+				new double[]{
+				10.0,  0.0,  0.0,
+				 0.0, 20.0,  0.0,
+				 0.0,  0.0, 26.0,
+				},
+				rsm, 0.000001);
+		RealArray realArray = rsm.calculateEigenvalues();
+		RealArrayTest.assertEquals("eigval ", 
+				new double[]{26.0, 20.0, 10.0}, realArray, 0.000001);
+	}
+
+	@Test
+	public void calculateRotationToInertialAxes() {
+		Point3Vector p3v = new Point3Vector(
+			new double[] {
+					3., 0., 0.,
+					0., 2., 0.,
+					0., 0., 1.,
+					-3., 0., 0.,
+					0., -2., 0.,
+					0., 0., -1.}
+		);
+		// arbitrary transform
+		Transform3 t = new Transform3(new Angle(0.1), new Angle(0.2), new Angle(0.3));
+		p3v.transform(t);
+		RealSquareMatrix eigvec = p3v.calculateRotationToInertialAxes();
+		Transform3 tt = new Transform3(eigvec);
+		p3v.transform(tt);
+		Point3VectorTest.assertEquals("transform to axes ", 
+				new double[]{
+				0.0,  0.0,  3.0,
+				0.0,  2.0,  0.0,
+			   -1.0,  0.0,  0.0,
+				0.0,  0.0, -3.0,
+				0.0, -2.0,  0.0,
+			    1.0,  0.0,  0.0,
+		},
+			p3v, 0.000001);
+	}
 }
