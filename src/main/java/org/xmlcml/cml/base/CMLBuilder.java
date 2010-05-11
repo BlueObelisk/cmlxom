@@ -76,9 +76,15 @@ public class CMLBuilder extends Builder implements CMLConstants {
      * @throws IOException
      */
 
-    public Element parseString(String xmlString) throws ValidityException,
-            ParsingException, IOException {
-        Document doc = this.build(new StringReader(xmlString));
+    public Element parseString(String xmlString) {
+    	Document doc = null;
+        try {
+			doc = this.build(new StringReader(xmlString));
+		} catch (IOException e) {
+			throw new RuntimeException("BUG ", e);
+		} catch (Exception e) {
+			throw new RuntimeException("cannot parse: ", e);
+		}
         return (doc == null) ? null : doc.getRootElement();
     }
 

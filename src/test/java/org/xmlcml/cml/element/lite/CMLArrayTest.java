@@ -235,7 +235,7 @@ public class CMLArrayTest {
 					+ CMLConstants.CML_XMLNS + ">/a/b/</array>";
 			a = (CMLArray) new CMLBuilder().parseString(xmlBad1);
 			Assert.fail("bad 1 should not parse; type was wrong");
-		} catch (ParsingException e) {
+		} catch (RuntimeException e) {
 			Assert.assertTrue(true);
 		}
 		try {
@@ -243,7 +243,7 @@ public class CMLArrayTest {
 					+ ">a b c</array>";
 			a = (CMLArray) new CMLBuilder().parseString(xmlBad2);
 			Assert.fail("bad 2 should not parse - inconsistent size");
-		} catch (ParsingException e) {
+		} catch (RuntimeException e) {
 			Assert.assertTrue(true);
 		}
 		try {
@@ -251,7 +251,7 @@ public class CMLArrayTest {
 					+ CMLConstants.CML_XMLNS + ">1 2 c</array>";
 			a = (CMLArray) new CMLBuilder().parseString(xmlBad3);
 			Assert.fail("bad 3 should not parse");
-		} catch (ParsingException e) {
+		} catch (RuntimeException e) {
 			Assert.assertTrue(true);
 		}
 		try {
@@ -259,7 +259,7 @@ public class CMLArrayTest {
 					+ CMLConstants.CML_XMLNS + ">1 2 c</array>";
 			a = (CMLArray) new CMLBuilder().parseString(xmlBad4);
 			Assert.fail("bad 4 should not parse");
-		} catch (ParsingException e) {
+		} catch (RuntimeException e) {
 			Assert.assertTrue(true);
 		}
 		try {
@@ -271,14 +271,14 @@ public class CMLArrayTest {
 					.getDelimiter());
 			Assert.assertEquals("token length", 4, a.getStrings().length);
 			Assert.assertEquals("token 0", "c", a.getStrings()[2]);
-		} catch (ParsingException e) {
+		} catch (RuntimeException e) {
 			Assert.assertTrue(true);
 		}
 		try {
 			String xmlBad6 = "<array size='2' " + CMLConstants.CML_XMLNS + ">a b c</array>";
 			a = (CMLArray) new CMLBuilder().parseString(xmlBad6);
 			Assert.fail("bad 6 should not parse - inconsistent size");
-		} catch (ParsingException e) {
+		} catch (RuntimeException e) {
 			Assert.assertTrue(true);
 		}
 	}
