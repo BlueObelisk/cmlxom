@@ -47,29 +47,29 @@ public class CMLBuilderTest {
 			neverThrow(e);
 		}
 
-		// fails because XOM validation requires a DOCTYPE
-		boolean validate = true;
-		builder = new CMLBuilder(validate, new NodeFactory());
-		try {
-			builder.parseString(s);
-			Assert.fail("should throw: Unknown CML element: inchi");
-		} catch (Exception e) {
-			Assert
-					.assertEquals(
-							"OldNodeFactory validation",
-							"Document root element \"cml\", must match DOCTYPE root \"null\".",
-							e.getMessage());
-		}
+//		// fails because XOM validation requires a DOCTYPE
+//		boolean validate = true;
+//		builder = new CMLBuilder(validate, new NodeFactory());
+//		try {
+//			builder.parseString(s);
+//			Assert.fail("should throw: Unknown CML element: inchi");
+//		} catch (Exception e) {
+//			Assert
+//					.assertEquals(
+//							"OldNodeFactory validation",
+//							"Document root element \"cml\", must match DOCTYPE root \"null\".",
+//							e.getMessage());
+//		}
 
-		// fails through OldNodeFactory validation
-		validate = true;
-		builder = new CMLBuilder(validate, CMLNodeFactory.nodeFactory);
-		try {
-			builder.parseString(s);
-			Assert.fail("should throw: Unknown CML element: inchi");
-		} catch (Exception e) {
-			// OK
-		}
+//		// fails through OldNodeFactory validation
+//		validate = true;
+//		builder = new CMLBuilder(validate, CMLNodeFactory.nodeFactory);
+//		try {
+//			builder.parseString(s);
+//			Assert.fail("should throw: Unknown CML element: inchi");
+//		} catch (Exception e) {
+//			// OK
+//		}
 	}
 
 	/**
@@ -95,20 +95,20 @@ public class CMLBuilderTest {
 			// OK
 		}
 
-		// parse against DOCTYPE (tests XOM DTD validation)
-		s = "<!DOCTYPE cml [" + "<!ELEMENT cml ANY>"
-				+ "<!ATTLIST cml xmlns CDATA #REQUIRED>" + "]>" + "<cml "
-				+ CMLConstants.CML_XMLNS + ">" + "<inchi/>" + "</cml>";
-		boolean validate = true;
-		builder = new CMLBuilder(validate, new NodeFactory());
-		try {
-			builder.parseString(s);
-			Assert
-					.fail("Should throw: Element type \"inchi\" must be declared.");
-		} catch (Exception e) {
-			Assert.assertEquals("missing element in doctype",
-					"Element type \"inchi\" must be declared.", e.getMessage());
-		}
+//		// parse against DOCTYPE (tests XOM DTD validation)
+//		s = "<!DOCTYPE cml [" + "<!ELEMENT cml ANY>"
+//				+ "<!ATTLIST cml xmlns CDATA #REQUIRED>" + "]>" + "<cml "
+//				+ CMLConstants.CML_XMLNS + ">" + "<inchi/>" + "</cml>";
+//		boolean validate = true;
+//		builder = new CMLBuilder(validate, new NodeFactory());
+//		try {
+//			builder.parseString(s);
+//			Assert
+//					.fail("Should throw: Element type \"inchi\" must be declared.");
+//		} catch (Exception e) {
+//			Assert.assertEquals("missing element in doctype",
+//					"Element type \"inchi\" must be declared.", e.getMessage());
+//		}
 	}
 
 	/**
