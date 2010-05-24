@@ -1161,11 +1161,15 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
     			this.removeAttribute(attribute);
     		}
     	} else {
-    		Attribute attribute = makeCMLXAttribute(attName, attValue);
-    		this.addAttribute(attribute);
-    		this.addNamespaceDeclaration(CMLConstants.CMLX_PREFIX, CMLX_NS);
+    		addCMLXAttribute(this, attName, attValue);
     	}
     }
+
+	public static void addCMLXAttribute(Element element, String attName, String attValue) {
+		Attribute attribute = makeCMLXAttribute(attName, attValue);
+		element.addAttribute(attribute);
+		element.addNamespaceDeclaration(CMLConstants.CMLX_PREFIX, CMLX_NS);
+	}
     
     /** convenience method to create new cmlx:foo attribute.
      * 
