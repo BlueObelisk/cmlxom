@@ -1,6 +1,8 @@
 package org.xmlcml.cml.base;
 
 import java.io.ByteArrayOutputStream;
+
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -25,6 +27,7 @@ import nu.xom.XPathContext;
 import nu.xom.canonical.Canonicalizer;
 
 import org.apache.log4j.Logger;
+import org.xmlcml.cml.element.CMLMolecule;
 import org.xmlcml.euclid.Util;
 
 /**
@@ -1028,4 +1031,81 @@ public abstract class CMLUtil implements CMLConstants {
 			text.setValue(value);
 		}
 	}
+	
+	public static Element getSingleElement(Element element, String xpath) {
+		Nodes nodes = element.query(xpath);
+		return (nodes.size() == 1) ? (Element) nodes.get(0) : null;
+	}
+
+	public static Document ensureDocument(Element rootElement) {
+		Document doc = null;
+		if (rootElement != null) {
+			doc = rootElement.getDocument();
+			if (doc == null) {
+				doc = new Document(rootElement);
+			}
+		}
+		return doc;
+	}
+	
+	public static Document parseQuietlyToDocument(InputStream is) {
+		Document document = null;
+		try {
+			document = new Builder().build(is);
+		} catch (Exception e) {
+			throw new RuntimeException("cannot parse/read stream: ", e);
+		}
+		return document;
+	}
+	
+	public static Document parseResourceQuietlyToDocument(String resource) {
+		Document document = null;
+		try {
+			document = new Builder().build(Util.getInputStreamFromResource(resource));
+		} catch (Exception e) {
+			throw new RuntimeException("cannot parse/read resource: ", e);
+		}
+		return document;
+	}
+	
+	public static Document parseQuietlyToDocument(File xmlFile) {
+		Document document = null;
+		try {
+			document = new Builder().build(xmlFile);
+		} catch (Exception e) {
+			throw new RuntimeException("cannot parse/read file: ", e);
+		}
+		return document;
+	}
+	
+	public static CMLElement parseQuietlyIntoCML(File xmlFile) {
+		CMLElement rootElement = null;
+		try {
+			rootElement = (CMLElement) new CMLBuilder().build(xmlFile).getRootElement();
+		} catch (Exception e) {
+			throw new RuntimeException("cannot parse/read file: ", e);
+		}
+		return rootElement;
+	}
+	
+	public static Document parseQuietlyIntoCMLDocument(File xmlFile) {
+		Document document = ensureDocument(parseQuietlyIntoCML(xmlFile));
+		return document;
+	}
+
+	public static List<CMLMolecule> convertNodesToMoleculeList(Nodes moleculeNodes) {
+		List<CMLMolecule> moleculeList = new ArrayList<CMLMolecule>();
+		for (int i = 0; i < moleculeNodes.size(); i++) {
+			moleculeList.add((CMLMolecule) moleculeNodes.get(i));
+		}
+		return moleculeList;
+	}
+
+	public static List<CMLMolecule> extractTopLevelMolecules(Node node) {
+		String xpath = "//*[not(local-name()='molecule')]" +
+				"/*[local-name()='molecule'] | self::*[local-name()='molecule']";
+		return CMLUtil.convertNodesToMoleculeList(node.query(xpath));
+	}
+
+
 }
