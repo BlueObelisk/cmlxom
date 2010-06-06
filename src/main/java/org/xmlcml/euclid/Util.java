@@ -16,6 +16,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
@@ -2759,6 +2761,32 @@ public class Util implements EuclidConstants {
 		conn.disconnect();
 		return bytes;
 	}
+	/**
+	 * borrowed from somewhere. 
+	 * @param s
+	 * @return
+	 */
+	public static String calculateMD5(String s) {
+		String md5String = null;
+		if (s != null && s.trim().length() > 0) {
+			StringBuffer hexString = new StringBuffer();
+			try{
+				MessageDigest algorithm = MessageDigest.getInstance("MD5");
+				algorithm.reset();
+				algorithm.update(s.getBytes());
+				byte messageDigest[] = algorithm.digest();
+				for (int i=0; i < messageDigest.length; i++) {
+					hexString.append(Integer.toHexString(0xFF & messageDigest[i]));
+				}
+			} catch(NoSuchAlgorithmException nsae) {
+			            
+			}
+			md5String = hexString.toString();
+		}
+		return md5String;
+	}
+	
+
 }
 
 class StringIntegerComparator implements Comparator<Object> {
