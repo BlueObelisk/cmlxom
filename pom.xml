@@ -4,6 +4,12 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	
 	<modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>wwmm</groupId>
+        <artifactId>wwmm-parent</artifactId>
+        <version>2-SNAPSHOT</version>
+    </parent>
+
 	<groupId>cml</groupId>
 	<artifactId>cmlxom</artifactId>
 	<version>2.5.1-SNAPSHOT</version>
@@ -23,7 +29,7 @@
 	
 	<ciManagement>
 	    <system>hudson</system>
-    	<url>https://hudson.ch.cam.ac.uk/job/jumbo5</url>
+    	<url>https://hudson.ch.cam.ac.uk/job/cmlxom</url>
 	</ciManagement>
 	
 	<developers>
@@ -145,7 +151,7 @@
 	</licenses>
 	<scm>
 		<connection>scm:svn:http://cml.svn.sourceforge.net/svnroot/cml/cmlxom/trunk</connection>
-		<developerConnection> scm:svn:https://cml.svn.sourceforge.net/svnroot/cml/cmlxom/trunk</developerConnection>
+		<developerConnection>scm:svn:https://cml.svn.sourceforge.net/svnroot/cml/cmlxom/trunk</developerConnection>
 		<url>http://cml.svn.sourceforge.net/svnroot/cml/cmlxom/trunk/</url>
 	</scm>
 	<organization>
@@ -154,13 +160,6 @@
 	</organization>
 	<build>
 		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.5</source>
-					<target>1.5</target>
-				</configuration>
-			</plugin>
 			<plugin>
 				<artifactId>maven-source-plugin</artifactId>
 				<executions>
@@ -310,7 +309,7 @@
 				<artifactId>maven-pmd-plugin</artifactId>
 				<configuration>
 					<targetJdk>1.5</targetJdk> 
-					<linkXref>true</linkXref>
+					<linkXRef>true</linkXRef>
 				</configuration>
 			</plugin>
 			<plugin>
