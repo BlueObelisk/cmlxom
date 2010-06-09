@@ -21,9 +21,9 @@
 	<mailingLists>
 		<mailingList>
 			<name>cml-discuss</name>
-			<subscribe> http://lists.sourceforge.net/mailman/listinfo/cml-cvs </subscribe>
-			<unsubscribe> http://lists.sourceforge.net/mailman/listinfo/cml-cvs </unsubscribe>
-			<archive> http://sourceforge.net/mailarchive/forum.php?forum_id=44193 </archive>
+			<subscribe>https://lists.sourceforge.net/lists/listinfo/cml-discuss</subscribe>
+			<unsubscribe>https://lists.sourceforge.net/lists/listinfo/cml-discuss</unsubscribe>
+			<archive>http://sourceforge.net/mailarchive/forum.php?forum_name=cml-discuss</archive>
 		</mailingList>
 	</mailingLists>
 	
@@ -150,9 +150,9 @@
 		</license>
 	</licenses>
 	<scm>
-		<connection>scm:svn:http://cml.svn.sourceforge.net/svnroot/cml/cmlxom/trunk</connection>
-		<developerConnection>scm:svn:https://cml.svn.sourceforge.net/svnroot/cml/cmlxom/trunk</developerConnection>
-		<url>http://cml.svn.sourceforge.net/svnroot/cml/cmlxom/trunk/</url>
+		<connection>scm:svn:https://cml.svn.sourceforge.net/svnroot/cml/cmlxom/trunk/</connection>
+		<developerConnection>scm:svn:https://cml.svn.sourceforge.net/svnroot/cml/cmlxom/trunk/</developerConnection>
+		<url>http://cml.svn.sourceforge.net/viewvc/cml/cmlxom/trunk/</url>
 	</scm>
 	<organization>
 		<name>Peter Murray-Rust</name>
