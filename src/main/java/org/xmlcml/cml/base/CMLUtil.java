@@ -1073,7 +1073,7 @@ public abstract class CMLUtil implements CMLConstants {
 		try {
 			document = new Builder().build(xmlFile);
 		} catch (Exception e) {
-			throw new RuntimeException("cannot parse/read file: ", e);
+			throw new RuntimeException("cannot parse/read file: "+xmlFile.getAbsolutePath(), e);
 		}
 		return document;
 	}
@@ -1083,7 +1083,7 @@ public abstract class CMLUtil implements CMLConstants {
 		try {
 			rootElement = (CMLElement) new CMLBuilder().build(xmlFile).getRootElement();
 		} catch (Exception e) {
-			throw new RuntimeException("cannot parse/read file: ", e);
+			throw new RuntimeException("cannot parse/read file: "+xmlFile.getAbsolutePath(), e);
 		}
 		return rootElement;
 	}
