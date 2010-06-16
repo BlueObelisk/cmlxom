@@ -26,8 +26,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
 import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -1527,6 +1529,7 @@ public class Util implements EuclidConstants {
 
 	/** UPPER_GREEK entities */
 	public final static String[] UPPER_GREEK_ENTITIES = new String[968];
+	public final static Map<String, Character> GREEK2CHARACTER_MAP;
 	static {
 		UPPER_GREEK_ENTITIES[912] = "Alpha";
 		UPPER_GREEK_ENTITIES[914] = "Beta";
@@ -1575,6 +1578,56 @@ public class Util implements EuclidConstants {
 		UPPER_GREEK_ENTITIES[965] = "chi";
 		UPPER_GREEK_ENTITIES[966] = "psi";
 		UPPER_GREEK_ENTITIES[967] = "omega";
+		
+		GREEK2CHARACTER_MAP = new HashMap<String, Character>();
+		GREEK2CHARACTER_MAP.put("Alpha", (char)912);
+		GREEK2CHARACTER_MAP.put("Beta", (char)914);
+		GREEK2CHARACTER_MAP.put("Gamma", (char)915);
+		GREEK2CHARACTER_MAP.put("Delta", (char)916);
+		GREEK2CHARACTER_MAP.put("Epsilon", (char)917);
+		GREEK2CHARACTER_MAP.put("Zeta", (char)918);
+		GREEK2CHARACTER_MAP.put("Eta", (char)919);
+		GREEK2CHARACTER_MAP.put("Theta", (char)920);
+		GREEK2CHARACTER_MAP.put("Iota", (char)921);
+		GREEK2CHARACTER_MAP.put("Kappa", (char)922);
+		GREEK2CHARACTER_MAP.put("Lambda", (char)923);
+		GREEK2CHARACTER_MAP.put("Mu", (char)924);
+		GREEK2CHARACTER_MAP.put("Nu", (char)925);
+		GREEK2CHARACTER_MAP.put("Omicron", (char)926);
+		GREEK2CHARACTER_MAP.put("Pi", (char)927);
+		GREEK2CHARACTER_MAP.put("Rho", (char)928);
+		GREEK2CHARACTER_MAP.put("Sigma", (char)929);
+		GREEK2CHARACTER_MAP.put("Tau", (char)930);
+		GREEK2CHARACTER_MAP.put("Upsilon", (char)931);
+		GREEK2CHARACTER_MAP.put("Phi", (char)932);
+		GREEK2CHARACTER_MAP.put("Phi", (char)933);
+		GREEK2CHARACTER_MAP.put("Psi", (char)934);
+		GREEK2CHARACTER_MAP.put("Omega", (char)935);
+
+		GREEK2CHARACTER_MAP.put("alpha", (char)945);
+		GREEK2CHARACTER_MAP.put("beta", (char)946);
+		GREEK2CHARACTER_MAP.put("gamma", (char)947);
+		GREEK2CHARACTER_MAP.put("delta", (char)948);
+		GREEK2CHARACTER_MAP.put("epsilon", (char)949);
+		GREEK2CHARACTER_MAP.put("zeta", (char)950);
+		GREEK2CHARACTER_MAP.put("eta", (char)951);
+		GREEK2CHARACTER_MAP.put("theta", (char)952);
+		GREEK2CHARACTER_MAP.put("iota", (char)953);
+		GREEK2CHARACTER_MAP.put("kappa", (char)954);
+		GREEK2CHARACTER_MAP.put("lambda", (char)955);
+		GREEK2CHARACTER_MAP.put("mu", (char)956);
+		GREEK2CHARACTER_MAP.put("nu", (char)957);
+		GREEK2CHARACTER_MAP.put("omicron", (char)958);
+		GREEK2CHARACTER_MAP.put("pi", (char)959);
+		GREEK2CHARACTER_MAP.put("rho", (char)960);
+		GREEK2CHARACTER_MAP.put("sigma", (char)961);
+		GREEK2CHARACTER_MAP.put("tau", (char)962);
+		GREEK2CHARACTER_MAP.put("upsilon", (char)963);
+		GREEK2CHARACTER_MAP.put("phi", (char)964);
+		GREEK2CHARACTER_MAP.put("chi", (char)965);
+		GREEK2CHARACTER_MAP.put("psi", (char)966);
+		GREEK2CHARACTER_MAP.put("omega", (char)967);
+
 	};
 
 	/**
