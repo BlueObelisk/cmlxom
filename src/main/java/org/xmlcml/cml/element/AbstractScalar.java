@@ -627,7 +627,7 @@ public abstract class AbstractScalar extends CMLElement {
         if (_xmlContent == null) {
             _xmlContent = new StringSTAttribute("_xmlContent");
         }
-        _xmlContent.setCMLValue(content);
+        _xmlContent.setCMLValue(content, false);
         return _xmlContent.getString();
 //        System.out.println(":"+content+":");
 //        return this.getValue();
@@ -642,7 +642,7 @@ public abstract class AbstractScalar extends CMLElement {
             _xmlContent = new StringSTAttribute("_xmlContent");
         }
         // bug
-        _xmlContent.setCMLValue(value);
+        _xmlContent.setCMLValue(value, false);
         String attval = _xmlContent.getValue();
         this.removeChildren();
         this.appendChild(attval);

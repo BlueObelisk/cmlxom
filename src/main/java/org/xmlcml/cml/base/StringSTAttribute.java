@@ -70,18 +70,32 @@ public class StringSTAttribute extends CMLAttribute {
 
     /**
      * set and check value.
-     * 
+     * trims by default
+     * @deprecated use setCMLValue(s, trim)
      * @param s
      */
     public void setCMLValue(String s) {
+    	this.setCMLValue(s, true);
+ 	}
+
+    /**
+     * set and check value.
+     * 
+     * @param s
+     */
+    public void setCMLValue(String s, boolean trim) {
     	if (s == null) {
     		throw new RuntimeException("Cannot set null attribute value");
     	}
-    	String ss = s.trim();
+    	String ss = s;
+    	if (trim) {
+    		ss = s.trim();
+    	}
 		checkValue(ss);
 		this.s = ss;
 		this.setValue(ss);
 	}
+
 
     /**
 	 * checks value of simpleType. uses CMLType.checkvalue() fails if type is
