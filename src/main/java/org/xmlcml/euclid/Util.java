@@ -266,9 +266,12 @@ public class Util implements EuclidConstants {
 		return url;
 	}
 
-	public static InputStream getResourceUsingOntextClassLoader(String name) throws FileNotFoundException {
+	public static InputStream getResourceUsingContextClassLoader(String name, Class<?> clazz) throws FileNotFoundException {
 
 		 ClassLoader cl = Thread.currentThread().getContextClassLoader();
+		 if (cl == null) {
+			 cl = clazz.getClassLoader();
+		 }
 		 InputStream is = cl.getResourceAsStream(name);
 		 if (is == null) {
 		   throw new FileNotFoundException("Resource not found: "+name);
