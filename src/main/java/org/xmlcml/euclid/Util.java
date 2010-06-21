@@ -266,6 +266,16 @@ public class Util implements EuclidConstants {
 		return url;
 	}
 
+	public static InputStream getResourceUsingOntextClassLoader(String name) throws FileNotFoundException {
+
+		 ClassLoader cl = Thread.currentThread().getContextClassLoader();
+		 InputStream is = cl.getResourceAsStream(name);
+		 if (is == null) {
+		   throw new FileNotFoundException("Resource not found: "+name);
+		 }
+		 return is;
+	}
+	
 	/**
 	 * gets file from build path components. pm286 is not quite sure how it does
 	 * this...

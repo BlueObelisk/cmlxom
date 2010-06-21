@@ -1058,6 +1058,16 @@ public abstract class CMLUtil implements CMLConstants {
 		return document;
 	}
 	
+	public static Document parseQuietlyToCMLDocument(InputStream is) {
+		Document document = null;
+		try {
+			document = new CMLBuilder().build(is);
+		} catch (Exception e) {
+			throw new RuntimeException("cannot parse/read stream: ", e);
+		}
+		return document;
+	}
+	
 	public static Document parseResourceQuietlyToDocument(String resource) {
 		Document document = null;
 		try {
@@ -1084,6 +1094,16 @@ public abstract class CMLUtil implements CMLConstants {
 			rootElement = (CMLElement) new CMLBuilder().build(xmlFile).getRootElement();
 		} catch (Exception e) {
 			throw new RuntimeException("cannot parse/read file: "+xmlFile.getAbsolutePath(), e);
+		}
+		return rootElement;
+	}
+	
+	public static CMLElement parseQuietlyIntoCML(InputStream inputStream) {
+		CMLElement rootElement = null;
+		try {
+			rootElement = (CMLElement) new CMLBuilder().build(inputStream).getRootElement();
+		} catch (Exception e) {
+			throw new RuntimeException("cannot parse/read inputStream ", e);
 		}
 		return rootElement;
 	}
