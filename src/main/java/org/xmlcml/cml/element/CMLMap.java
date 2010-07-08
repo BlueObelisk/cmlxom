@@ -72,6 +72,21 @@ public class CMLMap extends org.xmlcml.cml.element.AbstractMap {
         public String toString() {
             return value;
         }
+        
+        /**
+         * return opposite of TO/FROM else null
+         * @param d
+         * @return
+         */
+        public Direction opposite() {
+        	Direction o = null;
+        	if (this.equals(TO)) {
+        		o = FROM;
+        	} else if (this.equals(FROM)) {
+        		o = TO;
+        	}
+        	return o;
+        }
     }
 
     static Logger logger = Logger.getLogger(CMLMap.class.getName());
