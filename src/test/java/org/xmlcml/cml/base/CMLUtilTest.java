@@ -10,17 +10,16 @@ import nu.xom.Document;
 import nu.xom.Element;
 import nu.xom.Elements;
 import nu.xom.Node;
-import nu.xom.Nodes;
 import nu.xom.Text;
 import nu.xom.XPathContext;
 
+import org.apache.commons.math.stat.inference.TestUtils;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 import org.xmlcml.cml.element.CMLCml;
 import org.xmlcml.euclid.EC;
-import org.xmlcml.euclid.Util;
 
 /**
  * test CMLUtil.
@@ -506,4 +505,48 @@ public class CMLUtilTest {
 		Assert.assertEquals("stripWS", "<foo> bar<plinge><boo /> a</plinge></foo>", element.toXML());
 
 	}
+	@Test
+	public void removeNonCMLAttributes() {
+		String cmlString = "<cml:atom " +
+				"xmlns:cml='http://www.xml-cml.org/schema' " +
+				"xmlns:foo='http://foo.org' " +
+				"id='a1' foo:bar='zzz'/>";
+		CMLElement element = CMLUtil.parseCML(cmlString);
+		CMLUtil.removeNonCMLAttributes(element);
+		String refString = "<atom xmlns=\"http://www.xml-cml.org/schema\" xmlns:cml=\"http://www.xml-cml.org/schema\" id='a1'/>";
+		String message = CMLUtil.equalsCanonically(refString, element, true);
+		Assert.assertNull("remove noncml", message);
+
+	}
+	@Test
+	public void removeNonCMLAttributes1() {
+		String cmlString = "<cml:atom " +
+				"xmlns:cml='http://www.xml-cml.org/schema' " +
+				"xmlns:foo='http://foo.org' " +
+				"id='a1' foo:bar='zzz'>" +
+				"  <cml:name " +
+				"xmlns:cml='http://www.xml-cml.org/schema' " +
+				"xmlns:foz='http://foz.org' " +
+				"id='a1' foz:bar='zzz'/>" +
+				"</cml:atom>";
+		CMLElement element = CMLUtil.parseCML(cmlString);
+		CMLUtil.removeNonCMLAttributes(element);
+		String refString = "<atom id='a1' xmlns='http://www.xml-cml.org/schema'  " +
+				"xmlns:cml='http://www.xml-cml.org/schema'>" +
+				"  <name id='a1'/>" +
+				"</atom>";
+		String message = CMLUtil.equalsCanonically(refString, element, true);
+		Assert.assertNull("remove noncml", message);
+	}
+	
+	@Test
+	public void removeNonCMLAttributes2() {
+		String cmlString = "<cml xmlns='http://www.xml-cml.org/schema' xmlns:cdx='http://www.xml-cml/namespaces/cdx'><moleculeList><molecule cdx:BoundingBox='98.7887 104.6204 209.9117 187.9204' id='x226'><atomArray><atom id='a172' elementType='C' cdx:p='128.3632 154.3454' cdx:Z='1' hydrogenCount='3' x2='128.3632' y2='-154.3454' /></atomArray><bondArray><bond atomRefs2='a172 a174' id='a172_a174' order='1' cdx:Z='4' cdx:B='172' cdx:E='174' cdx:BS='N' /></bondArray></molecule></moleculeList></cml>";
+		CMLElement element = CMLUtil.parseCML(cmlString);
+		CMLUtil.removeNonCMLAttributes(element);
+		String refString = "<cml xmlns='http://www.xml-cml.org/schema' xmlns:cdx='http://www.xml-cml/namespaces/cdx'><moleculeList><molecule id='x226'><atomArray><atom id='a172' elementType='C' hydrogenCount='3' x2='128.3632' y2='-154.3454'/></atomArray><bondArray><bond atomRefs2='a172 a174' id='a172_a174' order='1'/></bondArray></molecule></moleculeList></cml>";
+		String message = CMLUtil.equalsCanonically(refString, element, true);
+		Assert.assertNull("remove noncml", message);
+	}
+	
 }

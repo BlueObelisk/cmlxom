@@ -1126,6 +1126,32 @@ public abstract class CMLUtil implements CMLConstants {
 				"/*[local-name()='molecule'] | self::*[local-name()='molecule']";
 		return CMLUtil.convertNodesToMoleculeList(node.query(xpath));
 	}
+	
+	/** recursively delete all non-default and non-cml attributes
+	 * i.e. any attribute with explicit non-cml namespace
+	 * includes cmlx
+	 * 
+	 * @param element
+	 */
+	public static void removeNonCMLAttributes(CMLElement element) {
+		List<Attribute> attributes = new ArrayList<Attribute>();
+		for (int i = 0; i < element.getAttributeCount(); i++) {
+			Attribute attribute = element.getAttribute(i);
+			String namespaceURI = attribute.getNamespaceURI();
+			if (namespaceURI != null 
+					&& !namespaceURI.equals("")
+					&& !namespaceURI.equals(CMLConstants.CML_NS)) {
+				attributes.add(attribute);
+			}
+		}
+		for (Attribute attribute : attributes) {
+			attribute.detach();
+		}
+		List<CMLElement> childElementList = element.getChildCMLElements();
+		for (CMLElement childElement : childElementList) {
+			removeNonCMLAttributes(childElement);
+		}
+	}
 
 
 }

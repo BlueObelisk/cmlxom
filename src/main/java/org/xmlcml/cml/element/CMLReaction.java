@@ -356,6 +356,12 @@ public class CMLReaction extends AbstractReaction implements ReactionComponent {
     	reactantList.addReactant(reactant);
     }
     
+	public void addReactant(CMLMolecule molecule) {
+		CMLReactant reactant = new CMLReactant();
+		reactant.addMolecule(molecule);
+		addReactant(reactant);
+	}
+    
     
     /**
      * create if necessary
@@ -377,10 +383,9 @@ public class CMLReaction extends AbstractReaction implements ReactionComponent {
 	}
     
 	public void addProduct(CMLMolecule molecule) {
-		CMLProductList productList = getOrCreateProductList();
 		CMLProduct product = new CMLProduct();
 		product.addMolecule(molecule);
-		productList.addProduct(product);
+		addProduct(product);
 	}
     
     public CMLProductList getOrCreateProductList() {
