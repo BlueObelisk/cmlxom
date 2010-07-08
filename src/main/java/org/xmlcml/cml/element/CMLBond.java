@@ -473,7 +473,7 @@ public class CMLBond extends AbstractBond {
 		if (atom == null) {
 //			CMLMolecule molecule = this.getMolecule();
 			String molId = (molecule == null) ? null : molecule.getId();
-			throw new RuntimeException("Non-existent atom in bond/mol " + id+S_SLASH+molId);
+			throw new RuntimeException("Non-existent atom in bond : atom/mol " + id+S_SLASH+molId);
 		}
 		atomList.add(atom);
 	}
