@@ -2852,6 +2852,22 @@ public class Util implements EuclidConstants {
 		return md5String;
 	}
 	
+	   /**
+     * avoids the checked exception
+     * @param file
+     * @return
+     */
+	public static String getCanonicalPath(File file) {
+		String path = null;
+		try {
+			path = file.getCanonicalPath();
+		} catch (IOException e) {
+			throw new RuntimeException("cannot canonicalize "+file+" ... "+e.getMessage(), e);
+		}
+		return path;
+	}
+
+
 
 }
 
@@ -2876,4 +2892,5 @@ class StringIntegerComparator implements Comparator<Object> {
 		}
 		return new Integer(ss);
 	}
-}
+	
+ }
