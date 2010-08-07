@@ -1181,6 +1181,20 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
 		return new Attribute(CMLX_PREFIX+S_COLON+attName, CMLX_NS, value);
 	}
 
+	   /** convenience method to get value of cmlx:foo attribute.
+     * 
+     * @param attName WITHOUT prefix
+     */
+    public String getCMLXAttribute(String attName) {
+    	String value = null;
+    	Attribute attribute = this.getAttribute(attName, CMLX_NS);
+    	if (attribute != null) {
+    		value = attribute.getValue();
+     	}
+    	return value;
+    }
+
+
     /**
      * <p>
      * Appends a node to the children of this node.
