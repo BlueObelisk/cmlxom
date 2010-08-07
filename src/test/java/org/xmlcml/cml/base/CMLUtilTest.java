@@ -1,5 +1,7 @@
 package org.xmlcml.cml.base;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.StringReader;
 import java.text.ParseException;
 import java.util.List;
@@ -13,7 +15,7 @@ import nu.xom.Node;
 import nu.xom.Text;
 import nu.xom.XPathContext;
 
-import org.apache.commons.math.stat.inference.TestUtils;
+import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
@@ -549,4 +551,22 @@ public class CMLUtilTest {
 		Assert.assertNull("remove noncml", message);
 	}
 	
+	@Test
+	public void testParseQuietlyToDocument() {
+		File file = new File("src/test/resources/org/xmlcml/cml/base/cml0.xml");
+		Document doc = CMLUtil.parseQuietlyToDocument(file);
+		Assert.assertNotNull(doc);
+	}
+	
+	@Test
+	public void testDebug() {
+		Element element = new Element("zzz");
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		try {
+			CMLUtil.debug(element, baos, 1);
+		} catch (IOException e) {
+			Assert.fail("fail "+e);
+		}
+		Assert.assertTrue(baos.toByteArray().length > 0);
+	}
 }
