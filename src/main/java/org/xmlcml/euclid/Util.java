@@ -2860,7 +2860,8 @@ public class Util implements EuclidConstants {
 	public static String getCanonicalPath(File file) {
 		String path = null;
 		try {
-			path = file.getCanonicalPath();
+			File absoluteFile = file.getAbsoluteFile();
+			path = absoluteFile.getCanonicalPath();
 		} catch (IOException e) {
 			throw new RuntimeException("cannot canonicalize "+file+" ... "+e.getMessage(), e);
 		}
