@@ -42,6 +42,9 @@ import org.xmlcml.euclid.Util;
  */
 public abstract class CMLUtil implements CMLConstants {
 	private static Logger LOG = Logger.getLogger(CMLUtil.class);
+	
+	public final static String DTD = ".dtd\">";
+
 
 	// ========================== utilities ====================== //
 
@@ -1073,7 +1076,7 @@ public abstract class CMLUtil implements CMLConstants {
 		try {
 			document = new Builder().build(Util.getInputStreamFromResource(resource));
 		} catch (Exception e) {
-			throw new RuntimeException("cannot parse/read resource: ", e);
+			throw new RuntimeException("cannot parse/read resource: "+resource, e);
 		}
 		return document;
 	}
@@ -1151,6 +1154,38 @@ public abstract class CMLUtil implements CMLConstants {
 		for (CMLElement childElement : childElementList) {
 			removeNonCMLAttributes(childElement);
 		}
+	}
+	public static Document stripDTDAndOtherProblematicXMLHeadings(String s) throws IOException {
+		
+		if (s == null || s.length() == 0) {
+			throw new RuntimeException("zero length document");
+		}
+		// strip DTD
+		int idx = s.indexOf(DTD);
+		String baosS = s;
+		if (idx != -1) {
+			int ld = idx+DTD.length()+1;
+			if (ld < 0) {
+				throw new RuntimeException("BUG in stripping DTD");
+			}
+			try {
+				baosS = s.substring(ld);
+			} catch (Exception e) {
+				throw new RuntimeException("cannot parse string: ("+s.length()+"/"+ld+"/"+idx+") "+s.substring(0, Math.min(500, s.length())),e);
+			}
+		} 
+		// strip HTML namespace
+		baosS = baosS.replace(" xmlns=\"http://www.w3.org/1999/xhtml\"", "");
+		// strip XML declaration
+		baosS = baosS.replace("<?xml version=\"1.0\" encoding=\"UTF-8\"?>", "");
+		Document document;
+		try {
+			document = new Builder().build(new StringReader(baosS));
+		} catch (Exception e) {
+			System.out.println("trying to parse:"+baosS+":");
+			throw new RuntimeException("BUG: DTD stripper should have created valid XML: "+e);
+		}
+		return document;
 	}
 
 
