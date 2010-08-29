@@ -108,7 +108,7 @@ public abstract class CMLUtil implements CMLConstants {
 		return s;
 	}
 	/**
-	 * convenience method to extract value of exactly one node.
+	 * convenience method to extract value of exactly one node..
 	 * uses element.query(xpath, xPathContext);
 	 * @param element
 	 * @param xpath 
