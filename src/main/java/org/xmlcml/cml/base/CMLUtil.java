@@ -2,6 +2,7 @@ package org.xmlcml.cml.base;
 
 import java.io.ByteArrayOutputStream;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -102,6 +103,24 @@ public abstract class CMLUtil implements CMLConstants {
 			LOG.warn("Null element");
 		} else {
 			Nodes nodes = element.query(xpath, xPathContext);
+			s = (nodes.size() == 1) ? nodes.get(0).getValue() : null;
+		}
+		return s;
+	}
+	/**
+	 * convenience method to extract value of exactly one node.
+	 * uses element.query(xpath, xPathContext);
+	 * @param element
+	 * @param xpath 
+	 * @param xPathContext defines prefix/namespace used in query
+	 * @return value if exactly 1 node (0 or many returns null)
+	 */
+	public static String getSingleValue(Element element, String xpath) {
+		String  s = null;
+		if (element == null) {
+			LOG.warn("Null element");
+		} else {
+			Nodes nodes = element.query(xpath);
 			s = (nodes.size() == 1) ? nodes.get(0).getValue() : null;
 		}
 		return s;
@@ -1180,7 +1199,8 @@ public abstract class CMLUtil implements CMLConstants {
 		baosS = baosS.replace("<?xml version=\"1.0\" encoding=\"UTF-8\"?>", "");
 		Document document;
 		try {
-			document = new Builder().build(new StringReader(baosS));
+			ByteArrayInputStream bais = new ByteArrayInputStream(baosS.getBytes()); // avoid reader
+			document = new Builder().build(bais);
 		} catch (Exception e) {
 			System.out.println("trying to parse:"+baosS+":");
 			throw new RuntimeException("BUG: DTD stripper should have created valid XML: "+e);
