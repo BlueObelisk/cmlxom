@@ -262,15 +262,18 @@ public interface EuclidConstants {
     String S_PIPE = "|";
 
 
-    /** constant */
-    String NONWHITEPUNC = S_LBRAK + S_RBRAK + S_SHRIEK + S_QUOT + S_POUND
-            + S_DOLLAR + S_PERCENT + S_CARET + S_AMP + S_STAR + S_UNDER
-            + S_MINUS + S_PLUS + S_EQUALS + S_LCURLY + S_RCURLY + S_LSQUARE
+    /** punctuation without  _.- and whitespace */
+    String NONWHITEPUNC0 = S_LBRAK + S_RBRAK + S_SHRIEK + S_QUOT + S_POUND
+            + S_DOLLAR + S_PERCENT + S_CARET + S_AMP + S_STAR 
+            + S_PLUS + S_EQUALS + S_LCURLY + S_RCURLY + S_LSQUARE
             + S_RSQUARE + S_TILDE + S_HASH + S_COLON + S_SEMICOLON + S_ATSIGN
-            + S_APOS + S_COMMA + S_PERIOD + S_SLASH + S_QUERY + S_LANGLE
+            + S_APOS + S_COMMA + S_SLASH + S_QUERY + S_LANGLE
             + S_RANGLE + S_PIPE + S_BACKSLASH;
 
-    /** constant */
+    /** all punctuation without whitespace */
+    String NONWHITEPUNC = NONWHITEPUNC0 + S_UNDER + S_MINUS+ S_PERIOD ;
+
+    /** all punctuation */
     String PUNC = WHITESPACE + NONWHITEPUNC;
 
     /** convenience */
