@@ -1837,6 +1837,15 @@ public class Util implements EuclidConstants {
 		return s1;
 	}
 
+	public static String substituteNonASCIIChars(String s, char replacement) {
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < s.length(); i++) {
+			int c = s.charAt(i);
+			c = (c > 256) ? (int) replacement : c;
+			sb.append((char)c);
+		}
+		return sb.toString();
+	}
 	/**
 	 * substitute hex representation of character, for example =2E by char(46).
 	 * If line ends with =, ignore that character.
