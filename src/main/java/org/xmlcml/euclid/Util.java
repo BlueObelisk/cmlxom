@@ -1846,6 +1846,45 @@ public class Util implements EuclidConstants {
 		}
 		return sb.toString();
 	}
+	
+	/*
+	&#8204;     &zwnj;      Zero Width Non Joiner
+	&#8205;     &zwj;       Zero Width Joiner
+	&#8206;     &lrm;       Left-Right Mark
+	&#8207;     &rlm;       Right-Left Mark
+	&#8211;	 	&ndash;	 	en dash
+	&#8212;	 	&mdash;		em dash
+	&#8216;		&lsquo;	 	left single quotation mark
+	&#8217;	 	&rsquo;	 	right single quotation mark
+	&#8220;	 	&ldquo;	 	left double quotation mark
+	&#8221;	 	&rdquo;	 	right double quotation mark
+
+		 */
+	
+	public static String substituteSmartCharacters(String s) {
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < s.length(); i++) {
+			int c = s.charAt(i);
+			if (c == 8204 || c == 160) {
+				c = ' ';
+			} else if (c == 8205) {
+				c = -1;
+			} else if (c == 8211 || c == 8212) {
+				c = '-';
+			} else if (c == 8216 || c == 8217) {
+				c = '\'';
+			} else if (c == 8220 || c == 8221) {
+				c = '"';
+			} else if (c > 127) {
+				c = '?';
+			}
+			if (c > 0) {
+				sb.append((char)c);
+			}
+		}
+		return sb.toString();
+		 
+	}
 	/**
 	 * substitute hex representation of character, for example =2E by char(46).
 	 * If line ends with =, ignore that character.

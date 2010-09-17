@@ -1,9 +1,10 @@
 package org.xmlcml.cml.base;
 
-import java.io.ByteArrayOutputStream;
-
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -28,6 +29,7 @@ import nu.xom.XPathContext;
 import nu.xom.canonical.Canonicalizer;
 
 import org.apache.log4j.Logger;
+import org.xml.sax.XMLReader;
 import org.xmlcml.cml.element.CMLMolecule;
 import org.xmlcml.euclid.Util;
 
@@ -347,6 +349,36 @@ public abstract class CMLUtil implements CMLConstants {
 		}
 		return root;
 	}
+
+	public static Document parseHtmlWithTagSoup(InputStream is) {
+        try {
+            Builder builder = getTagsoupBuilder();
+            return builder.build(is);
+        } catch (Exception e) {
+            throw new RuntimeException("Exception whilse parsing XML, due to: "+e.getMessage(), e);
+        }
+    }
+
+	public static Document parseHtmlWithTagSoup(File file) {
+		try {
+			return parseHtmlWithTagSoup(new FileInputStream(file));
+		} catch (FileNotFoundException e) {
+            throw new RuntimeException("Exception whilse parsing HTML, due to: "+e.getMessage(), e);
+		}
+    }
+
+	public static Builder getTagsoupBuilder() {
+		XMLReader tagsoup = null;
+//		try {
+	    	tagsoup = //XMLReaderFactory.createXMLReader("org.ccil.cowan.tagsoup.Parser");
+		    	new org.ccil.cowan.tagsoup.Parser();
+//		} catch (SAXException e) {
+//		    throw new RuntimeException("Exception whilst creating XMLReader from org.ccil.cowan.tagsoup.Parser", e);
+//		}
+		return new Builder(tagsoup);
+	}
+
+
 
 	/**
 	 * parses CML string into element. convenience method to avoid trapping
