@@ -1739,6 +1739,20 @@ public class CMLFormula extends AbstractFormula {
 		}
 		return fCount;
 	}
+	
+	public Double getElementCount(String elementType) {
+		String[] elementTypes = getElementTypes();
+		double[] counts = getCounts();
+		if (elementTypes != null) {
+			for (int i = 0; i < elementTypes.length; i++) {
+				String el = elementTypes[i];
+				if (el.equals(elementType)) {
+					return counts[i];
+				}
+			}
+		}
+		return null;
+	}
 
 	/**
 	 * divide one formula by another.
