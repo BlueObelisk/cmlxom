@@ -1,9 +1,10 @@
 package org.xmlcml.euclid;
 
-import org.apache.commons.math.linear.Array2DRowRealMatrix;
-import org.apache.commons.math.linear.EigenDecompositionImpl;
-import org.apache.commons.math.linear.InvalidMatrixException;
 import org.apache.log4j.Logger;
+
+import org.apache.commons.math.linear.EigenDecompositionImpl;
+import org.apache.commons.math.linear.Array2DRowRealMatrix;
+import org.apache.commons.math.linear.InvalidMatrixException;
 
 /**
  * square matrix class

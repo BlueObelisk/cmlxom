@@ -1142,6 +1142,11 @@ public abstract class CMLUtil implements CMLConstants {
 		return document;
 	}
 	
+	public static CMLElement parseQuietlyIntoCML(String s) {
+		ByteArrayInputStream bais = new ByteArrayInputStream(s.getBytes());
+		return parseQuietlyIntoCML(bais);
+	}
+	
 	public static CMLElement parseQuietlyIntoCML(File xmlFile) {
 		CMLElement rootElement = null;
 		try {
