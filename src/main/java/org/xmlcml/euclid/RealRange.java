@@ -86,6 +86,16 @@ public class RealRange implements EuclidConstants {
         minval = (double) ir.minval;
         maxval = (double) ir.maxval;
     }
+    
+	public static RealRange getRange(String s) {
+		RealRange rr = null;
+		RealArray ra = new RealArray(s);
+		if (ra.size() == 2) {
+			rr = new RealRange(ra.get(0), ra.get(1));
+		}
+		return rr;
+	}
+
     /**
      * a Range is only valid if its maxval is not less than its minval; this
      * tests for uninitialised ranges
