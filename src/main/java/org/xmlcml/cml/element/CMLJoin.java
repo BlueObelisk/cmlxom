@@ -234,16 +234,16 @@ public class CMLJoin extends org.xmlcml.cml.element.AbstractJoin {
 	 * 
 	 * @return
 	 */
-	public CMLFragment getChildOrNext() {
+	public CMLElement getChildOrNext() {
 
 		if (getMoleculeRefs2Attribute().getValue().equals(PARENT_S + " " + CHILD_S)) {
-			if (getChildCount() > 0) return (CMLFragment) getChild(0);
+			if (getChildCount() > 0) return (CMLElement) getChild(0);
 		}
 		else if (getMoleculeRefs2Attribute().getValue().equals(PREVIOUS_S + " " + NEXT_S)) {
 			ParentNode parent = getParent();
 			int position = getParent().indexOf(this);
 			if (position == parent.getChildCount() - 1) return null;
-			return (CMLFragment) parent.getChild(position + 1);
+			return (CMLElement) parent.getChild(position + 1);
 		}
 		
 		return null;
