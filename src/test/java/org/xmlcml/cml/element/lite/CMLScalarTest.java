@@ -23,8 +23,9 @@ import org.junit.Test;
 import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.base.CMLBuilder;
 import org.xmlcml.cml.base.CMLConstants;
-import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLConstants.Units;
+import org.xmlcml.cml.base.CMLElement;
+import org.xmlcml.cml.base.CMLUtil;
 import org.xmlcml.cml.element.CMLCml;
 import org.xmlcml.cml.element.CMLScalar;
 
@@ -818,4 +819,48 @@ public class CMLScalarTest {
 				.getNamespaceURIForPrefix("units"));
 	}
 
+	@Test
+	public void testNonNormalizedWhitespace0() {
+		String s = "one two three";
+		CMLScalar scalar = new CMLScalar(s);
+		Assert.assertEquals("whitespace", "one two three", scalar.getValue());
+	}
+	@Test
+	public void testNonNormalizedWhitespace00() {
+		String s = "one  two  three";
+		CMLScalar scalar = new CMLScalar(s);
+		Assert.assertEquals("whitespace", "one  two  three", scalar.getValue());
+	}
+	@Test
+	public void testNonNormalizedWhitespace() {
+		String s = "one\ntwo\nthree";
+		CMLScalar scalar = new CMLScalar(s);
+		Assert.assertEquals("whitespace", "one\ntwo\nthree", scalar.getValue());
+	}
+	@Test
+	public void testNonNormalizedWhitespace1() {
+		String s = "one\ntwo\nthree";
+		CMLScalar scalar = new CMLScalar(s);
+		Assert.assertEquals("whitespace", "<scalar xmlns=\"http://www.xml-cml.org/schema\" dataType=\"xsd:string\">one\ntwo\nthree</scalar>", scalar.toXML());
+	}
+	@Test
+	public void testNonNormalizedWhitespace2() {
+		String s = "one\ntwo\nthree";
+		CMLScalar scalar = new CMLScalar(s);
+		CMLScalar scalar1 = new CMLScalar(scalar);
+		Assert.assertEquals("whitespace", "one\ntwo\nthree", scalar1.getValue());
+	}
+	@Test
+	public void testNonNormalizedWhitespace3() throws Exception {
+		String s = "one\ntwo\nthree";
+		CMLScalar scalar = new CMLScalar(s);
+		scalar.debug("Muck ws");
+		CMLUtil.debug(scalar, System.out, 0);
+	}
+	@Test
+	public void testNonNormalizedWhitespace4() {
+		String s = "one     two     three";
+		CMLScalar scalar = new CMLScalar(s);
+		Assert.assertEquals("whitespace", "one     two     three", scalar .getValue());
+	}
 }
