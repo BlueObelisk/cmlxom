@@ -1245,5 +1245,13 @@ public abstract class CMLUtil implements CMLConstants {
 		return document;
 	}
 
+	public static void debugPreserveWhitespace(Element element) {
+		try {
+			CMLUtil.debug(element, System.out, 0);
+		} catch (Exception e) {
+			throw new RuntimeException("BUG", e);
+		}
+	}
+
 
 }
