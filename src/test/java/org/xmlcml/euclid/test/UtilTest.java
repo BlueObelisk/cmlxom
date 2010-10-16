@@ -86,6 +86,20 @@ public class UtilTest {
 		Assert.assertTrue("should exist: " + junk.toString(), junk.exists());
 	}
 
+	@Test
+	public void testGetRelativeFilename() {
+		String S = File.separator;
+		File file1 = new File("a"+S+"b"+S+"c"+S+"d");
+		File file2 = new File("a"+S+"b"+S+"e");
+		String relative = Util.getRelativeFilename(file1, file2, "/");
+		Assert.assertEquals("relative", "../../e", relative);
+		try {
+			File file3 = new File(file1, relative);
+			Assert.assertEquals("canonical", file2.getCanonicalPath(), file3.getCanonicalPath());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	/**
 	 * Test method for org.xmlcml.euclid.Util.BUG(java.lang.String,
 	 * java.lang.Exception)}.
