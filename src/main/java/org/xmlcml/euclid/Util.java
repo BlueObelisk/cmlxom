@@ -2916,6 +2916,46 @@ public class Util implements EuclidConstants {
 		return path;
 	}
 
+	
+	/** path to create file2 from file1
+	 *@param file1 
+	 *@param file2
+	 *@param newSeparator if not null, use as new separator
+	 */
+	public static String getRelativeFilename(File file1, File file2, String newSeparator) {
+		if (newSeparator == null) {
+			newSeparator = File.separator;
+		}
+		String regex = (File.separator.equals("\\")) ? "\\\\" : File.separator+3;
+		String path = null;
+		try {
+			String path1 = file1.getCanonicalPath();
+			String path2 = file2.getCanonicalPath();
+			String[] pathComponent1 = path1.split(regex);
+			String[] pathComponent2 = path2.split(regex);
+			int minComponents = Math.min(pathComponent1.length, pathComponent2.length);
+			int i = 0;
+			for (; i < pathComponent1.length; i++) {
+				if (!pathComponent2[i].equals(pathComponent1[i])) {
+					break;
+				}
+			}
+			path = "";
+			for (int j = i; j < pathComponent1.length; j++) {
+				path += ".."+newSeparator;
+			}
+			for (int j = i; j < pathComponent2.length-1; j++) {
+				path += pathComponent2[j]+newSeparator;
+			}
+			path += pathComponent2[pathComponent2.length-1];
+			
+		} catch (Exception e) {
+			throw new RuntimeException("bad names/BUG", e);
+			// return null
+		}
+		return path;
+	}
+
 
 
 }
