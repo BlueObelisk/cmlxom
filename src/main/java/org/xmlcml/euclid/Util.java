@@ -2926,7 +2926,7 @@ public class Util implements EuclidConstants {
 		if (newSeparator == null) {
 			newSeparator = File.separator;
 		}
-		String regex = (File.separator.equals("\\")) ? "\\\\" : File.separator+3;
+		String regex = (File.separator.equals("\\")) ? "\\\\" : File.separator;
 		String path = null;
 		try {
 			String path1 = file1.getCanonicalPath();
