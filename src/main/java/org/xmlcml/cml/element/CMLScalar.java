@@ -1,6 +1,7 @@
 package org.xmlcml.cml.element;
 
 import java.text.ParseException;
+import java.util.Date;
 
 import nu.xom.Element;
 import nu.xom.Node;
@@ -86,14 +87,13 @@ public class CMLScalar extends AbstractScalar implements HasUnits, HasScalar, Ha
 		String dataType = this.getDataType();
 		if (dataType.equals(XSD_STRING)) {
 		} else if (dataType.equals(XSD_BOOLEAN)) {
-			this.getDouble();
+			this.getBoolean();
 		} else if (XSD_DOUBLE.equals(CMLType.getNormalizedValue(dataType))) {
 			this.getDouble();
 		} else if (dataType.equals(XSD_INTEGER)) {
 			this.getInt();
 		} else if (dataType.equals(XSD_DATE)) {
-			LOG.trace("skipped date");
-			// this.getInt();
+			this.getDate();
 		} else {
 			throw new RuntimeException("scalar does not support dataType: "
 					+ dataType);
@@ -102,6 +102,24 @@ public class CMLScalar extends AbstractScalar implements HasUnits, HasScalar, Ha
 
 	// =========================== additional constructors
 	// ========================
+
+	/**
+	 * formed from components. sets dataType to xsd:boolean
+	 * 
+	 * @param scalar
+	 */
+	public CMLScalar(Boolean scalar) {
+		this.setValue(scalar);
+	}
+
+	/**
+	 * formed from components. sets dataType to xsd:date
+	 * 
+	 * @param scalar
+	 */
+	public CMLScalar(Date scalar) {
+		this.setValue(scalar);
+	}
 
 	/**
 	 * formed from components. sets dataType to xsd:string
@@ -128,6 +146,38 @@ public class CMLScalar extends AbstractScalar implements HasUnits, HasScalar, Ha
 	 */
 	public CMLScalar(int scalar) {
 		this.setValue(scalar);
+	}
+
+	/**
+	 * gets boolean. dataType must be XSD_BOOLEAN.
+	 * 
+	 * @return the value (null if not set)
+	 */
+	public Boolean getBoolean() {
+		Boolean result = null;
+		if (getDataType().equals(XSD_BOOLEAN)) {
+			String content = getXMLContent();
+			if (content != null) {
+				result = new Boolean(content);
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * gets real value. dataType must be XSD_DATE
+	 * 
+	 * @return the value (NaN if not set)
+	 */
+	public Date getDate() {
+		Date result = null;
+		if (getDataType().equals(XSD_DATE)) {
+			String content = getXMLContent();
+			if (content != null) {
+				result = new Date(content);
+			}
+		}
+		return result;
 	}
 
 	/**
@@ -192,6 +242,26 @@ public class CMLScalar extends AbstractScalar implements HasUnits, HasScalar, Ha
 	// ====================== subsidiary accessors =====================
 
 	/**
+	 * sets value to boolean.. updates dataType.
+	 * 
+	 * @param scalar
+	 */
+	public void setValue(Boolean scalar) {
+		setXMLContent(S_EMPTY + scalar);
+		super.setDataType(XSD_BOOLEAN);
+	}
+
+	/**
+	 * sets value to date. updates dataType.
+	 * 
+	 * @param scalar
+	 */
+	public void setValue(Date scalar) {
+		setXMLContent(S_EMPTY + scalar);
+		super.setDataType(XSD_DATE);
+	}
+
+	/**
 	 * sets value to String.. updates dataType.
 	 * TRIMS value
 	 * @param scalar no action if null
@@ -217,7 +287,7 @@ public class CMLScalar extends AbstractScalar implements HasUnits, HasScalar, Ha
 	}
 
 	/**
-	 * sets value to double.. updates dataType.
+	 * sets value to double. updates dataType.
 	 * 
 	 * @param scalar
 	 */

@@ -341,12 +341,12 @@ public interface CMLConstants extends EuclidConstants {
     /** constant */
     String CML_NS = CML_NS_BASE+EC.U_S+"schema";
 
-    /** cmlx namespace */
-    String CMLX_NS = CML_NS_BASE+EC.U_S+"schema"+S_SLASH+"cmlx";
-
     /** CMLX prefix (cmlx) for experimentation and development
      */
     String CMLX_PREFIX = "cmlx";
+
+    /** cmlx namespace */
+    String CMLX_NS = CML_NS_BASE+EC.U_S+"schema"+S_SLASH+CMLX_PREFIX;
 
     /**
      * namespace declaration for CMLx with prefix
