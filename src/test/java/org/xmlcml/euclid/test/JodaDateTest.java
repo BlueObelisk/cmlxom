@@ -5,6 +5,7 @@ import java.util.Date;
 import junit.framework.Assert;
 
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 import org.junit.Test;
 import org.xmlcml.euclid.JodaDate;
 
@@ -13,8 +14,9 @@ public class JodaDateTest {
 	@Test
     public void testFormatDate() {
 		DateTime datetime = new DateTime(1288135627973L);
+		datetime = datetime.withZone(DateTimeZone.forID("UTC"));
 		String dateTimeString = JodaDate.formatIsoDate(datetime);
-		Assert.assertEquals("date string", "2010-10-27T00:27:07.973+01:00", dateTimeString);
+		Assert.assertEquals("date string", "2010-10-26T23:27:07.973Z", dateTimeString);
     }
 
 	@Test
