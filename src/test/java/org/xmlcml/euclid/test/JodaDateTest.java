@@ -13,8 +13,8 @@ public class JodaDateTest {
 	@Test
     public void testFormatDate() {
 		DateTime datetime = new DateTime(1288135627973L);
-		String dateTimeString = JodaDate.formatDate(datetime);
-		Assert.assertEquals("date string", "2010-10-27T00:27:07+01:00", dateTimeString);
+		String dateTimeString = JodaDate.formatIsoDate(datetime);
+		Assert.assertEquals("date string", "2010-10-27T00:27:07.973+01:00", dateTimeString);
     }
 
 	@Test

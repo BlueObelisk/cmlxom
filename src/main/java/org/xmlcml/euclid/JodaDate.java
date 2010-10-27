@@ -7,6 +7,7 @@ import org.joda.time.DateTimeZone;
 import org.joda.time.MutableDateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+import org.joda.time.format.ISODateTimeFormat;
 /**
  * really just to remember at this stage
  * @author pm286
@@ -29,6 +30,10 @@ public class JodaDate {
             return DATETIME_FORMATTER.print(datetime);
         }
     }
+    
+	public static String formatIsoDate(DateTime datetime) {
+	    return ISODateTimeFormat.dateTime().print(datetime);
+	}
 
     public static DateTime parseDate(String s) {
         if (s.endsWith("Z")) {
