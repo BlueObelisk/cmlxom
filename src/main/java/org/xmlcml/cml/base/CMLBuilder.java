@@ -177,8 +177,8 @@ public class CMLBuilder extends Builder implements CMLConstants {
                 CMLElement cmlElement = (CMLElement) doc2.getRootElement();
                 return cmlElement;
             } catch (Exception e) {
-                CMLUtil.debug(xml, "NON-XML");
-                throw new RuntimeException(e);
+                CMLUtil.debug(xml, "ensureCMLProblem "+e);
+                throw new RuntimeException("ensureCMLProblem", e);
             }
        }
     }
