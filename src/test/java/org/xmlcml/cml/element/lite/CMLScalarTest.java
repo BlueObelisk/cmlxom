@@ -9,6 +9,7 @@ import static org.xmlcml.euclid.EuclidConstants.EPS;
 import static org.xmlcml.euclid.EuclidConstants.S_EMPTY;
 import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.StringReader;
 
@@ -17,8 +18,10 @@ import nu.xom.ParsingException;
 import nu.xom.Text;
 import nu.xom.ValidityException;
 
+import org.joda.time.DateTime;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.base.CMLBuilder;
@@ -28,6 +31,7 @@ import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLUtil;
 import org.xmlcml.cml.element.CMLCml;
 import org.xmlcml.cml.element.CMLScalar;
+import org.xmlcml.euclid.JodaDate;
 
 /**
  * tests CMLScalar.
@@ -293,6 +297,38 @@ public class CMLScalarTest {
 		Assert.assertEquals("value", 98, s.getInt());
 
 	}
+
+	/**
+	 * Test method for 'org.xmlcml.cml.element.CMLScalar.CMLScalar(Date)'
+	 */
+	@Test
+	public void testCMLScalarDate() throws Exception {
+		
+		DateTime today = new DateTime();
+		DateTime noMillisToday = today.minusMillis(today.getMillisOfSecond());
+		CMLScalar s = new CMLScalar(today);
+		Assert.assertNotNull("new CMLScalar", s);
+		Assert.assertEquals("data type", CMLElement.XSD_DATE, s.getDataType());
+		Assert.assertEquals("value", noMillisToday, s.getDate());
+
+	}
+	
+	/**
+	 * Test method for 'org.xmlcml.cml.element.CMLScalar.CMLScalar(Date)'
+	 */
+	@Test
+	public void testCMLScalarDate1() throws Exception {
+		
+		DateTime date = new DateTime(2010, 10, 26, 17, 56, 23, 123);
+		DateTime noMillisToday = date.minusMillis(date.getMillisOfSecond());
+		CMLScalar s = new CMLScalar(date);
+		Assert.assertNotNull("new CMLScalar", s);
+		Assert.assertEquals("data type", CMLElement.XSD_DATE, s.getDataType());
+		Assert.assertEquals("value", JodaDate.formatDate(noMillisToday), JodaDate.formatDate(s.getDate()));
+		Assert.assertEquals("value", noMillisToday, s.getDate());
+
+	}
+
 
 	/**
 	 * Test method for 'org.xmlcml.cml.element.CMLScalar.getString()'
@@ -851,11 +887,19 @@ public class CMLScalarTest {
 		Assert.assertEquals("whitespace", "one\ntwo\nthree", scalar1.getValue());
 	}
 	@Test
+	@Ignore ("the content is correct")
 	public void testNonNormalizedWhitespace3() throws Exception {
 		String s = "one\ntwo\nthree";
 		CMLScalar scalar = new CMLScalar(s);
-		scalar.debug("Muck ws");
-		CMLUtil.debug(scalar, System.out, 0);
+		Assert.assertNotNull(scalar);
+		// this should have correct ws
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		CMLUtil.debug(scalar, baos, 0);
+		Assert.assertEquals("good whitespace", 
+				"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+
+				"<scalar dataType=\"xsd:string\" xmlns=\"http://www.xml-cml.org/schema\">one\n"+
+		"two\n"+
+		"three</scalar>\n", baos.toString());
 	}
 	@Test
 	public void testNonNormalizedWhitespace4() {
