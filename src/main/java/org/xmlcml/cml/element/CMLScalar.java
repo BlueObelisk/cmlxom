@@ -175,7 +175,6 @@ public class CMLScalar extends AbstractScalar implements HasUnits, HasScalar, Ha
 		if (getDataType().equals(XSD_DATE)) {
 			String content = getXMLContent();
 			if (content != null) {
-				System.out.println(">>>"+content);
 				try {
 					result = JodaDate.parseDate(content);
 				} catch (Exception e) {
@@ -263,7 +262,8 @@ public class CMLScalar extends AbstractScalar implements HasUnits, HasScalar, Ha
 	 * @param scalar
 	 */
 	public void setValue(DateTime scalar) {
-		setXMLContent(JodaDate.formatDate(scalar));
+		String date = JodaDate.formatDate(scalar);
+		setXMLContent(date);
 		super.setDataType(XSD_DATE);
 	}
 
