@@ -46,9 +46,13 @@ public class JodaDate {
     }
 
     public static DateTime parseDate(String date, String format) {
-	    DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(format);
-        MutableDateTime dateTime = dateTimeFormatter.parseMutableDateTime(date);
-        return dateTime.toDateTime();
+		DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(format);
+    	if (format.endsWith("Z")) {
+    	} else {
+    		dateTimeFormatter = dateTimeFormatter.withZone(DateTimeZone.forID("UTC"));
+    	}
+        DateTime dateTime = dateTimeFormatter.parseDateTime(date);
+        return dateTime.withZone(DateTimeZone.forID("UTC"));
     }
 
     public static DateTime parseJavaDate(Date javaDate) {
