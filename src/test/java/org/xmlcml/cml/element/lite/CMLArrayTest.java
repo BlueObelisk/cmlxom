@@ -1138,52 +1138,51 @@ public class CMLArrayTest {
 		StringTestBase.assertEquals("ints", new String[] { "1.0", "2.0" },
 				(String[]) array.getStringValues().toArray(new String[0]));
 	}
+	
+	@Test
+	public void testAppend() {
+		CMLArray array = new CMLArray(new String[] { "a", "b" });
+		CMLArray array1 = new CMLArray(new String[] { "c", "d", "e" });
+		array.append(array1);
+		CMLArray arrayRef = new CMLArray(new String[] {"a", "b", "c", "d", "e" });
+		CMLArrayTest.assertEquals("append", array, arrayRef, 0.000001);
+	}
 
-	// /**
-	// * Test method for
-	// 'org.xmlcml.cml.element.CMLArray.getUnit(NamespaceToUnitListMap)'
-	// */
-	// @Test
-	// public void testGetUnit() {
-	// try {
-	// new AbstractUnitTest().setUp();
-	// } catch (Exception e) {
-	// neverThrow(e);
-	// }
-	// NamespaceToUnitListMap unitListMap = AbstractUnitTest.unitListMap;
-	// Assert.assertNotNull("unitlistMap not null", unitListMap);
-	// }
+	@Test
+	public void testAppendDelimiter() {
+		CMLArray array = new CMLArray(new String[] { "a", "b" }, "|");
+		CMLArray array1 = new CMLArray(new String[] { "c", "d", "e" }, "|");
+		CMLArray arrayRef = new CMLArray(new String[] {"a", "b", "c", "d", "e" }, "|");
+		CMLArrayTest.assertEquals("append", array, arrayRef, 0.000001);
+	}
 
-	// /**
-	// * Test method for 'org.xmlcml.cml.element.CMLArray.setUnits(String,
-	// * String)'
-	// */
-	// @Test
-	// public void testGetSetUnitsStringString() {
-	// String unitsS = xmlD0.getUnits();
-	// Assert.assertNull("units on D0", unitsS);
-	// String prefix = "siUnits";
-	// String units = "m";
-	// String namespace = SIUNIT_NS;
-	// xmlD0.setUnits(prefix, units, namespace);
-	// unitsS = xmlD0.getUnits();
-	// Assert.assertNotNull("units on D0", unitsS);
-	// Assert.assertEquals("units on D0", "siUnits:m", unitsS);
-	// UnitsAttribute unitsAttribute = (UnitsAttribute)
-	// xmlD0.getUnitsAttribute();
-	// Assert.assertEquals("units namespace on D0", SIUNIT_NS,
-	// unitsAttribute.getNamespaceURIString());
-	//
-	// try {
-	// new AbstractUnitTest().setUp();
-	// } catch (Exception e) {
-	// neverThrow(e);
-	// }
-	// NamespaceToUnitListMap unitListMap = AbstractUnitTest.unitListMap;
-	// Assert.assertNotNull("unitlistMap not null", unitListMap);
-	// Assert.assertEquals("unitlistMap size", NUNIT_DICT, unitListMap.size());
-	// CMLUnit unit = xmlD0.getUnit(unitListMap);
-	// Assert.assertNotNull("unit not null", unit);
-	// }
+	@Test
+	public void testAppendDoubleArray() {
+		CMLArray array = new CMLArray(new double[] { 1.1, 2.2 });
+		CMLArray array1 = new CMLArray(new double[] { 3.3, 4.4, 5.5});
+		array.append(array1);
+		CMLArray arrayRef = new CMLArray(new double[]{1.1, 2.2, 3.3, 4.4, 5.5 });
+		CMLArrayTest.assertEquals("append", array, arrayRef, 0.000001);
+	}
+
+	@Test
+	public void testAppendIntArray() {
+		CMLArray array = new CMLArray(new int[] { 1, 2 });
+		CMLArray array1 = new CMLArray(new int[] { 3, 4, 5});
+		array.append(array1);
+		CMLArray arrayRef = new CMLArray(new int[]{1, 2, 3, 4, 5 });
+		CMLArrayTest.assertEquals("append", array, arrayRef, 0.000001);
+	}
+
+	@Test
+	public void testAppendMixedArray() {
+		CMLArray array = new CMLArray(new String[] { "a", "b" });
+		CMLArray array1 = new CMLArray(new int[] { 3, 4, 5});
+		try {
+			array.append(array1);
+			Assert.fail("should throw incompatibility");
+		} catch (Exception e) {
+		}
+	}
 
 }

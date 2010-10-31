@@ -327,6 +327,30 @@ public class CMLScalar extends AbstractScalar implements HasUnits, HasScalar, Ha
 	}
 
 	/**
+	 * get class. if attribute not set, reset to String.
+	 * 
+	 * @return class, default String.class
+	 */
+	public Class getDataTypeClass() {
+		Class clazz = null;
+		String dataType = getDataType();
+		if (XSD_STRING.equals(dataType)) {
+			clazz = String.class;
+		} else if (XSD_DOUBLE.equals(dataType)) {
+			clazz = Double.class;
+		} else if (XSD_INTEGER.equals(dataType)) {
+			clazz = Integer.class;
+		} else if (XSD_BOOLEAN.equals(dataType)) {
+			clazz = Boolean.class;
+		} else if (XSD_DATE.equals(dataType)) {
+			clazz = DateTime.class;
+		} else {
+			
+		}
+		return clazz;
+	}
+
+	/**
 	 * set dataType. this may not be set independently of the value, so simply
 	 * throws CMLRuntime only place it is usable is within copy constructor
 	 * 

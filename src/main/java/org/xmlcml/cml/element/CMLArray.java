@@ -589,8 +589,10 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 	 *             if not of same numeric data type and size
 	 */
 	public void checkNumericConformability(CMLArray array) {
-		if (this.getDataType().equals(XSD_STRING)
-				|| !this.getDataType().equals(array.getDataType())
+		String thisDataType = this.getDataType();
+		String arrayDataType = array.getDataType();
+		if (thisDataType.equals(XSD_STRING)
+				|| !thisDataType.equals(arrayDataType)
 				|| this.getSize() != array.getSize()) {
 			throw new RuntimeException(
 					"Unsuitable dataTypes for numeric operations / "
@@ -687,7 +689,7 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 			throw new RuntimeException("Cannot add string (" + s
 					+ ") to array of: " + dataType);
 		}
-		appendXML(s);
+		appendXML(s, 1);
 	}
 
 	/**
@@ -704,7 +706,7 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 			throw new RuntimeException("Cannot add double to array of: "
 					+ dataType);
 		}
-		appendXML(S_EMPTY + d);
+		appendXML(S_EMPTY + d, 1);
 	}
 
 	/**
@@ -721,19 +723,35 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 			throw new RuntimeException("Cannot add int to array of: "
 					+ dataType);
 		}
-		appendXML(S_EMPTY + i);
+		appendXML(S_EMPTY + i, 1);
+	}
+	
+	public void append(CMLArray array) {
+		if (!this.getDataType().equals(array.getDataType())) {
+			throw new RuntimeException("Cannot append array of different type: "+this.getDataType()+" != "+array.getDataType());
+		}
+		if (!this.getDelimiter().equals(array.getDelimiter())) {
+			throw new RuntimeException("Cannot append array with different delimiter: "+this.getDelimiter()+" != "+array.getDelimiter());
+		}
+		String arrayString = array.getXMLContent();
+		String delimiter = this.getDelimiter().trim();
+		if (delimiter.length() > 0) {
+			arrayString = arrayString.substring(1, arrayString.length()-1);
+		}
+		appendXML(arrayString, array.getSize());
 	}
 
-	private void appendXML(String s) {
+	private void appendXML(String s, int toAdd) {
 		int size = (this.getSizeAttribute() == null) ? 0 : this.getSize();
 		ensureDelimiterAttribute(Action.PRESERVE);
-		delimiterAttribute.checkDelimiter(s);
+		if (toAdd <= 1) {
+			delimiterAttribute.checkDelimiter(s);
+		}
 		String xmlContent = this.getXMLContent();
-		// LOG.debug("["+xmlContent+"]["+s+"]");
 		String delimitedContent = delimiterAttribute.appendXMLContent(
 				xmlContent, s);
 		this.setXMLContent(delimitedContent);
-		resetSize(size + 1);
+		resetSize(size + toAdd);
 	}
 
 	/**
