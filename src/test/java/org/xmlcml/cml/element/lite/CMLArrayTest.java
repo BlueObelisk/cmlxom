@@ -1152,6 +1152,7 @@ public class CMLArrayTest {
 	public void testAppendDelimiter() {
 		CMLArray array = new CMLArray(new String[] { "a", "b" }, "|");
 		CMLArray array1 = new CMLArray(new String[] { "c", "d", "e" }, "|");
+		array.append(array1);
 		CMLArray arrayRef = new CMLArray(new String[] {"a", "b", "c", "d", "e" }, "|");
 		CMLArrayTest.assertEquals("append", array, arrayRef, 0.000001);
 	}
