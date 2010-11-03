@@ -1,8 +1,10 @@
 package org.xmlcml.cml.attribute;
 
 import nu.xom.Attribute;
+import nu.xom.Element;
 import nu.xom.Node;
 
+import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 
 /**
@@ -63,6 +65,18 @@ public class DictRefAttribute extends NamespaceRefAttribute {
         }
         return dictRefAttribute;
     }
-
+    
+    /**
+     * gets local value of dictRef value on element
+     * eg dictRef="a:b" returns b
+     * @param element
+     * @return null id no dictRef ; value if no prefix
+     */
+    public static String getLocalValue(Element element) {
+    	Attribute att = element.getAttribute(NAME);
+    	String value = (att == null) ? null : att.getValue();
+    	String[] values = (value == null) ? null : value.split(CMLConstants.S_COLON);
+    	return (values == null) ? null : values[values.length-1];
+    }
 
 }
