@@ -16,6 +16,9 @@ import org.joda.time.format.ISODateTimeFormat;
 public class JodaDate {
 
 // from W3C                                         2000-01-12T12:13:14Z
+    private static final String ALPHA_PATTERN = "EEE MMM dd HH:mm:ss yyyy";
+    private static final DateTimeFormatter ALPHA_FORMATTER = DateTimeFormat.forPattern(ALPHA_PATTERN);
+    
     private static final String DATETIME_PATTERN = "yyyy-MM-dd'T'HH:mm:ssZZ";
     private static final DateTimeFormatter DATETIME_FORMATTER = DateTimeFormat.forPattern(DATETIME_PATTERN);
 
@@ -40,6 +43,8 @@ public class JodaDate {
             MutableDateTime dateTime = ZULU_FORMATTER.parseMutableDateTime(s);
             dateTime.setZone(DateTimeZone.UTC);
             return dateTime.toDateTime();
+        } else if (Character.isLetter(s.charAt(0))){
+            return ALPHA_FORMATTER.parseDateTime(s);
         } else {
             return DATETIME_FORMATTER.parseDateTime(s);
         }

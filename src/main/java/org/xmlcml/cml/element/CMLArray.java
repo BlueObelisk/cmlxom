@@ -9,9 +9,10 @@ import nu.xom.Element;
 import nu.xom.Node;
 
 import org.apache.log4j.Logger;
+import org.joda.time.DateTime;
 import org.xmlcml.cml.attribute.DelimiterAttribute;
-import org.xmlcml.cml.attribute.NamespaceRefAttribute;
 import org.xmlcml.cml.attribute.DelimiterAttribute.Action;
+import org.xmlcml.cml.attribute.NamespaceRefAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
 import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
@@ -23,6 +24,7 @@ import org.xmlcml.cml.interfacex.HasDictRef;
 import org.xmlcml.cml.interfacex.HasUnits;
 import org.xmlcml.euclid.EuclidRuntimeException;
 import org.xmlcml.euclid.IntArray;
+import org.xmlcml.euclid.JodaDate;
 import org.xmlcml.euclid.RealArray;
 
 /**
@@ -234,6 +236,16 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 	 * 
 	 * @param array
 	 */
+	public CMLArray(DateTime[] array) {
+		this.setArray(array);
+	}
+
+	/**
+	 * formed from components. size is extracted from array dimensions sets
+	 * dataType to xsd:integer
+	 * 
+	 * @param array
+	 */
 	public CMLArray(int[] array) {
 		this.setArray(array);
 	}
@@ -358,6 +370,26 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 	}
 
 	/**
+	 * get dates
+	 * 
+	 * @return dates
+	 * @throws RuntimeException
+	 */
+	public DateTime[] getDates() throws RuntimeException {
+		DateTime[] dd = null;
+		String dataType = this.getDataType();
+		if (dataType != null
+				&& XSD_DATE.equals(CMLType.getNormalizedValue(dataType))) {
+			String[] ss = getSplitContent();
+			dd = new DateTime[ss.length];
+			for (int i = 0; i < dd.length; i++) {
+				dd[i] = JodaDate.parseDate(ss[i]);
+			}
+		}
+		return dd;
+	}
+
+	/**
 	 * get ints.
 	 * 
 	 * @return ints
@@ -443,6 +475,19 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 			this.removeAttribute(a);
 		}
 		super.setSize(size);
+	}
+
+	/**
+	 * sets components.
+	 * NOT IMPLEMENTED
+	 * @param array
+	 */
+	public void setArray(DateTime[] array) {
+		resetDataType(XSD_DATE);
+		ensureDelimiterAttribute(Action.PRESERVE);
+//		setXMLContent(delimiterAttribute.getDelimitedXMLContent(array));
+		resetSize(array.length);
+		throw new RuntimeException("dates in array not fully implemented");
 	}
 
 	/**
@@ -768,4 +813,19 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 		NamespaceRefAttribute.setUnits((HasUnits) this, prefix, id,
 				namespaceURI);
 	}
+
+	/**
+	 * add an integer. datatype must have been set to XSD_DATE
+	 * 
+	 * @param d date to add
+	 */
+	public void append(DateTime d) throws RuntimeException {
+		String dataType = this.getDataType();
+		if (!XSD_DATE.equals(dataType)) {
+			throw new RuntimeException("Cannot add date to array of: "
+					+ dataType);
+		}
+		appendXML(d.toString(), 1);
+	}
+	
 }
