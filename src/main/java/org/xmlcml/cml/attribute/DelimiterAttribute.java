@@ -231,6 +231,23 @@ public class DelimiterAttribute extends StringSTAttribute {
      * @param dd array of doubles
      * @return string
      */
+    public String getDelimitedXMLContent(boolean[] bb) {
+    	for (boolean b: bb) {
+    		checkDelimiter(S_EMPTY+b);
+    	}
+    	String s = Util.concatenate(bb, concat);
+        if (!isWhitespace()) {
+            s = concat + s + concat;
+        }
+        return s;
+    }
+    
+    
+    /** set double content. if delimiter is not whitespace, prepend and append it
+     *
+     * @param dd array of doubles
+     * @return string
+     */
     public String getDelimitedXMLContent(double[] dd) {
     	for (double d: dd) {
     		checkDelimiter(S_EMPTY+d);

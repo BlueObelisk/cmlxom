@@ -10,7 +10,6 @@ import org.xmlcml.cml.attribute.DictRefAttribute;
 import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
-import org.xmlcml.cml.base.CMLType;
 import org.xmlcml.cml.interfacex.HasDataType;
 import org.xmlcml.cml.interfacex.HasDictRef;
 

@@ -1,7 +1,5 @@
 package org.xmlcml.cml.element.lite;
 
-import nu.xom.ParsingException;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

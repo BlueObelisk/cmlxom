@@ -5,7 +5,6 @@ import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 import nu.xom.Element;
 
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLBuilder;
 import org.xmlcml.cml.base.CMLConstants;

@@ -529,6 +529,7 @@ public class RealSquareMatrixTest extends MatrixTest {
 		RealSquareMatrix rsm = m.calculateInverse();
 		EuclidTestUtils.testEquals("inverse", expected.getMatrix(), rsm.getMatrix(), 0.0000001);
 		RealSquareMatrix one = m.multiply(rsm);
+		Assert.assertNotNull(one);
 	}
 	
 	

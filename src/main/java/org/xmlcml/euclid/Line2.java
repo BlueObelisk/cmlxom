@@ -13,10 +13,10 @@ import org.apache.log4j.Logger;
 public class Line2 implements EuclidConstants {
 	private static Logger LOG = Logger.getLogger(Line2.class);
 
-	Real2 from;
-	Real2 to;
-	Vector2 vector;
-	Vector2 unitVector = null;
+	private Real2 from;
+	private Real2 to;
+	private Vector2 vector;
+	private Vector2 unitVector = null;
 
 	// lazy evaluation
 	private double slope = Double.NaN;
