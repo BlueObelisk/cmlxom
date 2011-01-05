@@ -4,9 +4,7 @@
 package org.xmlcml.euclid.test;
 
 import static org.xmlcml.euclid.EuclidConstants.EPS;
-
 import static org.xmlcml.euclid.EuclidConstants.F_S;
-import static org.xmlcml.euclid.EuclidConstants.S_PERIOD;
 import static org.xmlcml.euclid.test.EuclidTestBase.neverFail;
 import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
@@ -22,7 +20,6 @@ import java.util.List;
 import nu.xom.Builder;
 import nu.xom.Document;
 
-import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;

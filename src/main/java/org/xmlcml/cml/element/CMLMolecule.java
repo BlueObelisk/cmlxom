@@ -21,8 +21,6 @@ import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.base.CMLUtil;
-import org.xmlcml.cml.base.CMLElement.CoordinateType;
-import org.xmlcml.euclid.Point3Vector;
 import org.xmlcml.euclid.Real2;
 import org.xmlcml.euclid.Real2Vector;
 

@@ -1782,9 +1782,7 @@ public class CMLFormula extends AbstractFormula {
 						break;
 					}
 					double dd = counts[i] / fCounts[i];
-					if (false) {
-						;
-					} else if (Double.isNaN(divide)) {
+					if (Double.isNaN(divide)) {
 						divide = dd;
 					} else if (Math.abs(divide - dd) > eps) {
 						divide = Double.NaN;

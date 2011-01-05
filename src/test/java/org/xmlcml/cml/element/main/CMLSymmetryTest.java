@@ -1,13 +1,12 @@
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.euclid.EC.EPS;
+import static org.xmlcml.euclid.EuclidConstants.EPS;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElements;
