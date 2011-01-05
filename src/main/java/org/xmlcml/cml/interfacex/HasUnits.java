@@ -20,6 +20,12 @@ public interface HasUnits {
      */
     void setUnits(String prefix, String idRef, String namespaceURI);
 
+    /**
+     * 
+     * @return units as String
+     */
+    String getUnits();
+
     // removed in this version
 //    /**
 //     * converts a real scalar to SI. only affects scalar with units attribute

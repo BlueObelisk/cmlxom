@@ -216,6 +216,16 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 
 	/**
 	 * formed from components. size is extracted from array dimensions sets
+	 * dataType to xsd:double
+	 * 
+	 * @param array
+	 */
+	public CMLArray(boolean[] array) {
+		this.setArray(array);
+	}
+
+	/**
+	 * formed from components. size is extracted from array dimensions sets
 	 * dataType to xsd:double cannot use delimiter if strings contain it, so
 	 * choose another delimiter
 	 * 
@@ -265,6 +275,70 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 		this.setArray(array);
 	}
 
+	/** creates array of given dataType
+	 * 
+	 * @param dataType
+	 */
+	public CMLArray(String dataType) {
+		this();
+		this.resetDataType(dataType);
+	}
+	
+	public static CMLArray createArray(List<CMLScalar> scalarList) {
+		CMLArray array = null;
+		if (scalarList != null && scalarList.size() > 0) {
+			CMLScalar scalar = scalarList.get(0);
+			if (scalar == null) {
+				throw new RuntimeException("Null scalar in list: "+scalarList.size());
+			}
+			array = createArrayWithAttributes(scalar);
+		}
+		for (CMLScalar scalar : scalarList) {
+			array.append(scalar);
+		}
+		return array;
+	}
+
+	public static CMLArray createArrayWithAttributes(HasDataType hasDataType) {
+		CMLArray array;
+		String dataType = hasDataType.getDataType();
+		if (dataType == null) {
+			throw new RuntimeException("Null data type");
+		}
+		array = new CMLArray(dataType);
+		String dictRef = hasDataType.getDictRef();
+		if (dictRef != null) {
+			array.setDictRef(dictRef);
+		}
+		String units = ((HasUnits)hasDataType).getUnits();
+		if (units != null) {
+			array.setUnits(units);
+		}
+		return array;
+	}
+	
+	/** creates array of type comptatible with scalar
+	 * can be used to add subsequently scalar contents to array
+	 * does NOT add scalar contents
+	 * typical use
+	 * List<CMLScalar> scalars;
+	 * CMLArray array = CMLArray.createEmptyArray(scalars.get(0));
+	 * for (CMLScalar scalar : scalars) {
+	 *     array.append(scalar);
+	 * }
+	 * @param scalar
+	 * @return
+	 */
+	public CMLArray createEmptyArray(CMLScalar scalar) {
+		CMLArray array = null;
+		if (scalar != null && scalar.getDataType() != null) {
+			array = new CMLArray(scalar.getDataType());
+		}
+		return array;
+	}
+
+	
+
 	// ====================== housekeeping methods =====================
 
 	/**
@@ -285,6 +359,10 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 		Object primitiveArray = null;
 		if (XSD_DOUBLE.equals(this.getDataType())) {
 			primitiveArray = this.getDoubles();
+		} else if (XSD_BOOLEAN.equals(this.getDataType())) {
+			primitiveArray = this.getBooleans();
+		} else if (XSD_DATE.equals(this.getDataType())) {
+			primitiveArray = this.getDates();
 		} else if (XSD_INTEGER.equals(this.getDataType())) {
 			primitiveArray = this.getInts();
 		} else if (XSD_STRING.equals(this.getDataType())) {
@@ -340,6 +418,27 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 		}
 		return ss;
 	}
+
+	/**
+	 * get doubles.
+	 * 
+	 * @return doubles
+	 * @throws RuntimeException
+	 */
+	public boolean[] getBooleans() throws RuntimeException {
+		boolean[] dd = null;
+		String dataType = this.getDataType();
+		if (dataType != null
+				&& XSD_BOOLEAN.equals(CMLType.getNormalizedValue(dataType))) {
+			String[] ss = getSplitContent();
+			dd = new boolean[ss.length];
+			for (int i = 0; i < dd.length; i++) {
+				dd[i] = new Boolean(ss[i]);
+			}
+		}
+		return dd;
+	}
+
 
 	/**
 	 * get doubles.
@@ -488,6 +587,18 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 //		setXMLContent(delimiterAttribute.getDelimitedXMLContent(array));
 		resetSize(array.length);
 		throw new RuntimeException("dates in array not fully implemented");
+	}
+
+	/**
+	 * sets components.
+	 * 
+	 * @param array
+	 */
+	public void setArray(boolean[] array) {
+		resetDataType(XSD_BOOLEAN);
+		ensureDelimiterAttribute(Action.PRESERVE);
+		setXMLContent(delimiterAttribute.getDelimitedXMLContent(array));
+		resetSize(array.length);
 	}
 
 	/**
@@ -745,6 +856,23 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 	 * @throws RuntimeException
 	 *             dataType not XSD_DOUBLE
 	 */
+	public void append(boolean b) throws RuntimeException {
+		String dataType = this.getDataType();
+		if (!XSD_BOOLEAN.equals(dataType)) {
+			throw new RuntimeException("Cannot add boolean to array of: "
+					+ dataType);
+		}
+		appendXML(S_EMPTY + b, 1);
+	}
+
+	/**
+	 * add a double. datatype must have been set to XSD_DOUBLE
+	 * 
+	 * @param d
+	 *            double to add
+	 * @throws RuntimeException
+	 *             dataType not XSD_DOUBLE
+	 */
 	public void append(double d) throws RuntimeException {
 		String dataType = this.getDataType();
 		if (!XSD_DOUBLE.equals(dataType)) {
@@ -778,6 +906,9 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 		if (!this.getDelimiter().equals(array.getDelimiter())) {
 			throw new RuntimeException("Cannot append array with different delimiter: "+this.getDelimiter()+" != "+array.getDelimiter());
 		}
+		if (this.getUnits() != null && !this.getUnits().equals(array.getUnits())) {
+			throw new RuntimeException("Cannot append array with different units: "+this.getDelimiter()+" != "+array.getUnits());
+		}
 		String arrayString = array.getXMLContent();
 		String delimiter = this.getDelimiter().trim();
 		if (delimiter.length() > 0) {
@@ -798,7 +929,43 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 		this.setXMLContent(delimitedContent);
 		resetSize(size + toAdd);
 	}
+	
+	public void append(CMLScalar scalar) {
+		if (scalar != null) {
+			String dataType = this.getDataType();
+			if (!dataType.equals(scalar.getDataType())) {
+				throw new RuntimeException("Cannot append scalar of different type: "+dataType+" != "+scalar.getDataType());
+			}
+			if (this.getUnits() != null && !this.getUnits().equals(scalar.getUnits())) {
+				throw new RuntimeException("Cannot append scalar with different units: "+this.getDelimiter()+" != "+scalar.getUnits());
+			}
+			append(scalar.getXMLContent(), dataType);
+		}
+	}
 
+	private void append(String content, String dataType) {
+		if (XSD_STRING.equals(dataType)) {
+			this.append(content);
+		} else if (XSD_BOOLEAN.equals(dataType)) {
+			this.append(new Boolean(content).booleanValue());
+		} else if (XSD_DATE.equals(dataType)) {
+			this.append(JodaDate.parseDate(content).toString());
+		} else if (XSD_DOUBLE.equals(dataType)) {
+			this.append(new Double(content).doubleValue());
+		} else if (XSD_INTEGER.equals(dataType)) {
+			this.append(new Integer(content).intValue());
+		}
+	}
+	
+	public void append(HasDictRef hasDictRef) {
+		if (hasDictRef instanceof CMLScalar) {
+			this.append((CMLScalar) hasDictRef);
+		} else if (hasDictRef instanceof CMLArray) {
+			this.append((CMLArray) hasDictRef);
+		} else {
+			throw new RuntimeException("Cannot add HasDictRef: "+((CMLElement)hasDictRef).getLocalName());
+		}
+	}
 	/**
 	 * sets units attribute. requires namespace for unit to be in scope.
 	 * 

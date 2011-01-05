@@ -331,8 +331,8 @@ public class CMLScalar extends AbstractScalar implements HasUnits, HasScalar, Ha
 	 * 
 	 * @return class, default String.class
 	 */
-	public Class getDataTypeClass() {
-		Class clazz = null;
+	public Class<?> getDataTypeClass() {
+		Class<?> clazz = null;
 		String dataType = getDataType();
 		if (XSD_STRING.equals(dataType)) {
 			clazz = String.class;

@@ -11,7 +11,6 @@ import nu.xom.NodeFactory;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLBuilder;
 import org.xmlcml.cml.base.CMLConstants;
-import org.xmlcml.cml.base.CMLNodeFactory;
 import org.xmlcml.euclid.Util;
 
 /**

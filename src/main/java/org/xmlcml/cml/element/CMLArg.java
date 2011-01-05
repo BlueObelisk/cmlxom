@@ -482,10 +482,6 @@ public class CMLArg extends AbstractArg {
             element.query(CMLArg.NS+"[@parameterName]", CMLConstants.CML_XPATH);
         for (int i = 0; i < parameterNameArgs.size(); i++) {
             CMLArg arg = (CMLArg) parameterNameArgs.get(i);
-            if (1 == 2) {
-            	arg.debug("ARG");
-//            arg.substituteParameter(element);
-            }
         }
     }
 
