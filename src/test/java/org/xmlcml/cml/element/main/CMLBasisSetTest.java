@@ -22,7 +22,6 @@ import org.xmlcml.euclid.EuclidConstants;
 import org.xmlcml.euclid.EuclidRuntimeException;
 import org.xmlcml.euclid.RealArray;
 import org.xmlcml.euclid.test.DoubleTestBase;
-import org.xmlcml.euclid.test.RealArrayTest;
 
 /** */
 public class CMLBasisSetTest {

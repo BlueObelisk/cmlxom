@@ -13,7 +13,6 @@ import org.xmlcml.cml.element.CMLArray;
 import org.xmlcml.euclid.EC;
 import org.xmlcml.euclid.Int;
 import org.xmlcml.euclid.test.DoubleTestBase;
-import org.xmlcml.euclid.test.IntTest;
 import org.xmlcml.euclid.test.StringTestBase;
 
 /**

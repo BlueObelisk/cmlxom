@@ -1,5 +1,6 @@
 package org.xmlcml.cml.element.lite;
 
+import static org.xmlcml.euclid.EuclidConstants.S_RBRAK;
 import nu.xom.Node;
 
 import org.junit.Assert;
@@ -15,13 +16,13 @@ import org.xmlcml.cml.element.CMLMolecule;
 import org.xmlcml.cml.element.main.MoleculeAtomBondFixture;
 import org.xmlcml.euclid.Angle;
 import org.xmlcml.euclid.EC;
+import org.xmlcml.euclid.EuclidConstants;
 import org.xmlcml.euclid.Point3;
 import org.xmlcml.euclid.Real2;
 import org.xmlcml.euclid.Transform2;
 import org.xmlcml.euclid.Transform3;
 import org.xmlcml.euclid.Vector3;
-import org.xmlcml.euclid.test.Point3Test;
-import org.xmlcml.euclid.test.Vector3Test;
+import org.xmlcml.euclid.test.DoubleTestBase;
 import org.xmlcml.molutil.ChemicalElement;
 import org.xmlcml.molutil.ChemicalElement.AS;
 
@@ -246,8 +247,12 @@ public class CMLAtomTest {
 	public void testGetXYZ3() {
 		// CML
 		Point3 p3 = fixture.xmlAtom[1].getXYZ3();
-		Point3Test.assertEquals("3D coord", new double[] { 1., 1., 1., }, p3,
-				EC.EPS);
+		double[] test = new double[] { 1., 1., 1., };
+		Assert.assertNotNull("test should not be null (" + "3D coord" + S_RBRAK, test);
+		Assert.assertEquals("must be of length 3", 3, test.length);
+		Assert.assertNotNull("ref should not be null (" + "3D coord" + S_RBRAK,
+				p3);
+		DoubleTestBase.assertEquals("3D coord", test, p3.getArray(), EC.EPS);
 
 	}
 
@@ -260,8 +265,12 @@ public class CMLAtomTest {
 		Point3 p3 = new Point3(7., 3., 5.);
 		fixture.xmlAtom[1].setXYZ3(p3);
 		Point3 p3a = fixture.xmlAtom[1].getXYZ3();
-		Point3Test.assertEquals("set 3D coord", new double[] { 7., 3., 5., },
-				p3a, EC.EPS);
+		double[] test = new double[] { 7., 3., 5., };
+		Assert.assertNotNull("test should not be null (" + "set 3D coord" + S_RBRAK, test);
+		Assert.assertEquals("must be of length 3", 3, test.length);
+		Assert.assertNotNull("ref should not be null (" + "set 3D coord" + S_RBRAK,
+				p3a);
+		DoubleTestBase.assertEquals("set 3D coord", test, p3a.getArray(), EC.EPS);
 		Assert.assertEquals("x3 coord", 7., fixture.xmlAtom[1].getX3(), EC.EPS);
 		Assert.assertEquals("y3 coord", 3., fixture.xmlAtom[1].getY3(), EC.EPS);
 		Assert.assertEquals("z3 coord", 5., fixture.xmlAtom[1].getZ3(), EC.EPS);
@@ -333,8 +342,12 @@ public class CMLAtomTest {
 		// CML
 		Point3 p3 = fixture.xmlAtom[0].getFractCoord();
 		Assert.assertNotNull("non null fract coord", p3);
-		Point3Test.assertEquals("3D coord", new double[] { 0.1, 0.2, 0.3, },
-				p3, EC.EPS);
+		double[] test = new double[] { 0.1, 0.2, 0.3, };
+		Assert.assertNotNull("test should not be null (" + "3D coord" + S_RBRAK, test);
+		Assert.assertEquals("must be of length 3", 3, test.length);
+		Assert.assertNotNull("ref should not be null (" + "3D coord" + S_RBRAK,
+				p3);
+		DoubleTestBase.assertEquals("3D coord", test, p3.getArray(), EC.EPS);
 		p3 = fixture.xmlAtom[1].getFractCoord();
 		Assert.assertNull("null fract coord", p3);
 	}
@@ -388,8 +401,12 @@ public class CMLAtomTest {
 		// DSL
 		Vector3 cross3d = fixture.xmlAtom[0].get3DCrossProduct(
 				fixture.xmlAtom[1], fixture.xmlAtom[2]);
-		Vector3Test.assertEquals("cross3d", new double[] { 0., 2., -2. },
-				cross3d, EC.EPS);
+		double[] test = new double[] { 0., 2., -2. };
+		Assert.assertNotNull("test should not be null (" + "cross3d" + EuclidConstants.S_RBRAK, test);
+		Assert.assertEquals("must be of length 3", 3, test.length);
+		Assert.assertNotNull("expected should not be null (" + "cross3d" + EuclidConstants.S_RBRAK,
+				cross3d);
+		DoubleTestBase.assertEquals("cross3d", test, cross3d.getArray(), EC.EPS);
 	}
 
 	/**
@@ -401,8 +418,12 @@ public class CMLAtomTest {
 		// DSL
 		Vector3 cross2d = fixture.xmlAtom[0].get2DCrossProduct(
 				fixture.xmlAtom[1], fixture.xmlAtom[2]);
-		Vector3Test.assertEquals("cross2d", new double[] { 0., 0., -2. },
-				cross2d, EC.EPS);
+		double[] test = new double[] { 0., 0., -2. };
+		Assert.assertNotNull("test should not be null (" + "cross2d" + EuclidConstants.S_RBRAK, test);
+		Assert.assertEquals("must be of length 3", 3, test.length);
+		Assert.assertNotNull("expected should not be null (" + "cross2d" + EuclidConstants.S_RBRAK,
+				cross2d);
+		DoubleTestBase.assertEquals("cross2d", test, cross2d.getArray(), EC.EPS);
 	}
 
 	/**
@@ -412,8 +433,12 @@ public class CMLAtomTest {
 	public void testGet2DPoint3() {
 		// DSL
 		Point3 point3 = fixture.xmlAtom[1].get2DPoint3();
-		Point3Test.assertEquals("point23", new double[] { 1., 1., 0. }, point3,
-				EC.EPS);
+		double[] test = new double[] { 1., 1., 0. };
+		Assert.assertNotNull("test should not be null (" + "point23" + S_RBRAK, test);
+		Assert.assertEquals("must be of length 3", 3, test.length);
+		Assert.assertNotNull("ref should not be null (" + "point23" + S_RBRAK,
+				point3);
+		DoubleTestBase.assertEquals("point23", test, point3.getArray(), EC.EPS);
 	}
 
 	/**
@@ -423,8 +448,12 @@ public class CMLAtomTest {
 	public void testGetVector3() {
 		// DSL
 		Vector3 v3 = fixture.xmlAtom[0].getVector3(fixture.xmlAtom[1]);
-		Vector3Test.assertEquals("atom0 atom1", new double[] { 1., 1., 1. },
-				v3, EC.EPS);
+		double[] test = new double[] { 1., 1., 1. };
+		Assert.assertNotNull("test should not be null (" + "atom0 atom1" + EuclidConstants.S_RBRAK, test);
+		Assert.assertEquals("must be of length 3", 3, test.length);
+		Assert.assertNotNull("expected should not be null (" + "atom0 atom1" + EuclidConstants.S_RBRAK,
+				v3);
+		DoubleTestBase.assertEquals("atom0 atom1", test, v3.getArray(), EC.EPS);
 	}
 
 	/**
@@ -504,18 +533,31 @@ public class CMLAtomTest {
 		CMLAtom atom = fixture.xmlAtom[2];
 		Point3 p3 = atom.getXYZ3();
 		Assert.assertNotNull("p3 ", p3);
-		Point3Test.assertEquals("p3 before ", new double[] { 1.0, -1., -1. },
-				p3, EC.EPS);
+		double[] test = new double[] { 1.0, -1., -1. };
+		Assert.assertNotNull("test should not be null (" + "p3 before " + S_RBRAK, test);
+		Assert.assertEquals("must be of length 3", 3, test.length);
+		Assert.assertNotNull("ref should not be null (" + "p3 before " + S_RBRAK,
+				p3);
+		DoubleTestBase.assertEquals("p3 before ", test, p3.getArray(), EC.EPS);
 		atom.setXYZ3(new Point3(1.2, 3.4, 5.6));
 		p3 = atom.getXYZ3();
 		Assert.assertNotNull("p3 not null", p3);
-		Point3Test.assertEquals("p3 after ", new double[] { 1.2, 3.4, 5.6 },
-				p3, EC.EPS);
+		double[] test1 = new double[] { 1.2, 3.4, 5.6 };
+		Assert.assertNotNull("test should not be null (" + "p3 after " + S_RBRAK, test1);
+		Assert.assertEquals("must be of length 3", 3, test1.length);
+		Assert.assertNotNull("ref should not be null (" + "p3 after " + S_RBRAK,
+				p3);
+		DoubleTestBase.assertEquals("p3 after ", test1, p3.getArray(), EC.EPS);
 		atom.increaseXYZ3(2., 3., 4.);
 		p3 = atom.getXYZ3();
 		Assert.assertNotNull("p3 not null", p3);
-		Point3Test.assertEquals("p3 after translate", new double[] { 3.2, 6.4,
-				9.6 }, p3, EC.EPS);
+		double[] test2 = new double[] { 3.2, 6.4,
+				9.6 };
+		Assert.assertNotNull("test should not be null (" + "p3 after translate" + S_RBRAK, test2);
+		Assert.assertEquals("must be of length 3", 3, test2.length);
+		Assert.assertNotNull("ref should not be null (" + "p3 after translate" + S_RBRAK,
+				p3);
+		DoubleTestBase.assertEquals("p3 after translate", test2, p3.getArray(), EC.EPS);
 	}
 
 	/**
@@ -531,13 +573,22 @@ public class CMLAtomTest {
 		atom.setXYZFract(new Point3(.12, .34, .56));
 		p3 = atom.getXYZFract();
 		Assert.assertNotNull("p3 not null", p3);
-		Point3Test.assertEquals("p3 after ", new double[] { .12, .34, .56 },
-				p3, EC.EPS);
+		double[] test = new double[] { .12, .34, .56 };
+		Assert.assertNotNull("test should not be null (" + "p3 after " + S_RBRAK, test);
+		Assert.assertEquals("must be of length 3", 3, test.length);
+		Assert.assertNotNull("ref should not be null (" + "p3 after " + S_RBRAK,
+				p3);
+		DoubleTestBase.assertEquals("p3 after ", test, p3.getArray(), EC.EPS);
 		atom.increaseXYZFract(.2, .3, .4);
 		p3 = atom.getXYZFract();
 		Assert.assertNotNull("p3 not null", p3);
-		Point3Test.assertEquals("p3 after translate", new double[] { .32, .64,
-				.96 }, p3, EC.EPS);
+		double[] test1 = new double[] { .32, .64,
+				.96 };
+		Assert.assertNotNull("test should not be null (" + "p3 after translate" + S_RBRAK, test1);
+		Assert.assertEquals("must be of length 3", 3, test1.length);
+		Assert.assertNotNull("ref should not be null (" + "p3 after translate" + S_RBRAK,
+				p3);
+		DoubleTestBase.assertEquals("p3 after translate", test1, p3.getArray(), EC.EPS);
 	}
 
 	/**
@@ -617,15 +668,23 @@ public class CMLAtomTest {
 	public final void testGetPoint3() {
 		// CML
 		Point3 p = fixture.xomAtom[0].getPoint3(CoordinateType.CARTESIAN);
-		Point3Test.assertEquals("getPoint3", new double[] { 0.0, 1.0, 2.0 }, p,
-				EC.EPS);
+		double[] test = new double[] { 0.0, 1.0, 2.0 };
+		Assert.assertNotNull("test should not be null (" + "getPoint3" + S_RBRAK, test);
+		Assert.assertEquals("must be of length 3", 3, test.length);
+		Assert.assertNotNull("ref should not be null (" + "getPoint3" + S_RBRAK,
+				p);
+		DoubleTestBase.assertEquals("getPoint3", test, p.getArray(), EC.EPS);
 
 		// test set
 		fixture.xomAtom[0].setPoint3(new Point3(1.1, 1.2, 1.3),
 				CoordinateType.CARTESIAN);
 		p = fixture.xomAtom[0].getPoint3(CoordinateType.CARTESIAN);
-		Point3Test.assertEquals("getPoint3", new double[] { 1.1, 1.2, 1.3 }, p,
-				EC.EPS);
+		double[] test1 = new double[] { 1.1, 1.2, 1.3 };
+		Assert.assertNotNull("test should not be null (" + "getPoint3" + S_RBRAK, test1);
+		Assert.assertEquals("must be of length 3", 3, test1.length);
+		Assert.assertNotNull("ref should not be null (" + "getPoint3" + S_RBRAK,
+				p);
+		DoubleTestBase.assertEquals("getPoint3", test1, p.getArray(), EC.EPS);
 
 		// fractional originally missing
 		p = fixture.xomAtom[0].getPoint3(CoordinateType.FRACTIONAL);
@@ -636,8 +695,12 @@ public class CMLAtomTest {
 				CoordinateType.FRACTIONAL);
 		p = fixture.xomAtom[0].getPoint3(CoordinateType.FRACTIONAL);
 		Assert.assertNotNull("get fract", p);
-		Point3Test.assertEquals("getPoint3", new double[] { 0.1, 0.2, 0.3 }, p,
-				EC.EPS);
+		double[] test2 = new double[] { 0.1, 0.2, 0.3 };
+		Assert.assertNotNull("test should not be null (" + "getPoint3" + S_RBRAK, test2);
+		Assert.assertEquals("must be of length 3", 3, test2.length);
+		Assert.assertNotNull("ref should not be null (" + "getPoint3" + S_RBRAK,
+				p);
+		DoubleTestBase.assertEquals("getPoint3", test2, p.getArray(), EC.EPS);
 	}
 
 	/**
@@ -650,12 +713,20 @@ public class CMLAtomTest {
 		fixture.xomAtom[0].setPoint3(new Point3(1.1, 1.2, 1.3),
 				CoordinateType.CARTESIAN);
 		Point3 p = fixture.xomAtom[0].getPoint3(CoordinateType.CARTESIAN);
-		Point3Test.assertEquals("getPoint3", new double[] { 1.1, 1.2, 1.3 }, p,
-				EC.EPS);
+		double[] test = new double[] { 1.1, 1.2, 1.3 };
+		Assert.assertNotNull("test should not be null (" + "getPoint3" + S_RBRAK, test);
+		Assert.assertEquals("must be of length 3", 3, test.length);
+		Assert.assertNotNull("ref should not be null (" + "getPoint3" + S_RBRAK,
+				p);
+		DoubleTestBase.assertEquals("getPoint3", test, p.getArray(), EC.EPS);
 		fixture.xomAtom[0].transformCartesians(t);
 		p = fixture.xomAtom[0].getPoint3(CoordinateType.CARTESIAN);
-		Point3Test.assertEquals("getPoint3", new double[] { 1.2, -1.1, 2.5 },
-				p, EC.EPS);
+		double[] test1 = new double[] { 1.2, -1.1, 2.5 };
+		Assert.assertNotNull("test should not be null (" + "getPoint3" + S_RBRAK, test1);
+		Assert.assertEquals("must be of length 3", 3, test1.length);
+		Assert.assertNotNull("ref should not be null (" + "getPoint3" + S_RBRAK,
+				p);
+		DoubleTestBase.assertEquals("getPoint3", test1, p.getArray(), EC.EPS);
 
 	}
 
@@ -673,8 +744,12 @@ public class CMLAtomTest {
 		fixture.xomAtom[0].setXYZFract(new Point3(0.1, 0.2, 0.3));
 		p = fixture.xomAtom[0].getXYZFract();
 		Assert.assertNotNull("get fract", p);
-		Point3Test.assertEquals("getPoint3", new double[] { 0.1, 0.2, 0.3 }, p,
-				EC.EPS);
+		double[] test = new double[] { 0.1, 0.2, 0.3 };
+		Assert.assertNotNull("test should not be null (" + "getPoint3" + S_RBRAK, test);
+		Assert.assertEquals("must be of length 3", 3, test.length);
+		Assert.assertNotNull("ref should not be null (" + "getPoint3" + S_RBRAK,
+				p);
+		DoubleTestBase.assertEquals("getPoint3", test, p.getArray(), EC.EPS);
 	}
 
 	/**
@@ -689,12 +764,20 @@ public class CMLAtomTest {
 		fixture.xomAtom[0].setPoint3(new Point3(0.1, 0.2, 0.3),
 				CoordinateType.FRACTIONAL);
 		Point3 p = fixture.xomAtom[0].getPoint3(CoordinateType.FRACTIONAL);
-		Point3Test.assertEquals("getPoint3", new double[] { 0.1, 0.2, 0.3 }, p,
-				EC.EPS);
+		double[] test = new double[] { 0.1, 0.2, 0.3 };
+		Assert.assertNotNull("test should not be null (" + "getPoint3" + S_RBRAK, test);
+		Assert.assertEquals("must be of length 3", 3, test.length);
+		Assert.assertNotNull("ref should not be null (" + "getPoint3" + S_RBRAK,
+				p);
+		DoubleTestBase.assertEquals("getPoint3", test, p.getArray(), EC.EPS);
 		fixture.xomAtom[0].transformFractionals(t);
 		p = fixture.xomAtom[0].getPoint3(CoordinateType.FRACTIONAL);
-		Point3Test.assertEquals("getPoint3", new double[] { 0.2, 0.4, 0.5 }, p,
-				EC.EPS);
+		double[] test1 = new double[] { 0.2, 0.4, 0.5 };
+		Assert.assertNotNull("test should not be null (" + "getPoint3" + S_RBRAK, test1);
+		Assert.assertEquals("must be of length 3", 3, test1.length);
+		Assert.assertNotNull("ref should not be null (" + "getPoint3" + S_RBRAK,
+				p);
+		DoubleTestBase.assertEquals("getPoint3", test1, p.getArray(), EC.EPS);
 	}
 
 	/**
@@ -780,28 +863,50 @@ public class CMLAtomTest {
 		atom.setPoint3(new Point3(0.1009, 0.2021, -0.3011),
 				CoordinateType.FRACTIONAL);
 		Point3 p = atom.getPoint3(CoordinateType.FRACTIONAL);
-		Point3Test.assertEquals("getPoint3", new double[] { 0.1009, 0.2021,
-				-0.3011 }, p, EC.EPS);
+		double[] test = new double[] { 0.1009, 0.2021,
+				-0.3011 };
+		Assert.assertNotNull("test should not be null (" + "getPoint3" + S_RBRAK, test);
+		Assert.assertEquals("must be of length 3", 3, test.length);
+		Assert.assertNotNull("ref should not be null (" + "getPoint3" + S_RBRAK,
+				p);
+		DoubleTestBase.assertEquals("getPoint3", test, p.getArray(), EC.EPS);
 		atom
 				.setPoint3(new Point3(1.001, 2.22, -3.13),
 						CoordinateType.CARTESIAN);
 		p = atom.getPoint3(CoordinateType.CARTESIAN);
-		Point3Test.assertEquals("getPoint3",
-				new double[] { 1.001, 2.22, -3.13 }, p, EC.EPS);
+		double[] test1 = new double[] { 1.001, 2.22, -3.13 };
+		Assert.assertNotNull("test should not be null (" + "getPoint3" + S_RBRAK, test1);
+		Assert.assertEquals("must be of length 3", 3, test1.length);
+		Assert.assertNotNull("ref should not be null (" + "getPoint3" + S_RBRAK,
+				p);
+		DoubleTestBase.assertEquals("getPoint3", test1, p.getArray(), EC.EPS);
 
 		double epsilon = 0.001;
 		atom.roundCoords(epsilon, CoordinateType.FRACTIONAL);
 		p = atom.getPoint3(CoordinateType.FRACTIONAL);
-		Point3Test.assertEquals("getPoint3", new double[] { 0.100, 0.202,
-				-0.301 }, p, EC.EPS);
+		double[] test2 = new double[] { 0.100, 0.202,
+				-0.301 };
+		Assert.assertNotNull("test should not be null (" + "getPoint3" + S_RBRAK, test2);
+		Assert.assertEquals("must be of length 3", 3, test2.length);
+		Assert.assertNotNull("ref should not be null (" + "getPoint3" + S_RBRAK,
+				p);
+		DoubleTestBase.assertEquals("getPoint3", test2, p.getArray(), EC.EPS);
 		p = atom.getPoint3(CoordinateType.CARTESIAN);
-		Point3Test.assertEquals("getPoint3",
-				new double[] { 1.001, 2.22, -3.13 }, p, EC.EPS);
+		double[] test3 = new double[] { 1.001, 2.22, -3.13 };
+		Assert.assertNotNull("test should not be null (" + "getPoint3" + S_RBRAK, test3);
+		Assert.assertEquals("must be of length 3", 3, test3.length);
+		Assert.assertNotNull("ref should not be null (" + "getPoint3" + S_RBRAK,
+				p);
+		DoubleTestBase.assertEquals("getPoint3", test3, p.getArray(), EC.EPS);
 		epsilon = 0.1;
 		atom.roundCoords(epsilon, CoordinateType.CARTESIAN);
 		p = atom.getPoint3(CoordinateType.CARTESIAN);
-		Point3Test.assertEquals("getPoint3", new double[] { 1.0, 2.2, -3.1 },
-				p, EC.EPS);
+		double[] test4 = new double[] { 1.0, 2.2, -3.1 };
+		Assert.assertNotNull("test should not be null (" + "getPoint3" + S_RBRAK, test4);
+		Assert.assertEquals("must be of length 3", 3, test4.length);
+		Assert.assertNotNull("ref should not be null (" + "getPoint3" + S_RBRAK,
+				p);
+		DoubleTestBase.assertEquals("getPoint3", test4, p.getArray(), EC.EPS);
 	}
 
 	/**

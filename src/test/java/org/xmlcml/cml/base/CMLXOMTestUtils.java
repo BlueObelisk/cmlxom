@@ -1,7 +1,6 @@
 package org.xmlcml.cml.base;
 
 import java.io.File;
-
 import java.io.IOException;
 import java.io.StringWriter;
 import java.net.URL;

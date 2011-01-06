@@ -1,6 +1,7 @@
 package org.xmlcml.molutil.test;
 
-import static org.xmlcml.euclid.EuclidConstants.*;
+import static org.xmlcml.euclid.EuclidConstants.EPS;
+import static org.xmlcml.euclid.EuclidConstants.S_EMPTY;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -10,7 +11,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.xmlcml.euclid.Int;
 import org.xmlcml.euclid.test.DoubleTestBase;
-import org.xmlcml.euclid.test.IntTest;
 import org.xmlcml.molutil.ChemicalElement;
 import org.xmlcml.molutil.ChemicalElement.AS;
 

@@ -1,6 +1,6 @@
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.euclid.EC.S_EMPTY;
+import static org.xmlcml.euclid.EuclidConstants.S_EMPTY;
 
 import java.util.ArrayList;
 import java.util.HashSet;
