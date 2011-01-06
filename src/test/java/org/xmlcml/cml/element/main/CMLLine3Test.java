@@ -15,6 +15,7 @@ import org.xmlcml.cml.element.CMLPoint3;
 import org.xmlcml.cml.element.CMLTransform3;
 import org.xmlcml.cml.element.CMLVector3;
 import org.xmlcml.euclid.Angle;
+import org.xmlcml.euclid.EuclidConstants;
 import org.xmlcml.euclid.Line3;
 import org.xmlcml.euclid.Point3;
 import org.xmlcml.euclid.Vector3;
@@ -66,8 +67,7 @@ public class CMLLine3Test extends GeomTestBase {
 		Assert.assertNotNull("test should not be null (" + msg + CMLConstants.S_RBRAK, test);
 		Assert.assertNotNull("expected should not be null (" + msg + CMLConstants.S_RBRAK,
 				expected);
-		Line3Test.assertEquals(msg, test.getEuclidLine3(), expected
-				.getEuclidLine3(), epsilon);
+		Assert.assertTrue(test.getEuclidLine3().isEqualTo(expected.getEuclidLine3()));
 	}
 
 	/**
@@ -88,10 +88,15 @@ public class CMLLine3Test extends GeomTestBase {
 				testPoint);
 		Assert.assertNotNull("expected should not be null (" + msg + CMLConstants.S_RBRAK,
 				expected);
-		Vector3Test.assertEquals(msg, testVector.getEuclidVector3(),
-				new Vector3(expected.getVector3()), epsilon);
-		Point3Test.assertEquals(msg, testPoint.getEuclidPoint3(), new Point3(
-				expected.getPoint3()), epsilon);
+		Vector3 test = testVector.getEuclidVector3();
+		Vector3 expected1 = new Vector3(expected.getVector3());
+		Assert.assertNotNull("test should not be null (" + msg + EuclidConstants.S_RBRAK, test);
+		Assert.assertNotNull("expected should not be null (" + msg + EuclidConstants.S_RBRAK,
+				expected1);
+		DoubleTestBase.assertEquals(msg, test.getArray(), expected1.getArray(),
+				epsilon);
+		
+		Assert.assertTrue(testPoint.getEuclidPoint3().isEqualTo(new Point3(expected.getPoint3())));
 	}
 
 	/**

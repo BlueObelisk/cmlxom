@@ -1,8 +1,6 @@
 package org.xmlcml.cml.element.main;
 
 import static org.xmlcml.euclid.EC.S_EMPTY;
-import static org.xmlcml.euclid.test.EuclidTestBase.neverFail;
-import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -17,6 +15,7 @@ import org.xmlcml.cml.element.CMLAtomSet;
 import org.xmlcml.cml.element.CMLBond;
 import org.xmlcml.cml.element.CMLBondSet;
 import org.xmlcml.cml.element.CMLMolecule;
+import org.xmlcml.euclid.EuclidRuntimeException;
 import org.xmlcml.euclid.test.StringTestBase;
 
 /**
@@ -136,14 +135,14 @@ public class CMLBondSetTest {
 		try {
 			bondSet1 = bondSet.getBondsById(new String[] { "b2", "b4" });
 		} catch (RuntimeException e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Assert.assertEquals("bondset1", 2, bondSet1.size());
 		CMLBondSet bondSet2 = null;
 		try {
 			bondSet2 = bondSet.getBondsById(new String[] { "b3" });
 		} catch (RuntimeException e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Assert.assertEquals("bondset2", 1, bondSet2.size());
 		bondSet1.addBondSet(bondSet2);
@@ -251,7 +250,7 @@ public class CMLBondSetTest {
 		try {
 			setUp();
 		} catch (Exception e1) {
-			neverFail(e1);
+			Assert.fail("should never throw " + e1);
 		}
 		bonds[0].setAtomRefs2(new String[] { "a2", "a3" });
 		bonds[1] = new CMLBond();
@@ -286,7 +285,7 @@ public class CMLBondSetTest {
 		try {
 			setUp();
 		} catch (Exception e1) {
-			neverFail(e1);
+			Assert.fail("should never throw " + e1);
 		}
 		bond.setAtomRefs2(new String[] { "a2", "a3" });
 		bond = new CMLBond();
@@ -296,7 +295,7 @@ public class CMLBondSetTest {
 		try {
 			bondSet.addBonds(bonds);
 		} catch (RuntimeException e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Assert.assertEquals("new bondSet", new String[] { "b1", "b2", "b3",
 				"b4", "b10", "b11" }, bondSet.getXMLContent());

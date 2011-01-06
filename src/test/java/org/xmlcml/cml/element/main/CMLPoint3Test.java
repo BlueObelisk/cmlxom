@@ -2,7 +2,6 @@ package org.xmlcml.cml.element.main;
 
 import static org.xmlcml.euclid.EC.EPS;
 import static org.xmlcml.euclid.EC.S_RBRAK;
-import static org.xmlcml.euclid.test.EuclidTestBase.alwaysFail;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -380,7 +379,7 @@ public class CMLPoint3Test extends GeomTestBase {
 		Assert.assertEquals("elementAt", 3., xomP123.elementAt(2), EPS);
 		try {
 			xomP123.elementAt(3);
-			alwaysFail("index out of range");
+			Assert.fail("should always throw " + "index out of range");
 		} catch (RuntimeException e) {
 			Assert
 					.assertEquals(

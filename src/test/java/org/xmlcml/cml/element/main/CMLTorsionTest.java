@@ -1,8 +1,6 @@
 package org.xmlcml.cml.element.main;
 
 import static org.xmlcml.euclid.EuclidConstants.EPS;
-import static org.xmlcml.euclid.test.EuclidTestBase.alwaysFail;
-import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +17,7 @@ import org.xmlcml.cml.element.CMLBond;
 import org.xmlcml.cml.element.CMLCml;
 import org.xmlcml.cml.element.CMLMolecule;
 import org.xmlcml.cml.element.CMLTorsion;
+import org.xmlcml.euclid.EuclidRuntimeException;
 import org.xmlcml.euclid.test.StringTestBase;
 
 /**
@@ -101,13 +100,13 @@ public class CMLTorsionTest {
 		try {
 			atomRefs4 = torsion0.getAtoms(molecule1);
 		} catch (RuntimeException e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Assert.assertNotNull("atomRefs4 not null", atomRefs4);
 		String msg = RuntimeException.class.getName() + ": cannot find atom a6";
 		try {
 			atomRefs4 = torsion2.getAtoms(molecule1);
-			alwaysFail(msg);
+			Assert.fail("should always throw " + msg);
 		} catch (RuntimeException e) {
 			Assert.assertEquals("non existent atom ", msg, "" + e);
 		}
@@ -123,13 +122,13 @@ public class CMLTorsionTest {
 		try {
 			atomRefs4 = torsion0.getAtoms(atomSet);
 		} catch (RuntimeException e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Assert.assertNotNull("atomRefs4 not null", atomRefs4);
 		String msg = RuntimeException.class.getName() + ": cannot find atom a6";
 		try {
 			atomRefs4 = torsion2.getAtoms(molecule1);
-			alwaysFail(msg);
+			Assert.fail("should always throw " + msg);
 		} catch (RuntimeException e) {
 			Assert.assertEquals("non existent atom ", msg, "" + e);
 		}

@@ -1,7 +1,6 @@
 package org.xmlcml.cml.element.main;
 
 import static org.xmlcml.cml.element.main.AbstractTestBase.COMPLEX_RESOURCE;
-import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
 import java.io.InputStream;
 
@@ -11,6 +10,7 @@ import nu.xom.NodeFactory;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLBuilder;
 import org.xmlcml.cml.base.CMLConstants;
+import org.xmlcml.euclid.EuclidRuntimeException;
 import org.xmlcml.euclid.Util;
 
 /**
@@ -43,7 +43,7 @@ public class CMLBuilderTest {
 		try {
 			builder.parseString(s);
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 
 //		// fails because XOM validation requires a DOCTYPE
@@ -82,7 +82,7 @@ public class CMLBuilderTest {
 		try {
 			builder.parseString(s);
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 
 		// parse, validation by OldNodeFactory
@@ -123,7 +123,7 @@ public class CMLBuilderTest {
 			builder.build(in);
 			in.close();
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 
 		// fails because XOM can only validate against a DOCTYPE
