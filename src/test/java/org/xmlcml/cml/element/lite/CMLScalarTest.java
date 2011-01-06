@@ -7,7 +7,6 @@ import static org.xmlcml.cml.base.CMLConstants.U_DEGREE;
 import static org.xmlcml.cml.base.CMLConstants.U_KCAL;
 import static org.xmlcml.euclid.EuclidConstants.EPS;
 import static org.xmlcml.euclid.EuclidConstants.S_EMPTY;
-import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -31,6 +30,7 @@ import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLUtil;
 import org.xmlcml.cml.element.CMLCml;
 import org.xmlcml.cml.element.CMLScalar;
+import org.xmlcml.euclid.EuclidRuntimeException;
 import org.xmlcml.euclid.JodaDate;
 
 /**
@@ -818,7 +818,7 @@ public class CMLScalarTest {
 		try {
 			cml = (CMLCml) new CMLBuilder().parseString(unitsS);
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		CMLScalar scalar = (CMLScalar) cml.getChildCMLElements("scalar").get(0);
 		DictRefAttribute dictRef = scalar.getDictRefFromElementOrParent();

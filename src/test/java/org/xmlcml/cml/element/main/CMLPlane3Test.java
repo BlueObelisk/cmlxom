@@ -1,7 +1,6 @@
 package org.xmlcml.cml.element.main;
 
 import static org.xmlcml.euclid.EC.EPS;
-import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -11,6 +10,7 @@ import org.xmlcml.cml.element.CMLLine3;
 import org.xmlcml.cml.element.CMLPlane3;
 import org.xmlcml.cml.element.CMLPoint3;
 import org.xmlcml.cml.element.CMLVector3;
+import org.xmlcml.euclid.EuclidRuntimeException;
 import org.xmlcml.euclid.Plane3;
 import org.xmlcml.euclid.Util;
 import org.xmlcml.euclid.test.DoubleTestBase;
@@ -99,7 +99,7 @@ public class CMLPlane3Test extends GeomTestBase {
 		try {
 			p = new CMLPlane3(new double[] { 1., 2., 3., 4. });
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		double x = Math.sqrt(14.);
 		CMLPlane3Test.assertEquals("copy", new double[] { 1. / x, 2. / x,
@@ -188,7 +188,7 @@ public class CMLPlane3Test extends GeomTestBase {
 		try {
 			xomPl1002.setArray(new double[] { 1., 2., 3., 4. });
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		double x = Math.sqrt(14.);
 		CMLPlane3Test.assertEquals("new", new double[] { 1. / x, 2. / x,

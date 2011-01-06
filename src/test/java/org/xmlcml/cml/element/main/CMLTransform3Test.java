@@ -2,7 +2,6 @@ package org.xmlcml.cml.element.main;
 
 import static org.xmlcml.euclid.EuclidConstants.EPS;
 import static org.xmlcml.euclid.EuclidConstants.S_RBRAK;
-import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -21,6 +20,7 @@ import org.xmlcml.cml.element.CMLMatrix;
 import org.xmlcml.cml.element.CMLPoint3;
 import org.xmlcml.cml.element.CMLTransform3;
 import org.xmlcml.cml.element.CMLVector3;
+import org.xmlcml.euclid.EuclidRuntimeException;
 import org.xmlcml.euclid.Point3;
 import org.xmlcml.euclid.Transform3;
 import org.xmlcml.euclid.Transform3.Type;
@@ -359,7 +359,7 @@ public class CMLTransform3Test extends GeomTestBase {
 		try {
 			t = new CMLTransform3(s);
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		CMLTransform3Test.assertEquals("type", new double[] { 1, 0, 0, 0, 0, 1,
 				0, 0, 0, 0, 1, 0, 0, 0, 0, 1 }, t, EPS);
@@ -368,7 +368,7 @@ public class CMLTransform3Test extends GeomTestBase {
 		try {
 			t = new CMLTransform3(s);
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		CMLTransform3Test.assertEquals("type", new double[] { 1, 0, 0, 0, 0,
 				-1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1 }, t, EPS);
@@ -377,7 +377,7 @@ public class CMLTransform3Test extends GeomTestBase {
 		try {
 			t = new CMLTransform3(s);
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		CMLTransform3Test.assertEquals("type", new double[] { 1, 0, 0, 0.5, 0,
 				-1, 0, 0.5, 0, 0, -1, 0.25, 0, 0, 0, 1 }, t, EPS);
@@ -386,7 +386,7 @@ public class CMLTransform3Test extends GeomTestBase {
 		try {
 			t = new CMLTransform3(s);
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		CMLTransform3Test.assertEquals("type", new double[] { 1, 1, 0, 0, 1,
 				-1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1 }, t, EPS);
@@ -395,7 +395,7 @@ public class CMLTransform3Test extends GeomTestBase {
 		try {
 			t = new CMLTransform3(s);
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		CMLTransform3Test.assertEquals("type", new double[] { 0, 1, 0, 0, -1,
 				0, 0, 0, 0, 0, -1, 7. / 12., 0, 0, 0, 1 }, t, EPS);
@@ -597,7 +597,7 @@ public class CMLTransform3Test extends GeomTestBase {
 		try {
 			t = new CMLTransform3("x, -y, 1/2+z");
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Transform3 tt = t.getEuclidTransform3();
 		Transform3Test.assertEquals("get euclid", new double[] { 1., 0., 0.,
@@ -617,7 +617,7 @@ public class CMLTransform3Test extends GeomTestBase {
 			t.setMatrix(new double[] { 1., 0., 0., 0., 0., -1., 0., 0., 0., 0.,
 					1., 0.5, 0., 0., 0., 1., });
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Transform3 tt = t.getEuclidTransform3();
 		Transform3Test.assertEquals("get euclid", new double[] { 1., 0., 0.,
@@ -636,7 +636,7 @@ public class CMLTransform3Test extends GeomTestBase {
 			t.setMatrix(new double[] { 1., 0., 0., 0., 0., -1., 0., 0., 0., 0.,
 					1., 0.5, 0., 0., 0., 1., });
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		CMLTransform3Test
 				.assertEquals("get euclid", new double[] { 1., 0., 0., 0., 0.,
@@ -657,21 +657,21 @@ public class CMLTransform3Test extends GeomTestBase {
 			t0.setMatrix(new double[] { 1., 0., 0., 0., 0., -1., 0., 0., 0.,
 					0., 1., 0.5, 0., 0., 0., 1., });
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Assert.assertFalse("equals", t0.isEqualTo(t1));
 		try {
 			t1.setMatrix(new double[] { 1., 0., 0., 0., 0., -1., 0., 0., 0.,
 					0., 1., 0.5, 0., 0., 0., 1., });
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Assert.assertTrue("equals", t0.isEqualTo(t1));
 		try {
 			t1.setMatrix(new double[] { 1., 0., 0., 0.0001, 0., -1., 0., 0.,
 					0., 0., 1., 0.5, 0., 0., 0., 1., });
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Assert.assertFalse("equals", t0.isEqualTo(t1));
 		Assert.assertTrue("equals", t0.isEqualTo(t1, 0.001));
@@ -687,35 +687,35 @@ public class CMLTransform3Test extends GeomTestBase {
 		try {
 			t = new CMLTransform3("x, -y, 1/2+z");
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Assert.assertTrue("non-zero translation", t
 				.hasNonZeroTranslationComponent());
 		try {
 			t = new CMLTransform3("x, 1/2-y, 1/2+z");
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Assert.assertTrue("non-zero translation", t
 				.hasNonZeroTranslationComponent());
 		try {
 			t = new CMLTransform3("x, y, z");
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Assert.assertFalse("non-zero translation", t
 				.hasNonZeroTranslationComponent());
 		try {
 			t = new CMLTransform3("x, -y, z");
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Assert.assertFalse("non-zero translation", t
 				.hasNonZeroTranslationComponent());
 		try {
 			t = new CMLTransform3("x, -y, 1/2-z");
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Assert.assertFalse("non-zero translation", t
 				.hasNonZeroTranslationComponent());
@@ -731,31 +731,31 @@ public class CMLTransform3Test extends GeomTestBase {
 		try {
 			t = new CMLTransform3("1/2+x, y, z");
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Assert.assertTrue("pure translation", t.isPureTranslation());
 		try {
 			t = new CMLTransform3("1/2+x, 1/2+y, z");
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Assert.assertTrue("pure translation", t.isPureTranslation());
 		try {
 			t = new CMLTransform3("1/2+x, 1/2+y, 1/2+z");
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Assert.assertTrue("pure translation", t.isPureTranslation());
 		try {
 			t = new CMLTransform3("x, y, z");
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Assert.assertFalse("pure translation", t.isPureTranslation());
 		try {
 			t = new CMLTransform3("1/2+x, 1/2+y, 1/2-z");
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Assert.assertFalse("pure translation", t.isPureTranslation());
 	}
@@ -769,19 +769,19 @@ public class CMLTransform3Test extends GeomTestBase {
 		try {
 			t = new CMLTransform3("x, y, z");
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Assert.assertTrue("is unit", t.isUnit());
 		try {
 			t = new CMLTransform3("x, y, -z");
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Assert.assertFalse("is unit", t.isUnit());
 		try {
 			t = new CMLTransform3("1/2+x, y, z");
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Assert.assertFalse("is unit", t.isUnit());
 	}
@@ -795,7 +795,7 @@ public class CMLTransform3Test extends GeomTestBase {
 		try {
 			t = new CMLTransform3("1/2+x-y, 1/4+y-z, -x");
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		double[] r = t.getRow(0);
 		DoubleTestBase.assertEquals("row 0", new double[] { 1., -1., 0., 0.5 },
@@ -821,7 +821,7 @@ public class CMLTransform3Test extends GeomTestBase {
 			tList.add(new CMLTransform3("x, y, z"));
 			tList.add(new CMLTransform3("x, -y, 1/2+z"));
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		try {
 			Assert.assertEquals("index ", 1, CMLTransform3.indexOf(tList,
@@ -831,7 +831,7 @@ public class CMLTransform3Test extends GeomTestBase {
 			Assert.assertEquals("index ", -1, CMLTransform3.indexOf(tList,
 					new CMLTransform3("1/2+x, 1/4+y-z, -x"), EPS));
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 	}
 
@@ -844,7 +844,7 @@ public class CMLTransform3Test extends GeomTestBase {
 		try {
 			t = new CMLTransform3("-x, 1/2+y, 1/4+z");
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Point3 p = t.transform(new Point3(0.1, 0.2, 0.3));
 		Point3Test.assertEquals("transform", new double[] { -0.1, 0.7, 0.55 },

@@ -2,7 +2,6 @@ package org.xmlcml.cml.element.lite;
 
 import static org.xmlcml.euclid.EuclidConstants.EPS;
 import static org.xmlcml.euclid.test.EuclidTestBase.getAssertFormat;
-import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -32,6 +31,7 @@ import org.xmlcml.cml.element.CMLFormula.Sort;
 import org.xmlcml.cml.element.CMLFormula.Type;
 import org.xmlcml.cml.element.CMLMolecule;
 import org.xmlcml.cml.element.main.MoleculeAtomBondFixture;
+import org.xmlcml.euclid.EuclidRuntimeException;
 import org.xmlcml.euclid.test.DoubleTestBase;
 import org.xmlcml.euclid.test.StringTestBase;
 import org.xmlcml.molutil.ChemicalElement;
@@ -569,21 +569,21 @@ public class CMLFormulaTest {
 					CMLFormula.Type.NOPUNCTUATION);
 		} catch (RuntimeException e) {
 			e.printStackTrace();
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		// Assert.assertEquals("createFormula", "C 2 H 4", form.getConcise());
 		try {
 			form = CMLFormula.createFormula("C 2 H 4",
 					CMLFormula.Type.ELEMENT_WHITESPACE_COUNT);
 		} catch (RuntimeException e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Assert.assertEquals("createFormula", "C 2 H 4", form.getConcise());
 		try {
 			form = CMLFormula.createFormula("C2 H4",
 					CMLFormula.Type.ELEMENT_COUNT_WHITESPACE);
 		} catch (RuntimeException e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Assert.assertEquals("createFormula", "C 2 H 4", form.getConcise());
 		Assert.assertEquals("createFormula", 1.0, form.getCount(), EPS);
@@ -591,7 +591,7 @@ public class CMLFormulaTest {
 			form = CMLFormula.createFormula("2(C2 H4)",
 					CMLFormula.Type.MULTIPLIED_ELEMENT_COUNT_WHITESPACE);
 		} catch (RuntimeException e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Assert.assertEquals("createFormula", "C 2 H 4", form.getConcise());
 		Assert.assertEquals("createFormula", 2.0, form.getCount(), EPS);

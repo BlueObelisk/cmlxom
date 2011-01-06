@@ -9,7 +9,9 @@ import org.xmlcml.cml.element.CMLArray;
 import org.xmlcml.cml.element.CMLEigen;
 import org.xmlcml.cml.element.CMLMatrix;
 import org.xmlcml.cml.element.CMLEigen.Orientation;
+import org.xmlcml.euclid.EuclidConstants;
 import org.xmlcml.euclid.RealArray;
+import org.xmlcml.euclid.test.DoubleTestBase;
 import org.xmlcml.euclid.test.RealArrayTest;
 
 /**
@@ -108,9 +110,15 @@ public class CMLEigenTest {
 		Orientation orient = Orientation.VALUES_COLS;
 		CMLEigen eigen = new CMLEigen(eigenvectors1, eigenvalues1, orient);
 		RealArray eigenvector = eigen.getEigenvector(1);
-		RealArrayTest.assertEquals("eigenvector", new double[] { -0.38651,
+		double[] test = new double[] { -0.38651,
 				-0.67196, 0.19755, 2.0E-5, 0.0, 0.0, 0.0, -0.58544, 9.0E-5,
-				0.13159 }, eigenvector, EPS);
+				0.13159 };
+		org.junit.Assert.assertNotNull("test should not be null (" + "eigenvector" + EuclidConstants.S_RBRAK, test);
+		org.junit.Assert.assertNotNull("expected should not be null (" + "eigenvector" + EuclidConstants.S_RBRAK,
+				eigenvector);
+		org.junit.Assert.assertEquals("must be of equal length ", test.length, eigenvector
+				.getArray().length);
+		DoubleTestBase.assertEquals("eigenvector", test, eigenvector.getArray(), EPS);
 	}
 
 	/**
