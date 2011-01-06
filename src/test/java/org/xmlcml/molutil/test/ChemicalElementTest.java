@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.xmlcml.euclid.Int;
 import org.xmlcml.euclid.test.DoubleTestBase;
 import org.xmlcml.euclid.test.IntTest;
 import org.xmlcml.molutil.ChemicalElement;
@@ -137,7 +138,10 @@ public class ChemicalElementTest {
 		iso = el.getIsotopeMasses();
 		Assert.assertNotNull("iso", iso);
 		Assert.assertEquals("iso", 4, iso.length);
-		IntTest.assertEquals("iso", new int[] { 11, 12, 13, 14 }, iso);
+		String s = Int.testEquals((new int[] { 11, 12, 13, 14 }), iso);
+		if (s != null) {
+			Assert.fail("iso" + "; " + s);
+		}
 		double[] dd = el.getIsotopeAbundances();
 		Assert.assertNotNull("iso", dd);
 		Assert.assertEquals("iso", 4, dd.length);
@@ -149,7 +153,10 @@ public class ChemicalElementTest {
 		iso = el.getIsotopeMasses();
 		Assert.assertNotNull("iso", iso);
 		Assert.assertEquals("iso", 3, iso.length);
-		IntTest.assertEquals("iso", new int[] { 1, 2, 3 }, iso);
+		s = Int.testEquals((new int[] { 1, 2, 3 }), iso);
+		if (s != null) {
+			Assert.fail("iso" + "; " + s);
+		}
 		dd = el.getIsotopeAbundances();
 		Assert.assertNotNull("iso", dd);
 		Assert.assertEquals("iso", 3, dd.length);
@@ -170,7 +177,10 @@ public class ChemicalElementTest {
 		iso = el.getIsotopeMasses();
 		Assert.assertNotNull("iso", iso);
 		Assert.assertEquals("iso", 2, iso.length);
-		IntTest.assertEquals("iso", new int[] { 12, 13 }, iso);
+		String s = Int.testEquals((new int[] { 12, 13 }), iso);
+		if (s != null) {
+			Assert.fail("iso" + "; " + s);
+		}
 	}
 
 	/**
