@@ -26,8 +26,6 @@ import org.xmlcml.euclid.Point3;
 import org.xmlcml.euclid.Transform3;
 import org.xmlcml.euclid.Transform3.Type;
 import org.xmlcml.euclid.test.DoubleTestBase;
-import org.xmlcml.euclid.test.Point3Test;
-import org.xmlcml.euclid.test.Transform3Test;
 
 /**
  * test CMLTransform3.
@@ -873,8 +871,12 @@ public class CMLTransform3Test extends GeomTestBase {
 			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Point3 p = t.transform(new Point3(0.1, 0.2, 0.3));
-		Point3Test.assertEquals("transform", new double[] { -0.1, 0.7, 0.55 },
-				p, EPS);
+		double[] test = new double[] { -0.1, 0.7, 0.55 };
+		Assert.assertNotNull("test should not be null (" + "transform" + S_RBRAK, test);
+		Assert.assertEquals("must be of length 3", 3, test.length);
+		Assert.assertNotNull("ref should not be null (" + "transform" + S_RBRAK,
+				p);
+		DoubleTestBase.assertEquals("transform", test, p.getArray(), EPS);
 	}
 
 	/**

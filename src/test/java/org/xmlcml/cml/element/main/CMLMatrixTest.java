@@ -22,14 +22,12 @@ import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLXOMTestUtils;
 import org.xmlcml.cml.element.CMLCml;
 import org.xmlcml.cml.element.CMLMatrix;
+import org.xmlcml.euclid.EC;
 import org.xmlcml.euclid.EuclidRuntimeException;
 import org.xmlcml.euclid.Int;
 import org.xmlcml.euclid.IntMatrix;
 import org.xmlcml.euclid.RealMatrix;
 import org.xmlcml.euclid.test.DoubleTestBase;
-import org.xmlcml.euclid.test.IntMatrixTest;
-import org.xmlcml.euclid.test.IntTest;
-import org.xmlcml.euclid.test.RealMatrixTest;
 
 /**
  * test matrix.
@@ -79,31 +77,6 @@ public class CMLMatrixTest {
 	 * 
 	 * @param msg
 	 *            message
-	 * @param test
-	 * @param expected
-	 * @param epsilon
-	 */
-	public static void assertEquals(String msg, CMLMatrix test,
-			CMLMatrix expected, double epsilon) {
-		Assert.assertNotNull("test should not be null (" + msg + S_RBRAK, test);
-		Assert.assertNotNull("expected should not be null (" + msg + S_RBRAK,
-				expected);
-		if (test.getEuclidRealMatrix() != null) {
-			RealMatrixTest.assertEquals(msg, test.getEuclidRealMatrix(),
-					expected.getEuclidRealMatrix(), epsilon);
-		} else if (test.getEuclidIntMatrix() != null) {
-			IntMatrixTest.assertEquals(msg, test.getEuclidIntMatrix(), expected
-					.getEuclidIntMatrix());
-		} else {
-			Assert.fail("both matrices must be either real or int" + test);
-		}
-	}
-
-	/**
-	 * equality test. true if both args not null and equal within epsilon
-	 * 
-	 * @param msg
-	 *            message
 	 * @param rows
 	 * @param cols
 	 * @param test
@@ -117,8 +90,17 @@ public class CMLMatrixTest {
 				expected);
 		Assert.assertEquals("rows ", rows, expected.getRows());
 		Assert.assertEquals("columns ", cols, expected.getColumns());
-		RealMatrixTest.assertEquals(msg, rows, cols, test, expected
-				.getEuclidRealMatrix(), epsilon);
+		RealMatrix expected1 = expected
+				.getEuclidRealMatrix();
+		Assert.assertNotNull("test should not be null (" + msg + EC.S_RBRAK, test);
+		Assert.assertNotNull("ref should not be null (" + msg + EC.S_RBRAK,
+				expected1);
+		Assert.assertEquals("rows should be equal (" + msg + EC.S_RBRAK, rows,
+				expected1.getRows());
+		Assert.assertEquals("columns should be equal (" + msg + EC.S_RBRAK, cols,
+				expected1.getCols());
+		DoubleTestBase.assertEquals(msg, test, expected1.getMatrixAsArray(),
+				epsilon);
 	}
 
 	/**
@@ -138,8 +120,19 @@ public class CMLMatrixTest {
 				expected);
 		Assert.assertEquals("rows ", rows, expected.getRows());
 		Assert.assertEquals("columns ", cols, expected.getColumns());
-		IntMatrixTest.assertEquals(msg, rows, cols, test, expected
-				.getEuclidIntMatrix());
+		IntMatrix expected1 = expected
+				.getEuclidIntMatrix();
+		Assert.assertNotNull("test should not be null (" + msg + S_RBRAK, test);
+		Assert.assertNotNull("ref should not be null (" + msg + S_RBRAK,
+				expected1);
+		Assert.assertEquals("rows should be equal (" + msg + S_RBRAK, rows,
+				expected1.getRows());
+		Assert.assertEquals("columns should be equal (" + msg + S_RBRAK, cols,
+				expected1.getCols());
+		String s = Int.testEquals(test, expected1.getMatrixAsArray());
+		if (s != null) {
+			Assert.fail(msg + "; " + s);
+		}
 	}
 
 	/**
@@ -456,7 +449,57 @@ public class CMLMatrixTest {
 	@Test
 	public void testCopy() {
 		CMLMatrix m = (CMLMatrix) matrixList.get(0).copy();
-		CMLMatrixTest.assertEquals("copy", m, matrixList.get(0), EPS);
+		CMLMatrix expected = matrixList.get(0);
+		Assert.assertNotNull("test should not be null (" + "copy" + S_RBRAK, m);
+		Assert.assertNotNull("expected should not be null (" + "copy" + S_RBRAK,
+				expected);
+		if (m.getEuclidRealMatrix() != null) {
+			RealMatrix test = m.getEuclidRealMatrix();
+			RealMatrix expected1 = expected.getEuclidRealMatrix();
+			Assert.assertNotNull("test should not be null (" + "copy" + EC.S_RBRAK, test);
+			Assert.assertNotNull("expected should not be null (" + "copy" + EC.S_RBRAK,
+					expected1);
+			Assert.assertNotNull("expected should have columns (" + "copy" + EC.S_RBRAK,
+					expected1.getCols());
+			Assert.assertNotNull("expected should have rows (" + "copy" + EC.S_RBRAK,
+					expected1.getRows());
+			Assert.assertNotNull("test should have columns (" + "copy" + EC.S_RBRAK, test
+					.getCols());
+			Assert.assertNotNull("test should have rows (" + "copy" + EC.S_RBRAK, test
+					.getRows());
+			Assert.assertEquals("rows should be equal (" + "copy" + EC.S_RBRAK, test
+					.getRows(), expected1.getRows());
+			Assert.assertEquals("columns should be equal (" + "copy" + EC.S_RBRAK, test
+					.getCols(), expected1.getCols());
+			DoubleTestBase.assertEquals("copy", test.getMatrixAsArray(), expected1
+					.getMatrixAsArray(), EPS);
+		} else if (m.getEuclidIntMatrix() != null) {
+			IntMatrix test = m.getEuclidIntMatrix();
+			IntMatrix expected1 = expected
+					.getEuclidIntMatrix();
+			Assert.assertNotNull("test should not be null (" + "copy" + S_RBRAK, test);
+			Assert.assertNotNull("expected should not be null (" + "copy" + S_RBRAK,
+					expected1);
+			Assert.assertNotNull("expected should have columns (" + "copy" + S_RBRAK,
+					expected1.getCols());
+			Assert.assertNotNull("expected should have rows (" + "copy" + S_RBRAK,
+					expected1.getRows());
+			Assert.assertNotNull("test should have columns (" + "copy" + S_RBRAK, test
+					.getCols());
+			Assert.assertNotNull("test should have rows (" + "copy" + S_RBRAK, test
+					.getRows());
+			Assert.assertEquals("rows should be equal (" + "copy" + S_RBRAK, test
+					.getRows(), expected1.getRows());
+			Assert.assertEquals("columns should be equal (" + "copy" + S_RBRAK, test
+					.getCols(), expected1.getCols());
+			String s = Int.testEquals(test.getMatrixAsArray(), expected1
+							.getMatrixAsArray());
+			if (s != null) {
+				Assert.fail("copy" + "; " + s);
+			}
+		} else {
+			Assert.fail("both matrices must be either real or int" + m);
+		}
 	}
 
 	/**
@@ -490,8 +533,19 @@ public class CMLMatrixTest {
 		ii = mat.getIntegerMatrix();
 
 		IntMatrix imat = new IntMatrix(ii);
-		IntMatrixTest.assertEquals("int mat", 2, 3, new int[] { 1, 2, 3, 11,
-				12, 13 }, imat);
+		int[] test = new int[] { 1, 2, 3, 11,
+				12, 13 };
+		Assert.assertNotNull("test should not be null (" + "int mat" + S_RBRAK, test);
+		Assert.assertNotNull("ref should not be null (" + "int mat" + S_RBRAK,
+				imat);
+		Assert.assertEquals("rows should be equal (" + "int mat" + S_RBRAK, 2,
+				imat.getRows());
+		Assert.assertEquals("columns should be equal (" + "int mat" + S_RBRAK, 3,
+				imat.getCols());
+		String s = Int.testEquals(test, imat.getMatrixAsArray());
+		if (s != null) {
+			Assert.fail("int mat" + "; " + s);
+		}
 	}
 
 }

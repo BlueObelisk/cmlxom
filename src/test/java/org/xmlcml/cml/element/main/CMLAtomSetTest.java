@@ -1,6 +1,7 @@
 package org.xmlcml.cml.element.main;
 
 import static org.xmlcml.euclid.EuclidConstants.EPS;
+import static org.xmlcml.euclid.EuclidConstants.S_RBRAK;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -22,6 +23,7 @@ import org.xmlcml.cml.element.CMLMolecule;
 import org.xmlcml.cml.element.CMLTransform3;
 import org.xmlcml.cml.element.CMLMap.Direction;
 import org.xmlcml.euclid.Angle;
+import org.xmlcml.euclid.EC;
 import org.xmlcml.euclid.Point3;
 import org.xmlcml.euclid.Point3Vector;
 import org.xmlcml.euclid.Real2;
@@ -29,10 +31,7 @@ import org.xmlcml.euclid.Real2Vector;
 import org.xmlcml.euclid.RealMatrix;
 import org.xmlcml.euclid.Transform2;
 import org.xmlcml.euclid.Vector3;
-import org.xmlcml.euclid.test.Point3Test;
-import org.xmlcml.euclid.test.Real2Test;
-import org.xmlcml.euclid.test.Real2VectorTest;
-import org.xmlcml.euclid.test.RealMatrixTest;
+import org.xmlcml.euclid.test.DoubleTestBase;
 import org.xmlcml.molutil.ChemicalElement.AS;
 
 /**
@@ -464,16 +463,30 @@ public class CMLAtomSetTest {
 	public void testTransform() {
 		List<Real2> coords = new CMLAtomSet(fixture.xmlMolecule).getVector2D();
 		Real2Vector r2v = new Real2Vector(coords);
-		Real2VectorTest.assertEquals("r2v", new double[] { 0.0, 0.0, 1.0, 1.0,
-				1.0, -1.0, -1.0, -1.0, -1.0, 1.0 }, r2v, EPS);
+		double[] test = new double[] { 0.0, 0.0, 1.0, 1.0,
+				1.0, -1.0, -1.0, -1.0, -1.0, 1.0 };
+		Assert.assertNotNull("test should not be null (" + "r2v" + EC.S_RBRAK, test);
+		Assert.assertNotNull("expected should not be null (" + "r2v" + EC.S_RBRAK,
+				r2v);
+		Assert.assertEquals("must be of equal length ", test.length, r2v
+				.getXY().getArray().length);
+		DoubleTestBase.assertEquals("r2v", test, r2v.getXY().getArray(),
+				EPS);
 		Transform2 t = new Transform2(new Angle(Math.PI / 2.));
 		atomSet1.transform(t);
 		coords = new CMLAtomSet(fixture.xmlMolecule).getVector2D();
 		r2v = new Real2Vector(coords);
-		Real2VectorTest.assertEquals("r2v", new double[] { 0.0, 0.0, 1.0, -1.0,
+		double[] test1 = new double[] { 0.0, 0.0, 1.0, -1.0,
 				-1.0, -1.0,
-				// notice these are mot transformed
-				-1.0, -1.0, -1.0, 1.0 }, r2v, EPS);
+				// notice these are not transformed
+				-1.0, -1.0, -1.0, 1.0 };
+		Assert.assertNotNull("test should not be null (" + "r2v" + EC.S_RBRAK, test1);
+		Assert.assertNotNull("expected should not be null (" + "r2v" + EC.S_RBRAK,
+				r2v);
+		Assert.assertEquals("must be of equal length ", test1.length, r2v
+				.getXY().getArray().length);
+		DoubleTestBase.assertEquals("r2v", test1, r2v.getXY().getArray(),
+				EPS);
 	}
 
 	/**
@@ -721,16 +734,30 @@ public class CMLAtomSetTest {
 	public void testSetVector2D() {
 		Real2Vector v = new Real2Vector(new CMLAtomSet(fixture.xmlMolecule)
 				.getVector2D());
-		Real2VectorTest.assertEquals("r2v", new double[] { 0.0, 0.0, 1.0, 1.0,
-				1.0, -1.0, -1.0, -1.0, -1.0, 1.0 }, v, EPS);
+		double[] test = new double[] { 0.0, 0.0, 1.0, 1.0,
+				1.0, -1.0, -1.0, -1.0, -1.0, 1.0 };
+		Assert.assertNotNull("test should not be null (" + "r2v" + EC.S_RBRAK, test);
+		Assert.assertNotNull("expected should not be null (" + "r2v" + EC.S_RBRAK,
+				v);
+		Assert.assertEquals("must be of equal length ", test.length, v
+				.getXY().getArray().length);
+		DoubleTestBase.assertEquals("r2v", test, v.getXY().getArray(),
+				EPS);
 		List<Real2> v1 = new ArrayList<Real2>();
 		v1.add(new Real2(4., 5.));
 		v1.add(new Real2(6., 7.));
 		v1.add(new Real2(8., 9.));
 		atomSet1.setVector2D(v1);
 		v = new Real2Vector(new CMLAtomSet(fixture.xmlMolecule).getVector2D());
-		Real2VectorTest.assertEquals("r2v", new double[] { 4.0, 5.0, 6.0, 7.0,
-				8.0, 9.0, -1.0, -1.0, -1.0, 1.0 }, v, EPS);
+		double[] test1 = new double[] { 4.0, 5.0, 6.0, 7.0,
+				8.0, 9.0, -1.0, -1.0, -1.0, 1.0 };
+		Assert.assertNotNull("test should not be null (" + "r2v" + EC.S_RBRAK, test1);
+		Assert.assertNotNull("expected should not be null (" + "r2v" + EC.S_RBRAK,
+				v);
+		Assert.assertEquals("must be of equal length ", test1.length, v
+				.getXY().getArray().length);
+		DoubleTestBase.assertEquals("r2v", test1, v.getXY().getArray(),
+				EPS);
 	}
 
 	/**
@@ -780,29 +807,58 @@ public class CMLAtomSetTest {
 				0, 0, 0, 0, -1, 0, 0, 0, 0, 1 });
 		CMLAtom atom = new CMLAtom(atom0);
 		atom.transformCartesians(tr.getEuclidTransform3());
-		Point3Test.assertEquals("transform", new double[] { 1, -2, -3 }, atom
-				.getXYZ3(), EPS);
+		double[] test = new double[] { 1, -2, -3 };
+		Point3 expected = atom
+				.getXYZ3();
+		Assert.assertNotNull("test should not be null (" + "transform" + S_RBRAK, test);
+		Assert.assertEquals("must be of length 3", 3, test.length);
+		Assert.assertNotNull("ref should not be null (" + "transform" + S_RBRAK,
+				expected);
+		DoubleTestBase.assertEquals("transform", test, expected.getArray(), EPS);
+		double[] test1 = new double[] { 0.1, 0.2, 0.3 };
+		Point3 expected1 = atom.getXYZFract();
 		// check no corruption
-		Point3Test.assertEquals("transform", new double[] { 0.1, 0.2, 0.3 },
-				atom.getXYZFract(), EPS);
+		Assert.assertNotNull("test should not be null (" + "transform" + S_RBRAK, test1);
+		Assert.assertEquals("must be of length 3", 3, test1.length);
+		Assert.assertNotNull("ref should not be null (" + "transform" + S_RBRAK,
+				expected1);
+		DoubleTestBase.assertEquals("transform", test1, expected1.getArray(), EPS);
 		tr = new CMLTransform3(new double[] { 10, 0, 0, 0, 0, 20, 0, 0, 0, 0,
 				30, 0, 0, 0, 0, 1 });
 		atom = new CMLAtom(atom0);
 		atom.transformCartesians(tr.getEuclidTransform3());
-		Point3Test.assertEquals("transform", new double[] { 10, 40, 90 }, atom
-				.getXYZ3(), EPS);
+		double[] test2 = new double[] { 10, 40, 90 };
+		Point3 expected2 = atom
+				.getXYZ3();
+		Assert.assertNotNull("test should not be null (" + "transform" + S_RBRAK, test2);
+		Assert.assertEquals("must be of length 3", 3, test2.length);
+		Assert.assertNotNull("ref should not be null (" + "transform" + S_RBRAK,
+				expected2);
+		DoubleTestBase.assertEquals("transform", test2, expected2.getArray(), EPS);
 		tr = new CMLTransform3(new double[] { 0, 0, -1, 0, -1, 0, 0, 0, 0, -1,
 				0, 0, 0, 0, 0, 1 });
 		atom = new CMLAtom(atom0);
 		atom.transformCartesians(tr.getEuclidTransform3());
-		Point3Test.assertEquals("transform", new double[] { -3, -1, -2 }, atom
-				.getXYZ3(), EPS);
+		double[] test3 = new double[] { -3, -1, -2 };
+		Point3 expected3 = atom
+				.getXYZ3();
+		Assert.assertNotNull("test should not be null (" + "transform" + S_RBRAK, test3);
+		Assert.assertEquals("must be of length 3", 3, test3.length);
+		Assert.assertNotNull("ref should not be null (" + "transform" + S_RBRAK,
+				expected3);
+		DoubleTestBase.assertEquals("transform", test3, expected3.getArray(), EPS);
 		tr = new CMLTransform3(new double[] { 0, 0, 1, 0, -1, 0, 0, 0, 0, -1,
 				0, 0, 0, 0, 0, 1 });
 		atom = new CMLAtom(atom0);
 		atom.transformCartesians(tr.getEuclidTransform3());
-		Point3Test.assertEquals("transform", new double[] { 3, -1, -2 }, atom
-				.getXYZ3(), EPS);
+		double[] test4 = new double[] { 3, -1, -2 };
+		Point3 expected4 = atom
+				.getXYZ3();
+		Assert.assertNotNull("test should not be null (" + "transform" + S_RBRAK, test4);
+		Assert.assertEquals("must be of length 3", 3, test4.length);
+		Assert.assertNotNull("ref should not be null (" + "transform" + S_RBRAK,
+				expected4);
+		DoubleTestBase.assertEquals("transform", test4, expected4.getArray(), EPS);
 	}
 
 	/**
@@ -819,23 +875,44 @@ public class CMLAtomSetTest {
 				0, 0, 0, 0, -1, 0, 0, 0, 0, 1 });
 		CMLAtom atom = new CMLAtom(atom0);
 		atom.transformFractionals(tr.getEuclidTransform3());
+		double[] test = new double[] { 1, 2, 3 };
+		Point3 expected = atom
+				.getXYZ3();
 		// check no corruption
-		Point3Test.assertEquals("transform", new double[] { 1, 2, 3 }, atom
-				.getXYZ3(), EPS);
-		Point3Test.assertEquals("transform", new double[] { 0.1, -0.2, -0.3 },
-				atom.getXYZFract(), EPS);
+		Assert.assertNotNull("test should not be null (" + "transform" + S_RBRAK, test);
+		Assert.assertEquals("must be of length 3", 3, test.length);
+		Assert.assertNotNull("ref should not be null (" + "transform" + S_RBRAK,
+				expected);
+		DoubleTestBase.assertEquals("transform", test, expected.getArray(), EPS);
+		double[] test1 = new double[] { 0.1, -0.2, -0.3 };
+		Point3 expected1 = atom.getXYZFract();
+		Assert.assertNotNull("test should not be null (" + "transform" + S_RBRAK, test1);
+		Assert.assertEquals("must be of length 3", 3, test1.length);
+		Assert.assertNotNull("ref should not be null (" + "transform" + S_RBRAK,
+				expected1);
+		DoubleTestBase.assertEquals("transform", test1, expected1.getArray(), EPS);
 		tr = new CMLTransform3(new double[] { 1, 0, 0, 0.5, 0, -1, 0, 0.5, 0,
 				0, -1, 0.25, 0, 0, 0, 1 });
 		atom = new CMLAtom(atom0);
 		atom.transformFractionals(tr.getEuclidTransform3());
-		Point3Test.assertEquals("transform", new double[] { 0.6, 0.3, -0.05 },
-				atom.getXYZFract(), EPS);
+		double[] test2 = new double[] { 0.6, 0.3, -0.05 };
+		Point3 expected2 = atom.getXYZFract();
+		Assert.assertNotNull("test should not be null (" + "transform" + S_RBRAK, test2);
+		Assert.assertEquals("must be of length 3", 3, test2.length);
+		Assert.assertNotNull("ref should not be null (" + "transform" + S_RBRAK,
+				expected2);
+		DoubleTestBase.assertEquals("transform", test2, expected2.getArray(), EPS);
 		tr = new CMLTransform3(new double[] { 1, 1, 0, 0.5, -1, 0, 0, 0.5, 0,
 				0, 1, 0.25, 0, 0, 0, 1 });
 		atom = new CMLAtom(atom0);
 		atom.transformFractionals(tr.getEuclidTransform3());
-		Point3Test.assertEquals("transform", new double[] { 0.8, 0.4, 0.55 },
-				atom.getXYZFract(), EPS);
+		double[] test3 = new double[] { 0.8, 0.4, 0.55 };
+		Point3 expected3 = atom.getXYZFract();
+		Assert.assertNotNull("test should not be null (" + "transform" + S_RBRAK, test3);
+		Assert.assertEquals("must be of length 3", 3, test3.length);
+		Assert.assertNotNull("ref should not be null (" + "transform" + S_RBRAK,
+				expected3);
+		DoubleTestBase.assertEquals("transform", test3, expected3.getArray(), EPS);
 	}
 
 	/**
@@ -847,8 +924,12 @@ public class CMLAtomSetTest {
 		CMLMolecule mol1 = new CMLMolecule(fixture.xmlMolecule);
 		CMLAtomSet as1 = new CMLAtomSet(mol1);
 		Real2 delta = atomSet1.overlap2DCentroids(as1);
-		Real2Test.assertEquals("overlap centroid", new double[] { 2. / 3, 0 },
-				delta, EPS);
+		double[] test = new double[] { 2. / 3, 0 };
+		Assert.assertNotNull("test should not be null (" + "overlap centroid" + S_RBRAK, test);
+		Assert.assertEquals("must be of length 2", 2, test.length);
+		Assert.assertNotNull("ref should not be null (" + "overlap centroid" + S_RBRAK,
+				delta);
+		DoubleTestBase.assertEquals("overlap centroid", test, delta.getXY(), EPS);
 	}
 
 	/**
@@ -859,8 +940,16 @@ public class CMLAtomSetTest {
 	public void testGetDistanceMatrix() {
 		double s2 = Math.sqrt(2.);
 		RealMatrix rm = atomSet1.getDistanceMatrix(atomSet2);
-		RealMatrixTest.assertEquals("distance matrix", 3, 4, new double[] { s2,
-				s2, s2, s2, 0.0, 2.0, 2 * s2, 2.0, 2.0, 0.0, 2.0, 2 * s2 }, rm,
+		double[] test = new double[] { s2,
+				s2, s2, s2, 0.0, 2.0, 2 * s2, 2.0, 2.0, 0.0, 2.0, 2 * s2 };
+		Assert.assertNotNull("test should not be null (" + "distance matrix" + EC.S_RBRAK, test);
+		Assert.assertNotNull("ref should not be null (" + "distance matrix" + EC.S_RBRAK,
+				rm);
+		Assert.assertEquals("rows should be equal (" + "distance matrix" + EC.S_RBRAK, 3,
+				rm.getRows());
+		Assert.assertEquals("columns should be equal (" + "distance matrix" + EC.S_RBRAK, 4,
+				rm.getCols());
+		DoubleTestBase.assertEquals("distance matrix", test, rm.getMatrixAsArray(),
 				EPS);
 	}
 
@@ -995,12 +1084,27 @@ public class CMLAtomSetTest {
 	public final void testGetCoordinates3() {
 		Point3Vector p3v = atomSet1.getCoordinates3(CoordinateType.CARTESIAN);
 		Assert.assertEquals("point3vector", 3, p3v.size());
-		Point3Test.assertEquals("point3vector", new double[] { 0.0, 0.0, 0.0 },
-				p3v.get(0), EPS);
-		Point3Test.assertEquals("point3vector", new double[] { 1.0, 1.0, 1.0 },
-				p3v.get(1), EPS);
-		Point3Test.assertEquals("point3vector",
-				new double[] { 1.0, -1.0, -1.0 }, p3v.get(2), EPS);
+		double[] test = new double[] { 0.0, 0.0, 0.0 };
+		Point3 expected = p3v.get(0);
+		Assert.assertNotNull("test should not be null (" + "point3vector" + S_RBRAK, test);
+		Assert.assertEquals("must be of length 3", 3, test.length);
+		Assert.assertNotNull("ref should not be null (" + "point3vector" + S_RBRAK,
+				expected);
+		DoubleTestBase.assertEquals("point3vector", test, expected.getArray(), EPS);
+		double[] test1 = new double[] { 1.0, 1.0, 1.0 };
+		Point3 expected1 = p3v.get(1);
+		Assert.assertNotNull("test should not be null (" + "point3vector" + S_RBRAK, test1);
+		Assert.assertEquals("must be of length 3", 3, test1.length);
+		Assert.assertNotNull("ref should not be null (" + "point3vector" + S_RBRAK,
+				expected1);
+		DoubleTestBase.assertEquals("point3vector", test1, expected1.getArray(), EPS);
+		double[] test2 = new double[] { 1.0, -1.0, -1.0 };
+		Point3 expected2 = p3v.get(2);
+		Assert.assertNotNull("test should not be null (" + "point3vector" + S_RBRAK, test2);
+		Assert.assertEquals("must be of length 3", 3, test2.length);
+		Assert.assertNotNull("ref should not be null (" + "point3vector" + S_RBRAK,
+				expected2);
+		DoubleTestBase.assertEquals("point3vector", test2, expected2.getArray(), EPS);
 
 		p3v = atomSet1.getCoordinates3(CoordinateType.FRACTIONAL);
 		Assert.assertNull("point3vector", p3v);
@@ -1014,8 +1118,12 @@ public class CMLAtomSetTest {
 	@Test
 	public final void testGetCentroid3() {
 		Point3 cent = atomSet1.getCentroid3(CoordinateType.CARTESIAN);
-		Point3Test.assertEquals("centroid", new double[] { 2. / 3., 0.0, 0.0 },
-				cent, EPS);
+		double[] test = new double[] { 2. / 3., 0.0, 0.0 };
+		Assert.assertNotNull("test should not be null (" + "centroid" + S_RBRAK, test);
+		Assert.assertEquals("must be of length 3", 3, test.length);
+		Assert.assertNotNull("ref should not be null (" + "centroid" + S_RBRAK,
+				cent);
+		DoubleTestBase.assertEquals("centroid", test, cent.getArray(), EPS);
 		cent = atomSet1.getCentroid3(CoordinateType.FRACTIONAL);
 		Assert.assertNull("centroid", cent);
 
@@ -1028,12 +1136,30 @@ public class CMLAtomSetTest {
 	public final void testTransformTransform2() {
 		List<Real2> r2v = atomSet1.getVector2D();
 		Assert.assertEquals("real2vector", 3, r2v.size());
-		Real2Test.assertEquals("real2vector", new double[] { 0.0, 0.0 }, r2v
-				.get(0), EPS);
-		Real2Test.assertEquals("real2vector", new double[] { 1.0, 1.0 }, r2v
-				.get(1), EPS);
-		Real2Test.assertEquals("real2vector", new double[] { 1.0, -1.0 }, r2v
-				.get(2), EPS);
+		double[] test = new double[] { 0.0, 0.0 };
+		Real2 expected = r2v
+				.get(0);
+		Assert.assertNotNull("test should not be null (" + "real2vector" + S_RBRAK, test);
+		Assert.assertEquals("must be of length 2", 2, test.length);
+		Assert.assertNotNull("ref should not be null (" + "real2vector" + S_RBRAK,
+				expected);
+		DoubleTestBase.assertEquals("real2vector", test, expected.getXY(), EPS);
+		double[] test1 = new double[] { 1.0, 1.0 };
+		Real2 expected1 = r2v
+				.get(1);
+		Assert.assertNotNull("test should not be null (" + "real2vector" + S_RBRAK, test1);
+		Assert.assertEquals("must be of length 2", 2, test1.length);
+		Assert.assertNotNull("ref should not be null (" + "real2vector" + S_RBRAK,
+				expected1);
+		DoubleTestBase.assertEquals("real2vector", test1, expected1.getXY(), EPS);
+		double[] test2 = new double[] { 1.0, -1.0 };
+		Real2 expected2 = r2v
+				.get(2);
+		Assert.assertNotNull("test should not be null (" + "real2vector" + S_RBRAK, test2);
+		Assert.assertEquals("must be of length 2", 2, test2.length);
+		Assert.assertNotNull("ref should not be null (" + "real2vector" + S_RBRAK,
+				expected2);
+		DoubleTestBase.assertEquals("real2vector", test2, expected2.getXY(), EPS);
 
 		Angle zrot = new Angle(Math.PI / 2.);
 		Transform2 t = new Transform2(zrot);
@@ -1041,12 +1167,30 @@ public class CMLAtomSetTest {
 
 		r2v = atomSet1.getVector2D();
 		Assert.assertEquals("real2vector", 3, r2v.size());
-		Real2Test.assertEquals("real2vector", new double[] { 0.0, 0.0 }, r2v
-				.get(0), EPS);
-		Real2Test.assertEquals("real2vector", new double[] { 1.0, -1.0 }, r2v
-				.get(1), EPS);
-		Real2Test.assertEquals("real2vector", new double[] { -1.0, -1.0 }, r2v
-				.get(2), EPS);
+		double[] test3 = new double[] { 0.0, 0.0 };
+		Real2 expected3 = r2v
+				.get(0);
+		Assert.assertNotNull("test should not be null (" + "real2vector" + S_RBRAK, test3);
+		Assert.assertEquals("must be of length 2", 2, test3.length);
+		Assert.assertNotNull("ref should not be null (" + "real2vector" + S_RBRAK,
+				expected3);
+		DoubleTestBase.assertEquals("real2vector", test3, expected3.getXY(), EPS);
+		double[] test4 = new double[] { 1.0, -1.0 };
+		Real2 expected4 = r2v
+				.get(1);
+		Assert.assertNotNull("test should not be null (" + "real2vector" + S_RBRAK, test4);
+		Assert.assertEquals("must be of length 2", 2, test4.length);
+		Assert.assertNotNull("ref should not be null (" + "real2vector" + S_RBRAK,
+				expected4);
+		DoubleTestBase.assertEquals("real2vector", test4, expected4.getXY(), EPS);
+		double[] test5 = new double[] { -1.0, -1.0 };
+		Real2 expected5 = r2v
+				.get(2);
+		Assert.assertNotNull("test should not be null (" + "real2vector" + S_RBRAK, test5);
+		Assert.assertEquals("must be of length 2", 2, test5.length);
+		Assert.assertNotNull("ref should not be null (" + "real2vector" + S_RBRAK,
+				expected5);
+		DoubleTestBase.assertEquals("real2vector", test5, expected5.getXY(), EPS);
 	}
 
 	/**

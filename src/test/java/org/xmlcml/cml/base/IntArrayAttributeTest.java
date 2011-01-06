@@ -4,7 +4,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.euclid.Int;
-import org.xmlcml.euclid.test.IntTest;
 
 /**
  * tests for intAttribute.

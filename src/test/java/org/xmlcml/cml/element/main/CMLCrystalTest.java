@@ -22,9 +22,9 @@ import org.xmlcml.cml.element.CMLScalar;
 import org.xmlcml.cml.element.CMLSymmetry;
 import org.xmlcml.cml.element.CMLVector3;
 import org.xmlcml.cml.element.CMLCrystal.Centering;
+import org.xmlcml.euclid.EC;
 import org.xmlcml.euclid.RealSquareMatrix;
 import org.xmlcml.euclid.test.DoubleTestBase;
-import org.xmlcml.euclid.test.RealSquareMatrixTest;
 
 /**
  * test for CMLCrystal.
@@ -157,8 +157,15 @@ public class CMLCrystalTest {
 	@Test
 	public void testGetOrthogonalizationMatrix() {
 		RealSquareMatrix matrix = crystal1.getOrthogonalizationMatrix();
-		RealSquareMatrixTest.assertEquals("matrix contents ", 3, new double[] {
-				4.5, 0.0, 0.0, 0.0, 4.5, 0.0, 0.0, 0.0, 4.5 }, matrix, EPS);
+		double[] test = new double[] {
+				4.5, 0.0, 0.0, 0.0, 4.5, 0.0, 0.0, 0.0, 4.5 };
+		Assert.assertNotNull("test should not be null (" + "matrix contents " + EC.S_RBRAK, test);
+		Assert.assertNotNull("ref should not be null (" + "matrix contents " + EC.S_RBRAK,
+				matrix);
+		Assert.assertEquals("rows should be equal (" + "matrix contents " + EC.S_RBRAK, 3,
+				matrix.getRows());
+		DoubleTestBase.assertEquals("matrix contents ", test, matrix.getMatrixAsArray(),
+				EPS);
 	}
 
 	/**
@@ -181,9 +188,15 @@ public class CMLCrystalTest {
 						.getDictRef());
 		Assert.assertEquals("a", 10, cell.get(0).getDouble(), EPS);
 		RealSquareMatrix matrix = crystal1.getOrthogonalizationMatrix();
-		RealSquareMatrixTest.assertEquals("matrix contents ", 3, new double[] {
-				9.8433, 0.0, 0.0, -1.7632, 10.8329, 0.0, 0.0, 1.9101, 12.0 },
-				matrix, 0.0001);
+		double[] test = new double[] {
+				9.8433, 0.0, 0.0, -1.7632, 10.8329, 0.0, 0.0, 1.9101, 12.0 };
+		Assert.assertNotNull("test should not be null (" + "matrix contents " + EC.S_RBRAK, test);
+		Assert.assertNotNull("ref should not be null (" + "matrix contents " + EC.S_RBRAK,
+				matrix);
+		Assert.assertEquals("rows should be equal (" + "matrix contents " + EC.S_RBRAK, 3,
+				matrix.getRows());
+		DoubleTestBase.assertEquals("matrix contents ", test, matrix.getMatrixAsArray(),
+				0.0001);
 	}
 
 	/**
@@ -202,9 +215,15 @@ public class CMLCrystalTest {
 						.getDictRef());
 		Assert.assertEquals("a", 10, cell.get(0).getDouble(), EPS);
 		RealSquareMatrix matrix = crystal1.getOrthogonalizationMatrix();
-		RealSquareMatrixTest.assertEquals("matrix contents ", 3, new double[] {
-				9.8433, 0.0, 0.0, -1.7632, 10.8329, 0.0, 0.0, 1.9101, 12.0 },
-				matrix, 0.0001);
+		double[] test = new double[] {
+				9.8433, 0.0, 0.0, -1.7632, 10.8329, 0.0, 0.0, 1.9101, 12.0 };
+		Assert.assertNotNull("test should not be null (" + "matrix contents " + EC.S_RBRAK, test);
+		Assert.assertNotNull("ref should not be null (" + "matrix contents " + EC.S_RBRAK,
+				matrix);
+		Assert.assertEquals("rows should be equal (" + "matrix contents " + EC.S_RBRAK, 3,
+				matrix.getRows());
+		DoubleTestBase.assertEquals("matrix contents ", test, matrix.getMatrixAsArray(),
+				0.0001);
 
 		crystal2 = new CMLCrystal();
 		crystal2.setCellParameters(new double[] { 10, 11, 12, 80, 90, 100 });
@@ -216,9 +235,15 @@ public class CMLCrystalTest {
 						.getDictRef());
 		Assert.assertEquals("a", 10, cell.get(0).getDouble(), EPS);
 		matrix = crystal1.getOrthogonalizationMatrix();
-		RealSquareMatrixTest.assertEquals("matrix contents ", 3, new double[] {
-				9.8433, 0.0, 0.0, -1.7632, 10.8329, 0.0, 0.0, 1.9101, 12.0 },
-				matrix, 0.0001);
+		double[] test1 = new double[] {
+				9.8433, 0.0, 0.0, -1.7632, 10.8329, 0.0, 0.0, 1.9101, 12.0 };
+		Assert.assertNotNull("test should not be null (" + "matrix contents " + EC.S_RBRAK, test1);
+		Assert.assertNotNull("ref should not be null (" + "matrix contents " + EC.S_RBRAK,
+				matrix);
+		Assert.assertEquals("rows should be equal (" + "matrix contents " + EC.S_RBRAK, 3,
+				matrix.getRows());
+		DoubleTestBase.assertEquals("matrix contents ", test1, matrix.getMatrixAsArray(),
+				0.0001);
 	}
 
 	/**
