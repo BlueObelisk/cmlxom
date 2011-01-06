@@ -9,7 +9,6 @@ import static org.xmlcml.cml.base.CMLConstants.XSD_DOUBLE;
 import static org.xmlcml.cml.base.CMLConstants.XSD_INTEGER;
 import static org.xmlcml.euclid.EuclidConstants.EPS;
 import static org.xmlcml.euclid.EuclidConstants.S_RBRAK;
-import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -203,7 +202,7 @@ public class CMLMatrixTest {
 		try {
 			testMat = new CMLMatrix(mat);
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Assert.assertEquals("double[][] constructor", 4, testMat.getRows());
 		Assert.assertEquals("double[][] constructor", 3, testMat.getColumns());
@@ -223,7 +222,7 @@ public class CMLMatrixTest {
 		try {
 			testMat = new CMLMatrix(mat);
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Assert.assertEquals("int[][] constructor", 4, testMat.getRows());
 		Assert.assertEquals("int[][] constructor", 3, testMat.getColumns());
@@ -241,7 +240,7 @@ public class CMLMatrixTest {
 		try {
 			testMat = new CMLMatrix(4, 3, mat);
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Assert.assertEquals("double[][] constructor", 4, testMat.getRows());
 		Assert.assertEquals("double[][] constructor", 3, testMat.getColumns());
@@ -258,7 +257,7 @@ public class CMLMatrixTest {
 		try {
 			testMat = new CMLMatrix(4, 3, mat);
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Assert.assertEquals("int[][] constructor", 4, testMat.getRows());
 		Assert.assertEquals("int[][] constructor", 3, testMat.getColumns());
@@ -302,7 +301,7 @@ public class CMLMatrixTest {
 					new double[] { 31., 32., 33. },
 					new double[] { 41., 42., 43. } });
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Assert.assertEquals("set mat", XSD_DOUBLE, mat.getDataType());
 		Assert.assertEquals("set mat", 4, mat.getRows());
@@ -327,7 +326,7 @@ public class CMLMatrixTest {
 					new int[] { 21, 22, 23 }, new int[] { 31, 32, 33 },
 					new int[] { 41, 42, 43 } });
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Assert.assertEquals("set mat", 4, mat.getRows());
 		Assert.assertEquals("set mat", 3, mat.getColumns());
@@ -350,7 +349,7 @@ public class CMLMatrixTest {
 			mat.setArray(4, 3, new double[] { 11., 12., 13., 21., 22., 23.,
 					31., 32., 33., 41., 42., 43. });
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Assert.assertEquals("set mat", XSD_DOUBLE, mat.getDataType());
 		Assert.assertEquals("set mat", 4, mat.getRows());
@@ -374,7 +373,7 @@ public class CMLMatrixTest {
 			mat.setArray(4, 3, new int[] { 11, 12, 13, 21, 22, 23, 31, 32, 33,
 					41, 42, 43 });
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Assert.assertEquals("set mat", XSD_INTEGER, mat.getDataType());
 		Assert.assertEquals("set mat", 4, mat.getRows());
@@ -437,7 +436,7 @@ public class CMLMatrixTest {
 		try {
 			mat1 = mat.multiply(mat);
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		CMLMatrixTest.assertEquals("multiply", 2, 2, new double[] { 36450.,
 				16200., 8100., 4050. }, mat1, EPS);

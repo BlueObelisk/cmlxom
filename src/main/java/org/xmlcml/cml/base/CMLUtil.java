@@ -794,6 +794,8 @@ public abstract class CMLUtil implements CMLConstants {
 	 * @return
 	 * @throws ParseException
 	 */
+	@Deprecated //TODO Used in Euclid, so the same method is now there as well.
+	//TODO Refactor so that there is only one definition.
 	public static double parseFlexibleDouble(String value)
 			throws ParseException {
 		//LOG.debug("Parsing "+ value);

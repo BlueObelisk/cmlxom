@@ -1,7 +1,6 @@
 package org.xmlcml.cml.element.main;
 
 import static org.xmlcml.cml.element.main.AbstractTestBase.EXPERIMENTAL_RESOURCE;
-import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -22,6 +21,7 @@ import org.xmlcml.cml.base.CMLXOMTestUtils;
 import org.xmlcml.cml.element.CMLCml;
 import org.xmlcml.cml.element.CMLMolecule;
 import org.xmlcml.cml.element.CMLZMatrix;
+import org.xmlcml.euclid.EuclidRuntimeException;
 import org.xmlcml.euclid.Util;
 
 /**
@@ -235,12 +235,12 @@ public class CMLZMatrixTest {
 		try {
 			serializer = new Serializer(new FileOutputStream(outfile));
 		} catch (FileNotFoundException e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		try {
 			serializer.write(doc);
 		} catch (IOException e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 	}
 

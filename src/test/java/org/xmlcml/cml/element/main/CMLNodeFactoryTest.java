@@ -1,7 +1,6 @@
 package org.xmlcml.cml.element.main;
 
 import static org.xmlcml.cml.base.CMLConstants.CML1;
-import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 import nu.xom.Element;
 
 import org.junit.Assert;
@@ -10,6 +9,7 @@ import org.xmlcml.cml.base.CMLBuilder;
 import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLXOMTestUtils;
+import org.xmlcml.euclid.EuclidRuntimeException;
 
 /**
  * test OldNodeFactory.
@@ -36,7 +36,7 @@ public class CMLNodeFactoryTest {
 		try {
 			cmlElement = (CMLElement) new CMLBuilder().parseString(s1);
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Assert.assertTrue("is CMLElement", CMLElement.class
 				.isAssignableFrom(cmlElement.getClass()));
@@ -49,7 +49,7 @@ public class CMLNodeFactoryTest {
 		try {
 			element = (Element) new CMLBuilder().parseString(s1);
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Assert.assertFalse("is CMLElement", CMLElement.class
 				.isAssignableFrom(element.getClass()));

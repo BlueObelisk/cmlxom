@@ -2,7 +2,6 @@ package org.xmlcml.cml.element.main;
 
 import static org.xmlcml.cml.base.CMLConstants.XSD_DOUBLE;
 import static org.xmlcml.euclid.EuclidConstants.EPS;
-import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
 import java.util.List;
 
@@ -19,7 +18,10 @@ import org.xmlcml.cml.element.CMLEigen;
 import org.xmlcml.cml.element.CMLMatrix;
 import org.xmlcml.cml.element.CMLMolecule;
 import org.xmlcml.cml.element.CMLBasisSet.Basis;
+import org.xmlcml.euclid.EuclidConstants;
+import org.xmlcml.euclid.EuclidRuntimeException;
 import org.xmlcml.euclid.RealArray;
+import org.xmlcml.euclid.test.DoubleTestBase;
 import org.xmlcml.euclid.test.RealArrayTest;
 
 /** */
@@ -200,7 +202,7 @@ public class CMLBasisSetTest {
 			coefficients = (CMLEigen) new CMLBuilder()
 					.parseString(coefficientS);
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		basisSet2.setMolecularOrbitalCoefficients(coefficients);
 	}
@@ -248,11 +250,17 @@ public class CMLBasisSetTest {
 		try {
 			homoVector = coefficients.getEigenvector(homo);
 		} catch (RuntimeException e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
-		RealArrayTest.assertEquals("homo vector", new double[] { 0.51104, 0.0,
+		double[] test = new double[] { 0.51104, 0.0,
 				-0.38138, -0.25274, 0.0, -0.51109, 1.0E-5, 0.43176, 0.28617,
-				0.0 }, homoVector, EPS);
+				0.0 };
+		Assert.assertNotNull("test should not be null (" + "homo vector" + EuclidConstants.S_RBRAK, test);
+		Assert.assertNotNull("expected should not be null (" + "homo vector" + EuclidConstants.S_RBRAK,
+				homoVector);
+		Assert.assertEquals("must be of equal length ", test.length, homoVector
+				.getArray().length);
+		DoubleTestBase.assertEquals("homo vector", test, homoVector.getArray(), EPS);
 	}
 
 	/**

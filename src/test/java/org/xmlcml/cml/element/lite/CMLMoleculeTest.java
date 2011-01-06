@@ -1,7 +1,6 @@
 package org.xmlcml.cml.element.lite;
 
 import static org.xmlcml.euclid.EuclidConstants.EPS;
-import static org.xmlcml.euclid.test.EuclidTestBase.neverThrow;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -32,6 +31,7 @@ import org.xmlcml.cml.element.CMLFormula;
 import org.xmlcml.cml.element.CMLMolecule;
 import org.xmlcml.cml.element.CMLName;
 import org.xmlcml.cml.element.main.MoleculeAtomBondFixture;
+import org.xmlcml.euclid.EuclidRuntimeException;
 import org.xmlcml.euclid.Real2;
 import org.xmlcml.euclid.Real2Vector;
 import org.xmlcml.molutil.ChemicalElement;
@@ -60,7 +60,7 @@ public class CMLMoleculeTest {
 			mol1 = (CMLMolecule) new CMLBuilder().build(new File(filename))
 					.getRootElement();
 		} catch (Exception e) {
-			neverThrow(e);
+			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		assertEqualsCanonically(mol, mol1);
 	}
