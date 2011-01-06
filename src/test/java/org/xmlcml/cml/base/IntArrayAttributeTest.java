@@ -3,6 +3,7 @@ package org.xmlcml.cml.base;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.xmlcml.euclid.Int;
 import org.xmlcml.euclid.test.IntTest;
 
 /**
@@ -44,7 +45,10 @@ public class IntArrayAttributeTest {
 	public void testSetCMLValueString() {
 		daa1.setCMLValue("3   5");
 		int[] dd = (int[]) daa1.getCMLValue();
-		IntTest.assertEquals("get CMLValue", new int[] { 3, 5 }, dd);
+		String s = Int.testEquals((new int[] { 3, 5 }), dd);
+		if (s != null) {
+			Assert.fail("get CMLValue" + "; " + s);
+		}
 
 	}
 
@@ -58,7 +62,10 @@ public class IntArrayAttributeTest {
 		daa1.setCMLValue("3  5");
 		daa2 = new IntArraySTAttribute(daa1);
 		int[] dd = (int[]) daa2.getCMLValue();
-		IntTest.assertEquals("get CMLValue", new int[] { 3, 5 }, dd);
+		String s = Int.testEquals((new int[] { 3, 5 }), dd);
+		if (s != null) {
+			Assert.fail("get CMLValue" + "; " + s);
+		}
 
 	}
 
@@ -90,10 +97,16 @@ public class IntArrayAttributeTest {
 	public void testSplit() {
 		int[] dd = IntArraySTAttribute.split("1 3 5", CMLConstants.S_SPACE);
 		Assert.assertEquals("split", 3, dd.length);
-		IntTest.assertEquals("split", new int[] { 1, 3, 5 }, dd);
+		String s = Int.testEquals((new int[] { 1, 3, 5 }), dd);
+		if (s != null) {
+			Assert.fail("split" + "; " + s);
+		}
 		dd = IntArraySTAttribute.split("7 3 5", null);
 		Assert.assertEquals("split", 3, dd.length);
-		IntTest.assertEquals("split", new int[] { 7, 3, 5 }, dd);
+		s = Int.testEquals((new int[] { 7, 3, 5 }), dd);
+		if (s != null) {
+			Assert.fail("split" + "; " + s);
+		}
 	}
 
 	/**
@@ -102,8 +115,11 @@ public class IntArrayAttributeTest {
 	@Test
 	public void testGetIntArray() {
 		daa1.setCMLValue(new int[] { 5, 7 });
-		IntTest.assertEquals("get Value", new int[] { 5, 7 }, daa1
-				.getIntArray());
+		String s = Int.testEquals((new int[] { 5, 7 }), daa1
+						.getIntArray());
+		if (s != null) {
+			Assert.fail("get Value" + "; " + s);
+		}
 	}
 
 }
