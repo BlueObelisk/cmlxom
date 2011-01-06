@@ -297,8 +297,8 @@ public class CMLLine3Test extends GeomTestBase {
 	@Test
 	public void testGetEuclidLine3() {
 		Line3 l = ll.getEuclidLine3();
-		Line3Test.assertEquals("euclid point", new Point3(6., 5., 4.),
-				new Vector3(1., 2., 3.).normalize(), l, EPS);
+		Line3 expected=new Line3(new Point3(6., 5., 4.), new Vector3(1., 2., 3.).normalize());
+		Assert.assertTrue(l.isEqualTo(expected));
 	}
 
 	/**

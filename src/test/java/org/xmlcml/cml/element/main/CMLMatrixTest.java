@@ -23,6 +23,7 @@ import org.xmlcml.cml.base.CMLXOMTestUtils;
 import org.xmlcml.cml.element.CMLCml;
 import org.xmlcml.cml.element.CMLMatrix;
 import org.xmlcml.euclid.EuclidRuntimeException;
+import org.xmlcml.euclid.Int;
 import org.xmlcml.euclid.IntMatrix;
 import org.xmlcml.euclid.RealMatrix;
 import org.xmlcml.euclid.test.DoubleTestBase;
@@ -330,8 +331,11 @@ public class CMLMatrixTest {
 		}
 		Assert.assertEquals("set mat", 4, mat.getRows());
 		Assert.assertEquals("set mat", 3, mat.getColumns());
-		IntTest.assertEquals("set matrix int[][]", new int[] { 11, 12, 13, 21,
-				22, 23, 31, 32, 33, 41, 42, 43 }, mat.getIntegerArray());
+		String s = Int.testEquals((new int[] { 11, 12, 13, 21,
+						22, 23, 31, 32, 33, 41, 42, 43 }), mat.getIntegerArray());
+		if (s != null) {
+			Assert.fail("set matrix int[][]" + "; " + s);
+		}
 		Assert.assertEquals("set mat", XSD_INTEGER, mat.getDataType());
 	}
 
@@ -378,8 +382,11 @@ public class CMLMatrixTest {
 		Assert.assertEquals("set mat", XSD_INTEGER, mat.getDataType());
 		Assert.assertEquals("set mat", 4, mat.getRows());
 		Assert.assertEquals("set mat", 3, mat.getColumns());
-		IntTest.assertEquals("set matrix int, int []", new int[] { 11, 12, 13,
-				21, 22, 23, 31, 32, 33, 41, 42, 43 }, mat.getIntegerArray());
+		String s = Int.testEquals((new int[] { 11, 12, 13,
+						21, 22, 23, 31, 32, 33, 41, 42, 43 }), mat.getIntegerArray());
+		if (s != null) {
+			Assert.fail("set matrix int, int []" + "; " + s);
+		}
 	}
 
 	/**
@@ -459,7 +466,10 @@ public class CMLMatrixTest {
 	public void testGetIntegerArray() {
 		int[] ii = new int[] { 11, 12, 13, 21, 22, 23 };
 		CMLMatrix m = new CMLMatrix(2, 3, ii);
-		IntTest.assertEquals("int[]", ii, m.getIntegerArray());
+		String s = Int.testEquals(ii, m.getIntegerArray());
+		if (s != null) {
+			Assert.fail("int[]" + "; " + s);
+		}
 	}
 
 	/**

@@ -20,6 +20,7 @@ import org.xmlcml.cml.element.CMLMatrix;
 import org.xmlcml.cml.element.CMLPoint3;
 import org.xmlcml.cml.element.CMLTransform3;
 import org.xmlcml.cml.element.CMLVector3;
+import org.xmlcml.euclid.EC;
 import org.xmlcml.euclid.EuclidRuntimeException;
 import org.xmlcml.euclid.Point3;
 import org.xmlcml.euclid.Transform3;
@@ -50,8 +51,14 @@ public class CMLTransform3Test extends GeomTestBase {
 		Assert.assertNotNull("test should not be null (" + msg + S_RBRAK, test);
 		Assert.assertNotNull("expected should not be null (" + msg + S_RBRAK,
 				expected);
-		Transform3Test.assertEquals(msg, test.getEuclidTransform3(), expected
-				.getEuclidTransform3(), epsilon);
+		Transform3 test1 = test.getEuclidTransform3();
+		Transform3 expected1 = expected
+				.getEuclidTransform3();
+		Assert.assertNotNull("test should not be null (" + msg + EC.S_RBRAK, test1);
+		Assert.assertNotNull("expected should not be null (" + msg + EC.S_RBRAK,
+				expected1);
+		DoubleTestBase.assertEquals(msg, test1.getMatrixAsArray(), expected1
+				.getMatrixAsArray(), epsilon);
 	}
 
 	/**
@@ -70,7 +77,14 @@ public class CMLTransform3Test extends GeomTestBase {
 		Assert.assertEquals("must be of length 16", 16, test.length);
 		Assert.assertNotNull("expected should not be null (" + msg + S_RBRAK,
 				expected);
-		Transform3Test.assertEquals(msg, test, expected.getEuclidTransform3(),
+		Assert.assertTrue(msg, true);
+		Transform3 expected1 = expected.getEuclidTransform3();
+		Assert.assertNotNull("test should not be null (" + msg + EC.S_RBRAK, test);
+		Assert.assertEquals("test should have 16 elements (" + msg + EC.S_RBRAK,
+				16, test.length);
+		Assert.assertNotNull("ref should not be null (" + msg + EC.S_RBRAK,
+				expected1);
+		DoubleTestBase.assertEquals(msg, test, expected1.getMatrixAsArray(),
 				epsilon);
 	}
 
@@ -600,8 +614,14 @@ public class CMLTransform3Test extends GeomTestBase {
 			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Transform3 tt = t.getEuclidTransform3();
-		Transform3Test.assertEquals("get euclid", new double[] { 1., 0., 0.,
-				0., 0., -1., 0., 0., 0., 0., 1., 0.5, 0., 0., 0., 1., }, tt,
+		double[] test = new double[] { 1., 0., 0.,
+				0., 0., -1., 0., 0., 0., 0., 1., 0.5, 0., 0., 0., 1., };
+		Assert.assertNotNull("test should not be null (" + "get euclid" + EC.S_RBRAK, test);
+		Assert.assertEquals("test should have 16 elements (" + "get euclid" + EC.S_RBRAK,
+				16, test.length);
+		Assert.assertNotNull("ref should not be null (" + "get euclid" + EC.S_RBRAK,
+				tt);
+		DoubleTestBase.assertEquals("get euclid", test, tt.getMatrixAsArray(),
 				EPS);
 	}
 
@@ -620,8 +640,14 @@ public class CMLTransform3Test extends GeomTestBase {
 			throw new EuclidRuntimeException("should never throw " + e);
 		}
 		Transform3 tt = t.getEuclidTransform3();
-		Transform3Test.assertEquals("get euclid", new double[] { 1., 0., 0.,
-				0., 0., -1., 0., 0., 0., 0., 1., 0.5, 0., 0., 0., 1., }, tt,
+		double[] test = new double[] { 1., 0., 0.,
+				0., 0., -1., 0., 0., 0., 0., 1., 0.5, 0., 0., 0., 1., };
+		Assert.assertNotNull("test should not be null (" + "get euclid" + EC.S_RBRAK, test);
+		Assert.assertEquals("test should have 16 elements (" + "get euclid" + EC.S_RBRAK,
+				16, test.length);
+		Assert.assertNotNull("ref should not be null (" + "get euclid" + EC.S_RBRAK,
+				tt);
+		DoubleTestBase.assertEquals("get euclid", test, tt.getMatrixAsArray(),
 				EPS);
 	}
 

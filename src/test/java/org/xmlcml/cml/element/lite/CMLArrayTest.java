@@ -11,6 +11,7 @@ import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLXOMTestUtils;
 import org.xmlcml.cml.element.CMLArray;
 import org.xmlcml.euclid.EC;
+import org.xmlcml.euclid.Int;
 import org.xmlcml.euclid.test.DoubleTestBase;
 import org.xmlcml.euclid.test.IntTest;
 import org.xmlcml.euclid.test.StringTestBase;
@@ -155,7 +156,10 @@ public class CMLArrayTest {
 					.getDoubles(), EPS);
 		} else if (test.getDataType().equals(CC.XSD_INTEGER)
 				&& expected.getDataType().equals(CC.XSD_INTEGER)) {
-			IntTest.assertEquals(msg, test.getInts(), expected.getInts());
+			String s = Int.testEquals(test.getInts(), expected.getInts());
+			if (s != null) {
+				Assert.fail(msg + "; " + s);
+			}
 		} else {
 			Assert.fail("inconsistent dataTypes" + test.getDataType() + " / "
 					+ expected.getDataType());
@@ -197,7 +201,10 @@ public class CMLArrayTest {
 		if (!expected.getDataType().equals(CC.XSD_INTEGER)) {
 			Assert.fail("expected should be int");
 		}
-		IntTest.assertEquals(msg, test, expected.getInts());
+		String s = Int.testEquals(test, expected.getInts());
+		if (s != null) {
+			Assert.fail(msg + "; " + s);
+		}
 	}
 
 	/**
