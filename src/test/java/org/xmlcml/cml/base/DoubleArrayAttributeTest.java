@@ -106,9 +106,11 @@ public class DoubleArrayAttributeTest {
 	@Test
 	public void testNaNSplit() {
 		double[] dd = DoubleArraySTAttribute.split("NaN INF -INF 2.1", CMLConstants.S_SPACE);
-		DoubleTestBase.assertObjectivelyEquals("NaN split", new double[] {
-				Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY,
-				2.1 }, dd, EC.EPS);
+		Assert.assertTrue(Double.isNaN(dd[0]));
+		Assert.assertEquals(Double.POSITIVE_INFINITY, dd[1]);
+		Assert.assertEquals(Double.NEGATIVE_INFINITY, dd[2]);
+		Assert.assertEquals(2.1, dd[3],EC.EPS);
+		Assert.assertEquals(4, dd.length);
 	}
 
 	/**

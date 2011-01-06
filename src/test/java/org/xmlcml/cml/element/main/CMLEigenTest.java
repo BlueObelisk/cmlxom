@@ -1,6 +1,6 @@
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.euclid.EC.EPS;
+import static org.xmlcml.euclid.EuclidConstants.EPS;
 import junit.framework.Assert;
 
 import org.junit.Before;
@@ -12,7 +12,6 @@ import org.xmlcml.cml.element.CMLEigen.Orientation;
 import org.xmlcml.euclid.EuclidConstants;
 import org.xmlcml.euclid.RealArray;
 import org.xmlcml.euclid.test.DoubleTestBase;
-import org.xmlcml.euclid.test.RealArrayTest;
 
 /**
  * tests eigen.

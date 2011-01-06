@@ -1,6 +1,6 @@
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.euclid.EC.EPS;
+import static org.xmlcml.euclid.EuclidConstants.EPS;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -10,11 +10,11 @@ import org.xmlcml.cml.element.CMLLine3;
 import org.xmlcml.cml.element.CMLPlane3;
 import org.xmlcml.cml.element.CMLPoint3;
 import org.xmlcml.cml.element.CMLVector3;
+import org.xmlcml.euclid.EC;
 import org.xmlcml.euclid.EuclidRuntimeException;
 import org.xmlcml.euclid.Plane3;
 import org.xmlcml.euclid.Util;
 import org.xmlcml.euclid.test.DoubleTestBase;
-import org.xmlcml.euclid.test.Plane3Test;
 
 /**
  * test CMLPlane3
@@ -402,8 +402,13 @@ public class CMLPlane3Test extends GeomTestBase {
 		CMLPlane3 p = new CMLPlane3(new CMLVector3(1., 2., 3.), 4.);
 		Plane3 pp = p.getEuclidPlane3();
 		double d = Math.sqrt(14.);
-		Plane3Test.assertEquals("getEuclidPlane", new double[] { 1. / d,
-				2. / d, 3. / d, 4. }, pp, EPS);
+		double[] test = new double[] { 1. / d,
+				2. / d, 3. / d, 4. };
+		Assert.assertNotNull("test should not be null (" + "getEuclidPlane" + EC.S_RBRAK, test);
+		Assert.assertEquals("must be of length 4", 4, test.length);
+		Assert.assertNotNull("ref should not be null (" + "getEuclidPlane" + EC.S_RBRAK,
+				pp);
+		DoubleTestBase.assertEquals("getEuclidPlane", test, pp.getArray(), EPS);
 	}
 
 	/**

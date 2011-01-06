@@ -1,6 +1,6 @@
 package org.xmlcml.cml.element.main;
 
-import static org.xmlcml.euclid.EC.EPS;
+import static org.xmlcml.euclid.EuclidConstants.EPS;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -9,10 +9,10 @@ import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.element.CMLTransform3;
 import org.xmlcml.cml.element.CMLVector3;
 import org.xmlcml.euclid.Angle;
+import org.xmlcml.euclid.EuclidConstants;
 import org.xmlcml.euclid.EuclidRuntimeException;
 import org.xmlcml.euclid.Vector3;
 import org.xmlcml.euclid.test.DoubleTestBase;
-import org.xmlcml.euclid.test.Vector3Test;
 
 /**
  * tests Vector3.
@@ -512,8 +512,13 @@ public class CMLVector3Test extends GeomTestBase {
 	@Test
 	public void testGetEuclidVector3() {
 		CMLVector3 v = new CMLVector3(1., 2., 3.);
-		Vector3Test.assertEquals("euclidVector ", new double[] { 1., 2., 3. },
-				v.getEuclidVector3(), EPS);
+		double[] test = new double[] { 1., 2., 3. };
+		Vector3 expected = v.getEuclidVector3();
+		Assert.assertNotNull("test should not be null (" + "euclidVector " + EuclidConstants.S_RBRAK, test);
+		Assert.assertEquals("must be of length 3", 3, test.length);
+		Assert.assertNotNull("expected should not be null (" + "euclidVector " + EuclidConstants.S_RBRAK,
+				expected);
+		DoubleTestBase.assertEquals("euclidVector ", test, expected.getArray(), EPS);
 	}
 
 	/**

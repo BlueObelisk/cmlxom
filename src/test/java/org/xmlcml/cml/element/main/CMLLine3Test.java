@@ -20,9 +20,6 @@ import org.xmlcml.euclid.Line3;
 import org.xmlcml.euclid.Point3;
 import org.xmlcml.euclid.Vector3;
 import org.xmlcml.euclid.test.DoubleTestBase;
-import org.xmlcml.euclid.test.Line3Test;
-import org.xmlcml.euclid.test.Point3Test;
-import org.xmlcml.euclid.test.Vector3Test;
 
 /**
  * tset CMLLine3
