@@ -59,7 +59,7 @@ public class CMLLine3Test extends GeomTestBase {
 	 * @param expected
 	 * @param epsilon
 	 */
-	public static void assertEquals(String msg, CMLLine3 test,
+	private static void assertEquals(String msg, CMLLine3 test,
 			CMLLine3 expected, double epsilon) {
 		Assert.assertNotNull("test should not be null (" + msg + CMLConstants.S_RBRAK, test);
 		Assert.assertNotNull("expected should not be null (" + msg + CMLConstants.S_RBRAK,
@@ -77,7 +77,7 @@ public class CMLLine3Test extends GeomTestBase {
 	 * @param expected
 	 * @param epsilon
 	 */
-	public static void assertEquals(String msg, CMLPoint3 testPoint,
+	private static void assertEquals(String msg, CMLPoint3 testPoint,
 			CMLVector3 testVector, CMLLine3 expected, double epsilon) {
 		Assert.assertNotNull("testVector should not be null (" + msg + CMLConstants.S_RBRAK,
 				testVector);
