@@ -427,7 +427,6 @@ public class CMLSymmetryTest {
 		CMLSymmetry symmetry1 = CMLSymmetry.createFromXYZStrings(list);
 		list = new ArrayList<String>();
 		list.add("-x, -y, -z");
-		@SuppressWarnings("unused")
 		CMLSymmetry symmetry2 = CMLSymmetry.createFromXYZStrings(list);
 		CMLSymmetry symmetry3 = symmetry1.convolute(symmetry2);
 		Assert.assertNotNull(symmetry3);
