@@ -2,6 +2,8 @@ package org.xmlcml.cml.base;
 
 import java.text.ParseException;
 
+import org.xmlcml.euclid.Util;
+
 import nu.xom.Attribute;
 import nu.xom.Node;
 
@@ -101,7 +103,7 @@ public class DoubleSTAttribute extends CMLAttribute {
 				if (ss.startsWith(S_PLUS)) {
 					ss = ss.substring(1);
 				}
-				d = CMLUtil.parseFlexibleDouble(ss);
+				d = (Util.parseFlexibleDouble(ss));
 			} catch (NumberFormatException nfe) {
 				throw new RuntimeException("" + nfe, nfe);
 			} catch (ParseException e) {

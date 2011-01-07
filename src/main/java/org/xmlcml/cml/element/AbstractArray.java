@@ -841,7 +841,7 @@ public abstract class AbstractArray extends CMLElement {
         if (_xmlContent == null) {
             _xmlContent = new StringSTAttribute("_xmlContent");
         }
-        _xmlContent.setCMLValue(content);
+        _xmlContent.setCMLValue(content, true);
         return _xmlContent.getString();
     }
     /** 

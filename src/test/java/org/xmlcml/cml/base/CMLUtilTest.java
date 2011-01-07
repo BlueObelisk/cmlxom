@@ -22,6 +22,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.xmlcml.cml.element.CMLCml;
 import org.xmlcml.euclid.EC;
+import org.xmlcml.euclid.Util;
 
 /**
  * test CMLUtil.
@@ -30,7 +31,6 @@ import org.xmlcml.euclid.EC;
  * 
  */
 public class CMLUtilTest {
-	@SuppressWarnings("unused")
 	private static Logger LOG = Logger.getLogger(CMLUtilTest.class);
 	static {
 		LOG.setLevel(Level.DEBUG);
@@ -329,22 +329,21 @@ public class CMLUtilTest {
 
 	@Test
 	public void checkDoubleParsing() throws ParseException {
-		Assert.assertEquals(1.0, CMLUtil.parseFlexibleDouble("1.0"));
-		Assert.assertEquals(Double.NaN, CMLUtil.parseFlexibleDouble("NaN"));
-		Assert.assertEquals(Double.POSITIVE_INFINITY, CMLUtil
-				.parseFlexibleDouble("INF"));
-		Assert.assertEquals(Double.NEGATIVE_INFINITY, CMLUtil
-				.parseFlexibleDouble("-INF"));
-		Assert.assertEquals(-0.001, CMLUtil.parseFlexibleDouble("-0.001"));
-		Assert.assertEquals(-0.1, CMLUtil.parseFlexibleDouble("-000.1"));
-		Assert.assertEquals(1000.0, CMLUtil.parseFlexibleDouble("1.0E3"));
-		Assert.assertEquals(1000.0, CMLUtil.parseFlexibleDouble("1.0e3"));
-		Assert.assertEquals(10000.0, CMLUtil.parseFlexibleDouble("10.0E3"));
-		Assert.assertEquals(1000.0, CMLUtil.parseFlexibleDouble("1.0E+3"));
-		Assert.assertEquals(0.001, CMLUtil.parseFlexibleDouble("1.0E-3"));
-		Assert.assertEquals(1000.0, CMLUtil.parseFlexibleDouble("1.0E+03"));
+		Assert.assertEquals(1.0, (Util.parseFlexibleDouble("1.0")));
+		Assert.assertEquals(Double.NaN, (Util.parseFlexibleDouble("NaN")));
+		Assert.assertEquals(Double.POSITIVE_INFINITY, (Util.parseFlexibleDouble("INF")));
+		Assert.assertEquals(Double.NEGATIVE_INFINITY, (Util.parseFlexibleDouble("-INF")));
+		Assert.assertEquals(-0.001, (Util.parseFlexibleDouble("-0.001")));
+		Assert.assertEquals(-0.1, (Util.parseFlexibleDouble("-000.1")));
+		Assert.assertEquals(1000.0, (Util.parseFlexibleDouble("1.0E3")));
+		Assert.assertEquals(1000.0, (Util.parseFlexibleDouble("1.0e3")));
+		Assert.assertEquals(10000.0, (Util.parseFlexibleDouble("10.0E3")));
+		Assert.assertEquals(1000.0, (Util.parseFlexibleDouble("1.0E+3")));
+		Assert.assertEquals(0.001, (Util.parseFlexibleDouble("1.0E-3")));
+		Assert.assertEquals(1000.0, (Util.parseFlexibleDouble("1.0E+03")));
 		try {
-			CMLUtil.parseFlexibleDouble("1.0e3foobar");
+			@SuppressWarnings("unused")
+			double parseFlexibleDouble = (Util.parseFlexibleDouble("1.0e3foobar"));
 			Assert.fail("Parsing 1.0e3foobar should have resulted in a ParseException being raised");
 		} catch (ParseException e) {
 			// OK

@@ -378,7 +378,7 @@ public class CMLBond extends AbstractBond {
 				if (grandParent instanceof CMLMolecule) {
 					molecule = (CMLMolecule) grandParent;
 				} else {
-					throw new RuntimeException("grandParent of bond is not a molecule: "+molecule.getClass());
+					throw new RuntimeException("grandParent of bond is not a molecule: "+grandParent.getClass());
 				}
 			} else {
 				throw new RuntimeException(Message.NULL_GRANDPARENT.value);

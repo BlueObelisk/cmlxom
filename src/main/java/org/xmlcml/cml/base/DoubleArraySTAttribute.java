@@ -146,7 +146,7 @@ public class DoubleArraySTAttribute extends CMLAttribute {
 		double[] dd = new double[ss.length];
 		for (int i = 0; i < ss.length; i++) {
 			try {
-				dd[i] = CMLUtil.parseFlexibleDouble(ss[i]);
+				dd[i] = (Util.parseFlexibleDouble(ss[i]));
 			} catch (NumberFormatException nfe) {
 				throw new RuntimeException(S_EMPTY + nfe);
 			} catch (ParseException e) {
