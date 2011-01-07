@@ -71,7 +71,7 @@ public class StringSTAttribute extends CMLAttribute {
     /**
      * set and check value.
      * trims by default
-     * @deprecated use setCMLValue(s, trim)
+     * use setCMLValue(s, trim)
      * @param s
      */
     public void setCMLValue(String s) {

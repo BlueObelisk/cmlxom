@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.StringReader;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -786,39 +785,6 @@ public abstract class CMLUtil implements CMLConstants {
 		return name.substring(0, 1).toUpperCase() + name.substring(1);
 	}
 
-	/**
-	 * Parses double, taking account of lexical forms of special cases allowed
-	 * by the XSD spec: INF, -INF and NaN.
-	 * 
-	 * @param value
-	 * @return
-	 * @throws ParseException
-	 */
-	@Deprecated //TODO Used in Euclid, so the same method is now there as well.
-	//TODO Refactor so that there is only one definition.
-	public static double parseFlexibleDouble(String value)
-			throws ParseException {
-		//LOG.debug("Parsing "+ value);
-		if (value != null) {
-			// 0, -0, INF, -INF and NaN : Special cases from the XSD spec.
-			if ("INF".equals(value)) {
-				return Double.POSITIVE_INFINITY;
-			} else if ("-INF".equals(value)) {
-				return Double.NEGATIVE_INFINITY;
-			} else if ("NaN".equals(value)) {
-				return Double.NaN;
-			} else {
-				try {
-					return Double.valueOf(value);
-				} catch (NumberFormatException e) {
-					throw new ParseException(e.toString(), 0);
-				}
-			}
-		} else {
-			throw new IllegalArgumentException("Null double string not allowed");
-		}
-	}
-	
 	/**
 	 * tests 2 XML objects for equality using recursive descent.
 	 * includes namespace testing
