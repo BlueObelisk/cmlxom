@@ -175,8 +175,8 @@ public class CMLLine3 extends AbstractLine3 {
     // ====================== functionality =====================
 
     /**
-     * are two lines identical. must be coincident and parallel uses
-     * vect.equals() and containsPoint
+     * Checks to see if the two lines are represented by the same vector and point
+     * Line3.isEqualTo(Line3 line) will check to see if the lines are equivalent.
      *
      * @param l2
      *            CMLLine3 to compare
