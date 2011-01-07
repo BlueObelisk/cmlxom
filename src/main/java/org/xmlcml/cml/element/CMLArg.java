@@ -25,6 +25,7 @@ import org.xmlcml.cml.base.CMLUtil;
  * Too many statics.
  * @author pm286
  */
+
 public class CMLArg extends AbstractArg {
 
 	/** namespaced element name.*/
@@ -474,14 +475,16 @@ public class CMLArg extends AbstractArg {
     }
 
     /** process all instances of arg in element.
-     *
+     *TODO currently doesn't do anything
      * @param element
      */
+    
     public static void processArgs(CMLElement element) {
         Nodes parameterNameArgs =
             element.query(CMLArg.NS+"[@parameterName]", CMLConstants.CML_XPATH);
         for (int i = 0; i < parameterNameArgs.size(); i++) {
-            CMLArg arg = (CMLArg) parameterNameArgs.get(i);
+            @SuppressWarnings("unused")
+			CMLArg arg = (CMLArg) parameterNameArgs.get(i);
         }
     }
 

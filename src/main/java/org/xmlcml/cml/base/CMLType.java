@@ -4,6 +4,8 @@ import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.List;
 
+import org.xmlcml.euclid.Util;
+
 import nu.xom.Element;
 import nu.xom.Node;
 
@@ -319,7 +321,7 @@ public class CMLType implements CMLConstants {
 			} else if (Double.isNaN(dMinExclusive)
 					&& XSD_DOUBLE.equals(javaType)) {
 				try {
-					dMinExclusive = CMLUtil.parseFlexibleDouble(value);
+					dMinExclusive = (Util.parseFlexibleDouble(value));
 				} catch (NumberFormatException e) {
 					throw new RuntimeException("Bad length " + e);
 				} catch (ParseException e) {
@@ -344,7 +346,7 @@ public class CMLType implements CMLConstants {
 			} else if (Double.isNaN(dMaxExclusive)
 					&& XSD_DOUBLE.equals(javaType)) {
 				try {
-					dMaxExclusive = CMLUtil.parseFlexibleDouble(value);
+					dMaxExclusive = (Util.parseFlexibleDouble(value));
 				} catch (NumberFormatException e) {
 					throw new RuntimeException("Bad length " + e);
 				} catch (ParseException e) {
@@ -369,7 +371,7 @@ public class CMLType implements CMLConstants {
 			} else if (Double.isNaN(dMinInclusive)
 					&& XSD_DOUBLE.equals(javaType)) {
 				try {
-					dMinInclusive = CMLUtil.parseFlexibleDouble(value);
+					dMinInclusive = (Util.parseFlexibleDouble(value));
 				} catch (NumberFormatException e) {
 					throw new RuntimeException("Bad length " + e);
 				} catch (ParseException e) {
@@ -394,7 +396,7 @@ public class CMLType implements CMLConstants {
 			} else if (Double.isNaN(dMaxInclusive)
 					&& XSD_DOUBLE.equals(javaType)) {
 				try {
-					dMaxInclusive = CMLUtil.parseFlexibleDouble(value);
+					dMaxInclusive = (Util.parseFlexibleDouble(value));
 				} catch (NumberFormatException e) {
 					throw new RuntimeException("Bad length " + e);
 				} catch (ParseException e) {
