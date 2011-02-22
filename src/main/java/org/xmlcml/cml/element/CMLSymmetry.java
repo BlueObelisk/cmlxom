@@ -397,8 +397,9 @@ public class CMLSymmetry extends AbstractSymmetry {
      * @return the <symmetry>
      * @throws RuntimeException if 0 or >1 nodes
      */
+    //TODO should this really call a RunTimeException?
     public static CMLSymmetry getContainedSymmetry(CMLElement element) throws RuntimeException {
-        Nodes symmetryNodes = element.query("//"+CMLSymmetry.NS, CMLConstants.CML_XPATH);
+        Nodes symmetryNodes = element.query(".//"+CMLSymmetry.NS, CMLConstants.CML_XPATH);
         if (symmetryNodes.size() == 0) {
             throw new RuntimeException("NO <symmetry> FOUND");
         } else if (symmetryNodes.size() > 1) {

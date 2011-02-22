@@ -9,9 +9,11 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLConstants;
+import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.element.CMLCrystal;
 import org.xmlcml.cml.element.CMLMatrix;
+import org.xmlcml.cml.element.CMLMolecule;
 import org.xmlcml.cml.element.CMLSymmetry;
 import org.xmlcml.cml.element.CMLTransform3;
 import org.xmlcml.euclid.Point3;
@@ -485,4 +487,37 @@ public class CMLSymmetryTest {
 		CMLCrystal.Centering center = symmetry1.getCentering();
 		Assert.assertEquals("center", CMLCrystal.Centering.C, center);
 	}
+	
+	@Test
+	public void testGetContainedSymmetry(){
+	    CMLElement root = new CMLElement("root");
+	    CMLSymmetry sym = new CMLSymmetry();
+	    root.appendChild(sym);
+	    CMLSymmetry test=CMLSymmetry.getContainedSymmetry(root);
+	    Assert.assertEquals(sym, test);
+	}
+
+    @Test(expected = RuntimeException.class)
+    public void testGetContainedSymmetry2() {
+        CMLElement root = new CMLElement("root");
+        CMLSymmetry sym = new CMLSymmetry();
+        CMLSymmetry extra = new CMLSymmetry();
+        root.appendChild(sym);
+        root.appendChild(extra);
+        CMLSymmetry test = CMLSymmetry.getContainedSymmetry(root);
+
+    }
+    
+    @Test
+    public void testGetContainedSymmetry3(){
+        CMLElement root = new CMLElement("root");
+        CMLElement container = new CMLElement("containter");
+        CMLSymmetry sym = new CMLSymmetry();
+        CMLSymmetry extra = new CMLSymmetry();
+        root.appendChild(container);
+        container.appendChild(sym);
+        root.appendChild(extra);
+        CMLSymmetry test=CMLSymmetry.getContainedSymmetry(container);
+        Assert.assertEquals(sym, test);
+    }
 }
