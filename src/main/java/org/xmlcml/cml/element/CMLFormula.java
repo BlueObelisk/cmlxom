@@ -468,22 +468,17 @@ public class CMLFormula extends AbstractFormula {
 			}
 		}
 		// concise from inline
-		String inline2Concise = null;
     	if (inline != null) {
     		if (SMILES.equals(convention) ||
     			SMILES1.equals(convention)) {
 //    			throw new RuntimeException("Move to SMILESTool");
 //    			inline2Concise = getConciseFromSMILES(inline);
-    		} else {
-//    			inline2Concise = createConcise(inline); // never do this!
     		}
     	}
     	if (conciseS == null) {
     		if (atomArray2Concise != null) {
     			conciseS = atomArray2Concise;
-    		} else if (inline2Concise != null) {
-    			conciseS = inline2Concise;
-    		}
+    		} 
     	}
     	if (conciseS != null) {
     		conciseS = normalizeConciseAndFormalCharge(conciseS, formalCharge);
@@ -502,9 +497,6 @@ public class CMLFormula extends AbstractFormula {
 			removeZeroAtomCounts();
 		}
 		// check consistency
-		if (inline2Concise != null && !conciseS.equals(inline2Concise)) {
-			throw new RuntimeException("concise ("+conciseS+") and inline ("+inline+") differ");
-		}
 		if (atomArray2Concise != null && 
 				!atomArray2Concise.equals(conciseS)) {
 			throw new RuntimeException("concise ("+conciseS+") and atomArray ("+atomArray2Concise+") differ");
