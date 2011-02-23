@@ -966,7 +966,7 @@ public abstract class CMLUtil implements CMLConstants {
 		return name+((namespace == null || namespace.equals(S_EMPTY)) ? "" : "["+namespace+"]");
 	}
 	
-	private static String normalizeSpace(String value) {
+	public static String normalizeSpace(String value) {
 		return value.replaceAll(S_WHITEREGEX, S_SPACE).trim();
 	}
 	
@@ -1219,6 +1219,15 @@ public abstract class CMLUtil implements CMLConstants {
 		} catch (Exception e) {
 			throw new RuntimeException("BUG", e);
 		}
+	}
+
+	public static Element normalizeWhitespaceInTextNodes(Element element) {
+		Nodes texts = element.query(".//text()");
+		for (int i = 0; i < texts.size(); i++) {
+			Text text = (Text) texts.get(i);
+			text.setValue(normalizeSpace(text.getValue()));
+		}
+		return element;
 	}
 
 

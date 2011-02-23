@@ -170,9 +170,6 @@ public class CMLZMatrix extends AbstractZMatrix {
         }
         id = angle.getAtomRefs3()[i2];
         CMLAtom atom2 = molecule.getAtomById(id);
-        if (atom0 == null) {
-            throw new RuntimeException("Cannot find atom: "+id);
-        }
         atom0.setXYZ3(new Point3(0, 0, 0));
         double l0 = length0.getXMLContent();
         atom1.setXYZ3(new Point3(l0, 0, 0));
