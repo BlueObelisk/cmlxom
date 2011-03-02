@@ -1190,4 +1190,13 @@ public class CMLArrayTest {
 		}
 	}
 
+    @Test
+    public void testSingleDoubleArray() {
+        CMLArray array = new CMLArray();
+        array.setDelimiter("|");
+        array.setDataType("xsd:double");
+        array.append(1.7);
+        Assert.assertEquals("|1.7|", array.getValue());
+    }
+
 }

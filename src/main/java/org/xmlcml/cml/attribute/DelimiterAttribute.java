@@ -199,7 +199,11 @@ public class DelimiterAttribute extends StringSTAttribute {
     public String appendXMLContent(String s, String snew) {
     	s = getDelimitedXMLContent(s);
         if (!isWhitespace()) {
-            s += (snew + concat);
+            if (s.length() == 0) {
+                s = concat + snew + concat;
+            } else {
+                s += (snew + concat);
+            }
         } else {
             s += (concat + snew);
         }
