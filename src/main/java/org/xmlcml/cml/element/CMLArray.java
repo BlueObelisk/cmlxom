@@ -878,7 +878,7 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 			throw new RuntimeException("Cannot add double to array of: "
 					+ dataType);
 		}
-		appendXML(S_EMPTY + d, 1);
+		appendXML(Double.toString(d), 1);
 	}
 
 	/**
