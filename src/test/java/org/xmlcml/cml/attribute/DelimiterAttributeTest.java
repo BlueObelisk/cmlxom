@@ -292,7 +292,7 @@ public class DelimiterAttributeTest {
 
 		s = "";
 		s = delimiterAttribute.appendXMLContent(s, "x");
-		Assert.assertEquals("append content ", "x/", s);
+		Assert.assertEquals("append content ", "/x/", s);
 
 		s = "/1/2/3//";
 		s = delimiterAttribute.appendXMLContent(s, "x");
