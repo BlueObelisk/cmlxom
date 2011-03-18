@@ -844,12 +844,16 @@ public abstract class AbstractEntry extends CMLElement {
     }
     /** null
     * @return String
+    * @deprecated This method causes problems with syncronisation as CMLAttribute.setValue() won't
+    *update the value returned by this! Use this.getUnits.Attribute().setValue() instead.
     */
+    @Deprecated
     public String getUnits() {
         UnitsAttribute att = (UnitsAttribute) this.getUnitsAttribute();
         if (att == null) {
             return null;
         }
+        //TODO change this to att.getValue()?
         return att.getString();
     }
     /** null
