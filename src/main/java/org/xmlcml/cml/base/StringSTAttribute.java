@@ -17,7 +17,9 @@ public class StringSTAttribute extends CMLAttribute {
     /** */
     public final static String JAVA_SHORT_CLASS = "StringSTAttribute";
     protected String s;
-
+    //TODO What is the point of this String?t gets out of sync with the 
+    //attribute value if CMLAttribute.setValue() is used resulting in problems!
+    
     /**
      * constructor.
      * 
