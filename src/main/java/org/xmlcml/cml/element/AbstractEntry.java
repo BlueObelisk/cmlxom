@@ -4,6 +4,7 @@ package org.xmlcml.cml.element;
 import nu.xom.Attribute;
 
 import org.xmlcml.cml.attribute.IdAttribute;
+import org.xmlcml.cml.attribute.UnitTypeAttribute;
 import org.xmlcml.cml.attribute.UnitsAttribute;
 import org.xmlcml.cml.base.CMLAttribute;
 import org.xmlcml.cml.base.CMLElement;
@@ -1149,8 +1150,8 @@ public abstract class AbstractEntry extends CMLElement {
             setRows(value);
         } else if (name.equals("columns")) {
             setColumns(value);
-//        } else if (name.equals("unitType")) {
-//            setUnitType(value);
+        } else if (name.equals("unitType")) {
+            setUnitType(value);
         } else if (name.equals("minExclusive")) {
             setMinExclusive(value);
         } else if (name.equals("minInclusive")) {
@@ -1184,5 +1185,18 @@ public abstract class AbstractEntry extends CMLElement {
                 throw new RuntimeException("Bad attribute: " + att.getQualifiedName() + "/" + att.getValue());
             }
         }
+    }
+    public void setUnitType(String value) {
+        Attribute attribute = this.getAttribute(UnitTypeAttribute.NAME);
+        if (attribute == null) {
+            UnitTypeAttribute unitType = new UnitTypeAttribute(value);
+            super.addAttribute(unitType);
+        } else {
+           attribute.setValue(value);
+       }
+    }
+    public String getUnitType(){
+        UnitTypeAttribute attribute = (UnitTypeAttribute) this.getAttribute(UnitTypeAttribute.NAME);
+        return attribute.getValue();
     }
 }
