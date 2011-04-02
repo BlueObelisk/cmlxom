@@ -10,6 +10,7 @@ import org.xmlcml.cml.base.CMLBuilder;
 import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLXOMTestUtils;
 import org.xmlcml.cml.element.CMLArray;
+import org.xmlcml.cml.element.CMLScalar;
 import org.xmlcml.euclid.EC;
 import org.xmlcml.euclid.Int;
 import org.xmlcml.euclid.test.DoubleTestBase;
@@ -269,8 +270,6 @@ public class CMLArrayTest {
 		try {
 			String xmlBad5 = "<array " + CMLConstants.CML_XMLNS + ">a b c d</array>";
 			a = (CMLArray) new CMLBuilder().parseString(xmlBad5);
-			Assert.assertNotNull("whitespace delimiter should not be null", a
-					.getDelimiterAttribute());
 			Assert.assertEquals("whitespace delimiter", EC.S_EMPTY, a
 					.getDelimiter());
 			Assert.assertEquals("token length", 4, a.getStrings().length);
@@ -409,12 +408,10 @@ public class CMLArrayTest {
 
 		CMLArray array0 = new CMLArray();
 		Assert.assertEquals("size", 0, array0.getSize());
-		Assert.assertNotNull("delimiter", array0.getDelimiterAttribute());
 		Assert.assertEquals("delimiter", EC.S_EMPTY, array0.getDelimiter());
 		Assert.assertEquals("dataType", CC.XSD_STRING, array0.getDataType());
 
 		Assert.assertEquals("size", 0, xomS.getSize());
-		Assert.assertNotNull("delimiter", xomS.getDelimiterAttribute());
 		Assert.assertEquals("delimiter", EC.S_EMPTY, xomS.getDelimiter());
 		Assert.assertEquals("dataType", CC.XSD_STRING, xomS.getDataType());
 	}
@@ -501,13 +498,8 @@ public class CMLArrayTest {
 		Assert.assertEquals("size", 3, arrayS.getSize());
 		Assert.assertEquals("content", "a b c", arrayS.getXMLContent());
 		Assert.assertEquals("delimiter", EC.S_EMPTY, arrayS.getDelimiter());
-		DelimiterAttribute delimiterAttribute = (DelimiterAttribute) arrayS
-				.getDelimiterAttribute();
-		Assert.assertNotNull("delimiter attribute", delimiterAttribute);
-		Assert.assertEquals("concat", EC.S_SPACE, delimiterAttribute.getConcat());
 
 		Assert.assertEquals("delimiter", EC.S_EMPTY, xomS0.getDelimiter());
-		Assert.assertNotNull("delimiter", xomS0.getDelimiterAttribute());
 		String[] ss = xomS0.getStrings();
 		Assert.assertEquals("length", 5, ss.length);
 		Assert.assertEquals("array0", "a", ss[0]);
@@ -517,7 +509,6 @@ public class CMLArrayTest {
 		Assert.assertEquals("size", 5, xomS0.getSize());
 		Assert.assertEquals("content", "a b c d e", xomS0.getXMLContent());
 		Assert.assertEquals("delimiter", EC.S_EMPTY, xomS0.getDelimiter());
-		Assert.assertNotNull("delimiter", xomS0.getDelimiterAttribute());
 		ss = xomS0.getStrings();
 		Assert.assertEquals("length", 5, ss.length);
 		Assert.assertEquals("array0", "a", ss[0]);
@@ -575,14 +566,12 @@ public class CMLArrayTest {
 		Assert.assertEquals("content", "10.0 20.0 30.0 40.0 50.0", arrayD
 				.getXMLContent());
 		Assert.assertEquals("delimiter", EC.S_EMPTY, arrayD.getDelimiter());
-		Assert.assertNotNull("delimiter", arrayD.getDelimiterAttribute());
 
 		Assert.assertEquals("data type", CC.XSD_DOUBLE, xomD0.getDataType());
 		Assert.assertEquals("size", 5, xomD0.getSize());
 		Assert.assertEquals("content", "1.0 2.0 3.0 4.0 5.0", xomD0
 				.getXMLContent());
 		Assert.assertEquals("delimiter", EC.S_EMPTY, xomD0.getDelimiter());
-		Assert.assertNotNull("delimiter", xomD0.getDelimiterAttribute());
 		double[] ss = null;
 		try {
 			ss = xomD0.getDoubles();
@@ -634,7 +623,6 @@ public class CMLArrayTest {
 		Assert.assertEquals("size", 5, xomI0.getSize());
 		Assert.assertEquals("content", "1 2 3 4 5", xomI0.getXMLContent());
 		Assert.assertEquals("delimiter", EC.S_EMPTY, xomI0.getDelimiter());
-		Assert.assertNotNull("delimiter", xomI0.getDelimiterAttribute());
 		int[] ss = null;
 		try {
 			ss = xomI0.getInts();
@@ -1190,13 +1178,63 @@ public class CMLArrayTest {
 		}
 	}
 
-    @Test
-    public void testSingleDoubleArray() {
-        CMLArray array = new CMLArray();
-        array.setDelimiter("|");
-        array.setDataType("xsd:double");
-        array.append(1.7);
-        Assert.assertEquals("|1.7|", array.getValue());
-    }
+
+	@Test
+	/** need to remove this delimiter attribute*/
+	public void testSerializeWithEmptyDelimiter() {
+		CMLArray array = new CMLArray(new int[] { 1, 2 });
+		String arrayXML = array.toXML();
+		String ref="<array xmlns=\"http://www.xml-cml.org/schema\" dataType=\"xsd:integer\"" +
+				" size=\"2\">1 2</array>";
+		Assert.assertEquals("serialize", ref, arrayXML);
+	}
+	
+	@Test
+	/** need to remove this delimiter attribute*/
+	public void testSerializeWithEmptyDelimiter1() {
+		CMLArray array = new CMLArray(new int[] { 1, 2 });
+		String arrayXML = array.toXML();
+		String ref="<array xmlns=\"http://www.xml-cml.org/schema\" dataType=\"xsd:integer\"" +
+				" size=\"2\">1 2</array>";
+		Assert.assertEquals("serialize", ref, arrayXML);
+	}
+	
+	@Test
+	/** need to remove this delimiter attribute*/
+	public void testSerializeWithEmptyDelimiter2() {
+		CMLArray array = new CMLArray(new int[] { 1, 2 });
+		Assert.assertNull(array.getDelimiterAttribute());
+		String arrayXML = array.toXML();
+		String ref="<array xmlns=\"http://www.xml-cml.org/schema\" dataType=\"xsd:integer\"" +
+				" size=\"2\">1 2</array>";
+		array.append(3);
+		arrayXML = array.toXML();
+		ref="<array xmlns=\"http://www.xml-cml.org/schema\" dataType=\"xsd:integer\"" +
+				" size=\"3\">1 2 3</array>";
+		Assert.assertEquals("serialize", ref, arrayXML);
+	}
+
+	@Test
+	public void testGetScalar() {
+		CMLArray array = new CMLArray(new int[] { 1, 2 });
+		array.setDictRef("foo:bar");
+		CMLScalar scalar = array.getElementAt(1);
+		String ref="<scalar xmlns=\"http://www.xml-cml.org/schema\" dataType=\"xsd:integer\"" +
+		" dictRef=\"foo:bar\">2</scalar>";
+		Assert.assertEquals("getElement", ref, scalar.toXML());
+		
+	}
+
+	@Test
+	public void testGetScalar1() {
+		CMLArray array = new CMLArray(new int[] { 1, 2 });
+		array.setDictRef("foo:bar");
+		CMLScalar scalar = array.getElementAt(-1);
+		Assert.assertNull(scalar);
+		scalar = array.getElementAt(2);
+		Assert.assertNull(scalar);
+		
+	}
+
 
 }
