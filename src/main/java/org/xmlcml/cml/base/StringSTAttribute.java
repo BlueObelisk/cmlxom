@@ -16,9 +16,7 @@ public class StringSTAttribute extends CMLAttribute {
     public final static String JAVA_GET_METHOD = "getString";
     /** */
     public final static String JAVA_SHORT_CLASS = "StringSTAttribute";
-    protected String s;
-    //TODO What is the point of this String?t gets out of sync with the 
-    //attribute value if CMLAttribute.setValue() is used resulting in problems!
+    //protected String s;
     
     /**
      * constructor.
@@ -46,8 +44,8 @@ public class StringSTAttribute extends CMLAttribute {
      */
     public StringSTAttribute(StringSTAttribute att) {
         super(att);
-        if (att.s != null) {
-            this.s = att.s;
+        if (att.getValue() != null) {
+            this.setValue(att.getValue());
         }
     }
 
@@ -83,19 +81,18 @@ public class StringSTAttribute extends CMLAttribute {
     /**
      * set and check value.
      * 
-     * @param s
+     * @param string
      */
-    public void setCMLValue(String s, boolean trim) {
-    	if (s == null) {
+    public void setCMLValue(String string, boolean trim) {
+    	if (string == null) {
     		throw new RuntimeException("Cannot set null attribute value");
     	}
-    	String ss = s;
     	if (trim) {
-    		ss = s.trim();
+    		string = string.trim();
     	}
-		checkValue(ss);
-		this.s = ss;
-		this.setValue(ss);
+		checkValue(string);
+		//this.s = string;
+		this.setValue(string);
 	}
 
 
@@ -120,7 +117,7 @@ public class StringSTAttribute extends CMLAttribute {
      * @return value
      */
     public String getString() {
-        return s;
+        return this.getValue();
     }
 
     /**
