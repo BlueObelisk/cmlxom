@@ -23,6 +23,16 @@ public class CMLAttribute extends Attribute implements CMLConstants {
 
     final static Logger logger = Logger.getLogger(CMLAttribute.class);
 
+	public static final String CONSTANT_TO_SI = "constantToSI";
+    public final static String CONVENTION = "convention";
+	public static final String DICTREF = "dictRef";
+	public static final String ID = "id";
+	public static final String MULTIPLIER_TO_SI = "multiplierToSI";
+	public static final String TITLE = "title";
+	public static final String UNITS = "units";
+
+
+    
     protected CMLType cmlType;
     protected String summary;
     protected String description;

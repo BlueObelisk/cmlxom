@@ -1164,6 +1164,12 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
     	}
     }
 
+    /**
+     * creates a prefixed CMLX attribute (cmlx:foo="bar") on element in CMLX namespace
+     * @param element
+     * @param attName UNPREFIXED
+     * @param attValue
+     */
 	public static void addCMLXAttribute(Element element, String attName, String attValue) {
 		Attribute attribute = makeCMLXAttribute(attName, attValue);
 		element.addAttribute(attribute);

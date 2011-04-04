@@ -20,8 +20,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLXOMTestUtils;
+import org.xmlcml.cml.element.CMLArray;
 import org.xmlcml.cml.element.CMLCml;
 import org.xmlcml.cml.element.CMLMatrix;
+import org.xmlcml.cml.element.CMLScalar;
 import org.xmlcml.euclid.EC;
 import org.xmlcml.euclid.EuclidRuntimeException;
 import org.xmlcml.euclid.Int;
@@ -546,6 +548,47 @@ public class CMLMatrixTest {
 		if (s != null) {
 			Assert.fail("int mat" + "; " + s);
 		}
+	}
+
+	@Test
+	public void testSerializedDelimiter() {
+		CMLMatrix mat = new CMLMatrix(2, 3, 
+				new double[] { 1.1, 2.2, 3.3, 11.1, 12.2, 13.3 });
+		String xml = mat.toXML();
+		String ref = "<matrix xmlns=\"http://www.xml-cml.org/schema\" rows=\"2\" columns=\"3\" " +
+				"dataType=\"xsd:double\">1.1 2.2 3.3 11.1 12.2 13.3</matrix>";
+		Assert.assertEquals("serial", ref, xml);
+	}
+	
+	@Test
+	public void testGetScalar() {
+		CMLMatrix mat = new CMLMatrix(2, 3, 
+				new int[] { 11, 12, 13, 21, 22, 23 });
+		mat.setDictRef("foo:bar");
+		CMLScalar scalar = mat.getElementAt(1,1);
+		String ref="<scalar xmlns=\"http://www.xml-cml.org/schema\" dataType=\"xsd:integer\"" +
+		" dictRef=\"foo:bar\">22</scalar>";
+		Assert.assertEquals("getElement", ref, scalar.toXML());
+		scalar = mat.getElementAt(0,2);
+		ref="<scalar xmlns=\"http://www.xml-cml.org/schema\" dataType=\"xsd:integer\"" +
+		" dictRef=\"foo:bar\">13</scalar>";
+		Assert.assertEquals("getElement", ref, scalar.toXML());
+		
+	}
+
+	@Test
+	public void testGetScalar1() {
+		CMLMatrix mat = new CMLMatrix(2, 3, 
+				new int[] { 11, 12, 13, 21, 22, 23 });
+		mat.setDictRef("foo:bar");
+		CMLScalar scalar = mat.getElementAt(2,1);
+		Assert.assertNull(scalar);
+		scalar = mat.getElementAt(-1,1);
+		Assert.assertNull(scalar);
+		scalar = mat.getElementAt(1,-1);
+		Assert.assertNull(scalar);
+		scalar = mat.getElementAt(1,3);
+		Assert.assertNull(scalar);
 	}
 
 }
