@@ -3,11 +3,13 @@ package org.xmlcml.cml.element;
 import nu.xom.Element;
 import nu.xom.Node;
 
+import org.joda.time.DateTime;
 import org.xmlcml.cml.attribute.DelimiterAttribute;
 import org.xmlcml.cml.attribute.NamespaceRefAttribute;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLType;
 import org.xmlcml.cml.interfacex.HasDataType;
+import org.xmlcml.cml.interfacex.HasDelimiter;
 import org.xmlcml.cml.interfacex.HasDictRef;
 import org.xmlcml.cml.interfacex.HasUnits;
 import org.xmlcml.euclid.EuclidRuntimeException;
@@ -22,7 +24,8 @@ import org.xmlcml.euclid.Util;
  * shell which can be edited
  *
  */
-public class CMLMatrix extends AbstractMatrix implements HasUnits, HasDataType, HasDictRef {
+public class CMLMatrix extends AbstractMatrix 
+    implements HasUnits, HasDataType, HasDictRef, HasDelimiter {
 
 	/** types of matrix.
 	 */
@@ -283,6 +286,7 @@ public class CMLMatrix extends AbstractMatrix implements HasUnits, HasDataType, 
 	        ensureDelimiterAttribute();
 	        ss = delimiterAttribute.getSplitContent(content);
         }
+		this.removeWhitespaceDelimiterAttribute();
         return ss;
     }
 
@@ -302,51 +306,6 @@ public class CMLMatrix extends AbstractMatrix implements HasUnits, HasDataType, 
         return stringArray;
     }
 
-    /*--
-     void getRealMatrixElements() {
-     if (euclRealMatrix == null) {
-     getStringMatrixElements();
-     double[] doubleArray = new double[stringArray.length];
-     if (stringArray != null) {
-     for (int i = 0; i < doubleArray.length; i++) {
-     try {
-     doubleArray[i] = new Double(stringArray[i]).doubleValue();
-     } catch (NumberFormatException nfe) {
-     throw new EuclidRuntime("Bad double :"+stringArray[i]+" at position: "+i);
-     }
-     }
-     }
-     try {
-     euclRealMatrix = new RealMatrix(rows, cols, doubleArray);
-     } catch (EuclidException e) {
-     throw new EuclidRuntime("bug: "+e);
-     }
-     }
-     }
-     --*/
-
-    /*--
-     void getIntMatrixElements() {
-     if (euclIntMatrix == null) {
-     getStringMatrixElements();
-     int[] intArray = new int[stringArray.length];
-     if (stringArray != null) {
-     for (int i = 0; i < intArray.length; i++) {
-     try {
-     intArray[i] = new Integer(stringArray[i]).intValue();
-     } catch (NumberFormatException nfe) {
-     throw new RuntimeException("Bad int :"+stringArray[i]+" at position: "+i);
-     }
-     }
-     }
-     try {
-     euclIntMatrix = new IntMatrix(rows, cols, intArray);
-     } catch (EuclidException e) {
-     throw new RuntimeException(S_EMPTY+e);
-     }
-     }
-     }
-     --*/
 
     /**
      * create new CMLMatrix from RealMatrix.
@@ -363,6 +322,7 @@ public class CMLMatrix extends AbstractMatrix implements HasUnits, HasDataType, 
         cmlMatrix.setColumns(realMatrix.getCols());
         cmlMatrix.setRows(realMatrix.getRows());
         cmlMatrix.setDelimiter(delimiter);
+		cmlMatrix.removeWhitespaceDelimiterAttribute();
         return cmlMatrix;
     }
 
@@ -381,6 +341,7 @@ public class CMLMatrix extends AbstractMatrix implements HasUnits, HasDataType, 
         cmlMatrix.setColumns(intMatrix.getCols());
         cmlMatrix.setRows(intMatrix.getRows());
         cmlMatrix.setDelimiter(delimiter);
+		cmlMatrix.removeWhitespaceDelimiterAttribute();
         return cmlMatrix;
     }
 
@@ -444,6 +405,7 @@ public class CMLMatrix extends AbstractMatrix implements HasUnits, HasDataType, 
         setColumns(mm.getCols());
         setDataType(XSD_DOUBLE);
         setXMLContent(content);
+		this.removeWhitespaceDelimiterAttribute();
     }
 
     /**
@@ -460,6 +422,7 @@ public class CMLMatrix extends AbstractMatrix implements HasUnits, HasDataType, 
         setColumns(mm.getCols());
         setDataType(XSD_INTEGER);
         setXMLContent(content);
+		this.removeWhitespaceDelimiterAttribute();
     }
 
     /**
@@ -477,6 +440,7 @@ public class CMLMatrix extends AbstractMatrix implements HasUnits, HasDataType, 
         setDataType(XSD_DOUBLE);
         setXMLContent(Util.concatenate(euclRealMatrix.getMatrixAsArray(),
                 S_SPACE));
+		this.removeWhitespaceDelimiterAttribute();
     }
 
     /**
@@ -496,6 +460,7 @@ public class CMLMatrix extends AbstractMatrix implements HasUnits, HasDataType, 
         setDataType(XSD_INTEGER);
         setXMLContent(Util.concatenate(euclIntMatrix.getMatrixAsArray(),
                 S_SPACE));
+		this.removeWhitespaceDelimiterAttribute();
     }
 
     /**
@@ -584,6 +549,26 @@ public class CMLMatrix extends AbstractMatrix implements HasUnits, HasDataType, 
         return iii;
     }
 
+	public CMLScalar getElementAt(int row, int col) {
+		CMLScalar scalar = null;
+		if (row >= 0 && row < getRows() && col >= 0 && col < getColumns()) {
+			String dataType = this.getDataType();
+			if (dataType == null) {
+				dataType = XSD_STRING;
+			}
+			
+			if (dataType.equals(XSD_DOUBLE)) {
+				Double d = getDoubleMatrix()[row][col];
+				scalar = new CMLScalar(d);
+			} else if (dataType.equals(XSD_INTEGER)) {
+				Integer ii = getIntegerMatrix()[row][col];
+				scalar = new CMLScalar(ii);
+			}
+			CMLArray.copyAttributesFromTo(this, scalar);
+		}
+		return scalar;
+	}
+
     // ====================== functionality =====================
 
     /**
@@ -594,30 +579,6 @@ public class CMLMatrix extends AbstractMatrix implements HasUnits, HasDataType, 
     public boolean isSquare() {
         return getRows() == getColumns();
     }
-
-    /**
-     * set matrix to be symmetric. currently set by user, so take care fails if
-     * columns != rows
-     *
-     * @param sym
-     */
-    /*--
-     public void setSymmetric(boolean sym) {
-     isSymmetric = sym;
-     }
-     --*/
-
-    /**
-     * is matrix symmetric. currently set by user, so take care fails if columns !=
-     * rows
-     *
-     * @return is square and stated to be symmetric
-     */
-    /*--
-     public boolean isSymmetric() {
-     return isSymmetric;
-     }
-     --*/
 
     /**
      * are two matrices equal. compare rows columns and array contents
@@ -649,7 +610,9 @@ public class CMLMatrix extends AbstractMatrix implements HasUnits, HasDataType, 
         int m2c = m2.getColumns();
         RealMatrix teucl3 = new RealMatrix(m2r, m2c, this.getDoubleArray());
         t = teucl3.multiply(m2.getEuclidRealMatrix());
-        return new CMLMatrix(m2r, m2c, t.getMatrixAsArray());
+        CMLMatrix newMatrix = new CMLMatrix(m2r, m2c, t.getMatrixAsArray());
+		newMatrix.removeWhitespaceDelimiterAttribute();
+        return newMatrix;
     }
 
 
@@ -663,4 +626,12 @@ public class CMLMatrix extends AbstractMatrix implements HasUnits, HasDataType, 
     public void setUnits(String prefix, String id, String namespaceURI) {
         NamespaceRefAttribute.setUnits((HasUnits)this, prefix, id, namespaceURI);
     }
+    
+	/** removes attributes of the form
+	 * delimiter="" or delimiter=" "
+	 */
+	public void removeWhitespaceDelimiterAttribute() {
+		CMLArray.removeWhitespaceDelimiterAttribute(this);
+	}
+
 }
