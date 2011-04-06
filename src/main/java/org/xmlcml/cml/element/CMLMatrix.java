@@ -3,7 +3,6 @@ package org.xmlcml.cml.element;
 import nu.xom.Element;
 import nu.xom.Node;
 
-import org.joda.time.DateTime;
 import org.xmlcml.cml.attribute.DelimiterAttribute;
 import org.xmlcml.cml.attribute.NamespaceRefAttribute;
 import org.xmlcml.cml.base.CMLElement;
