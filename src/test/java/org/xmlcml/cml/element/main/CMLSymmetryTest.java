@@ -13,7 +13,6 @@ import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.element.CMLCrystal;
 import org.xmlcml.cml.element.CMLMatrix;
-import org.xmlcml.cml.element.CMLMolecule;
 import org.xmlcml.cml.element.CMLSymmetry;
 import org.xmlcml.cml.element.CMLTransform3;
 import org.xmlcml.euclid.Point3;
@@ -504,7 +503,8 @@ public class CMLSymmetryTest {
         CMLSymmetry extra = new CMLSymmetry();
         root.appendChild(sym);
         root.appendChild(extra);
-        CMLSymmetry test = CMLSymmetry.getContainedSymmetry(root);
+        @SuppressWarnings("unused")
+		CMLSymmetry test = CMLSymmetry.getContainedSymmetry(root);
 
     }
     
