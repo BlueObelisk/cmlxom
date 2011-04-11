@@ -20,8 +20,6 @@ public class StringArraySTAttribute extends CMLAttribute {
 
     protected String[] ss = null;
 
-    protected int length = -1;
-
     /**
      * constructor.
      * 
@@ -54,7 +52,6 @@ public class StringArraySTAttribute extends CMLAttribute {
                 this.ss[i] = att.ss[i];
             }
         }
-        this.length = att.length;
     }
     /** copy.
      * uses copy constructor.
