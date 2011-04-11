@@ -21,6 +21,7 @@ import nu.xom.Text;
 
 import org.apache.log4j.Logger;
 import org.xmlcml.cml.base.CMLLog.Severity;
+import org.xmlcml.cml.element.CMLArray;
 import org.xmlcml.euclid.Util;
 
 /**
@@ -108,7 +109,7 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
     
     // this seems to be mandatory
     protected CMLElement() {
-        super("b_dummy");
+        super("untagged_element_beware");
         init();
     }
 
@@ -1213,9 +1214,15 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
      * 
      */
     public void appendChild(Node child) {
+//        if (child instanceof CMLArray) {
+//        	CMLUtil.debug((Element)child, "CHILLLL000");
+//        }
         child.detach();
         int childCount = this.getChildCount();
         insertChild(child, childCount);
+//        if (child instanceof CMLArray) {
+//        	CMLUtil.debug((Element)child, "CHILLLL111");
+//        }
     }
 
     /** add severity to log.
