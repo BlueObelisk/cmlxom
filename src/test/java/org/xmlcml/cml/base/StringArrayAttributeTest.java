@@ -26,14 +26,30 @@ public class StringArrayAttributeTest {
 		daa1 = new StringArraySTAttribute(new CMLAttribute("foo"), "abc def");
 	}
 
+	@Test
+	public void testArrayFromString(){
+		StringArraySTAttribute test = new StringArraySTAttribute("Test");
+		String[] array=test.arrayFromString("test foo bar");
+		Assert.assertEquals(3, array.length);
+		Assert.assertEquals("bar", array[2]);
+	}
+	
+	@Test
+	public void testStringFromArray(){
+		StringArraySTAttribute test = new StringArraySTAttribute("Test");
+		String[] array=test.arrayFromString("test foo bar");
+		Assert.assertEquals("test foo bar",test.stringFromArray(array));
+	}
+	
 	/**
 	 * Test method for
 	 * 'org.xmlcml.cml.base.StringArraySTAttribute.getCMLValue()'
 	 */
 	@Test
 	public void testGetCMLValue() {
-		// Assert.assertEquals("get CMLValue", "1 3", daa1.getCMLValue());
-		Assert.assertNull("get CMLValue", daa1.getCMLValue());
+		Assert.assertNotNull("get CMLValue", daa1.getCMLValue());
+		String[] dd = (String[]) daa1.getCMLValue();
+		Assert.assertEquals("get CMLValue", new String[] { "abc", "def" }, dd);
 	}
 
 	/**
@@ -42,9 +58,12 @@ public class StringArrayAttributeTest {
 	 */
 	@Test
 	public void testSetCMLValueString() {
-		daa1.setCMLValue("abc def");
+		daa1.setCMLValue("1 2 3 4");
 		String[] dd = (String[]) daa1.getCMLValue();
-		Assert.assertEquals("get CMLValue", new String[] { "abc", "def" }, dd);
+		Assert.assertEquals("get CMLValue", new String[] { "1", "2","3","4" }, dd);
+		daa1.setCMLValue(new String[]{"foo","bar"});
+		Assert.assertEquals(new String[]{"foo","bar"}, (String[])daa1.getCMLValue());
+		
 	}
 
 	/**
