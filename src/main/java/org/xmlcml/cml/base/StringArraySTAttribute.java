@@ -40,6 +40,15 @@ public class StringArraySTAttribute extends CMLAttribute {
     }
 
     /**
+     * Sets the XOM value, and the CMLValue array.
+     */
+    @Override
+    public void setValue(String s){
+    	super.setValue(s);
+    	this.setCMLValue(s);
+    }
+    
+    /**
      * copy constructor
      * 
      * @param att
@@ -70,7 +79,8 @@ public class StringArraySTAttribute extends CMLAttribute {
      * @param value
      */
     public StringArraySTAttribute(Attribute att, String value) {
-        super(att, value.trim().replace(S_WHITEREGEX, CMLConstants.S_SPACE));
+        super(att);
+        this.setCMLValue(value);
     }
 
     /**
@@ -80,10 +90,18 @@ public class StringArraySTAttribute extends CMLAttribute {
      *            the value
      */
     public void setCMLValue(String s) {
-        String[] split = s.trim().split(S_WHITEREGEX);
-        this.setCMLValue(split);
+        this.setCMLValue(arrayFromString(s));
+    }
+    
+    protected String[] arrayFromString(String s){
+    	String[] split = s.trim().split(S_WHITEREGEX);
+    	return split;
     }
 
+    protected String stringFromArray(String[] array){
+    	return Util.concatenate(array, CMLConstants.S_SPACE);
+    }
+    
     /**
      * set and check value.
      * 
@@ -92,7 +110,7 @@ public class StringArraySTAttribute extends CMLAttribute {
     public void setCMLValue(String[] ss) {
         checkValue(ss);
         this.ss = ss;
-        this.setValue(Util.concatenate(ss, CMLConstants.S_SPACE));
+        super.setValue(stringFromArray(ss));
     }
 
     /**
