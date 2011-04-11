@@ -49,7 +49,7 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 	}
 
 	private void init() {
-		ensureDelimiterAttribute(Action.RESET);
+//		ensureDelimiterAttribute(Action.RESET);
 	}
 
 	/**
@@ -999,6 +999,8 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 		} else {
 			throw new RuntimeException("Cannot add HasDictRef: "+((CMLElement)hasDictRef).getLocalName());
 		}
+		this.removeWhitespaceDelimiterAttribute();
+//		this.debug("APPPEND");
 	}
 	/**
 	 * sets units attribute. requires namespace for unit to be in scope.

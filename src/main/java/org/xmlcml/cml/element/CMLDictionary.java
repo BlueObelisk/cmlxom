@@ -22,6 +22,7 @@ import org.xmlcml.cml.base.CMLElements;
  * user-modifiable class supporting dictionary. *
  */
 public class CMLDictionary extends AbstractDictionary {
+	private final static Logger LOG = Logger.getLogger(CMLDictionary.class);
 
 	/** namespaced element name.*/
 	public final static String NS = C_E+TAG;
@@ -71,7 +72,7 @@ public class CMLDictionary extends AbstractDictionary {
 	 * index entries by id.
 	 *
 	 */
-	public void indexEntries() {
+	public int indexEntries() {
 		if (entryMap == null) {
 			entryMap = new HashMap<String, CMLEntry>();
 			CMLElements<CMLEntry> entryNodes = this.getEntryElements();
@@ -81,7 +82,9 @@ public class CMLDictionary extends AbstractDictionary {
 					entryMap.put(id, entry);
 				}
 			}
-		}
+			LOG.debug("Created dictionary with entries: "+entryNodes.size());
+		} 
+		return entryMap.size();
 	}
 
 	/**
@@ -182,7 +185,7 @@ public class CMLDictionary extends AbstractDictionary {
 	 * @return entry
 	 */
 	public CMLEntry getCMLEntry(String id) {
-		this.indexEntries();
+		int nentries = this.indexEntries();
 		return entryMap.get(id);
 	}
 

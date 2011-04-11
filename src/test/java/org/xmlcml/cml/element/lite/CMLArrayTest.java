@@ -352,13 +352,14 @@ public class CMLArrayTest {
 		CMLArray arrayS = new CMLArray();
 		DelimiterAttribute delimiterAttribute = (DelimiterAttribute) arrayS
 				.getDelimiterAttribute();
-		Assert.assertNotNull("default", delimiterAttribute);
-		Assert.assertEquals("default", EC.S_EMPTY, delimiterAttribute.getValue());
-		Assert.assertEquals("default", EC.S_WHITEREGEX, delimiterAttribute
-				.getSplitter());
-		Assert.assertEquals("default", EC.S_SPACE, delimiterAttribute.getConcat());
-
-		Assert.assertEquals("default", EC.S_EMPTY, arrayS.getDelimiter());
+		// delimiter attribute is now null by default
+		Assert.assertNull("default", delimiterAttribute);
+//		Assert.assertEquals("default", EC.S_EMPTY, delimiterAttribute.getValue());
+//		Assert.assertEquals("default", EC.S_WHITEREGEX, delimiterAttribute
+//				.getSplitter());
+//		Assert.assertEquals("default", EC.S_SPACE, delimiterAttribute.getConcat());
+//
+//		Assert.assertEquals("default", EC.S_EMPTY, arrayS.getDelimiter());
 
 		arrayS.setDelimiter(EC.S_COMMA);
 		delimiterAttribute = (DelimiterAttribute) arrayS
@@ -423,8 +424,8 @@ public class CMLArrayTest {
 	public void testCMLArrayCMLArray() {
 
 		CMLArray s2 = new CMLArray(xomS0);
-		Assert.assertNotNull("delimiter", s2.getDelimiterAttribute());
-		Assert.assertEquals("delimiter", EC.S_EMPTY, s2.getDelimiter());
+		Assert.assertNull("delimiter", s2.getDelimiterAttribute());
+//		Assert.assertEquals("delimiter", EC.S_EMPTY, s2.getDelimiter());
 		Assert.assertEquals("size", 5, s2.getSize());
 		Assert.assertEquals("dataType", CC.XSD_STRING, s2.getDataType());
 		String[] ss = s2.getStrings();
@@ -432,8 +433,8 @@ public class CMLArrayTest {
 		Assert.assertEquals("element", "e", ss[4]);
 
 		s2 = new CMLArray(xomD0);
-		Assert.assertNotNull("delimiter", s2.getDelimiterAttribute());
-		Assert.assertEquals("delimiter", EC.S_EMPTY, s2.getDelimiter());
+		Assert.assertNull("delimiter", s2.getDelimiterAttribute());
+//		Assert.assertEquals("delimiter", EC.S_EMPTY, s2.getDelimiter());
 		Assert.assertEquals("size", 5, s2.getSize());
 		Assert.assertEquals("dataType", CC.XSD_DOUBLE, s2.getDataType());
 		double[] dd = null;
@@ -446,8 +447,8 @@ public class CMLArrayTest {
 		Assert.assertEquals("element", 5., dd[4], EPS);
 
 		s2 = new CMLArray(xomI0);
-		Assert.assertNotNull("delimiter", s2.getDelimiterAttribute());
-		Assert.assertEquals("delimiter", EC.S_EMPTY, s2.getDelimiter());
+		Assert.assertNull("delimiter", s2.getDelimiterAttribute());
+//		Assert.assertEquals("delimiter", EC.S_EMPTY, s2.getDelimiter());
 		Assert.assertEquals("size", 5, s2.getSize());
 		Assert.assertEquals("dataType", CC.XSD_INTEGER, s2.getDataType());
 		int[] ii = null;
@@ -460,8 +461,8 @@ public class CMLArrayTest {
 		Assert.assertEquals("element", 5, ii[4]);
 
 		s2 = new CMLArray(xmlI0);
-		Assert.assertNotNull("delimiter", s2.getDelimiterAttribute());
-		Assert.assertEquals("delimiter", EC.S_EMPTY, s2.getDelimiter());
+		Assert.assertNull("delimiter", s2.getDelimiterAttribute());
+//		Assert.assertEquals("delimiter", EC.S_EMPTY, s2.getDelimiter());
 		Assert.assertEquals("size", 5, s2.getSize());
 		Assert.assertEquals("dataType", CC.XSD_INTEGER, s2.getDataType());
 		ii = null;

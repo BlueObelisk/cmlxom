@@ -22,6 +22,10 @@ public class AbstractHTMLContainer extends CMLElement {
 
     }
 
+    public AbstractHTMLContainer(String tag) {
+    	super(tag);
+    }
+
     /**
      * Convenience method to wrap a plain string in an XHTML P element.
      * 
