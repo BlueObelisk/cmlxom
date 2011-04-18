@@ -16,7 +16,6 @@ public class StringSTAttribute extends CMLAttribute {
     public final static String JAVA_GET_METHOD = "getString";
     /** */
     public final static String JAVA_SHORT_CLASS = "StringSTAttribute";
-    //protected String s;
     
     /**
      * constructor.

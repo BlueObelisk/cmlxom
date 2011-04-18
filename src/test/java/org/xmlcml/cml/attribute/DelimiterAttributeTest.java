@@ -5,6 +5,7 @@ import nu.xom.Attribute;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.xmlcml.cml.element.CMLArray;
 import org.xmlcml.euclid.EC;
 import org.xmlcml.euclid.test.StringTestBase;
 
@@ -366,5 +367,13 @@ public class DelimiterAttributeTest {
 		String s = delimiterAttribute.getDelimitedXMLContent(dd);
 		Assert.assertEquals("append content ", "/1/2/3/", s);
 	}
-
+	
+	@Test
+	public final void testAttributeAccess(){
+		DelimiterAttribute delim = new DelimiterAttribute();
+		delim.setValue("|");
+		String a=(String)delim.getCMLValue();
+		Assert.assertEquals("|", a);
+	}
+	
 }
