@@ -126,7 +126,7 @@ public class CMLArrayTest {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new RuntimeException("EXC " + e);
+			throw e;
 		}
 	}
 
@@ -1236,6 +1236,25 @@ public class CMLArrayTest {
 		Assert.assertNull(scalar);
 		
 	}
-
+	
+	@Test
+	public final void testChangeDelimiter(){
+		CMLArray array = new CMLArray();
+		array.setDelimiter(",");
+		array.setArray(new int[]{2,3,4});
+		Assert.assertEquals(",2,3,4,", array.getStringContent());
+		Assert.assertNotNull(array.getDelimiterAttribute());
+		array.setDelimiter(" ");
+		Assert.assertNull(array.getDelimiterAttribute());
+		Assert.assertEquals("2 3 4", array.getStringContent());
+	}
+	
+	@Test (expected=RuntimeException.class)
+	public void testThrowsForNewDelimiterInArray(){
+		CMLArray array = new CMLArray();
+		array.setDelimiter(",");
+		array.setArray(new String[]{"foo","bar","cat"});
+		array.setDelimiter("a");
+	}
 
 }
