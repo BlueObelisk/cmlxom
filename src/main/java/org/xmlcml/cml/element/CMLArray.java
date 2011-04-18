@@ -49,7 +49,7 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 	}
 
 	private void init() {
-//		ensureDelimiterAttribute(Action.RESET);
+		// ensureDelimiterAttribute(Action.RESET);
 	}
 
 	/**
@@ -67,6 +67,7 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 	 * 
 	 * @return Node
 	 */
+	@Override
 	public Node copy() {
 		return new CMLArray(this);
 	}
@@ -78,6 +79,7 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 	 *            parent of element to be constructed (ignored by default)
 	 * @return CMLArray
 	 */
+	@Override
 	public CMLElement makeElementInContext(Element parent) {
 		return new CMLArray();
 
@@ -89,6 +91,7 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 	 * @param parent
 	 *            element
 	 */
+	@Override
 	public void finishMakingElement(Element parent) {
 		delimiterAttribute = null;
 		delimiterAttribute = (DelimiterAttribute) this.getDelimiterAttribute();
@@ -154,10 +157,12 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 	}
 
 	/**
-	 * get delimiter attribute
-	 * if the delimiter is whitespace this should return null
+	 * get delimiter attribute if the delimiter is whitespace this should return
+	 * null
+	 * 
 	 * @return attribute
 	 */
+	@Override
 	public CMLAttribute getDelimiterAttribute() {
 		delimiterAttribute = (DelimiterAttribute) super.getDelimiterAttribute();
 		return delimiterAttribute;
@@ -189,8 +194,7 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 	 * @throws RuntimeException
 	 *             strings must not contain delimiter
 	 */
-	public CMLArray(String[] array, String delimiter)
-			throws RuntimeException {
+	public CMLArray(String[] array, String delimiter) throws RuntimeException {
 		setDelimiter(delimiter);
 		this.setArray(array);
 	}
@@ -235,8 +239,7 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 	 * @throws RuntimeException
 	 *             strings must not contain delimiter
 	 */
-	public CMLArray(double[] array, String delimiter)
-			throws RuntimeException {
+	public CMLArray(double[] array, String delimiter) throws RuntimeException {
 		setDelimiter(delimiter);
 		this.setArray(array);
 	}
@@ -276,7 +279,8 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 		this.setArray(array);
 	}
 
-	/** creates array of given dataType
+	/**
+	 * creates array of given dataType
 	 * 
 	 * @param dataType
 	 */
@@ -284,13 +288,14 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 		this();
 		this.resetDataType(dataType);
 	}
-	
+
 	public static CMLArray createArray(List<CMLScalar> scalarList) {
 		CMLArray array = null;
 		if (scalarList != null && scalarList.size() > 0) {
 			CMLScalar scalar = scalarList.get(0);
 			if (scalar == null) {
-				throw new RuntimeException("Null scalar in list: "+scalarList.size());
+				throw new RuntimeException("Null scalar in list: "
+						+ scalarList.size());
 			}
 			array = createArrayWithAttributes(scalar);
 		}
@@ -312,23 +317,21 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 		if (dictRef != null) {
 			array.setDictRef(dictRef);
 		}
-		String units = ((HasUnits)hasDataType).getUnits();
+		String units = ((HasUnits) hasDataType).getUnits();
 		if (units != null) {
 			array.setUnits(units);
 		}
 		array.removeWhitespaceDelimiterAttribute();
 		return array;
 	}
-	
-	/** creates array of type comptatible with scalar
-	 * can be used to add subsequently scalar contents to array
-	 * does NOT add scalar contents
-	 * typical use
-	 * List<CMLScalar> scalars;
-	 * CMLArray array = CMLArray.createEmptyArray(scalars.get(0));
-	 * for (CMLScalar scalar : scalars) {
-	 *     array.append(scalar);
-	 * }
+
+	/**
+	 * creates array of type comptatible with scalar can be used to add
+	 * subsequently scalar contents to array does NOT add scalar contents
+	 * typical use List<CMLScalar> scalars; CMLArray array =
+	 * CMLArray.createEmptyArray(scalars.get(0)); for (CMLScalar scalar :
+	 * scalars) { array.append(scalar); }
+	 * 
 	 * @param scalar
 	 * @return
 	 */
@@ -340,8 +343,6 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 		array.removeWhitespaceDelimiterAttribute();
 		return array;
 	}
-
-	
 
 	// ====================== housekeeping methods =====================
 
@@ -408,8 +409,8 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 			ss = delimiterAttribute.getSplitContent(content);
 			int size = -1;
 			if (this.getSizeAttribute() == null) {
-				size = ss.length;
-				setSize(size);
+				//size = ss.length;
+				//setSize(size);
 			} else {
 				size = super.getSize();
 				if (ss.length != size) {
@@ -443,7 +444,6 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 		}
 		return dd;
 	}
-
 
 	/**
 	 * get doubles.
@@ -516,7 +516,7 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 		}
 		return ii;
 	}
-	
+
 	public CMLScalar getElementAt(int i) {
 		CMLScalar scalar = null;
 		if (i >= 0 && i < getSize()) {
@@ -524,7 +524,7 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 			if (dataType == null) {
 				dataType = XSD_STRING;
 			}
-			
+
 			if (dataType.equals(XSD_STRING)) {
 				String s = getStrings()[i];
 				scalar = new CMLScalar(s);
@@ -572,7 +572,7 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 	public List<String> getStringValues() {
 		List<String> values = new ArrayList<String>();
 		String dataType = this.getDataType();
-		 if (dataType == null || dataType.equals(XSD_STRING)) {
+		if (dataType == null || dataType.equals(XSD_STRING)) {
 			String[] strings = this.getStrings();
 			for (String s : strings) {
 				values.add(s);
@@ -628,17 +628,17 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 	}
 
 	/**
-	 * sets components.
-	 * NOT IMPLEMENTED
+	 * sets components. NOT IMPLEMENTED
+	 * 
 	 * @param array
 	 */
 	public void setArray(DateTime[] array) {
 		resetDataType(XSD_DATE);
 		ensureDelimiterAttribute(Action.PRESERVE);
-//		setXMLContent(delimiterAttribute.getDelimitedXMLContent(array));
+		// setXMLContent(delimiterAttribute.getDelimitedXMLContent(array));
 		resetSize(array.length);
 		throw new RuntimeException("dates in array not fully implemented");
-//		this.removeWhitespaceDelimiterAttribute();
+		// this.removeWhitespaceDelimiterAttribute();
 	}
 
 	/**
@@ -717,9 +717,17 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 	 * @param value
 	 */
 	public void setDelimiter(String value) {
+		String[] old = this.getSplitContent();
 		ensureDelimiterAttribute(Action.RESET);
 		super.setDelimiter(value);
 		delimiterAttribute = (DelimiterAttribute) this.getDelimiterAttribute();
+		if (old.length>0) {
+			for (String s : old) {
+				delimiterAttribute.checkDelimiter(s);
+			}
+			setXMLContent(delimiterAttribute.getDelimitedXMLContent(old));
+		}
+		removeWhitespaceDelimiterAttribute();
 	}
 
 	/**
@@ -790,8 +798,9 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 				|| this.getSize() != array.getSize()) {
 			throw new RuntimeException(
 					"Unsuitable dataTypes for numeric operations / "
-							+ this.getDataType() + CMLConstants.S_SLASH + this.getSize()
-							+ CMLConstants.S_SLASH + array.getDataType() + CMLConstants.S_SLASH
+							+ this.getDataType() + CMLConstants.S_SLASH
+							+ this.getSize() + CMLConstants.S_SLASH
+							+ array.getDataType() + CMLConstants.S_SLASH
 							+ array.getSize());
 		}
 	}
@@ -930,21 +939,29 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 		}
 		appendXML(S_EMPTY + i, 1);
 	}
-	
+
 	public void append(CMLArray array) {
 		if (!this.getDataType().equals(array.getDataType())) {
-			throw new RuntimeException("Cannot append array of different type: "+this.getDataType()+" != "+array.getDataType());
+			throw new RuntimeException(
+					"Cannot append array of different type: "
+							+ this.getDataType() + " != " + array.getDataType());
 		}
 		if (!this.getDelimiter().equals(array.getDelimiter())) {
-			throw new RuntimeException("Cannot append array with different delimiter: "+this.getDelimiter()+" != "+array.getDelimiter());
+			throw new RuntimeException(
+					"Cannot append array with different delimiter: "
+							+ this.getDelimiter() + " != "
+							+ array.getDelimiter());
 		}
-		if (this.getUnits() != null && !this.getUnits().equals(array.getUnits())) {
-			throw new RuntimeException("Cannot append array with different units: "+this.getDelimiter()+" != "+array.getUnits());
+		if (this.getUnits() != null
+				&& !this.getUnits().equals(array.getUnits())) {
+			throw new RuntimeException(
+					"Cannot append array with different units: "
+							+ this.getDelimiter() + " != " + array.getUnits());
 		}
 		String arrayString = array.getXMLContent();
 		String delimiter = this.getDelimiter().trim();
 		if (delimiter.length() > 0) {
-			arrayString = arrayString.substring(1, arrayString.length()-1);
+			arrayString = arrayString.substring(1, arrayString.length() - 1);
 		}
 		appendXML(arrayString, array.getSize());
 	}
@@ -962,15 +979,21 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 		resetSize(size + toAdd);
 		this.removeWhitespaceDelimiterAttribute();
 	}
-	
+
 	public void append(CMLScalar scalar) {
 		if (scalar != null) {
 			String dataType = this.getDataType();
 			if (!dataType.equals(scalar.getDataType())) {
-				throw new RuntimeException("Cannot append scalar of different type: "+dataType+" != "+scalar.getDataType());
+				throw new RuntimeException(
+						"Cannot append scalar of different type: " + dataType
+								+ " != " + scalar.getDataType());
 			}
-			if (this.getUnits() != null && !this.getUnits().equals(scalar.getUnits())) {
-				throw new RuntimeException("Cannot append scalar with different units: "+this.getDelimiter()+" != "+scalar.getUnits());
+			if (this.getUnits() != null
+					&& !this.getUnits().equals(scalar.getUnits())) {
+				throw new RuntimeException(
+						"Cannot append scalar with different units: "
+								+ this.getDelimiter() + " != "
+								+ scalar.getUnits());
 			}
 			append(scalar.getXMLContent(), dataType);
 			this.removeWhitespaceDelimiterAttribute();
@@ -990,18 +1013,20 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 			this.append(new Integer(content).intValue());
 		}
 	}
-	
+
 	public void append(HasDictRef hasDictRef) {
 		if (hasDictRef instanceof CMLScalar) {
 			this.append((CMLScalar) hasDictRef);
 		} else if (hasDictRef instanceof CMLArray) {
 			this.append((CMLArray) hasDictRef);
 		} else {
-			throw new RuntimeException("Cannot add HasDictRef: "+((CMLElement)hasDictRef).getLocalName());
+			throw new RuntimeException("Cannot add HasDictRef: "
+					+ ((CMLElement) hasDictRef).getLocalName());
 		}
 		this.removeWhitespaceDelimiterAttribute();
-//		this.debug("APPPEND");
+		// this.debug("APPPEND");
 	}
+
 	/**
 	 * sets units attribute. requires namespace for unit to be in scope.
 	 * 
@@ -1020,7 +1045,8 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 	/**
 	 * add an integer. datatype must have been set to XSD_DATE
 	 * 
-	 * @param d date to add
+	 * @param d
+	 *            date to add
 	 */
 	public void append(DateTime d) throws RuntimeException {
 		String dataType = this.getDataType();
@@ -1031,25 +1057,19 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 		appendXML(d.toString(), 1);
 	}
 
-	/** removes attributes of the form
-	 * delimiter="" or delimiter=" "
+	/**
+	 * removes attributes of the form delimiter="" or delimiter=" "
 	 */
 	public void removeWhitespaceDelimiterAttribute() {
 		CMLArray.removeWhitespaceDelimiterAttribute(this);
 	}
 
-	public static void removeWhitespaceDelimiterAttribute(HasDelimiter hasDelimiter) {
+	public static void removeWhitespaceDelimiterAttribute(
+			HasDelimiter hasDelimiter) {
 		Attribute delimiter = hasDelimiter.getDelimiterAttribute();
 		if (delimiter != null && delimiter.getValue().trim().length() == 0) {
 			delimiter.detach();
 		}
 	}
 
-	/** Eliotte stops us overriding this,
-	 * very tedious
-	 * 
-	public String toXML() {
-		return super.toXML();
-	}
-	 */
 }
