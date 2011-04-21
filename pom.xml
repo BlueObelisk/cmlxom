@@ -11,7 +11,7 @@
 
   <groupId>cml</groupId>
   <artifactId>cmlxom</artifactId>
-  <version>3.0.0-SNAPSHOT</version>
+  <version>3.0.0</version>
   <name>CMLXOM</name>
   <description>A Java library for processing CML</description>
   <url>http://sourceforge.net/projects/cml/ </url>
