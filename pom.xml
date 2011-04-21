@@ -11,7 +11,7 @@
 
   <groupId>cml</groupId>
   <artifactId>cmlxom</artifactId>
-  <version>3.0.0</version>
+  <version>3.1-SNAPSHOT</version>
   <name>CMLXOM</name>
   <description>A Java library for processing CML</description>
   <url>http://sourceforge.net/projects/cml/ </url>
@@ -233,7 +233,7 @@
     <dependency>
       <groupId>cml</groupId>
       <artifactId>euclid-testutil</artifactId>
-      <version>1.0</version>
+      <version>1.1-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -245,7 +245,7 @@
     <dependency>
       <groupId>cml</groupId>
       <artifactId>euclid</artifactId>
-      <version>1.0</version>
+      <version>1.1-SNAPSHOT</version>
     </dependency>
       <dependency>
         <groupId>org.apache.commons</groupId>
