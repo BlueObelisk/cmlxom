@@ -233,7 +233,7 @@
     <dependency>
       <groupId>cml</groupId>
       <artifactId>euclid-testutil</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
+      <version>1.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -245,7 +245,7 @@
     <dependency>
       <groupId>cml</groupId>
       <artifactId>euclid</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
+      <version>1.0</version>
     </dependency>
       <dependency>
         <groupId>org.apache.commons</groupId>
