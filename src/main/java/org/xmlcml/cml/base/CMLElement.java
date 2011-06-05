@@ -128,9 +128,10 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
     }
 
     /** parses a non-subclassed element into CML.
-     * Topically used when other software such as 
+     * Typically used when other software such as 
      * XOM or XSLT create elements through the normal
      * builder.
+     * Removes any Document parent
      * Serializes the element and re-parses with CMLBuilder()
      * @param element
      * @return CMLElement (null if root element is not CML)
@@ -144,6 +145,8 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
     	}
     	if (!(newElement instanceof CMLElement)) {
     		newElement = null;
+    	} else {
+    		newElement.detach();
     	}
     	return (CMLElement) newElement;
     }
@@ -204,23 +207,6 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
     		super.addAttribute(att);
     	}
     }
-
-//    /** compare elements on id value.
-//     * if id is missing returns 0
-//     * @param element
-//     * @return -1, 0, 1
-//     */
-//	public int compareTo(Object element) {
-//		int i = 0;
-//		if (element.getClass().equals(this.getClass())) {
-//			String thisId = this.getAttributeValue("id");
-//			String elementId = ((CMLElement)element).getAttributeValue("id");
-//			if (thisId != null && elementId != null) {
-//				i = thisId.compareTo(elementId);
-//			}
-//		}
-//		return i;
-//	}
 
     /**
      * copies attributes. makes subclass if necessary.
@@ -450,115 +436,6 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
         return (i == 0) ? 0 : ((i < 0) ? -1 : 1);
     }
 
-    /*--
-     static int xcompareTo(Element thisElem, Element elemElem) {
-     int order = 0;
-     if (elemElem == null) {
-     return -1;
-     }
-     // same element?
-     if (thisElem == elemElem) {
-     return 0;
-     }
-     order = thisElem.getLocalName().compareTo(elemElem.getLocalName());
-     // same number of attributes?
-     if (order == 0) {
-     int diff = thisElem.getAttributeCount() - elemElem.getAttributeCount(); 
-     if (diff > 0) {
-     order = 1;
-     } else if (diff < 0) {
-     order = -1;
-     }
-     }
-     // yes, iterate through and compare
-     if (order == 0) {
-     for (int i = 0; i < thisElem.getAttributeCount(); i++) {
-     Attribute att = thisElem.getAttribute(i);
-     Attribute eAtt = elemElem.getAttribute(att.getLocalName());
-     if (eAtt == null) {
-     order = -1;
-     break;
-     }
-     if (att instanceof CMLAttribute) {
-     order = ((CMLAttribute) att).compareTo(eAtt);
-     if (order != 0) {
-     break;
-     }
-     } else {
-     order = att.getLocalName().compareTo(eAtt.getLocalName());
-     if (order != 0) {
-     break;
-     }
-     order = att.getValue().compareTo(eAtt.getValue());
-     if (order != 0) {
-     break;
-     }
-     }
-     }
-     }
-     // same number of children?
-     // same number of attributes?
-     if (order == 0) {
-     int diff = thisElem.getChildCount() - elemElem.getChildCount(); 
-     if (diff > 0) {
-     order = 1;
-     } else if (diff < 0) {
-     order = -1;
-     }
-     
-     }
-     // yes, iterate through and compare
-     if (order == 0) {
-     for (int i = 0; i < thisElem.getChildCount(); i++) {
-     Node thisChild = thisElem.getChild(i);
-     Node elemChild = elemElem.getChild(i);
-     // compare classes
-     order = thisChild.getClass().getName().compareTo(elemChild.getClass().getName());
-     if (order != 0) {
-     break;
-     }
-     // compare CMLElements
-     if (thisChild instanceof CMLElement) {
-     order = ((CMLElement) thisChild).xcompareTo((CMLElement)elemChild);
-     if (order != 0) {
-     break;
-     }
-     } else if (thisChild instanceof Element) {
-     // non-CML elements
-     Element thisChildElem = (Element) thisChild;
-     Element elemChildElem = (Element) elemChild;
-     order = xcompareTo(thisChildElem, elemChildElem);
-     if (order != 0) {
-     break;
-     }
-     } else {
-     // nodes
-     order = thisChild.getValue().compareTo(elemChild.getValue());
-     if (order != 0) {
-     break;
-     }
-     }
-     }
-     }
-     return (order == 0) ? 0 : order/Math.abs(order);
-     }
-     --*/
-
-    /**
-     * detaches from current parent. if this is rootElement, replaces it with a
-     * dummy. else detaches as normal
-     */
-    /*
-    public void detach() {
-        ParentNode parent = this.getParent();
-        if (parent == null) {
-        } else if (parent instanceof Document) {
-            parent.replaceChild(this, new Element("dummy"));
-        } else {
-            super.detach();
-        }
-    }
-    */
 
     // ========================== utilities ====================== //
 
