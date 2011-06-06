@@ -43,6 +43,8 @@ import org.xmlcml.euclid.Util;
  * 
  */
 public abstract class CMLUtil implements CMLConstants {
+	private static final String DUMMY = "dummy";
+
 	private static Logger LOG = Logger.getLogger(CMLUtil.class);
 	
 	public final static String DTD = ".dtd\">";
@@ -1059,6 +1061,18 @@ public abstract class CMLUtil implements CMLConstants {
 		return (nodes.size() == 1) ? (Element) nodes.get(0) : null;
 	}
 
+
+	public static void detach(Element element) {
+		ParentNode parent = (element == null) ? null : element.getParent();
+		if (parent != null) {
+			if (parent instanceof Document) {
+				parent.replaceChild(element, new Element(DUMMY));
+			} else {
+				element.detach();
+			}
+		}
+	}
+	
 	public static Document ensureDocument(Element rootElement) {
 		Document doc = null;
 		if (rootElement != null) {
