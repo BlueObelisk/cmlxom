@@ -558,6 +558,26 @@ public class CMLUtilTest {
 	}
 	
 	@Test
+	public void testDetach() {
+		File file = new File("src/test/resources/org/xmlcml/cml/base/cml0.xml");
+		Document doc = CMLUtil.parseQuietlyToDocument(file);
+		Element element = doc.getRootElement();
+		CMLUtil.detach(element);
+		Assert.assertNotNull(element);
+		Assert.assertNull(element.getParent());
+	}
+	
+	@Test
+	public void testDetach1() {
+		File file = new File("src/test/resources/org/xmlcml/cml/base/cml0.xml");
+		Document doc = CMLUtil.parseQuietlyToDocument(file);
+		Element element = doc.getRootElement().getChildElements().get(0);
+		CMLUtil.detach(element);
+		Assert.assertNotNull(element);
+		Assert.assertNull(element.getParent());
+	}
+	
+	@Test
 	public void testDebug() {
 		Element element = new Element("zzz");
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
