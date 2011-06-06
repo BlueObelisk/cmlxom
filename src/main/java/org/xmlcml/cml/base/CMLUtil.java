@@ -1,6 +1,7 @@
 package org.xmlcml.cml.base;
 
 import java.io.ByteArrayInputStream;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -1061,8 +1062,7 @@ public abstract class CMLUtil implements CMLConstants {
 		return (nodes.size() == 1) ? (Element) nodes.get(0) : null;
 	}
 
-
-	public static void detach(Element element) {
+	public static void detach(nu.xom.Element element) {
 		ParentNode parent = (element == null) ? null : element.getParent();
 		if (parent != null) {
 			if (parent instanceof Document) {
