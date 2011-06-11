@@ -1,5 +1,7 @@
 package org.xmlcml.cml.element.lite;
 
+import nu.xom.Element;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,6 +10,7 @@ import org.xmlcml.cml.attribute.DelimiterAttribute.Action;
 import org.xmlcml.cml.base.CC;
 import org.xmlcml.cml.base.CMLBuilder;
 import org.xmlcml.cml.base.CMLConstants;
+import org.xmlcml.cml.base.CMLUtil;
 import org.xmlcml.cml.base.CMLXOMTestUtils;
 import org.xmlcml.cml.element.CMLArray;
 import org.xmlcml.cml.element.CMLScalar;
@@ -1257,4 +1260,88 @@ public class CMLArrayTest {
 		array.setDelimiter("a");
 	}
 
+	@Test
+	public void testSubArray() {
+		CMLArray array = new CMLArray(new String[]{"0", "1", "2", "3", "4", "5"});
+		CMLArray subArray = array.createSubArray(2,4);
+		Element ref = CMLUtil.parseQuietlyIntoCML(
+				 "<array xmlns='http://www.xml-cml.org/schema' dataType='xsd:string' size='3'>2 3 4</array>");
+		CMLXOMTestUtils.assertEqualsCanonically("subArray", ref, subArray);	
+	}
+	
+	@Test (expected=RuntimeException.class)
+	public void testSubArray1() {
+		CMLArray array = new CMLArray(new String[]{"0", "1", "2", "3", "4", "5"});
+		CMLArray subArray = array.createSubArray(-1,4);
+	}
+	
+	@Test (expected=RuntimeException.class)
+	public void testSubArray2() {
+		CMLArray array = new CMLArray(new String[]{"0", "1", "2", "3", "4", "5"});
+		CMLArray subArray = array.createSubArray(1,6);
+	}
+	
+	@Test (expected=RuntimeException.class)
+	public void testSubArray3() {
+		CMLArray array = new CMLArray(new String[]{"0", "1", "2", "3", "4", "5"});
+		CMLArray subArray = array.createSubArray(4, 2);
+	}
+	
+	@Test
+	public void testSubArray4() {
+		CMLArray array = new CMLArray(new String[]{"0", "1", "2", "3", "4", "5"});
+		CMLArray subArray = array.createSubArray(4,4);
+		Element ref = CMLUtil.parseQuietlyIntoCML(
+				 "<array xmlns='http://www.xml-cml.org/schema' dataType='xsd:string' size='1'>4</array>");
+		CMLXOMTestUtils.assertEqualsCanonically("subArray", ref, subArray);	
+	}
+	
+	@Test
+	public void testSubArray5() {
+		CMLArray array = new CMLArray(new String[]{"0", "1", "2", "3", "4", "5"});
+		CMLArray subArray = array.createSubArray(0, 5);
+		Element ref = CMLUtil.parseQuietlyIntoCML(
+				 "<array xmlns='http://www.xml-cml.org/schema' dataType='xsd:string' size='6'>0 1 2 3 4 5</array>");
+		CMLXOMTestUtils.assertEqualsCanonically("subArray", ref, subArray);	
+	}
+	
+	@Test
+	public void testSubArray6() {
+		CMLArray array = new CMLArray(new String[]{"0", "1", "2", "3", "4", "5"}, "|");
+		CMLArray subArray = array.createSubArray(1,4);
+		Element ref = CMLUtil.parseQuietlyIntoCML(
+				 "<array xmlns='http://www.xml-cml.org/schema' delimiter='|' dataType='xsd:string' size='4'>|1|2|3|4|</array>");
+		CMLXOMTestUtils.assertEqualsCanonically("subArray", ref, subArray);	
+	}
+	
+	@Test
+	public void testSubArray7() {
+		CMLArray array = new CMLArray(new String[]{"0", "1", "2", "3", "4", "5"});
+		array.setDictRef("foo:bar");
+		CMLArray subArray = array.createSubArray(1,4);
+		Element ref = CMLUtil.parseQuietlyIntoCML(
+				 "<array xmlns='http://www.xml-cml.org/schema' dataType='xsd:string' dictRef='foo:bar' size='4'>1 2 3 4</array>");
+		CMLXOMTestUtils.assertEqualsCanonically("subArray", ref, subArray);	
+	}
+	
+	@Test
+	public void testSubArray8() {
+		CMLArray array = new CMLArray(new int[]{0,1,2,3,4,5});
+		array.setDictRef("foo:bar");
+		CMLArray subArray = array.createSubArray(1,4);
+		Element ref = CMLUtil.parseQuietlyIntoCML(
+				 "<array xmlns='http://www.xml-cml.org/schema' dataType='xsd:integer' dictRef='foo:bar' size='4'>1 2 3 4</array>");
+		CMLXOMTestUtils.assertEqualsCanonically("subArray", ref, subArray);	
+	}
+	
+	
+	@Test
+	public void testSubArray9() {
+		CMLArray array = new CMLArray(new double[]{0,1.1,2.2,3.3,4.4,5.5});
+		array.setDictRef("foo:bar");
+		CMLArray subArray = array.createSubArray(1,4);
+		Element ref = CMLUtil.parseQuietlyIntoCML(
+				 "<array xmlns='http://www.xml-cml.org/schema' dataType='xsd:double' dictRef='foo:bar' size='4'>1.1 2.2 3.3 4.4</array>");
+		CMLXOMTestUtils.assertEqualsCanonically("subArray", ref, subArray);	
+	}
 }
