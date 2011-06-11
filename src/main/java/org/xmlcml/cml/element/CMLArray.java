@@ -2,6 +2,7 @@ package org.xmlcml.cml.element;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import nu.xom.Attribute;
@@ -342,6 +343,44 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 		}
 		array.removeWhitespaceDelimiterAttribute();
 		return array;
+	}
+	
+	/**
+	 * creates a new array formed from a subset of the current array
+	 * @param array
+	 * @param start inclusive start
+	 * @param end inclusive end
+	 * @return new array of correct dataType and dictRef; null if fails
+	 * @throws IllegalArgumentException if indices are out of bounds
+	 */
+	public CMLArray createSubArray(int start, int end) 
+	    throws IllegalArgumentException {
+		int size = this.getSize();
+		if (start < 0 || end >= size || end < start) {
+			throw new IllegalArgumentException("bad array slice indexes "+start+"/"+end+" in "+size);
+		}
+		String dataType = this.getDataType();
+		CMLArray subArray = null;
+		if (dataType == null || dataType.equals(CMLConstants.XSD_STRING)) {
+			String[] sout = new String[end-start+1];
+			String[] ss = this.getStrings();
+			for (int i = start; i <= end; i++) {
+				sout[i-start] = ss[i];
+			}
+			String delimiter = this.getDelimiter();
+			subArray = (delimiter == null) ? new CMLArray(sout) : new CMLArray(sout, delimiter);
+		} else if (dataType.equals(CMLConstants.XSD_DOUBLE)) {
+			RealArray realArray = new RealArray(this.getDoubles());
+			subArray = new CMLArray(realArray.getSubArray(start, end));
+		} else if (dataType.equals(CMLConstants.XSD_INTEGER)) {
+			IntArray intArray = new IntArray(this.getInts());
+			subArray = new CMLArray(intArray.getSubArray(start, end).getArray());
+		}
+		String dictRef = this.getDictRef();
+		if (dictRef != null) {
+			subArray.setDictRef(dictRef);
+		}
+		return subArray;
 	}
 
 	// ====================== housekeeping methods =====================
