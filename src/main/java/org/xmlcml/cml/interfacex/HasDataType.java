@@ -30,4 +30,11 @@ public interface HasDataType extends HasDictRef {
      */
     String getXMLContent();
 
+    /**
+     * sets value of element;
+     * 
+     * @param content
+     */
+    void setXMLContent(String content);
+
 }
