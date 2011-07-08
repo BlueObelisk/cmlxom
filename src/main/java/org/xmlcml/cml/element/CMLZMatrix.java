@@ -108,12 +108,14 @@ public class CMLZMatrix extends AbstractZMatrix {
         	// nothing to do!
         } else if (lengthElements.size() == 1) {
             CMLLength length = (CMLLength) lengthElements.get(0);
-            String id = length.getAtomRefs2()[0];
+//            String id = length.getAtomRefs2()[0];
+            String id = length.getAtomRefs2()[1];
             CMLAtom atom0 = molecule.getAtomById(id);
             if (atom0 == null) {
                 throw new RuntimeException("Cannot find atom: "+id);
             }
-            id = length.getAtomRefs2()[1];
+//            id = length.getAtomRefs2()[1];
+            id = length.getAtomRefs2()[0];
             CMLAtom atom1 = molecule.getAtomById(id);
             if (atom1 == null) {
                 throw new RuntimeException("Cannot find atom: "+id);

@@ -50,15 +50,15 @@ public class CMLBond extends AbstractBond {
 	public final static String UNKNOWN_ORDER = "UNK";
 
 	/** single bond */
-	public final static String SINGLE = "1";
+	private /*public*/ final static String SINGLE = "1";
 	public final static String SINGLE_NORM = SINGLE;
 
 	/** double bond */
-	public final static String DOUBLE = "2";
+	private /*public*/ final static String DOUBLE = "2";
 	public final static String DOUBLE_NORM = DOUBLE;
 
 	/** triple bond */
-	public final static String TRIPLE = "3";
+	private /*public*/ final static String TRIPLE = "3";
 	public final static String TRIPLE_NORM = TRIPLE;
 
 	/** single bond */
@@ -117,36 +117,23 @@ public class CMLBond extends AbstractBond {
 
 	/** bond type */
 	public final static String[] bondType = {
-	    /** dewisott */
 		SINGLE,
-	    /** dewisott */
 		DOUBLE,
-	    /** dewisott */
 		TRIPLE,
-	    /** dewisott */
 		AROMATIC,
-	    /** dewisott */
 		ZERO,
-	    /** dewisott */
 		WEDGE,
-	    /** dewisott */
 		HATCH,
-	    /** dewisott */
 		NOSTEREO, };
 
-    /** dewisott */
 	public static final double[] bondOrders = { 1.0, 2.0, 3.0, 1.5, 0.0, 1.0,
 		1.0, 1.0, };
 
-    /** dewisott */
 	public final static String HASH_SYMB = CMLConstants.S_UNDER+S_UNDER;
 
-    /** dewisott */
 	public final static String BOND_LINK = CMLConstants.S_MINUS;
 
 	List<CMLAtom> atomList;
-
-//	protected String cyclic;
 
 	/**
 	 * no-arg constructor. This should not normally be used in applications as
@@ -332,15 +319,12 @@ public class CMLBond extends AbstractBond {
 		String order = super.getOrder();
 		if (order == null) {
 			order = null;
-		} else if (order.equals(CMLBond.SINGLE)
-				| order.equals(CMLBond.SINGLE_S)) {
-			order = CMLBond.SINGLE;
-		} else if (order.equals(CMLBond.DOUBLE)
-				| order.equals(CMLBond.DOUBLE_D)) {
-			order = CMLBond.DOUBLE;
-		} else if (order.equals(CMLBond.TRIPLE)
-				| order.equals(CMLBond.TRIPLE_T)) {
-			order = CMLBond.TRIPLE;
+		} else if (isSingle(order)) {
+			order = CMLBond.SINGLE_S;
+		} else if (isDouble(order)) {
+			order = CMLBond.DOUBLE_D;
+		} else if (isTriple(order)) {
+			order = CMLBond.TRIPLE_T;
 		} else if (order.equals(CMLBond.AROMATIC)) {
 		} else {
 			order = UNKNOWN_ORDER;
@@ -755,21 +739,21 @@ public class CMLBond extends AbstractBond {
 	public void incrementOrder(int delta) {
 		String order = this.getOrder();
 		if (delta == 1) {
-			if (order == null || order.equals(CMLBond.SINGLE)) {
-				order = CMLBond.DOUBLE;
-			} else if (order.equals(CMLBond.DOUBLE)) {
-				order = CMLBond.TRIPLE;
-			} else if (order.equals(CMLBond.TRIPLE)) {
+			if (order == null || isSingle(order)) {
+				order = CMLBond.DOUBLE_D;
+			} else if (isDouble(order)) {
+				order = CMLBond.TRIPLE_T;
+			} else if (isTriple(order)) {
 				order = "4";
 			} else {
 				throw new RuntimeException("Cannot increment bond order " + order);
 			}
 		} else if (delta == 2) {
 			if (order == null) {
-				order = CMLBond.DOUBLE;
-			} else if (order.equals(CMLBond.SINGLE)) {
-				order = CMLBond.TRIPLE;
-			} else if (order.equals(CMLBond.DOUBLE)) {
+				order = CMLBond.DOUBLE_D;
+			} else if (isSingle(order)) {
+				order = CMLBond.TRIPLE_T;
+			} else if (isDouble(order)) {
 				order = "4";
 			} else {
 				throw new RuntimeException("Cannot increment bond order " + order);
@@ -777,10 +761,10 @@ public class CMLBond extends AbstractBond {
 		} else if (delta == -1) {
 			if (order == null) {
 				throw new RuntimeException("Cannot decrement bond order " + order);
-			} else if (order.equals(CMLBond.DOUBLE)) {
-				order = CMLBond.SINGLE;
-			} else if (order.equals(CMLBond.TRIPLE)) {
-				order = CMLBond.DOUBLE;
+			} else if (isDouble(order)) {
+				order = CMLBond.SINGLE_S;
+			} else if (isTriple(order)) {
+				order = CMLBond.DOUBLE_D;
 			} else {
 				throw new RuntimeException("Cannot decrement bond order " + order);
 			}
@@ -792,6 +776,17 @@ public class CMLBond extends AbstractBond {
 		this.setOrder(order);
 	}
 
+	public static boolean isSingle(String order) {
+		return order != null &&(order.equals(CMLBond.SINGLE) || order.equals(CMLBond.SINGLE_S));
+	}
+
+	public static boolean isDouble(String order) {
+		return order != null &&(order.equals(CMLBond.DOUBLE) || order.equals(CMLBond.DOUBLE_D));
+	}
+
+	public static boolean isTriple(String order) {
+		return order != null &&(order.equals(CMLBond.TRIPLE) || order.equals(CMLBond.TRIPLE_T));
+	}
 	/** create id for potential bond.
 	 * for is atom1.getId()-atom2.getId()
 	 * @param atom1

@@ -17,6 +17,7 @@ import nu.xom.ValidityException;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLBuilder;
 import org.xmlcml.cml.base.CMLConstants;
+import org.xmlcml.cml.base.CMLUtil;
 import org.xmlcml.cml.base.CMLXOMTestUtils;
 import org.xmlcml.cml.element.CMLCml;
 import org.xmlcml.cml.element.CMLMolecule;
@@ -208,6 +209,34 @@ public class CMLZMatrixTest {
 				+ "</molecule>";
 		CMLMolecule molecule = (CMLMolecule)CMLXOMTestUtils.parseValidString(moleculeS);
 		/* CMLZMatrix zMatrix = */new CMLZMatrix(molecule);
+	}
+	
+	@Test
+	public void testAddCoordinates() {
+		CMLMolecule molecule = (CMLMolecule) CMLUtil.parseQuietlyIntoCML(
+		"<molecule xmlns='http://www.xml-cml.org/schema'>" +
+		"  <zMatrix>" +
+		"	 <length atomRefs2='a2 a1'>1.0</length>" +
+		"	 <length atomRefs2='a1 a3'>1.07046</length>" +
+		"    <angle atomRefs3='a2 a1 a3'>90.08384</angle>" +
+		"    <length atomRefs2='a1 a4'>1.07046</length>" +
+		"    <angle atomRefs3='a2 a1 a4'>90.08384</angle>" +
+		"    <torsion atomRefs4='a3 a2 a1 a4'>120.0</torsion>" +
+		"    <length atomRefs2='a1 a5'>1.07046</length>" +
+		"    <angle atomRefs3='a2 a1 a5'>90.08384</angle>" +
+		"    <torsion atomRefs4='a3 a2 a1 a5'>-120.0</torsion>" +
+		"  </zMatrix>" +
+		"  <atomArray>" +
+		"    <atom elementType='C' id='a1'/>" +
+		"    <atom elementType='X' id='a2'/>" +
+		"    <atom elementType='H' id='a3'/>" +
+		"    <atom elementType='H' id='a4'/>" +
+		"    <atom elementType='H' id='a5'/>" +
+		"  </atomArray>" +
+		"</molecule>");
+		CMLZMatrix zMatrix = (CMLZMatrix) molecule.getChildElements().get(0);
+		zMatrix.addCartesiansTo(molecule);
+		
 	}
 
 	@SuppressWarnings("unused")

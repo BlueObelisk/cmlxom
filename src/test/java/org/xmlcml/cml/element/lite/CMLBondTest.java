@@ -50,12 +50,12 @@ public class CMLBondTest {
 	@Test
 	public void testGetOrder() {
 		String order = ((CMLBond) fixture.xmlBonds.get(0)).getOrder();
-		Assert.assertEquals("bond order", "1", order);
+		Assert.assertEquals("bond order", CMLBond.SINGLE_S, order);
 		// note change of "S"
 		// this fails until we have sorted the filling of bonds
 		try {
 			order = ((CMLBond) fixture.xmlBonds.get(1)).getOrder();
-			Assert.assertEquals("bond order", CMLBond.SINGLE, order);
+			Assert.assertEquals("bond order", CMLBond.SINGLE_S, order);
 		} catch (Exception e) {
 			Assert.fail("should not throw exception " + e);
 		}
@@ -289,9 +289,9 @@ public class CMLBondTest {
 		Assert.assertNull("order null", bond.getOrder());
 		// note this forms a double bond
 		bond.incrementOrder(1);
-		Assert.assertEquals("order", CMLBond.DOUBLE, bond.getOrder());
+		Assert.assertEquals("order", CMLBond.DOUBLE_D, bond.getOrder());
 		bond.incrementOrder(1);
-		Assert.assertEquals("order", CMLBond.TRIPLE, bond.getOrder());
+		Assert.assertEquals("order", CMLBond.TRIPLE_T, bond.getOrder());
 		try {
 			bond.incrementOrder(1);
 		} catch (RuntimeException e) {
@@ -300,20 +300,20 @@ public class CMLBondTest {
 							+ ": Cannot increment bond order 3", "" + e);
 		}
 		Assert.assertEquals("order", CMLBond.UNKNOWN_ORDER, bond.getOrder());
-		bond.setOrder(CMLBond.TRIPLE);
-		Assert.assertEquals("order", CMLBond.TRIPLE, bond.getOrder());
+		bond.setOrder(CMLBond.TRIPLE_T);
+		Assert.assertEquals("order", CMLBond.TRIPLE_T, bond.getOrder());
 		bond.incrementOrder(-1);
-		Assert.assertEquals("order", CMLBond.DOUBLE, bond.getOrder());
+		Assert.assertEquals("order", CMLBond.DOUBLE_D, bond.getOrder());
 		bond.incrementOrder(-1);
-		Assert.assertEquals("order", CMLBond.SINGLE, bond.getOrder());
+		Assert.assertEquals("order", CMLBond.SINGLE_S, bond.getOrder());
 		try {
 			bond.incrementOrder(-1);
 		} catch (RuntimeException e) {
 			Assert.assertEquals("cannot decrement single",
 					RuntimeException.class.getName()
-							+ ": Cannot decrement bond order 1", "" + e);
+							+ ": Cannot decrement bond order "+CMLBond.SINGLE_S, "" + e);
 		}
-		Assert.assertEquals("order", CMLBond.SINGLE, bond.getOrder());
+		Assert.assertEquals("order", CMLBond.SINGLE_S, bond.getOrder());
 	}
 
 	/**
