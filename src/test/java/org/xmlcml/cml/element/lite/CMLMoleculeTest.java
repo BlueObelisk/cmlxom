@@ -686,11 +686,11 @@ public class CMLMoleculeTest {
 		fixture.makeMol5a();
 		List<CMLBond> bonds = fixture.mol5a.getBonds();
 		Assert.assertNull("bond 1", bonds.get(0).getOrder());
-		bonds.get(0).setOrder(CMLBond.SINGLE);
-		bonds.get(1).setOrder(CMLBond.DOUBLE);
-		bonds.get(3).setOrder(CMLBond.DOUBLE);
-		Assert.assertEquals("bond 0", CMLBond.SINGLE, bonds.get(0).getOrder());
-		Assert.assertEquals("bond 1", CMLBond.DOUBLE, bonds.get(1).getOrder());
+		bonds.get(0).setOrder(CMLBond.SINGLE_S);
+		bonds.get(1).setOrder(CMLBond.DOUBLE_D);
+		bonds.get(3).setOrder(CMLBond.DOUBLE_D);
+		Assert.assertEquals("bond 0", CMLBond.SINGLE_S, bonds.get(0).getOrder());
+		Assert.assertEquals("bond 1", CMLBond.DOUBLE_D, bonds.get(1).getOrder());
 		Assert.assertNull("bond 2", bonds.get(2).getOrder());
 		List<CMLBond> bondList = fixture.mol5a.getDoubleBonds();
 		Assert.assertEquals("bonds", 2, bondList.size());
@@ -779,10 +779,10 @@ public class CMLMoleculeTest {
 		fixture.makeMol5a();
 		List<CMLBond> bonds = fixture.mol5a.getBonds();
 		Assert.assertNull("bond 1", bonds.get(0).getOrder());
-		bonds.get(0).setOrder(CMLBond.SINGLE);
-		bonds.get(1).setOrder(CMLBond.DOUBLE);
-		Assert.assertEquals("bond 0", CMLBond.SINGLE, bonds.get(0).getOrder());
-		Assert.assertEquals("bond 1", CMLBond.DOUBLE, bonds.get(1).getOrder());
+		bonds.get(0).setOrder(CMLBond.SINGLE_S);
+		bonds.get(1).setOrder(CMLBond.DOUBLE_D);
+		Assert.assertEquals("bond 0", CMLBond.SINGLE_S, bonds.get(0).getOrder());
+		Assert.assertEquals("bond 1", CMLBond.DOUBLE_D, bonds.get(1).getOrder());
 		Assert.assertNull("bond 2", bonds.get(2).getOrder());
 	}
 
@@ -811,36 +811,36 @@ public class CMLMoleculeTest {
 		CMLMolecule mol = (CMLMolecule)CMLXOMTestUtils.parseValidString(s);
 		List<CMLBond> bondList = mol.getBonds();
 		Assert
-				.assertEquals("bond0", CMLBond.SINGLE, bondList.get(0)
+				.assertEquals("bond0", CMLBond.SINGLE_S, bondList.get(0)
 						.getOrder());
 		Assert
-				.assertEquals("bond1", CMLBond.SINGLE, bondList.get(1)
+				.assertEquals("bond1", CMLBond.SINGLE_S, bondList.get(1)
 						.getOrder());
 		Assert
-				.assertEquals("bond2", CMLBond.DOUBLE, bondList.get(2)
+				.assertEquals("bond2", CMLBond.DOUBLE_D, bondList.get(2)
 						.getOrder());
 		mol.setNormalizedBondOrders();
 		Assert
-				.assertEquals("bond0", CMLBond.SINGLE, bondList.get(0)
+				.assertEquals("bond0", CMLBond.SINGLE_S, bondList.get(0)
 						.getOrder());
 		Assert
-				.assertEquals("bond1", CMLBond.SINGLE, bondList.get(1)
+				.assertEquals("bond1", CMLBond.SINGLE_S, bondList.get(1)
 						.getOrder());
 		Assert
-				.assertEquals("bond2", CMLBond.DOUBLE, bondList.get(2)
+				.assertEquals("bond2", CMLBond.DOUBLE_D, bondList.get(2)
 						.getOrder());
 		Assert.assertNull("bond3", bondList.get(3).getOrder());
-		bondList.get(0).setOrder(CMLBond.SINGLE);
+		bondList.get(0).setOrder(CMLBond.SINGLE_S);
 		bondList.get(1).setOrder(CMLBond.SINGLE_S);
-		bondList.get(2).setOrder(CMLBond.DOUBLE);
+		bondList.get(2).setOrder(CMLBond.DOUBLE_D);
 		Assert
-				.assertEquals("bond0", CMLBond.SINGLE, bondList.get(0)
+				.assertEquals("bond0", CMLBond.SINGLE_S, bondList.get(0)
 						.getOrder());
 		Assert
-				.assertEquals("bond1", CMLBond.SINGLE, bondList.get(1)
+				.assertEquals("bond1", CMLBond.SINGLE_S, bondList.get(1)
 						.getOrder());
 		Assert
-				.assertEquals("bond2", CMLBond.DOUBLE, bondList.get(2)
+				.assertEquals("bond2", CMLBond.DOUBLE_D, bondList.get(2)
 						.getOrder());
 		Assert.assertNull("bond3", bondList.get(3).getOrder());
 	}
