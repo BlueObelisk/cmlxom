@@ -258,7 +258,7 @@ public class CMLTable extends AbstractTable {
     }
 
     /** old method for adding column.
-     * @deprecated
+     * @deprecated (why?) use TableTool for cells
      * @param array column to add
      */
     public void addArray(CMLArray array) {

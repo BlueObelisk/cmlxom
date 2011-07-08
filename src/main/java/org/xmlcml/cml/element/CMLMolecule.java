@@ -1076,7 +1076,8 @@ public class CMLMolecule
 		setNormalizedBondOrders();
 		List<CMLBond> dbVector = new ArrayList<CMLBond>();
 		for (CMLBond bond : getBonds()) {
-			if (CMLBond.DOUBLE.equals(bond.getOrder())) {
+			String order = bond.getOrder();
+			if (CMLBond.isDouble(order)) {
 				dbVector.add(bond);
 			}
 		}
@@ -1408,11 +1409,11 @@ public class CMLMolecule
 				String order = bond.getOrder();
 				if (order != null) {
 					// synonyms
-					if (order.equals(CMLBond.SINGLE)) {
+					if (CMLBond.isSingle(order)) {
 						order = CMLBond.SINGLE_S;
-					} else if (order.equals(CMLBond.DOUBLE)) {
+					} else if (CMLBond.isDouble(order)) {
 						order = CMLBond.DOUBLE_D;
-					} else if (order.equals(CMLBond.TRIPLE)) {
+					} else if (CMLBond.isTriple(order)) {
 						order = CMLBond.TRIPLE_T;
 					}
 					bond.setOrder(order);
