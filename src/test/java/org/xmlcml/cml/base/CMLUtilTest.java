@@ -329,18 +329,18 @@ public class CMLUtilTest {
 
 	@Test
 	public void checkDoubleParsing() throws ParseException {
-		Assert.assertEquals(1.0, (Util.parseFlexibleDouble("1.0")));
-		Assert.assertEquals(Double.NaN, (Util.parseFlexibleDouble("NaN")));
-		Assert.assertEquals(Double.POSITIVE_INFINITY, (Util.parseFlexibleDouble("INF")));
-		Assert.assertEquals(Double.NEGATIVE_INFINITY, (Util.parseFlexibleDouble("-INF")));
-		Assert.assertEquals(-0.001, (Util.parseFlexibleDouble("-0.001")));
-		Assert.assertEquals(-0.1, (Util.parseFlexibleDouble("-000.1")));
-		Assert.assertEquals(1000.0, (Util.parseFlexibleDouble("1.0E3")));
-		Assert.assertEquals(1000.0, (Util.parseFlexibleDouble("1.0e3")));
-		Assert.assertEquals(10000.0, (Util.parseFlexibleDouble("10.0E3")));
-		Assert.assertEquals(1000.0, (Util.parseFlexibleDouble("1.0E+3")));
-		Assert.assertEquals(0.001, (Util.parseFlexibleDouble("1.0E-3")));
-		Assert.assertEquals(1000.0, (Util.parseFlexibleDouble("1.0E+03")));
+		Assert.assertEquals(1.0, (Util.parseFlexibleDouble("1.0")), 0.0001);
+		Assert.assertEquals(Double.NaN, (Util.parseFlexibleDouble("NaN")), 0.0001);
+		Assert.assertEquals(Double.POSITIVE_INFINITY, (Util.parseFlexibleDouble("INF")), 0.0001);
+		Assert.assertEquals(Double.NEGATIVE_INFINITY, (Util.parseFlexibleDouble("-INF")), 0.0001);
+		Assert.assertEquals(-0.001, (Util.parseFlexibleDouble("-0.001")), 0.0001);
+		Assert.assertEquals(-0.1, (Util.parseFlexibleDouble("-000.1")), 0.0001);
+		Assert.assertEquals(1000.0, (Util.parseFlexibleDouble("1.0E3")), 0.0001);
+		Assert.assertEquals(1000.0, (Util.parseFlexibleDouble("1.0e3")), 0.0001);
+		Assert.assertEquals(10000.0, (Util.parseFlexibleDouble("10.0E3")), 0.0001);
+		Assert.assertEquals(1000.0, (Util.parseFlexibleDouble("1.0E+3")), 0.0001);
+		Assert.assertEquals(0.001, (Util.parseFlexibleDouble("1.0E-3")), 0.0001);
+		Assert.assertEquals(1000.0, (Util.parseFlexibleDouble("1.0E+03")), 0.0001);
 		try {
 			@SuppressWarnings("unused")
 			double parseFlexibleDouble = (Util.parseFlexibleDouble("1.0e3foobar"));

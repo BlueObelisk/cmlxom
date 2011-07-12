@@ -228,7 +228,7 @@ public class CMLLine3Test extends GeomTestBase {
 		CMLPoint3 p0 = new CMLPoint3(0., 0., 0.);
 		CMLPoint3 p = ll.getClosestPointTo(p0);
 		double d = p0.getDistanceFromPoint(p);
-		Assert.assertEquals("line distance", 4.58257569495584, d);
+		Assert.assertEquals("line distance", 4.58257569495584, d, 0.0001);
 		// show result is perpendicular
 		CMLVector3 v = p.subtract(p0);
 		CMLVector3 vv = new CMLVector3(ll.getVector3());

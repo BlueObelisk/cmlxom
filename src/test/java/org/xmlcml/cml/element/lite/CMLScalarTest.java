@@ -172,7 +172,7 @@ public class CMLScalarTest {
 			IOException {
 		CMLScalar cs = (CMLScalar) builder.build(new StringReader(xmlDNaNOK))
 				.getRootElement();
-		Assert.assertEquals(Double.NaN, cs.getDouble());
+		Assert.assertEquals(Double.NaN, cs.getDouble(), 0.0001);
 	}
 
 	/**
@@ -371,9 +371,9 @@ public class CMLScalarTest {
 						.getDataType());
 		Assert.assertTrue("value", Double.isNaN(s.getDouble()));
 
-		Assert.assertEquals("integer", Double.NaN, xmlScalarI0.getDouble());
-		Assert.assertEquals("string", Double.NaN, xmlScalarS0.getDouble());
-		Assert.assertEquals("double", 2.1, xmlScalarD0.getDouble());
+		Assert.assertEquals("integer", Double.NaN, xmlScalarI0.getDouble(), 0.0001);
+		Assert.assertEquals("string", Double.NaN, xmlScalarS0.getDouble(), 0.0001);
+		Assert.assertEquals("double", 2.1, xmlScalarD0.getDouble(), 0.0001);
 	}
 
 	/**
@@ -564,7 +564,7 @@ public class CMLScalarTest {
 		Assert.assertNotNull("new CMLScalar", s4);
 		Assert.assertEquals("data type", CMLElement.XSD_DOUBLE, s4
 				.getDataType());
-		Assert.assertEquals("value", 3.2, s4.getDouble());
+		Assert.assertEquals("value", 3.2, s4.getDouble(), 0.0001);
 		try {
 			s3 = s1.subtract(s4);
 			Assert.fail("should throw CMLexception ");
@@ -585,7 +585,7 @@ public class CMLScalarTest {
 		Assert.assertNotNull("new CMLScalar", s12);
 		Assert.assertEquals("data type", CMLElement.XSD_DOUBLE, s12
 				.getDataType());
-		Assert.assertEquals("value", 4.4, s12.getDouble());
+		Assert.assertEquals("value", 4.4, s12.getDouble(), 0.0001);
 		CMLScalar s13 = s11.subtract(s12);
 		Assert.assertNotNull("old CMLScalar", s11);
 		Assert.assertEquals("data type", CMLElement.XSD_DOUBLE, s11
@@ -631,7 +631,7 @@ public class CMLScalarTest {
 		Assert.assertNotNull("new CMLScalar", s4);
 		Assert.assertEquals("data type", CMLElement.XSD_DOUBLE, s4
 				.getDataType());
-		Assert.assertEquals("value", 3.2, s4.getDouble());
+		Assert.assertEquals("value", 3.2, s4.getDouble(), 0.0001);
 		try {
 			s1.subtract(s4);
 			Assert.fail("should throw CMLexception ");
@@ -652,7 +652,7 @@ public class CMLScalarTest {
 		Assert.assertNotNull("new CMLScalar", s12);
 		Assert.assertEquals("data type", CMLElement.XSD_DOUBLE, s12
 				.getDataType());
-		Assert.assertEquals("value", 4.4, s12.getDouble());
+		Assert.assertEquals("value", 4.4, s12.getDouble(), 0.0001);
 		s11.subtractEquals(s12);
 		Assert.assertNotNull("old CMLScalar", s11);
 		Assert.assertEquals("data type", CMLElement.XSD_DOUBLE, s11
@@ -698,7 +698,7 @@ public class CMLScalarTest {
 		Assert.assertNotNull("new CMLScalar", s4);
 		Assert.assertEquals("data type", CMLElement.XSD_DOUBLE, s4
 				.getDataType());
-		Assert.assertEquals("value", 3.2, s4.getDouble());
+		Assert.assertEquals("value", 3.2, s4.getDouble(), 0.0001);
 		try {
 			s3 = s1.subtract(s4);
 			Assert.fail("should throw CMLexception ");
@@ -719,7 +719,7 @@ public class CMLScalarTest {
 		Assert.assertNotNull("new CMLScalar", s12);
 		Assert.assertEquals("data type", CMLElement.XSD_DOUBLE, s12
 				.getDataType());
-		Assert.assertEquals("value", 4.4, s12.getDouble());
+		Assert.assertEquals("value", 4.4, s12.getDouble(), 0.0001);
 		CMLScalar s13 = s11.plus(s12);
 		Assert.assertNotNull("old CMLScalar", s11);
 		Assert.assertEquals("data type", CMLElement.XSD_DOUBLE, s11
@@ -764,7 +764,7 @@ public class CMLScalarTest {
 		Assert.assertNotNull("new CMLScalar", s4);
 		Assert.assertEquals("data type", CMLElement.XSD_DOUBLE, s4
 				.getDataType());
-		Assert.assertEquals("value", 3.2, s4.getDouble());
+		Assert.assertEquals("value", 3.2, s4.getDouble(), 0.0001);
 		try {
 			s1.subtract(s4);
 			Assert.fail("should throw CMLexception ");
@@ -785,7 +785,7 @@ public class CMLScalarTest {
 		Assert.assertNotNull("new CMLScalar", s12);
 		Assert.assertEquals("data type", CMLElement.XSD_DOUBLE, s12
 				.getDataType());
-		Assert.assertEquals("value", 4.4, s12.getDouble());
+		Assert.assertEquals("value", 4.4, s12.getDouble(), 0.0001);
 		s11.plusEquals(s12);
 		Assert.assertNotNull("old CMLScalar", s11);
 		Assert.assertEquals("data type", CMLElement.XSD_DOUBLE, s11

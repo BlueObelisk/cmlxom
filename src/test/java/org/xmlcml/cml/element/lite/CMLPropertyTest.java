@@ -197,7 +197,7 @@ public class CMLPropertyTest {
 		double[] val = property.getDoubles();
 		Assert.assertNotNull("doubles", val);
 		Assert.assertEquals("doubles", 3, val.length);
-		Assert.assertEquals("doubles", 2.1, val[1]);
+		Assert.assertEquals("doubles", 2.1, val[1], 0.0001);
 	}
 
 	/** dewisott */
