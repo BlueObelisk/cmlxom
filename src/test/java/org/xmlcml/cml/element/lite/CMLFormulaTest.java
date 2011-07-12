@@ -469,7 +469,7 @@ public class CMLFormulaTest {
 		Assert.assertEquals("count", 1.0, cc, 0.0000001);
 		xmlForm1.setCount(1.5);
 		cc = xmlForm1.getCount();
-		Assert.assertEquals("count", 1.5, cc);
+		Assert.assertEquals("count", 1.5, cc, 0.0001);
 	}
 
 	/**
@@ -530,7 +530,7 @@ public class CMLFormulaTest {
 				CMLAttribute.class.isAssignableFrom(countAtt.getClass()));
 		Assert.assertEquals("count class is DoubleSTAttribute", countAtt.getClass(),
 				DoubleSTAttribute.class);
-		Assert.assertEquals("count value", formula.getCount(), xformula.getCount());
+		Assert.assertEquals("count value", formula.getCount(), xformula.getCount(), 0.0001);
 
 		CMLFormula copyForm = new CMLFormula(xmlForm1);
 		CMLXOMTestUtils.assertEqualsCanonically("compare Formula", copyForm, xmlForm1);
@@ -780,7 +780,7 @@ public class CMLFormulaTest {
 	@Test
 	public void testGetAggregateFormula() {
 		CMLFormula f = xmlForm1.getAggregateFormula();
-		Assert.assertEquals("aggregate formula count", 1.0, f.getCount());
+		Assert.assertEquals("aggregate formula count", 1.0, f.getCount(), 0.0001);
 		Assert.assertEquals("form3 children", 2, xomForm3.getChildCount());
 		f = xomForm3.getAggregateFormula();
 
@@ -1243,11 +1243,11 @@ public class CMLFormulaTest {
 	@Test
 	public void testGetTotalAtomCount() throws Exception{
 		CMLFormula form1 = CMLFormula.createFormula("C2H10");
-		Assert.assertEquals(form1.getTotalAtomCount(), 12.0);
+		Assert.assertEquals(form1.getTotalAtomCount(), 12.0, 0.0001);
 		
 		CMLFormula form2 = CMLFormula.createFormula("C2H10");
 		CMLFormula diff = form1.getDifference((form2));
-		Assert.assertEquals(0.0, diff.getTotalAtomCount());
+		Assert.assertEquals(0.0, diff.getTotalAtomCount(), 0.0001);
 		
 	}
 	

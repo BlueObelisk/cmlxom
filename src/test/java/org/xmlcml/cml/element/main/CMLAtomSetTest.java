@@ -398,21 +398,21 @@ public class CMLAtomSetTest {
 		Point3 point3 = ((CMLAtom) atomSet.getAtom(1)).getXYZ3();
 		Assert.assertNotNull("point 3d", point3);
 		double x = ((CMLAtom) atomSet.getAtom(1)).getX3();
-		Assert.assertEquals("point 3d x", 1.0, x);
-		Assert.assertEquals("point 3d x", 1.0, point3.getArray()[0]);
+		Assert.assertEquals("point 3d x", 1.0, x, 0.0001);
+		Assert.assertEquals("point 3d x", 1.0, point3.getArray()[0], 0.0001);
 		double y = ((CMLAtom) atomSet.getAtom(1)).getY3();
-		Assert.assertEquals("point 3d y", 2.0, y);
-		Assert.assertEquals("point 3d y", 2.0, point3.getArray()[1]);
+		Assert.assertEquals("point 3d y", 2.0, y, 0.0001);
+		Assert.assertEquals("point 3d y", 2.0, point3.getArray()[1], 0.0001);
 		double z = ((CMLAtom) atomSet.getAtom(1)).getZ3();
-		Assert.assertEquals("point 3d z", 3.0, z);
-		Assert.assertEquals("point 3d z", 3.0, point3.getArray()[2]);
+		Assert.assertEquals("point 3d z", 3.0, z, 0.0001);
+		Assert.assertEquals("point 3d z", 3.0, point3.getArray()[2], 0.0001);
 		Point3Vector p3 = atomSet.getCoordinates3(CoordinateType.CARTESIAN);
 
 		Assert.assertNotNull("vector 3d", p3);
 		Assert.assertEquals("vector 3d", 5, p3.size());
 		point3 = (Point3) p3.get(1);
 		Assert.assertNotNull("vector 3d", point3);
-		Assert.assertEquals("point 3d z", 3.0, point3.getArray()[2]);
+		Assert.assertEquals("point 3d z", 3.0, point3.getArray()[2], 0.0001);
 	}
 
 	/**
@@ -425,9 +425,9 @@ public class CMLAtomSetTest {
 		atomSet.translate3D(v3);
 		Point3 p = ((CMLAtom) atomSet.getAtom(1)).getXYZ3();
 		Assert.assertNotNull("vector 3d", p);
-		Assert.assertEquals("point 3d x", 11.0, p.getArray()[0]);
-		Assert.assertEquals("point 3d y", 22.0, p.getArray()[1]);
-		Assert.assertEquals("point 3d z", 33.0, p.getArray()[2]);
+		Assert.assertEquals("point 3d x", 11.0, p.getArray()[0], 0.0001);
+		Assert.assertEquals("point 3d y", 22.0, p.getArray()[1], 0.0001);
+		Assert.assertEquals("point 3d z", 33.0, p.getArray()[2], 0.0001);
 	}
 
 	/**
@@ -438,9 +438,9 @@ public class CMLAtomSetTest {
 		CMLAtomSet atomSet = new CMLAtomSet(fixture.xomAtom);
 		Point3 p3 = atomSet.getCentroid3(CoordinateType.CARTESIAN);
 		Assert.assertNotNull("vector 3d", p3);
-		Assert.assertEquals("point 3d x", 2.0, p3.getArray()[0]);
-		Assert.assertEquals("point 3d y", 3.0, p3.getArray()[1]);
-		Assert.assertEquals("point 3d z", 4.0, p3.getArray()[2]);
+		Assert.assertEquals("point 3d x", 2.0, p3.getArray()[0], 0.0001);
+		Assert.assertEquals("point 3d y", 3.0, p3.getArray()[1], 0.0001);
+		Assert.assertEquals("point 3d z", 4.0, p3.getArray()[2], 0.0001);
 
 	}
 
@@ -787,12 +787,12 @@ public class CMLAtomSetTest {
 	@Test
 	public void testGetCentroid2D() {
 		Real2 centroid = atomSet1.getCentroid2D();
-		Assert.assertEquals("centroid", 2. / 3., centroid.getX());
-		Assert.assertEquals("centroid", 0.0, centroid.getY());
+		Assert.assertEquals("centroid", 2. / 3., centroid.getX(), 0.0001);
+		Assert.assertEquals("centroid", 0.0, centroid.getY(), 0.0001);
 		CMLAtomSet atomSet = new CMLAtomSet(fixture.xmlMolecule);
 		centroid = atomSet.getCentroid2D();
-		Assert.assertEquals("centroid", 0.0, centroid.getX());
-		Assert.assertEquals("centroid", 0.0, centroid.getY());
+		Assert.assertEquals("centroid", 0.0, centroid.getX(), 0.0001);
+		Assert.assertEquals("centroid", 0.0, centroid.getY(), 0.0001);
 	}
 
 	/**
