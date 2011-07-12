@@ -15,23 +15,20 @@
 	<packaging>jar</packaging>
 	<name>CMLXOM</name>
 	<description>A Java library for processing CML</description>
-	<url>http://sourceforge.net/projects/cml/ </url>
+	<url>https://bitbucket.org/wwmm/cmlxom</url>
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
 
-	<inceptionYear>1994</inceptionYear>
-	<mailingLists>
-		<mailingList>
-			<name>cml-discuss</name>
-			<subscribe>https://lists.sourceforge.net/lists/listinfo/cml-discuss</subscribe>
-			<unsubscribe>https://lists.sourceforge.net/lists/listinfo/cml-discuss</unsubscribe>
-			<archive>http://sourceforge.net/mailarchive/forum.php?forum_name=cml-discuss</archive>
-		</mailingList>
-	</mailingLists>
-
-	<ciManagement>
-		<system>hudson</system>
-		<url>https://hudson.ch.cam.ac.uk/job/cmlxom</url>
-	</ciManagement>
-
+	<scm>
+		<url>https://bitbucket.org/wwmm/cmlxom/src</url>
+		<connection>scm:hg:http://bitbucket.org/wwmm/cmlxom</connection>
+		<developerConnection>scm:hg:https://bitbucket.org/wwmm/cmlxom</developerConnection>
+	</scm>
 	<developers>
 		<developer>
 			<id>adw27</id>
@@ -46,12 +43,12 @@
 			<name>Simon "Billy" Tyrrell</name>
 		</developer>
 		<developer>
-			<id>drzz</id>
-			<name>Daniel Zaharevitz</name>
+			<id>dmj30</id>
+			<name>David Jessop</name>
 		</developer>
 		<developer>
-			<id>adw27</id>
-			<name>Andrew Walkingshaw</name>
+			<id>drzz</id>
+			<name>Daniel Zaharevitz</name>
 		</developer>
 		<developer>
 			<id>egonw</id>
@@ -146,22 +143,26 @@
 			<name>Yong Zhang</name>
 		</developer>
 	</developers>
-	<licenses>
-		<license>
-			<name>Artistic License</name>
-			<url>http://www.opensource.org/licenses/artistic-license-2.0.php</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
-	<scm>
-		<connection>scm:svn:https://cml.svn.sourceforge.net/svnroot/cml/cmlxom/trunk/</connection>
-		<developerConnection>scm:svn:https://cml.svn.sourceforge.net/svnroot/cml/cmlxom/trunk/</developerConnection>
-		<url>http://cml.svn.sourceforge.net/viewvc/cml/cmlxom/trunk/</url>
-	</scm>
+
+	<inceptionYear>1994</inceptionYear>
+	<mailingLists>
+		<mailingList>
+			<name>cml-discuss</name>
+			<subscribe>https://lists.sourceforge.net/lists/listinfo/cml-discuss</subscribe>
+			<unsubscribe>https://lists.sourceforge.net/lists/listinfo/cml-discuss</unsubscribe>
+			<archive>http://sourceforge.net/mailarchive/forum.php?forum_name=cml-discuss</archive>
+		</mailingList>
+	</mailingLists>
+
+	<ciManagement>
+		<system>hudson</system>
+		<url>https://hudson.ch.cam.ac.uk/job/cmlxom</url>
+	</ciManagement>
 	<organization>
 		<name>Peter Murray-Rust</name>
 		<url>http://wwmm.ch.cam.ac.uk/blogs/murrayrust/ </url>
 	</organization>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -216,6 +217,7 @@
 		</plugins>
 	</build>
 
+	<!-- remove <repositories> for releases to maven central -->
 	<repositories>
 		<repository>
 			<id>ucc-repo</id>
@@ -224,13 +226,7 @@
 		</repository>
 	</repositories>
 
-
 	<dependencies>
-		<dependency>
-			<groupId>org.ccil.cowan.tagsoup</groupId>
-			<artifactId>tagsoup</artifactId>
-			<version>1.0.1</version>
-		</dependency>
 		<dependency>
 			<groupId>cml</groupId>
 			<artifactId>euclid-testutil</artifactId>
@@ -238,15 +234,21 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>cml</groupId>
+			<artifactId>euclid</artifactId>
+			<version>1.1-SNAPSHOT</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.ccil.cowan.tagsoup</groupId>
+			<artifactId>tagsoup</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.0</version>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>cml</groupId>
-			<artifactId>euclid</artifactId>
-			<version>1.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
