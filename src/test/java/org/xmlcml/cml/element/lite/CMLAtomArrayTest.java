@@ -110,7 +110,7 @@ public class CMLAtomArrayTest {
 				.getHydrogenCount());
 		atomArray.setOccupancy(new String[] { "0.11", "0.22", "0.33" });
 		Assert.assertEquals("atom 1 occ", .22, atomArray.getAtomElements().get(1)
-				.getOccupancy());
+				.getOccupancy(), 0.0001);
 		try {
 			atomArray.setOccupancy(new String[] { "0.11", "0.22" });
 		} catch (RuntimeException e) {

@@ -77,7 +77,7 @@ public class ChemicalElementTest {
 		Assert.assertEquals("new", 299.99, el.getAtomicWeight(), EPS);
 		el = ChemicalElement.getChemicalElement(AS.C.value);
 		// FIXME
-		Assert.assertEquals("get", 12.0107, el.getAtomicWeight());
+		Assert.assertEquals("get", 12.0107, el.getAtomicWeight(), 0.0001);
 	}
 
 	/**
@@ -272,7 +272,7 @@ public class ChemicalElementTest {
 		Assert.assertNotNull("covrad", el);
 		Assert.assertEquals("covrad", 1.4, el.getCovalentRadius(), EPS);
 		el = ChemicalElement.getChemicalElement(AS.C.value);
-		Assert.assertEquals("covrad", 0.77, el.getCovalentRadius());
+		Assert.assertEquals("covrad", 0.77, el.getCovalentRadius(), 0.0001);
 
 	}
 

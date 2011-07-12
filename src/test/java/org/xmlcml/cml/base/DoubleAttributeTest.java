@@ -77,7 +77,7 @@ public class DoubleAttributeTest {
 	public void testSetCMLValueToSpecialValue() {
 		daa1.setCMLValue("NaN");
 		Assert.assertEquals("NaN", daa1.getValue());
-		Assert.assertEquals(Double.NaN, daa1.getDouble());
+		Assert.assertEquals(Double.NaN, daa1.getDouble(), 0.0001);
 	}
 
 	/**

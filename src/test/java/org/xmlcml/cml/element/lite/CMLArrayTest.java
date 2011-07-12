@@ -887,12 +887,12 @@ public class CMLArrayTest {
 
 			xomS.setArray(d0);
 			Assert.assertEquals("d", 5, xomS.getDoubles().length);
-			Assert.assertEquals("d", 1.0, xomS.getDoubles()[0]);
-			Assert.assertEquals("d", 5.0, xomS.getDoubles()[4]);
+			Assert.assertEquals("d", 1.0, xomS.getDoubles()[0], 0.0001);
+			Assert.assertEquals("d", 5.0, xomS.getDoubles()[4], 0.0001);
 			xomS.setArray(d1);
 			Assert.assertEquals("d", 5, xomS.getDoubles().length);
-			Assert.assertEquals("d", 10.0, xomS.getDoubles()[0]);
-			Assert.assertEquals("d", 50.0, xomS.getDoubles()[4]);
+			Assert.assertEquals("d", 10.0, xomS.getDoubles()[0], 0.0001);
+			Assert.assertEquals("d", 50.0, xomS.getDoubles()[4], 0.0001);
 		} catch (RuntimeException e) {
 			Assert.fail("should not throw parse exception");
 		}
@@ -990,7 +990,7 @@ public class CMLArrayTest {
 		Assert.assertNotNull("subtract", d3);
 		Assert.assertEquals("subtract", 5, d3.getSize());
 		try {
-			Assert.assertEquals("subtract", -9., d3.getDoubles()[0]);
+			Assert.assertEquals("subtract", -9., d3.getDoubles()[0], 0.0001);
 		} catch (RuntimeException e) {
 			Assert.fail("subtract should not throw " + e.getMessage());
 		}
@@ -1004,7 +1004,7 @@ public class CMLArrayTest {
 		Assert.assertNotNull("subtract", d3);
 		Assert.assertEquals("subtract", 5, d3.getSize());
 		try {
-			Assert.assertEquals("subtract", -9., d3.getDoubles()[0]);
+			Assert.assertEquals("subtract", -9., d3.getDoubles()[0], 0.0001);
 		} catch (RuntimeException e) {
 			Assert.fail("subtract should not throw " + e.getMessage());
 		}
@@ -1025,7 +1025,7 @@ public class CMLArrayTest {
 		Assert.assertNotNull("plus", d3);
 		Assert.assertEquals("plus", 5, d3.getSize());
 		try {
-			Assert.assertEquals("plus", 11., d3.getDoubles()[0]);
+			Assert.assertEquals("plus", 11., d3.getDoubles()[0], 0.0001);
 		} catch (RuntimeException e) {
 			Assert.fail("plus should not throw " + e.getMessage());
 		}
