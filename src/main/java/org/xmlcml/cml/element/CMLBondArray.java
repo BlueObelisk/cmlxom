@@ -221,7 +221,7 @@ public class CMLBondArray extends AbstractBondArray {
         		indexBondAndLigands(bond);
         		indexBondId(bond);
         	} catch (RuntimeException e) {
-        		LOG.warn("BUG: SKIPPED BOND (maybe coincident)");
+        		LOG.trace("BUG: SKIPPED BOND (maybe coincident)"+e);
         	}
         }
     }

@@ -43,9 +43,6 @@ public class CMLDictionary extends AbstractDictionary {
 	/** namespaced element name.*/
 	public final static String NS = C_E+TAG;
 
-	final static Logger logger = Logger
-			.getLogger(CMLDictionary.class);
-
 	protected Map<String, CMLEntry> entryMap = null;
 
 	/**
@@ -98,7 +95,7 @@ public class CMLDictionary extends AbstractDictionary {
 					entryMap.put(id, entry);
 				}
 			}
-			LOG.debug("Created dictionary with entries: "+entryNodes.size());
+			LOG.trace("Created dictionary with entries: "+entryNodes.size());
 		} 
 		return entryMap.size();
 	}
