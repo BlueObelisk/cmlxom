@@ -33,6 +33,7 @@ import org.apache.log4j.Logger;
 import org.xmlcml.cml.base.CMLBuilder;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
+import org.xmlcml.cml.base.CMLUtil;
 
 /**
  * user-modifiable class supporting dictionary. *
@@ -114,59 +115,19 @@ public class CMLDictionary extends AbstractDictionary {
 		return createDictionary(file.toURI().toURL());
 	}
 
-	/**
-	 * creates dictionary from file;
-	 * effectively static
-	 * @param url
-	 *            to create from
-	 * @return the dictionary or null
-	 * @throws IOException
-	 * @throws RuntimeException
-	 *             if file is not a well-formed dictionary
-	 */
-	public CMLDictionary createDictionary(URL url) throws IOException {
-		Document dictDoc = CMLDictionary.createDictionary0(url);
-		CMLDictionary dictionary1 = null;
-		if (dictDoc != null) {
-			Element root = dictDoc.getRootElement();
-			if (root instanceof CMLDictionary) {
-				dictionary1 = new CMLDictionary((CMLDictionary) root);
-			} else {
-				throw new RuntimeException(
-						"Expected CMLDictionary root element, found: "
-								+ root.getClass().getName() + S_SLASH
-								+ root.getLocalName());
-			}
-		}
-		if (dictionary1 != null) {
-			dictionary1.indexEntries();
-		}
-		return dictionary1;
+	public static CMLDictionary createDictionary0(File file) throws IOException {
+		return createDictionary(file.toURI().toURL());
 	}
 
-	static Document createDictionary0(File file) throws IOException {
-		return createDictionary0(file.toURI().toURL());
-	}
-
-	static Document createDictionary0(URL url)
-			throws IOException {
-		Document dictDoc = null;
+	public static CMLDictionary createDictionary(URL url) throws IOException {
 		InputStream in = null;
+		CMLDictionary dictionary = null;
 		// this will fail if dictionary is badly formed
 		try {
 			in = url.openStream();
-			dictDoc = new CMLBuilder().build(in);
-		} catch (NullPointerException e) {
-			e.printStackTrace();
-			throw new RuntimeException("NULL " + e.getMessage() + S_SLASH + e.getCause()
-					+ " in " + url);
-		} catch (ValidityException e) {
-			throw new RuntimeException(S_EMPTY + e.getMessage() + S_SLASH + e.getCause()
-					+ " in " + url);
-		} catch (ParsingException e) {
-			System.err.println("ERR at line/col " + e.getLineNumber() + S_SLASH
-					+ e.getColumnNumber());
-			throw new RuntimeException(" in " + url, e);
+			dictionary = createDictionary(in);
+		} catch (Exception e) {
+			throw new RuntimeException("Cannot create dictionary", e);
 		}
 		finally {
 			try {
@@ -176,7 +137,19 @@ public class CMLDictionary extends AbstractDictionary {
 				e.printStackTrace();
 			}
 		}
-		return dictDoc;
+		return dictionary;
+	}
+
+	public static CMLDictionary createDictionary(InputStream is) throws IOException {
+		CMLDictionary cmlDictionary = null;
+		try {
+			Element element = new CMLBuilder().build(is).getRootElement();
+			cmlDictionary = (CMLDictionary) CMLUtil.getSingleElement(element, ".//self::cml:dictionary", CML_XPATH);
+			cmlDictionary.indexEntries();
+		} catch (Exception e) {
+			throw new RuntimeException("Cannot create dictionary", e);
+		}
+		return cmlDictionary;
 	}
 
 	/**
