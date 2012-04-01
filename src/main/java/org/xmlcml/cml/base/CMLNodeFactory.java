@@ -72,7 +72,7 @@ public class CMLNodeFactory extends NodeFactory implements CMLConstants {
 			newClass = Class.forName(className);
 //			LOG.debug("...timing");
 		} catch (Exception e) {
-			throw new RuntimeException("cannot create class "+className);
+			throw new RuntimeException("cannot create class "+className, e);
 		}
 		return newClass;
 	}

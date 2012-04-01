@@ -904,6 +904,22 @@ public class CMLBond extends AbstractBond {
         this.setAtomRefs2(new String[] { this.getAtomRefs2()[1], this.getAtomRefs2()[0] });
     }
 
+    /** 
+	 * @return the length given by 2D coordinates
+	 * @throws RuntimeException if not computable (no coord, missing atoms...)
+	 */
+	public double calculateBondLength3D() {
+		return calculateBondLength(CoordinateType.CARTESIAN);
+	}
+
+    /** 
+	 * @return the length given by 3D coordinates
+	 * @throws RuntimeException if not computable (no coord, missing atoms...)
+	 */
+	public double calculateBondLength2D() {
+		return calculateBondLength(CoordinateType.TWOD);
+	}
+
 	/**
 	 * get bond length.
 	 *
@@ -924,22 +940,34 @@ public class CMLBond extends AbstractBond {
 		}
 		double length = -1.0;
 		if (type.equals(CoordinateType.CARTESIAN)) {
-			Point3 p0 = atom0.getXYZ3();
-			Point3 p1 = atom1.getXYZ3();
-			if (p0 == null || p1 == null) {
-				throw new RuntimeException(
-				"atoms do not have 3D coordinates");
-			}
-			length = p0.getDistanceFromPoint(p1);
+			length = calculateLength3D(atom0, atom1);
 		} else if (type.equals(CoordinateType.TWOD)) {
-			Real2 p0 = atom0.getXY2();
-			Real2 p1 = atom1.getXY2();
-			if (p0 == null || p1 == null) {
-				throw new RuntimeException(
-				"atoms do not have 2D coordinates");
-			}
-			length = p0.getDistance(p1);
+			length = calculateLength2D(atom0, atom1);
 		}
+		return length;
+	}
+
+	private double calculateLength2D(CMLAtom atom0, CMLAtom atom1) {
+		double length;
+		Real2 p0 = atom0.getXY2();
+		Real2 p1 = atom1.getXY2();
+		if (p0 == null || p1 == null) {
+			throw new RuntimeException(
+			"atoms do not have 2D coordinates");
+		}
+		length = p0.getDistance(p1);
+		return length;
+	}
+
+	private double calculateLength3D(CMLAtom atom0, CMLAtom atom1) {
+		double length;
+		Point3 p0 = atom0.getXYZ3();
+		Point3 p1 = atom1.getXYZ3();
+		if (p0 == null || p1 == null) {
+			throw new RuntimeException(
+			"atoms do not have 3D coordinates");
+		}
+		length = p0.getDistanceFromPoint(p1);
 		return length;
 	}
 

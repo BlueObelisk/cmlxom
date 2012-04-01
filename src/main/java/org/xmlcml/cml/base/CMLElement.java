@@ -16,9 +16,12 @@
 
 package org.xmlcml.cml.base;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.Writer;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -36,8 +39,8 @@ import nu.xom.Serializer;
 import nu.xom.Text;
 
 import org.apache.log4j.Logger;
+import org.xmlcml.cml.attribute.RefAttribute;
 import org.xmlcml.cml.base.CMLLog.Severity;
-import org.xmlcml.cml.element.CMLArray;
 import org.xmlcml.euclid.Util;
 
 /**
@@ -49,6 +52,7 @@ import org.xmlcml.euclid.Util;
  */
 public class CMLElement extends Element implements CMLConstants, Comparable<CMLElement>, HasId {
 
+	public final static Logger LOG = Logger.getLogger(Element.class);
 	
     /** hybridisation - from whatever source */
     public enum Hybridization {
@@ -123,9 +127,8 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
     protected static CMLNodeFactory nodeFactory = CMLNodeFactory.nodeFactory;
     protected static AttributeFactory attributeFactory = AttributeFactory.attributeFactory;
     
-    // this seems to be mandatory
     protected CMLElement() {
-        super("untagged_element_beware");
+        super("element");
         init();
     }
 
@@ -1183,6 +1186,99 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
 	 */
 	public void setTool(AbstractTool tool) {
 		this.tool = tool;
+	}
+
+	/**
+	 * dereferences element in @ref attribute and creates a new element
+	 * does NOT affect 'this'
+	 * creates a reference if inside the XML tree, else creates are copy
+	 * of XML in URL or File
+	 * 
+	 */
+	public CMLElement dereferenceRef() {
+		CMLElement element = null;
+		String ref = this.getAttributeValue(RefAttribute.NAME);
+		if (ref != null) {
+			element = referenceWithinXML(ref);
+			if (element == null) {
+				element = readFromURL(ref);
+			}
+			if (element == null) {
+				element = readFromRelativeFile(ref);
+			}
+		}
+		return element;
+	}
+
+	/**
+	 * dereferences element in @ref attribute and creates a new element
+	 * replaces 'this' by copy of new element
+	 * 
+	 * 
+	 */
+	public void dereferenceRefsCopyReplace() {
+		Nodes nodes = this.query("//*[@"+RefAttribute.NAME+"]", CMLConstants.CML_XPATH);
+		List<CMLElement> elementList = new ArrayList<CMLElement>();
+		for (int i = 0; i < nodes.size(); i++) {
+			elementList.add((CMLElement) nodes.get(i));
+		}
+		for (CMLElement element : elementList) {
+			element.dereferenceRefCopyReplace();
+		}
+	}
+
+	/**
+	 * dereferences element in @ref attribute
+	 * IFF 'this' is CMLElement or same class as dereferenced element
+	 * replaces 'this' by copy of new element
+	 * else discards it
+	 */
+	public CMLElement dereferenceRefCopyReplace() {
+		CMLElement dereferencedElement = (CMLElement) this.dereferenceRef();
+		if (this.getParent() != null && !(this.getParent() instanceof Document) && dereferencedElement != null) {
+			String id = this.getId();
+			CMLElement newElement = (CMLElement) dereferencedElement.copy();
+			if (this.getClass().equals(CMLElement.class) ||
+					this.getClass().equals(newElement.getClass())) {
+				if (id != null) {
+					newElement.resetId(id);
+				}
+				this.getParent().replaceChild(this, newElement);
+			}
+		}
+		return dereferencedElement;
+	}
+
+	private CMLElement referenceWithinXML(String ref) {
+		Nodes refs = this.query("ancestor::*//*[namespace-uri()='"+CMLConstants.CML_NS+"'and @id='"+ref+"']");
+		CMLElement element = refs.size() == 1 ? (CMLElement) refs.get(0) : null;
+		return element;
+	}
+	
+	private CMLElement readFromURL(String ref) {
+		CMLElement element = null;
+		try {
+			URL url = new URL(ref);
+			element = (CMLElement) new CMLBuilder().build(url.openStream()).getRootElement();
+		} catch (Exception e) {
+			//  wasn't a URL
+		}
+		return element;
+	}
+
+	private CMLElement readFromRelativeFile(String ref) {
+		CMLElement element = null;
+		try {
+			File infil = new File(ref);
+			LOG.trace("dereferencing: "+infil.getAbsolutePath());
+			if (!infil.exists()) {
+				throw new RuntimeException("Cannot find file: "+infil.getAbsolutePath());
+			}
+			element = (CMLElement) new CMLBuilder().build(new FileInputStream(infil)).getRootElement();
+		} catch (Exception e) {
+			throw new RuntimeException("Cannot parse file", e);
+		}
+		return element;
 	}
 
 }

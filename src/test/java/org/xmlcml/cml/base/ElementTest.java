@@ -29,6 +29,7 @@ import nu.xom.ValidityException;
 
 import org.junit.Assert;
 import org.junit.Test;
+
 import org.xmlcml.euclid.Util;
 
 /**
@@ -66,80 +67,11 @@ public class ElementTest {
 		Assert.assertNotNull("document ", doc);
 	}
 
-//	/**
-//	 * test using xerces on XOM.
-//	 * 
-//	 * @exception Exception
-//	 */
-//	@Test
-//	public void testParseXomXercesValidate() throws Exception {
-//		xomXercesValidate(cml0);
-//		// xomXercesValidate(noSchema);
-//	}
-
-//	private void xomXercesValidate(String file) throws SAXException,
-//			IOException, ValidityException, ParsingException {
-//		Util.output("  === xom+Xerces validation: " + file + " ====");
-//		Document doc = null;
-//		InputStream in = null;
-//		XMLReader xerces = XMLReaderFactory
-//				.createXMLReader("org.apache.xerces.parsers.SAXParser");
-//		xerces.setFeature("http://apache.org/xml/features/validation/schema",
-//				true);
-//		Builder builder = new Builder(xerces, /* true */false);
-//		in = Util.getInputStreamFromResource(BASE_RESOURCE +CMLConstants.U_S + file);
-//		doc = builder.build(in);
-//		Assert.assertNotNull("document ", doc);
-//	}
-
-	/*
-	 * -- A sample DOM counter. This sample program illustrates how to traverse
-	 * a DOM tree in order to get information about the document. The output of
-	 * this program shows the time and count of elements, attributes, ignorable
-	 * whitespaces, and characters appearing in the document. Three times are
-	 * shown: the parse time, the first traversal of the document, and the
-	 * second traversal of the tree. This class is useful as a "poor-man's"
-	 * performance tester to compare the speed and accuracy of various DOM
-	 * parsers. However, it is important to note that the first parse time of a
-	 * parser will include both VM class load time and parser initialization
-	 * that would not be present in subsequent parses with the same file. Note:
-	 * The results produced by this program should never be accepted as true
-	 * performance measurements. usage java dom.Counter (options) uri ... Option
-	 * Description -p name Select parser wrapper by name. -x number Select
-	 * number of repetitions. -n | -N Turn on/off namespace processing. -vector
-	 * | -V Turn on/off validation. -s | -S Turn on/off Schema validation
-	 * support. NOTE: Not supported by all parsers. -f | -F Turn on/off Schema
-	 * full checking. NOTE: Requires use of -s and not supported by all parsers.
-	 * -va | -VA Turn on/off validation of schema annotations. NOTE: Requires
-	 * use of -s and not supported by all parsers. -dv | -DV Turn on/off dynamic
-	 * validation. NOTE: Not supported by all parsers. -xi | -XI Turn on/off
-	 * XInclude processing. NOTE: Not supported by all parsers. -xb | -XB Turn
-	 * on/off base URI fixup during XInclude processing. NOTE: Requires use of
-	 * -xi and not supported by all parsers. -xl | -XL Turn on/off language
-	 * fixup during XInclude processing. NOTE: Requires use of -xi and not
-	 * supported by all parsers. -h Display help screen.
-	 */
-	/*
-	 * private void xercesValidate(String file) {
-	 * Util.output("  === xerces validation: " + file + " ===="); String[] args
-	 * = null; try { // args = new String[]{"-vector", "-s", new //
-	 * URL("file://"+file).toString()}; args = new String[] { "-vector", "-s",
-	 * file }; } catch (Exception e) { neverFail(e); } dom.Counter.main(args); }
-	 */
-	/**
-	 * validate with xerces.
-	 */
-	/*
-	 * @Test public void testXercesValidateXML() { xercesValidate(cml0); // this
-	 * throws an error as it has no schema // xercesValidate(noSchema); }
-	 */
 	/**
 	 * parse without schema.
 	 */
 	@Test
 	public void testParseXomNoSchema1() {
-//		Util.println("  === xom Parse, no schema, no validation: " + noSchema
-//		+ " ====");
 		InputStream in = null;
 		Document doc = null;
 		try {
@@ -191,6 +123,197 @@ public class ElementTest {
 		CMLUtil.removeWhitespaceNodes(element0);
 		CMLXOMTestUtils.assertEqualsCanonically("before whitespace ", element0,
 				element1);
+	}
+	
+	/**
+	 * construct element
+	 */
+	@Test
+	public void testNewCMLElement() {
+		CMLElement element = new CMLElement();
+		Assert.assertTrue(element instanceof CMLElement);
+	}
+
+	/**
+	 * construct with correct name but not subclassed class
+	 * to be avoided
+	 */
+	@Test
+	public void testNewCMLElementName() {
+		CMLElement element = new CMLElement("atom");
+		Assert.assertTrue(element instanceof CMLElement);
+		Assert.assertEquals("org.xmlcml.cml.base.CMLElement", element.getClass().getName());
+	}
+
+	/**
+	 * construct element
+	 */
+	@Test
+	public void testNewCMLElementParse() {
+		String cmlString = "" +
+				"<cml:element xmlns:cml='http://www.xml-cml.org/schema'/>" +
+				"";
+		CMLElement element = CMLUtil.parseCML(cmlString);
+		Assert.assertTrue(element instanceof CMLElement);
+	}
+
+	/**
+	 * construct element
+	 */
+	@Test
+	public void testNewCMLElementRef() {
+		String cmlString = "" +
+				"<cml:cml xmlns:cml=\"http://www.xml-cml.org/schema\">" +
+				"<cml:element ref=\"a1\"/>" +
+				"<cml:atom id=\"a1\" elementType=\"H\"/>" +
+				"</cml:cml>" +
+				"";
+		CMLElement top = CMLUtil.parseCML(cmlString);
+		Assert.assertTrue(top instanceof org.xmlcml.cml.element.CMLCml);
+		CMLElement element = (CMLElement) top.getChildElements().get(0);
+		Assert.assertTrue(element instanceof CMLElement);
+		CMLElement atom = (CMLElement) top.getChildElements().get(1);
+		Assert.assertTrue(atom instanceof org.xmlcml.cml.element.CMLAtom);
+		CMLElement element1 = element.dereferenceRef();
+		Assert.assertNotNull(element1);
+		Assert.assertTrue(element1 instanceof org.xmlcml.cml.element.CMLAtom);
+		// XML should be unchanged but isn't yet
+//		Assert.assertEquals("xml", cmlString, top.toXML());
+	}
+		/**
+	<cml xmlns="http://www.xml-cml.org/schema" xmlns:cml="http://www.xml-cml.org/schema">
+	  <element xmlns="" ref="a1" />
+	  <atom id="a1" elementType="H" />
+	</cml>
+		 */
+		
+		/**
+		 * construct element
+		 */
+		@Test
+		public void testNewCMLElementRefCopy() {
+			String cmlString = "" +
+					"<cml:cml xmlns:cml=\"http://www.xml-cml.org/schema\">" +
+					"<cml:element ref=\"a1\"/>" +
+					"<cml:atom id=\"a1\" elementType=\"H\"/>" +
+					"</cml:cml>" +
+					"";
+			CMLElement top = CMLUtil.parseCML(cmlString);
+			CMLElement element = (CMLElement) top.getChildElements().get(0);
+			CMLElement element1 = element.dereferenceRefCopyReplace();
+			Assert.assertNotNull(element1);
+			Assert.assertTrue(element1 instanceof org.xmlcml.cml.element.CMLAtom);
+			CMLElement element2 = (CMLElement) top.getChildElements().get(0);
+			Assert.assertTrue(top.getChildElements().get(0) instanceof org.xmlcml.cml.element.CMLAtom);
+			
+	}
+		
+	/**
+	 * construct element
+	 */
+	@Test
+	public void testNewCMLElementRefsCopy() {
+		String cmlString = "" +
+				"<cml:cml xmlns:cml=\"http://www.xml-cml.org/schema\">" +
+				"<cml:element ref=\"a1\" id='r1'/>" +
+				"<cml:element ref=\"a1\" id='r2'/>" +
+				"<cml:element ref=\"a3\" id='r3'/>" +
+				"<cml:atom id=\"a1\" elementType=\"H\"/>" +
+				"<cml:atom id=\"a3\" elementType=\"H\"/>" +
+				"</cml:cml>" +
+				"";
+		CMLElement top = CMLUtil.parseCML(cmlString);
+		top.dereferenceRefsCopyReplace();
+			
+	}
+		
+	/**
+	 * dereference URL
+	 */
+	@Test
+	public void testNewCMLElementRefsCopyURL() {
+		String cmlString = "" +
+				"<cml:cml xmlns:cml=\"http://www.xml-cml.org/schema\">" +
+				"<cml:element ref='http://wwmm.ch.cam.ac.uk/crystaleye/summary/acta/e/2008/02-00/data/bg2147/bg2147sup1_I/bg2147sup1_I.complete.cml.xml'/>" +
+				"</cml:cml>" +
+				"";
+		CMLElement top = CMLUtil.parseCML(cmlString);
+		top.dereferenceRefsCopyReplace();
+		Assert.assertEquals("nodes", 361, top.query("//cml:scalar", CMLConstants.CML_XPATH).size());
+	}
+	
+	/**
+	 * dereference File - element is an untyped pointer
+	 */
+	@Test
+	public void testNewCMLElementRefsCopyFile() {
+		String cmlString = "" +
+				"<cml:cml xmlns:cml=\"http://www.xml-cml.org/schema\">" +
+				"<cml:element ref='src/test/resources/org/xmlcml/cml/element/examples/complex/castep2.xml'/>" +
+				"</cml:cml>" +
+				"";
+		CMLElement top = CMLUtil.parseCML(cmlString);
+		top.dereferenceRefsCopyReplace();
+		Assert.assertEquals("nodes", 9, top.query("//cml:metadata", CMLConstants.CML_XPATH).size());
+			
+	}
+	
+	
+	/**
+	 * dereference File - cml is an untyped pointer
+	 */
+	@Test
+	public void testNewCMLElementRefsCopyFileTyped() {
+		String cmlString = "" +
+				"<cml:cml xmlns:cml=\"http://www.xml-cml.org/schema\">" +
+				"<cml:cml ref='src/test/resources/org/xmlcml/cml/element/examples/complex/castep2.xml'/>" +
+				"</cml:cml>" +
+				"";
+		CMLElement top = CMLUtil.parseCML(cmlString);
+		top.dereferenceRefsCopyReplace();
+		Assert.assertEquals("nodes", 9, top.query("//cml:metadata", CMLConstants.CML_XPATH).size());
+			
+	}
+	
+	/**
+	 * dereference File - cml is an untyped pointer
+	 */
+	@Test
+	public void testNewCMLElementRefsCopyFileBadlyTyped() {
+		String cmlString = "" +
+				"<cml:cml xmlns:cml=\"http://www.xml-cml.org/schema\">" +
+				"<cml:molecule ref='src/test/resources/org/xmlcml/cml/element/examples/complex/castep2.xml'/>" +
+				"</cml:cml>" +
+				"";
+		CMLElement top = CMLUtil.parseCML(cmlString);
+		top.dereferenceRefsCopyReplace();
+		Assert.assertEquals("nodes", 0, top.query("//cml:metadata", CMLConstants.CML_XPATH).size());
+			
+	}
+	
+	@Test
+	public void testDereferenceMoleculeBonds() {
+		String ccS = "" +
+			"<cml xmlns='http://www.xml-cml.org/schema' xmlns:cmlx='http://www.xml-cml.org/schema/cmlx'>" +
+			"  <molecule id='water'>" +
+			"    <atomArray>" +
+			"      <atom id='a1' elementType='O'/>" +
+			"      <atom id='a2' elementType='H'/>" +
+			"      <atom id='a3' elementType='H'/>" +
+			"    </atomArray>" +
+			"    <bondArray>" +
+			"      <bond id='a1_a2' atomRefs2='a1 a2'/>" +
+			"      <bond id='a1_a3' atomRefs2='a1 a3'/>" +
+			"    </bondArray>" +
+			"  </molecule>" +
+			"  <list id='waterBonds' ref='water'>" +
+			"    <cmlx:bond/>" +
+			"  </list>" +
+			"</cml>";
+		CMLElement cml = CMLUtil.parseCML(ccS);
+		cml.dereferenceRefsCopyReplace();
+		Assert.assertEquals("xxx", 2, cml.query("//cml:bond", CMLConstants.CML_XPATH).size());
+//		cml.debug("mol");
 	}
 
 }
