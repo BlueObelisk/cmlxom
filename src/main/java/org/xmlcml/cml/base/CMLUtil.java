@@ -1260,5 +1260,4 @@ public abstract class CMLUtil implements CMLConstants {
 		return element;
 	}
 
-
 }
