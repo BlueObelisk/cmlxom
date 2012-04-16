@@ -17,6 +17,7 @@
 package org.xmlcml.molutil;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -31,7 +32,7 @@ import org.xmlcml.euclid.Vector3;
  * @author pm286
  *
  */
-public abstract class Molutils implements CMLConstants {
+public abstract class Molutils extends java.lang.Object implements CMLConstants {
 
     final static Logger logger = Logger.getLogger(Molutils.class.getName());
 
