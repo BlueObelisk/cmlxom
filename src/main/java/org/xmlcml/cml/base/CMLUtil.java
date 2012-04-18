@@ -460,6 +460,41 @@ public abstract class CMLUtil implements CMLConstants {
 	}
 
 	/**
+	 * convenience routine to get query Elements 
+	 * returns empty list if ANY nodes are not elements
+	 * @param node
+	 * @param xpath
+	 * @return list of nodes (immutable) - empty if none or null node
+	 */
+	public static List<Element> getQueryElements(Node node, String xpath) {
+		List<Node> nodes = getQueryNodes(node, xpath);
+		return castNodesToElements(nodes);
+	}
+
+	/**
+	 * convenience routine to get query Elements 
+	 * returns empty list if ANY nodes are not elements
+	 * @param node
+	 * @param xpath
+	 * @return list of nodes (immutable) - empty if none or null node
+	 */
+	public static List<Element> getQueryElements(Node node, String xpath, XPathContext context) {
+		List<Node> nodes = getQueryNodes(node, xpath, context);
+		return castNodesToElements(nodes);
+	}
+
+	private static List<Element> castNodesToElements(List<Node> nodes) {
+		List<Element> elements = new ArrayList<Element>();
+		for (Node n : nodes) {
+			if (!(n instanceof Element)) {
+				return new ArrayList<Element>();
+			}
+			elements.add((Element) n);
+		}
+		return elements;
+	}
+
+	/**
 	 * get next sibling.
 	 * 
 	 * @author Eliotte Rusty Harold
