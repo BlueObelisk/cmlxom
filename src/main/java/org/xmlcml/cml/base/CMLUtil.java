@@ -1052,7 +1052,7 @@ public abstract class CMLUtil implements CMLConstants {
 					message = CMLUtil.equalsCanonically((Element) refChildNode, (Element) testChildNode,
 						xpathChild);
 				} else {
-					message = CMLUtil.compareNonElementNodesCanonically(refNode, testNode, xpath);
+					message = CMLUtil.compareNonElementNodesCanonically(refChildNode, testChildNode, xpath);
 					if (message != null) {
 						break;
 					}
@@ -1089,7 +1089,7 @@ public abstract class CMLUtil implements CMLConstants {
 				message = "PI targets at ("+xpath+") differ: "+refTarget+" != "+testTarget;
 			}
 		} else {
-			LOG.warn("Unknown XML element in comparison");
+			LOG.warn("Unknown XML element in comparison: "+refNode.getClass());
 		}
 		return message;
 	}
