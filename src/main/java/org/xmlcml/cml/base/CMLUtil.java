@@ -300,14 +300,14 @@ public abstract class CMLUtil implements CMLConstants {
 	/** convenience method to avoid trapping exception
 	 * 
 	 * @param elem
-	 * @param os
+	 * @param file
 	 * @param indent
 	 */
-	public static void outputQuietly(Element elem, OutputStream os, int indent) {
+	public static void outputQuietly(Element elem, File file, int indent) {
 		try {
-			CMLUtil.debug(elem, os, indent);
+			CMLUtil.debug(elem, new FileOutputStream(file), indent);
 		} catch (Exception e) {
-			throw new RuntimeException("cannot write stream ", e);
+			throw new RuntimeException("cannot write file:  " + file, e);
 		}
 	}
 
