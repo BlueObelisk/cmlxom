@@ -22,6 +22,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -294,6 +295,14 @@ public abstract class CMLUtil implements CMLConstants {
 				serializer.setIndent(indent);
 			}
 			serializer.write(document);
+		}
+	}
+	
+	public static void outputQuietly(Element elem, OutputStream os, int indent) {
+		try {
+			CMLUtil.debug(elem, os, 1);
+		} catch (Exception e) {
+			throw new RuntimeException("cannot write stream ", e);
 		}
 	}
 
