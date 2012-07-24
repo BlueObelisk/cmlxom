@@ -297,10 +297,15 @@ public abstract class CMLUtil implements CMLConstants {
 			serializer.write(document);
 		}
 	}
-	
+	/** convenience method to avoid trapping exception
+	 * 
+	 * @param elem
+	 * @param os
+	 * @param indent
+	 */
 	public static void outputQuietly(Element elem, OutputStream os, int indent) {
 		try {
-			CMLUtil.debug(elem, os, 1);
+			CMLUtil.debug(elem, os, indent);
 		} catch (Exception e) {
 			throw new RuntimeException("cannot write stream ", e);
 		}
