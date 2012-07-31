@@ -448,6 +448,12 @@ public interface CMLConstants extends EuclidConstants {
      */
     XPathContext SVG_XPATH = new XPathContext("svg", SVG_NS);
     
+    /** namespaces for XLINK
+     * 
+     */
+    String XLINK_PREFIX = "xlink";
+    String XLINK_NS = "http://www.w3.org/1999/xlink";
+    
     /**
      * @deprecated
      */
