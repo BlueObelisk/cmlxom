@@ -1288,6 +1288,7 @@ public abstract class CMLUtil implements CMLConstants {
 		baosS = baosS.replace(" xmlns=\"http://www.w3.org/1999/xhtml\"", "");
 		// strip XML declaration
 		baosS = baosS.replace("<?xml version=\"1.0\" encoding=\"UTF-8\"?>", "");
+		baosS = removeScripts(baosS);
 		Document document;
 		try {
 			ByteArrayInputStream bais = new ByteArrayInputStream(baosS.getBytes()); // avoid reader
@@ -1297,6 +1298,31 @@ public abstract class CMLUtil implements CMLConstants {
 			throw new RuntimeException("BUG: DTD stripper should have created valid XML: "+e);
 		}
 		return document;
+	}
+
+	private static String removeScripts(String baosS) {
+		return removeTags("script", baosS);
+	}
+	
+	private static String removeTags(String tag, String ss) {
+		int current = 0;
+		StringBuilder sb = new StringBuilder();
+		String startTag = "<"+tag;
+		String endTag = "</"+tag+">";
+		while (true) {
+			int i = ss.indexOf(startTag, current);
+			if (i == -1) {
+				sb.append(ss.substring(current));
+				break;
+			}
+			sb.append(ss.substring(current, i));
+			i = ss.indexOf(endTag, current);
+			if (i == -1) {
+				throw new RuntimeException("missing endTag: "+endTag);
+			}
+			current = (i + endTag.length());
+		}
+		return sb.toString();
 	}
 
 	public static void debugPreserveWhitespace(Element element) {
