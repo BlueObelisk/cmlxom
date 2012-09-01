@@ -528,6 +528,23 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 		return dd;
 	}
 
+	/** convenience method returns a list of doubles for either xsd:integer or xsd:double
+	 * 
+	 * @return
+	 */
+	public double[] getNumbersAsDoubles() {
+		double[] doubles = getDoubles();
+		if (doubles == null) {
+			int[] integers = getInts();
+			if (integers != null) {
+				RealArray realArray = RealArray.createRealArray(integers);
+				doubles = (realArray == null) ? null : realArray.getArray();
+			}
+		}
+		return doubles;
+	}
+	
+
 	/**
 	 * get dates
 	 * 

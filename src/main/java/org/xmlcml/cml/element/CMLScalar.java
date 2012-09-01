@@ -531,4 +531,17 @@ public class CMLScalar extends AbstractScalar implements HasUnits, HasScalar, Ha
         att = new NamespaceRefAttribute(_att_unittype);
         super.addRemove(att, value);
     }
+
+	public Double getNumberAsDouble() {
+		Double d = getDouble();
+		if (d == null || Double.isNaN(d)) {
+			try {
+				Integer i = getInt();
+				d = (double) i;
+			} catch (Exception e) {
+				// null
+			}
+		}
+		return d;
+	}
 }
