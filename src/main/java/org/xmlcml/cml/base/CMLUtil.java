@@ -465,9 +465,13 @@ public abstract class CMLUtil implements CMLConstants {
 	public static List<Node> getQueryNodes(Node node, String xpath) {
 		List<Node> nodeList = new ArrayList<Node>();
 		if (node != null) {
-			Nodes nodes = node.query(xpath);
-			for (int i = 0; i < nodes.size(); i++) {
-				nodeList.add(nodes.get(i));
+			try {
+				Nodes nodes = node.query(xpath);
+				for (int i = 0; i < nodes.size(); i++) {
+					nodeList.add(nodes.get(i));
+				}
+			} catch (Exception e) {
+				throw new RuntimeException("Bad xpath: "+xpath, e);
 			}
 		}
 		return nodeList;
