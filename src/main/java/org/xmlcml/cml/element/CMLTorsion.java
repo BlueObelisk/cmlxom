@@ -156,6 +156,15 @@ public class CMLTorsion extends AbstractTorsion {
         return atomList;
     }
 
+    /** create key from atomRefs3 attribute and atomHash
+    *
+    * @return the hash null if no atomRefs3
+    */
+   public String atomHash() {
+       String[] a = this.getAtomRefs4();
+       return (a == null) ? null : atomHash(a[0], a[1], a[2], a[3]);
+   }
+
     /**
      * gets value calculated from coordinates.
      *

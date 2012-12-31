@@ -17,6 +17,7 @@
 package org.xmlcml.cml.element;
 
 import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -1533,4 +1534,19 @@ public class CMLMolecule
 		return totalImplicitHydrogenCount + uniqueHydrogens.size();
 	}
 
+	/** makes a new list composed of the molecules in the list
+	 * 
+	 * @param elements
+	 * @return
+	 */
+	public static List<CMLMolecule> extractMolecules(List<Element> elements) {
+		List<CMLMolecule> moleculeList = new ArrayList<CMLMolecule>();
+		for (Element element : elements) {
+			if (element instanceof CMLMolecule) {
+				moleculeList.add((CMLMolecule) element);
+			}
+		}
+		return moleculeList;
+	}
+	
 }
