@@ -139,6 +139,23 @@ public class CMLAngle extends AbstractAngle {
     }
 
     /**
+     * Finds ancestral molecule and then uses getCalculatedAngle(CMLMolecule)
+     *
+     * @return the angle in degrees (null if cannot calculate)
+     */
+    public Double getCalculatedAngle() {
+    	Double angle = null;
+    	CMLMolecule molecule = null;
+    	try {
+    		molecule = (CMLMolecule)(this.query("ancestor::cml:molecule", CML_XPATH)).get(0);
+    		angle = getCalculatedAngle(molecule);
+    	} catch (Exception e) {
+    		// return null
+    	}
+    	return angle;
+    }
+
+    /**
      * gets value calculated from coordinates. requires atomRefs3 ro be set and
      * valid. then gets the angle between atomRefs3 0-1-2
      *
