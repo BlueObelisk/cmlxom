@@ -124,6 +124,16 @@ public class CMLLength extends AbstractLength {
     }
 
     /**
+     * Finds ancestral molecule and then uses getCalculatedAngle(CMLMolecule)
+     *
+     * @return the angle in degrees (null if cannot calculate)
+     */
+    public Double getCalculatedLength() {
+    	CMLMolecule molecule = CMLMolecule.getAncestorMolecule(this);
+   		return (molecule == null) ? null : getCalculatedLength(molecule);
+    }
+
+    /**
      * gets value calculated from coordinates. does not set content
      *
      * @param molecule

@@ -147,8 +147,8 @@ public class CMLAngle extends AbstractAngle {
     	Double angle = null;
     	CMLMolecule molecule = null;
     	try {
-    		molecule = (CMLMolecule)(this.query("ancestor::cml:molecule", CML_XPATH)).get(0);
-    		angle = getCalculatedAngle(molecule);
+    		molecule = CMLMolecule.getAncestorMolecule(this);
+    		angle = (molecule == null) ? null : getCalculatedAngle(molecule);
     	} catch (Exception e) {
     		// return null
     	}

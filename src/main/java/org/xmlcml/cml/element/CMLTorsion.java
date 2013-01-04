@@ -165,6 +165,17 @@ public class CMLTorsion extends AbstractTorsion {
        return (a == null) ? null : atomHash(a[0], a[1], a[2], a[3]);
    }
 
+   /**
+    * Finds ancestral molecule and then uses getCalculatedAngle(CMLMolecule)
+    *
+    * @return the angle in degrees (null if cannot calculate)
+    */
+   public Double getCalculatedTorsion() {
+   	CMLMolecule molecule = CMLMolecule.getAncestorMolecule(this);
+  		return (molecule == null) ? null : getCalculatedTorsion(molecule);
+   }
+
+
     /**
      * gets value calculated from coordinates.
      *
