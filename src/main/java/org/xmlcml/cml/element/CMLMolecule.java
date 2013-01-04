@@ -103,6 +103,19 @@ public class CMLMolecule
 
 	// ancillary elements or helpers
 
+    /** gets the first ancestor molecule
+     * 
+     * @return null if none
+     */
+	public static CMLMolecule getAncestorMolecule(CMLElement element) {
+    	try {
+    		return (CMLMolecule)(element.query("ancestor::cml:molecule", CML_XPATH)).get(0);
+    	} catch (Exception e) {
+    		 return null;
+    	}
+	}
+
+
 	/**
 	 * get corresponding molecule
 	 *
@@ -110,6 +123,7 @@ public class CMLMolecule
 	 *
 	 * @param elem
 	 * @return the molecule (null if none)
+	 * @deprecated use getAncetsorMolecule
 	 */
 	public static CMLMolecule getMoleculeAncestor(CMLElement elem) {
 		CMLMolecule mol = null;
