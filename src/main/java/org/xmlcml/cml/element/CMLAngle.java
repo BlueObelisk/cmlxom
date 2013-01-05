@@ -144,19 +144,25 @@ public class CMLAngle extends AbstractAngle {
      * @return the angle in degrees (null if cannot calculate)
      */
     public Double getCalculatedAngle() {
-    	Double angle = null;
-    	CMLMolecule molecule = null;
-    	try {
-    		molecule = CMLMolecule.getAncestorMolecule(this);
-    		angle = (molecule == null) ? null : getCalculatedAngle(molecule);
-    	} catch (Exception e) {
-    		// return null
-    	}
-    	return angle;
+    	CMLMolecule molecule = CMLMolecule.getAncestorMolecule(this);
+   		return (molecule == null) ? null : getCalculatedAngle(molecule);
     }
 
     /**
-     * gets value calculated from coordinates. requires atomRefs3 ro be set and
+     * Finds ancestral molecule and then uses getCalculatedAngle(CMLMolecule)
+     *
+     * @return the angle in degrees (null if cannot calculate)
+     */
+    public Double getCalculatedAngle(String units) {
+   		Double ang = getCalculatedAngle(); // degrees
+   		if (Angle.Units.RADIANS.toString().equals(units)) {
+   			ang /= Angle.DEGREES_IN_RADIAN;
+   		}
+   		return ang;
+    }
+
+    /**
+     * gets value calculated from coordinates. requires atomRefs3 to be set and
      * valid. then gets the angle between atomRefs3 0-1-2
      *
      * @param atomSet
