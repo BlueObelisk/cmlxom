@@ -88,7 +88,7 @@ public class CMLTorsion extends AbstractTorsion {
     /**
      * gets atomIds as list.
      *
-     * @return the atomIds (null if no atomRefs3)
+     * @return the atomIds (null if no atomRefs4)
      */
     public List<String> getAtomIds() {
         List<String> idList = null;
@@ -115,7 +115,7 @@ public class CMLTorsion extends AbstractTorsion {
         String[] atomRefs4 = this.getAtomRefs4();
         if (atomRefs4 == null || molecule == null) {
             throw new RuntimeException(
-                    "torsion must have molecule and atomRefs4 to get atoms");
+                    "torsion must have molecule ("+molecule+") and atomRefs4 ("+atomRefs4+") to get atoms: "+this.toXML());
         } else {
             atomList = new ArrayList<CMLAtom>();
             for (String atomRef : atomRefs4) {
@@ -156,9 +156,9 @@ public class CMLTorsion extends AbstractTorsion {
         return atomList;
     }
 
-    /** create key from atomRefs3 attribute and atomHash
+    /** create key from atomRefs4 attribute and atomHash
     *
-    * @return the hash null if no atomRefs3
+    * @return the hash null if no atomRefs4
     */
    public String atomHash() {
        String[] a = this.getAtomRefs4();
@@ -171,8 +171,18 @@ public class CMLTorsion extends AbstractTorsion {
     * @return the angle in degrees (null if cannot calculate)
     */
    public Double getCalculatedTorsion() {
-   	CMLMolecule molecule = CMLMolecule.getAncestorMolecule(this);
+   	    CMLMolecule molecule = CMLMolecule.getAncestorMolecule(this);
   		return (molecule == null) ? null : getCalculatedTorsion(molecule);
+   }
+
+   /**
+    * Finds ancestral molecule and then uses getCalculatedAngle(CMLMolecule)
+    * tacky - should really return
+    * @return the angle in radians (null if cannot calculate)
+    */
+   public Double getCalculatedTorsionRadians() {
+  		Double ang = getCalculatedTorsion();
+  		return ang == null ? null : ang*Angle.DEGREES_IN_RADIAN;
    }
 
 
