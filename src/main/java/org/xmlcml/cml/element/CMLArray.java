@@ -1144,4 +1144,19 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 		}
 	}
 
+	/** makes a list of CMLArrays
+	 * 
+	 * @param elements
+	 * @return List<CMLArray>
+	 */
+	public static List<CMLArray> extractArrays(List<Element> elements) {
+		List<CMLArray> arrayList = new ArrayList<CMLArray>();
+		for (Element element : elements) {
+			if (element instanceof CMLArray) {
+				arrayList.add((CMLArray) element);
+			}
+		}
+		return arrayList;
+	}
+	
 }
