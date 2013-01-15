@@ -409,5 +409,20 @@ public class CMLTable extends AbstractTable {
         }
     }
 
+	/** makes a list of CMLTables
+	 * 
+	 * @param elements
+	 * @return List<CMLTable>
+	 */
+	public static List<CMLTable> extractTables(List<Element> elements) {
+		List<CMLTable> tableList = new ArrayList<CMLTable>();
+		for (Element element : elements) {
+			if (element instanceof CMLTable) {
+				tableList.add((CMLTable) element);
+			}
+		}
+		return tableList;
+	}
+	
     
 }
