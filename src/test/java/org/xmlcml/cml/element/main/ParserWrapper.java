@@ -16,8 +16,9 @@
 
 package org.xmlcml.cml.element.main;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Text;
+import nu.xom.Document;
+import nu.xom.Text;
+
 import org.xml.sax.SAXNotRecognizedException;
 import org.xml.sax.SAXNotSupportedException;
 
