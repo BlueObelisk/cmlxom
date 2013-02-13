@@ -26,7 +26,7 @@ import org.xmlcml.cml.base.CMLElement;
  * shell which can be edited
  *
  */
-public class CMLYaxis extends AbstractYaxis {
+public class CMLYaxis extends AbstractYaxis implements CMLAxis {
 
 	/** namespaced element name.*/
 	public final static String NS = C_E+TAG;
@@ -68,4 +68,8 @@ public class CMLYaxis extends AbstractYaxis {
         return new CMLYaxis();
 
     }
+
+	public AxisType getAxisType() {
+		return AxisType.Y;
+	}
 }
