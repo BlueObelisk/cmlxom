@@ -133,6 +133,14 @@ public class CMLCrystal extends AbstractCrystal {
     public final static String GAMMA = C_A + "gamma";
     /** convert Z to #operators */
     public final static String Z2OP = C_A + "z2op";
+	private static final String[] CELL_DICTREF = {
+		"iucr:cell_length_a",
+		"iucr:cell_length_b",
+		"iucr:cell_length_c",
+		"iucr:cell_angle_alpha",
+		"iucr:cell_angle_beta",
+		"iucr:cell_angle_gamma",
+	};
     /**
      * constructor.
      */
@@ -377,9 +385,7 @@ public class CMLCrystal extends AbstractCrystal {
         if (cellParameterElements != null && cellParameterElements.size() == 2) {
             cellScalars = CMLCellParameter.createCMLScalars(cellParameterElements);
         } else if (cellScalarNodes != null && cellScalarNodes.size() == 6) {
-            for (int i = 0; i < 6; i++) {
-                cellScalars.add(new CMLScalar((CMLScalar) cellScalarNodes.get(i)));
-            }
+        	cellScalars = sortCellScalars(cellScalarNodes);
         } else if (cellScalarNodes != null && cellParameterElements == null) {
         } else {
         	this.debug("CELLPAR");
@@ -389,7 +395,35 @@ public class CMLCrystal extends AbstractCrystal {
         return cellScalars;
     }
 
-    /**
+    private List<CMLScalar> sortCellScalars(Nodes cellScalarNodes) {
+    	List<CMLScalar> cellScalarList = new ArrayList<CMLScalar>(6);
+        for (int i = 0; i < 6; i++) {
+        	cellScalarList.add((CMLScalar)null);
+        }
+        for (int i = 0; i < 6; i++) {
+        	CMLScalar scalar = (CMLScalar)cellScalarNodes.get(i);
+        	String dictRef = scalar.getDictRef().toLowerCase();
+        	int j = getCellParameterIndex(dictRef);
+        	if (j == -1) {
+        		throw new RuntimeException("Cannot interpret cell parameter: "+dictRef);
+        	} else if (cellScalarList.get(j) != null) {
+        		throw new RuntimeException("duplicate value for "+dictRef);
+        	}
+        	cellScalarList.set(j, scalar);
+        }
+        return cellScalarList;
+	}
+
+	private int getCellParameterIndex(String dictRef) {
+		for (int i = 0; i < 6; i++) {
+			if (dictRef.equals(CELL_DICTREF[i])) {
+				return i;
+			}
+		}
+		return -1;
+	}
+
+	/**
      * get cell lengths and angles as CMLCellParameters. if XOM has
      * cellParameter children copy them else create from CMLScalar else return
      * empty list
