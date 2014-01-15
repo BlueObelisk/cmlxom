@@ -249,9 +249,20 @@ public class CMLCellParameter extends AbstractCellParameter {
      */
     public static List<CMLScalar> createCMLScalars(
             CMLElements<CMLCellParameter> cellParameterElements) {
+    	if (cellParameterElements.size() != 2) {
+    		throw new RuntimeException("must have exactly 2 CellParameterElements");
+    	}
+    	String type0 = cellParameterElements.get(0).getType();
+    	String type1 = cellParameterElements.get(1).getType();
         List<CMLCellParameter> cellParams = new ArrayList<CMLCellParameter>();
-        for (CMLCellParameter param : cellParameterElements) {
-            cellParams.add(param);
+        if (Type.LENGTH.toString().equals(type0) && Type.ANGLE.toString().equals(type1)) {
+            cellParams.add(cellParameterElements.get(0));
+            cellParams.add(cellParameterElements.get(1));
+        } else if (Type.ANGLE.toString().equals(type0) && Type.LENGTH.toString().equals(type1)) {
+            cellParams.add(cellParameterElements.get(1));
+            cellParams.add(cellParameterElements.get(0));
+        } else {
+        	throw new RuntimeException("Bad CellParameters");
         }
         return createCMLScalars(cellParams);
     }
