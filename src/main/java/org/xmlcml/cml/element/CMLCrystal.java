@@ -368,7 +368,7 @@ public class CMLCrystal extends AbstractCrystal {
      * get cell lengths and angles as list of CMLScalars. if cellParameters are
      * used, take values from them but do not update XOM
      *
-//     * @deprecated - use CMLCellParameters instead
+     * @deprecated - use CMLCellParameters instead // but this works now
      * @throws RuntimeException
      *             corrupted number of cell parameters
      * @return CMLScalar[] the parameters in order (null if not set)
