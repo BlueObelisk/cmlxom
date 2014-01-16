@@ -143,6 +143,15 @@ public class CMLCrystal extends AbstractCrystal {
 		"iucr:cell_angle_gamma",
 	};
 	
+	private static final String[] CELL_DICTREF1 = {
+		"iucr:_cell_length_a",
+		"iucr:_cell_length_b",
+		"iucr:_cell_length_c",
+		"iucr:_cell_angle_alpha",
+		"iucr:_cell_angle_beta",
+		"iucr:_cell_angle_gamma",
+	};
+	
 	private static final String[] CELL_CML = {
 		"cml:a",
 		"cml:b",
@@ -426,7 +435,10 @@ public class CMLCrystal extends AbstractCrystal {
 
 	private int getCellParameterIndex(String dictRef) {
 		for (int i = 0; i < 6; i++) {
-			if (dictRef.equals(CELL_DICTREF[i]) || dictRef.equals(CELL_CML[i])) {
+			if (
+					dictRef.equals(CELL_DICTREF[i]) ||
+					dictRef.equals(CELL_DICTREF1[i]) ||
+					dictRef.equals(CELL_CML[i])) {
 				return i;
 			}
 		}
