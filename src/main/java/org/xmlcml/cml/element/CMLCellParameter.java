@@ -255,10 +255,10 @@ public class CMLCellParameter extends AbstractCellParameter {
     	String type0 = cellParameterElements.get(0).getType();
     	String type1 = cellParameterElements.get(1).getType();
         List<CMLCellParameter> cellParams = new ArrayList<CMLCellParameter>();
-        if (Type.LENGTH.toString().equals(type0) && Type.ANGLE.toString().equals(type1)) {
+        if (Type.LENGTH.toString().equalsIgnoreCase(type0) && Type.ANGLE.toString().equalsIgnoreCase(type1)) {
             cellParams.add(cellParameterElements.get(0));
             cellParams.add(cellParameterElements.get(1));
-        } else if (Type.ANGLE.toString().equals(type0) && Type.LENGTH.toString().equals(type1)) {
+        } else if (Type.ANGLE.toString().equalsIgnoreCase(type0) && Type.LENGTH.toString().equalsIgnoreCase(type1)) {
             cellParams.add(cellParameterElements.get(1));
             cellParams.add(cellParameterElements.get(0));
         } else {
