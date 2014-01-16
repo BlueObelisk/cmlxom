@@ -28,6 +28,7 @@ import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.cml.element.CMLCellParameter.Type;
+import org.xmlcml.euclid.RealArray;
 import org.xmlcml.euclid.RealSquareMatrix;
 import org.xmlcml.euclid.Transform3;
 
@@ -140,6 +141,15 @@ public class CMLCrystal extends AbstractCrystal {
 		"iucr:cell_angle_alpha",
 		"iucr:cell_angle_beta",
 		"iucr:cell_angle_gamma",
+	};
+	
+	private static final String[] CELL_CML = {
+		"cml:a",
+		"cml:b",
+		"cml:c",
+		"cml:alpha",
+		"cml:beta",
+		"cml:gamma",
 	};
     /**
      * constructor.
@@ -416,7 +426,7 @@ public class CMLCrystal extends AbstractCrystal {
 
 	private int getCellParameterIndex(String dictRef) {
 		for (int i = 0; i < 6; i++) {
-			if (dictRef.equals(CELL_DICTREF[i])) {
+			if (dictRef.equals(CELL_DICTREF[i]) || dictRef.equals(CELL_CML[i])) {
 				return i;
 			}
 		}
@@ -490,9 +500,9 @@ public class CMLCrystal extends AbstractCrystal {
             return null;
         }
         for (int i = 0; i < 6; i++) {
-            temp[i] = (new Double(paramElements.get(i).getXMLContent()))
-                    .doubleValue();
+            temp[i] = (new Double(paramElements.get(i).getXMLContent())).doubleValue();
         }
+        LOG.trace("cell values "+new RealArray(temp));
         return temp;
     }
 
