@@ -50,7 +50,7 @@ public class CMLParameterListTest {
 	 * @throws Exception
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public synchronized void setUp() throws Exception {
 		parameterList = (CMLParameterList)CMLXOMTestUtils.parseValidString(parameterS);
 	}
 

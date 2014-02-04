@@ -623,7 +623,7 @@ public abstract class CMLUtil implements CMLConstants {
 		try {
 			canon.write(node);
 		} catch (IOException e) {
-			throw new RuntimeException("should never throw " + e);
+			throw new RuntimeException("should never throw ", e);
 		}
 		return baos.toString();
 	}

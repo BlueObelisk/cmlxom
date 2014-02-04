@@ -75,7 +75,7 @@ public class CMLAtomSetTest {
 	 * @throws Exception
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public synchronized void setUp() throws Exception {
 		atomSet1 = new CMLAtomSet(fixture.xmlMolecule, new String[] { "a1",
 				"a2", "a3" });
 		atomSet2 = new CMLAtomSet(fixture.xmlMolecule, new String[] { "a2",

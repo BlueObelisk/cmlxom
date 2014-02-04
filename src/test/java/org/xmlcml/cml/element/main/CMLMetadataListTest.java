@@ -57,7 +57,7 @@ public class CMLMetadataListTest {
 	 * @throws Exception
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public synchronized void setUp() throws Exception {
 		molecule = (CMLMolecule)CMLXOMTestUtils.parseValidString(moleculeS);
 		metadataList0 = (CMLMetadataList) molecule
 				.getFirstCMLChild(CMLMetadataList.TAG);

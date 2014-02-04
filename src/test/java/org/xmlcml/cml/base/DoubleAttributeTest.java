@@ -39,7 +39,7 @@ public class DoubleAttributeTest {
 	 * @throws Exception
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public synchronized void setUp() throws Exception {
 		daa1 = new DoubleSTAttribute(new CMLAttribute("foo"), " 1.2   ");
 
 	}

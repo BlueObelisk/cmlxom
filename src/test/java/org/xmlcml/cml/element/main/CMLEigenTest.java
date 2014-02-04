@@ -49,7 +49,7 @@ public class CMLEigenTest {
 	 * @throws Exception
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public synchronized void setUp() throws Exception {
 		eigenvalues1 = new CMLArray(new double[] { -37.90004, -20.34372,
 				-13.10423, -12.71709, -12.07969, -7.47084, -3.44820, -1.14406,
 				-.70572, .56580 });

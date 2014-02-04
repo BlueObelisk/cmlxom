@@ -49,7 +49,7 @@ public class CMLLatticeTest {
 	 * @throws Exception
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public synchronized void setUp() throws Exception {
 		if (lattice1 == null) {
 			lattice1 = (CMLLattice)CMLXOMTestUtils.parseValidString(lattice1S);
 		}

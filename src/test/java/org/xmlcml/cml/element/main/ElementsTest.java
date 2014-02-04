@@ -48,7 +48,7 @@ public class ElementsTest {
 	 * @throws Exception
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public synchronized void setUp() throws Exception {
 		cml1 = new CMLElement("cml1");
 		CMLElement cml2 = new CMLElement("cml2");
 		cml2.addAttribute(new Attribute("id", "id1"));
