@@ -63,7 +63,7 @@ public class CMLMapTest {
 	 * @throws Exception
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public synchronized void setUp() throws Exception {
 		xmlMap1 = (CMLMap)CMLXOMTestUtils.parseValidString(xmlMap1S);
 		xmlMap2 = (CMLMap)CMLXOMTestUtils.parseValidString(xmlMap2S);
 	}

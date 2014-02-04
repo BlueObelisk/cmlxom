@@ -36,7 +36,7 @@ public class AttributeTest {
 	 * @throws Exception
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public synchronized void setUp() throws Exception {
 		att1 = new CMLAttribute("name", "value");
 	}
 
@@ -45,6 +45,7 @@ public class AttributeTest {
 	 */
 	@Test
 	public void testCMLAttributeString() {
+		
 		CMLAttribute string = new CMLAttribute("string");
 		Assert.assertEquals("string att", "string", string.getLocalName());
 		Assert.assertEquals("string att", "string", string.getQualifiedName());

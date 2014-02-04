@@ -85,7 +85,7 @@ public class CMLFormulaTest {
 	 * @throws Exception
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public synchronized void setUp() throws Exception {
 		if (count++ > 0) {
 			// throw new RuntimeException("SKIP");
 		}

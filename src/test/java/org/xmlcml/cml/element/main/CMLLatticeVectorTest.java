@@ -46,7 +46,7 @@ public class CMLLatticeVectorTest {
 	 * @throws Exception
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public synchronized void setUp() throws Exception {
 		latticeVector1 = (CMLLatticeVector) new CMLBuilder()
 				.parseString(latticeVector1S);
 	}

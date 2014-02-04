@@ -56,7 +56,7 @@ public class CMLBondSetTest {
 	 * @throws Exception
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public synchronized void setUp() throws Exception {
 		bondSet = new CMLBondSet(fixture.xmlMolecule);
 		bonds = fixture.xmlMolecule.getBonds();
 	}

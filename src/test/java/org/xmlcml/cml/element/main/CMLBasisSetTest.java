@@ -113,7 +113,7 @@ public class CMLBasisSetTest {
 	 * @throws Exception
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public synchronized void setUp() throws Exception {
 		molecule = (CMLMolecule)CMLXOMTestUtils.parseValidString(moleculeS);
 		basisSet = new CMLBasisSet();
 		basisSet2 = (CMLBasisSet)CMLXOMTestUtils.parseValidString(basisSetS2);

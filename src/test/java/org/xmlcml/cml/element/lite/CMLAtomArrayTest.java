@@ -43,7 +43,7 @@ public class CMLAtomArrayTest {
 	 * @throws java.lang.Exception
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public synchronized void setUp() throws Exception {
 		fixture.setUp();
 	}
 

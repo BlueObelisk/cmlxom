@@ -42,7 +42,7 @@ public class CMLReactionComponentTest extends ReactionAllTestBase {
      * @throws Exception
      */
     @Before
-    public void setUp() throws Exception {
+    public synchronized void setUp() throws Exception {
         super.setUp();
     }
 

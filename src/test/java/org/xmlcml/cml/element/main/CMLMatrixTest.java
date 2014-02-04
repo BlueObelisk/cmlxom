@@ -76,7 +76,7 @@ public class CMLMatrixTest {
 	 * @throws Exception
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public synchronized void setUp() throws Exception {
 
 		if (cml == null) {
 			cml = (CMLCml)CMLXOMTestUtils.parseValidString(unitsS);

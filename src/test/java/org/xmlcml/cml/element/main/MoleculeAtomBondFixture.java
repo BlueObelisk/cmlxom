@@ -129,7 +129,7 @@ public final class MoleculeAtomBondFixture {
 	 * @throws Exception
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public synchronized void setUp() throws Exception {
 		// build reference molecule
 		xomMolecule = new CMLMolecule();
 		xomMolecule.setId("xom1");

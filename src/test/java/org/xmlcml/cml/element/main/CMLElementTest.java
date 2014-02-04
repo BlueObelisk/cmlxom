@@ -72,7 +72,7 @@ public class CMLElementTest {
 	 * @throws Exception
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public synchronized void setUp() throws Exception {
 		atom = new CMLElement(CMLAtom.TAG);
 		atom.addAttribute(new Attribute("foo", "fooval"));
 		CMLLabel label = new CMLLabel();

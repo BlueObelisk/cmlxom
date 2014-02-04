@@ -104,7 +104,7 @@ public class CMLArrayTest {
 	 * @throws Exception
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public synchronized void setUp() throws Exception {
 		try {
 
 			xomS = new CMLArray();

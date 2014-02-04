@@ -39,7 +39,7 @@ public class IntAttributeTest {
 	 * @throws Exception
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public synchronized void setUp() throws Exception {
 		daa1 = new IntSTAttribute(new CMLAttribute("foo"), " 1   ");
 
 	}

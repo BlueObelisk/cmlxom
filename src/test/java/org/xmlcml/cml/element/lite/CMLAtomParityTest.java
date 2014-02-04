@@ -61,7 +61,7 @@ public class CMLAtomParityTest {
 	 * @throws Exception
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public synchronized void setUp() throws Exception {
 		molecule = (CMLMolecule)CMLXOMTestUtils.parseValidString(s);
 		List<CMLAtom> atoms = molecule.getAtoms();
 		atom = atoms.get(0);

@@ -98,7 +98,7 @@ public class CMLSymmetryTest {
 	 * @throws Exception
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public synchronized void setUp() throws Exception {
 		matrix1 = new CMLMatrix[] {
 				new CMLMatrix(3, 4, new double[] { 1, 0, 0, 0.0, 0, 1, 0, 0.0,
 						0, 0, 1, 0.0 }),

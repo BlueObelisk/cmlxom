@@ -47,7 +47,7 @@ import org.xmlcml.cml.element.CMLSpectatorList;
 public abstract class ReactionAllTestBase {
 	protected CMLReaction xomReact1;
 	protected CMLReaction xomReact2;
-	protected String xmlReact1S = "<reaction id='r1' " + CMLConstants.CML_XMLNS + ">"
+	protected final static String xmlReact1S = "<reaction id='r1' " + CMLConstants.CML_XMLNS + ">"
 			+ "  <reactantList id='rl1'>" + "    <reactant id='re1'>"
 			+ "      <molecule id='rm1'>" + "        <atomArray>"
 			+ "          <atom id='a1' elementType='C' hydrogenCount='3'>"
@@ -104,7 +104,7 @@ public abstract class ReactionAllTestBase {
 	protected CMLElements<CMLReactant> xmlReactants1;
 	protected CMLElements<CMLProduct> xmlProducts1;
 	protected CMLElements<CMLSpectator> xmlSpectators1;
-	protected String xmlReact2S = "<reaction id='r1' " + CMLConstants.CML_XMLNS + ">"
+	protected final static String xmlReact2S = "<reaction id='r1' " + CMLConstants.CML_XMLNS + ">"
 			+ "  <reactantList id='rl1'>" + "    <reactant id='re1'>"
 			+ "      <formula concise='H 1 Cl 1' id='r_f1'/>"
 			+ "    </reactant>" + "    <reactant id='re2'>"
@@ -126,7 +126,7 @@ public abstract class ReactionAllTestBase {
 	 * @throws Exception
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public synchronized void setUp() throws Exception {
 		xmlReact1 = (CMLReaction)CMLXOMTestUtils.parseValidString(xmlReact1S);
 		xmlReactantLists1 = xmlReact1.getReactantListElements();
 		xmlProductLists1 = xmlReact1.getProductListElements();

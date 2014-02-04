@@ -127,7 +127,7 @@ public class CMLCrystalTest {
 	 * @throws Exception
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public synchronized void setUp() throws Exception {
 		crystal1 = (CMLCrystal)CMLXOMTestUtils.parseValidString(crystal1S);
 		crystal2 = (CMLCrystal)CMLXOMTestUtils.parseValidString(crystal2S);
 		crystal3 = (CMLCrystal)CMLXOMTestUtils.parseValidString(crystal3S);

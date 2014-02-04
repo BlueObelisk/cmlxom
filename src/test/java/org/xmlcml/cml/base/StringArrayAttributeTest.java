@@ -38,7 +38,7 @@ public class StringArrayAttributeTest {
 	 * @throws Exception
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public synchronized void setUp() throws Exception {
 		daa1 = new StringArraySTAttribute(new CMLAttribute("foo"), "abc def");
 	}
 

@@ -64,7 +64,7 @@ public class CMLCellParameterTest {
 	 * @exception Exception
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public synchronized void setUp() throws Exception {
 		crystal1 = (CMLCrystal)CMLXOMTestUtils.parseValidString(crystal1S);
 		cellParameterList = crystal1.getCellParameterElements();
 		Assert.assertEquals("setup ", 2, cellParameterList.size());

@@ -47,7 +47,7 @@ public class CMLPropertyTest {
 	 * @exception Exception
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public synchronized void setUp() throws Exception {
 		String prop1S = "<property "
 				+ CMLConstants.CML_XMLNS
 				+ ">"

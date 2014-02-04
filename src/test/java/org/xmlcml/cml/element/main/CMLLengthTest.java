@@ -66,7 +66,7 @@ public class CMLLengthTest {
 	 * @exception Exception
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public synchronized void setUp() throws Exception {
 		CMLCml cml = (CMLCml)CMLXOMTestUtils.parseValidString(s1);
 		molecule1 = (CMLMolecule) cml.getChildCMLElements("molecule").get(0);
 		length0 = (CMLLength) cml.getChildCMLElements("length").get(0);
