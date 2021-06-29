@@ -10,7 +10,7 @@
  		<version>5-SNAPSHOT</version>  
 	</parent>
 -->
-	<groupId>org.xml-cml</groupId>
+	<groupId>org.blueobelisk</groupId>
 	<artifactId>cmlxom</artifactId>
 	<version>3.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
