@@ -529,7 +529,10 @@ public class CMLUtilTest {
 				"xmlns:foo='http://foo.org' " +
 				"id='a1' foo:bar='zzz'/>";
 		CMLElement element = CMLUtil.parseCML(cmlString);
+		System.out.println(element.getClass().getName());
+		System.out.println(element.toXML());
 		CMLUtil.removeNonCMLAttributes(element);
+		System.out.println(element.toXML());
 		String refString = "<atom xmlns=\"http://www.xml-cml.org/schema\" xmlns:cml=\"http://www.xml-cml.org/schema\" id='a1'/>";
 		String message = CMLUtil.equalsCanonically(refString, element, true);
 		Assert.assertNull("remove noncml", message);
