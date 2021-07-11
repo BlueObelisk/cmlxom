@@ -1,4 +1,5 @@
 # CMLXOM
+[![Build Status](https://github.com/BlueObelisk/cmlxom/actions/workflows/maven.yml/badge.svg)](https://github.com/BlueObelisk/cmlxom/actions/workflows/maven.yml)
 
 A Java library for processing CML,
 implementing the XML object model (XOM) for the Chemical Markup Language (CML).
