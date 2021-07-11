@@ -22,6 +22,8 @@ import java.io.StringReader;
 import java.text.ParseException;
 import java.util.List;
 
+import javax.annotation.concurrent.NotThreadSafe;
+
 import nu.xom.Attribute;
 import nu.xom.Builder;
 import nu.xom.Document;
@@ -46,6 +48,7 @@ import org.xmlcml.euclid.Util;
  * @author pm286
  * 
  */
+@NotThreadSafe
 public class CMLUtilTest {
 	private static Logger LOG = Logger.getLogger(CMLUtilTest.class);
 	static {
