@@ -524,6 +524,7 @@ public class CMLUtilTest {
 	}
 	@Test
 	public void removeNonCMLAttributes() {
+		System.out.println("removeNonCMLAttributes");
 		String cmlString = "<cml:atom " +
 				"xmlns:cml='http://www.xml-cml.org/schema' " +
 				"xmlns:foo='http://foo.org' " +
@@ -540,6 +541,7 @@ public class CMLUtilTest {
 	}
 	@Test
 	public void removeNonCMLAttributes1() {
+		System.out.println("removeNonCMLAttributes1");
 		String cmlString = "<cml:atom " +
 				"xmlns:cml='http://www.xml-cml.org/schema' " +
 				"xmlns:foo='http://foo.org' " +
