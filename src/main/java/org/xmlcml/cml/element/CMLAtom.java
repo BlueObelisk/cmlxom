@@ -131,11 +131,15 @@ public class CMLAtom extends AbstractAtom {
         String error = null;
         CMLAtom atom = null;
         // these rules need revising periodically
+        System.out.println("error: " + error);
+        System.out.println("atom: " + atom);
+        System.out.println("parent: " + parent);
         if (parent == null) {
             atom = new CMLAtom();
         } else if (parent instanceof CMLAtomArray) {
             // atomArray parent must be child of Molecule or Formula
             Element grandParent = (Element) parent.getParent();
+            System.out.println("grandpa: " + grandParent);
             if (grandParent == null) {
                 error = "Atom needs non-null grandparent";
             } else if (grandParent instanceof CMLMolecule) {
