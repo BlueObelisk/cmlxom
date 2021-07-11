@@ -16,8 +16,10 @@
 
 package org.xmlcml.cml.element.main;
 
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import nu.xom.Attribute;
 import nu.xom.Elements;
@@ -107,8 +109,11 @@ public class ElementsTest {
 			elem = (CMLElement) elems.get(2);
 			Assert.fail("should throw IndexOutOfBoundsException");
 		} catch (IndexOutOfBoundsException e) {
-			Assert.assertEquals("array error", "Index: 2, Size: 2", e
-					.getMessage());
+			System.out.println(e.getMessage());
+			Set<String> allowedStrings = new HashSet<String>();
+			allowedStrings.add("Index 2 out of bounds for length 2");
+			allowedStrings.add("Index: 2, Size: 2");
+			Assert.assertTrue("array error", allowedStrings.contains(e.getMessage()));
 		}
 	}
 
