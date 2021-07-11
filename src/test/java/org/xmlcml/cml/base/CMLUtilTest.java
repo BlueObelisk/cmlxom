@@ -528,7 +528,7 @@ public class CMLUtilTest {
 	@Test
 	public void removeNonCMLAttributes() {
 		System.out.println("removeNonCMLAttributes");
-		String cmlString = "<cml:atom " +
+		String cmlString = "<cml:cml " +
 				"xmlns:cml='http://www.xml-cml.org/schema' " +
 				"xmlns:foo='http://foo.org' " +
 				"id='a1' foo:bar='zzz'/>";
@@ -537,7 +537,7 @@ public class CMLUtilTest {
 		System.out.println(element.toXML());
 		CMLUtil.removeNonCMLAttributes(element);
 		System.out.println(element.toXML());
-		String refString = "<atom xmlns=\"http://www.xml-cml.org/schema\" xmlns:cml=\"http://www.xml-cml.org/schema\" id='a1'/>";
+		String refString = "<cml xmlns=\"http://www.xml-cml.org/schema\" xmlns:cml=\"http://www.xml-cml.org/schema\" id='a1'/>";
 		String message = CMLUtil.equalsCanonically(refString, element, true);
 		Assert.assertNull("remove noncml", message);
 
@@ -545,7 +545,7 @@ public class CMLUtilTest {
 	@Test
 	public void removeNonCMLAttributes1() {
 		System.out.println("removeNonCMLAttributes1");
-		String cmlString = "<cml:atom " +
+		String cmlString = "<cml:cml " +
 				"xmlns:cml='http://www.xml-cml.org/schema' " +
 				"xmlns:foo='http://foo.org' " +
 				"id='a1' foo:bar='zzz'>" +
@@ -553,13 +553,13 @@ public class CMLUtilTest {
 				"xmlns:cml='http://www.xml-cml.org/schema' " +
 				"xmlns:foz='http://foz.org' " +
 				"id='a1' foz:bar='zzz'/>" +
-				"</cml:atom>";
+				"</cml:cml>";
 		CMLElement element = CMLUtil.parseCML(cmlString);
 		CMLUtil.removeNonCMLAttributes(element);
-		String refString = "<atom id='a1' xmlns='http://www.xml-cml.org/schema'  " +
+		String refString = "<cml id='a1' xmlns='http://www.xml-cml.org/schema'  " +
 				"xmlns:cml='http://www.xml-cml.org/schema'>" +
 				"  <name id='a1'/>" +
-				"</atom>";
+				"</cml>";
 		String message = CMLUtil.equalsCanonically(refString, element, true);
 		Assert.assertNull("remove noncml", message);
 	}
