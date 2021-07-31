@@ -12,7 +12,7 @@
 -->
 	<groupId>org.blueobelisk</groupId>
 	<artifactId>cmlxom</artifactId>
-	<version>3.2</version>
+	<version>3.3-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>CMLXOM</name>
 	<description>A Java library for processing CML</description>
