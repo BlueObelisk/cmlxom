@@ -3,13 +3,6 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<!-- 
-	<parent>
-		<groupId>uk.ac.cam.ch.wwmm</groupId>
-		<artifactId>wwmm-parent</artifactId>
- 		<version>5-SNAPSHOT</version>  
-	</parent>
--->
 	<groupId>org.blueobelisk</groupId>
 	<artifactId>cmlxom</artifactId>
 	<version>3.3-SNAPSHOT</version>
@@ -26,9 +19,9 @@
 	</licenses>
 
 	<scm>
-		<url>https://bitbucket.org/wwmm/cmlxom/src</url>
-		<connection>scm:hg:http://bitbucket.org/wwmm/cmlxom</connection>
-		<developerConnection>scm:hg:https://bitbucket.org/wwmm/cmlxom</developerConnection>
+		<url>https://github.com/BlueObelisk/cmlxom</url>
+		<connection>scm:git:git://github.com/blueobelisk/cmlxom.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/blueobelisk/cmlxom.git</developerConnection>
 	</scm>
 	<developers>
 		<developer>
