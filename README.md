@@ -1,4 +1,5 @@
 # CMLXOM
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.blueobelisk/cmlxom/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.blueobelisk/cmlxom)
 [![Build Status](https://github.com/BlueObelisk/cmlxom/actions/workflows/maven.yml/badge.svg)](https://github.com/BlueObelisk/cmlxom/actions/workflows/maven.yml)
 
 A Java library for processing CML,
