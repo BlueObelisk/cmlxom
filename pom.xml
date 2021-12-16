@@ -301,7 +301,7 @@
 		<dependency>
 			<groupId>org.blueobelisk</groupId>
 			<artifactId>euclid</artifactId>
-			<version>1.3</version>
+			<version>1.4</version>
 		</dependency>
 
 		<dependency>
