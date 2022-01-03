@@ -113,7 +113,7 @@ public class CMLAtom extends AbstractAtom {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLAtom(this);
 
     }

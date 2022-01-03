@@ -84,7 +84,7 @@ public class CMLCellParameter extends AbstractCellParameter {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLCellParameter(this);
     }
 

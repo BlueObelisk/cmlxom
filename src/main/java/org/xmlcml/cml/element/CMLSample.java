@@ -52,7 +52,7 @@ public class CMLSample extends AbstractSample {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLSample(this);
 
     }

@@ -101,7 +101,7 @@ public class CMLAtomSet extends AbstractAtomSet {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLAtomSet(this);
 
     }

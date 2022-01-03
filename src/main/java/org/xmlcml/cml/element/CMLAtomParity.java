@@ -76,7 +76,7 @@ public class CMLAtomParity extends AbstractAtomParity {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLAtomParity(this);
 
     }

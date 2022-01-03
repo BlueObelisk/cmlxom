@@ -52,7 +52,7 @@ public class CMLMechanism extends AbstractMechanism {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLMechanism(this);
 
     }

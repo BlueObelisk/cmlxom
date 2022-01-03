@@ -55,7 +55,7 @@ public class CMLLattice extends AbstractLattice {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLLattice(this);
     }
 

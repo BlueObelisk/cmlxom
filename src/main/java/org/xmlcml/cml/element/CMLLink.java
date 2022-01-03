@@ -52,7 +52,7 @@ public class CMLLink extends AbstractLink {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLLink(this);
 
     }

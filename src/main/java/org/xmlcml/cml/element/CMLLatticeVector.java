@@ -52,7 +52,7 @@ public class CMLLatticeVector extends AbstractLatticeVector {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLLatticeVector(this);
 
     }

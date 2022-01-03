@@ -95,7 +95,7 @@ public class CMLZMatrix extends AbstractZMatrix {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLZMatrix(this);
 
     }

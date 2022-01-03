@@ -49,7 +49,7 @@ public class CMLObservation extends AbstractObservation {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLObservation(this);
 
     }

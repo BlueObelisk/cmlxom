@@ -49,7 +49,7 @@ public class CMLBand extends AbstractBand {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLBand(this);
 
     }

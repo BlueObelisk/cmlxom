@@ -59,7 +59,7 @@ public class CMLSymmetry extends AbstractSymmetry {
      * 
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLSymmetry(this);
 
     }

@@ -181,7 +181,7 @@ public class CMLCrystal extends AbstractCrystal {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLCrystal(this);
 
     }

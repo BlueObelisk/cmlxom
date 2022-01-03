@@ -79,7 +79,7 @@ public class CMLAtomArray extends AbstractAtomArray {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLAtomArray(this);
     }
 

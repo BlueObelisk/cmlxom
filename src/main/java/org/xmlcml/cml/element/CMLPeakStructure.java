@@ -66,7 +66,7 @@ public class CMLPeakStructure extends AbstractPeakStructure {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLPeakStructure(this);
     }
 

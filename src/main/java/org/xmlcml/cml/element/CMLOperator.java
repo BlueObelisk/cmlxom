@@ -49,7 +49,7 @@ public class CMLOperator extends AbstractOperator {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLOperator(this);
 
     }

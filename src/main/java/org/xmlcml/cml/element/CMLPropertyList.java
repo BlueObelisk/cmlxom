@@ -57,7 +57,7 @@ public class CMLPropertyList extends AbstractPropertyList {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLPropertyList(this);
 
     }

@@ -67,7 +67,7 @@ public class CMLTableHeader extends AbstractTableHeader {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLTableHeader(this);
     }
 

@@ -51,7 +51,7 @@ public class CMLAtomType extends AbstractAtomType {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLAtomType(this);
 
     }

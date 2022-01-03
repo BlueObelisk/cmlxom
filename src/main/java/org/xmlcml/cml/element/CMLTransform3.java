@@ -73,7 +73,7 @@ public class CMLTransform3 extends AbstractTransform3 {
      * 
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLTransform3(this);
 
     }

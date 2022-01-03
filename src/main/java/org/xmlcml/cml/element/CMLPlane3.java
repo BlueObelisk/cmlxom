@@ -64,7 +64,7 @@ public class CMLPlane3 extends AbstractPlane3 {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLPlane3(this);
 
     }

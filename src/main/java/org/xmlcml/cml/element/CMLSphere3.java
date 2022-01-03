@@ -52,7 +52,7 @@ public class CMLSphere3 extends AbstractSphere3 {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLSphere3(this);
 
     }

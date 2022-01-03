@@ -62,7 +62,7 @@ public class CMLComplexObject extends AbstractComplexObject {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLComplexObject(this);
     }
 

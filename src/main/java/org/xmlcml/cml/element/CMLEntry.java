@@ -60,7 +60,7 @@ public class CMLEntry extends AbstractEntry {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLEntry(this);
 
     }

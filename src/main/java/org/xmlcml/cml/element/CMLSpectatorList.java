@@ -58,7 +58,7 @@ public class CMLSpectatorList extends AbstractSpectatorList implements
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLSpectatorList(this);
 
     }

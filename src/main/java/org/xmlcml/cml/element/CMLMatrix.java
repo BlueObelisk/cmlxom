@@ -123,7 +123,7 @@ public class CMLMatrix extends AbstractMatrix
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLMatrix(this);
 
     }

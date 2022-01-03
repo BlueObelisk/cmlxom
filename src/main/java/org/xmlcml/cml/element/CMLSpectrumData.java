@@ -52,7 +52,7 @@ public class CMLSpectrumData extends AbstractSpectrumData {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLSpectrumData(this);
 
     }

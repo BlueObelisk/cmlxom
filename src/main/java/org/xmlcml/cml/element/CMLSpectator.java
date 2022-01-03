@@ -59,7 +59,7 @@ public class CMLSpectator extends AbstractSpectator implements ReactionComponent
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLSpectator(this);
 
     }

@@ -352,7 +352,7 @@ public class CMLFormula extends AbstractFormula {
 	 *
 	 * @return Node
 	 */
-	public Node copy() {
+	public Element copy() {
 		CMLFormula newForm = new CMLFormula(this);
 		return newForm;
 	}

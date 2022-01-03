@@ -52,7 +52,7 @@ public class CMLYaxis extends AbstractYaxis implements CMLAxis {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLYaxis(this);
 
     }

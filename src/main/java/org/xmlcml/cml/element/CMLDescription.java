@@ -50,7 +50,7 @@ public class CMLDescription extends AbstractHTMLContainer {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLDescription(this);
 
     }

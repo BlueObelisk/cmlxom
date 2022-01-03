@@ -49,7 +49,7 @@ public class CMLExpression extends AbstractExpression {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLExpression(this);
 
     }

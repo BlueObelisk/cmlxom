@@ -49,7 +49,7 @@ public class CMLBondTypeList extends AbstractBondTypeList {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLBondTypeList(this);
 
     }

@@ -53,7 +53,7 @@ public class CMLXaxis extends AbstractXaxis implements CMLAxis {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLXaxis(this);
 
     }

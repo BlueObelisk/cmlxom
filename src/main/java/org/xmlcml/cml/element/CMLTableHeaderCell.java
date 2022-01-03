@@ -58,7 +58,7 @@ public class CMLTableHeaderCell extends org.xmlcml.cml.element.AbstractTableHead
     *
     * @return Node
     */
-    public Node copy() {
+    public Element copy() {
         return new CMLTableHeaderCell(this);
     }
     /** create new instance in context of parent, overridable by subclasses.

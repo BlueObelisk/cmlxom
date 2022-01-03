@@ -64,7 +64,7 @@ public class CMLKpoint extends AbstractKpoint {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLKpoint(this);
     }
 

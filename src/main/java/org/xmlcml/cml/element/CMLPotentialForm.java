@@ -52,7 +52,7 @@ public class CMLPotentialForm extends AbstractPotentialForm {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLPotentialForm(this);
 
     }

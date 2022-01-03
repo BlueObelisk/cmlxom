@@ -55,7 +55,7 @@ public class CMLFragmentList extends AbstractFragmentList {
     *
     * @return Node
     */
-    public Node copy() {
+    public Element copy() {
         return new CMLFragmentList(this);
     }
     /** create new instance in context of parent, overridable by subclasses.

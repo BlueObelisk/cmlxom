@@ -16,10 +16,9 @@
 
 package org.xmlcml.cml.base;
 
-import nu.xom.Attribute;
-import nu.xom.Node;
-
 import org.xmlcml.euclid.Util;
+
+import nu.xom.Attribute;
 
 /**
  * attribute representing an int value..
@@ -77,7 +76,7 @@ public class IntArraySTAttribute extends CMLAttribute {
      * uses copy constructor.
      * @return copy 
      */
-    public Node copy() {
+    public Attribute copy() {
     	return new IntArraySTAttribute(this);
     }
 

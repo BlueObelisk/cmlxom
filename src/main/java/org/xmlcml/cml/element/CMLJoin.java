@@ -98,7 +98,7 @@ public class CMLJoin extends org.xmlcml.cml.element.AbstractJoin {
     *
     * @return Node
     */
-    public Node copy() {
+    public Element copy() {
         return new CMLJoin(this);
     }
     /** create new instance in context of parent, overridable by subclasses.

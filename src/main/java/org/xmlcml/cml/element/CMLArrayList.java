@@ -62,7 +62,7 @@ public class CMLArrayList extends org.xmlcml.cml.element.AbstractArrayList {
     *
     * @return Node
     */
-    public Node copy() {
+    public Element copy() {
         return new CMLArrayList(this);
     }
     /** create new instance in context of parent, overridable by subclasses.

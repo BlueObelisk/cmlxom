@@ -52,7 +52,7 @@ public class CMLReactiveCentre extends AbstractReactiveCentre {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLReactiveCentre(this);
 
     }

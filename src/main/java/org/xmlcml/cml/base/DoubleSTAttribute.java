@@ -21,7 +21,6 @@ import java.text.ParseException;
 import org.xmlcml.euclid.Util;
 
 import nu.xom.Attribute;
-import nu.xom.Node;
 
 /**
  * attribute representing a double value.
@@ -91,7 +90,7 @@ public class DoubleSTAttribute extends CMLAttribute {
 	 * 
 	 * @return copy
 	 */
-	public Node copy() {
+	public Attribute copy() {
 		return new DoubleSTAttribute(this);
 	}
 

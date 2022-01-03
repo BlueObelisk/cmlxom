@@ -76,7 +76,7 @@ public class CMLScalar extends AbstractScalar implements HasUnits, HasScalar, Ha
 	 * 
 	 * @return Node
 	 */
-	public Node copy() {
+	public Element copy() {
 		return new CMLScalar(this);
 
 	}

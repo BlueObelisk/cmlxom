@@ -52,7 +52,7 @@ public class CMLSystem extends AbstractSystem {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLSystem(this);
 
     }

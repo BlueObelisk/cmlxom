@@ -18,7 +18,6 @@ package org.xmlcml.cml.base;
 
 import nu.xom.Attribute;
 import nu.xom.NamespaceConflictException;
-import nu.xom.Node;
 
 import org.apache.log4j.Logger;
 
@@ -127,7 +126,7 @@ public class CMLAttribute extends Attribute implements CMLConstants {
      * shallow copy as most fields are not mutable
      * @return copy of node
      */
-    public Node copy() {
+    public Attribute copy() {
     	CMLAttribute newAttribute = new CMLAttribute(this);
         newAttribute.setValue(this.getValue());
         return newAttribute;

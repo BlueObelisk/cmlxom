@@ -77,7 +77,7 @@ public class CMLBondSet extends AbstractBondSet {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLBondSet(this);
 
     }

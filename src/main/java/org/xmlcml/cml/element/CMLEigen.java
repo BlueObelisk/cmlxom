@@ -74,7 +74,7 @@ public class CMLEigen extends AbstractEigen {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLEigen(this);
 
     }

@@ -89,7 +89,7 @@ public class CMLBondArray extends AbstractBondArray {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLBondArray(this);
     }
 

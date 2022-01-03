@@ -49,7 +49,7 @@ public class CMLObject extends AbstractObject {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLObject(this);
 
     }

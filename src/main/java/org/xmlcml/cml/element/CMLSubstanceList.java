@@ -55,7 +55,7 @@ public class CMLSubstanceList extends AbstractSubstanceList {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLSubstanceList(this);
 
     }

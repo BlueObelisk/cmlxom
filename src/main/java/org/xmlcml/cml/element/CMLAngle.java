@@ -23,10 +23,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import nu.xom.Element;
-import nu.xom.Node;
-import nu.xom.Nodes;
-
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.xmlcml.cml.base.CMLConstants;
@@ -35,6 +31,9 @@ import org.xmlcml.cml.base.CMLElements;
 import org.xmlcml.euclid.Angle;
 import org.xmlcml.euclid.Point3;
 import org.xmlcml.euclid.Util;
+
+import nu.xom.Element;
+import nu.xom.Nodes;
 
 /**
  * user-modifiable class supporting angle.
@@ -70,7 +69,7 @@ public class CMLAngle extends AbstractAngle {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLAngle(this);
 
     }

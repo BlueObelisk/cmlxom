@@ -80,7 +80,7 @@ public class CMLPeakList extends AbstractPeakList {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLPeakList(this);
 
     }

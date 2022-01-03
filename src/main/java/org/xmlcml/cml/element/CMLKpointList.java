@@ -61,7 +61,7 @@ public class CMLKpointList extends AbstractKpointList {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLKpointList(this);
     }
 

@@ -48,7 +48,7 @@ public class CMLDefinition extends AbstractHTMLContainer {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLDefinition(this);
 
     }

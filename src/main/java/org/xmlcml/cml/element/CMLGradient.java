@@ -52,7 +52,7 @@ public class CMLGradient extends AbstractGradient {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLGradient(this);
 
     }

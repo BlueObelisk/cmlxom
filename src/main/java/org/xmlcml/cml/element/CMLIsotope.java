@@ -52,7 +52,7 @@ public class CMLIsotope extends AbstractIsotope {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLIsotope(this);
 
     }

@@ -69,7 +69,7 @@ public class CMLTableRow extends AbstractTableRow {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLTableRow(this);
     }
 

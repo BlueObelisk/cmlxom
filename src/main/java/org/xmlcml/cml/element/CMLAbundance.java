@@ -16,10 +16,9 @@
 
 package org.xmlcml.cml.element;
 
-import nu.xom.Element;
-import nu.xom.Node;
-
 import org.xmlcml.cml.base.CMLElement;
+
+import nu.xom.Element;
 
 /**
  * The abundance of an isotope.
@@ -55,7 +54,7 @@ public class CMLAbundance extends AbstractAbundance {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLAbundance(this);
     }
 

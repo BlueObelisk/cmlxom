@@ -52,7 +52,7 @@ public class CMLReactionScheme extends AbstractReactionScheme {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLReactionScheme(this);
 
     }

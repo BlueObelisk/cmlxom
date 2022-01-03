@@ -57,7 +57,7 @@ public class CMLPoint3 extends AbstractPoint3 {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLPoint3(this);
 
     }

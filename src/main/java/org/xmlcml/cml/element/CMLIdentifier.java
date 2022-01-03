@@ -53,7 +53,7 @@ public class CMLIdentifier extends AbstractIdentifier {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLIdentifier(this);
 
     }

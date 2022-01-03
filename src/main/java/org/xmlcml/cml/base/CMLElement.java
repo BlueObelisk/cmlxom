@@ -204,7 +204,7 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
      * 
      * @return node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLElement(this);
     }
 

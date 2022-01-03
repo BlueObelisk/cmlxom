@@ -52,7 +52,7 @@ public class CMLTransitionState extends AbstractTransitionState {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLTransitionState(this);
 
     }

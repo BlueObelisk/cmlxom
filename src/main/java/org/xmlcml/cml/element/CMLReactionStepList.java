@@ -52,7 +52,7 @@ public class CMLReactionStepList extends AbstractReactionStepList {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLReactionStepList(this);
 
     }

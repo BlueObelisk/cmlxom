@@ -94,7 +94,7 @@ public class CMLArg extends AbstractArg {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLArg(this);
     }
 

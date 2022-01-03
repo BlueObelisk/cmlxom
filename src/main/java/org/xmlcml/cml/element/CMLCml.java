@@ -52,7 +52,7 @@ public class CMLCml extends AbstractCml {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLCml(this);
 
     }

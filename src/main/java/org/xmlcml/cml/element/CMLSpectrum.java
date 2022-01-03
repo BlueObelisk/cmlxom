@@ -92,7 +92,7 @@ public class CMLSpectrum extends AbstractSpectrum {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLSpectrum(this);
 
     }

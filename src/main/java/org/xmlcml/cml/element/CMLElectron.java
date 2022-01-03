@@ -55,7 +55,7 @@ public class CMLElectron extends AbstractElectron {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLElectron(this);
 
     }

@@ -55,7 +55,7 @@ public class CMLReactant extends AbstractReactant implements ReactionComponent {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLReactant(this);
 
     }

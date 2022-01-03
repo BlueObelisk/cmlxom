@@ -66,7 +66,7 @@ public class CMLDictionary extends AbstractDictionary {
 	 *
 	 * @return Node
 	 */
-	public Node copy() {
+	public Element copy() {
 		return new CMLDictionary(this);
 
 	}

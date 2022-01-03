@@ -65,7 +65,7 @@ public class CMLTableContent extends AbstractTableContent {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLTableContent(this);
     }
 

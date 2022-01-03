@@ -70,7 +70,7 @@ public class CMLLabel extends AbstractLabel {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLLabel(this);
 
     }

@@ -53,7 +53,7 @@ public class CMLPeakGroup extends AbstractPeakGroup implements PeakOrGroup {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLPeakGroup(this);
 
     }

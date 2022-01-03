@@ -55,7 +55,7 @@ public class CMLProductList extends AbstractProductList implements
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLProductList(this);
 
     }

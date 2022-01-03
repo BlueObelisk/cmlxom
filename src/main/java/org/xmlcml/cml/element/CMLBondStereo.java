@@ -61,7 +61,7 @@ public class CMLBondStereo extends AbstractBondStereo {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLBondStereo(this);
 
     }

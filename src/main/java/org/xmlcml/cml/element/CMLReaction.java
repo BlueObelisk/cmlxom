@@ -149,7 +149,7 @@ public class CMLReaction extends AbstractReaction implements ReactionComponent {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLReaction(this);
 
     }

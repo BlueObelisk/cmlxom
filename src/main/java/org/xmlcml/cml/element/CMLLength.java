@@ -64,7 +64,7 @@ public class CMLLength extends AbstractLength {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLLength(this);
 
     }

@@ -52,7 +52,7 @@ public class CMLParticle extends AbstractParticle {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLParticle(this);
 
     }

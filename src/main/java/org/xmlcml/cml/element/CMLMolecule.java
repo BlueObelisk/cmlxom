@@ -630,7 +630,7 @@ public class CMLMolecule
 	 *
 	 * @return Node
 	 */
-	public Node copy() {
+	public Element copy() {
 		CMLMolecule newMolecule = new CMLMolecule(this);
 		// newMolecule.moleculesManager = new MoleculeMolecules(this);
 		// newMolecule.moleculesManager.update();

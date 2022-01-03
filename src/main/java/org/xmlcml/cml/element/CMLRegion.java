@@ -52,7 +52,7 @@ public class CMLRegion extends AbstractRegion {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLRegion(this);
 
     }

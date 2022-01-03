@@ -57,7 +57,7 @@ public class CMLAtomicBasisFunction extends AbstractAtomicBasisFunction {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLAtomicBasisFunction(this);
 
     }

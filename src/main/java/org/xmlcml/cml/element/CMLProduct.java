@@ -58,7 +58,7 @@ public class CMLProduct extends AbstractProduct implements ReactionComponent {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLProduct(this);
 
     }

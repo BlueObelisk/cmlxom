@@ -49,7 +49,7 @@ public class CMLConditionList extends AbstractConditionList {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLConditionList(this);
 
     }

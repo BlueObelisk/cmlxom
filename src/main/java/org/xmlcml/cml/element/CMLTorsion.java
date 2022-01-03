@@ -68,7 +68,7 @@ public class CMLTorsion extends AbstractTorsion {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLTorsion(this);
 
     }

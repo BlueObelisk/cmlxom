@@ -96,7 +96,7 @@ public class CMLTableCell extends org.xmlcml.cml.element.AbstractTableCell {
     *
     * @return Node
     */
-    public Node copy() {
+    public Element copy() {
         return new CMLTableCell(this);
     }
     /** create new instance in context of parent, overridable by subclasses.

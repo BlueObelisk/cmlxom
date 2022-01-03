@@ -16,10 +16,9 @@
 
 package org.xmlcml.cml.attribute;
 
-import nu.xom.Attribute;
-import nu.xom.Node;
-
 import org.xmlcml.cml.base.StringSTAttribute;
+
+import nu.xom.Attribute;
 
 /**
  * user-modifiable class supporting "id". 
@@ -60,7 +59,7 @@ public class IdAttribute extends StringSTAttribute {
     /** copy constructor.
      * @return IdAttribute copy
      */
-    public Node copy() {
+    public Attribute copy() {
     	return new IdAttribute(this);
     }
     

@@ -115,7 +115,7 @@ public class CMLFragment extends AbstractFragment {
     * shallow copy
     * @return Node
     */
-    public Node copy() {
+    public Element copy() {
         return new CMLFragment(this);
     }
     /** create new instance in context of parent, overridable by subclasses.

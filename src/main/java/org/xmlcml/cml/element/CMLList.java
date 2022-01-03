@@ -59,7 +59,7 @@ public class CMLList extends org.xmlcml.cml.element.AbstractList implements HasD
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLList(this);
 
     }

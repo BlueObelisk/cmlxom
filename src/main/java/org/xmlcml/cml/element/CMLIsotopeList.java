@@ -49,7 +49,7 @@ public class CMLIsotopeList extends AbstractIsotopeList {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLIsotopeList(this);
 
     }

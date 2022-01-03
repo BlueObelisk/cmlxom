@@ -85,7 +85,7 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 	 * @return Node
 	 */
 	@Override
-	public Node copy() {
+	public Element copy() {
 		return new CMLArray(this);
 	}
 

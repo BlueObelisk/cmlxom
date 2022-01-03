@@ -255,7 +255,7 @@ public class CMLBond extends AbstractBond {
 	 * 
 	 * @return Node
 	 */
-	public Node copy() {
+	public Element copy() {
 		return new CMLBond(this);
 
 	}

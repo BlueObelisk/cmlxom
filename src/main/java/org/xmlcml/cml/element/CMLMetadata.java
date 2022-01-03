@@ -54,7 +54,7 @@ public class CMLMetadata extends AbstractMetadata {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLMetadata(this);
 
     }

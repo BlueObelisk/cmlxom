@@ -84,7 +84,7 @@ public class CMLBasisSet extends AbstractBasisSet {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLBasisSet(this);
 
     }

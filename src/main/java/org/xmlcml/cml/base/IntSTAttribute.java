@@ -17,7 +17,6 @@
 package org.xmlcml.cml.base;
 
 import nu.xom.Attribute;
-import nu.xom.Node;
 
 /**
  * attribute representing an int value.
@@ -71,7 +70,7 @@ public class IntSTAttribute extends CMLAttribute {
      * uses copy constructor.
      * @return copy 
      */
-    public Node copy() {
+    public Attribute copy() {
     	return new IntSTAttribute(this);
     }
 

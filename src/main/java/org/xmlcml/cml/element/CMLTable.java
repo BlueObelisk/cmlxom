@@ -94,7 +94,7 @@ public class CMLTable extends AbstractTable {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLTable(this);
 
     }

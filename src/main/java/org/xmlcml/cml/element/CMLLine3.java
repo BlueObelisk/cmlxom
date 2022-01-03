@@ -69,7 +69,7 @@ public class CMLLine3 extends AbstractLine3 {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLLine3(this);
 
     }

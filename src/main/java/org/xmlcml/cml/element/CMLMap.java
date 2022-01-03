@@ -138,7 +138,7 @@ public class CMLMap extends org.xmlcml.cml.element.AbstractMap {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLMap(this);
 
     }

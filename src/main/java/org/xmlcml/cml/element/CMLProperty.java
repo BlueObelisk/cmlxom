@@ -175,7 +175,7 @@ public class CMLProperty extends AbstractProperty implements HasDictRef {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLProperty(this);
 
     }

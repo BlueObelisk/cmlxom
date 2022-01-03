@@ -57,7 +57,7 @@ public class CMLVector3 extends AbstractVector3 {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLVector3(this);
 
     }

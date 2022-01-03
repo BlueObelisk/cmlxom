@@ -64,7 +64,7 @@ public class CMLMoleculeList extends AbstractMoleculeList {
     *
     * @return Node
     */
-    public Node copy() {
+    public Element copy() {
         return new CMLMoleculeList(this);
     }
     /** create new instance in context of parent, overridable by subclasses.

@@ -52,7 +52,7 @@ public class CMLSubstance extends AbstractSubstance {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLSubstance(this);
 
     }

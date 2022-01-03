@@ -49,7 +49,7 @@ public class CMLRelatedEntry extends AbstractRelatedEntry {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLRelatedEntry(this);
 
     }

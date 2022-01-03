@@ -62,7 +62,7 @@ public class CMLParameter extends AbstractParameter implements HasDictRef {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLParameter(this);
 
     }

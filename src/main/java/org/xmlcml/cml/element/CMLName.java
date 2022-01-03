@@ -53,7 +53,7 @@ public class CMLName extends AbstractName {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLName(this);
 
     }

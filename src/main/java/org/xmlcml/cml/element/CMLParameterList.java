@@ -57,7 +57,7 @@ public class CMLParameterList extends AbstractParameterList {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLParameterList(this);
 
     }

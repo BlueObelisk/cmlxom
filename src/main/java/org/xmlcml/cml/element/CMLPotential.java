@@ -52,7 +52,7 @@ public class CMLPotential extends AbstractPotential {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLPotential(this);
 
     }

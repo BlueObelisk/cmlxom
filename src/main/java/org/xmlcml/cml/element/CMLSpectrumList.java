@@ -52,7 +52,7 @@ public class CMLSpectrumList extends AbstractSpectrumList {
      *
      * @return Node
      */
-    public Node copy() {
+    public Element copy() {
         return new CMLSpectrumList(this);
 
     }
