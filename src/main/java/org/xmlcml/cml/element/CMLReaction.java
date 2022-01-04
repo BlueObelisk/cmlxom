@@ -365,7 +365,7 @@ public class CMLReaction extends AbstractReaction implements ReactionComponent {
     }
 
     /**
-     * @param product
+     * @param reactant
      */
     public void addReactant(CMLReactant reactant) {
     	CMLReactantList reactantList = getOrCreateReactantList();

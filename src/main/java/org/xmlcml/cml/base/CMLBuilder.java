@@ -87,9 +87,6 @@ public class CMLBuilder extends Builder implements CMLConstants {
      * 
      * @param xmlString to parse
      * @return the root element or null
-     * @throws ValidityException
-     * @throws ParsingException
-     * @throws IOException
      */
 
     public Element parseString(String xmlString) {

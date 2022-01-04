@@ -124,7 +124,7 @@ public class CMLEigen extends AbstractEigen {
      * @param eigenvalues
      * @param orient
      *            orientation
-     * @throws CMLException
+     * @throws RuntimeException
      */
     public CMLEigen(CMLMatrix eigenvectors, CMLArray eigenvalues,
             Orientation orient) {

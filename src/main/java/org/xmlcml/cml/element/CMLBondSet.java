@@ -101,7 +101,7 @@ public class CMLBondSet extends AbstractBondSet {
      *
      * @param ids
      *            the ids to use
-     * @throws CMLException
+     * @throws RuntimeException
      *             cannot find bond with id
      */
     // public CMLBondSet(/*CMLMolecule mol, */String[] ids)

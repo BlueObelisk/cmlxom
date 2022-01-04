@@ -463,7 +463,7 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
      * 
      * @param name
      *            of attribute
-     * @throws CMLException
+     * @throws RuntimeException
      *             standard message
      */
     protected void unknownAttributeName(String name) {

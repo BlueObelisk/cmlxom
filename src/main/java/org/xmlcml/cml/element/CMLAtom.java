@@ -92,7 +92,7 @@ public class CMLAtom extends AbstractAtom {
     /**
      * Create new CMLAtom with specified id and ChemicalElement.AS
      * @param id
-     * @param chem
+     * @param as atom symbol
      */
     public CMLAtom(String id, AS as) {
         this(id, ChemicalElement.getChemicalElement(as));
@@ -589,7 +589,7 @@ public class CMLAtom extends AbstractAtom {
 
     /** convenience method to determine whether atom is of given elementType;
      * 
-     * @param element
+     * @param elementType
      * @return true if element of same type as getElementType()
      */
     public boolean hasElement(String elementType) {

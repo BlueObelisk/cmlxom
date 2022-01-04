@@ -442,7 +442,7 @@ public class CMLMolecule
 	 *
 	 * @param newMol
 	 *            the CMLMolecule to append
-	 * @exception CMLException
+	 * @exception RuntimeException
 	 *                if the DOM operation failed
 	 */
 	public void appendMolecule(CMLMolecule newMol) {
@@ -503,6 +503,7 @@ public class CMLMolecule
 	 * transfers children single child molecule to this
 	 * and removes childMolecule.
 	 * Thus
+	 * {@code
 	 * <molecule id="m1">
 	 *   <molecule id="m2">
 	 *     <atomArray id="a1 a2"/>
@@ -512,6 +513,7 @@ public class CMLMolecule
 	 *   <molecule id="m1">
 	 *     <atomArray id="a1 a2"/>
 	 *   </molecule>
+	 * }
 	 * atom indexing should be reset
 	 */
 	public void normalizeSingleMoleculeChild() {
@@ -1349,7 +1351,7 @@ public class CMLMolecule
 	 * @param newIds
 	 *            vector of new IDs
 	 *
-	 * @throws CMLException
+	 * @throws RuntimeException
 	 *             IDs do not correspond, or have duplicates
 	 */
 	public void renameAtomIDs(List<String> oldIds, List<String> newIds) {

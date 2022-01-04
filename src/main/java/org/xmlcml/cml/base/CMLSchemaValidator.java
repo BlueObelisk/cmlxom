@@ -53,7 +53,7 @@ public class CMLSchemaValidator {
      * Fetches instance of schema validator.
      * @return validator
      * @throws IOException - if schema file is not found.
-     * @throws CMLException - if schema cannot be parsed.
+     * @throws RuntimeException - if schema cannot be parsed.
      */
     public static CMLSchemaValidator getInstance() throws IOException {
         if (instance == null) {
@@ -94,7 +94,7 @@ public class CMLSchemaValidator {
      * Throws exception if validation fails.
      * @param source
      * @throws IOException - if problem reading xml.
-     * @throws CMLException - if xml does not validate against CML schema.
+     * @throws RuntimeException - if xml does not validate against CML schema.
      */
     public void validateCML(Source source) throws IOException {
         Validator validator = schema.newValidator();
@@ -110,7 +110,7 @@ public class CMLSchemaValidator {
      * Throws exception if validation fails.
      * @param in
      * @throws IOException
-     * @throws CMLException
+     * @throws RuntimeException
      */
     public void validateCML(InputStream in) throws IOException {
         validateCML(new StreamSource(in));
@@ -121,7 +121,7 @@ public class CMLSchemaValidator {
      * Throws exception if validation fails.
      * @param in
      * @throws IOException
-     * @throws CMLException
+     * @throws RuntimeException
      */
     public void validateCML(Reader in) throws IOException {
         validateCML(new StreamSource(in));
@@ -133,7 +133,7 @@ public class CMLSchemaValidator {
      * Throws exception if validation fails.
      * @param d
      * @throws IOException
-     * @throws CMLException
+     * @throws RuntimeException
      */
     public void validateCML(nu.xom.Document d) throws IOException {
         ValidatorHandler handler = schema.newValidatorHandler();
@@ -150,7 +150,7 @@ public class CMLSchemaValidator {
      * Throws exception if validation fails.
      * @param node
      * @throws IOException
-     * @throws CMLException
+     * @throws RuntimeException
      */
     public void validateCML(nu.xom.Node node) throws IOException {
         ValidatorHandler handler = schema.newValidatorHandler();
@@ -167,7 +167,7 @@ public class CMLSchemaValidator {
      * Throws exception if validation fails.
      * @param node
      * @throws IOException
-     * @throws CMLException
+     * @throws RuntimeException
      */
     public void validateCML(org.w3c.dom.Node node) throws IOException {
         DOMSource source = new DOMSource(node);

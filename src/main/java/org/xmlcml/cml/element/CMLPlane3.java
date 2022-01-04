@@ -128,7 +128,7 @@ public class CMLPlane3 extends AbstractPlane3 {
      *            component
      * @param d
      *            distance
-     * @throws CMLException
+     * @throws RuntimeException
      */
     public CMLPlane3(double[] lmn, double d) {
         this();

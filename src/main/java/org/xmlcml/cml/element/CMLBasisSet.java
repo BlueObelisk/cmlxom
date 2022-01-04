@@ -233,7 +233,7 @@ public class CMLBasisSet extends AbstractBasisSet {
      * set atomic orbital coefficients.
      *
      * @param coefficients
-     * @throws CMLException
+     * @throws RuntimeException
      *             wrong size
      */
     public void setMolecularOrbitalCoefficients(CMLEigen coefficients)
@@ -279,7 +279,7 @@ public class CMLBasisSet extends AbstractBasisSet {
      * the first 2 rows will count just the valence electrond (H=1, Li=1, ...
      * F=7) and adjust for overall charge.
      *
-     * @throws CMLException
+     * @throws RuntimeException
      *             unsupported basis
      * @return electron count or 0 if molecule or basis not set
      */

@@ -423,11 +423,12 @@ public abstract class AbstractArg extends CMLElement {
     /** raplaces attribute on parent.
     * This is still experimental. Creates, overwriting
     *                 if necessary, an attribute on parent. Example:
-    *                 
+    * {@code
     *                 <foo>
     *                   <arg parentAttribute="bar">zubbo</arg>
     *                 
-    *                 will create an attribute bar="zubbo" on <foo> 
+    *                 will create an attribute bar="zubbo" on <foo>
+    * }
     *                 
     * @return CMLAttribute
     */
@@ -437,12 +438,12 @@ public abstract class AbstractArg extends CMLElement {
     /** raplaces attribute on parent.
     * This is still experimental. Creates, overwriting
     *                 if necessary, an attribute on parent. Example:
-    *                 
+    * {@code
     *                 <foo>
     *                   <arg parentAttribute="bar">zubbo</arg>
     *                 
     *                 will create an attribute bar="zubbo" on <foo> 
-    *                 
+    * }
     * @return String
     */
     public String getParentAttribute() {
@@ -455,12 +456,12 @@ public abstract class AbstractArg extends CMLElement {
     /** raplaces attribute on parent.
     * This is still experimental. Creates, overwriting
     *                 if necessary, an attribute on parent. Example:
-    *                 
+    * {@code
     *                 <foo>
     *                   <arg parentAttribute="bar">zubbo</arg>
     *                 
     *                 will create an attribute bar="zubbo" on <foo> 
-    *                 
+    * }
     * @param value title value
     * @throws RuntimeException attribute wrong value/type
     */

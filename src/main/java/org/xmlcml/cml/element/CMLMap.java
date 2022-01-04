@@ -91,7 +91,6 @@ public class CMLMap extends org.xmlcml.cml.element.AbstractMap {
         
         /**
          * return opposite of TO/FROM else null
-         * @param d
          * @return
          */
         public Direction opposite() {
@@ -544,8 +543,8 @@ public class CMLMap extends org.xmlcml.cml.element.AbstractMap {
      * gets mapped to or from attribute. works with sets
      *
      * if toFrom is Direction.FROM, returns the from attribute corresponding to
-     * the to attribute with value id thus for a map with some link <link
-     * from="f" to="t"/> getRef("t", Direction.FROM) returns "f"
+     * the to attribute with value id thus for a map with some link {@code <link
+     * from="f" to="t"/>} getRef("t", Direction.FROM) returns "f"
      *
      * @param id
      *            the id to be mapped, type determined by toFrom
@@ -565,8 +564,8 @@ public class CMLMap extends org.xmlcml.cml.element.AbstractMap {
      * gets link mapped to or from attribute. works with sets
      *
      * if toFrom is Direction.FROM, returns the link corresponding to the to
-     * attribute with value id thus for a map with some link <link from="f"
-     * to="t"/> getRef("t", Direction.FROM) returns the link
+     * attribute with value id thus for a map with some link {@code <link from="f"
+     * to="t"/>} getRef("t", Direction.FROM) returns the link
      *
      * @param id
      *            the id to be mapped, type determined by toFrom

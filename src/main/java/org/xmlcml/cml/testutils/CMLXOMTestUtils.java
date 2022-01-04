@@ -1139,7 +1139,7 @@ public final class CMLXOMTestUtils implements CMLConstants {
 	 * tests 2 XML objects for equality using canonical XML.
 	 * 
 	 * @param message
-	 * @param refNode
+	 * @param refXMLString
 	 *            first node
 	 * @param testNode
 	 *            second node
@@ -1394,7 +1394,7 @@ public final class CMLXOMTestUtils implements CMLConstants {
 
 	/**
 	 * convenience method to parse test file. 
-	 * @param filename relative to classpath
+	 * @param file relative to classpath
 	 * @return root element
 	 */
 	public static Element parseValidFile(File file) {

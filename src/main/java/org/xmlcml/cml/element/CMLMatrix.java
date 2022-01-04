@@ -168,7 +168,7 @@ public class CMLMatrix extends AbstractMatrix
      *
      * @param matrix
      *            rectangular matrix
-     * @throws CMLException
+     * @throws RuntimeException
      *             wrong matrix shape
      */
     public CMLMatrix(int[][] matrix) {
@@ -617,7 +617,7 @@ public class CMLMatrix extends AbstractMatrix
      * @param m2
      *            matrix to be concatenated
      * @return result of applying this to m2
-     * @throws CMLException
+     * @throws RuntimeException
      */
     public CMLMatrix multiply(CMLMatrix m2) {
         RealMatrix t = null;

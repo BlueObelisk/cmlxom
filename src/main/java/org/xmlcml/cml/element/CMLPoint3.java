@@ -146,7 +146,7 @@ public class CMLPoint3 extends AbstractPoint3 {
      *
      * @param xyz3
      *            3 components
-     * @throws CMLException
+     * @throws RuntimeException
      *             xyz3 must be of length 3
      */
     public void setXYZ3(double[] xyz3) {
@@ -393,7 +393,7 @@ public class CMLPoint3 extends AbstractPoint3 {
      *            the index
      * @param d
      *            the value
-     * @throws CMLException
+     * @throws RuntimeException
      *             bad value of n
      */
     public void setElementAt(int n, double d) {
@@ -544,7 +544,7 @@ public class CMLPoint3 extends AbstractPoint3 {
      * @param p3
      * @param p4
      * @return angle unsigned radians
-     * @throws CMLException
+     * @throws RuntimeException
      */
     public double getTorsion(CMLPoint3 p2, CMLPoint3 p3, CMLPoint3 p4)
             {

@@ -183,7 +183,7 @@ public class CMLSpectator extends AbstractSpectator implements ReactionComponent
      * bond information (number, attributes/children, but not order). Bonds are
      * identified by their atomRefs, not their bondIDs.
      *
-     * @throws CMLException
+     * @throws RuntimeException
      *             molecules cannot be matched
      */
     public void mergeChildMolecules() {

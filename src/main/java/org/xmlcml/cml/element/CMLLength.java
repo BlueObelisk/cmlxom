@@ -101,7 +101,7 @@ public class CMLLength extends AbstractLength {
     /**
      * gets atomRefs3 as array of atoms.
      *
-     * uses the value in <angle> element
+     * uses the value in &lt;angle&gt; element
      * @param molecule
      * @return the atoms (null if no atomRefs3)
      */
@@ -166,7 +166,7 @@ public class CMLLength extends AbstractLength {
     /** translates elements to list.
      * @param lengthElements
      * @return the list of lengths
-     * @deprecated try to use List<CMLLength>
+     * @deprecated try to use List&lt;CMLLength&gt;
      */
     public static List<CMLLength> getList(CMLElements<CMLLength> lengthElements) {
         List<CMLLength> lengthList = new ArrayList<CMLLength>();

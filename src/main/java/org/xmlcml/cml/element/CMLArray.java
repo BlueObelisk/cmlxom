@@ -288,7 +288,7 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 	 * 
 	 * @param array
 	 * @param delimiter
-	 * @throws CMLException
+	 * @throws RuntimeException
 	 *             doubles must not contain delimiter
 	 */
 	public CMLArray(int[] array, String delimiter) {
@@ -345,7 +345,7 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 	/**
 	 * creates array of type comptatible with scalar can be used to add
 	 * subsequently scalar contents to array does NOT add scalar contents
-	 * typical use List<CMLScalar> scalars; CMLArray array =
+	 * typical use List&lt;CMLScalar&gt; scalars; CMLArray array =
 	 * CMLArray.createEmptyArray(scalars.get(0)); for (CMLScalar scalar :
 	 * scalars) { array.append(scalar); }
 	 * 
@@ -363,7 +363,6 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 	
 	/**
 	 * creates a new array formed from a subset of the current array
-	 * @param array
 	 * @param start inclusive start
 	 * @param end inclusive end
 	 * @return new array of correct dataType and dictRef; null if fails
@@ -859,7 +858,7 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 	 * 
 	 * @param array
 	 *            the array to test; can have different owner
-	 * @throws CMLException
+	 * @throws RuntimeException
 	 *             if not of same numeric data type and size
 	 */
 	public void checkNumericConformability(CMLArray array) {
@@ -885,7 +884,7 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 	 * 
 	 * @param array
 	 *            the array to subtract; can have different owner
-	 * @throws CMLException
+	 * @throws RuntimeException
 	 *             inappropriate dataTypes, unequal arrays
 	 * @return new array
 	 */
@@ -917,7 +916,7 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 	 * 
 	 * @param array
 	 *            the array to add; can have different owner
-	 * @throws CMLException
+	 * @throws RuntimeException
 	 *             inappropriate dataTypes, unequal arrays
 	 * 
 	 * @return the new array
@@ -964,10 +963,10 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 	/**
 	 * add a double. datatype must have been set to XSD_DOUBLE
 	 * 
-	 * @param d
-	 *            double to add
+	 * @param b
+	 *            boolean to add
 	 * @throws RuntimeException
-	 *             dataType not XSD_DOUBLE
+	 *             dataType not XSD_BOOLEAN
 	 */
 	public void append(boolean b) throws RuntimeException {
 		String dataType = this.getDataType();
@@ -1147,7 +1146,7 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 	/** makes a list of CMLArrays
 	 * 
 	 * @param elements
-	 * @return List<CMLArray>
+	 * @return List&lt;CMLArray&gt;
 	 */
 	public static List<CMLArray> extractArrays(List<Element> elements) {
 		List<CMLArray> arrayList = new ArrayList<CMLArray>();
