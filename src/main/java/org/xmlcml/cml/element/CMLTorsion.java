@@ -105,7 +105,7 @@ public class CMLTorsion extends AbstractTorsion {
     /**
      * gets atomRefs4 as list of atoms.
      *
-     * uses the value in <torsion> element
+     * uses the value in 'torsion' element
      *
      * @param molecule
      * @return the atoms (null if no atomRefs4)
@@ -132,7 +132,7 @@ public class CMLTorsion extends AbstractTorsion {
     /**
      * gets atomRefs4 as list of atoms.
      *
-     * uses the value in <torsion> element
+     * uses the value in 'torsion' element
      *
      * @param atomSet
      * @return the atoms (null if no atomRefs4)
@@ -200,7 +200,7 @@ public class CMLTorsion extends AbstractTorsion {
     /**
      * gets value calculated from coordinates.
      *
-     * @param atomSet
+     * @param atomList
      * @return the torsion (NaN if cannot calculate)
      */
     public double getCalculatedTorsion(List<CMLAtom> atomList) {

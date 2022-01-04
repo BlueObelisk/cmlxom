@@ -410,7 +410,7 @@ public class CMLSymmetry extends AbstractSymmetry {
     /** convenience method to get a single symmetry descendant of an element.
      * 
      * @param element to search under
-     * @return the <symmetry>
+     * @return the symmetry
      * @throws RuntimeException if 0 or >1 nodes
      */
     //TODO should this really call a RunTimeException?

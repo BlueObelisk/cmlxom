@@ -245,8 +245,8 @@ public class CMLTransform3 extends AbstractTransform3 {
      *            vector to rotate
      * @param v2
      *            vector to rotate v1 onto
-     * @exception CMLException
-     *                <TT>v1</TT> or <TT>v2</TT> is zero length
+     * @exception RuntimeException
+     *                {@code <TT>v1</TT> or <TT>v2</TT> } is zero length
      */
     public CMLTransform3(CMLVector3 v1, CMLVector3 v2) {
         Transform3 teucl3 = new Transform3(v1.getEuclidVector3(), v2

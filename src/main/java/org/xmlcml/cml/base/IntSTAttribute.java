@@ -123,7 +123,7 @@ public class IntSTAttribute extends CMLAttribute {
      * 
      * @param i
      *            the value
-     * @throws CMLException
+     * @throws RuntimeException
      *             wrong type or value fails
      */
     public void checkValue(int i) {

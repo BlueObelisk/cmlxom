@@ -114,7 +114,7 @@ public class BooleanSTAttribute extends CMLAttribute {
      * 
      * @param b
      *            the value
-     * @throws CMLException
+     * @throws RuntimeException
      *             wrong type or value fails
      */
     public void checkValue(boolean b) {

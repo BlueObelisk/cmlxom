@@ -129,7 +129,7 @@ public class CMLParameter extends AbstractParameter implements HasDictRef {
 
     // ------------------------ analogous to CMLProperty -------------------
     /** makes sure property has the structure:
-     * <property @title @dictRef><scalar @dataType @units>...
+     * {@code <property @title @dictRef><scalar @dataType @units>...}
      * if zero or many children (scalar, array, matrix) no-op
      *
      */

@@ -158,8 +158,8 @@ public class CMLSpectatorList extends AbstractSpectatorList implements
 
     /**
      * gets descendant reactionComponents. note that this will return all
-     * containers as well as contained. thus calling this on: <reaction>
-     * <reactantList> <reactant/> </reactantList> </reaction> will return 2
+     * containers as well as contained. thus calling this on: {@code <reaction>
+     * <reactantList> <reactant/> </reactantList> </reaction>} will return 2
      * components, reactantList, followed by reactant.
      *
      * @return empty if no components (some components such as CMLProduct will
@@ -171,8 +171,8 @@ public class CMLSpectatorList extends AbstractSpectatorList implements
 
     /**
      * gets child reactionComponents. note that this will return containers but
-     * not their contents. thus calling this on: <reaction> <reactantList>
-     * <reactant/> </reactantList> </reaction> will return 1 components,
+     * not their contents. thus calling this on: {@code <reaction> <reactantList>
+     * <reactant/> </reactantList> </reaction>} will return 1 components,
      * reactantList.
      *
      * @return empty if no components (some components such as CMLProduct will

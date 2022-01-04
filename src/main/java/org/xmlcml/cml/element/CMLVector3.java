@@ -180,7 +180,7 @@ public class CMLVector3 extends AbstractVector3 {
      *
      * @param xyz3
      *            3 components
-     * @throws org.xmlcml.cml.base.RuntimeException
+     * @throws RuntimeException
      *             xyz3 must be of length 3
      */
     public void setXYZ3(double[] xyz3) throws RuntimeException {

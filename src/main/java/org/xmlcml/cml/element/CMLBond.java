@@ -737,7 +737,7 @@ public class CMLBond extends AbstractBond {
 
 	/** helper function to determinate whether bond contains atom of given elementType.
 	 * 
-	 * @param element
+	 * @param elementType
 	 * @return true if one or more atoms is of this type
 	 */
 	public boolean containsElement(String elementType) {

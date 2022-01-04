@@ -164,7 +164,7 @@ public class CMLAtomParity extends AbstractAtomParity {
     /**
      * gets atomRefs4 as array of atoms.
      *
-     * uses the value in <atomParity> element
+     * uses the value in 'atomParity' element
      *
      * @param molecule
      * @return the atoms (null if no atomRefs4)

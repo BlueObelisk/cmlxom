@@ -43,7 +43,7 @@ public class ChemicalElement {
 
     /** type of element.
      * An element may have several types
-     * we shall generate a List<Type> for each
+     * we shall generate a List&lt;Type&gt; for each
      * element
      * More to be added...
      * @author pm286
@@ -702,7 +702,7 @@ public class ChemicalElement {
 
     /** get the element corresponding to a Type.
      * not all elements are present
-     * @param symbol
+     * @param as atom symbol
      * @return element or null if not found
      */
     public static ChemicalElement getChemicalElement(AS as) {

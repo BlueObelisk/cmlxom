@@ -263,7 +263,7 @@ public class CMLCrystal extends AbstractCrystal {
      * -a*sin(beta)*cos(gamma*) b*sin(alpha) 0.0 a*cos(beta) b*cos(alpha) c
      *
      * @return the orthogonalization matrix
-     * @throws CMLException
+     * @throws RuntimeException
      */
 
     public RealSquareMatrix getOrthogonalizationMatrix() {
@@ -311,7 +311,7 @@ public class CMLCrystal extends AbstractCrystal {
      * @param gamma
      *            the gamma cell angle (DEGREES)
      *
-     * @throws CMLException
+     * @throws RuntimeException
      *             corrupted number of cell parameters
      */
     public void setCellParameters(double a, double b, double c, double alpha,
@@ -333,7 +333,7 @@ public class CMLCrystal extends AbstractCrystal {
      *            (length 6: 3 lengths ANGSTROM and three angles DEGREES - IN
      *            ORDER)
      *
-     * @throws CMLException
+     * @throws RuntimeException
      *             corrupted number of cell parameters
      */
     public void setCellParameters(double params[]) {
@@ -351,7 +351,7 @@ public class CMLCrystal extends AbstractCrystal {
      * @param error
      *            if not null errors in lengths and angles in same units
      *
-     * @throws CMLException
+     * @throws RuntimeException
      *             corrupted number of cell parameters
      */
     public void setCellParameters(double params[], double error[])
@@ -500,7 +500,7 @@ public class CMLCrystal extends AbstractCrystal {
      *
      * Values ARE IN ANGSTROM and DEGREES.
      *
-     * @throws CMLException
+     * @throws RuntimeException
      *             corrupted number of cell parameters
      * @return double[] the parameters in order (null if not set)
      */
@@ -809,7 +809,7 @@ public class CMLCrystal extends AbstractCrystal {
     /** convenience method to get a single crystal descendant of an element.
      *
      * @param element to search under
-     * @return the <crystal>
+     * @return the 'crystal'
      * @throws RuntimeException if 0 or >1 nodes
      */
     public static CMLCrystal getContainedCrystal(CMLElement element) throws RuntimeException {

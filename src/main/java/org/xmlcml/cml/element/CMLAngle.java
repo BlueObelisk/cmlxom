@@ -164,7 +164,7 @@ public class CMLAngle extends AbstractAngle {
      * gets value calculated from coordinates. requires atomRefs3 to be set and
      * valid. then gets the angle between atomRefs3 0-1-2
      *
-     * @param atomSet
+     * @param atomList
      * @return the angle in degrees (NaN if cannot calculate)
      */
     public double getCalculatedAngle(List<CMLAtom> atomList) {
@@ -231,7 +231,7 @@ public class CMLAngle extends AbstractAngle {
     /** translates elements to list.
      * @param angleElements
      * @return the list of angles
-     * @deprecated try to use List<CMLAngle>
+     * @deprecated try to use List&lt;CMLAngle&gt;
      */
     public static List<CMLAngle> getList(CMLElements<CMLAngle> angleElements) {
         List<CMLAngle> angleList = new ArrayList<CMLAngle>();

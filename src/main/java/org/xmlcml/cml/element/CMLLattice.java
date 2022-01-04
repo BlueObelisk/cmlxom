@@ -139,7 +139,7 @@ public class CMLLattice extends AbstractLattice {
      * get i'th lattice vector as CMLVector.
      *
      * @param i
-     *            index of vector (0 <= i <= 2)
+     *            index of vector (0 &le; i &le; 2)
      * @return vector or null
      */
     public CMLVector3 getCMLVector3(int i) {

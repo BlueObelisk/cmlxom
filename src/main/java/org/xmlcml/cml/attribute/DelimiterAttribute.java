@@ -248,7 +248,7 @@ public class DelimiterAttribute extends StringSTAttribute {
     
     /** set double content. if delimiter is not whitespace, prepend and append it
      *
-     * @param dd array of doubles
+     * @param bb array of booleans
      * @return string
      */
     public String getDelimitedXMLContent(boolean[] bb) {

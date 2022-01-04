@@ -80,9 +80,9 @@ public class CMLBondStereo extends AbstractBondStereo {
     
     /** matches parity for two exemplars of same bondStereo
      * example:
-     * <bondStereo atomRefs4='a1 a2 a3 a4'>C</bondStereo>
+     * {@code <bondStereo atomRefs4='a1 a2 a3 a4'>C</bondStereo>}
      * and
-     * <bondStereo atomRefs4='a4 a3 a2 a1'>C</bondStereo>
+     * {@code <bondStereo atomRefs4='a4 a3 a2 a1'>C</bondStereo>}
      * are identical - any other combination is not
      * @param bs
      * @return 1 if identical -1 if opposite 0 if neither

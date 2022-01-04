@@ -75,7 +75,7 @@ public abstract class CMLUtil implements CMLConstants {
 	 * 
 	 * @param name
 	 *            of XMLName
-	 * @throws CMLException
+	 * @throws RuntimeException
 	 *             not colonized
 	 */
 	public final static void checkPrefixedName(String name) {
@@ -133,7 +133,6 @@ public abstract class CMLUtil implements CMLConstants {
 	 * uses element.query(xpath, xPathContext);
 	 * @param element
 	 * @param xpath 
-	 * @param xPathContext defines prefix/namespace used in query
 	 * @return value if exactly 1 node (0 or many returns null)
 	 */
 	public static String getSingleValue(Element element, String xpath) {
@@ -186,7 +185,7 @@ public abstract class CMLUtil implements CMLConstants {
 	 * fragile if nodes are removed)
 	 * if query result is not a CMLElement it is omitted form list, so be careful
 	 * 
-	 * @param element
+	 * @param node
 	 * @param xpath xpath relative to node
 	 * @param context
 	 * @return list of CMLelements - empty if none
@@ -256,11 +255,8 @@ public abstract class CMLUtil implements CMLConstants {
 	 * 
 	 * @param el
 	 *            the element
-	 * @param os
-	 *            output stream
-	 * @param indent
-	 *            indentation
-	 * @throws IOException
+	 * @param message
+	 *            the message
 	 */
 	public static void debug(Element el, String message) {
 		Util.println(">>>>" + message + ">>>>");
@@ -601,7 +597,8 @@ public abstract class CMLUtil implements CMLConstants {
 
 	/**
 	 * copies atributes of 'from' to 'to'
-	 * @param element
+	 * @param from
+	 * @param to
 	 */
 	public static void copyAttributes(Element from, Element to) {
 		int natt = from.getAttributeCount();
@@ -861,8 +858,8 @@ public abstract class CMLUtil implements CMLConstants {
 	 * tests 2 XML objects for equality using recursive descent.
 	 * includes namespace testing
 	 * 
-	 * @param refString xml serialization of first Element
-	 * @param testNode second Element
+	 * @param refNodeXML xml serialization of first Element
+	 * @param testElement second Element
 	 * @param stripWhite if true remove w/s nodes
 	 * @return message of where elements differ (null if identical)
 	 */
@@ -883,8 +880,8 @@ public abstract class CMLUtil implements CMLConstants {
 	 * tests 2 XML objects for equality using recursive descent.
 	 * includes namespace testing
 	 * 
-	 * @param refNode first node
-	 * @param testNode second node
+	 * @param refElement first node
+	 * @param testElement second node
 	 * @param stripWhite if true remove w/s nodes
 	 * @return message of where elements differ (null if identical)
 	 */

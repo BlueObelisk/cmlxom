@@ -392,7 +392,7 @@ public class CMLScalar extends AbstractScalar implements HasUnits, HasScalar, Ha
 	 * 
 	 * @param scalar
 	 *            the scalar to test; can have different owner
-	 * @throws CMLException
+	 * @throws RuntimeException
 	 *             if not of same numeric data type
 	 */
 	void checkNumericConformability(CMLScalar scalar) {
@@ -412,7 +412,7 @@ public class CMLScalar extends AbstractScalar implements HasUnits, HasScalar, Ha
 	 * 
 	 * @param scalar
 	 *            the scalar to subtract; can have different owner
-	 * @throws CMLException
+	 * @throws RuntimeException
 	 *             inappropriate dataTypes
 	 * @return new scalar
 	 */
@@ -435,7 +435,7 @@ public class CMLScalar extends AbstractScalar implements HasUnits, HasScalar, Ha
 	 * 
 	 * @param scalar
 	 *            the scalar to subtract; can have different owner
-	 * @throws CMLException
+	 * @throws RuntimeException
 	 *             inappropriate dataTypes, unequal scalars
 	 */
 	public void subtractEquals(CMLScalar scalar) {
@@ -455,7 +455,7 @@ public class CMLScalar extends AbstractScalar implements HasUnits, HasScalar, Ha
 	 * 
 	 * @param scalar
 	 *            the scalar to add;
-	 * @throws CMLException
+	 * @throws RuntimeException
 	 *             inappropriate dataTypes
 	 * @return new scalar
 	 */
@@ -478,7 +478,7 @@ public class CMLScalar extends AbstractScalar implements HasUnits, HasScalar, Ha
 	 * 
 	 * @param scalar
 	 *            the scalar to subtract;
-	 * @throws CMLException
+	 * @throws RuntimeException
 	 *             inappropriate dataTypes, unequal scalars
 	 */
 	public void plusEquals(CMLScalar scalar) {

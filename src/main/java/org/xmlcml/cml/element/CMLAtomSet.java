@@ -725,7 +725,7 @@ public class CMLAtomSet extends AbstractAtomSet {
      * (i.e. no recursion) compare atom[i] with otherAtom[i] until a mismatch is
      * found return atom[i].compareTo(otherAtom[i]); if atomSets are of
      * different length, but match to the lengtn of the shortest, then if
-     * atomSet.length < otherAtomSet return -1 else 1 if otherAtomSet is null,
+     * atomSet.length &lt; otherAtomSet return -1 else 1 if otherAtomSet is null,
      * return 1 (even if this contains zero atoms)
      *
      * @param otherAtomSet
@@ -963,7 +963,7 @@ public class CMLAtomSet extends AbstractAtomSet {
      *
      * @param atomSet2
      *            atomSet to xor with
-     * @throws CMLException
+     * @throws RuntimeException
      * @return atomSet
      *
      */
@@ -1000,7 +1000,7 @@ public class CMLAtomSet extends AbstractAtomSet {
      * @param atomSet2
      *            atomSet to insersect with
      * @return String array of atom Ids
-     * @throws CMLException
+     * @throws RuntimeException
      */
     public String[] intersectionByAtomId(CMLAtomSet atomSet2)
             {
@@ -1022,7 +1022,7 @@ public class CMLAtomSet extends AbstractAtomSet {
      * @param atomSet2
      *            atomSet to compliment
      * @return String array of atom Ids
-     * @throws CMLException
+     * @throws RuntimeException
      */
     public String[] complementByAtomId(CMLAtomSet atomSet2) {
         CMLAtomSet result = complement(atomSet2);
@@ -1041,7 +1041,7 @@ public class CMLAtomSet extends AbstractAtomSet {
      * @param atomSet2
      *            atomSet to unite with
      * @return ids
-     * @throws CMLException
+     * @throws RuntimeException
      */
     public String[] unionByAtomId(CMLAtomSet atomSet2) {
         CMLAtomSet result = union(atomSet2);
@@ -1060,7 +1060,7 @@ public class CMLAtomSet extends AbstractAtomSet {
      * @param atomSet2
      *            atomSet to xor with
      * @return ids
-     * @throws CMLException
+     * @throws RuntimeException
      */
     public String[] symmetricDifferenceByAtomId(CMLAtomSet atomSet2)
             {
@@ -1116,7 +1116,7 @@ public class CMLAtomSet extends AbstractAtomSet {
      *
      * @param p2Vector
      *            the vector
-     * @throws CMLException
+     * @throws RuntimeException
      *             vector of wrong length
      */
     public void setVector2D(List<Real2> p2Vector) {
@@ -1233,7 +1233,7 @@ public class CMLAtomSet extends AbstractAtomSet {
      * Applies label to all atoms in set.
      *
      * @param labelValue
-     * @throws CMLException
+     * @throws RuntimeException
      */
     public void labelAtoms(String labelValue) {
         List<CMLAtom> atoms = this.getAtoms();
@@ -1366,7 +1366,7 @@ public class CMLAtomSet extends AbstractAtomSet {
      *            from links may point
      * @param toAtomSet
      *            to which to links may point
-     * @throws CMLException
+     * @throws RuntimeException
      *             atom not in set
      */
     public void removeAtoms(CMLMap map, CMLAtomSet toAtomSet)
@@ -1383,7 +1383,7 @@ public class CMLAtomSet extends AbstractAtomSet {
      * @param control
      *            Direction.TO or Direction.FROM controls which end of link to
      *            use
-     * @throws CMLException
+     * @throws RuntimeException
      */
     public void removeAtoms(CMLMap map, Direction control) {
         for (String ref : map.getRefs(control)) {

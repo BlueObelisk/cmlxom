@@ -228,7 +228,7 @@ public class CMLAssert {
 	 * 
 	 * @param mol
 	 *            to compare
-	 * @param fixture
+	 * @param mol1
 	 *            .mol1 other molecule
 	 */
 	public static void assertEqualsCanonically(CMLMolecule mol, CMLMolecule mol1) {
