@@ -265,7 +265,7 @@ public abstract class AbstractExpression extends CMLElement {
     /** The data type of the object.
     * Normally applied to scalar/array 
     *                 objects but may extend to more complex one.
-    * @return CMLElements<CMLParameter>
+    * @return CMLElements&lt;CMLParameter&gt;
     */
     public CMLElements<CMLParameter> getParameterElements() {
         Elements elements = this.getChildElements("parameter", CMLConstants.CML_NS);
@@ -285,7 +285,7 @@ public abstract class AbstractExpression extends CMLElement {
     /** The data type of the object.
     * Normally applied to scalar/array 
     *                 objects but may extend to more complex one.
-    * @return CMLElements<CMLOperator>
+    * @return CMLElements&lt;CMLOperator&gt;
     */
     public CMLElements<CMLOperator> getOperatorElements() {
         Elements elements = this.getChildElements("operator", CMLConstants.CML_NS);

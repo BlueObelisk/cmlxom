@@ -256,7 +256,7 @@ public abstract class AbstractIsotopeList extends CMLElement {
         this.appendChild(isotope);
     }
     /** null
-    * @return CMLElements<CMLIsotope>
+    * @return CMLElements&lt;CMLIsotope&gt;
     */
     public CMLElements<CMLIsotope> getIsotopeElements() {
         Elements elements = this.getChildElements("isotope", CMLConstants.CML_NS);

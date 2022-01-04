@@ -585,7 +585,7 @@ public abstract class AbstractArg extends CMLElement {
     * This is still experimental.  if eval="_ijk_+3" and
     *                 the value of the ijk was 2, this would change the value of the arg to 5. 
     *                 Only + and - are currently allowed
-    * @return CMLElements<CMLAtom>
+    * @return CMLElements&lt;CMLAtom&gt;
     */
     public CMLElements<CMLAtom> getAtomElements() {
         Elements elements = this.getChildElements("atom", CMLConstants.CML_NS);
@@ -607,7 +607,7 @@ public abstract class AbstractArg extends CMLElement {
     * This is still experimental.  if eval="_ijk_+3" and
     *                 the value of the ijk was 2, this would change the value of the arg to 5. 
     *                 Only + and - are currently allowed
-    * @return CMLElements<CMLAtomType>
+    * @return CMLElements&lt;CMLAtomType&gt;
     */
     public CMLElements<CMLAtomType> getAtomTypeElements() {
         Elements elements = this.getChildElements("atomType", CMLConstants.CML_NS);
@@ -629,7 +629,7 @@ public abstract class AbstractArg extends CMLElement {
     * This is still experimental.  if eval="_ijk_+3" and
     *                 the value of the ijk was 2, this would change the value of the arg to 5. 
     *                 Only + and - are currently allowed
-    * @return CMLElements<CMLScalar>
+    * @return CMLElements&lt;CMLScalar&gt;
     */
     public CMLElements<CMLScalar> getScalarElements() {
         Elements elements = this.getChildElements("scalar", CMLConstants.CML_NS);
@@ -651,7 +651,7 @@ public abstract class AbstractArg extends CMLElement {
     * This is still experimental.  if eval="_ijk_+3" and
     *                 the value of the ijk was 2, this would change the value of the arg to 5. 
     *                 Only + and - are currently allowed
-    * @return CMLElements<CMLArray>
+    * @return CMLElements&lt;CMLArray&gt;
     */
     public CMLElements<CMLArray> getArrayElements() {
         Elements elements = this.getChildElements("array", CMLConstants.CML_NS);
@@ -673,7 +673,7 @@ public abstract class AbstractArg extends CMLElement {
     * This is still experimental.  if eval="_ijk_+3" and
     *                 the value of the ijk was 2, this would change the value of the arg to 5. 
     *                 Only + and - are currently allowed
-    * @return CMLElements<CMLMatrix>
+    * @return CMLElements&lt;CMLMatrix&gt;
     */
     public CMLElements<CMLMatrix> getMatrixElements() {
         Elements elements = this.getChildElements("matrix", CMLConstants.CML_NS);
@@ -695,7 +695,7 @@ public abstract class AbstractArg extends CMLElement {
     * This is still experimental.  if eval="_ijk_+3" and
     *                 the value of the ijk was 2, this would change the value of the arg to 5. 
     *                 Only + and - are currently allowed
-    * @return CMLElements<CMLExpression>
+    * @return CMLElements&lt;CMLExpression&gt;
     */
     public CMLElements<CMLExpression> getExpressionElements() {
         Elements elements = this.getChildElements("expression", CMLConstants.CML_NS);

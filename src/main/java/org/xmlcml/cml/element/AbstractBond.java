@@ -514,7 +514,7 @@ public abstract class AbstractBond extends CMLElement {
     *                 cyclic nature of a bond. It need not correspond to what is deducible from the
     *                 connection table (e.g. a bond in a ring might be labelled as 'acyclic'
     *                 or 'unknown')
-    * @return CMLElements<CMLBondStereo>
+    * @return CMLElements&lt;CMLBondStereo&gt;
     */
     public CMLElements<CMLBondStereo> getBondStereoElements() {
         Elements elements = this.getChildElements("bondStereo", CMLConstants.CML_NS);

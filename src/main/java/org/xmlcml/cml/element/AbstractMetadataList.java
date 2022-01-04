@@ -298,7 +298,7 @@ public abstract class AbstractMetadataList extends CMLElement {
     }
     /** Role of the object.
     * How the object functions or its position in the architecture. No controlled vocabulary.
-    * @return CMLElements<CMLMetadataList>
+    * @return CMLElements&lt;CMLMetadataList&gt;
     */
     public CMLElements<CMLMetadataList> getMetadataListElements() {
         Elements elements = this.getChildElements("metadataList", CMLConstants.CML_NS);
@@ -316,7 +316,7 @@ public abstract class AbstractMetadataList extends CMLElement {
     }
     /** Role of the object.
     * How the object functions or its position in the architecture. No controlled vocabulary.
-    * @return CMLElements<CMLMetadata>
+    * @return CMLElements&lt;CMLMetadata&gt;
     */
     public CMLElements<CMLMetadata> getMetadataElements() {
         Elements elements = this.getChildElements("metadata", CMLConstants.CML_NS);

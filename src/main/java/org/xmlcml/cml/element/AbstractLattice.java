@@ -298,7 +298,7 @@ public abstract class AbstractLattice extends CMLElement {
     }
     /** The spaceType of the lattice.
     * Usually real or reciprocal. No default. The semantics of this are software-dependent (i.e. this Schema does not check for consistency for unitTypes, etc.
-    * @return CMLElements<CMLScalar>
+    * @return CMLElements&lt;CMLScalar&gt;
     */
     public CMLElements<CMLScalar> getScalarElements() {
         Elements elements = this.getChildElements("scalar", CMLConstants.CML_NS);
@@ -316,7 +316,7 @@ public abstract class AbstractLattice extends CMLElement {
     }
     /** The spaceType of the lattice.
     * Usually real or reciprocal. No default. The semantics of this are software-dependent (i.e. this Schema does not check for consistency for unitTypes, etc.
-    * @return CMLElements<CMLLatticeVector>
+    * @return CMLElements&lt;CMLLatticeVector&gt;
     */
     public CMLElements<CMLLatticeVector> getLatticeVectorElements() {
         Elements elements = this.getChildElements("latticeVector", CMLConstants.CML_NS);
@@ -334,7 +334,7 @@ public abstract class AbstractLattice extends CMLElement {
     }
     /** The spaceType of the lattice.
     * Usually real or reciprocal. No default. The semantics of this are software-dependent (i.e. this Schema does not check for consistency for unitTypes, etc.
-    * @return CMLElements<CMLMatrix>
+    * @return CMLElements&lt;CMLMatrix&gt;
     */
     public CMLElements<CMLMatrix> getMatrixElements() {
         Elements elements = this.getChildElements("matrix", CMLConstants.CML_NS);
@@ -352,7 +352,7 @@ public abstract class AbstractLattice extends CMLElement {
     }
     /** The spaceType of the lattice.
     * Usually real or reciprocal. No default. The semantics of this are software-dependent (i.e. this Schema does not check for consistency for unitTypes, etc.
-    * @return CMLElements<CMLSymmetry>
+    * @return CMLElements&lt;CMLSymmetry&gt;
     */
     public CMLElements<CMLSymmetry> getSymmetryElements() {
         Elements elements = this.getChildElements("symmetry", CMLConstants.CML_NS);

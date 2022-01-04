@@ -220,7 +220,7 @@ public abstract class AbstractTransitionState extends CMLElement {
         this.appendChild(molecule);
     }
     /** null
-    * @return CMLElements<CMLMolecule>
+    * @return CMLElements&lt;CMLMolecule&gt;
     */
     public CMLElements<CMLMolecule> getMoleculeElements() {
         Elements elements = this.getChildElements("molecule", CMLConstants.CML_NS);
@@ -236,7 +236,7 @@ public abstract class AbstractTransitionState extends CMLElement {
         this.appendChild(propertyList);
     }
     /** null
-    * @return CMLElements<CMLPropertyList>
+    * @return CMLElements&lt;CMLPropertyList&gt;
     */
     public CMLElements<CMLPropertyList> getPropertyListElements() {
         Elements elements = this.getChildElements("propertyList", CMLConstants.CML_NS);

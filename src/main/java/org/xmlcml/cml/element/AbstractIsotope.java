@@ -387,7 +387,7 @@ public abstract class AbstractIsotope extends CMLElement {
         this.appendChild(abundance);
     }
     /** null
-    * @return CMLElements<CMLAbundance>
+    * @return CMLElements&lt;CMLAbundance&gt;
     */
     public CMLElements<CMLAbundance> getAbundanceElements() {
         Elements elements = this.getChildElements("abundance", CMLConstants.CML_NS);

@@ -403,7 +403,7 @@ public abstract class AbstractTable extends CMLElement {
         this.appendChild(arrayList);
     }
     /** null
-    * @return CMLElements<CMLArrayList>
+    * @return CMLElements&lt;CMLArrayList&gt;
     */
     public CMLElements<CMLArrayList> getArrayListElements() {
         Elements elements = this.getChildElements("arrayList", CMLConstants.CML_NS);
@@ -419,7 +419,7 @@ public abstract class AbstractTable extends CMLElement {
         this.appendChild(tableHeader);
     }
     /** null
-    * @return CMLElements<CMLTableHeader>
+    * @return CMLElements&lt;CMLTableHeader&gt;
     */
     public CMLElements<CMLTableHeader> getTableHeaderElements() {
         Elements elements = this.getChildElements("tableHeader", CMLConstants.CML_NS);
@@ -435,7 +435,7 @@ public abstract class AbstractTable extends CMLElement {
         this.appendChild(tableRowList);
     }
     /** null
-    * @return CMLElements<CMLTableRowList>
+    * @return CMLElements&lt;CMLTableRowList&gt;
     */
     public CMLElements<CMLTableRowList> getTableRowListElements() {
         Elements elements = this.getChildElements("tableRowList", CMLConstants.CML_NS);
@@ -451,7 +451,7 @@ public abstract class AbstractTable extends CMLElement {
         this.appendChild(tableContent);
     }
     /** null
-    * @return CMLElements<CMLTableContent>
+    * @return CMLElements&lt;CMLTableContent&gt;
     */
     public CMLElements<CMLTableContent> getTableContentElements() {
         Elements elements = this.getChildElements("tableContent", CMLConstants.CML_NS);

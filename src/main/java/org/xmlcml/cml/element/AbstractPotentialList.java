@@ -220,7 +220,7 @@ public abstract class AbstractPotentialList extends CMLElement {
         this.appendChild(potential);
     }
     /** null
-    * @return CMLElements<CMLPotential>
+    * @return CMLElements&lt;CMLPotential&gt;
     */
     public CMLElements<CMLPotential> getPotentialElements() {
         Elements elements = this.getChildElements("potential", CMLConstants.CML_NS);

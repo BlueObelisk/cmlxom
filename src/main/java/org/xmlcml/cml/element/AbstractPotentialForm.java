@@ -260,7 +260,7 @@ public abstract class AbstractPotentialForm extends CMLElement {
     }
     /** Name of the object.
     * A string by which the object is known. Often a required attribute. The may or may not be a semi-controlled vocabulary.
-    * @return CMLElements<CMLArg>
+    * @return CMLElements&lt;CMLArg&gt;
     */
     public CMLElements<CMLArg> getArgElements() {
         Elements elements = this.getChildElements("arg", CMLConstants.CML_NS);
@@ -278,7 +278,7 @@ public abstract class AbstractPotentialForm extends CMLElement {
     }
     /** Name of the object.
     * A string by which the object is known. Often a required attribute. The may or may not be a semi-controlled vocabulary.
-    * @return CMLElements<CMLParameter>
+    * @return CMLElements&lt;CMLParameter&gt;
     */
     public CMLElements<CMLParameter> getParameterElements() {
         Elements elements = this.getChildElements("parameter", CMLConstants.CML_NS);
@@ -296,7 +296,7 @@ public abstract class AbstractPotentialForm extends CMLElement {
     }
     /** Name of the object.
     * A string by which the object is known. Often a required attribute. The may or may not be a semi-controlled vocabulary.
-    * @return CMLElements<CMLExpression>
+    * @return CMLElements&lt;CMLExpression&gt;
     */
     public CMLElements<CMLExpression> getExpressionElements() {
         Elements elements = this.getChildElements("expression", CMLConstants.CML_NS);

@@ -275,7 +275,7 @@ public abstract class AbstractCrystal extends CMLElement {
         this.appendChild(scalar);
     }
     /** null
-    * @return CMLElements<CMLScalar>
+    * @return CMLElements&lt;CMLScalar&gt;
     */
     public CMLElements<CMLScalar> getScalarElements() {
         Elements elements = this.getChildElements("scalar", CMLConstants.CML_NS);
@@ -291,7 +291,7 @@ public abstract class AbstractCrystal extends CMLElement {
         this.appendChild(cellParameter);
     }
     /** null
-    * @return CMLElements<CMLCellParameter>
+    * @return CMLElements&lt;CMLCellParameter&gt;
     */
     public CMLElements<CMLCellParameter> getCellParameterElements() {
         Elements elements = this.getChildElements("cellParameter", CMLConstants.CML_NS);
@@ -307,7 +307,7 @@ public abstract class AbstractCrystal extends CMLElement {
         this.appendChild(symmetry);
     }
     /** null
-    * @return CMLElements<CMLSymmetry>
+    * @return CMLElements&lt;CMLSymmetry&gt;
     */
     public CMLElements<CMLSymmetry> getSymmetryElements() {
         Elements elements = this.getChildElements("symmetry", CMLConstants.CML_NS);

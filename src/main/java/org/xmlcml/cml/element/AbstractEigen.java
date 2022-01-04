@@ -344,7 +344,7 @@ public abstract class AbstractEigen extends CMLElement {
     * Describes whether the vectors are columns or 
     * 				rows. No default, so effectively mandatory unless you want to make implementers
     * 				guess and break applications.
-    * @return CMLElements<CMLArray>
+    * @return CMLElements&lt;CMLArray&gt;
     */
     public CMLElements<CMLArray> getArrayElements() {
         Elements elements = this.getChildElements("array", CMLConstants.CML_NS);
@@ -366,7 +366,7 @@ public abstract class AbstractEigen extends CMLElement {
     * Describes whether the vectors are columns or 
     * 				rows. No default, so effectively mandatory unless you want to make implementers
     * 				guess and break applications.
-    * @return CMLElements<CMLMatrix>
+    * @return CMLElements&lt;CMLMatrix&gt;
     */
     public CMLElements<CMLMatrix> getMatrixElements() {
         Elements elements = this.getChildElements("matrix", CMLConstants.CML_NS);

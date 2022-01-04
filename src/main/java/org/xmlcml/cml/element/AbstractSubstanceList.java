@@ -332,7 +332,7 @@ public abstract class AbstractSubstanceList extends CMLElement {
         this.appendChild(metadataList);
     }
     /** null
-    * @return CMLElements<CMLMetadataList>
+    * @return CMLElements&lt;CMLMetadataList&gt;
     */
     public CMLElements<CMLMetadataList> getMetadataListElements() {
         Elements elements = this.getChildElements("metadataList", CMLConstants.CML_NS);
@@ -348,7 +348,7 @@ public abstract class AbstractSubstanceList extends CMLElement {
         this.appendChild(amount);
     }
     /** null
-    * @return CMLElements<CMLAmount>
+    * @return CMLElements&lt;CMLAmount&gt;
     */
     public CMLElements<CMLAmount> getAmountElements() {
         Elements elements = this.getChildElements("amount", CMLConstants.CML_NS);
@@ -364,7 +364,7 @@ public abstract class AbstractSubstanceList extends CMLElement {
         this.appendChild(substance);
     }
     /** null
-    * @return CMLElements<CMLSubstance>
+    * @return CMLElements&lt;CMLSubstance&gt;
     */
     public CMLElements<CMLSubstance> getSubstanceElements() {
         Elements elements = this.getChildElements("substance", CMLConstants.CML_NS);
@@ -380,7 +380,7 @@ public abstract class AbstractSubstanceList extends CMLElement {
         this.appendChild(propertyList);
     }
     /** null
-    * @return CMLElements<CMLPropertyList>
+    * @return CMLElements&lt;CMLPropertyList&gt;
     */
     public CMLElements<CMLPropertyList> getPropertyListElements() {
         Elements elements = this.getChildElements("propertyList", CMLConstants.CML_NS);

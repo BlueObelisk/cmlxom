@@ -357,7 +357,7 @@ public abstract class AbstractReactantList extends CMLElement {
     /** The count of the object.
     * No fixed semantics or default, normally integers. 
     *                 It is presumed that the element can be multiplied by the count value.
-    * @return CMLElements<CMLMetadataList>
+    * @return CMLElements&lt;CMLMetadataList&gt;
     */
     public CMLElements<CMLMetadataList> getMetadataListElements() {
         Elements elements = this.getChildElements("metadataList", CMLConstants.CML_NS);
@@ -377,7 +377,7 @@ public abstract class AbstractReactantList extends CMLElement {
     /** The count of the object.
     * No fixed semantics or default, normally integers. 
     *                 It is presumed that the element can be multiplied by the count value.
-    * @return CMLElements<CMLName>
+    * @return CMLElements&lt;CMLName&gt;
     */
     public CMLElements<CMLName> getNameElements() {
         Elements elements = this.getChildElements("name", CMLConstants.CML_NS);
@@ -397,7 +397,7 @@ public abstract class AbstractReactantList extends CMLElement {
     /** The count of the object.
     * No fixed semantics or default, normally integers. 
     *                 It is presumed that the element can be multiplied by the count value.
-    * @return CMLElements<CMLReactantList>
+    * @return CMLElements&lt;CMLReactantList&gt;
     */
     public CMLElements<CMLReactantList> getReactantListElements() {
         Elements elements = this.getChildElements("reactantList", CMLConstants.CML_NS);
@@ -417,7 +417,7 @@ public abstract class AbstractReactantList extends CMLElement {
     /** The count of the object.
     * No fixed semantics or default, normally integers. 
     *                 It is presumed that the element can be multiplied by the count value.
-    * @return CMLElements<CMLReactant>
+    * @return CMLElements&lt;CMLReactant&gt;
     */
     public CMLElements<CMLReactant> getReactantElements() {
         Elements elements = this.getChildElements("reactant", CMLConstants.CML_NS);

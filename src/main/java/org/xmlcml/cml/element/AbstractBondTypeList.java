@@ -256,7 +256,7 @@ public abstract class AbstractBondTypeList extends CMLElement {
         this.appendChild(metadataList);
     }
     /** null
-    * @return CMLElements<CMLMetadataList>
+    * @return CMLElements&lt;CMLMetadataList&gt;
     */
     public CMLElements<CMLMetadataList> getMetadataListElements() {
         Elements elements = this.getChildElements("metadataList", CMLConstants.CML_NS);
@@ -272,7 +272,7 @@ public abstract class AbstractBondTypeList extends CMLElement {
         this.appendChild(name);
     }
     /** null
-    * @return CMLElements<CMLName>
+    * @return CMLElements&lt;CMLName&gt;
     */
     public CMLElements<CMLName> getNameElements() {
         Elements elements = this.getChildElements("name", CMLConstants.CML_NS);
@@ -288,7 +288,7 @@ public abstract class AbstractBondTypeList extends CMLElement {
         this.appendChild(bondType);
     }
     /** null
-    * @return CMLElements<CMLBondType>
+    * @return CMLElements&lt;CMLBondType&gt;
     */
     public CMLElements<CMLBondType> getBondTypeElements() {
         Elements elements = this.getChildElements("bondType", CMLConstants.CML_NS);

@@ -256,7 +256,7 @@ public abstract class AbstractAtomTypeList extends CMLElement {
         this.appendChild(metadataList);
     }
     /** null
-    * @return CMLElements<CMLMetadataList>
+    * @return CMLElements&lt;CMLMetadataList&gt;
     */
     public CMLElements<CMLMetadataList> getMetadataListElements() {
         Elements elements = this.getChildElements("metadataList", CMLConstants.CML_NS);
@@ -272,7 +272,7 @@ public abstract class AbstractAtomTypeList extends CMLElement {
         this.appendChild(name);
     }
     /** null
-    * @return CMLElements<CMLName>
+    * @return CMLElements&lt;CMLName&gt;
     */
     public CMLElements<CMLName> getNameElements() {
         Elements elements = this.getChildElements("name", CMLConstants.CML_NS);
@@ -288,7 +288,7 @@ public abstract class AbstractAtomTypeList extends CMLElement {
         this.appendChild(atomType);
     }
     /** null
-    * @return CMLElements<CMLAtomType>
+    * @return CMLElements&lt;CMLAtomType&gt;
     */
     public CMLElements<CMLAtomType> getAtomTypeElements() {
         Elements elements = this.getChildElements("atomType", CMLConstants.CML_NS);

@@ -220,7 +220,7 @@ public abstract class AbstractKpointList extends CMLElement {
         this.appendChild(kpoint);
     }
     /** null
-    * @return CMLElements<CMLKpoint>
+    * @return CMLElements&lt;CMLKpoint&gt;
     */
     public CMLElements<CMLKpoint> getKpointElements() {
         Elements elements = this.getChildElements("kpoint", CMLConstants.CML_NS);

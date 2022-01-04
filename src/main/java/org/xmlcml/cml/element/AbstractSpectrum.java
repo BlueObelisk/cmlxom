@@ -486,7 +486,7 @@ public abstract class AbstractSpectrum extends CMLElement {
     }
     /** The physical state of the substance.
     * No fixed semantics or default.
-    * @return CMLElements<CMLMetadataList>
+    * @return CMLElements&lt;CMLMetadataList&gt;
     */
     public CMLElements<CMLMetadataList> getMetadataListElements() {
         Elements elements = this.getChildElements("metadataList", CMLConstants.CML_NS);
@@ -504,7 +504,7 @@ public abstract class AbstractSpectrum extends CMLElement {
     }
     /** The physical state of the substance.
     * No fixed semantics or default.
-    * @return CMLElements<CMLSample>
+    * @return CMLElements&lt;CMLSample&gt;
     */
     public CMLElements<CMLSample> getSampleElements() {
         Elements elements = this.getChildElements("sample", CMLConstants.CML_NS);
@@ -522,7 +522,7 @@ public abstract class AbstractSpectrum extends CMLElement {
     }
     /** The physical state of the substance.
     * No fixed semantics or default.
-    * @return CMLElements<CMLParameterList>
+    * @return CMLElements&lt;CMLParameterList&gt;
     */
     public CMLElements<CMLParameterList> getParameterListElements() {
         Elements elements = this.getChildElements("parameterList", CMLConstants.CML_NS);
@@ -540,7 +540,7 @@ public abstract class AbstractSpectrum extends CMLElement {
     }
     /** The physical state of the substance.
     * No fixed semantics or default.
-    * @return CMLElements<CMLSubstanceList>
+    * @return CMLElements&lt;CMLSubstanceList&gt;
     */
     public CMLElements<CMLSubstanceList> getSubstanceListElements() {
         Elements elements = this.getChildElements("substanceList", CMLConstants.CML_NS);
@@ -558,7 +558,7 @@ public abstract class AbstractSpectrum extends CMLElement {
     }
     /** The physical state of the substance.
     * No fixed semantics or default.
-    * @return CMLElements<CMLConditionList>
+    * @return CMLElements&lt;CMLConditionList&gt;
     */
     public CMLElements<CMLConditionList> getConditionListElements() {
         Elements elements = this.getChildElements("conditionList", CMLConstants.CML_NS);
@@ -576,7 +576,7 @@ public abstract class AbstractSpectrum extends CMLElement {
     }
     /** The physical state of the substance.
     * No fixed semantics or default.
-    * @return CMLElements<CMLSpectrumData>
+    * @return CMLElements&lt;CMLSpectrumData&gt;
     */
     public CMLElements<CMLSpectrumData> getSpectrumDataElements() {
         Elements elements = this.getChildElements("spectrumData", CMLConstants.CML_NS);
@@ -594,7 +594,7 @@ public abstract class AbstractSpectrum extends CMLElement {
     }
     /** The physical state of the substance.
     * No fixed semantics or default.
-    * @return CMLElements<CMLPeakList>
+    * @return CMLElements&lt;CMLPeakList&gt;
     */
     public CMLElements<CMLPeakList> getPeakListElements() {
         Elements elements = this.getChildElements("peakList", CMLConstants.CML_NS);

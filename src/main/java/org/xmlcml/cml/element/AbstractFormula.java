@@ -412,7 +412,7 @@ public abstract class AbstractFormula extends CMLElement {
     }
     /** An inline representation of the object.
     * No description
-    * @return CMLElements<CMLFormula>
+    * @return CMLElements&lt;CMLFormula&gt;
     */
     public CMLElements<CMLFormula> getFormulaElements() {
         Elements elements = this.getChildElements("formula", CMLConstants.CML_NS);
@@ -430,7 +430,7 @@ public abstract class AbstractFormula extends CMLElement {
     }
     /** An inline representation of the object.
     * No description
-    * @return CMLElements<CMLAtomArray>
+    * @return CMLElements&lt;CMLAtomArray&gt;
     */
     public CMLElements<CMLAtomArray> getAtomArrayElements() {
         Elements elements = this.getChildElements("atomArray", CMLConstants.CML_NS);

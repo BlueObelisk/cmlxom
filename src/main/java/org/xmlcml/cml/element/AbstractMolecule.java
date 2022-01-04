@@ -682,7 +682,7 @@ public abstract class AbstractMolecule extends CMLElement {
     }
     /** Role of the object.
     * How the object functions or its position in the architecture. No controlled vocabulary.
-    * @return CMLElements<CMLArray>
+    * @return CMLElements&lt;CMLArray&gt;
     */
     public CMLElements<CMLArray> getArrayElements() {
         Elements elements = this.getChildElements("array", CMLConstants.CML_NS);
@@ -700,7 +700,7 @@ public abstract class AbstractMolecule extends CMLElement {
     }
     /** Role of the object.
     * How the object functions or its position in the architecture. No controlled vocabulary.
-    * @return CMLElements<CMLAtomArray>
+    * @return CMLElements&lt;CMLAtomArray&gt;
     */
     public CMLElements<CMLAtomArray> getAtomArrayElements() {
         Elements elements = this.getChildElements("atomArray", CMLConstants.CML_NS);
@@ -718,7 +718,7 @@ public abstract class AbstractMolecule extends CMLElement {
     }
     /** Role of the object.
     * How the object functions or its position in the architecture. No controlled vocabulary.
-    * @return CMLElements<CMLBondArray>
+    * @return CMLElements&lt;CMLBondArray&gt;
     */
     public CMLElements<CMLBondArray> getBondArrayElements() {
         Elements elements = this.getChildElements("bondArray", CMLConstants.CML_NS);
@@ -736,7 +736,7 @@ public abstract class AbstractMolecule extends CMLElement {
     }
     /** Role of the object.
     * How the object functions or its position in the architecture. No controlled vocabulary.
-    * @return CMLElements<CMLFormula>
+    * @return CMLElements&lt;CMLFormula&gt;
     */
     public CMLElements<CMLFormula> getFormulaElements() {
         Elements elements = this.getChildElements("formula", CMLConstants.CML_NS);
@@ -782,7 +782,7 @@ public abstract class AbstractMolecule extends CMLElement {
     }
     /** Role of the object.
     * How the object functions or its position in the architecture. No controlled vocabulary.
-    * @return CMLElements<CMLLabel>
+    * @return CMLElements&lt;CMLLabel&gt;
     */
     public CMLElements<CMLLabel> getLabelElements() {
         Elements elements = this.getChildElements("label", CMLConstants.CML_NS);
@@ -800,7 +800,7 @@ public abstract class AbstractMolecule extends CMLElement {
     }
     /** Role of the object.
     * How the object functions or its position in the architecture. No controlled vocabulary.
-    * @return CMLElements<CMLMolecule>
+    * @return CMLElements&lt;CMLMolecule&gt;
     */
     public CMLElements<CMLMolecule> getMoleculeElements() {
         Elements elements = this.getChildElements("molecule", CMLConstants.CML_NS);
@@ -818,7 +818,7 @@ public abstract class AbstractMolecule extends CMLElement {
     }
     /** Role of the object.
     * How the object functions or its position in the architecture. No controlled vocabulary.
-    * @return CMLElements<CMLName>
+    * @return CMLElements&lt;CMLName&gt;
     */
     public CMLElements<CMLName> getNameElements() {
         Elements elements = this.getChildElements("name", CMLConstants.CML_NS);
@@ -836,7 +836,7 @@ public abstract class AbstractMolecule extends CMLElement {
     }
     /** Role of the object.
     * How the object functions or its position in the architecture. No controlled vocabulary.
-    * @return CMLElements<CMLPropertyList>
+    * @return CMLElements&lt;CMLPropertyList&gt;
     */
     public CMLElements<CMLPropertyList> getPropertyListElements() {
         Elements elements = this.getChildElements("propertyList", CMLConstants.CML_NS);
@@ -854,7 +854,7 @@ public abstract class AbstractMolecule extends CMLElement {
     }
     /** Role of the object.
     * How the object functions or its position in the architecture. No controlled vocabulary.
-    * @return CMLElements<CMLScalar>
+    * @return CMLElements&lt;CMLScalar&gt;
     */
     public CMLElements<CMLScalar> getScalarElements() {
         Elements elements = this.getChildElements("scalar", CMLConstants.CML_NS);

@@ -439,7 +439,7 @@ public abstract class AbstractBondArray extends CMLElement {
     }
     /** The order of the bond.
     * There is NO default. This order is for bookkeeping only and is not related to length, QM calculations or other experimental or theoretical calculations.
-    * @return CMLElements<CMLBond>
+    * @return CMLElements&lt;CMLBond&gt;
     */
     public CMLElements<CMLBond> getBondElements() {
         Elements elements = this.getChildElements("bond", CMLConstants.CML_NS);
@@ -457,7 +457,7 @@ public abstract class AbstractBondArray extends CMLElement {
     }
     /** The order of the bond.
     * There is NO default. This order is for bookkeeping only and is not related to length, QM calculations or other experimental or theoretical calculations.
-    * @return CMLElements<CMLArray>
+    * @return CMLElements&lt;CMLArray&gt;
     */
     public CMLElements<CMLArray> getArrayElements() {
         Elements elements = this.getChildElements("array", CMLConstants.CML_NS);

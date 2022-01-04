@@ -368,7 +368,7 @@ public abstract class AbstractDictionary extends CMLElement {
 //    *                 The dictionaryPrefix is normally unbound but it may be necessary to hardcode them
 //    *                 occasionally. Thus if a value is fixed (e.g. "xsd:double") the prefix must
 //    *                 be identified and fixed.
-//    * @return CMLElements<CMLUnitList>
+//    * @return CMLElements&lt;CMLUnitList&gt;
 //    */
 //    public CMLElements<CMLUnitList> getUnitListElements() {
 //        Elements elements = this.getChildElements("unitList", CMLConstants.CML_NS);
@@ -394,7 +394,7 @@ public abstract class AbstractDictionary extends CMLElement {
 //    *                 The dictionaryPrefix is normally unbound but it may be necessary to hardcode them
 //    *                 occasionally. Thus if a value is fixed (e.g. "xsd:double") the prefix must
 //    *                 be identified and fixed.
-//    * @return CMLElements<CMLAnnotation>
+//    * @return CMLElements&lt;CMLAnnotation&gt;
 //    */
 //    public CMLElements<CMLAnnotation> getAnnotationElements() {
 //        Elements elements = this.getChildElements("annotation", CMLConstants.CML_NS);
@@ -420,7 +420,7 @@ public abstract class AbstractDictionary extends CMLElement {
 //    *                 The dictionaryPrefix is normally unbound but it may be necessary to hardcode them
 //    *                 occasionally. Thus if a value is fixed (e.g. "xsd:double") the prefix must
 //    *                 be identified and fixed.
-//    * @return CMLElements<CMLDescription>
+//    * @return CMLElements&lt;CMLDescription&gt;
 //    */
 //    public CMLElements<CMLDescription> getDescriptionElements() {
 //        Elements elements = this.getChildElements("description", CMLConstants.CML_NS);
@@ -446,7 +446,7 @@ public abstract class AbstractDictionary extends CMLElement {
     *                 The dictionaryPrefix is normally unbound but it may be necessary to hardcode them
     *                 occasionally. Thus if a value is fixed (e.g. "xsd:double") the prefix must
     *                 be identified and fixed.
-    * @return CMLElements<CMLEntry>
+    * @return CMLElements&lt;CMLEntry&gt;
     */
     public CMLElements<CMLEntry> getEntryElements() {
         Elements elements = this.getChildElements("entry", CMLConstants.CML_NS);

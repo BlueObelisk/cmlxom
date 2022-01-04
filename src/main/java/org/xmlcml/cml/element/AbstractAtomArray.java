@@ -1017,7 +1017,7 @@ public abstract class AbstractAtomArray extends CMLElement {
     }
     /** An array of atom IDs.
     * Normally an attribute of an array-based element.
-    * @return CMLElements<CMLAtom>
+    * @return CMLElements&lt;CMLAtom&gt;
     */
     public CMLElements<CMLAtom> getAtomElements() {
         Elements elements = this.getChildElements("atom", CMLConstants.CML_NS);
@@ -1035,7 +1035,7 @@ public abstract class AbstractAtomArray extends CMLElement {
     }
     /** An array of atom IDs.
     * Normally an attribute of an array-based element.
-    * @return CMLElements<CMLArray>
+    * @return CMLElements&lt;CMLArray&gt;
     */
     public CMLElements<CMLArray> getArrayElements() {
         Elements elements = this.getChildElements("array", CMLConstants.CML_NS);

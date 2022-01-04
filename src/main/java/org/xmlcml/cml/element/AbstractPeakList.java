@@ -256,7 +256,7 @@ public abstract class AbstractPeakList extends CMLElement {
         this.appendChild(peak);
     }
     /** null
-    * @return CMLElements<CMLPeak>
+    * @return CMLElements&lt;CMLPeak&gt;
     */
     public CMLElements<CMLPeak> getPeakElements() {
         Elements elements = this.getChildElements("peak", CMLConstants.CML_NS);
@@ -272,7 +272,7 @@ public abstract class AbstractPeakList extends CMLElement {
         this.appendChild(peakGroup);
     }
     /** null
-    * @return CMLElements<CMLPeakGroup>
+    * @return CMLElements&lt;CMLPeakGroup&gt;
     */
     public CMLElements<CMLPeakGroup> getPeakGroupElements() {
         Elements elements = this.getChildElements("peakGroup", CMLConstants.CML_NS);

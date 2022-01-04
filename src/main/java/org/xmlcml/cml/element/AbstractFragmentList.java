@@ -296,7 +296,7 @@ public abstract class AbstractFragmentList extends CMLElement {
     }
     /** Role of the object.
     * How the object functions or its position in the architecture. No controlled vocabulary.
-    * @return CMLElements<CMLMetadataList>
+    * @return CMLElements&lt;CMLMetadataList&gt;
     */
     public CMLElements<CMLMetadataList> getMetadataListElements() {
         Elements elements = this.getChildElements("metadataList", CMLConstants.CML_NS);
@@ -314,7 +314,7 @@ public abstract class AbstractFragmentList extends CMLElement {
     }
     /** Role of the object.
     * How the object functions or its position in the architecture. No controlled vocabulary.
-    * @return CMLElements<CMLJoin>
+    * @return CMLElements&lt;CMLJoin&gt;
     */
     public CMLElements<CMLJoin> getJoinElements() {
         Elements elements = this.getChildElements("join", CMLConstants.CML_NS);
@@ -332,7 +332,7 @@ public abstract class AbstractFragmentList extends CMLElement {
     }
     /** Role of the object.
     * How the object functions or its position in the architecture. No controlled vocabulary.
-    * @return CMLElements<CMLLabel>
+    * @return CMLElements&lt;CMLLabel&gt;
     */
     public CMLElements<CMLLabel> getLabelElements() {
         Elements elements = this.getChildElements("label", CMLConstants.CML_NS);
@@ -350,7 +350,7 @@ public abstract class AbstractFragmentList extends CMLElement {
     }
     /** Role of the object.
     * How the object functions or its position in the architecture. No controlled vocabulary.
-    * @return CMLElements<CMLFragment>
+    * @return CMLElements&lt;CMLFragment&gt;
     */
     public CMLElements<CMLFragment> getFragmentElements() {
         Elements elements = this.getChildElements("fragment", CMLConstants.CML_NS);

@@ -357,7 +357,7 @@ public abstract class AbstractProductList extends CMLElement {
     /** The count of the object.
     * No fixed semantics or default, normally integers. 
     *                 It is presumed that the element can be multiplied by the count value.
-    * @return CMLElements<CMLMetadataList>
+    * @return CMLElements&lt;CMLMetadataList&gt;
     */
     public CMLElements<CMLMetadataList> getMetadataListElements() {
         Elements elements = this.getChildElements("metadataList", CMLConstants.CML_NS);
@@ -377,7 +377,7 @@ public abstract class AbstractProductList extends CMLElement {
     /** The count of the object.
     * No fixed semantics or default, normally integers. 
     *                 It is presumed that the element can be multiplied by the count value.
-    * @return CMLElements<CMLName>
+    * @return CMLElements&lt;CMLName&gt;
     */
     public CMLElements<CMLName> getNameElements() {
         Elements elements = this.getChildElements("name", CMLConstants.CML_NS);
@@ -397,7 +397,7 @@ public abstract class AbstractProductList extends CMLElement {
     /** The count of the object.
     * No fixed semantics or default, normally integers. 
     *                 It is presumed that the element can be multiplied by the count value.
-    * @return CMLElements<CMLProductList>
+    * @return CMLElements&lt;CMLProductList&gt;
     */
     public CMLElements<CMLProductList> getProductListElements() {
         Elements elements = this.getChildElements("productList", CMLConstants.CML_NS);
@@ -417,7 +417,7 @@ public abstract class AbstractProductList extends CMLElement {
     /** The count of the object.
     * No fixed semantics or default, normally integers. 
     *                 It is presumed that the element can be multiplied by the count value.
-    * @return CMLElements<CMLProduct>
+    * @return CMLElements&lt;CMLProduct&gt;
     */
     public CMLElements<CMLProduct> getProductElements() {
         Elements elements = this.getChildElements("product", CMLConstants.CML_NS);

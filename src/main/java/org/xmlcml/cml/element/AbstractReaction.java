@@ -579,7 +579,7 @@ public abstract class AbstractReaction extends CMLElement {
     }
     /** Yield of a reaction or reactionStep.
     * Yields can be given on either element. They should lie in the range 0 to 1 inclusive (i.e. percentages will need to be converted). Software may use yield to calculate amounts of substances created during a reaction or series of reactions.
-    * @return CMLElements<CMLMetadataList>
+    * @return CMLElements&lt;CMLMetadataList&gt;
     */
     public CMLElements<CMLMetadataList> getMetadataListElements() {
         Elements elements = this.getChildElements("metadataList", CMLConstants.CML_NS);
@@ -597,7 +597,7 @@ public abstract class AbstractReaction extends CMLElement {
     }
     /** Yield of a reaction or reactionStep.
     * Yields can be given on either element. They should lie in the range 0 to 1 inclusive (i.e. percentages will need to be converted). Software may use yield to calculate amounts of substances created during a reaction or series of reactions.
-    * @return CMLElements<CMLLabel>
+    * @return CMLElements&lt;CMLLabel&gt;
     */
     public CMLElements<CMLLabel> getLabelElements() {
         Elements elements = this.getChildElements("label", CMLConstants.CML_NS);
@@ -615,7 +615,7 @@ public abstract class AbstractReaction extends CMLElement {
     }
     /** Yield of a reaction or reactionStep.
     * Yields can be given on either element. They should lie in the range 0 to 1 inclusive (i.e. percentages will need to be converted). Software may use yield to calculate amounts of substances created during a reaction or series of reactions.
-    * @return CMLElements<CMLName>
+    * @return CMLElements&lt;CMLName&gt;
     */
     public CMLElements<CMLName> getNameElements() {
         Elements elements = this.getChildElements("name", CMLConstants.CML_NS);
@@ -633,7 +633,7 @@ public abstract class AbstractReaction extends CMLElement {
     }
     /** Yield of a reaction or reactionStep.
     * Yields can be given on either element. They should lie in the range 0 to 1 inclusive (i.e. percentages will need to be converted). Software may use yield to calculate amounts of substances created during a reaction or series of reactions.
-    * @return CMLElements<CMLIdentifier>
+    * @return CMLElements&lt;CMLIdentifier&gt;
     */
     public CMLElements<CMLIdentifier> getIdentifierElements() {
         Elements elements = this.getChildElements("identifier", CMLConstants.CML_NS);
@@ -651,7 +651,7 @@ public abstract class AbstractReaction extends CMLElement {
     }
     /** Yield of a reaction or reactionStep.
     * Yields can be given on either element. They should lie in the range 0 to 1 inclusive (i.e. percentages will need to be converted). Software may use yield to calculate amounts of substances created during a reaction or series of reactions.
-    * @return CMLElements<CMLReactiveCentre>
+    * @return CMLElements&lt;CMLReactiveCentre&gt;
     */
     public CMLElements<CMLReactiveCentre> getReactiveCentreElements() {
         Elements elements = this.getChildElements("reactiveCentre", CMLConstants.CML_NS);
@@ -669,7 +669,7 @@ public abstract class AbstractReaction extends CMLElement {
     }
     /** Yield of a reaction or reactionStep.
     * Yields can be given on either element. They should lie in the range 0 to 1 inclusive (i.e. percentages will need to be converted). Software may use yield to calculate amounts of substances created during a reaction or series of reactions.
-    * @return CMLElements<CMLMechanism>
+    * @return CMLElements&lt;CMLMechanism&gt;
     */
     public CMLElements<CMLMechanism> getMechanismElements() {
         Elements elements = this.getChildElements("mechanism", CMLConstants.CML_NS);
@@ -687,7 +687,7 @@ public abstract class AbstractReaction extends CMLElement {
     }
     /** Yield of a reaction or reactionStep.
     * Yields can be given on either element. They should lie in the range 0 to 1 inclusive (i.e. percentages will need to be converted). Software may use yield to calculate amounts of substances created during a reaction or series of reactions.
-    * @return CMLElements<CMLReactantList>
+    * @return CMLElements&lt;CMLReactantList&gt;
     */
     public CMLElements<CMLReactantList> getReactantListElements() {
         Elements elements = this.getChildElements("reactantList", CMLConstants.CML_NS);
@@ -705,7 +705,7 @@ public abstract class AbstractReaction extends CMLElement {
     }
     /** Yield of a reaction or reactionStep.
     * Yields can be given on either element. They should lie in the range 0 to 1 inclusive (i.e. percentages will need to be converted). Software may use yield to calculate amounts of substances created during a reaction or series of reactions.
-    * @return CMLElements<CMLSpectatorList>
+    * @return CMLElements&lt;CMLSpectatorList&gt;
     */
     public CMLElements<CMLSpectatorList> getSpectatorListElements() {
         Elements elements = this.getChildElements("spectatorList", CMLConstants.CML_NS);
@@ -723,7 +723,7 @@ public abstract class AbstractReaction extends CMLElement {
     }
     /** Yield of a reaction or reactionStep.
     * Yields can be given on either element. They should lie in the range 0 to 1 inclusive (i.e. percentages will need to be converted). Software may use yield to calculate amounts of substances created during a reaction or series of reactions.
-    * @return CMLElements<CMLSubstanceList>
+    * @return CMLElements&lt;CMLSubstanceList&gt;
     */
     public CMLElements<CMLSubstanceList> getSubstanceListElements() {
         Elements elements = this.getChildElements("substanceList", CMLConstants.CML_NS);
@@ -741,7 +741,7 @@ public abstract class AbstractReaction extends CMLElement {
     }
     /** Yield of a reaction or reactionStep.
     * Yields can be given on either element. They should lie in the range 0 to 1 inclusive (i.e. percentages will need to be converted). Software may use yield to calculate amounts of substances created during a reaction or series of reactions.
-    * @return CMLElements<CMLConditionList>
+    * @return CMLElements&lt;CMLConditionList&gt;
     */
     public CMLElements<CMLConditionList> getConditionListElements() {
         Elements elements = this.getChildElements("conditionList", CMLConstants.CML_NS);
@@ -759,7 +759,7 @@ public abstract class AbstractReaction extends CMLElement {
     }
     /** Yield of a reaction or reactionStep.
     * Yields can be given on either element. They should lie in the range 0 to 1 inclusive (i.e. percentages will need to be converted). Software may use yield to calculate amounts of substances created during a reaction or series of reactions.
-    * @return CMLElements<CMLTransitionState>
+    * @return CMLElements&lt;CMLTransitionState&gt;
     */
     public CMLElements<CMLTransitionState> getTransitionStateElements() {
         Elements elements = this.getChildElements("transitionState", CMLConstants.CML_NS);
@@ -777,7 +777,7 @@ public abstract class AbstractReaction extends CMLElement {
     }
     /** Yield of a reaction or reactionStep.
     * Yields can be given on either element. They should lie in the range 0 to 1 inclusive (i.e. percentages will need to be converted). Software may use yield to calculate amounts of substances created during a reaction or series of reactions.
-    * @return CMLElements<CMLProductList>
+    * @return CMLElements&lt;CMLProductList&gt;
     */
     public CMLElements<CMLProductList> getProductListElements() {
         Elements elements = this.getChildElements("productList", CMLConstants.CML_NS);
@@ -795,7 +795,7 @@ public abstract class AbstractReaction extends CMLElement {
     }
     /** Yield of a reaction or reactionStep.
     * Yields can be given on either element. They should lie in the range 0 to 1 inclusive (i.e. percentages will need to be converted). Software may use yield to calculate amounts of substances created during a reaction or series of reactions.
-    * @return CMLElements<CMLPropertyList>
+    * @return CMLElements&lt;CMLPropertyList&gt;
     */
     public CMLElements<CMLPropertyList> getPropertyListElements() {
         Elements elements = this.getChildElements("propertyList", CMLConstants.CML_NS);
@@ -813,7 +813,7 @@ public abstract class AbstractReaction extends CMLElement {
     }
     /** Yield of a reaction or reactionStep.
     * Yields can be given on either element. They should lie in the range 0 to 1 inclusive (i.e. percentages will need to be converted). Software may use yield to calculate amounts of substances created during a reaction or series of reactions.
-    * @return CMLElements<CMLMap>
+    * @return CMLElements&lt;CMLMap&gt;
     */
     public CMLElements<CMLMap> getMapElements() {
         Elements elements = this.getChildElements("map", CMLConstants.CML_NS);
@@ -831,7 +831,7 @@ public abstract class AbstractReaction extends CMLElement {
     }
     /** Yield of a reaction or reactionStep.
     * Yields can be given on either element. They should lie in the range 0 to 1 inclusive (i.e. percentages will need to be converted). Software may use yield to calculate amounts of substances created during a reaction or series of reactions.
-    * @return CMLElements<CMLObject>
+    * @return CMLElements&lt;CMLObject&gt;
     */
     public CMLElements<CMLObject> getObjectElements() {
         Elements elements = this.getChildElements("object", CMLConstants.CML_NS);
