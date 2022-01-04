@@ -296,7 +296,7 @@ public abstract class AbstractPropertyList extends CMLElement {
     }
     /** Role of the object.
     * How the object functions or its position in the architecture. No controlled vocabulary.
-    * @return CMLElements<CMLName>
+    * @return CMLElements&lt;CMLName&gt;
     */
     public CMLElements<CMLName> getNameElements() {
         Elements elements = this.getChildElements("name", CMLConstants.CML_NS);
@@ -314,7 +314,7 @@ public abstract class AbstractPropertyList extends CMLElement {
     }
     /** Role of the object.
     * How the object functions or its position in the architecture. No controlled vocabulary.
-    * @return CMLElements<CMLProperty>
+    * @return CMLElements&lt;CMLProperty&gt;
     */
     public CMLElements<CMLProperty> getPropertyElements() {
         Elements elements = this.getChildElements("property", CMLConstants.CML_NS);
@@ -332,7 +332,7 @@ public abstract class AbstractPropertyList extends CMLElement {
     }
     /** Role of the object.
     * How the object functions or its position in the architecture. No controlled vocabulary.
-    * @return CMLElements<CMLPropertyList>
+    * @return CMLElements&lt;CMLPropertyList&gt;
     */
     public CMLElements<CMLPropertyList> getPropertyListElements() {
         Elements elements = this.getChildElements("propertyList", CMLConstants.CML_NS);

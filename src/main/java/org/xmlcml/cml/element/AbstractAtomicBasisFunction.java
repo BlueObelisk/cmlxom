@@ -505,7 +505,7 @@ public abstract class AbstractAtomicBasisFunction extends CMLElement {
     }
     /** symbolic represention of l amd m.
     * takes avlues of s, p, px, dxy, dx2y2, f, etc.
-    * @return CMLElements<CMLGradient>
+    * @return CMLElements&lt;CMLGradient&gt;
     */
     public CMLElements<CMLGradient> getGradientElements() {
         Elements elements = this.getChildElements("gradient", CMLConstants.CML_NS);

@@ -258,7 +258,7 @@ public abstract class AbstractArrayList extends CMLElement {
         this.appendChild(array);
     }
     /** null
-    * @return CMLElements<CMLArray>
+    * @return CMLElements&lt;CMLArray&gt;
     */
     public CMLElements<CMLArray> getArrayElements() {
         Elements elements = this.getChildElements("array", CMLConstants.CML_NS);
@@ -274,7 +274,7 @@ public abstract class AbstractArrayList extends CMLElement {
         this.appendChild(list);
     }
     /** null
-    * @return CMLElements<CMLList>
+    * @return CMLElements&lt;CMLList&gt;
     */
     public CMLElements<CMLList> getListElements() {
         Elements elements = this.getChildElements("list", CMLConstants.CML_NS);

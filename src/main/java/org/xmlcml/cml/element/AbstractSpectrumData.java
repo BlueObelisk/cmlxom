@@ -256,7 +256,7 @@ public abstract class AbstractSpectrumData extends CMLElement {
         this.appendChild(xaxis);
     }
     /** null
-    * @return CMLElements<CMLXaxis>
+    * @return CMLElements&lt;CMLXaxis&gt;
     */
     public CMLElements<CMLXaxis> getXaxisElements() {
         Elements elements = this.getChildElements("xaxis", CMLConstants.CML_NS);
@@ -272,7 +272,7 @@ public abstract class AbstractSpectrumData extends CMLElement {
         this.appendChild(yaxis);
     }
     /** null
-    * @return CMLElements<CMLYaxis>
+    * @return CMLElements&lt;CMLYaxis&gt;
     */
     public CMLElements<CMLYaxis> getYaxisElements() {
         Elements elements = this.getChildElements("yaxis", CMLConstants.CML_NS);

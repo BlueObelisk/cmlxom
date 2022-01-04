@@ -367,7 +367,7 @@ public abstract class AbstractReactionStep extends CMLElement {
     }
     /** A ratio in the range 0 to 1.
     * Currently used for ratios between brached reactions but re-usable for other concepts.
-    * @return CMLElements<CMLMetadataList>
+    * @return CMLElements&lt;CMLMetadataList&gt;
     */
     public CMLElements<CMLMetadataList> getMetadataListElements() {
         Elements elements = this.getChildElements("metadataList", CMLConstants.CML_NS);
@@ -385,7 +385,7 @@ public abstract class AbstractReactionStep extends CMLElement {
     }
     /** A ratio in the range 0 to 1.
     * Currently used for ratios between brached reactions but re-usable for other concepts.
-    * @return CMLElements<CMLName>
+    * @return CMLElements&lt;CMLName&gt;
     */
     public CMLElements<CMLName> getNameElements() {
         Elements elements = this.getChildElements("name", CMLConstants.CML_NS);
@@ -403,7 +403,7 @@ public abstract class AbstractReactionStep extends CMLElement {
     }
     /** A ratio in the range 0 to 1.
     * Currently used for ratios between brached reactions but re-usable for other concepts.
-    * @return CMLElements<CMLLabel>
+    * @return CMLElements&lt;CMLLabel&gt;
     */
     public CMLElements<CMLLabel> getLabelElements() {
         Elements elements = this.getChildElements("label", CMLConstants.CML_NS);
@@ -421,7 +421,7 @@ public abstract class AbstractReactionStep extends CMLElement {
     }
     /** A ratio in the range 0 to 1.
     * Currently used for ratios between brached reactions but re-usable for other concepts.
-    * @return CMLElements<CMLReactionScheme>
+    * @return CMLElements&lt;CMLReactionScheme&gt;
     */
     public CMLElements<CMLReactionScheme> getReactionSchemeElements() {
         Elements elements = this.getChildElements("reactionScheme", CMLConstants.CML_NS);
@@ -439,7 +439,7 @@ public abstract class AbstractReactionStep extends CMLElement {
     }
     /** A ratio in the range 0 to 1.
     * Currently used for ratios between brached reactions but re-usable for other concepts.
-    * @return CMLElements<CMLReaction>
+    * @return CMLElements&lt;CMLReaction&gt;
     */
     public CMLElements<CMLReaction> getReactionElements() {
         Elements elements = this.getChildElements("reaction", CMLConstants.CML_NS);

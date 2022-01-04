@@ -413,7 +413,7 @@ public abstract class AbstractParameter extends CMLElement {
     }
     /** Role of the object.
     * How the object functions or its position in the architecture. No controlled vocabulary.
-    * @return CMLElements<CMLScalar>
+    * @return CMLElements&lt;CMLScalar&gt;
     */
     public CMLElements<CMLScalar> getScalarElements() {
         Elements elements = this.getChildElements("scalar", CMLConstants.CML_NS);
@@ -431,7 +431,7 @@ public abstract class AbstractParameter extends CMLElement {
     }
     /** Role of the object.
     * How the object functions or its position in the architecture. No controlled vocabulary.
-    * @return CMLElements<CMLArray>
+    * @return CMLElements&lt;CMLArray&gt;
     */
     public CMLElements<CMLArray> getArrayElements() {
         Elements elements = this.getChildElements("array", CMLConstants.CML_NS);
@@ -449,7 +449,7 @@ public abstract class AbstractParameter extends CMLElement {
     }
     /** Role of the object.
     * How the object functions or its position in the architecture. No controlled vocabulary.
-    * @return CMLElements<CMLMatrix>
+    * @return CMLElements&lt;CMLMatrix&gt;
     */
     public CMLElements<CMLMatrix> getMatrixElements() {
         Elements elements = this.getChildElements("matrix", CMLConstants.CML_NS);
@@ -467,7 +467,7 @@ public abstract class AbstractParameter extends CMLElement {
     }
     /** Role of the object.
     * How the object functions or its position in the architecture. No controlled vocabulary.
-    * @return CMLElements<CMLProperty>
+    * @return CMLElements&lt;CMLProperty&gt;
     */
     public CMLElements<CMLProperty> getPropertyElements() {
         Elements elements = this.getChildElements("property", CMLConstants.CML_NS);
@@ -485,7 +485,7 @@ public abstract class AbstractParameter extends CMLElement {
     }
     /** Role of the object.
     * How the object functions or its position in the architecture. No controlled vocabulary.
-    * @return CMLElements<CMLExpression>
+    * @return CMLElements&lt;CMLExpression&gt;
     */
     public CMLElements<CMLExpression> getExpressionElements() {
         Elements elements = this.getChildElements("expression", CMLConstants.CML_NS);
@@ -503,7 +503,7 @@ public abstract class AbstractParameter extends CMLElement {
     }
     /** Role of the object.
     * How the object functions or its position in the architecture. No controlled vocabulary.
-    * @return CMLElements<CMLGradient>
+    * @return CMLElements&lt;CMLGradient&gt;
     */
     public CMLElements<CMLGradient> getGradientElements() {
         Elements elements = this.getChildElements("gradient", CMLConstants.CML_NS);

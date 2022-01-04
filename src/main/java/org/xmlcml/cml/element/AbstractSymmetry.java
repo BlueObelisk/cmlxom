@@ -391,7 +391,7 @@ public abstract class AbstractSymmetry extends CMLElement {
     }
     /** A number determined by context.
     * Used for isotope number in isotope, and rotational symmetry number in symmetry for calculation of entropy, etc.
-    * @return CMLElements<CMLMatrix>
+    * @return CMLElements&lt;CMLMatrix&gt;
     */
     public CMLElements<CMLMatrix> getMatrixElements() {
         Elements elements = this.getChildElements("matrix", CMLConstants.CML_NS);
@@ -409,7 +409,7 @@ public abstract class AbstractSymmetry extends CMLElement {
     }
     /** A number determined by context.
     * Used for isotope number in isotope, and rotational symmetry number in symmetry for calculation of entropy, etc.
-    * @return CMLElements<CMLTransform3>
+    * @return CMLElements&lt;CMLTransform3&gt;
     */
     public CMLElements<CMLTransform3> getTransform3Elements() {
         Elements elements = this.getChildElements("transform3", CMLConstants.CML_NS);

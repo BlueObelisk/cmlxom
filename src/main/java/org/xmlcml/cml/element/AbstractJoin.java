@@ -413,7 +413,7 @@ public abstract class AbstractJoin extends CMLElement {
     }
     /** The order of the bond.
     * There is NO default. This order is for bookkeeping only and is not related to length, QM calculations or other experimental or theoretical calculations.
-    * @return CMLElements<CMLAngle>
+    * @return CMLElements&lt;CMLAngle&gt;
     */
     public CMLElements<CMLAngle> getAngleElements() {
         Elements elements = this.getChildElements("angle", CMLConstants.CML_NS);
@@ -431,7 +431,7 @@ public abstract class AbstractJoin extends CMLElement {
     }
     /** The order of the bond.
     * There is NO default. This order is for bookkeeping only and is not related to length, QM calculations or other experimental or theoretical calculations.
-    * @return CMLElements<CMLArg>
+    * @return CMLElements&lt;CMLArg&gt;
     */
     public CMLElements<CMLArg> getArgElements() {
         Elements elements = this.getChildElements("arg", CMLConstants.CML_NS);
@@ -449,7 +449,7 @@ public abstract class AbstractJoin extends CMLElement {
     }
     /** The order of the bond.
     * There is NO default. This order is for bookkeeping only and is not related to length, QM calculations or other experimental or theoretical calculations.
-    * @return CMLElements<CMLLabel>
+    * @return CMLElements&lt;CMLLabel&gt;
     */
     public CMLElements<CMLLabel> getLabelElements() {
         Elements elements = this.getChildElements("label", CMLConstants.CML_NS);
@@ -467,7 +467,7 @@ public abstract class AbstractJoin extends CMLElement {
     }
     /** The order of the bond.
     * There is NO default. This order is for bookkeeping only and is not related to length, QM calculations or other experimental or theoretical calculations.
-    * @return CMLElements<CMLLength>
+    * @return CMLElements&lt;CMLLength&gt;
     */
     public CMLElements<CMLLength> getLengthElements() {
         Elements elements = this.getChildElements("length", CMLConstants.CML_NS);
@@ -485,7 +485,7 @@ public abstract class AbstractJoin extends CMLElement {
     }
     /** The order of the bond.
     * There is NO default. This order is for bookkeeping only and is not related to length, QM calculations or other experimental or theoretical calculations.
-    * @return CMLElements<CMLMetadataList>
+    * @return CMLElements&lt;CMLMetadataList&gt;
     */
     public CMLElements<CMLMetadataList> getMetadataListElements() {
         Elements elements = this.getChildElements("metadataList", CMLConstants.CML_NS);
@@ -503,7 +503,7 @@ public abstract class AbstractJoin extends CMLElement {
     }
     /** The order of the bond.
     * There is NO default. This order is for bookkeeping only and is not related to length, QM calculations or other experimental or theoretical calculations.
-    * @return CMLElements<CMLMolecule>
+    * @return CMLElements&lt;CMLMolecule&gt;
     */
     public CMLElements<CMLMolecule> getMoleculeElements() {
         Elements elements = this.getChildElements("molecule", CMLConstants.CML_NS);
@@ -521,7 +521,7 @@ public abstract class AbstractJoin extends CMLElement {
     }
     /** The order of the bond.
     * There is NO default. This order is for bookkeeping only and is not related to length, QM calculations or other experimental or theoretical calculations.
-    * @return CMLElements<CMLTorsion>
+    * @return CMLElements&lt;CMLTorsion&gt;
     */
     public CMLElements<CMLTorsion> getTorsionElements() {
         Elements elements = this.getChildElements("torsion", CMLConstants.CML_NS);

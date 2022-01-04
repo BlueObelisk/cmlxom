@@ -260,7 +260,7 @@ public abstract class AbstractPotential extends CMLElement {
     }
     /** A reference to a functional form.
     * Currently used for potential.
-    * @return CMLElements<CMLArg>
+    * @return CMLElements&lt;CMLArg&gt;
     */
     public CMLElements<CMLArg> getArgElements() {
         Elements elements = this.getChildElements("arg", CMLConstants.CML_NS);

@@ -220,7 +220,7 @@ public abstract class AbstractTableRowList extends CMLElement {
         this.appendChild(tableRow);
     }
     /** null
-    * @return CMLElements<CMLTableRow>
+    * @return CMLElements&lt;CMLTableRow&gt;
     */
     public CMLElements<CMLTableRow> getTableRowElements() {
         Elements elements = this.getChildElements("tableRow", CMLConstants.CML_NS);

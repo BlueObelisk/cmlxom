@@ -410,7 +410,7 @@ public abstract class AbstractReactionScheme extends CMLElement {
     }
     /** Format of the reaction component.
     * Indicates how the components of reactionScheme, reactionStepList, etc. should be processed. No controlled vocabulary. One example is format="cmlSnap" asserts that the processor can assume that the reactants and products can be rendered using the CMLSnap design. Note that the reaction can be interpreted without reference to the format, which is primarily a processing instruction.
-    * @return CMLElements<CMLMetadataList>
+    * @return CMLElements&lt;CMLMetadataList&gt;
     */
     public CMLElements<CMLMetadataList> getMetadataListElements() {
         Elements elements = this.getChildElements("metadataList", CMLConstants.CML_NS);
@@ -428,7 +428,7 @@ public abstract class AbstractReactionScheme extends CMLElement {
     }
     /** Format of the reaction component.
     * Indicates how the components of reactionScheme, reactionStepList, etc. should be processed. No controlled vocabulary. One example is format="cmlSnap" asserts that the processor can assume that the reactants and products can be rendered using the CMLSnap design. Note that the reaction can be interpreted without reference to the format, which is primarily a processing instruction.
-    * @return CMLElements<CMLLabel>
+    * @return CMLElements&lt;CMLLabel&gt;
     */
     public CMLElements<CMLLabel> getLabelElements() {
         Elements elements = this.getChildElements("label", CMLConstants.CML_NS);
@@ -446,7 +446,7 @@ public abstract class AbstractReactionScheme extends CMLElement {
     }
     /** Format of the reaction component.
     * Indicates how the components of reactionScheme, reactionStepList, etc. should be processed. No controlled vocabulary. One example is format="cmlSnap" asserts that the processor can assume that the reactants and products can be rendered using the CMLSnap design. Note that the reaction can be interpreted without reference to the format, which is primarily a processing instruction.
-    * @return CMLElements<CMLName>
+    * @return CMLElements&lt;CMLName&gt;
     */
     public CMLElements<CMLName> getNameElements() {
         Elements elements = this.getChildElements("name", CMLConstants.CML_NS);
@@ -464,7 +464,7 @@ public abstract class AbstractReactionScheme extends CMLElement {
     }
     /** Format of the reaction component.
     * Indicates how the components of reactionScheme, reactionStepList, etc. should be processed. No controlled vocabulary. One example is format="cmlSnap" asserts that the processor can assume that the reactants and products can be rendered using the CMLSnap design. Note that the reaction can be interpreted without reference to the format, which is primarily a processing instruction.
-    * @return CMLElements<CMLIdentifier>
+    * @return CMLElements&lt;CMLIdentifier&gt;
     */
     public CMLElements<CMLIdentifier> getIdentifierElements() {
         Elements elements = this.getChildElements("identifier", CMLConstants.CML_NS);
@@ -482,7 +482,7 @@ public abstract class AbstractReactionScheme extends CMLElement {
     }
     /** Format of the reaction component.
     * Indicates how the components of reactionScheme, reactionStepList, etc. should be processed. No controlled vocabulary. One example is format="cmlSnap" asserts that the processor can assume that the reactants and products can be rendered using the CMLSnap design. Note that the reaction can be interpreted without reference to the format, which is primarily a processing instruction.
-    * @return CMLElements<CMLReaction>
+    * @return CMLElements&lt;CMLReaction&gt;
     */
     public CMLElements<CMLReaction> getReactionElements() {
         Elements elements = this.getChildElements("reaction", CMLConstants.CML_NS);
@@ -500,7 +500,7 @@ public abstract class AbstractReactionScheme extends CMLElement {
     }
     /** Format of the reaction component.
     * Indicates how the components of reactionScheme, reactionStepList, etc. should be processed. No controlled vocabulary. One example is format="cmlSnap" asserts that the processor can assume that the reactants and products can be rendered using the CMLSnap design. Note that the reaction can be interpreted without reference to the format, which is primarily a processing instruction.
-    * @return CMLElements<CMLReactionStepList>
+    * @return CMLElements&lt;CMLReactionStepList&gt;
     */
     public CMLElements<CMLReactionStepList> getReactionStepListElements() {
         Elements elements = this.getChildElements("reactionStepList", CMLConstants.CML_NS);
@@ -518,7 +518,7 @@ public abstract class AbstractReactionScheme extends CMLElement {
     }
     /** Format of the reaction component.
     * Indicates how the components of reactionScheme, reactionStepList, etc. should be processed. No controlled vocabulary. One example is format="cmlSnap" asserts that the processor can assume that the reactants and products can be rendered using the CMLSnap design. Note that the reaction can be interpreted without reference to the format, which is primarily a processing instruction.
-    * @return CMLElements<CMLReactionScheme>
+    * @return CMLElements&lt;CMLReactionScheme&gt;
     */
     public CMLElements<CMLReactionScheme> getReactionSchemeElements() {
         Elements elements = this.getChildElements("reactionScheme", CMLConstants.CML_NS);

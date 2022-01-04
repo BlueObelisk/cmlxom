@@ -296,7 +296,7 @@ public abstract class AbstractParameterList extends CMLElement {
     }
     /** Role of the object.
     * How the object functions or its position in the architecture. No controlled vocabulary.
-    * @return CMLElements<CMLMetadataList>
+    * @return CMLElements&lt;CMLMetadataList&gt;
     */
     public CMLElements<CMLMetadataList> getMetadataListElements() {
         Elements elements = this.getChildElements("metadataList", CMLConstants.CML_NS);
@@ -314,7 +314,7 @@ public abstract class AbstractParameterList extends CMLElement {
     }
     /** Role of the object.
     * How the object functions or its position in the architecture. No controlled vocabulary.
-    * @return CMLElements<CMLName>
+    * @return CMLElements&lt;CMLName&gt;
     */
     public CMLElements<CMLName> getNameElements() {
         Elements elements = this.getChildElements("name", CMLConstants.CML_NS);
@@ -332,7 +332,7 @@ public abstract class AbstractParameterList extends CMLElement {
     }
     /** Role of the object.
     * How the object functions or its position in the architecture. No controlled vocabulary.
-    * @return CMLElements<CMLParameter>
+    * @return CMLElements&lt;CMLParameter&gt;
     */
     public CMLElements<CMLParameter> getParameterElements() {
         Elements elements = this.getChildElements("parameter", CMLConstants.CML_NS);
@@ -350,7 +350,7 @@ public abstract class AbstractParameterList extends CMLElement {
     }
     /** Role of the object.
     * How the object functions or its position in the architecture. No controlled vocabulary.
-    * @return CMLElements<CMLParameterList>
+    * @return CMLElements&lt;CMLParameterList&gt;
     */
     public CMLElements<CMLParameterList> getParameterListElements() {
         Elements elements = this.getChildElements("parameterList", CMLConstants.CML_NS);

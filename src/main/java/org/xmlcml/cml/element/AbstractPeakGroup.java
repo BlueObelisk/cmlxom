@@ -1268,7 +1268,7 @@ public abstract class AbstractPeakGroup extends CMLElement {
     * Uses the id attribute as the target identification. 
     *         The order of molecules is preserved. It is not necessarily an error to have repeated 
     *         references to the same molecule
-    * @return CMLElements<CMLPeak>
+    * @return CMLElements&lt;CMLPeak&gt;
     */
     public CMLElements<CMLPeak> getPeakElements() {
         Elements elements = this.getChildElements("peak", CMLConstants.CML_NS);
@@ -1290,7 +1290,7 @@ public abstract class AbstractPeakGroup extends CMLElement {
     * Uses the id attribute as the target identification. 
     *         The order of molecules is preserved. It is not necessarily an error to have repeated 
     *         references to the same molecule
-    * @return CMLElements<CMLPeakGroup>
+    * @return CMLElements&lt;CMLPeakGroup&gt;
     */
     public CMLElements<CMLPeakGroup> getPeakGroupElements() {
         Elements elements = this.getChildElements("peakGroup", CMLConstants.CML_NS);
@@ -1312,7 +1312,7 @@ public abstract class AbstractPeakGroup extends CMLElement {
     * Uses the id attribute as the target identification. 
     *         The order of molecules is preserved. It is not necessarily an error to have repeated 
     *         references to the same molecule
-    * @return CMLElements<CMLAtom>
+    * @return CMLElements&lt;CMLAtom&gt;
     */
     public CMLElements<CMLAtom> getAtomElements() {
         Elements elements = this.getChildElements("atom", CMLConstants.CML_NS);
@@ -1334,7 +1334,7 @@ public abstract class AbstractPeakGroup extends CMLElement {
     * Uses the id attribute as the target identification. 
     *         The order of molecules is preserved. It is not necessarily an error to have repeated 
     *         references to the same molecule
-    * @return CMLElements<CMLBond>
+    * @return CMLElements&lt;CMLBond&gt;
     */
     public CMLElements<CMLBond> getBondElements() {
         Elements elements = this.getChildElements("bond", CMLConstants.CML_NS);
@@ -1356,7 +1356,7 @@ public abstract class AbstractPeakGroup extends CMLElement {
     * Uses the id attribute as the target identification. 
     *         The order of molecules is preserved. It is not necessarily an error to have repeated 
     *         references to the same molecule
-    * @return CMLElements<CMLMolecule>
+    * @return CMLElements&lt;CMLMolecule&gt;
     */
     public CMLElements<CMLMolecule> getMoleculeElements() {
         Elements elements = this.getChildElements("molecule", CMLConstants.CML_NS);

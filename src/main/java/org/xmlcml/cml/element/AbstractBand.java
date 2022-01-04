@@ -406,7 +406,7 @@ public abstract class AbstractBand extends CMLElement {
         this.appendChild(array);
     }
     /** null
-    * @return CMLElements<CMLArray>
+    * @return CMLElements&lt;CMLArray&gt;
     */
     public CMLElements<CMLArray> getArrayElements() {
         Elements elements = this.getChildElements("array", CMLConstants.CML_NS);

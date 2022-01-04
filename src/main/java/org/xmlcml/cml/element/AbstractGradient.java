@@ -220,7 +220,7 @@ public abstract class AbstractGradient extends CMLElement {
         this.appendChild(scalar);
     }
     /** null
-    * @return CMLElements<CMLScalar>
+    * @return CMLElements&lt;CMLScalar&gt;
     */
     public CMLElements<CMLScalar> getScalarElements() {
         Elements elements = this.getChildElements("scalar", CMLConstants.CML_NS);
@@ -236,7 +236,7 @@ public abstract class AbstractGradient extends CMLElement {
         this.appendChild(array);
     }
     /** null
-    * @return CMLElements<CMLArray>
+    * @return CMLElements&lt;CMLArray&gt;
     */
     public CMLElements<CMLArray> getArrayElements() {
         Elements elements = this.getChildElements("array", CMLConstants.CML_NS);
@@ -252,7 +252,7 @@ public abstract class AbstractGradient extends CMLElement {
         this.appendChild(matrix);
     }
     /** null
-    * @return CMLElements<CMLMatrix>
+    * @return CMLElements&lt;CMLMatrix&gt;
     */
     public CMLElements<CMLMatrix> getMatrixElements() {
         Elements elements = this.getChildElements("matrix", CMLConstants.CML_NS);
@@ -268,7 +268,7 @@ public abstract class AbstractGradient extends CMLElement {
         this.appendChild(property);
     }
     /** null
-    * @return CMLElements<CMLProperty>
+    * @return CMLElements&lt;CMLProperty&gt;
     */
     public CMLElements<CMLProperty> getPropertyElements() {
         Elements elements = this.getChildElements("property", CMLConstants.CML_NS);

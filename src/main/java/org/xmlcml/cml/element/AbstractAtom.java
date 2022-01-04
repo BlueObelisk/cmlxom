@@ -1470,7 +1470,7 @@ public abstract class AbstractAtom extends CMLElement {
     *                 useful convenience operator. 
     *                 Distinguish carefully from occupancy which represents incomplete occupation of a 
     *                 site.
-    * @return CMLElements<CMLName>
+    * @return CMLElements&lt;CMLName&gt;
     */
     public CMLElements<CMLName> getNameElements() {
         Elements elements = this.getChildElements("name", CMLConstants.CML_NS);
@@ -1504,7 +1504,7 @@ public abstract class AbstractAtom extends CMLElement {
     *                 useful convenience operator. 
     *                 Distinguish carefully from occupancy which represents incomplete occupation of a 
     *                 site.
-    * @return CMLElements<CMLLabel>
+    * @return CMLElements&lt;CMLLabel&gt;
     */
     public CMLElements<CMLLabel> getLabelElements() {
         Elements elements = this.getChildElements("label", CMLConstants.CML_NS);
@@ -1540,7 +1540,7 @@ public abstract class AbstractAtom extends CMLElement {
     *                 useful convenience operator. 
     *                 Distinguish carefully from occupancy which represents incomplete occupation of a 
     *                 site.
-    * @return CMLElements<CMLArray>
+    * @return CMLElements&lt;CMLArray&gt;
     */
     public CMLElements<CMLArray> getArrayElements() {
         Elements elements = this.getChildElements("array", CMLConstants.CML_NS);
@@ -1576,7 +1576,7 @@ public abstract class AbstractAtom extends CMLElement {
     *                 useful convenience operator. 
     *                 Distinguish carefully from occupancy which represents incomplete occupation of a 
     *                 site.
-    * @return CMLElements<CMLScalar>
+    * @return CMLElements&lt;CMLScalar&gt;
     */
     public CMLElements<CMLScalar> getScalarElements() {
         Elements elements = this.getChildElements("scalar", CMLConstants.CML_NS);
@@ -1610,7 +1610,7 @@ public abstract class AbstractAtom extends CMLElement {
     *                 useful convenience operator. 
     *                 Distinguish carefully from occupancy which represents incomplete occupation of a 
     *                 site.
-    * @return CMLElements<CMLAtomParity>
+    * @return CMLElements&lt;CMLAtomParity&gt;
     */
     public CMLElements<CMLAtomParity> getAtomParityElements() {
         Elements elements = this.getChildElements("atomParity", CMLConstants.CML_NS);

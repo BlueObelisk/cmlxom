@@ -330,7 +330,7 @@ public abstract class AbstractFragment extends CMLElement {
         this.appendChild(metadataList);
     }
     /** null
-    * @return CMLElements<CMLMetadataList>
+    * @return CMLElements&lt;CMLMetadataList&gt;
     */
     public CMLElements<CMLMetadataList> getMetadataListElements() {
         Elements elements = this.getChildElements("metadataList", CMLConstants.CML_NS);
@@ -346,7 +346,7 @@ public abstract class AbstractFragment extends CMLElement {
         this.appendChild(label);
     }
     /** null
-    * @return CMLElements<CMLLabel>
+    * @return CMLElements&lt;CMLLabel&gt;
     */
     public CMLElements<CMLLabel> getLabelElements() {
         Elements elements = this.getChildElements("label", CMLConstants.CML_NS);
@@ -362,7 +362,7 @@ public abstract class AbstractFragment extends CMLElement {
         this.appendChild(molecule);
     }
     /** null
-    * @return CMLElements<CMLMolecule>
+    * @return CMLElements&lt;CMLMolecule&gt;
     */
     public CMLElements<CMLMolecule> getMoleculeElements() {
         Elements elements = this.getChildElements("molecule", CMLConstants.CML_NS);
@@ -378,7 +378,7 @@ public abstract class AbstractFragment extends CMLElement {
         this.appendChild(fragmentList);
     }
     /** null
-    * @return CMLElements<CMLFragmentList>
+    * @return CMLElements&lt;CMLFragmentList&gt;
     */
     public CMLElements<CMLFragmentList> getFragmentListElements() {
         Elements elements = this.getChildElements("fragmentList", CMLConstants.CML_NS);
@@ -394,7 +394,7 @@ public abstract class AbstractFragment extends CMLElement {
         this.appendChild(join);
     }
     /** null
-    * @return CMLElements<CMLJoin>
+    * @return CMLElements&lt;CMLJoin&gt;
     */
     public CMLElements<CMLJoin> getJoinElements() {
         Elements elements = this.getChildElements("join", CMLConstants.CML_NS);

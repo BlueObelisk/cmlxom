@@ -220,7 +220,7 @@ public abstract class AbstractTableHeader extends CMLElement {
         this.appendChild(tableHeaderCell);
     }
     /** null
-    * @return CMLElements<CMLTableHeaderCell>
+    * @return CMLElements&lt;CMLTableHeaderCell&gt;
     */
     public CMLElements<CMLTableHeaderCell> getTableHeaderCellElements() {
         Elements elements = this.getChildElements("tableHeaderCell", CMLConstants.CML_NS);

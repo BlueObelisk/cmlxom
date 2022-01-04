@@ -431,7 +431,7 @@ public abstract class AbstractSubstance extends CMLElement {
     }
     /** The physical state of the substance.
     * No fixed semantics or default.
-    * @return CMLElements<CMLMetadataList>
+    * @return CMLElements&lt;CMLMetadataList&gt;
     */
     public CMLElements<CMLMetadataList> getMetadataListElements() {
         Elements elements = this.getChildElements("metadataList", CMLConstants.CML_NS);
@@ -449,7 +449,7 @@ public abstract class AbstractSubstance extends CMLElement {
     }
     /** The physical state of the substance.
     * No fixed semantics or default.
-    * @return CMLElements<CMLAmount>
+    * @return CMLElements&lt;CMLAmount&gt;
     */
     public CMLElements<CMLAmount> getAmountElements() {
         Elements elements = this.getChildElements("amount", CMLConstants.CML_NS);
@@ -467,7 +467,7 @@ public abstract class AbstractSubstance extends CMLElement {
     }
     /** The physical state of the substance.
     * No fixed semantics or default.
-    * @return CMLElements<CMLMolecule>
+    * @return CMLElements&lt;CMLMolecule&gt;
     */
     public CMLElements<CMLMolecule> getMoleculeElements() {
         Elements elements = this.getChildElements("molecule", CMLConstants.CML_NS);
@@ -485,7 +485,7 @@ public abstract class AbstractSubstance extends CMLElement {
     }
     /** The physical state of the substance.
     * No fixed semantics or default.
-    * @return CMLElements<CMLName>
+    * @return CMLElements&lt;CMLName&gt;
     */
     public CMLElements<CMLName> getNameElements() {
         Elements elements = this.getChildElements("name", CMLConstants.CML_NS);
@@ -503,7 +503,7 @@ public abstract class AbstractSubstance extends CMLElement {
     }
     /** The physical state of the substance.
     * No fixed semantics or default.
-    * @return CMLElements<CMLProperty>
+    * @return CMLElements&lt;CMLProperty&gt;
     */
     public CMLElements<CMLProperty> getPropertyElements() {
         Elements elements = this.getChildElements("property", CMLConstants.CML_NS);

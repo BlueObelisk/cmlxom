@@ -475,7 +475,7 @@ public abstract class AbstractMap extends CMLElement {
     }
     /** Role of the object.
     * How the object functions or its position in the architecture. No controlled vocabulary.
-    * @return CMLElements<CMLLink>
+    * @return CMLElements&lt;CMLLink&gt;
     */
     public CMLElements<CMLLink> getLinkElements() {
         Elements elements = this.getChildElements("link", CMLConstants.CML_NS);

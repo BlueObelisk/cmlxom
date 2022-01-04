@@ -334,7 +334,7 @@ public abstract class AbstractProperty extends CMLElement {
     }
     /** The physical state of the substance.
     * No fixed semantics or default.
-    * @return CMLElements<CMLName>
+    * @return CMLElements&lt;CMLName&gt;
     */
     public CMLElements<CMLName> getNameElements() {
         Elements elements = this.getChildElements("name", CMLConstants.CML_NS);
@@ -352,7 +352,7 @@ public abstract class AbstractProperty extends CMLElement {
     }
     /** The physical state of the substance.
     * No fixed semantics or default.
-    * @return CMLElements<CMLScalar>
+    * @return CMLElements&lt;CMLScalar&gt;
     */
     public CMLElements<CMLScalar> getScalarElements() {
         Elements elements = this.getChildElements("scalar", CMLConstants.CML_NS);
@@ -370,7 +370,7 @@ public abstract class AbstractProperty extends CMLElement {
     }
     /** The physical state of the substance.
     * No fixed semantics or default.
-    * @return CMLElements<CMLArray>
+    * @return CMLElements&lt;CMLArray&gt;
     */
     public CMLElements<CMLArray> getArrayElements() {
         Elements elements = this.getChildElements("array", CMLConstants.CML_NS);

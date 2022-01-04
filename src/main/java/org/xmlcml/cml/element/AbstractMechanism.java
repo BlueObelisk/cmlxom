@@ -220,7 +220,7 @@ public abstract class AbstractMechanism extends CMLElement {
         this.appendChild(name);
     }
     /** null
-    * @return CMLElements<CMLName>
+    * @return CMLElements&lt;CMLName&gt;
     */
     public CMLElements<CMLName> getNameElements() {
         Elements elements = this.getChildElements("name", CMLConstants.CML_NS);
@@ -236,7 +236,7 @@ public abstract class AbstractMechanism extends CMLElement {
         this.appendChild(label);
     }
     /** null
-    * @return CMLElements<CMLLabel>
+    * @return CMLElements&lt;CMLLabel&gt;
     */
     public CMLElements<CMLLabel> getLabelElements() {
         Elements elements = this.getChildElements("label", CMLConstants.CML_NS);
@@ -252,7 +252,7 @@ public abstract class AbstractMechanism extends CMLElement {
         this.appendChild(mechanismComponent);
     }
     /** null
-    * @return CMLElements<CMLMechanismComponent>
+    * @return CMLElements&lt;CMLMechanismComponent&gt;
     */
     public CMLElements<CMLMechanismComponent> getMechanismComponentElements() {
         Elements elements = this.getChildElements("mechanismComponent", CMLConstants.CML_NS);

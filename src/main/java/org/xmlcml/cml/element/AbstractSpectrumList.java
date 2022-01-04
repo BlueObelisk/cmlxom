@@ -296,7 +296,7 @@ public abstract class AbstractSpectrumList extends CMLElement {
     }
     /** A reference to a molecule.
     * Used by spectrum, etc.
-    * @return CMLElements<CMLMetadataList>
+    * @return CMLElements&lt;CMLMetadataList&gt;
     */
     public CMLElements<CMLMetadataList> getMetadataListElements() {
         Elements elements = this.getChildElements("metadataList", CMLConstants.CML_NS);
@@ -314,7 +314,7 @@ public abstract class AbstractSpectrumList extends CMLElement {
     }
     /** A reference to a molecule.
     * Used by spectrum, etc.
-    * @return CMLElements<CMLList>
+    * @return CMLElements&lt;CMLList&gt;
     */
     public CMLElements<CMLList> getListElements() {
         Elements elements = this.getChildElements("list", CMLConstants.CML_NS);
@@ -332,7 +332,7 @@ public abstract class AbstractSpectrumList extends CMLElement {
     }
     /** A reference to a molecule.
     * Used by spectrum, etc.
-    * @return CMLElements<CMLSpectrumList>
+    * @return CMLElements&lt;CMLSpectrumList&gt;
     */
     public CMLElements<CMLSpectrumList> getSpectrumListElements() {
         Elements elements = this.getChildElements("spectrumList", CMLConstants.CML_NS);
@@ -350,7 +350,7 @@ public abstract class AbstractSpectrumList extends CMLElement {
     }
     /** A reference to a molecule.
     * Used by spectrum, etc.
-    * @return CMLElements<CMLSpectrum>
+    * @return CMLElements&lt;CMLSpectrum&gt;
     */
     public CMLElements<CMLSpectrum> getSpectrumElements() {
         Elements elements = this.getChildElements("spectrum", CMLConstants.CML_NS);

@@ -220,7 +220,7 @@ public abstract class AbstractSpectatorList extends CMLElement {
         this.appendChild(spectator);
     }
     /** null
-    * @return CMLElements<CMLSpectator>
+    * @return CMLElements&lt;CMLSpectator&gt;
     */
     public CMLElements<CMLSpectator> getSpectatorElements() {
         Elements elements = this.getChildElements("spectator", CMLConstants.CML_NS);

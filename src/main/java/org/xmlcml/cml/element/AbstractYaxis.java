@@ -375,7 +375,7 @@ public abstract class AbstractYaxis extends CMLElement {
     }
     /** The constant to add to the raw data.
     *  add *after* applying any multiplier.
-    * @return CMLElements<CMLArray>
+    * @return CMLElements&lt;CMLArray&gt;
     */
     public CMLElements<CMLArray> getArrayElements() {
         Elements elements = this.getChildElements("array", CMLConstants.CML_NS);

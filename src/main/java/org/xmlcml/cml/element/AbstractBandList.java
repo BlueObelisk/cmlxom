@@ -220,7 +220,7 @@ public abstract class AbstractBandList extends CMLElement {
         this.appendChild(band);
     }
     /** null
-    * @return CMLElements<CMLBand>
+    * @return CMLElements&lt;CMLBand&gt;
     */
     public CMLElements<CMLBand> getBandElements() {
         Elements elements = this.getChildElements("band", CMLConstants.CML_NS);

@@ -220,7 +220,7 @@ public abstract class AbstractZMatrix extends CMLElement {
         this.appendChild(length);
     }
     /** null
-    * @return CMLElements<CMLLength>
+    * @return CMLElements&lt;CMLLength&gt;
     */
     public CMLElements<CMLLength> getLengthElements() {
         Elements elements = this.getChildElements("length", CMLConstants.CML_NS);
@@ -236,7 +236,7 @@ public abstract class AbstractZMatrix extends CMLElement {
         this.appendChild(angle);
     }
     /** null
-    * @return CMLElements<CMLAngle>
+    * @return CMLElements&lt;CMLAngle&gt;
     */
     public CMLElements<CMLAngle> getAngleElements() {
         Elements elements = this.getChildElements("angle", CMLConstants.CML_NS);
@@ -252,7 +252,7 @@ public abstract class AbstractZMatrix extends CMLElement {
         this.appendChild(torsion);
     }
     /** null
-    * @return CMLElements<CMLTorsion>
+    * @return CMLElements&lt;CMLTorsion&gt;
     */
     public CMLElements<CMLTorsion> getTorsionElements() {
         Elements elements = this.getChildElements("torsion", CMLConstants.CML_NS);

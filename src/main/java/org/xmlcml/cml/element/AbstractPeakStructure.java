@@ -558,7 +558,7 @@ public abstract class AbstractPeakStructure extends CMLElement {
     }
     /** A reference to a list of bonds.
     * Used by electrons, bondSets, etc.
-    * @return CMLElements<CMLPeakStructure>
+    * @return CMLElements&lt;CMLPeakStructure&gt;
     */
     public CMLElements<CMLPeakStructure> getPeakStructureElements() {
         Elements elements = this.getChildElements("peakStructure", CMLConstants.CML_NS);

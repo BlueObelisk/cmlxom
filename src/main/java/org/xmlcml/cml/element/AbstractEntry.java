@@ -1010,7 +1010,7 @@ public abstract class AbstractEntry extends CMLElement {
 //    }
 //    /** A term in a dictionary.
 //    * The term should be a noun or nounal phrase, with a separate definition and further description.
-//    * @return CMLElements<CMLMetadataList>
+//    * @return CMLElements&lt;CMLMetadataList&gt;
 //    */
 //    public CMLElements<CMLMetadataList> getMetadataListElements() {
 //        Elements elements = this.getChildElements("metadataList", CMLConstants.CML_NS);
@@ -1028,7 +1028,7 @@ public abstract class AbstractEntry extends CMLElement {
 //    }
 //    /** A term in a dictionary.
 //    * The term should be a noun or nounal phrase, with a separate definition and further description.
-//    * @return CMLElements<CMLAnnotation>
+//    * @return CMLElements&lt;CMLAnnotation&gt;
 //    */
 //    public CMLElements<CMLAnnotation> getAnnotationElements() {
 //        Elements elements = this.getChildElements("annotation", CMLConstants.CML_NS);
@@ -1046,7 +1046,7 @@ public abstract class AbstractEntry extends CMLElement {
 //    }
 //    /** A term in a dictionary.
 //    * The term should be a noun or nounal phrase, with a separate definition and further description.
-//    * @return CMLElements<CMLDefinition>
+//    * @return CMLElements&lt;CMLDefinition&gt;
 //    */
 //    public CMLElements<CMLDefinition> getDefinitionElements() {
 //        Elements elements = this.getChildElements("definition", CMLConstants.CML_NS);
@@ -1064,7 +1064,7 @@ public abstract class AbstractEntry extends CMLElement {
 //    }
 //    /** A term in a dictionary.
 //    * The term should be a noun or nounal phrase, with a separate definition and further description.
-//    * @return CMLElements<CMLDescription>
+//    * @return CMLElements&lt;CMLDescription&gt;
 //    */
 //    public CMLElements<CMLDescription> getDescriptionElements() {
 //        Elements elements = this.getChildElements("description", CMLConstants.CML_NS);
@@ -1082,7 +1082,7 @@ public abstract class AbstractEntry extends CMLElement {
 //    }
 //    /** A term in a dictionary.
 //    * The term should be a noun or nounal phrase, with a separate definition and further description.
-//    * @return CMLElements<CMLEnumeration>
+//    * @return CMLElements&lt;CMLEnumeration&gt;
 //    */
 //    public CMLElements<CMLEnumeration> getEnumerationElements() {
 //        Elements elements = this.getChildElements("enumeration", CMLConstants.CML_NS);
@@ -1100,7 +1100,7 @@ public abstract class AbstractEntry extends CMLElement {
 //    }
 //    /** A term in a dictionary.
 //    * The term should be a noun or nounal phrase, with a separate definition and further description.
-//    * @return CMLElements<CMLUnitType>
+//    * @return CMLElements&lt;CMLUnitType&gt;
 //    */
 //    public CMLElements<CMLUnitType> getUnitTypeElements() {
 //        Elements elements = this.getChildElements("unitType", CMLConstants.CML_NS);
@@ -1118,7 +1118,7 @@ public abstract class AbstractEntry extends CMLElement {
 //    }
 //    /** A term in a dictionary.
 //    * The term should be a noun or nounal phrase, with a separate definition and further description.
-//    * @return CMLElements<CMLAlternative>
+//    * @return CMLElements&lt;CMLAlternative&gt;
 //    */
 //    public CMLElements<CMLAlternative> getAlternativeElements() {
 //        Elements elements = this.getChildElements("alternative", CMLConstants.CML_NS);
@@ -1136,7 +1136,7 @@ public abstract class AbstractEntry extends CMLElement {
 //    }
 //    /** A term in a dictionary.
 //    * The term should be a noun or nounal phrase, with a separate definition and further description.
-//    * @return CMLElements<CMLRelatedEntry>
+//    * @return CMLElements&lt;CMLRelatedEntry&gt;
 //    */
 //    public CMLElements<CMLRelatedEntry> getRelatedEntryElements() {
 //        Elements elements = this.getChildElements("relatedEntry", CMLConstants.CML_NS);

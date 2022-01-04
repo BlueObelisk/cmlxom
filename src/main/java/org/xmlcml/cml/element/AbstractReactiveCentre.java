@@ -220,7 +220,7 @@ public abstract class AbstractReactiveCentre extends CMLElement {
         this.appendChild(atomTypeList);
     }
     /** null
-    * @return CMLElements<CMLAtomTypeList>
+    * @return CMLElements&lt;CMLAtomTypeList&gt;
     */
     public CMLElements<CMLAtomTypeList> getAtomTypeListElements() {
         Elements elements = this.getChildElements("atomTypeList", CMLConstants.CML_NS);
@@ -236,7 +236,7 @@ public abstract class AbstractReactiveCentre extends CMLElement {
         this.appendChild(bondTypeList);
     }
     /** null
-    * @return CMLElements<CMLBondTypeList>
+    * @return CMLElements&lt;CMLBondTypeList&gt;
     */
     public CMLElements<CMLBondTypeList> getBondTypeListElements() {
         Elements elements = this.getChildElements("bondTypeList", CMLConstants.CML_NS);
@@ -252,7 +252,7 @@ public abstract class AbstractReactiveCentre extends CMLElement {
         this.appendChild(atomSet);
     }
     /** null
-    * @return CMLElements<CMLAtomSet>
+    * @return CMLElements&lt;CMLAtomSet&gt;
     */
     public CMLElements<CMLAtomSet> getAtomSetElements() {
         Elements elements = this.getChildElements("atomSet", CMLConstants.CML_NS);
@@ -268,7 +268,7 @@ public abstract class AbstractReactiveCentre extends CMLElement {
         this.appendChild(bondSet);
     }
     /** null
-    * @return CMLElements<CMLBondSet>
+    * @return CMLElements&lt;CMLBondSet&gt;
     */
     public CMLElements<CMLBondSet> getBondSetElements() {
         Elements elements = this.getChildElements("bondSet", CMLConstants.CML_NS);
