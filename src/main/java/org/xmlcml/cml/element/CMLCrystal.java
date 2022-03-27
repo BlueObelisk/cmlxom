@@ -810,7 +810,7 @@ public class CMLCrystal extends AbstractCrystal {
      *
      * @param element to search under
      * @return the 'crystal'
-     * @throws RuntimeException if 0 or >1 nodes
+     * @throws RuntimeException if 0 or &gt;1 nodes
      */
     public static CMLCrystal getContainedCrystal(CMLElement element) throws RuntimeException {
         Nodes crystalNodes = element.query(".//"+CMLCrystal.NS, CMLConstants.CML_XPATH);

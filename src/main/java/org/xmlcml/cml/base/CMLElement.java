@@ -340,7 +340,7 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
     }
 
     /** set attribute.
-     * reroutes special cases such as setId() => resetId()
+     * reroutes special cases such as setId() =&gt; resetId()
      * @param attName
      * @param attValue
      */

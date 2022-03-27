@@ -1393,7 +1393,7 @@ public class CMLMolecule
 
 	/**
 	 * Round the atomCoords to within a multiple of epsilon currently always
-	 * rounds down (e.g. 3.9996 with epsilon = 0.001 => 3.999, not 4)
+	 * rounds down (e.g. 3.9996 with epsilon = 0.001 =&gt; 3.999, not 4)
 	 *
 	 * @param epsilon
 	 * @param coordinateType
@@ -1430,10 +1430,10 @@ public class CMLMolecule
 	 * In practice this only happens when the XML version is parsed.
 	 * getOrder and setOrder normalize by default. So this routine
 	 * should only be required immediately after parsing
-	 * values (S->1, D->2, T->3)
+	 * values (S-&gt;1, D-&gt;2, T-&gt;3)
 	 *
 	 *IMPORTANT NOTE; we have changed this 2009 to be the reverse.
-	 * 1->S, 2->D 3->T
+	 * 1-&gt;S, 2-&gt;D 3-&gt;T
 	 */
 	public void setNormalizedBondOrders() {
 		List<CMLBond> bonds = this.getBonds();

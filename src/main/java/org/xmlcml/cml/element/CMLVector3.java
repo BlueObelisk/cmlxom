@@ -262,7 +262,7 @@ public class CMLVector3 extends AbstractVector3 {
      *
      * @param v
      *            vector to compare
-     * @return true if this > vector
+     * @return true if this &gt; vector
      */
     public boolean longerThan(CMLVector3 v) {
         Vector3 veucl3 = this.getEuclidVector3();

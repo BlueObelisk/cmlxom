@@ -29,8 +29,6 @@ import nu.xom.Elements;
  * from XOM as this is iterable
  * 
  * @author pm286, and ramin
- * 
- * @param <E>
  */
 public class CMLElements<E extends Element> implements Iterable<E>, CMLConstants {
 

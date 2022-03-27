@@ -327,7 +327,7 @@ public class CMLSymmetry extends AbstractSymmetry {
 
     /**
      * do the elements form a spacegroup. operates on a cpoy so does not
-     * normalize this translation is normalized to range 0 -> 1-eps iterates
+     * normalize this translation is normalized to range 0 -&gt; 1-eps iterates
      * through all n^2 combinations (a*b and b*a) and tests them against group
      * members
      * 
@@ -411,7 +411,7 @@ public class CMLSymmetry extends AbstractSymmetry {
      * 
      * @param element to search under
      * @return the symmetry
-     * @throws RuntimeException if 0 or >1 nodes
+     * @throws RuntimeException if 0 or &gt;1 nodes
      */
     //TODO should this really call a RunTimeException?
     public static CMLSymmetry getContainedSymmetry(CMLElement element) throws RuntimeException {

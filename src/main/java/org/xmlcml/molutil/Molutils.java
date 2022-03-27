@@ -104,7 +104,7 @@ public abstract class Molutils extends java.lang.Object implements CMLConstants 
      *            from aPoint
      *
      * @throws EuclidRuntimeException
-     * @return Point3[] ANY => 1, LINEAR => 2, TRIGONAL => 3, TETRAHEDRAL => 4
+     * @return Point3[] ANY =&gt; 1, LINEAR =&gt; 2, TRIGONAL =&gt; 3, TETRAHEDRAL =&gt; 4
      */
     public static List<Point3> calculate3DCoordinates0(Point3 aPoint,
             int geometry, double length) throws EuclidRuntimeException {

@@ -629,7 +629,7 @@ public class CMLAtom extends AbstractAtom {
     /**
      * gets cross product for 3 atoms in 3D.
      *
-     * gets cross products of this->at1 X this->at2
+     * gets cross products of this-&gt;at1 X this-&gt;at2
      *
      * @param atom1
      *            first atom
@@ -651,7 +651,7 @@ public class CMLAtom extends AbstractAtom {
     /**
      * gets cross product for 3 atoms in 2D.
      *
-     * gets cross products of this->at1 X this->at2 the result is a 3D vector
+     * gets cross products of this-&gt;at1 X this-&gt;at2 the result is a 3D vector
      * perpendicular to xy2 plane
      *
      * @param atom1
@@ -696,7 +696,7 @@ public class CMLAtom extends AbstractAtom {
     /**
      * gets vector from this atom to another.
      *
-     * gets vector this->at1 (i.e. at1 minus this)
+     * gets vector this-&gt;at1 (i.e. at1 minus this)
      *
      * @param atom1
      *            other atom
@@ -718,7 +718,7 @@ public class CMLAtom extends AbstractAtom {
     /**
      * gets vector from this atom to another.
      *
-     * gets vector this->at1 (i.e. at1 minus this)
+     * gets vector this-&gt;at1 (i.e. at1 minus this)
      *
      * @param atom1
      *            other atom
