@@ -51,7 +51,8 @@ public interface HasDictRef {
 
 
     /** set dictRef value.
-     * 
+     *
+     * @param dictRef
      */
     void setDictRef(String dictRef);
 

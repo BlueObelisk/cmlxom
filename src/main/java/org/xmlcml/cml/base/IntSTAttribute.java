@@ -91,7 +91,6 @@ public class IntSTAttribute extends CMLAttribute {
      * 
      * @param s
      *            the value
-     * @throws RuntimeException
      */
     public void setCMLValue(String s) {
     	if (s!= null && !s.trim().equals(S_EMPTY)) {
@@ -123,8 +122,6 @@ public class IntSTAttribute extends CMLAttribute {
      * 
      * @param i
      *            the value
-     * @throws RuntimeException
-     *             wrong type or value fails
      */
     public void checkValue(int i) {
         if (cmlType != null) {
