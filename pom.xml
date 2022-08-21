@@ -316,7 +316,7 @@
 		<dependency>
 			<groupId>org.blueobelisk</groupId>
 			<artifactId>euclid</artifactId>
-			<version>2.2</version>
+			<version>2.3-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>xom</groupId>
@@ -326,7 +326,7 @@
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
-			<version>2.10.14</version>
+			<version>2.11.0</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-io</groupId>
