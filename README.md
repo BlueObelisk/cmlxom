@@ -11,7 +11,7 @@ implementing the XML object model (XOM) for the Chemical Markup Language (CML).
 Instructions to increase the version:
 
 ```shell
-mvn versions:set -DnewVersion=4.3-SNAPSHOT
+mvn versions:set -DnewVersion=4.4-SNAPSHOT
 ```
 
 Deploy to Sonatype with the following commands, for snapshots and releases respectively:
