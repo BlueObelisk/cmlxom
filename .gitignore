@@ -1,7 +1,7 @@
 foo
-^.project$
-^.settings/
-^.classpath$
-^.gitignore~$
+.project
+.settings/
+.classpath
+.gitignore~
 ^target/.*
 /target/
