@@ -19,6 +19,5 @@ Deploy to Sonatype with the following commands, for snapshots and releases respe
 
 ```sh1ll
 mvn clean deploy
-mvn clean deploy -P release
 ```
 
