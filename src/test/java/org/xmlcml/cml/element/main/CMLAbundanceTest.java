@@ -325,7 +325,7 @@ public class CMLAbundanceTest {
         CMLAbundance cml = new CMLAbundance();
         CMLAttribute expected = null;
 
-        CMLAttribute actual = cml.getDictRefAttribute();
+        CMLAttribute actual = cml.getUnitsAttribute();
 
         assertEquals("Units attribute should be null: ", expected, actual);
     }
