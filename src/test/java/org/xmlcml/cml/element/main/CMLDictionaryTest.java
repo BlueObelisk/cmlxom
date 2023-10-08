@@ -24,22 +24,15 @@ import org.xmlcml.cml.element.CMLEntry;
 
 public class CMLDictionaryTest {
 
-    protected CMLDictionary cmlDictionary = null;
     private CMLEntry cmlEntry1 = new CMLEntry("1");
     private CMLEntry cmlEntry2 = new CMLEntry("2");
 
-    @Before
-    public void setup() {
-
-        cmlDictionary = new CMLDictionary();
-        cmlDictionary.insertChild(cmlEntry1, 0);
-        cmlDictionary.insertChild(cmlEntry2, 1);
-        int actual = cmlDictionary.indexEntries();
-        Assert.assertEquals(2, actual);
-    }
-
     @Test
     public void testRemoveEntryById() {
+        CMLDictionary cmlDictionary = new CMLDictionary();
+        cmlDictionary.insertChild(cmlEntry1, 0);
+        cmlDictionary.insertChild(cmlEntry2, 1);
+
         cmlDictionary.removeEntryById("1");
 
         Assert.assertEquals(null, cmlDictionary.getCMLEntry("1"));
@@ -48,7 +41,10 @@ public class CMLDictionaryTest {
 
     @Test
     public void testRemoveEntry() {
-        CMLEntry entryToBeRemoved = new CMLEntry("1");
+        CMLDictionary cmlDictionary = new CMLDictionary();
+        cmlDictionary.insertChild(cmlEntry1, 0);
+        cmlDictionary.insertChild(cmlEntry2, 1);
+        CMLEntry entryToBeRemoved = cmlEntry1;
 
         cmlDictionary.removeEntry(entryToBeRemoved);
 
@@ -58,6 +54,8 @@ public class CMLDictionaryTest {
 
     @Test
     public void testAddEntry() {
+        CMLDictionary cmlDictionary = new CMLDictionary();
+        cmlDictionary.insertChild(cmlEntry1, 0);
         CMLEntry entryToBeAdded = new CMLEntry("4");
 
         cmlDictionary.addEntry(entryToBeAdded);
@@ -67,6 +65,7 @@ public class CMLDictionaryTest {
 
     @Test(expected = RuntimeException.class)
     public void testAddEntry_whenIdIsNull() {
+        CMLDictionary cmlDictionary = new CMLDictionary();
         CMLEntry entryToBeAdded = new CMLEntry();
 
         cmlDictionary.addEntry(entryToBeAdded);
@@ -74,13 +73,19 @@ public class CMLDictionaryTest {
 
     @Test(expected = RuntimeException.class)
     public void testAddEntry_whenIdIsAlreadyPresent() {
-        CMLEntry entryToBeAdded = new CMLEntry("1");
+        CMLDictionary cmlDictionary = new CMLDictionary();
+        cmlDictionary.insertChild(cmlEntry1, 0);
+        cmlDictionary.insertChild(cmlEntry2, 1);
+        CMLEntry entryToBeAdded = cmlEntry1;
 
         cmlDictionary.addEntry(entryToBeAdded);
     }
 
     @Test
     public void testAddEntryInOrder() {
+        CMLDictionary cmlDictionary = new CMLDictionary();
+        cmlDictionary.insertChild(cmlEntry1, 0);
+        cmlDictionary.insertChild(cmlEntry2, 1);
         CMLEntry entryToBeAdded = new CMLEntry("0");
 
         cmlDictionary.addEntryInOrder(entryToBeAdded);
@@ -90,6 +95,7 @@ public class CMLDictionaryTest {
 
     @Test(expected = RuntimeException.class)
     public void testAddEntryInOrder_whenIdIsNull() {
+        CMLDictionary cmlDictionary = new CMLDictionary();
         CMLEntry entryToBeAdded = new CMLEntry();
 
         cmlDictionary.addEntryInOrder(entryToBeAdded);
@@ -97,7 +103,12 @@ public class CMLDictionaryTest {
 
     @Test
     public void testGetGenericEntry() {
+        CMLDictionary cmlDictionary = new CMLDictionary();
+        cmlDictionary.insertChild(cmlEntry1, 0);
+        cmlDictionary.insertChild(cmlEntry2, 1);
+
         CMLEntry actual = cmlDictionary.getGenericEntry("1");
+
         Assert.assertEquals(actual,cmlEntry1);
     }
 }
