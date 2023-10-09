@@ -129,6 +129,10 @@
 			<id>shk3</id>
 			<name>Stefan Kuhn</name>
 		</developer>
+                <developer>
+                        <id>sivasuriyankumarasamy</id>
+                        <name>sivasuriyankumarasamy</name>
+                </developer>
 		<developer>
 			<id>steinbeck</id>
 			<name>Christoph Steinbeck</name>
