@@ -152,7 +152,7 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
      * builder.
      * Removes any Document parent
      * Serializes the element and re-parses with CMLBuilder()
-     * @param element
+     * @param element the Element to parse
      * @return CMLElement (null if root element is not CML)
      */
     public static CMLElement createCMLElement(Element element) {
@@ -171,7 +171,7 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
     }
     /**
      * normally overridden
-     * @param id
+     * @param id the identifier
      */
     public void setId(String id) {
     	this.addAttribute(new Attribute(CMLXSD_ID, id));
@@ -189,7 +189,7 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
      * copy constructor. copies attributes, children and properties using the
      * copyFoo() routines (q.v.)
      * 
-     * @param element
+     * @param element the element to copy
      */
     public CMLElement(CMLElement element) {
         this(element.getLocalName());
@@ -211,8 +211,7 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
     /**
      * callback when constructing from XML. No-op unless overridden in subclass
      * 
-     * @param parent
-     *            element
+     * @param parent element
      */
     public void finishMakingElement(Element parent) {
     }
@@ -266,8 +265,8 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
     }
     
     /** override replaceChild.
-     * @param oldNode
-     * @param newNode
+     * @param oldNode node to replace
+     * @param newNode node that replaces the old node
      */
     public void replaceChild(Node oldNode, Node newNode) {
         int pos = this.indexOf(oldNode);
@@ -281,8 +280,8 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
 
     /** override insertChild.
      * if newNode has parent detach()es first
-     * @param newNode
-     * @param pos
+     * @param newNode new node to add
+     * @param pos     position where to add the node
      */
     public void insertChild(Node newNode, int pos) {
         newNode.detach();
@@ -306,8 +305,8 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
     /** override addNamespaceDeclaration(prefix, uri) to make it immutable.
      * if namespacePrefix is not set, set it, else returns no-op
      * without message.
-     * @param prefix
-     * @param uri
+     * @param prefix prefix for the namespace
+     * @param uri    URI of the namespace
      */
     public void addNamespaceDeclaration(String prefix, String uri) {
         String namespaceURI = this.getNamespaceURI(prefix);
@@ -319,7 +318,7 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
     /** override removeNamespaceDeclaration(prefix) to forbid it.
      * @deprecated
      * 
-     * @param prefix
+     * @param prefix prefix to remove
      */
     public void removeNamespaceDeclaration(String prefix) {
         String namespaceURI = this.getNamespaceURI(prefix);
@@ -330,7 +329,7 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
 
     /** override setLocalName(localName) to make it immutable.
      * if localname is null sets it, else no-op
-     * @param localName
+     * @param localName local name of this element
      */
     public void setLocalName(String localName) {
         String lName = this.getLocalName();
@@ -341,8 +340,8 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
 
     /** set attribute.
      * reroutes special cases such as setId() =&gt; resetId()
-     * @param attName
-     * @param attValue
+     * @param attName  name of the attribute
+     * @param attValue value of the attribute
      */
     public void setAttribute(String attName, String attValue) {
         // id is special
@@ -357,7 +356,7 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
 
     /** override setNamespaceURI(String namespaceURI) to make it immutable.
      * if namespaceURI is not set, sets it, else no-op
-     * @param namespaceURI
+     * @param namespaceURI URI of the namespace
      */
     public void setNamespaceURI(String namespaceURI) {
         String nURI = this.getNamespaceURI();
@@ -368,7 +367,7 @@ public class CMLElement extends Element implements CMLConstants, Comparable<CMLE
 
     /** override setNamespacePrefix(String namespacePrefix) to make it immutable.
      * if namespacePrefix is not set, sets it, else no-op
-     * @param namespacePrefix
+     * @param namespacePrefix prefix of the namespace
      */
     public void setNamespacePrefix(String namespacePrefix) {
         String nPrefix = this.getNamespacePrefix();

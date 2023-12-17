@@ -232,11 +232,11 @@ public class ChemicalElement {
     protected Color color;
 
     /**
-     * constructor.
+     * constructor of a new element
      * 
-     * @param symbol
-     * @param atomicNumber
-     * @param atomicWeight
+     * @param symbol       the symbol
+     * @param atomicNumber the atomic number
+     * @param atomicWeight the atomic weight
      */
     public ChemicalElement(String symbol, int atomicNumber, double atomicWeight) {
         this.atomicSymbol = symbol;
@@ -301,8 +301,8 @@ public class ChemicalElement {
     }
 
     /**
-     * @param abundances
-     * @param masses
+     * @param masses     mass information of the isotopes
+     * @param abundances abundancy information of the isotopes
      * @deprecated use setIsotopes.
      */
     public void addIsotope(int[] masses, double[] abundances) {
@@ -312,8 +312,8 @@ public class ChemicalElement {
     /**
      * set isotopes.
      * 
-     * @param masses
-     * @param abundances
+     * @param masses     mass information of the isotopes
+     * @param abundances abundancy information of the isotopes
      */
     public void setIsotopes(int[] masses, double[] abundances) {
         isotopeMasses = masses;
@@ -323,7 +323,7 @@ public class ChemicalElement {
     /**
      * set precise masses for the isotopes of this element
      * 
-     * @param preciseMasses
+     * @param preciseMasses precise mass information of the isotopes
      */
     public void setIsotopePreciseMasses(double [] preciseMasses) {
     	isotopePreciseMasses = preciseMasses;
@@ -371,7 +371,7 @@ public class ChemicalElement {
     /**
      * set covalent radius.
      * 
-     * @param cov
+     * @param cov covalent radius of the element
      */
     public void setCovalentRadius(double cov) {
         covalentRadius = cov;
@@ -389,7 +389,7 @@ public class ChemicalElement {
     
     /** get various types of radii
      * 
-     * @param radiusType
+     * @param radiusType type of the radius to return the value of
      * @return radius
      */
     public double getRadius(RadiusType radiusType) {
@@ -428,7 +428,7 @@ public class ChemicalElement {
     /**
      * set atomic radius.
      * 
-     * @param cov
+     * @param cov the atomic radius
      */
     public void setAtomicRadius(double cov) {
         atomicRadius = cov;
@@ -446,7 +446,7 @@ public class ChemicalElement {
     /**
      * set vdw radius.
      * 
-     * @param vdw
+     * @param vdw the vanderwaals radius
      */
     public void setVDWRadius(double vdw) {
         vanderwaalsRadius = vdw;
@@ -465,7 +465,7 @@ public class ChemicalElement {
     /**
      * set electronegativity.
      * 
-     * @param eneg
+     * @param eneg the new electronegativity of the element
      */
     public void setElectronegativity(double eneg) {
         electronegativity = eneg;
@@ -483,7 +483,7 @@ public class ChemicalElement {
     /**
      * set color
      * 
-     * @param color
+     * @param color the new color of the element
      */
     public void setColor(Color color) {
         this.color = color;
@@ -683,7 +683,7 @@ public class ChemicalElement {
      * get the element corresponding to a (case-insensitive) atomicSymbol; else
      * returns null.
      * 
-     * @param symbol case insensitive
+     * @param symbol the case insensitive symbol of the element to return
      * @return element or null if not found
      */
     public static ChemicalElement getChemicalElementIgnoreCase(String symbol) {
@@ -693,7 +693,7 @@ public class ChemicalElement {
 
     /** get the element corresponding to a CASE-SENSITIVE atomicSymbol.
      * 
-     * @param symbol
+     * @param symbol the case sensitive symbol of the element to return
      * @return element or null if not found
      */
     public static ChemicalElement getChemicalElement(String symbol) {
@@ -736,7 +736,7 @@ public class ChemicalElement {
     /**
      * get the element corresponding to atomic number; else returns null.
      * 
-     * @param atomicNumber
+     * @param atomicNumber the atomic number of the element to return
      * @return element
      */
     public static ChemicalElement getElement(int atomicNumber) {
@@ -941,8 +941,7 @@ public class ChemicalElement {
     /**
      * Outputs details of element.
      * 
-     * @param el
-     *            Element to output
+     * @param el element to output
      */
     public static void debug(ChemicalElement el) {
 
@@ -981,7 +980,7 @@ public class ChemicalElement {
     /**
      * sets boding radius tolerance.
      * 
-     * @param tol
+     * @param tol the tolerance
      */
     public static void setBondingRadiusTolerance(double tol) {
         bondingRadiusTolerance = (tol > 0.0) ? tol : bondingRadiusTolerance;

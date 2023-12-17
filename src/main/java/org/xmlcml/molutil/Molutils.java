@@ -103,7 +103,7 @@ public abstract class Molutils extends java.lang.Object implements CMLConstants 
      * @param length
      *            from aPoint
      *
-     * @throws EuclidRuntimeException
+     * @throws EuclidRuntimeException if the geometry parameter is invalid
      * @return Point3[] ANY =&gt; 1, LINEAR =&gt; 2, TRIGONAL =&gt; 3, TETRAHEDRAL =&gt; 4
      */
     public static List<Point3> calculate3DCoordinates0(Point3 aPoint,
@@ -163,7 +163,7 @@ public abstract class Molutils extends java.lang.Object implements CMLConstants 
      * @param angle
      *            B-A-X angle in radians
      *
-     * @throws EuclidRuntimeException
+     * @throws EuclidRuntimeException if the geometry is not LINEAR, TRIGONAL, or TETRAHEDRAL
      * @return Point3d[] nwanted points (or zero if failed)
      */
     public static List<Point3> calculate3DCoordinates1(Point3 aPoint,
@@ -239,7 +239,7 @@ public abstract class Molutils extends java.lang.Object implements CMLConstants 
      * @param angle
      *            B-A-X angle
      *
-     * @throws EuclidRuntimeException
+     * @throws EuclidRuntimeException if the geometry is not TRIGONAL or TETRAHEDRAL
      * @return Point3d[] nwanted points (or zero if failed)
      */
     public static List<Point3> calculate3DCoordinates2(Point3 aPoint,
