@@ -1,8 +1,8 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 title: CMLXOM
-version: 4.7
-date-released: 2023-12-18
+version: 4.8
+date-released: 2024-02-17
 url: "https://github.com/BlueObelisk/cmlxom"
 preferred-citation:
   type: article
