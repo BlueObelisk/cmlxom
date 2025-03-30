@@ -491,7 +491,7 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 			String[] ss = getSplitContent();
 			dd = new boolean[ss.length];
 			for (int i = 0; i < dd.length; i++) {
-				dd[i] = new Boolean(ss[i]);
+				dd[i] = Boolean.valueOf(ss[i]);
 			}
 		}
 		return dd;
@@ -576,7 +576,7 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 			ii = new int[ss.length];
 			for (int i = 0; i < ii.length; i++) {
 				try {
-					ii[i] = new Integer(ss[i]).intValue();
+					ii[i] = Integer.valueOf(ss[i]).intValue();
 				} catch (NumberFormatException nfe) {
 					throw new RuntimeException("Bad int (" + ss[i]
 							+ ") at position: " + i);
@@ -1073,13 +1073,13 @@ public class CMLArray extends AbstractArray implements HasUnits, HasArraySize,
 		if (XSD_STRING.equals(dataType)) {
 			this.append(content);
 		} else if (XSD_BOOLEAN.equals(dataType)) {
-			this.append(new Boolean(content).booleanValue());
+			this.append(Boolean.valueOf(content).booleanValue());
 		} else if (XSD_DATE.equals(dataType)) {
 			this.append(JodaDate.parseDate(content).toString());
 		} else if (XSD_DOUBLE.equals(dataType)) {
-			this.append(new Double(content).doubleValue());
+			this.append(Double.valueOf(content).doubleValue());
 		} else if (XSD_INTEGER.equals(dataType)) {
-			this.append(new Integer(content).intValue());
+			this.append(Integer.valueOf(content).intValue());
 		}
 	}
 

@@ -300,8 +300,8 @@ public final class CMLXOMTestUtils implements CMLConstants {
 		Error ee = null;
 		try {
 			try {
-				testVal = new Double(testValue).doubleValue();
-				refVal = new Double(refValue).doubleValue();
+				testVal = Double.valueOf(testValue).doubleValue();
+				refVal = Double.valueOf(refValue).doubleValue();
 				Assert.assertEquals(message + " doubles ", refVal, testVal,
 								eps);
 			} catch (NumberFormatException e) {

@@ -64,7 +64,7 @@ public class BooleanSTAttribute extends CMLAttribute {
     public BooleanSTAttribute(BooleanSTAttribute att) {
         super(att);
         if (att.b != null) {
-            this.b = new Boolean(att.b.booleanValue());
+            this.b = Boolean.valueOf(att.b.booleanValue());
         }
     }
 
@@ -103,7 +103,7 @@ public class BooleanSTAttribute extends CMLAttribute {
      */
     public void setCMLValue(boolean i) {
         checkValue(i);
-        this.b = new Boolean(i);
+        this.b = Boolean.valueOf(i);
         this.setValue(S_EMPTY + i);
     }
 

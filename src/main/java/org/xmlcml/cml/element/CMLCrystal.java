@@ -511,7 +511,7 @@ public class CMLCrystal extends AbstractCrystal {
             return null;
         }
         for (int i = 0; i < 6; i++) {
-            temp[i] = (new Double(paramElements.get(i).getXMLContent())).doubleValue();
+            temp[i] = (Double.valueOf(paramElements.get(i).getXMLContent())).doubleValue();
         }
         LOG.trace("cell values "+new RealArray(temp));
         return temp;

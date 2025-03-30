@@ -595,7 +595,7 @@ public class CMLFormula extends AbstractFormula {
 				elements.add(elem);
 				String countS = tokens[2 * i + 1];
 				try {
-					counts.add(new Double(countS));
+					counts.add(Double.valueOf(countS));
 				} catch (NumberFormatException nfe) {
 					throw new RuntimeException("Bad element count in concise: " + countS);
 				}
@@ -1018,7 +1018,7 @@ public class CMLFormula extends AbstractFormula {
 				c = 1;
 			} else {
 				try {
-					c = new Double(countS).doubleValue();
+					c = Double.valueOf(countS).doubleValue();
 				} catch (NumberFormatException nfe) {
 					throw new RuntimeException("Bad element count (" + countS
 							+ ") in: " + s);
@@ -1048,7 +1048,7 @@ public class CMLFormula extends AbstractFormula {
 		}
 		if (ii != 0) {
 			try {
-				mult = new Double(formulaString.substring(0, ii)).doubleValue();
+				mult = Double.valueOf(formulaString.substring(0, ii)).doubleValue();
 			} catch (NumberFormatException nfe) {
 				throw new RuntimeException(
 						"Cannot interpret start of formula as multiplier: "
@@ -1067,7 +1067,7 @@ public class CMLFormula extends AbstractFormula {
 				String r = formulaString.substring(rb + 1);
 				if (r.length() > 0) {
 					try {
-						mult = new Double(r).doubleValue();
+						mult = Double.valueOf(r).doubleValue();
 					} catch (NumberFormatException nfe) {
 						throw new RuntimeException("Bad multiplier in: "
 								+ formulaString);
@@ -1122,7 +1122,7 @@ public class CMLFormula extends AbstractFormula {
 		}
 		if (ii != 0) {
 			try {
-				mult = new Double(formulaString.substring(0, ii)).doubleValue();
+				mult = Double.valueOf(formulaString.substring(0, ii)).doubleValue();
 			} catch (NumberFormatException nfe) {
 				throw new RuntimeException(
 						"Cannot interpret start of formula as multiplier: "
@@ -1140,7 +1140,7 @@ public class CMLFormula extends AbstractFormula {
 				String r = formulaString.substring(rb + 1);
 				if (r.length() > 0) {
 					try {
-						mult = new Double(r).doubleValue();
+						mult = Double.valueOf(r).doubleValue();
 					} catch (NumberFormatException nfe) {
 						throw new RuntimeException("Bad multiplier in: "
 								+ formulaString);
@@ -1222,7 +1222,7 @@ public class CMLFormula extends AbstractFormula {
 						count = 1.0;
 					} else {
 						try {
-							count = new Double(s).doubleValue();
+							count = Double.valueOf(s).doubleValue();
 						} catch (NumberFormatException nfe) {
 							throw new RuntimeException(
 									"Moiety cannot parse element count: " + s);
@@ -2122,7 +2122,7 @@ public class CMLFormula extends AbstractFormula {
 		double thisCount = (this.getCountAttribute() == null) ? 1.0 : this.getCount();
 		if (elementTypes != null && counts != null) {
 			for (int i = 0; i < elementTypes.length; i++) {
-				countTable.put(elementTypes[i], new Double(counts[i]));
+				countTable.put(elementTypes[i], Double.valueOf(counts[i]));
 			}
 		}
 		CMLFormula newFormula = new CMLFormula();

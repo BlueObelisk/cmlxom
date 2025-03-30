@@ -174,8 +174,8 @@ public final class CMLXOMTestUtils {
 		Error ee = null;
 		try {
 			try {
-				double testVal = new Double(testValue).doubleValue();
-				double refVal = new Double(refValue).doubleValue();
+				double testVal = Double.valueOf(testValue).doubleValue();
+				double refVal = Double.valueOf(refValue).doubleValue();
 				Assert
 						.assertEquals(message + " doubles ", refVal, testVal,
 								eps);

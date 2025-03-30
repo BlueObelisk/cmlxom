@@ -221,7 +221,7 @@ public class CMLAtomArray extends AbstractAtomArray {
 		for (int i = 0; i < nelem; i++) {
 			String[] ss = sortS[i].split(S_SPACE);
 			elems[i] = ss[0];
-			counts[i] = new Double(ss[1]).doubleValue();
+			counts[i] = Double.valueOf(ss[1]).doubleValue();
 		}
 		this.setElementTypeAndCount(elems, counts);
 	}
@@ -615,7 +615,7 @@ public class CMLAtomArray extends AbstractAtomArray {
         List<CMLAtom> atomList = this.getAtoms(value.length, "occupancy");
         int i = 0;
         for (CMLAtom atom : atomList) {
-            atom.setOccupancy(new Double(value[i++]).doubleValue());
+            atom.setOccupancy(Double.valueOf(value[i++]).doubleValue());
         }
     }
     /** array of x2 coordinate.

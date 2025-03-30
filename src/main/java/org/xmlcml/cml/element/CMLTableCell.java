@@ -113,7 +113,7 @@ public class CMLTableCell extends org.xmlcml.cml.element.AbstractTableCell {
     public double getDouble() {
         double d = Double.NaN;
         try {
-            d = new Double(this.getValue()).doubleValue();
+            d = Double.valueOf(this.getValue()).doubleValue();
         } catch (NumberFormatException e) {
             throw new RuntimeException(e);
         }

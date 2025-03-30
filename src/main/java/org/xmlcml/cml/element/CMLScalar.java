@@ -174,7 +174,7 @@ public class CMLScalar extends AbstractScalar implements HasUnits, HasScalar, Ha
 		if (getDataType().equals(XSD_BOOLEAN)) {
 			String content = getXMLContent();
 			if (content != null) {
-				result = new Boolean(content);
+				result = Boolean.valueOf(content);
 			}
 		}
 		return result;

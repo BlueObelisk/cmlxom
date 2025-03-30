@@ -347,11 +347,11 @@ public class CMLArg extends AbstractArg {
                 }
                 if (this.getDataType().equals(XSD_DOUBLE)) {
                     try {
-                        double dd = new Double(tokens[0]).doubleValue();
+                        double dd = Double.valueOf(tokens[0]).doubleValue();
                         String op = CMLConstants.S_EMPTY;
                         for (int i = 1; i < tokens.length; i+=2) {
                             op = tokens[i];
-                            double d = new Double(tokens[i+1]).doubleValue();
+                            double d = Double.valueOf(tokens[i+1]).doubleValue();
                             if (op.equals(S_PLUS)) {
                                 dd += d;
                             } else if (op.equals(S_MINUS)) {
