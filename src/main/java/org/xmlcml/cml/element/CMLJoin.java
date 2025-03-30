@@ -18,7 +18,6 @@
 package org.xmlcml.cml.element;
 
 import nu.xom.Element;
-import nu.xom.Node;
 import nu.xom.ParentNode;
 
 import org.xmlcml.cml.base.CMLElement;

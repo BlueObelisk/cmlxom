@@ -18,8 +18,6 @@
 package org.xmlcml.cml.element;
 
 import nu.xom.Element;
-import nu.xom.Node;
-
 import org.xmlcml.cml.base.CMLElement;
 
 /** A container for one or more fragments and joins.

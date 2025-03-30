@@ -21,10 +21,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.xmlcml.cml.base.CMLElement;
-import org.xmlcml.cml.element.CMLGradient;
 import org.xmlcml.cml.element.CMLIsotope;
-
-import static org.junit.Assert.*;
 
 public class CMLIsotopeTest {
 

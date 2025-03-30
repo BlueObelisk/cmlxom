@@ -18,12 +18,10 @@ package org.xmlcml.cml.element;
 
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import nu.xom.Attribute;
 import nu.xom.Element;
-import nu.xom.Node;
 
 import org.apache.log4j.Logger;
 import org.joda.time.DateTime;

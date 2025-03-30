@@ -27,12 +27,6 @@ import java.util.Map;
 import nu.xom.Element;
 import nu.xom.Node;
 
-import org.xmlcml.cml.base.AbstractGenerator;
-import org.xmlcml.cml.base.AttributeFactory;
-import org.xmlcml.cml.base.CMLAttribute;
-import org.xmlcml.cml.base.CMLType;
-import org.xmlcml.cml.base.CMLUtil;
-import org.xmlcml.cml.base.SchemaManager;
 import org.xmlcml.euclid.Util;
 
 /**

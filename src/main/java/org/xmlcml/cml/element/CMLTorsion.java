@@ -24,7 +24,6 @@ import java.util.List;
 import java.util.Map;
 
 import nu.xom.Element;
-import nu.xom.Node;
 import nu.xom.Nodes;
 
 import org.apache.log4j.Logger;

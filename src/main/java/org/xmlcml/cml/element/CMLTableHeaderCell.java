@@ -21,8 +21,6 @@ import java.io.IOException;
 import java.io.Writer;
 
 import nu.xom.Element;
-import nu.xom.Node;
-
 import org.xmlcml.cml.base.CMLElement;
 
 /** Metadata for a column of a table.

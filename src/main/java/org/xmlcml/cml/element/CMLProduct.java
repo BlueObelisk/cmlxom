@@ -21,8 +21,6 @@ import java.util.List;
 
 import nu.xom.Element;
 import nu.xom.Elements;
-import nu.xom.Node;
-
 import org.xmlcml.cml.base.CMLElement;
 
 /**

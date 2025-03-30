@@ -25,8 +25,6 @@ import java.util.Set;
 
 import nu.xom.Element;
 import nu.xom.Elements;
-import nu.xom.Node;
-
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.euclid.Point3;
 import org.xmlcml.euclid.Util;

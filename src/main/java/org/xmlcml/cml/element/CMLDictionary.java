@@ -23,11 +23,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-import nu.xom.Document;
 import nu.xom.Element;
-import nu.xom.Node;
-import nu.xom.ParsingException;
-import nu.xom.ValidityException;
 
 import org.apache.log4j.Logger;
 import org.xmlcml.cml.base.CMLBuilder;

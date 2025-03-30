@@ -19,8 +19,6 @@ package org.xmlcml.cml.element;
 import java.util.List;
 
 import nu.xom.Element;
-import nu.xom.Node;
-
 import org.xmlcml.euclid.Angle;
 import org.xmlcml.euclid.Point3;
 import org.xmlcml.euclid.RealArray;

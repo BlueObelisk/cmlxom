@@ -27,7 +27,6 @@ import nu.xom.Document;
 import nu.xom.Element;
 import nu.xom.NodeFactory;
 import nu.xom.ParsingException;
-import nu.xom.ValidityException;
 
 /**
  * 

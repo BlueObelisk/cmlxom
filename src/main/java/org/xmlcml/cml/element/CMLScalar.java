@@ -19,8 +19,6 @@ package org.xmlcml.cml.element;
 import java.text.ParseException;
 
 import nu.xom.Element;
-import nu.xom.Node;
-
 import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
 import org.xmlcml.cml.attribute.DictRefAttribute;

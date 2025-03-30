@@ -21,7 +21,6 @@ import nu.xom.Attribute;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.xmlcml.cml.element.CMLArray;
 import org.xmlcml.euclid.EC;
 import org.xmlcml.euclid.test.StringTestBase;
 

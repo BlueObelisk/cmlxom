@@ -17,8 +17,6 @@
 package org.xmlcml.cml.element;
 
 import nu.xom.Element;
-import nu.xom.Node;
-
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.euclid.Line3;
 import org.xmlcml.euclid.Point3;

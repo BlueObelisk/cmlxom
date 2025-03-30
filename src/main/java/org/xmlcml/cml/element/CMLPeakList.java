@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nu.xom.Element;
-import nu.xom.Node;
 import nu.xom.Nodes;
 
 import org.xmlcml.cml.base.CMLConstants;
