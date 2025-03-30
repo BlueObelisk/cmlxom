@@ -26,30 +26,30 @@ package org.xmlcml.cml.interfacex;
 public interface HasDataType extends HasDictRef {
 
     /**
-     * sets value on dataType attribute. example: setDataType("xsd:double");
+     * Sets value on dataType attribute. example: <code>setDataType("xsd:double");</code>
      * 
-     * @param type
+     * @param type type of data
      */
     void setDataType(String type);
 
     /**
-     * gets value on dataType attribute. example: setDataType("xsd:double");
+     * Gets value on dataType attribute. example: <code>setDataType("xsd:double");</code>
      * 
-     * @return type
+     * @return type type of data
      */
     String getDataType();
 
     /**
-     * gets value of element;
+     * Gets value of element/
      * 
-     * @return data
+     * @return data returns the XML as a String
      */
     String getXMLContent();
 
     /**
-     * sets value of element;
+     * Sets value of element.
      * 
-     * @param content
+     * @param content sets the XML content
      */
     void setXMLContent(String content);
 

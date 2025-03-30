@@ -156,7 +156,7 @@ public class ChemicalElement {
         }
         /** compare element symbols.
          * 
-         * @param elSym
+         * @param elSym element symbol
          * @return true if not null and equal
          */
         public boolean equals(String elSym) {
