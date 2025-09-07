@@ -344,7 +344,7 @@
   <distributionManagement>
     <snapshotRepository>
       <id>central</id>
-      <url>https://central.sonatype.com</url>
+      <url>https://central.sonatype.com/repository/maven-snapshots/</url>
     </snapshotRepository>
     <repository>
       <id>central</id>
@@ -362,7 +362,7 @@
       <snapshots>
         <enabled>true</enabled>
       </snapshots>
-      <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+      <url>https://central.sonatype.com/repository/maven-snapshots/</url>
     </repository>
   </repositories>
  
