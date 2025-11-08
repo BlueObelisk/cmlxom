@@ -430,6 +430,7 @@
 				<plugins>
 					<plugin>
 						<artifactId>maven-assembly-plugin</artifactId>
+						<version>3.7.1</version>
 						<configuration>
 							<descriptorRefs>
 								<descriptorRef>src</descriptorRef>
@@ -446,6 +447,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>3.9.0</version>
 				<reportSets>
 					<reportSet>
 						<reports>
@@ -467,14 +469,17 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>3.5.4</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jxr-plugin</artifactId>
+				<version>3.6.0</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
+				<version>3.28.0</version>
 				<configuration>
 					<targetJdk>1.5</targetJdk>
 					<linkXRef>true</linkXRef>
@@ -483,6 +488,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>3.6.0</version>
 				<configuration>
 					<configLocation>src/test/resources/checkstyle.xml</configLocation>
 				</configuration>
