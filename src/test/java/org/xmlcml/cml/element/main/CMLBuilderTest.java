@@ -155,7 +155,7 @@ public class CMLBuilderTest {
 			Assert
 					.assertEquals(
 							"OldNodeFactory validation",
-							"Document root element \"cml\", must match DOCTYPE root \"null\".",
+							"Document root element \"cml\", must match DOCTYPE root \"null\". at line 27, column 50",
 							e.getMessage());
 		}
 	}
